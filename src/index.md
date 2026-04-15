@@ -20,7 +20,7 @@ mdbook build .
 Build one specific session book:
 
 ```bash
-mdbook build 2026-04-14-codex-session
+mdbook build 2026-04-15-codex-session
 ```
 
 When this repository is mounted into the main project as a submodule, the equivalent commands are:
@@ -28,13 +28,14 @@ When this repository is mounted into the main project as a submodule, the equiva
 ```bash
 git submodule update --init --recursive
 mdbook build submodules/metanc_hmi_dsl_reports
-mdbook build submodules/metanc_hmi_dsl_reports/2026-04-14-codex-session
+mdbook build submodules/metanc_hmi_dsl_reports/2026-04-15-codex-session
 ```
 
 ## Current Timeline
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-04-15` | QML table overlap fix, report submodule adoption, docs mdBook cleanup, export helper |
 | `2026-04-14` | Web/QML operations panel, table pages, render hardening, distribution refresh |
 | `2026-04-13` | Program page usability, `AUTO / MDA / JOG` execution flow, main-page preview |
 | `2026-04-12` | Program workspace introduction, browser/editor split, workspace-backed generation |
@@ -44,4 +45,3 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-14-codex-session
 | `2026-04-08` | Initial repository, retained DSL, adapters, generators, and first report |
 
 Use the session chapters in the sidebar for per-day details.
-

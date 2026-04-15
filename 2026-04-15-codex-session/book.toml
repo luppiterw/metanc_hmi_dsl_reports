@@ -1,0 +1,21 @@
+[book]
+authors = ["Codex"]
+language = "zh-CN"
+src = "src"
+title = "CNC HMI DSL Session Report 2026-04-15"
+
+[build]
+build-dir = "build_html"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = ""
+site-url = ""
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+additional-css = ["mermaid-toggle.css"]
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

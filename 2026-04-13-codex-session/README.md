@@ -24,7 +24,7 @@ HTML 构建说明:
 - 报告站点继续使用 `mdbook-mermaid`。
 - Mermaid 图在 HTML 中会渲染为图形，并提供“图形 / 源码”切换。
 - 重建命令:
-  `mdbook build reports/2026-04-13-codex-session`
+  `mdbook build 2026-04-13-codex-session`
 
 建议阅读顺序:
 

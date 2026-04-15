@@ -1,0 +1,13 @@
+[book]
+authors = ["Codex"]
+language = "zh-CN"
+src = "src"
+title = "MetaNC HMI DSL Session Reports"
+
+[build]
+build-dir = "site"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+

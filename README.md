@@ -14,3 +14,14 @@ Regenerate report HTML locally with:
 ```bash
 mdbook build <session-dir>
 ```
+
+When used from the main `metanc_hmi_dsl` repository, this repo is mounted at:
+
+- `submodules/metanc_hmi_dsl_reports/`
+
+Typical main-repo workflow:
+
+```bash
+git submodule update --init --recursive
+mdbook build submodules/metanc_hmi_dsl_reports/<session-dir>
+```

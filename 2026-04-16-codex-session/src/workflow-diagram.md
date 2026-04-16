@@ -1,0 +1,1 @@
+{{#include ../workflow-diagram.md}}

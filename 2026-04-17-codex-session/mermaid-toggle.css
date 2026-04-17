@@ -1,0 +1,52 @@
+.mermaid-diagram {
+    margin: 1.25rem 0 1.5rem;
+    border: 1px solid var(--quote-border, #d0d7de);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg, #ffffff);
+}
+
+.mermaid-diagram-toolbar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--quote-border, #d0d7de);
+    background: color-mix(in srgb, var(--bg, #ffffff) 92%, var(--fg, #000000) 8%);
+}
+
+.mermaid-diagram-toggle {
+    appearance: none;
+    border: 1px solid var(--quote-border, #d0d7de);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.mermaid-diagram-toggle[aria-pressed="true"] {
+    background: var(--links, #0969da);
+    border-color: var(--links, #0969da);
+    color: white;
+}
+
+.mermaid-diagram-rendered {
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.mermaid-diagram-rendered svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.mermaid-diagram-source {
+    margin: 0;
+    padding: 1rem 1.1rem 1.15rem;
+    overflow-x: auto;
+    background: color-mix(in srgb, var(--bg, #ffffff) 96%, var(--fg, #000000) 4%);
+}

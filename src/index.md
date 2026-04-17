@@ -35,6 +35,8 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-15-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-04-17` | `MetaNC/nrt/hmi` export adaptation, package-root detection, generator sync-back, dual-directory rebuild and artifact comparison |
+| `2026-04-16` | QML/Web runtime alignment, motion smoothing, and main-page web layout repair |
 | `2026-04-15` | QML table overlap fix, report submodule adoption, docs mdBook cleanup, export helper |
 | `2026-04-14` | Web/QML operations panel, table pages, render hardening, distribution refresh |
 | `2026-04-13` | Program page usability, `AUTO / MDA / JOG` execution flow, main-page preview |

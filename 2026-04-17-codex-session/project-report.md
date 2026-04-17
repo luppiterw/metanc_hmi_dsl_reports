@@ -2,202 +2,222 @@
 
 ## 1. 报告目标
 
-本报告总结 2026-04-17 这轮工作中，如何把 `metanc_hmi_dsl` 仓库原本面向 `MetaNC/` 根目录的导出与构建假设，系统性迁移到新的 `MetaNC/nrt/hmi/` 包结构，并确认以下三件事同时成立：
+本报告总结 2026-04-17 这轮工作的两个连续目标：
 
-- 当前仓库根目录下的一键生成产物仍然正确
-- 导出后的 `MetaNC/nrt/hmi/` 包目录下的一键生成产物仍然正确
-- 两边真正需要保持一致的源码级产物已经一致，可解释差异被限定在预期范围内
+- 把 `metanc_hmi_dsl` 仓库与新的 `MetaNC/nrt/hmi/` 包结构建立稳定的双向同步与验证链路
+- 在这一同步基础上，对 Web 和 QML 目标执行一轮统一的大布局重构，并更新可维护的文本 / 图像基线
+
+最终目标不是只让某一侧“看起来没问题”，而是让以下四件事同时成立：
+
+- 当前仓库可以稳定生成最终产物
+- `MetaNC/nrt/hmi` 可以稳定接收同步结果并重新生成最终产物
+- Web/QML 两个目标在壳层与重点页面布局上继续保持同源一致
+- 快照和报告资产能够反映这轮真实的最终状态，而不是停留在旧基线
 
 ## 2. 证据范围
 
-本报告对应 2026-04-17 当天已经在当前工作区完成的一组修改，核心范围包括:
+本报告对应 2026-04-17 当天在当前工作区完成的一组修改，核心范围包括:
 
 - `tools/export_to_metanc.sh`
+- `tools/import_from_metanc.sh`
 - `tools/build_docs_html.sh`
 - `tools/generate_targets.sh`
 - `tools/hmi_dsl/docs_portal.py`
 - `tools/hmi_dsl/story_docs.py`
-- `tests/test_pipeline.py`
-- `tests/test_docs_portal.py`
-- `tests/test_story_docs.py`
 - `tools/hmi_dsl/generators/web.py`
 - `tools/hmi_dsl/generators/web_runtime_shell.py`
 - `tools/hmi_dsl/generators/web_widget_emitters.py`
-- `tools/hmi_dsl/generators/qml_runtime_shell.py`
-- `submodules/metanc_hmi_dsl_reports/2026-04-17-codex-session/`
+- `tools/hmi_dsl/generators/qml.py`
+- `tools/hmi_dsl/generators/qml_widget_emitters.py`
+- `tools/hmi_dsl/validator.py`
+- `tests/test_pipeline.py`
+- `tests/snapshots/web/*`
+- `tests/snapshots/qml/*`
+- `docs/superpowers/specs/2026-04-17-qml-web-layout-overhaul.md`
+- `docs/superpowers/plans/2026-04-17-qml-web-layout-overhaul.md`
+- `docs/superpowers/diagrams/2026-04-17-qml-web-layout-overhaul-current-vs-target.*`
 
 ## 3. 本轮处理前的主要问题
 
-### 3.1 导出脚本仍然把 MetaNC 仓库根视为 HMI 内容根
+### 3.1 同步链路仍然停留在旧的 MetaNC 根目录假设
 
-原始 `tools/export_to_metanc.sh` 默认目标是 `/home/iaar/workspace/ccmix-wp/MetaNC`，并直接清空和同步这个目录。这与新的目录结构不兼容，因为 HMI 内容已经迁入 `MetaNC/nrt/hmi/`。
+原始导出流程仍然以 `MetaNC/` 根目录作为 HMI 内容根，而真实下游包已经迁到 `MetaNC/nrt/hmi/`。这使得导出、测试和构建在宿主仓库中的定位全部存在偏差。
 
-风险:
+### 3.2 当前仓库与下游包目录的权威来源不清晰
 
-- 直接导出会覆盖 `MetaNC` 仓库根的非 HMI 内容
-- 下游包内脚本无法以 `nrt/hmi` 为真实工作根继续运行
-- 后续一键处理链路会依赖人工记忆，而不是稳定脚本入口
+如果不先比对 `MetaNC/nrt/hmi` 已有改动，当前仓库导出就可能把下游已经修正过的生成器实现覆盖回旧版本。这个问题在布局相关生成器和运行时脚本中尤其危险。
 
-### 3.2 多个工具仍假设“git 根 = HMI 内容根”
+### 3.3 Web 和 QML 需要一轮真正的“大布局调整”
 
-虽然 `MetaNC/nrt/hmi` 已经具备完整包结构，但当前仓库中的 docs portal、story docs、构建脚本和测试仍主要假定：
+在同步安全问题基本梳理完后，新的核心需求变成了统一重构 Web/QML 的布局，而不是继续做局部修补。
 
-- 运行命令时所在目录就是 `.git` 仓库根
-- `python3 -m tools.hmi_dsl ...` 的调用上下文默认是仓库根
-- 报告索引、内容根展示、相对路径判断不需要区分“内容根”和“上层仓库根”
+这轮布局重构的关键点是：
 
-这会导致 `MetaNC/nrt/hmi` 中的以下行为出现不稳定或错误：
+- 保留 `顶部栏 + 中间舞台 + 底部栏` 的基本框架
+- 把 `ops panel` 收敛为一个明确的右侧 docked drawer
+- 优先重做 `overview` 和 `program` 两个页面的空间分配
+- 把“壳层规则”与“页面局部规则”分开，而不是继续在单页面上叠加特殊处理
 
-- 文档门户把仓库根显示为错误的绝对路径
-- story docs 和 docs portal 的 repo root 探测在嵌套场景下失真
-- 测试入口在嵌套目录执行时存在 `sys.path` 依赖隐患
+### 3.4 现有基线不能再作为这轮布局改造的真值
 
-### 3.3 当前仓库落后于下游已经生效的生成器实现
+一旦壳层和页面比例被系统性调整，旧的 text snapshots 和 QML 离屏图必然失效。如果不同步刷新基线，测试结果只会持续报告预期内的旧快照差异，失去回归价值。
 
-在检查 `MetaNC/nrt/hmi` 时发现，下游目录中已经存在一批比当前仓库更新的生成器实现。若只更新导出脚本而不先把这些实现回流到当前仓库，那么再次导出时会把下游已修正的最终产物逻辑覆盖回旧版本。
+## 4. 方案与实现
 
-已识别的回流范围包括:
+### 4.1 先稳住双向同步边界
 
-- `web.py` 的主界面布局生成样式
-- `web_runtime_shell.py` 的行为节奏和面板重渲染策略
-- `web_widget_emitters.py` 的按钮触发语义
-- `qml_runtime_shell.py` 的 mock 运行时行为
+同步策略继续限定在共享 HMI 包源码范围：
 
-## 4. 修复方案
+- `.gitignore`
+- `AGENT.md`
+- `CHANGELOG.md`
+- `CONTRIBUTING.md`
+- `README.md`
+- `docs/`
+- `examples/`
+- `tests/`
+- `tools/`
 
-### 4.1 导出脚本改为解析 MetaNC 仓库根和 HMI 包根
+并明确排除：
 
-`tools/export_to_metanc.sh` 现在支持两种传参方式：
+- `generated/`
+- `docs_html/`
+- `build_html/`
+- `tools/export_to_metanc.sh`
+- `tools/import_from_metanc.sh`
 
-- 传 `MetaNC` 仓库根时，自动解析到 `MetaNC/nrt/hmi/`
-- 传 `MetaNC/nrt/hmi` 时，直接把它作为目标包目录
+这样宿主仓库级信息不会反向污染 DSL 源仓库，而 DSL 源仓库自己的同步工具也不会被导出到 `MetaNC/nrt/hmi/`。
 
-同时补齐了以下保护和清理逻辑：
+### 4.2 用 superpowers 资产固定布局改造方向
 
-- 通过 `git rev-parse --show-toplevel` 识别真实下游仓库根
-- 通过 `is_hmi_root()` 判断目标是否已经是 HMI 包根
-- 拒绝把导出目标解析为当前源仓库自身
-- 只清空下游 HMI 包目录，而不是误清空整个 `MetaNC` 根
-- 过滤 `.claude`、`.codex`、`.docs`、`__pycache__`、`*.pyc`
+为了避免这次大布局调整再次退化成零散修补，本轮先建立了显式的布局改造资产：
 
-### 4.2 包根识别从“git 根优先”改为“内容根优先”
+- `docs/superpowers/specs/2026-04-17-qml-web-layout-overhaul.md`
+- `docs/superpowers/plans/2026-04-17-qml-web-layout-overhaul.md`
+- `docs/superpowers/diagrams/2026-04-17-qml-web-layout-overhaul-current-vs-target.json`
+- `docs/superpowers/diagrams/2026-04-17-qml-web-layout-overhaul-current-vs-target.svg`
 
-`tools/hmi_dsl/docs_portal.py` 和 `tools/hmi_dsl/story_docs.py` 新增 `_is_hmi_root()`，优先根据以下内容根特征识别包根：
+这套资产把本轮方向冻结为：
 
-- `docs/src/index.md`
-- `examples/june-demo/story.catalog.yaml`
-- `tools/hmi_dsl/__init__.py`
+- 保留现有壳层范式
+- 改成右侧可折叠 docked ops drawer
+- 优先 `overview` / `program`
+- 桌面固定舞台优先，小窗口退化
+- 工业高密、操作区分明确、机床控制台感更强
 
-这样在 `MetaNC/nrt/hmi` 场景下，工具会稳定地把 `nrt/hmi/` 当作内容根，而不是继续向上退回到 `MetaNC` 仓库根。
+### 4.3 Web 壳层重构
 
-### 4.3 构建脚本显式切换到内容根执行
+Web 端主要修改集中在 `web.py` 和少量 `web_runtime_shell.py`：
 
-`tools/build_docs_html.sh` 和 `tools/generate_targets.sh` 现在都会先 `cd "${ROOT_DIR}"` 再调用 Python CLI，确保：
+- 顶栏改成更清晰的 frame 化结构
+- `runtime-notice` 改成 `dot + label + message`
+- `page-stage` 内部重构为 `stage-main-column + stage-ops-column`
+- `ops panel` 从“页面内容旁边的附属块”改成明确的右侧抽屉列
+- footer 改成更明确的 action rail
 
-- 当前仓库根执行时行为不变
-- 导出到 `MetaNC/nrt/hmi` 后仍以包根为工作目录执行
+同时保留现有 runtime 绑定的 DOM id，避免纯布局修改意外破坏 runtime 行为。
 
-### 4.4 测试入口补齐嵌套包目录下的 `sys.path` 保障
+### 4.4 QML 壳层重构
 
-三个核心测试入口补充了：
+QML 端在 `qml.py` 中镜像了同一组结构决策：
 
-```python
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-```
+- masthead 宽度钳制到统一 shell 宽度
+- 维持顶部 / 中部 / 底部三段式壳层
+- 中间舞台改成固定主舞台 + 右侧 ops drawer
+- footer rail 与 Web 的 action rail 模型保持一致
 
-这样在 `MetaNC/nrt/hmi/tests/` 中直接执行测试时，也能稳定导入 `tools.hmi_dsl`。
+同时在 `qml_widget_emitters.py` 中加入新的 layout hints，让 `overview` 与 `program` 页的容器比例可以通过节点级 hint 而不是侵入式改 retained YAML。
 
-### 4.5 先回流生成器差异，再做导出
+### 4.5 overview / program 第一轮 page-level 比例调整
 
-对比当前仓库与 `MetaNC/nrt/hmi` 后，先把下游已存在且影响最终产物的生成器实现回流到当前仓库，再执行导出。这样导出后的下游内容不会被旧逻辑覆盖。
+在壳层稳定之后，本轮继续做了第一层页面比例调整：
 
-结果:
+**overview**
 
-- `generated/web` 在两个目录中完全一致
-- `generated/qml` 在两个目录中完全一致
-- `generated/distribution/web` 和打包的 NC 示例文件一致
+- 主舞台左右列比例重新分配
+- 左列从“上重下轻”改成更明确的上下分区
+- 过程区改为非均分，给运动/统计区更清晰的视觉层级
 
-## 5. 对比结果
+**program**
 
-### 5.1 真正需要保持一致的源码级产物已经一致
+- program root / browser root 改成统一的 `auto + minmax(0,1fr) + footer` 结构
+- editor 与 directory panel 的高度链收齐
+- browser list 支持在 panel 内持续伸展，而不是只依赖固定高度
 
-直接比对结果：
+这些调整的目的不是最终美术定稿，而是先把“结构正确、比例可控、壳层统一”的骨架建立起来。
 
-- `generated/web/` 无差异
-- `generated/qml/` 无差异
-- `generated/distribution/web/index.html` 哈希一致
-- `generated/distribution/qml/program-root/INDEX_TABLE.MPF` 哈希一致
+### 4.6 基线更新
 
-代表性哈希：
+本轮完成了两类基线更新：
 
-| 文件 | 当前仓库 | `MetaNC/nrt/hmi` |
-| --- | --- | --- |
-| `generated/web/index.html` | `fe3baab899be997e...` | `fe3baab899be997e...` |
-| `generated/qml/Main.qml` | `fde0dfd04abb4329...` | `fde0dfd04abb4329...` |
+**已更新**
 
-### 5.2 保留差异 1: QML 二进制与 `qml-build/` 缓存
+- Web text snapshots
+  - `tests/snapshots/web/index.html.snap`
+  - `tests/snapshots/web/styles.css.snap`
+  - `tests/snapshots/web/app.js.snap`
+- QML text snapshots
+  - `tests/snapshots/qml/Main.qml.snap`
+- QML 离屏图基线
+  - `tests/snapshots/qml/main_window.offscreen.png`
 
-以下差异是预期的：
+**未更新**
 
-- `generated/qml-build/`
-- `generated/qml-final/appCNC_HMI_June_Demo`
-- `generated/distribution/qml/appCNC_HMI_June_Demo`
+- Web 浏览器截图基线
 
-根因不是生成器输出不同，而是编译产物中包含构建目录、绝对路径和本地编译缓存信息。两个目录的源码一致，但二进制字节级比较不会一致。
+原因不是实现错误，而是本机缺少：
 
-### 5.3 保留差异 2: `docs_html` 与 story docs HTML 的环境差异
+- Playwright 安装目录
+- Web 浏览器运行时库目录
 
-HTML 差异同样是预期的，主要来自两点：
+因此 `test_web_browser_snapshot_matches_baseline` 继续按现有测试策略被跳过。
 
-- 当前仓库带有 `submodules/metanc_hmi_dsl_reports/`，所以 docs portal 会检测到最新 report
-- `MetaNC/nrt/hmi` 导出时故意排除了 `submodules/`，因此 docs portal 会显示 `No reports detected.`
+## 5. 验证结果
 
-另一个差异源是内容根展示：
+### 5.1 当前仓库
 
-- 当前仓库显示 `Content root: .`
-- `MetaNC/nrt/hmi` 显示 `Content root: nrt/hmi/`
-
-这会进一步改变 mdBook 生成的 `searchindex-*.js` 文件名与部分 HTML 内容，但不代表功能语义不一致。
-
-## 6. 验证
-
-### 6.1 当前仓库验证
-
-已完成:
+已完成：
 
 - `python3 -m unittest -v tests.test_story_docs tests.test_docs_portal tests.test_pipeline`
+- `HMI_ENABLE_QML_VISUAL_SNAPSHOT=1 python3 -m unittest -v tests.test_pipeline`
 - `./tools/generate_targets.sh`
 
-结果:
+结果：
 
-- 单元测试通过
-- story docs、docs portal、Web/QML 生成、QML 编译、distribution 打包通过
+- 文本快照已与新布局对齐
+- QML 离屏图基线已与新布局对齐
+- Web/QML 生成正常
+- QML 编译正常
+- distribution 打包正常
+- Web 浏览器截图基线因环境依赖缺失而跳过
 
-### 6.2 下游包目录验证
+### 5.2 下游 `MetaNC/nrt/hmi`
 
-已完成:
+在本轮更新后，计划同步到 `MetaNC/nrt/hmi` 的共享范围仍保持清晰：
 
-- `./tools/export_to_metanc.sh /home/iaar/workspace/ccmix-wp/MetaNC`
-- 在 `MetaNC/nrt/hmi` 内执行 `./tools/generate_targets.sh`
+- 共享模块源码可通过 `export_to_metanc.sh` 同步
+- reports 子模块、当前仓库专用同步脚本和生成产物仍然不会被导出
 
-结果:
+本轮在下游验证时关注的重点是：
 
-- 导出路径正确落在 `MetaNC/nrt/hmi/`
-- 下游包内一键生成成功
-- 下游包内 `docs_html`、`generated/web`、`generated/qml`、`generated/distribution` 均成功刷新
+- 导出后共享代码是否完整到达 `MetaNC/nrt/hmi`
+- 下游包目录是否仍能独立执行测试与一键生成
+
+## 6. 相关文档更新
+
+本轮“相关文档”不仅指 session report 自身，还包括：
+
+- superpowers 规格、计划和当前/目标结构图
+- report aggregate index 中的 2026-04-17 入口
+- 当前仓库 docs portal 中的 report timeline 与 latest report
+
+这样布局重构不只是代码事实，也成为可回顾、可继续推进、可同步到下游的显式工程资产。
 
 ## 7. 结论
 
-本轮工作把原本只适配独立仓库根的导出与构建实现，升级为同时支持：
+2026-04-17 这轮工作最终形成了两个稳定结果：
 
-- 当前 `metanc_hmi_dsl` 独立仓库根
-- 下游 `MetaNC/nrt/hmi` 嵌套包根
+1. `metanc_hmi_dsl` 与 `MetaNC/nrt/hmi` 之间的同步边界、导出方向和验证方式被明确下来
+2. Web/QML 的壳层和重点页面完成了一轮真正的统一布局重构，并配套更新了可维护基线
 
-最终结论明确：
-
-- 源码级生成物在两个目录中已经对齐
-- 剩余差异都落在可解释的环境相关输出上
-- 当前仓库和 `MetaNC/nrt/hmi` 两边都能独立执行一键生成
-- 报告链路本身也已更新到 2026-04-17，可供后续审查和交付使用
+这意味着后续再继续收 `overview` / `program` 的细节时，已经不需要再从“如何搭壳层”开始，而是可以直接基于这轮新的统一骨架继续精调。

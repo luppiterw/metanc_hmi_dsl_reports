@@ -2,7 +2,7 @@
 
 Focus:
 
-- Adapt the export and build flow to the new `MetaNC/nrt/hmi/` package structure, sync generator changes back into the source repo, rebuild both directories, and compare the resulting artifacts.
+- Harden the `MetaNC/nrt/hmi` sync flow, then execute one superpowers-guided Web/QML shell and page-layout overhaul with refreshed snapshots and downstream verification.
 
 Session assets:
 

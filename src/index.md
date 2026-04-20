@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-04-20` | Protect downstream-local MetaNC report entry Markdown during import/export sync and refresh report/docs indexes |
+| `2026-04-20` | Protect downstream-local MetaNC report entry Markdown, consolidate docs/story structure, and hard-migrate the retained package to `src/hmi_dsl` |
 | `2026-04-17` | `MetaNC/nrt/hmi` sync hardening, superpowers-guided QML/Web shell overhaul, and snapshot refresh |
 | `2026-04-16` | QML/Web runtime alignment, motion smoothing, and main-page web layout repair |
 | `2026-04-15` | QML table overlap fix, report submodule adoption, docs mdBook cleanup, export helper |

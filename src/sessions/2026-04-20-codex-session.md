@@ -2,7 +2,7 @@
 
 Focus:
 
-- Repair the `MetaNC/nrt/hmi` sync flow so downstream-local report-entry Markdown stays untouched, then update the report timeline and docs entrypoints to reflect that fix.
+- Repair the `MetaNC/nrt/hmi` sync flow so downstream-local report-entry Markdown stays untouched, then consolidate docs/story structure and hard-migrate the retained package to `src/hmi_dsl`.
 
 Session assets:
 

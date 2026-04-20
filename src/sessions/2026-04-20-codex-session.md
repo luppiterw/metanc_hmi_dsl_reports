@@ -3,6 +3,7 @@
 Focus:
 
 - Repair the `MetaNC/nrt/hmi` sync flow so downstream-local report-entry Markdown stays untouched, then consolidate docs/story structure and hard-migrate the retained package to `src/hmi_dsl`.
+- Refine the shared Web/QML shell chrome and split oversized generator entrypoints into smaller responsibility-based modules so later edits need less context.
 
 Session assets:
 

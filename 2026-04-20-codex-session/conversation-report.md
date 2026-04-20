@@ -5,7 +5,7 @@
 本文件记录的是摘要化过程和工程推进脉络。
 它不包含模型内部原始思维链，而是保留对后续阅读最有价值的背景、实施顺序、关键决策和验证范围。
 
-本报告对应的时间边界是 2026-04-20 当天，从用户指出 `MetaNC` 下游 report 入口 Markdown 被误覆盖开始，到 docs/source-package 收口、最终产物重建和 report 更新收尾结束的连续一组工作。
+本报告对应的时间边界是 2026-04-20 当天，从用户指出 `MetaNC` 下游 report 入口 Markdown 被误覆盖开始，到 docs/source-package 收口、shell chrome 调整、generator 拆分、最终产物重建和 report 更新收尾结束的连续一组工作。
 
 ## 2. 阶段时间线
 
@@ -111,6 +111,71 @@
 - aggregate report timeline
 - 本 session HTML 与 aggregate HTML
 
+### 阶段 I: 共享 Web/QML shell 再做一轮空间收口
+
+在 source package 与文档结构收口完成后，用户继续把注意力转到真实界面反馈：
+
+- footer 按钮太高
+- 顶部 `PROGRAM` / `THEME` 噪音太重
+- 状态消息位置不对
+- 中间区域边框过多
+- operations panel 太乱
+
+关键决策：
+
+- 不做“只改几个像素”的小修
+- 直接按 shared shell chrome 重排处理 Web/QML 两端
+- 先出 spec，再落 implementation，再重建最终产物
+
+### 阶段 J: 同步边界再次补漏，并把 source-only superpowers 规则钉住
+
+在继续 export 到 `MetaNC` 时，用户再次发现：
+
+- `docs/project/index.md` 也会把 reports 入口泄漏到下游
+
+随后又明确要求：
+
+- `docs/superpowers/` 恢复为 tracked source-local 内容
+- 相关 spec/plan 放回 `docs/superpowers/`
+- export/import 到 `MetaNC` 时不能带过去
+
+关键决策：
+
+- 把 `docs/project/index.md` 纳入和 `reports.md` 同级的保护面
+- 为 sync 脚本新增回归测试
+- 明确把 `docs/superpowers/` 视为 source-only tracked docs，而不是 Git ignore 垃圾目录
+
+### 阶段 K: 壳层细节继续收口到共享 token
+
+在 shell 重排完成后，用户继续指出 footer softkey 高度仍偏高，并且代码里存在明显硬编码。
+
+关键决策：
+
+- 不只把某个数值改小
+- 把 footer button minimum height 提升为 shared generator constant
+- Web/QML 都从同一 source 生成对应变量和绑定
+
+结果：
+
+- softkey 高度统一收口到 `48`
+- 后续再调 footer，不需要双端手工找散落硬编码
+
+### 阶段 L: 开始按职责拆 generator，而不是按页面切
+
+用户明确提出不想每次修改都消耗太多上下文，因此 generator 结构本身需要收口。
+
+关键决策：
+
+- 不按页面拆，因为页面是 retained DSL 数据驱动的
+- 保留 `generate_web()` / `generate_qml()` 作为稳定 facade
+- 把 page split、Web shell、Web app shell、QML page fragments、QML support files 先拆出来
+
+结果：
+
+- 新增专门模块承载重复修改的职责块
+- `qml.py` 和 `web_runtime_shell.py` 的体量明显下降
+- 后续 shell/layout 修改不再每次都进入同一批超长文件
+
 ## 3. 关键决策记录
 
 ### export 和 import 必须使用同一组保护路径
@@ -129,8 +194,16 @@
 
 只换目录，不换包标识、测试名、QML binary 名，会留下半迁移状态，后续维护成本更高。
 
+### 壳层布局调整必须双端同做
+
+这些界面问题来自共享生成结构，而不是单一 target 的样式偶发偏差。因此本轮始终把 Web 和 QML 一起改，不接受“先修一端再看”的分裂处理。
+
+### generator 拆分要按职责，而不是按页面
+
+按页面切会把 shared widget/render 逻辑重新分散到多个模块里，反而更难维护。保留稳定入口、内部按 page-structure / shell / support file / runtime shell 分层，后续收益更稳定。
+
 ## 4. 未处理事项
 
 - Web 浏览器可视化快照仍然是按需启用，没有在这轮默认验证里执行
-- `docs/superpowers/` 已从 Git 跟踪里移除并加入 ignore，但它是否还要进一步移出 `docs/` source root，可以后续再决定
+- `web.py` 里的 CSS 构建块仍然较大，是 generator 下一轮最值得继续拆的目标
 - 如果未来 `MetaNC` 侧再新增宿主本地 Markdown surface，需要继续纳入同步保护清单

@@ -20,7 +20,7 @@ mdbook build .
 Build one specific session book:
 
 ```bash
-mdbook build 2026-04-15-codex-session
+mdbook build 2026-04-20-codex-session
 ```
 
 When this repository is mounted into the main project as a submodule, the equivalent commands are:
@@ -28,13 +28,14 @@ When this repository is mounted into the main project as a submodule, the equiva
 ```bash
 git submodule update --init --recursive
 mdbook build submodules/metanc_hmi_dsl_reports
-mdbook build submodules/metanc_hmi_dsl_reports/2026-04-15-codex-session
+mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 ```
 
 ## Current Timeline
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-04-20` | Protect downstream-local MetaNC report entry Markdown during import/export sync and refresh report/docs indexes |
 | `2026-04-17` | `MetaNC/nrt/hmi` sync hardening, superpowers-guided QML/Web shell overhaul, and snapshot refresh |
 | `2026-04-16` | QML/Web runtime alignment, motion smoothing, and main-page web layout repair |
 | `2026-04-15` | QML table overlap fix, report submodule adoption, docs mdBook cleanup, export helper |

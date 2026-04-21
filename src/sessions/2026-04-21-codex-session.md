@@ -2,7 +2,9 @@
 
 Focus:
 
-- Session bootstrap and Codex user-history export tooling
+- Finish the Web header spacing pass and unify `Show Ops` / theme control sizing
+- Rework the QML header from a stacked two-row structure into the same single-row model used by Web
+- Refresh snapshots, validate the generator pipeline, and prepare the latest `MetaNC/nrt/hmi` sync
 
 Session assets:
 

@@ -12,6 +12,7 @@
 - 继续收 overview 主页冗余结构，移除 `Axis / Metric / Value` 这类重复标题
 - 把 overview 左列重新整理为 `AXIS -> F/S -> RUNTIME` 的单列信息流，并让 `AXIS` / `F/S` 按内容高度收起，避免无意义空白与滚动条
 - 再做一轮只针对 QML 的 stage / footer 收口，让主页主体左右边界和 footer 对齐、左右两列顶部对齐，并修复 `System ready` notice rail 的文字显示与垂直居中
+- 再补一轮只针对 QML overview 主体区的拉伸/居中收口，让左侧 `AXIS -> F/S -> RUNTIME` 与右侧 `JOG` 共享同一高度链，并在各自区域内部做垂直居中
 - 刷新生成快照、离屏基线、pipeline 验证、当日 report 与 aggregate 索引，并准备把最新仓库状态导出同步到 `MetaNC/nrt/hmi`
 
 这轮工作的重点不是单点样式微调，而是沿着用户当天连续反馈，把 header、ops shell、overview 页面和 QML 专项问题逐层收口到稳定可交付状态。
@@ -71,6 +72,16 @@
 - footer 的 `System ready` notice rail 文字几乎看不见，也没有垂直居中
 
 这说明问题已经超出单个 panel 的 margin 或 fillHeight，而进入页面级结构。
+
+### 3.5 最后一轮用户验收继续把问题收敛到“拉伸发生在哪一层”
+
+当 stage 边界、footer notice rail 和左右列顶对齐已经收稳后，用户继续指出：
+
+- `JOG` 这块虽然位置修过，但垂直方向没有真正拉伸
+- 左侧整体和 `JOG` 高度不一致
+- 左侧 `AXIS / F/S / RUNTIME` 三块在各自内部也应该是垂直居中，而不是只把整列往上顶
+
+这说明最后剩下的问题已经不再是 page fragment 级别，而是 overview 左右主列内部的“高度链”和“内容居中层级”还没有完全对应用户预期。
 
 ## 4. 方案与实现
 
@@ -160,6 +171,26 @@
 
 这样今天后半段的工作不会只存在于代码 diff，也会同步出现在 aggregate report 的时间线和 session 入口里。
 
+### 4.6 QML overview 主体区最后再做一轮“拉伸”和“内部居中”拆层处理
+
+在用户继续指出 “不是整列居中，而是 `JOG` 自己要拉伸”、“左侧和 `JOG` 高度要一致”、“左侧三块内部也要各自垂直居中” 之后，这一步不再按整列做统一对齐，而是拆成三层处理：
+
+- overview 左右主列先共享同一条可用高度链
+- 左侧 `AXIS`、`F/S`、`RUNTIME` 和右侧 `JOG` 再各自作为独立的拉伸块
+- 每个拉伸块内部单独处理内容组的垂直居中，而不是把整列整体移动
+
+对应实现落在 `qml_widget_emitters.py`：
+
+- `main_left_column`、`main_process_row`、`main_runtime_stats_column`、`main_runtime_panel`、`main_jog_panel` 的 `Layout.fillHeight` / `minimumHeight` 关系重新整理，确保左右两侧都接住相同的剩余高度
+- `main_axis_panel`、`main_runtime_stats_column`、`main_jog_panel` 在容器内部加入上下 `Item { Layout.fillHeight: true }` 占位，让各自的内容组在块内垂直居中
+- `main_motion_panel` 则改成表格组件自身保持拉伸，但在表头与表格内容组上下补齐空白，从而让 `F/S` 这块在其拉伸区域内部保持垂直居中
+
+这样最终得到的不是“左列继续顶对齐、右列单独居中”的混合状态，而是：
+
+- 左右两侧整体高度一致
+- 左侧三块和右侧 `JOG` 各自都保持垂直拉伸
+- 每个区域内部的真实信息组都在自己的块内垂直居中
+
 ## 5. 验证结果
 
 ### 5.1 生成与构建
@@ -211,6 +242,18 @@
 
 - `HMI_ENABLE_WEB_VISUAL_SNAPSHOT=1`
 
+### 5.5 QML 主体区最终视觉确认
+
+已执行：
+
+- `env QT_QPA_PLATFORM=offscreen HMI_QML_SNAPSHOT_PATH=/tmp/hmi_qml_preview6.png HMI_QML_SNAPSHOT_DELAY_MS=800 ./generated/qml-final/appCNC_HMI_DSL`
+
+结果：
+
+- 左侧 `AXIS`、`F/S`、`RUNTIME` 与右侧 `JOG` 已回到同一高度链
+- 左侧三块与右侧 `JOG` 都保持垂直拉伸
+- `AXIS`、`F/S`、`RUNTIME` 和 `JOG` 各自内部内容组已在各自区域中垂直居中
+
 ## 6. 产出与交付状态
 
 本轮结束时，当前仓库已具备以下状态：
@@ -222,6 +265,7 @@
 - 共享软面板宽度和按钮区布局已经围绕完整显示重新分配
 - overview 主页已经去掉多余的 `Axis / Metric / Value` 重复标题，并重新回到一页内优先显示的紧凑布局
 - QML overview 主舞台已和 footer 共享同一组左右边界，左右两列回到顶部对齐，`System ready` notice rail 也恢复显示
+- QML overview 主体区最后一轮拉伸/居中收口已完成，左侧 `AXIS / F/S / RUNTIME` 与右侧 `JOG` 现在共享同一高度链，并且各自内容组都在各自块内垂直居中
 - 快照、离屏基线、`CHANGELOG.md` 与 session report 已同步更新
 - 生成验证已重新通过
 - 仓库状态已准备好导出同步到 `MetaNC/nrt/hmi`

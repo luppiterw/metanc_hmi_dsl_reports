@@ -5,202 +5,178 @@
 本文件记录的是摘要化过程和工程推进脉络。
 它不包含模型内部原始思维链，而是保留对后续阅读最有价值的背景、实施顺序、关键决策和验证范围。
 
-本报告对应的时间边界是 2026-04-21 当天，从用户指出“Web 可以，但 QML 顶部仍有问题”开始，到 QML 结构修复、默认展开软面板、主舞台和 ops panel 重排、快照刷新、报告补齐和 MetaNC 同步准备收尾结束的连续一组工作。
+本报告对应的时间边界是 2026-04-21 当天，从用户指出“Web 可以，但 QML 顶部仍有问题”开始，经过 header / ops shell 收口、overview 二次压缩、QML stage 与 footer notice rail 修复，到报告补齐和 MetaNC 同步准备收尾结束的连续一组工作。
 
 ## 2. 阶段时间线
 
-### 阶段 A: 用户先确认 Web 基本可用，但要求把 QML 一起收掉
+### 阶段 A: 先把 header 和共享 ops shell 这一轮主线收稳
 
-起点不是抽象的视觉优化，而是用户非常具体的反馈：
+起点不是抽象的“视觉优化”，而是用户持续反馈：
 
-- Web 版本基本可以
-- QML 版本顶部还有问题
+- Web 可以继续收一点
+- QML 还没有和 Web 一致
 - 两端需要一起处理
 
-这意味着当前工作不能只停在 Web 的 CSS 微调，而必须回到共享生成逻辑继续查 QML。
+因此这轮先收稳：
 
-### 阶段 B: 先继续完成 Web 这轮已规划的收口
+- Web 顶部栏节奏和控件尺寸
+- QML 单行 header 结构
+- 默认展开的 ops panel
+- 主舞台外围的结构壳层
 
-在继续查 QML 之前，先把上一轮已经确认要收的两点补完：
+### 阶段 B: QML 顶部栏问题先按结构定位，而不是继续按样式猜
 
-- 标题区和状态胶囊之间的横向节奏
-- `Show Ops` 与 theme selector 的视觉尺寸统一度
+继续检查 `tools/hmi_dsl/generators/qml.py` 和生成后的 `Main.qml` 后，真实原因非常明确：
 
-这样 Web 端可以先稳定下来，避免后续把“单端仍未完工”和“双端不一致”混成一个问题。
+- 第一行是标题组和右侧控件
+- 状态条 `Flickable` 仍然单独占第二行
 
-### 阶段 C: 重新检查 QML 头部模板，确认它为什么看起来总是两行
+因此用户看到的“两行”不是对齐还没调好，而是模板本身就在输出两层头部结构。
 
-用户继续指出：
-
-- QML 顶部为什么还是两行
-- 要求和 Web 一样放到一行
-
-这一步没有继续猜样式，而是直接回到 `tools/hmi_dsl/generators/qml.py` 和生成后的 `Main.qml` 看真实结构。
-
-结果很明确：
-
-- 头部第一行是标题组和右侧控件
-- 状态条 `Flickable` 仍然被放在下面单独一层
-
-因此 QML 的核心问题不是“还差一点对齐”，而是头部模板本身就还在输出两行。
-
-### 阶段 D: 决策从样式微调切换为头部结构重排
-
-确认真实原因后，关键决策变得很直接：
+关键决策也很直接：
 
 - 不再继续堆 `Layout.alignment`
 - 直接把状态条从第二行并回主 `RowLayout`
-- 让中间状态条承担弹性宽度
-- 左侧标题组和右侧 toolbar 只保留各自需要的宽度
 
-这个决策很重要，因为它把问题从“看起来能修”变成“结构上真正修掉”。
+### 阶段 C: 默认展开 ops panel 以后，主体壳层必须同步压平
 
-### 阶段 E: 重生成并用离屏截图验证，而不是只看模板文本
+如果只是把 `Show Ops` 改成默认展开，而不同时收主舞台，就会立刻出现两类副作用：
 
-结构改完后，没有停在“代码看起来是一行了”。
-继续做了两层确认：
+- 主内容区进一步被压缩
+- 结构壳层造成的多重边框和空白更明显
 
-- 先检查生成后的 `generated/qml/Main.qml`
-- 再用 `QT_QPA_PLATFORM=offscreen` 跑离屏截图
+因此这一步不是一个布尔值改动，而是同时处理：
 
-离屏图最终确认：
+- Web / QML 默认展开 ops panel
+- 主体外围结构容器回退成 plain shell
+- 共享 ops panel 的宽度和 row / cluster 分配重新围绕真实按钮文案调整
 
-- `MetaNC`
-- 页面名
-- 状态胶囊
-- `Show Ops`
-- theme selector
+### 阶段 D: 用户继续把问题收敛到 overview 左列的真实冗余和空白
 
-已经全部处在同一条头部行里。
+在 header 和 ops shell 收稳后，用户继续指出 overview 主页面的具体问题：
 
-### 阶段 F: 快照、`CHANGELOG` 和 session report 一起补齐
+- `AXIS` 里仍然保留 `Axis`
+- `RUNTIME` 里仍然保留 `Value`
+- `AXIS` 和 `F/S` 下方有明显的空白
+- 左列应该明确落成 `AXIS -> F/S -> RUNTIME`
 
-在确认行为已经修正后，继续补证据和文档：
+这一步不能只在某一端补丁，因为用户要的是 Web / QML 行为一致。
 
-- 更新 Web 文本快照
-- 更新 QML 文本快照
-- 更新 QML 离屏基线
-- 更新 `CHANGELOG.md`
-- 补完整个 2026-04-21 session report
+所以处理顺序变成：
 
-这样这轮交付不只留下 generator 代码，也留下了回归证据和可读的项目记录。
+- 先回到 retained YAML 去掉 overview 场景里冗余的表头
+- 再同步收 Web / QML 两端的 overview 左列高度策略
 
-### 阶段 G: 最后回到导出链路，准备同步到 MetaNC
+### 阶段 E: Web 先稳定，但 QML 暴露出更深层的 page fragment 和 footer shell 问题
 
-用户最后要求：
+用户下一轮反馈非常具体：
 
-- 生成一次提交
-- 更新关联 report 和文档
-- 同步到 MetaNC
+- Web 版 overview 主体布局已经可以
+- QML 版主体左右边界仍然没有和 footer 对齐
+- 左右两列没有像 Web 一样从顶部自然排布
+- footer `System ready` 文字几乎看不见，也没有居中
 
-因此在代码和报告补齐后，继续检查：
+这使问题范围从“overview 表格组件”转移到 QML page fragment 和 footer notice rail 本身。
 
-- 当前仓库状态
-- report submodule 状态
-- `MetaNC` 工作区状态
-- `tools/export_to_metanc.sh` 的同步边界
+关键定位结果：
 
-同步链路确认后，才能进入最终提交和下游导出。
+- overview 页内容依旧在 page fragment 里按整个 viewport 铺开，没有复用 footer 的 stage 内边界
+- 左列和右列不是共享 Web 那种顶部排布模型，而是在高 viewport 中各自漂移
+- footer notice rail 的布局关系把文字区域压坏了
 
-### 阶段 H: 再根据新一轮反馈回到主舞台和软面板布局
+### 阶段 F: 决策从局部 panel 对齐切换为 per-page QML shell 修复
 
-在上一轮提交完成后，用户又继续给出了更直接的使用反馈：
+确认根因后，这一步没有继续给单个 panel 加 margin，而是直接改三层结构：
 
-- 软面板默认应该展开
-- 主体区域的嵌套边框和边距严重影响显示效果
-- 软操作面板布局尤其是 Web 端需要保证按钮完整显示
+- `qml_page_fragments.py`
+  - 给 `machine_console_root` 单独加 stage inset
+  - 让 overview 内容按顶部自然高度排布
+- `qml_widget_emitters.py`
+  - 让 `main_left_column` 明确顶对齐
+  - 避免 overview 左列数据表继续被通用 `fillHeight` 拉伸
+- `qml.py`
+  - 重新搭 footer notice rail 的高度和垂直居中
 
-这意味着问题范围已经从 header 扩展到：
+这一步的意义是把 QML overview 的边界和 Web 对齐逻辑放回到“页面级结构”处理，而不是继续在单个数据 panel 上堆补丁。
 
-- 默认交互状态
-- 主舞台结构壳层
-- 软面板真实可用性
+### 阶段 G: 用两张 QML 离屏图分别验证默认和 Hide Ops 场景
 
-### 阶段 I: 先确认哪几层边框其实只是结构容器
+为了避免只在默认显示 ops panel 时看起来正确，这轮验证做了两个场景：
 
-继续检查 Web/QML 生成器和当前离屏图后，很快收敛出真正需要压平的节点：
+- 默认状态：确认 `System ready` 已恢复显示，主体左右边界与 footer 对齐
+- `Hide Ops` 状态：临时把 `operationsPanelVisible=false`，确认右边界在隐藏侧栏后仍然和 footer 对齐
 
-- `display_shell`
-- `screen_workspace`
-- `main_left_column`
-- `main_process_row`
+这一步很重要，因为用户明确指出“面板隐藏时主体部分右侧没有与底部右侧对齐”。
 
-这些节点主要作用是组织布局，但仍然继续画 panel 背景和边框，于是主舞台出现了明显的“壳套壳”效果。
+### 阶段 H: 最后补 report / user-history / aggregate 索引，再进入提交同步链路
 
-关键决策：
+在代码、快照和离屏图都稳定后，最后一轮工作变成信息收口：
 
-- 不去掉真正有语义的内容 panel
-- 只把结构壳层从“带卡片外观”改回“纯布局容器”
+- 重新导出 `2026-04-21` 的 `user-history.md`
+- 更新 session README、project report、conversation report 和 Mermaid 图
+- 更新 aggregate report 的 timeline 与 session focus
 
-### 阶段 J: 把软面板默认值、宽度和按钮区布局一起改
-
-这一步没有只改一个 `true / false`。
-为了让默认展开后的效果仍然可读，同时做了三组收口：
-
-- Web / QML 都把软面板改成默认展开
-- 软面板宽度同步加宽
-- Web 侧栏内部几个最容易挤压的 row 模板重新分配列宽
-
-原因很直接：
-
-- 如果只是默认展开，不调宽度，按钮会更容易被压缩
-- 如果只是调宽度，不压平主体壳层，主显示区又会继续被挤小
-
-所以这轮必须把三者一起处理。
-
-### 阶段 K: 用离屏图再次确认“默认展开 + 按钮完整显示”
-
-这轮没有停在样式 diff 或生成文本 diff。
-继续重新跑了一张新的 QML 离屏图，重点确认：
-
-- 页面启动时是否直接显示 ops panel
-- 主舞台外层壳体是否明显变薄
-- ops panel 内部按钮是否都能完整显示
-
-结果是这三个目标都达到了。
+这样今天的后半段工作不会停留在本地代码状态，而会完整出现在每日报告入口和后续审查材料里。
 
 ## 3. 关键决策记录
 
-### QML 问题必须按结构定位，不能继续当成样式噪音
+### 结构问题优先按结构解决，而不是继续堆样式补丁
 
-如果继续只看 padding / alignment，用户会反复看到“两行”，因为真正的问题不是控件高度，而是状态条还在第二层布局里。
+QML 顶部栏和 QML overview 这两类问题都证明了一件事：
 
-### Web 与 QML 顶部栏要共享同一种空间分配模型
+- 如果真实问题在模板结构
+- 继续只改 `margin / spacing / alignment`
 
-目标不是两端“看起来差不多”，而是两端都采用：
+那么用户只会反复看到“还是不对”的结果。
 
-- 左标题
-- 中状态条
-- 右操作区
+### overview 左列应该按内容高度形成信息流，而不是继承剩余高度
 
-这种共享结构，后续调整才不会再次分叉。
+`AXIS`、`F/S` 和 runtime summary 这些信息块本质上是概览卡片，不是编辑器或日志区域。
+如果继续沿用剩余高度填充策略，就会稳定地产生“内容很少，但块被撑很高”的空白感。
 
-### 默认展开软面板以后，主体壳层必须同步压平
+因此这一类 overview 卡片必须回到：
 
-如果侧栏占更多宽度，但主舞台还保留原来的多层边框、padding 和 stage frame，用户会立刻看到主内容区继续被压缩。
+- 内容决定高度
+- 列容器顶对齐
+- 页面整体决定是否需要滚动
 
-因此“默认展开侧栏”不是单点改动，而是必须连带主舞台一起收口。
+### QML 主页边界问题必须在 page fragment 级别解决
 
-### 软面板按钮可读性必须用真实按钮文案来反推布局
+当问题已经表现为：
 
-`Restart Line`、`Open Diag`、`SPINDLE START/STOP`、四个 increment 按钮这些实际标签，决定了 panel 不能继续按过窄列宽凑合。
+- 主体不和 footer 对齐
+- `Hide Ops` 后右边界仍然不对
 
-所以这轮不是抽象地“优化布局”，而是按照真实按钮密度和文案长度重新分配 panel 宽度与 row 比例。
+说明它已经超出某个 panel 的 margin 范畴。
 
-### 生成器改动必须同时落到快照与报告
+这时如果不回到 page fragment 和 stage shell 去修，只会不断在局部加补丁。
+
+### footer notice rail 需要独立的高度和垂直居中规则
+
+`System ready` 没显示出来，不是文案缺失，而是 rail 自身的布局关系把文字区域挤坏了。
+
+因此这里不能只改字号，而必须同时保证：
+
+- rail 有稳定最小高度
+- row 自身垂直居中
+- 文字组件也显式走 `AlignVCenter`
+
+### generator 改动必须和快照、report、user-history 一起落地
 
 这轮修改是 generator 行为修复，不只是局部样式 tweak。
-因此如果不更新：
+因此如果不同时更新：
 
 - 文本快照
-- 离屏基线
-- `CHANGELOG`
+- QML 离屏基线
+- `CHANGELOG.md`
 - session report
+- aggregate index
+- 当天 `user-history.md`
 
-后续维护者很难判断“QML 头部单行”究竟是设计意图、偶然结果，还是本地未提交状态。
+后续维护者很难判断今天后半段 overview / QML 的修正是否已经正式交付。
 
 ## 4. 未处理事项
 
 - Web 浏览器视觉快照仍然按需启用，没有在这轮默认回归中执行
 - 如果后续还要继续收顶部栏，可以再考虑把 QML 的字号、描边和按钮观感再向 Web 当前版本靠近一档
-- 如果未来再扩充 ops panel 的按钮数量，仍需要继续围绕真实标签长度复核 Web/QML 的 cluster 宽度假设
+- 如果未来再扩充 ops panel 的按钮数量，仍需要继续围绕真实标签长度复核 Web / QML 的 cluster 宽度假设

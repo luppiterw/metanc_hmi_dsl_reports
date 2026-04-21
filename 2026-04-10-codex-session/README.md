@@ -30,3 +30,4 @@ HTML 构建说明:
 2. `conversation-report.md`
 3. `workflow-diagram.md`
 4. `architecture-diagram.md`
+- `user-history.md`: 当天用户发言原始导出

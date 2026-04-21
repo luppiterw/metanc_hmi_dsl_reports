@@ -12,5 +12,6 @@ Session assets:
   - `2026-04-15-codex-session/README.md`
   - `2026-04-15-codex-session/project-report.md`
   - `2026-04-15-codex-session/conversation-report.md`
+  - `2026-04-15-codex-session/user-history.md`
   - `2026-04-15-codex-session/workflow-diagram.md`
   - `2026-04-15-codex-session/architecture-diagram.md`

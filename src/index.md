@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-04-22` | Rebuild the shared soft operations panel into a compact minimalist layout, align the new contract across retained/QML/Web, and restore a working Web browser screenshot path for final visual verification |
+| `2026-04-22` | Rebuild the shared soft operations panel, then tighten it into a `40x40` hardware-like final layout across retained/QML/Web while restoring the working Web browser screenshot path for final visual verification |
 | `2026-04-20` | Protect downstream-local MetaNC report entry Markdown, consolidate docs/story structure, and hard-migrate the retained package to `src/hmi_dsl` |
 | `2026-04-21` | Finish the header and ops-shell unification, rework the overview page into a tighter one-page layout, then close the QML-only stage/footer and final per-panel stretch/centering issues before the next MetaNC sync round |
 | `2026-04-17` | `MetaNC/nrt/hmi` sync hardening, superpowers-guided QML/Web shell overhaul, and snapshot refresh |

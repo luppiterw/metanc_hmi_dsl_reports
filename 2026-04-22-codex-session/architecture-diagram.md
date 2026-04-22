@@ -14,12 +14,15 @@ flowchart LR
     Tests --> WebOut
     Tests --> QmlOut
 
-    QmlOut --> QmlShot[QML preview<br/>/tmp/hmi_soft_panel_preview_v2.png]
-    WebOut --> WebShot[Web preview<br/>/tmp/hmi_soft_panel_web_preview_v2.png]
+    QmlOut --> QmlShot[QML preview<br/>/tmp/hmi_soft_panel_preview_v3.png]
+    WebOut --> WebShot[Web preview<br/>/tmp/hmi_soft_panel_web_preview_v3.png]
 
     ReportsSubmodule --> Session[2026-04-22 session report<br/>README / project / conversation / diagrams / user-history]
     ReportsSubmodule --> Aggregate[Aggregate mdBook index<br/>src/index.md + src/sessions/...]
     Session --> Aggregate
+
+    Retained --> FinalDeck[Final ops deck contract<br/>40x40 buttons + right-side JOG/WCS + moved-up F/S + merged command/blank row]
+    Emitters --> FinalDeck
 
     Repo --> ExportScript[tools/export_to_metanc.sh]
     ExportScript --> MetaNC[MetaNC repo<br/>feat/hmi -> nrt/hmi]

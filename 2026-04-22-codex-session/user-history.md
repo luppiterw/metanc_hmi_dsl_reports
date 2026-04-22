@@ -16,3 +16,13 @@ Date: 2026-04-22
 - Web 我尝试补浏览器截图了，但本机缺可直接用的 Chromium runtime 依赖，这个要安装什么，告诉我我去安装然后你再截图
 - 安装好了，你刷新环境看一下
 - ok，生成今天的report+commit+push+sync MetaNC（exact commit msg)
+- 根目录有一个package.json是啥，怎么会新建这个，确认一下，没有问题再继续
+- .gitignore也提交push+sync MetaNC一下
+- pull latest main + 合并更新至feat/hmi
+- 软面板继续调整：
+  1.所有常规按钮宽高调整为40x40，圆角按照2执行
+  2.Reset/CycleStart/CycleStop/SingleBlock这组按钮的高度为40，宽度按照合适的进行，急停按钮的宽高调整到合适、高度改为60、同时去除背景的黄色、保证圆内区域即可
+  3.JOG和WCS组移到X/Y/Z组的右侧（不是现在的上下）
+  4.F/S组改到JOG/WCS X/Y/Z组的下方（即往上移一组）
+  5.原来底部留白的按钮和HOLD那些放到一起，确保按钮宽高都是40
+- update docs/reports + commit + sync MetaNC + push

@@ -4,6 +4,7 @@ Focus:
 
 - Rebuild the shared soft operations panel against the new minimalist reference instead of continuing the previous grouped-title layout
 - Restructure the retained operations deck into a compact `3x4` motion grid, a merged mode/coord cluster, a tighter override block, and a bottom blank-button reserve row
+- Tighten that first redesign into a more hardware-like final pass with `40x40` buttons, a pure circular estop, right-side `JOG/WCS`, a moved-up `F/S` block, and a merged command-plus-blank bottom row
 - Align the new soft-panel contract across `ui.structure.yaml`, QML/Web generators, design-import mappings, and regression assertions
 - Re-enable final visual verification by checking the local Playwright/Chromium runtime and capturing a fresh Web browser screenshot alongside the new QML offscreen preview
 

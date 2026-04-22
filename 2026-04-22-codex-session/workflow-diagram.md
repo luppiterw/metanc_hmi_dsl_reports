@@ -15,7 +15,10 @@ flowchart TD
     K --> L[User requests second pass:<br/>40x40 buttons, pure red estop, JOG/WCS to the right, F/S moved up, blank buttons merged with command row]
     L --> M[Restructure retained rows again:<br/>merge mode/coord into motion row, delete blank row, merge blanks into command grid]
     M --> N[Patch QML/Web emitters to the final 40x40 layout and regenerate new v3 previews]
-    N --> O[Generate today's user-history and session report]
-    O --> P[Build session mdBook + aggregate reports book]
-    P --> Q[Commit / push reports submodule, commit / push main repo, export filtered snapshot, commit / push MetaNC feat/hmi]
+    N --> O[Try masthead brand-image replacement with square and 2:1 logo variants]
+    O --> P[Keep logo implementation but restore default output to text via internal brand-mode switch]
+    P --> Q[Document MASTHEAD_BRAND_MODE and packaged Web assets behavior in tooling.md]
+    Q --> R[Generate today's user-history and session report]
+    R --> S[Build session mdBook + aggregate reports book + docs portal]
+    S --> T[Commit / push reports submodule, commit / push main repo, export filtered snapshot, commit / push MetaNC feat/hmi]
 ```

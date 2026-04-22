@@ -26,3 +26,11 @@ Date: 2026-04-22
   4.F/S组改到JOG/WCS X/Y/Z组的下方（即往上移一组）
   5.原来底部留白的按钮和HOLD那些放到一起，确保按钮宽高都是40
 - update docs/reports + commit + sync MetaNC + push
+- 现在缺少4.18 4.19两天的report，创建一下相关文件我看一下
+- ok 那还是移除这两天的report吧
+- 尝试使用metanc_hmi_dsl/.pics/MetaNC-ChatGPT-金橙风格-透明背景.png作为左上角MetaNC文字的替换，你可以自己将该图片重命名放到某个合适的地方去，然后生成一版界面我看一下，先不要提交
+- metanc_hmi_dsl/.pics/MetaNC-ChatGPT-金橙风格-透明背景-2比1.png 换成这张图看看，这张图的比例是不是好一些
+- ok 继续
+- 继续完成剩余内容，然后记得最终产物更新我看一下
+- 保留logo方案的实现，但是目前还是显示原来的MetaNC文字，你看看加个什么开关（内部、不用显示），然后commit+push
+- 更新一下report和关联文档，然后切text/logo这个有写到什么文档里吗，方便后续的ai能够快速开发变更，没问题的话commit+push + sync MetaNC

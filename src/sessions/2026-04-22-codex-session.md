@@ -6,6 +6,7 @@ Focus:
 - Restructure the retained operations deck into a compact `3x4` motion grid, a merged mode/coord cluster, a tighter override block, and a bottom blank-button reserve row
 - Tighten that first redesign into a more hardware-like final pass with `40x40` buttons, a pure circular estop, right-side `JOG/WCS`, a moved-up `F/S` block, and a merged command-plus-blank bottom row
 - Finish a third soft-panel refinement pass with centered panel content, a top row reduced to `estop + 4` dynamically sized keys, restored blank-button face styling, and shared left/right bounds plus separator lines across every control group
+- Repair the remaining Web-only control bugs by moving operations-deck buttons onto a pointer-first trigger path and a global jog-repeat release controller so jog release, `CYCLE STOP`, and `RESET` keep working during live rerender
 - Align the new soft-panel contract across `ui.structure.yaml`, QML/Web generators, design-import mappings, and regression assertions
 - Re-enable final visual verification by checking the local Playwright/Chromium runtime and capturing a fresh Web browser screenshot alongside the new QML offscreen preview
 - Try the left-top masthead logo replacement, keep the implementation behind an internal `text/logo` switch, and document that switch in normal developer-facing guidance so later AI rounds can find it quickly

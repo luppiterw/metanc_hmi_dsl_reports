@@ -53,3 +53,8 @@ Date: 2026-04-22
   3.那些没有内容的按钮背景色要和普通按钮一样，你现在跟整个区域背景一样颜色很奇怪
   4.整体布局要调整一下，这些内容区域要在软面板区域居中显示，即区域左右间隙一致、上下间隙一致
 - update docs+ commit + push + sync MetaNC
+- web版本目前存在几个问题：
+  1.手动移动-+功能松开按钮后仍在轴变化
+  2.CYCLE START执行之后CYCLE STOP无法停止执行，RESET也没办法
+  修复一下
+- update docs + commit + push + sync MetaNC

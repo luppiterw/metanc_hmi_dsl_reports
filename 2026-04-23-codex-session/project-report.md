@@ -2,9 +2,10 @@
 
 ## 1. 目标
 
-本报告总结 2026-04-23 这轮围绕 HMI 前后端分离的两类连续工作：
+本报告总结 2026-04-23 这轮围绕 HMI 前后端分离的三类连续工作：
 
 - 在 `MetaNC/nrt/hmi` 中继续把前后端分离从“内部 split”推进到“未来独立 `hmi_backend` 可落地”的状态
+- 将 `hmi_backend` 重新收回 `nrt/hmi` 内部，调整成 `retained / contract / frontend / backend` 同根分层
 - 将最新共享 HMI 包同步回 `metanc_hmi_dsl`，并在源仓库里重新生成、测试、补 report 和准备提交
 
 ## 2. 主要结果
@@ -77,6 +78,37 @@
 
 这让 split 结果从“能跑”进一步靠近“可维护、可说明、可迁移”。
 
+### 2.5 `hmi_backend` 改为 `nrt/hmi` 内部子树
+
+这一轮没有继续把 backend 往包外模块方向推，而是按新的包内结构收口：
+
+- retained DSL 继续在 `src/hmi_dsl`
+- contract/export 继续在 `tools/hmi_dsl/contract`
+- frontend generation 继续在 `tools/hmi_dsl/generators`
+- native backend 进入 `backend/`
+- backend 实现文档进入 `docs/backend`
+
+这个调整的目的不是回退分离，而是把分离放回同一个产品包下管理，减少跨模块同步成本，同时保留清晰的 ownership 边界。
+
+### 2.6 native backend skeleton 进入最终产物链
+
+这轮 native backend 不再只是源码目录，而是已经接进最终产物链：
+
+- `nrt/hmi/backend` 可以独立 `cmake` 构建
+- native backend 已能消费 `runtime_contract_bundle.json`
+- 当前已提供最小 HTTP 面：
+  - `GET /api/runtime/bootstrap`
+  - `GET /api/runtime/state`
+  - `GET /api/runtime/health`
+  - `POST /api/runtime/property`
+  - `POST /api/runtime/resource`
+  - `POST /api/runtime/commands`
+- `generate_targets.sh` 现在会把 native backend 一并打包到 distribution/backend
+- 新增一键入口：
+  - `run_backend_native.sh`
+  - `run_split_web_native.sh`
+  - `run_split_qml_native.sh`
+
 ## 3. 同步到 `metanc_hmi_dsl`
 
 这轮没有把 `MetaNC` 里的生成物直接拷过来，而是按 shared package 边界同步：
@@ -91,6 +123,7 @@
 - `generate_targets.sh`
 - report 更新
 - docs rebuild
+- native backend subtree build and packaging
 
 ## 4. 验证
 
@@ -98,6 +131,7 @@
 
 - `python3 -m unittest -v tests.test_mock_runtime_backend tests.test_generator_refactor tests.test_pipeline`
 - `./tools/generate_targets.sh`
+- native backend smoke test and packaged endpoint checks
 
 在 `metanc_hmi_dsl` 中，本轮同步后继续执行：
 
@@ -107,10 +141,11 @@
 
 ## 5. 当前结论
 
-截至本轮结束，前后端分离工作已经从“只在一个模块里做结构分层”向“准备独立 `hmi_backend` 模块”迈出了第一批真正的实现步骤。
+截至本轮结束，前后端分离工作已经从“只在一个模块里做结构分层”推进到“在同一个 `nrt/hmi` 包里形成 retained/contract/frontend/backend 明确分层，并且 native backend 已进入最终产物链”的状态。
 
-最关键的成果不是单个脚本，而是三件事一起成立：
+最关键的成果不是单个脚本，而是四件事一起成立：
 
 1. 文档 ownership 被厘清
 2. contract export boundary 开始代码化
 3. 源仓库和宿主仓库的同步边界开始稳定
+4. native backend 已有最小可运行骨架并能消费真实 exported contract

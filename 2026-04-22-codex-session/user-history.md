@@ -58,3 +58,5 @@ Date: 2026-04-22
   2.CYCLE START执行之后CYCLE STOP无法停止执行，RESET也没办法
   修复一下
 - update docs + commit + push + sync MetaNC
+- 软面板的+-按钮一直都是绿色信号灯，这个有问题，只有按下使用的时候才亮，web/qml都有问题，请处理
+- commit + push + sync MetaNC

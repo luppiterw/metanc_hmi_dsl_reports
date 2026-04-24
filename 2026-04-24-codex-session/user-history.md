@@ -66,3 +66,12 @@ Date: 2026-04-24
 - metanc_hmi_dsl生成所有最终产物我看一下
 - 停一下你跑的测试服务，然后新增的codex history这个你看一下怎么集成进我们总的文档去（结合在现在的report下的user history）
 - 你生成一下今天的report，然后把历史codex report也都更新一下，然后我看一下没问题后续把report的提交一下到submodule的远程
+- 1.tools下的export_codex_user_history.py和tools/reports下的export_codex_user_history.py同名文件感觉是一层封装，看一下这块是不是有调整的必要
+  2.tools下的export_to_metanc.sh和import_from_metanc.sh和对应repo_sync下的内容检查一下，是不是符合最新版本
+  3.其他可能涉及metanc_hmi_dsl和MetaNC仓库同步的一些地方都检查一下，确保无误
+- 可以，现在是MetaNC和metanc_hmi_dsl都同步了是吗
+- 可以，两边都commit + push一下，记得提交时写入有效的提交信息
+- 我现在想在这个仓库下使用worktree的方式去用多个agent同时开发多个功能，常规使用方式是什么
+- 这个感觉让人来做worktree管理有点费劲，是不是可以指定agent去分任务执行
+- metanc_hmi_dsl中，我需要每次生成/更新report的时候，把所有的历史user session对话检查更新一下，只增加不删除，存在的不要覆写，有办法吗，需要效率高一些的
+- 更新本日所有生成并提交push，MetaNC和metanc_hmi_dsl都同步处理一下

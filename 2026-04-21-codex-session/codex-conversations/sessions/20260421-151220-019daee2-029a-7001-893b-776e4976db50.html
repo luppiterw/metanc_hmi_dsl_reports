@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019daee2-029a-7001-893b-776e4976db50</code></div>
+<div><b>Started</b>: <code>2026-04-21 15:12:20 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/21/rollout-2026-04-21T15-12-20-019daee2-029a-7001-893b-776e4976db50.jsonl</code></div>
+<div><b>Messages</b>: <code>76</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-21 15:15:26 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: CLI, validator, theme/IR pipeline, adapters, and Web/QML generators.
+- `src/hmi_dsl/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate src/hmi_dsl/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir src/hmi_dsl/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-21&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-21 15:15:26 +0800</div>
+<pre>1.qml/web移除Axis Position的标签
+2.web版本的Metric标题移除
+3.F/S和RUNTIME区域目前是左右布局，改为上下布局，这样主体区域左边就是AXIS - F/S - RUNTIME信息三部分垂直分布
+4.qml版本的底部status区域圆角过大，有点丑，参考web版本调整一下
+5.qml版本的主体部分左侧/右侧还是没有和底部区域对齐，有点丑</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / commentary</h2>
+<div class="time">2026-04-21 15:15:39 +0800</div>
+<pre>我先定位 QML/Web 生成结果和对应模板，确认这 5 个视觉问题分别落在哪些源文件里，再直接改到 retained/generator 侧而不是只改生成产物。</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-21 15:16:05 +0800</div>
+<pre>我已经确认问题落在 retained UI 结构和生成器两层，不是单纯改 `generated/` 就能稳住。接下来先读仓库约束和相关源文件，再把布局、文案和 QML 样式一起收口。</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-21 15:16:47 +0800</div>
+<pre>结构上已经定位到 `page_overview` 主区。现在在看 `ui.structure.yaml` 的主布局定义，以及 QML/Web 两边对 panel 宽度和 footer 圆角的特化逻辑，准备一起改，避免只修一端。</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / commentary</h2>
+<div class="time">2026-04-21 15:21:39 +0800</div>
+<pre>已经确认第 2 条不是数据本身问题，而是 Web 表格表头把显式空字符串又回退成了 `metric`。接下来我会一起改这块，以及 QML 主舞台和底部 rail 的边距统一逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h2>7. Codex / commentary</h2>
+<div class="time">2026-04-21 15:22:47 +0800</div>
+<pre>我找到了现成的 Web/QML 快照基线，先对照看一下第 4、5 条的具体视觉偏差，再决定是改局部圆角还是改整条 stage/footer 的边距体系。</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-21 15:25:08 +0800</div>
+<pre>工作区里已经有未提交改动，尤其是 `tools/hmi_dsl/generators/qml.py` 和 QML 快照。我先看一下这些差异，避免把你现有的改动覆盖掉，再在这个基础上叠加本轮调整。</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-21 15:32:14 +0800</div>
+<pre>我已经把改动方案收敛到 4 处源：`ui.structure.yaml`、Web 表格渲染、QML 布局 hints、QML shell footer/stage chrome。接下来直接改源，然后再生成快照和产物验证。</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / commentary</h2>
+<div class="time">2026-04-21 15:34:23 +0800</div>
+<pre>现在开始改源文件。第一步先动 retained UI 结构，把 `Axis Position` 标题拿掉，并把 `main_process_row` 从左右改成上下，这样 Web/QML 两端都会从同一份结构吃到新布局。</pre>
+</article>
+<article class="msg assistant">
+<h2>11. Codex / commentary</h2>
+<div class="time">2026-04-21 15:35:30 +0800</div>
+<pre>Web 这边我会保留 DSL 里“空表头”的语义，不再把空字符串自动回退成 `metric`。这样第 2 条会从生成器层面彻底修掉。</pre>
+</article>
+<article class="msg assistant">
+<h2>12. Codex / commentary</h2>
+<div class="time">2026-04-21 15:36:36 +0800</div>
+<pre>QML 这边我会把 footer 的内边距统一到同一套 `stageEdgeInset`，同时把 footer 按钮圆角改回走 theme/role，而不是硬编码大圆角。这样第 4、5 条会一起落地。</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-21 15:37:50 +0800</div>
+<pre>Web 布局特化里还有一条旧的 `main_process_row` 强制双列 CSS，我把它改成上下双行，并给下面的 runtime 区多留一点高度，避免改了 DSL 结构后又被样式层改回去。</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-21 15:38:48 +0800</div>
+<pre>源改完了。我先快速复核 diff，确认没有把已有的 QML stage inset 改坏，然后再批量生成 Web/QML 输出和快照。</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-21 15:39:06 +0800</div>
+<pre>生成器已经能正常出 Web/QML 临时产物，没有语法回归。现在我直接检查新产物里这几个关键点是否真的消失或生效，然后同步正式输出和快照。</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / commentary</h2>
+<div class="time">2026-04-21 15:39:58 +0800</div>
+<pre>我现在刷新正式产物和分发层。这样你本地直接打开的 Web/QML 也会变成这版，不只是临时验证目录。</pre>
+</article>
+<article class="msg assistant">
+<h2>17. Codex / commentary</h2>
+<div class="time">2026-04-21 15:40:09 +0800</div>
+<pre>生成脚本还在继续，QML 构建已经起来了。我等它收完，再同步测试快照并跑校验。</pre>
+</article>
+<article class="msg assistant">
+<h2>18. Codex / commentary</h2>
+<div class="time">2026-04-21 15:41:14 +0800</div>
+<pre>正式产物已经刷新完成，包括 `generated/distribution/`。我现在把源码快照也同步到这版，否则后面的回归测试会卡在旧快照上。</pre>
+</article>
+<article class="msg assistant">
+<h2>19. Codex / commentary</h2>
+<div class="time">2026-04-21 15:41:45 +0800</div>
+<pre>我先试一下视觉基线能不能在当前环境里直接生成。QML 这边大概率可以离屏截图，Web 这边要看本机有没有 Playwright runtime。</pre>
+</article>
+<article class="msg assistant">
+<h2>20. Codex / commentary</h2>
+<div class="time">2026-04-21 15:43:17 +0800</div>
+<pre>QML 离屏截图我可以直接生。先把新的 QML 视觉基线刷出来，至少把第 4、5 条的离屏结果锁住。</pre>
+</article>
+<article class="msg assistant">
+<h2>21. Codex / commentary</h2>
+<div class="time">2026-04-21 15:44:36 +0800</div>
+<pre>QML 离屏图已经出来了，效果符合这次改动目标。Web 我也尝试补一张当前截图，如果本机 Chromium 能直接跑，就把浏览器基线一并更新。</pre>
+</article>
+<article class="msg assistant">
+<h2>22. Codex / commentary</h2>
+<div class="time">2026-04-21 15:47:20 +0800</div>
+<pre>现在跑回归。默认测试会校验 Web/QML 生成快照文本，QML 还会做一次离屏截图烟测；Web 的重型浏览器基线如果环境没装 Playwright 会自动跳过。</pre>
+</article>
+<article class="msg assistant">
+<h2>23. Codex / commentary</h2>
+<div class="time">2026-04-21 15:47:45 +0800</div>
+<pre>测试在跑，目前已经过了前半段生成和主题相关用例。等它收尾后，我再把最终校验结果和无法补齐的 Web 视觉基线一起说明。</pre>
+</article>
+<article class="msg assistant">
+<h2>24. Codex / final_answer</h2>
+<div class="time">2026-04-21 15:49:13 +0800</div>
+<pre>已按这 5 点改完。
+
+在 [ui.structure.yaml](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/src/hmi_dsl/ui.structure.yaml) 里去掉了 `Axis Position` 标题，并把左侧的 `main_process_row` 从左右布局改成上下布局，所以现在左侧是 `AXIS -&gt; F/S -&gt; RUNTIME` 纵向分布。Web 端另外在 [web_widget_emitters.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/web_widget_emitters.py) 修了空表头回退逻辑，不会再把空标题渲染成 `Metric`；对应的版式细化在 [web.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/web.py) 里同步成纵向布局。QML 端在 [qml.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml.py) 和 [qml_widget_emitters.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml_widget_emitters.py) 调整了 footer/status 的圆角和边距，对齐主舞台左右边界，并去掉了 overview 根节点那层多余内缩，所以底部和主体左右边界现在是一致的。
+
+我已经刷新了 `generated/` 和 `generated/distribution/`，也同步了文本快照；QML 离屏视觉基线已更新到 [main_window.offscreen.png](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/qml/main_window.offscreen.png)。验证已跑完：`./tools/generate_targets.sh` 和 `python3 -m unittest -v tests.test_pipeline` 通过，27 个测试通过，1 个跳过。跳过的是 Web 浏览器视觉基线，因为当前环境没有 Playwright runtime，所以 [main_window.chromium.png](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/web/main_window.chromium.png) 这张我没法在本机重录。</pre>
+</article>
+<article class="msg user">
+<h2>25. User</h2>
+<div class="time">2026-04-21 15:49:26 +0800</div>
+<pre>commit +push (submodule push also) + Sync MetaNC（commit message exactly)</pre>
+</article>
+<article class="msg assistant">
+<h2>26. Codex / commentary</h2>
+<div class="time">2026-04-21 15:50:02 +0800</div>
+<pre>我先核对当前仓库、报表子模块和 `MetaNC` 镜像的状态，再按一条统一提交信息完成本仓库提交、必要的子模块推送，以及下游同步提交流程。</pre>
+</article>
+<article class="msg assistant">
+<h2>27. Codex / commentary</h2>
+<div class="time">2026-04-21 15:50:27 +0800</div>
+<pre>现在状态很干净：报表子模块没改，`MetaNC` 镜像仓库也没脏改动。下一步我只需要确定用哪一条提交信息，并把同一条消息用于本仓库和 `MetaNC` 同步提交。</pre>
+</article>
+<article class="msg assistant">
+<h2>28. Codex / commentary</h2>
+<div class="time">2026-04-21 15:51:36 +0800</div>
+<pre>我按同一条消息 `fix: align overview panel layout` 提交两边仓库；报表子模块会单独检查并推送到 `main`，如果没有新提交就保持 up-to-date。</pre>
+</article>
+<article class="msg assistant">
+<h2>29. Codex / commentary</h2>
+<div class="time">2026-04-21 15:52:15 +0800</div>
+<pre>子模块远端刚补推了一个原本已存在但未上送的 `main` 提交，现在我继续提交主仓库并推送，再导出同步到 `MetaNC`。</pre>
+</article>
+<article class="msg assistant">
+<h2>30. Codex / commentary</h2>
+<div class="time">2026-04-21 15:53:08 +0800</div>
+<pre>主仓库已经推上去了，导出也完成。现在我检查 `MetaNC` 下游改动范围，确认只包含 `nrt/hmi` 这轮同步内容，然后用同一条消息提交并推送 `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h2>31. Codex / commentary</h2>
+<div class="time">2026-04-21 15:53:22 +0800</div>
+<pre>我现在在 `MetaNC/feat/hmi` 里只提交 `nrt/hmi` 这批同步文件，消息保持完全一致：`fix: align overview panel layout`。</pre>
+</article>
+<article class="msg assistant">
+<h2>32. Codex / commentary</h2>
+<div class="time">2026-04-21 15:54:42 +0800</div>
+<pre>`MetaNC` 推送被当前沙箱网络限制拦住了。我直接重新申请一次无沙箱推送，把这一步补完。</pre>
+</article>
+<article class="msg assistant">
+<h2>33. Codex / commentary</h2>
+<div class="time">2026-04-21 15:56:13 +0800</div>
+<pre>最后我再核一下三处状态：主仓库、报表子模块、`MetaNC` 都应该是干净并且已推到远端。</pre>
+</article>
+<article class="msg assistant">
+<h2>34. Codex / final_answer</h2>
+<div class="time">2026-04-21 15:56:39 +0800</div>
+<pre>已完成，提交信息两边完全一致，都是 `fix: align overview panel layout`。
+
+主仓库 `metanc_hmi_dsl` 已提交并推送到 `origin/main`，提交是 `f0ce6c0`。
+`MetaNC` 已通过 `./tools/export_to_metanc.sh /home/iaar/workspace/ccmix-wp/MetaNC` 同步到 `nrt/hmi`，并在 `feat/hmi` 上提交推送，提交是 `dcb9b0a`。
+报表子模块 `submodules/metanc_hmi_dsl_reports` 也已推到 `origin/main`，当前是 `c3f6a08`。
+
+三处现在都是干净状态：
+- `metanc_hmi_dsl`: `main...origin/main`
+- `metanc_hmi_dsl_reports`: `main...origin/main`
+- `MetaNC`: `feat/hmi...origin/feat/hmi`
+
+本轮提交前已跑过 `./tools/generate_targets.sh` 和 `python3 -m unittest -v tests.test_pipeline`。</pre>
+</article>
+<article class="msg user">
+<h2>35. User</h2>
+<div class="time">2026-04-21 15:59:54 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: CLI, validator, theme/IR pipeline, adapters, and Web/QML generators.
+- `src/hmi_dsl/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate src/hmi_dsl/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir src/hmi_dsl/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-21&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>36. User</h2>
+<div class="time">2026-04-21 15:59:54 +0800</div>
+<pre>主页：
+1.AXIS区域移除AXIS标题描述
+2.AXIS区域高度根据内容来，现在看着有个最小高度，导致其区域下方有很大空白
+3.RUNTIME数据区域移除VALUE标题
+4.F/S区域高度根据内容来，与2中问题类似
+这样确保主页主体内容一页显示，不用用滚动条</pre>
+</article>
+<article class="msg assistant">
+<h2>37. Codex / commentary</h2>
+<div class="time">2026-04-21 16:00:06 +0800</div>
+<pre>我会先核对主页结构和两套生成器里 `AXIS`、`RUNTIME`、`F/S` 这几块的定义，确认哪些是 retained DSL 配置、哪些是 Web/QML 布局约束，再直接改生成结果并跑一轮生成验证。</pre>
+</article>
+<article class="msg assistant">
+<h2>38. Codex / commentary</h2>
+<div class="time">2026-04-21 16:00:29 +0800</div>
+<pre>已经定位到几个关键点：`AXIS` / `VALUE` 标题来自 retained YAML 里的空白 label 与 widget 标题逻辑，另外左侧几块的“拉伸占满高度”主要是 Web/QML 生成器给了 `fillHeight` 或固定比例布局。我接下来直接收紧这三块的高度策略，让它们按内容自适应，避免主页再出现滚动。</pre>
+</article>
+<article class="msg assistant">
+<h2>39. Codex / commentary</h2>
+<div class="time">2026-04-21 16:01:29 +0800</div>
+<pre>我已经确认了问题根源，不是单一一处：`AXIS` 和 `VALUE` 这两个标题是表头 label，本身就在 retained YAML 里；而 `AXIS`、`F/S`、`RUNTIME` 下方的大块留白，是 Web CSS 栅格比例和 QML `Layout.fillHeight / preferredHeight` 一起把这些区块强行拉高了。下一步我会同时收紧 YAML 和两套生成器，避免只修一端。</pre>
+</article>
+<article class="msg assistant">
+<h2>40. Codex / commentary</h2>
+<div class="time">2026-04-21 16:03:11 +0800</div>
+<pre>我开始改文件了：一部分是 retained YAML，另一部分是 QML/Web 的高度策略。改完后我会先跑生成，再看快照和测试是否需要同步更新，避免只在源码层面看起来正确、实际产物还留着旧布局。</pre>
+</article>
+<article class="msg assistant">
+<h2>41. Codex / commentary</h2>
+<div class="time">2026-04-21 16:03:56 +0800</div>
+<pre>我要同时改 4 个点：YAML 去掉 `AXIS` / `VALUE` 表头并移除 `AXIS` 的固定高度，QML 去掉这几块的 `fillHeight / preferredHeight`，Web 把左侧几块从比例拉伸改成 `auto` 内容高度。这样两端都会按内容自然收起来。</pre>
+</article>
+<article class="msg assistant">
+<h2>42. Codex / commentary</h2>
+<div class="time">2026-04-21 16:05:22 +0800</div>
+<pre>生成已经通过。现在我在看实际产物里主页那一段是否真的变成“空表头 + 内容高度”，不是只改了生成器逻辑但最终输出还被别的规则顶回去。接下来会对 `/tmp` 里的生成结果做针对性检查，再刷新仓库内产物和快照。</pre>
+</article>
+<article class="msg assistant">
+<h2>43. Codex / commentary</h2>
+<div class="time">2026-04-21 16:05:43 +0800</div>
+<pre>主页这段的生成结果已经对上了：`AXIS` 和 `VALUE` 表头现在是空的，`AXIS` / `F/S` / 运行信息块也不再带强制撑高。下一步我会刷新仓库内 `generated/` 和测试快照，再跑一轮回归，确认没有把别的页面表格行为误伤。</pre>
+</article>
+<article class="msg assistant">
+<h2>44. Codex / commentary</h2>
+<div class="time">2026-04-21 16:05:57 +0800</div>
+<pre>生成脚本在继续跑 QML 构建，我等它结束后再一次性同步快照和测试，避免中间态去更新基线。</pre>
+</article>
+<article class="msg assistant">
+<h2>45. Codex / commentary</h2>
+<div class="time">2026-04-21 16:07:11 +0800</div>
+<pre>我现在同步测试基线。文本快照会直接从新生成产物覆盖；QML 我也会顺手重录一张离屏截图，这样后续如果要提交，不会留下“源码已改、可视基线没跟上”的状态。</pre>
+</article>
+<article class="msg assistant">
+<h2>46. Codex / commentary</h2>
+<div class="time">2026-04-21 16:07:50 +0800</div>
+<pre>回归测试在跑，QML 相关用例会花一点时间，因为它会临时生成并编译一套验证工程。我等它完整结束再给你结果。</pre>
+</article>
+<article class="msg assistant">
+<h2>47. Codex / final_answer</h2>
+<div class="time">2026-04-21 16:09:17 +0800</div>
+<pre>主页这 4 点已经改完。`AXIS` 区域首列表头和 `RUNTIME` 区域的 `VALUE` 表头都从 retained YAML 里去掉了，同时把 `AXIS` 表的 `max_height: 300` 移除，所以它现在按内容高度收起；`F/S` 和左侧运行信息块也不再被 QML/Web 生成器强制 `fillHeight` 或按比例拉伸，因此下面那块多余空白已经去掉。对应改动在 [ui.structure.yaml](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/src/hmi_dsl/ui.structure.yaml)、[qml_widget_emitters.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml_widget_emitters.py)、[web.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/web.py)。
+
+我也已经同步刷新了文本快照和 QML 离屏基线，包括 [Main.qml.snap](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/qml/Main.qml.snap)、[app.js.snap](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/web/app.js.snap)、[styles.css.snap](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/web/styles.css.snap) 和 [main_window.offscreen.png](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/qml/main_window.offscreen.png)。验证已跑完：`./tools/generate_targets.sh` 和 `python3 -m unittest -v tests.test_pipeline` 通过，27 个测试通过，1 个跳过；跳过的是 Web 浏览器视觉基线用例。</pre>
+</article>
+<article class="msg user">
+<h2>48. User</h2>
+<div class="time">2026-04-21 16:10:55 +0800</div>
+<pre>web版本主页主体布局ok了，现在qml版本有很大问题：
+1.主体部分左侧没有与底部左侧对齐，面板隐藏时主体部分右侧没有与底部右侧对齐
+2.主体部分左右两部分上下不对齐，理论上应该根据内容自行去space对齐，就跟web那样一样
+3.底部System Ready那个状态区域没有显示文字，可能是文字到底部去了，然后也没有在那一栏垂直居中显示，处理一下，可以参考web版本</pre>
+</article>
+<article class="msg assistant">
+<h2>49. Codex / commentary</h2>
+<div class="time">2026-04-21 16:12:01 +0800</div>
+<pre>我先对 QML 这三个点做针对定位：主舞台左右边界、左右两列的垂直对齐策略，以及 footer 状态栏的文字/垂直居中。会直接看生成器和当前离屏基线，避免只凭上次的 Web 规则去猜。</pre>
+</article>
+<article class="msg assistant">
+<h2>50. Codex / commentary</h2>
+<div class="time">2026-04-21 16:12:58 +0800</div>
+<pre>我已经看到离屏图里的问题了：QML 主体内容确实比底部状态栏更“贴边”，而且左列和中间 runtime panel 顶部起点不一致，底部状态栏文字几乎掉到下沿。现在我直接收这三处生成器约束，不会再只调数据区高度。</pre>
+</article>
+<article class="msg assistant">
+<h2>51. Codex / commentary</h2>
+<div class="time">2026-04-21 16:18:13 +0800</div>
+<pre>我现在改 3 处生成器：主页 page fragment 的内边界和自然高度、overview 左列的顶对齐规则、footer 状态栏的高度/垂直居中。改完会直接重生成并录一张新的 QML 离屏图确认。</pre>
+</article>
+<article class="msg assistant">
+<h2>52. Codex / commentary</h2>
+<div class="time">2026-04-21 16:19:55 +0800</div>
+<pre>生成没报错。我先看新 QML 片段是否真的变成“overview 顶对齐 + 内容内缩 + footer 状态栏有最小高度”，然后再完整重生成和录图。</pre>
+</article>
+<article class="msg assistant">
+<h2>53. Codex / commentary</h2>
+<div class="time">2026-04-21 16:20:32 +0800</div>
+<pre>新代码结构看起来对了：overview 页已经改成独立内边距和自然高度，footer 状态栏也不再靠 `anchors.fill` 推高。现在我重生成实际产物并录图，看视觉结果是不是把这 3 个问题一起消掉。</pre>
+</article>
+<article class="msg assistant">
+<h2>54. Codex / commentary</h2>
+<div class="time">2026-04-21 16:22:42 +0800</div>
+<pre>离屏图已经明显对了：左列回到顶部、主体内边界和 footer 对齐，`System ready` 也出来了。我再补做一个 `Hide Ops` 场景的临时验证，确认右侧在面板隐藏时也不会再跑偏。</pre>
+</article>
+<article class="msg assistant">
+<h2>55. Codex / commentary</h2>
+<div class="time">2026-04-21 16:23:26 +0800</div>
+<pre>并行那次验证里，`cmake --build` 抢在 `qt-cmake` 完成前启动了，所以临时目录还没建好。我顺序补跑一次隐藏面板截图，不影响仓库里的正式改动。</pre>
+</article>
+<article class="msg assistant">
+<h2>56. Codex / commentary</h2>
+<div class="time">2026-04-21 16:24:57 +0800</div>
+<pre>视觉验证过了，`Hide Ops` 场景下右边界也正常。现在我只同步 QML 快照并跑回归，不会去动这轮没变的 Web 基线。</pre>
+</article>
+<article class="msg assistant">
+<h2>57. Codex / final_answer</h2>
+<div class="time">2026-04-21 16:27:38 +0800</div>
+<pre>QML 这 3 个问题已经处理掉了。
+
+在 [qml_page_fragments.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml_page_fragments.py) 里，我把主页 `machine_console_root` 这页改成了“内容自然高度 + 顶部/左右内缩”的 page fragment，不再把 overview 内容强行铺满整块 viewport，所以主体左/右边界现在跟底部区域对齐；我还临时用 `operationsPanelVisible=false` 做了离屏验证，隐藏 Ops 时右边界也正常。在 [qml_widget_emitters.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml_widget_emitters.py) 里，把左列 `main_left_column` 改成顶对齐，不再竖向漂移，右侧 `main_runtime_panel` 也显式顶对齐，所以左右两部分现在是跟 Web 一样从顶部开始排，不会再一高一低。
+
+底部状态栏是在 [qml.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml.py) 修的：去掉了那种会把内容高度算坏的 `anchors.fill` 用法，给 notice rail 加了稳定的最小高度，并把 `noticeTextItem` 设成垂直居中，所以 `System ready` 现在能正常显示，而且是在那一栏中间。QML 基线我也已经更新到 [Main.qml.snap](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/qml/Main.qml.snap) 和 [main_window.offscreen.png](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/snapshots/qml/main_window.offscreen.png)。
+
+验证已跑完：`./tools/generate_targets.sh` 和 `python3 -m unittest -v tests.test_pipeline` 通过，27 个测试通过，1 个跳过；跳过的是 Web 浏览器视觉基线。</pre>
+</article>
+<article class="msg user">
+<h2>58. User</h2>
+<div class="time">2026-04-21 16:34:28 +0800</div>
+<pre>更新今日report和所有关联信息，然后commit + push + sync MetaNC</pre>
+</article>
+<article class="msg assistant">
+<h2>59. Codex / commentary</h2>
+<div class="time">2026-04-21 16:35:57 +0800</div>
+<pre>我先核对当前改动、今天的 report 目录和主仓库/子模块状态，然后直接补全今天的 report 与关联索引，再做提交、推送和 MetaNC 同步。</pre>
+</article>
+<article class="msg assistant">
+<h2>60. Codex / commentary</h2>
+<div class="time">2026-04-21 16:36:58 +0800</div>
+<pre>我已经确认今天的 report 子模块目前是干净的，还没把这轮主页/QML 修复写进去。接下来我会直接补 `2026-04-21` 这份 session report 的正文和会话摘要，再重建报告书，避免只改源码不改交付记录。</pre>
+</article>
+<article class="msg assistant">
+<h2>61. Codex / commentary</h2>
+<div class="time">2026-04-21 16:39:51 +0800</div>
+<pre>今天这份 report 里现在只覆盖了早些时候的 header / ops panel 收口，还没包含后来这两轮主页布局修正、QML footer notice 修复，以及已经完成的提交同步动作。我会先把 `user-history` 重新导出，再把 session 摘要、project/conversation report 和 aggregate timeline 一并补齐。</pre>
+</article>
+<article class="msg assistant">
+<h2>62. Codex / commentary</h2>
+<div class="time">2026-04-21 16:40:47 +0800</div>
+<pre>我接着补 report 的结构页和 user-history，然后会重建 reports 产物、提交 reports 子模块，再提交主仓库，最后导出同步到 `MetaNC/nrt/hmi` 并推送 `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h2>63. Codex / commentary</h2>
+<div class="time">2026-04-21 16:44:11 +0800</div>
+<pre>我现在直接改 report 正文和索引页，重点补上今天后半段的 overview/QML 修复，不会只改一句 focus。改完我会重建 reports，再开始提交流程。</pre>
+</article>
+<article class="msg assistant">
+<h2>64. Codex / commentary</h2>
+<div class="time">2026-04-21 16:46:22 +0800</div>
+<pre>补丁里有几处上下文已经变了，我先把这些 report 文件重新读一遍，然后直接整文件替换，避免半截 patch 把内容弄脏。</pre>
+</article>
+<article class="msg assistant">
+<h2>65. Codex / commentary</h2>
+<div class="time">2026-04-21 16:46:45 +0800</div>
+<pre>我直接把今天的 report 相关页重写成覆盖完整当天范围的版本，这样比在旧文本上打补丁更干净，也更容易审查。</pre>
+</article>
+<article class="msg assistant">
+<h2>66. Codex / commentary</h2>
+<div class="time">2026-04-21 16:49:57 +0800</div>
+<pre>report 正文已经补到位了。我现在重新跑一轮 `generate_targets`，把 session book、aggregate reports 和 docs portal 的关联产物一起刷新，然后再开始提交流程。</pre>
+</article>
+<article class="msg assistant">
+<h2>67. Codex / commentary</h2>
+<div class="time">2026-04-21 16:52:02 +0800</div>
+<pre>report 子模块内容已经更新完并重建了。我先提交 `metanc_hmi_dsl_reports`，再回到主仓库提交源码、快照和子模块指针，最后做 MetaNC 导出同步。</pre>
+</article>
+<article class="msg assistant">
+<h2>68. Codex / commentary</h2>
+<div class="time">2026-04-21 16:53:34 +0800</div>
+<pre>主仓库现在只剩这轮 overview/QML 修复、快照、changelog 和 report 子模块指针。我要用一个和变更内容直接相关的提交说明把它们一起提交。</pre>
+</article>
+<article class="msg assistant">
+<h2>69. Codex / commentary</h2>
+<div class="time">2026-04-21 16:54:28 +0800</div>
+<pre>提交没有失败在内容上，而是刚才并行执行 `git add` 和 `git commit` 时碰到了临时的 `index.lock` 竞争。我先确认锁文件是否已经自动释放，如果还在，再清理这个临时锁继续提交。</pre>
+</article>
+<article class="msg user">
+<h2>70. User</h2>
+<div class="time">2026-04-21 17:01:41 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>71. Codex / commentary</h2>
+<div class="time">2026-04-21 17:05:14 +0800</div>
+<pre>主仓库提交已经完成，接下来我按顺序做三件事：推主仓库到 `origin/main`，导出同步到 `MetaNC/nrt/hmi`，然后在 `MetaNC` 的 `feat/hmi` 上提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h2>72. Codex / commentary</h2>
+<div class="time">2026-04-21 17:12:19 +0800</div>
+<pre>主仓库已经推上去了，MetaNC 导出也完成了。我先核对 `feat/hmi` 的改动范围，确认只落在 `nrt/hmi`，然后就直接提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h2>73. Codex / commentary</h2>
+<div class="time">2026-04-21 17:13:02 +0800</div>
+<pre>MetaNC 这边也是同样的并行 `index.lock` 竞争，不是内容问题。我确认锁已经释放后就顺序重试提交。</pre>
+</article>
+<article class="msg user">
+<h2>74. User</h2>
+<div class="time">2026-04-21 17:19:38 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>75. Codex / commentary</h2>
+<div class="time">2026-04-21 17:20:01 +0800</div>
+<pre>我把三处 push 都做完了。最后再核对一次主仓库、report 子模块和 MetaNC 的分支状态，确保没有遗漏的脏改动或未推送提交。</pre>
+</article>
+<article class="msg assistant">
+<h2>76. Codex / final_answer</h2>
+<div class="time">2026-04-21 17:20:31 +0800</div>
+<pre>今日 report 和关联信息已经更新完成，包括 [README.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-21-codex-session/README.md)、[project-report.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-21-codex-session/project-report.md)、[conversation-report.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-21-codex-session/conversation-report.md)、[user-history.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-21-codex-session/user-history.md)、aggregate 索引 [index.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/src/index.md) 和 session 入口 [2026-04-21-codex-session.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/src/sessions/2026-04-21-codex-session.md)。我也重跑了 `./tools/generate_targets.sh`，把 reports HTML 和 docs portal 一起刷新了。
+
+提交和推送都已完成：
+- 主仓库 `metanc_hmi_dsl`：`75e3342`，提交信息是 `fix: finish overview shell alignment`
+- report 子模块 `metanc_hmi_dsl_reports`：`3e514e5`，提交信息是 `docs: update 2026-04-21 session report`
+- MetaNC `feat/hmi`：`5d5b1b9`，提交信息是 `fix: finish overview shell alignment`
+
+MetaNC 已同步到 `nrt/hmi` 并推送完成。现在三处都是干净状态：
+- `metanc_hmi_dsl`: `main...origin/main`
+- `metanc_hmi_dsl_reports`: `main...origin/main`
+- `MetaNC`: `feat/hmi...origin/feat/hmi`</pre>
+</article>
+</main>
+</body>
+</html>

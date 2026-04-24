@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are implementing Task 2: Model The HMI Domain And Capability Matrix. You are not alone in the c...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are implementing Task 2: Model The HMI Domain And Capability Matrix. You are not alone in the c...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d9494-5d67-73b1-940d-a0b45d30472a</code></div>
+<div><b>Started</b>: <code>2026-04-16 12:37:24 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/lab</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/16/rollout-2026-04-16T12-37-24-019d9494-5d67-73b1-940d-a0b45d30472a.jsonl</code></div>
+<div><b>Messages</b>: <code>1</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-16 12:37:24 +0800</div>
+<pre>You are implementing Task 2: Model The HMI Domain And Capability Matrix.
+
+You are not alone in the codebase. Other agents may work on different tasks later. Do not revert edits you did not make, and confine yourself to the files in this task.
+
+## Task Description
+
+Files for this task:
+- Create `src/domain/hmi-types.ts`
+- Create `src/domain/hmi-seed.ts`
+- Create `src/domain/capabilities.ts`
+- Create `src/domain/capabilities.test.ts`
+
+Required steps:
+1. Write the failing test `src/domain/capabilities.test.ts` exactly with these two cases:
+- `buildCapabilities(createSeedSnapshot({ currentRole: &quot;operator&quot;, productTier: &quot;tier1&quot; }))` gives `actions.switchTier === &quot;hidden&quot;`
+- `buildCapabilities(createSeedSnapshot({ currentRole: &quot;admin&quot;, productTier: &quot;tier1&quot; }))` gives `actions.switchTier === &quot;enabled&quot;`
+- `buildCapabilities(createSeedSnapshot({ currentRole: &quot;admin&quot;, productTier: &quot;tier2&quot;, platformType: &quot;desktop&quot; }))` gives `actions.desktopBridge === &quot;readonly&quot;`
+- `buildCapabilities(createSeedSnapshot({ currentRole: &quot;admin&quot;, productTier: &quot;tier3&quot;, platformType: &quot;desktop&quot; }))` gives `actions.desktopBridge === &quot;enabled&quot;`
+2. Run `npm run test -- src/domain/capabilities.test.ts --run` and confirm it fails because modules are missing.
+3. Implement the exact domain model from the plan:
+- `src/domain/hmi-types.ts` defines:
+  - `ProductTier = &quot;tier1&quot; | &quot;tier2&quot; | &quot;tier3&quot;`
+  - `UserRole = &quot;operator&quot; | &quot;programmer&quot; | &quot;admin&quot;`
+  - `PlatformType = &quot;web&quot; | &quot;desktop&quot;`
+  - `MachineMode = &quot;manual&quot; | &quot;mdi&quot; | &quot;auto&quot;`
+  - `RunState = &quot;idle&quot; | &quot;loaded&quot; | &quot;running&quot; | &quot;paused&quot; | &quot;completed&quot; | &quot;alarm&quot;`
+  - `CapabilityState = &quot;hidden&quot; | &quot;readonly&quot; | &quot;enabled&quot;`
+  - `PageKey` union with `productOverview`, `moduleMap`, `roleMatrix`, `platformCapabilities`, `overview`, `jog`, `mdi`, `programs`, `autoRun`, `alarms`, `systemStatus`, `system`
+  - `AlarmRecord`, `ProgramRecord`, `HMISnapshot`, `HmiCapabilities` shapes exactly as planned
+- `src/domain/hmi-seed.ts` exports `createSeedSnapshot(overrides?: Partial&lt;HMISnapshot&gt;)` with defaults:
+  - `productTier: &quot;tier1&quot;`
+  - `currentRole: &quot;operator&quot;`
+  - `platformType: &quot;web&quot;`
+  - `machineMode: &quot;manual&quot;`
+  - `runState: &quot;idle&quot;`
+  - `connected: true`
+  - `selectedProgramId: null`
+  - `activeAlarms: []`
+  - `alarmHistory: []`
+  - `programs: [{ id: &quot;O1001&quot;, name: &quot;Facing Pass&quot;, lines: 42 }, { id: &quot;O2015&quot;, name: &quot;Pocket Finish&quot;, lines: 86 }]`
+  - `axisSummary: { x: 0, y: 0, z: 0 }`
+  - `notice: null`
+- `src/domain/capabilities.ts` exports `buildCapabilities(snapshot)` with:
+  - helper `access(state: boolean, readonly = false)` returning `hidden/readonly/enabled`
+  - all pages enabled
+  - actions:
+    - `switchTier: isAdmin ? &quot;enabled&quot; : &quot;hidden&quot;`
+    - `switchRole: isAdmin ? &quot;enabled&quot; : &quot;readonly&quot;`
+    - `importProgram: isAdmin || isProgrammer ? &quot;enabled&quot; : &quot;hidden&quot;`
+    - `runProgram: snapshot.connected ? &quot;enabled&quot; : &quot;readonly&quot;`
+    - `acknowledgeAlarm: &quot;enabled&quot;`
+    - `manageConnection: isAdmin ? &quot;enabled&quot; : isProgrammer ? &quot;readonly&quot; : &quot;hidden&quot;`
+    - `desktopBridge: desktop &amp;&amp; isAdmin &amp;&amp; tierLevel === 3 ? &quot;enabled&quot; : desktop &amp;&amp; (isAdmin || isProgrammer) ? &quot;readonly&quot; : &quot;hidden&quot;`
+4. Re-run `npm run test -- src/domain/capabilities.test.ts --run` and make it pass.
+5. Commit with `git add src/domain/hmi-types.ts src/domain/hmi-seed.ts src/domain/capabilities.ts src/domain/capabilities.test.ts &amp;&amp; git commit -m &quot;feat: add hmi domain model and capability rules&quot;`.
+
+## Context
+Current branch already contains Task 1 workspace bootstrap and passing smoke test. This task only owns the domain model and capability rules. Do not touch unrelated files.
+
+## Before You Begin
+If anything is unclear, ask now. Otherwise implement exactly what is specified, run the requested tests, commit, self-review, and report back using:
+- Status: DONE | DONE_WITH_CONCERNS | BLOCKED | NEEDS_CONTEXT
+- What you implemented
+- What you tested and results
+- Files changed
+- Self-review findings
+- Any issues or concerns</pre>
+</article>
+</main>
+</body>
+</html>

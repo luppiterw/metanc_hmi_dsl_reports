@@ -33,3 +33,17 @@ HTML 构建说明:
 3. `workflow-diagram.md`
 4. `architecture-diagram.md`
 - `user-history.md`: 当天用户发言原始导出
+- `codex-conversations/`: Codex 完整会话导出目录
+
+<!-- codex-full-export:start -->
+## Complete Codex Conversation Export
+
+- Scope: `2026-04-12`
+- Sessions: `0`
+- Messages: `0`
+- User messages: `0`
+- Codex messages: `0`
+- HTML index: [Open](codex-conversations/index.html)
+- Single-page HTML: [Open](codex-conversations/all.html)
+- Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
+<!-- codex-full-export:end -->

@@ -17,6 +17,20 @@
 - `project-report.md`: 本轮前后端分离落地、contract export boundary、同步和验证总结
 - `conversation-report.md`: 从架构拆分讨论到 export boundary 实改和同步的摘要过程
 - `user-history.md`: 当天用户发言原始导出
+- `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: 从 MetaNC 内部实现到 metanc_hmi_dsl 同步、测试、报告和提交的工作流图
 - `architecture-diagram.md`: retained DSL、contract export、generated clients、fixture backend 和未来 `hmi_backend` 的关系图
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
+
+<!-- codex-full-export:start -->
+## Complete Codex Conversation Export
+
+- Scope: `2026-04-23`
+- Sessions: `1`
+- Messages: `900`
+- User messages: `93`
+- Codex messages: `807`
+- HTML index: [Open](codex-conversations/index.html)
+- Single-page HTML: [Open](codex-conversations/all.html)
+- Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
+<!-- codex-full-export:end -->

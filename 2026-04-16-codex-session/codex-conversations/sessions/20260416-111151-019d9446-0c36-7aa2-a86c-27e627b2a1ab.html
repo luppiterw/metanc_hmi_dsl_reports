@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are implementing Task 1: Bootstrap The Workspace And Base App. You are not alone in the codebas...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are implementing Task 1: Bootstrap The Workspace And Base App. You are not alone in the codebas...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d9446-0c36-7aa2-a86c-27e627b2a1ab</code></div>
+<div><b>Started</b>: <code>2026-04-16 11:11:51 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/lab</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/16/rollout-2026-04-16T11-11-51-019d9446-0c36-7aa2-a86c-27e627b2a1ab.jsonl</code></div>
+<div><b>Messages</b>: <code>1</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-16 11:11:51 +0800</div>
+<pre>You are implementing Task 1: Bootstrap The Workspace And Base App.
+
+You are not alone in the codebase. Other agents may work on different tasks later. Do not revert edits you did not make, and confine yourself to the files in this task.
+
+## Task Description
+
+## Task 1: Bootstrap The Workspace And Base App
+
+**Files:**
+- Create: `.gitignore`
+- Create: `package.json`
+- Create: `tsconfig.json`
+- Create: `tsconfig.node.json`
+- Create: `vite.config.ts`
+- Create: `vitest.setup.ts`
+- Create: `index.html`
+- Create: `src/main.tsx`
+- Create: `src/app/App.tsx`
+- Create: `src/styles/theme.css`
+- Create: `src/styles/app.css`
+- Test: `src/app/App.test.tsx`
+
+- [ ] **Step 1: Initialize git and add workspace config**
+
+Run:
+```bash
+git init
+```
+
+Add these files:
+
+```gitignore
+node_modules
+dist
+coverage
+target
+src-tauri/target
+.DS_Store
+```
+
+```json
+{
+  &quot;name&quot;: &quot;generic-cnc-hmi&quot;,
+  &quot;private&quot;: true,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vite&quot;,
+    &quot;build&quot;: &quot;tsc -b &amp;&amp; vite build&quot;,
+    &quot;preview&quot;: &quot;vite preview&quot;,
+    &quot;test&quot;: &quot;vitest&quot;,
+    &quot;test:ci&quot;: &quot;vitest --run&quot;,
+    &quot;lint&quot;: &quot;tsc --noEmit&quot;,
+    &quot;desktop:dev&quot;: &quot;tauri dev&quot;,
+    &quot;desktop:build&quot;: &quot;tauri build&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;@tauri-apps/api&quot;: &quot;^2.0.0&quot;,
+    &quot;clsx&quot;: &quot;^2.1.1&quot;,
+    &quot;react&quot;: &quot;^19.0.0&quot;,
+    &quot;react-dom&quot;: &quot;^19.0.0&quot;,
+    &quot;react-router-dom&quot;: &quot;^7.0.0&quot;,
+    &quot;zustand&quot;: &quot;^5.0.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@tauri-apps/cli&quot;: &quot;^2.0.0&quot;,
+    &quot;@testing-library/jest-dom&quot;: &quot;^6.4.2&quot;,
+    &quot;@testing-library/react&quot;: &quot;^16.0.1&quot;,
+    &quot;@testing-library/user-event&quot;: &quot;^14.5.2&quot;,
+    &quot;@types/react&quot;: &quot;^19.0.0&quot;,
+    &quot;@types/react-dom&quot;: &quot;^19.0.0&quot;,
+    &quot;@vitejs/plugin-react&quot;: &quot;^5.0.0&quot;,
+    &quot;jsdom&quot;: &quot;^26.0.0&quot;,
+    &quot;typescript&quot;: &quot;^5.8.0&quot;,
+    &quot;vite&quot;: &quot;^7.0.0&quot;,
+    &quot;vitest&quot;: &quot;^3.0.0&quot;
+  }
+}
+```
+
+```json
+{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2022&quot;,
+    &quot;useDefineForClassFields&quot;: true,
+    &quot;lib&quot;: [&quot;DOM&quot;, &quot;DOM.Iterable&quot;, &quot;ES2022&quot;],
+    &quot;allowJs&quot;: false,
+    &quot;skipLibCheck&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;moduleResolution&quot;: &quot;Bundler&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;
+  },
+  &quot;include&quot;: [&quot;src&quot;],
+  &quot;references&quot;: [{ &quot;path&quot;: &quot;./tsconfig.node.json&quot; }]
+}
+```
+
+```json
+{
+  &quot;compilerOptions&quot;: {
+    &quot;composite&quot;: true,
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;moduleResolution&quot;: &quot;Bundler&quot;,
+    &quot;allowSyntheticDefaultImports&quot;: true
+  },
+  &quot;include&quot;: [&quot;vite.config.ts&quot;]
+}
+```
+
+```ts
+import { defineConfig } from &quot;vite&quot;;
+import react from &quot;@vitejs/plugin-react&quot;;
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: &quot;jsdom&quot;,
+    setupFiles: &quot;./vitest.setup.ts&quot;
+  }
+});
+```
+
+```ts
+import &quot;@testing-library/jest-dom/vitest&quot;;
+```
+
+```html
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Generic CNC HMI&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.tsx&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+```
+
+- [ ] **Step 2: Install dependencies**
+Run:
+```bash
+npm install
+```
+Expected: `added ... packages` and no missing peer dependency errors.
+
+- [ ] **Step 3: Write the failing smoke test**
+Create `src/app/App.test.tsx`:
+```tsx
+import { render, screen } from &quot;@testing-library/react&quot;;
+import { App } from &quot;./App&quot;;
+
+describe(&quot;App&quot;, () =&gt; {
+  it(&quot;shows the two cockpit entry points&quot;, () =&gt; {
+    render(&lt;App /&gt;);
+
+    expect(
+      screen.getByRole(&quot;heading&quot;, { name: /generic cnc hmi/i })
+    ).toBeInTheDocument();
+    expect(screen.getByText(/product view/i)).toBeInTheDocument();
+    expect(screen.getByText(/operations view/i)).toBeInTheDocument();
+  });
+});
+```
+
+- [ ] **Step 4: Run the test to verify it fails**
+Run:
+```bash
+npm run test -- src/app/App.test.tsx --run
+```
+Expected: FAIL with `Cannot find module &#x27;./App&#x27;` or equivalent missing file error.
+
+- [ ] **Step 5: Implement the minimal root app**
+Create these files:
+
+`src/main.tsx`
+```tsx
+import ReactDOM from &quot;react-dom/client&quot;;
+import { App } from &quot;./app/App&quot;;
+import &quot;./styles/theme.css&quot;;
+import &quot;./styles/app.css&quot;;
+
+ReactDOM.createRoot(document.getElementById(&quot;root&quot;)!).render(&lt;App /&gt;);
+```
+
+`src/app/App.tsx`
+```tsx
+export function App() {
+  return (
+    &lt;div className=&quot;app-frame&quot;&gt;
+      &lt;header className=&quot;hero&quot;&gt;
+        &lt;p className=&quot;eyebrow&quot;&gt;Prototype&lt;/p&gt;
+        &lt;h1&gt;Generic CNC HMI&lt;/h1&gt;
+        &lt;p className=&quot;summary&quot;&gt;
+          Shared Web and desktop prototype for tiered CNC control interfaces.
+        &lt;/p&gt;
+      &lt;/header&gt;
+      &lt;section className=&quot;cockpit-grid&quot;&gt;
+        &lt;article className=&quot;cockpit-card&quot;&gt;
+          &lt;h2&gt;Product View&lt;/h2&gt;
+          &lt;p&gt;Compare product tiers, roles, and platform capabilities.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article className=&quot;cockpit-card&quot;&gt;
+          &lt;h2&gt;Operations View&lt;/h2&gt;
+          &lt;p&gt;Preview manual, MDI, program, run, alarm, and status workflows.&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  );
+}
+```
+
+`src/styles/theme.css`
+```css
+:root {
+  color-scheme: light;
+  --bg: #f3f0e8;
+  --surface: #fffaf1;
+  --surface-strong: #efe3cb;
+  --text: #18202a;
+  --muted: #5f6b78;
+  --accent: #154c79;
+  --accent-strong: #0d3556;
+  --warning: #c0611d;
+  --danger: #992d1f;
+  --border: #d7ccb6;
+  --shadow: 0 18px 48px rgba(24, 32, 42, 0.12);
+  font-family: &quot;IBM Plex Sans&quot;, &quot;Noto Sans SC&quot;, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #fff8ef, #efe4cd 58%, #e0d0b1);
+  color: var(--text);
+}
+```
+
+`src/styles/app.css`
+```css
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.hero {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.summary {
+  max-width: 56ch;
+  color: var(--muted);
+}
+
+.cockpit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cockpit-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+}
+```
+
+- [ ] **Step 6: Run the test to verify it passes**
+Run:
+```bash
+npm run test -- src/app/App.test.tsx --run
+```
+Expected: PASS with `1 passed`.
+
+- [ ] **Step 7: Commit**
+Run:
+```bash
+git add .gitignore package.json tsconfig.json tsconfig.node.json vite.config.ts vitest.setup.ts index.html src/main.tsx src/app/App.tsx src/styles/theme.css src/styles/app.css src/app/App.test.tsx
+git commit -m &quot;chore: bootstrap generic cnc hmi workspace&quot;
+```
+
+## Context
+
+This is the first task in a greenfield workspace at `/home/iaar/workspace/ccmix-wp/lab`. The broader project is a generic CNC HMI prototype with Web + desktop targets, but this task only owns workspace bootstrap and the minimal smoke-tested React app.
+
+Follow the task exactly. Do not add routing, state, or extra files outside this task.
+
+## Before You Begin
+
+If you hit network or environment permission issues on `npm install`, report that clearly instead of guessing.
+
+## Your Job
+
+Implement exactly what the task specifies, verify it works, commit your work, self-review, and report back in the required format.
+
+Work from: `/home/iaar/workspace/ccmix-wp/lab`</pre>
+</article>
+</main>
+</body>
+</html>

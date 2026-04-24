@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>最需要警惕的是生成出来的 QML 文件后端没有做路径约束。qml.py (line 73) 定义了读写、删除、重命名程序文件的接口，而 qml.py (line 110) 到 qml.py (lin...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>最需要警惕的是生成出来的 QML 文件后端没有做路径约束。qml.py (line 73) 定义了读写、删除、重命名程序文件的接口，而 qml.py (line 110) 到 qml.py (lin...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d8a98-3dc8-7f22-abce-95745f95ec1e</code></div>
+<div><b>Started</b>: <code>2026-04-14 14:05:26 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/codex-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/14/rollout-2026-04-14T14-05-26-019d8a98-3dc8-7f22-abce-95745f95ec1e.jsonl</code></div>
+<div><b>Messages</b>: <code>41</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-14 14:06:48 +0800</div>
+<pre>最需要警惕的是生成出来的 QML 文件后端没有做路径约束。qml.py (line 73) 定义了读写、删除、重命名程序文件的接口，而 qml.py (line 110) 到 qml.py (line 206) 只是简单 filePath(name) 拼接，没有拦 ..、绝对路径、越根访问。这对“原型”也许够用，但从最佳实践看，这已经是安全边界缺失。
+生成器层已经明显长成“巨石文件”了。web.py (line 2113) 的运行时生成和 web.py (line 3761) 的应用壳生成都塞在同一个超大文件里；QML 侧也是 qml.py (line 2035) 主模板加 qml.py (line 3292) 节点分派。这样短期改功能很快，长期会让代码审查、局部测试、组件复用都越来越吃力，不算最佳实践。
+核心运行时 mock 过度绑定 june-demo 语义。runtime_plan.py (line 166) 里直接硬编码了 progdir.list、alarm.active、tool.table 等大量示例数据，common.py (line 111) 还会直接回填 prog.* 和 progdir.* 到共享 runtime_seed。这让“工具链核心”带上了很重的示例项目味道，复用性和边界感都不够好。
+CLI 的输出契约没有收干净。cli.py (line 188) 里的 _print_payload(..., as_json) 实际无论是否传 --json 都直接打印 JSON，这说明 CLI 表层设计还没完全闭环。它不算大 bug，但从工具可用性和接口一致性上讲，不是成熟实践。
+尝试解决一下上述问题</pre>
+</article>
+<article class="msg assistant">
+<h2>2. Codex / commentary</h2>
+<div class="time">2026-04-14 14:07:05 +0800</div>
+<pre>我先核对你提到的几个点在当前代码里的具体实现，再收敛成一组可落地的修改：先看 `qml.py` 的文件接口边界、`web.py`/`qml.py` 的生成器结构、`runtime_plan.py`/`common.py` 的 mock 注入方式，以及 `cli.py` 的输出路径。</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / commentary</h2>
+<div class="time">2026-04-14 14:07:16 +0800</div>
+<pre>先定位代码实际目录。你给的文件名应该在子目录里，刚才直接在仓库根读不到。找到后我会直接按这四个问题分块修。</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-14 14:07:36 +0800</div>
+<pre>已经定位到实现都在 `tools/hmi_dsl/...`。接下来我先读这几处具体代码，确认哪些能直接修，哪些需要小范围重构，避免一口气把生成器拆过头。</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-14 14:07:53 +0800</div>
+<pre>代码现状和你描述基本一致：`qml.py` 的后端路径确实没有边界校验，`cli.py` 的 `--json` 也没有真正分流。现在我再补一轮结构信息，看看 `web.py`/`qml.py` 最适合切哪一刀，尽量做成“小而硬”的拆分。</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / commentary</h2>
+<div class="time">2026-04-14 14:08:12 +0800</div>
+<pre>`web.py` 这边其实已经有一套前端工作区路径归一化逻辑，说明可以把“路径约束”抽成目标生成器共享的边界，而不是继续散在模板里。我先把这套现成逻辑和测试面找出来，再动代码。</pre>
+</article>
+<article class="msg assistant">
+<h2>7. Codex / commentary</h2>
+<div class="time">2026-04-14 14:08:26 +0800</div>
+<pre>测试面还不错，适合直接补回归。现在我准备做三类改动：
+
+1. 把程序工作区路径约束收紧到公共边界，QML 生成出的 C++ 后端也同步采用同样规则。
+2. 把 mock seed 从“按 june-demo 路径名硬编码”改成“通用默认 + 少量协议化推断 + program workspace 后处理”。
+3. 做最小结构拆分：把超长模板里的运行时/应用壳片段抽到专门模块，先把巨石文件切出清晰边界，不做冒进式大重写。</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-14 14:10:34 +0800</div>
+<pre>工作区本身已经有未提交改动，包含我接下来要改的 `web.py`/`qml.py`/`runtime_plan.py`。我先看这些文件当前 diff，确保不把你现有改动踩掉，再在其基础上叠加修复。</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-14 14:14:39 +0800</div>
+<pre>我开始落地修改了，先动三块不会和你现有 UI/交互改动正面冲突的基础层：`runtime_seed` 抽离、`program_workspace` 边界化、CLI 输出契约修正。随后再把 QML 后端路径校验接上，并补测试。</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / commentary</h2>
+<div class="time">2026-04-14 14:20:45 +0800</div>
+<pre>基础层改动已经落下去了。现在先跑一轮窄测试和导入检查，重点看有没有因为抽模块、路径校验或 CLI 分支改动引入语法/契约回归；如果快照变了，我再只更新受影响的那部分。</pre>
+</article>
+<article class="msg assistant">
+<h2>11. Codex / commentary</h2>
+<div class="time">2026-04-14 14:20:51 +0800</div>
+<pre>环境里没有 `python`，我改用 `python3` 继续跑。先把单测和导入通一遍，再决定是否需要同步更新快照。</pre>
+</article>
+<article class="msg assistant">
+<h2>12. Codex / commentary</h2>
+<div class="time">2026-04-14 14:20:57 +0800</div>
+<pre>功能级用例先过了，说明路径约束、seed/工作区拆分和 CLI 输出分支没有把生成过程打坏。接下来跑快照比对，看看我改动到的 mock 数据是否需要同步刷新快照。</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-14 14:21:38 +0800</div>
+<pre>快照确实受影响了，主要是生成产物版本戳和 runtime seed 文本内容变化，不是结构性报错。我现在按当前代码重新生成 web/qml 快照，只覆盖受影响文件。</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-14 14:22:01 +0800</div>
+<pre>快照已按当前生成结果刷新。现在再跑快照对比和一组核心回归，确认这次改动在仓库测试层面是闭合的。</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-14 14:22:44 +0800</div>
+<pre>这里不是代码回归，是测试假设过旧了。当前 IR 已经不再把 `display.axis.x` 这种单点属性纳入 runtime contract，而是用 `display.axis_rows` 聚合行；我把断言改成现在实际存在的浮点属性，继续跑。</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / commentary</h2>
+<div class="time">2026-04-14 14:23:51 +0800</div>
+<pre>核心回归已经通过。最后我做一遍轻量清理，去掉刚才拆分后遗留的无用导入，然后给你一个收束结果。</pre>
+</article>
+<article class="msg assistant">
+<h2>17. Codex / final_answer</h2>
+<div class="time">2026-04-14 14:25:17 +0800</div>
+<pre>我把这四类问题都落到代码里了。
+
+路径边界这块，QML 生成出的程序工作区后端已经改成严格相对路径模型：拒绝绝对路径、`..`、越根访问，并在读写/删除/重命名时统一走根目录校验。相关模板被抽到 [qml_program_workspace.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml_program_workspace.py:1)。同时，生成器写文件也加了相对路径约束，避免生成阶段把产物写出目标目录；程序工作区装配和 seed 覆盖拆到了 [program_workspace.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/program_workspace.py:1)，`common.py` 不再直接在 helper 里回填共享 `runtime_seed`。
+
+mock/runtime 这块，我把 seed 构造从 [runtime_plan.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/runtime_plan.py:1) 抽到了新的 [runtime_seed.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/runtime_seed.py:1)，让 plan 收集和示例数据生成分层；同时把最明显带 `june-demo` 味道的程序目录、程序名、工具表、告警文本改成更通用的默认样例。CLI 这块也修了，[cli.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/cli.py:1) 现在只有传 `--json` 才输出 JSON，校验失败分支也跟这个契约一致。
+
+验证我已经跑过：`test_generate_web_outputs_static_files`、`test_generate_qml_outputs_main_and_theme_store`、`test_runtime_plan_collects_used_bindings_and_local_state`、新增的路径/CLI/seed 边界测试，以及 `test_generated_outputs_match_snapshots` 都通过了；相关 web/qml snapshot 也已按当前生成结果更新。
+
+结构上，这一轮先把“runtime seed”“program workspace”“QML workspace backend”切出来了，已经把最容易失控的边界层从巨石文件里剥开；`web.py`/`qml.py` 主模板本身仍然偏大，如果你要，我下一轮可以继续按“runtime shell / node renderer / widget emitters”再细拆一刀。</pre>
+</article>
+<article class="msg user">
+<h2>18. User</h2>
+<div class="time">2026-04-14 14:27:05 +0800</div>
+<pre>生成最终产物测试一下</pre>
+</article>
+<article class="msg user">
+<h2>19. User</h2>
+<div class="time">2026-04-14 14:27:27 +0800</div>
+<pre>生成最终产物测试一下</pre>
+</article>
+<article class="msg assistant">
+<h2>20. Codex / commentary</h2>
+<div class="time">2026-04-14 14:27:59 +0800</div>
+<pre>我按“最终产物可生成、可校验、能尽量跑到构建层”来测。先用 CLI 生成 web 和 QML 产物到临时目录，再补一轮验证和可执行级检查。</pre>
+</article>
+<article class="msg assistant">
+<h2>21. Codex / commentary</h2>
+<div class="time">2026-04-14 14:28:12 +0800</div>
+<pre>生成和快照校验已经过了。现在再补一层真正的产物测试：检查 Qt 构建链是否可用，能用的话把生成出来的 QML 工程编译并跑一次离屏启动。</pre>
+</article>
+<article class="msg assistant">
+<h2>22. Codex / commentary</h2>
+<div class="time">2026-04-14 14:28:20 +0800</div>
+<pre>我继续把 QML 产物推到构建和启动层。先配置并编译 `/tmp/hmi_final_artifacts/qml`，然后离屏跑一次生成的可执行文件。</pre>
+</article>
+<article class="msg assistant">
+<h2>23. Codex / commentary</h2>
+<div class="time">2026-04-14 14:28:44 +0800</div>
+<pre>构建在继续，Qt 工具链目前没有硬错误，只是 `qmlimportscanner` 打了几条 `QtQml` 的 `qmldir` 警告。我等编译结束后再看是否影响可执行产物。</pre>
+</article>
+<article class="msg assistant">
+<h2>24. Codex / commentary</h2>
+<div class="time">2026-04-14 14:28:57 +0800</div>
+<pre>编译完成了。我现在离屏启动生成出来的 QML 可执行文件，并让它吐一张快照，确认运行时至少能起窗、走到渲染路径。</pre>
+</article>
+<article class="msg assistant">
+<h2>25. Codex / final_answer</h2>
+<div class="time">2026-04-14 14:29:25 +0800</div>
+<pre>最终产物已生成并测过。
+
+产物位置：
+- Web: [/tmp/hmi_final_artifacts/web](/tmp/hmi_final_artifacts/web)
+- QML 工程: [/tmp/hmi_final_artifacts/qml](/tmp/hmi_final_artifacts/qml)
+- QML 可执行文件: [/tmp/hmi_final_artifacts/qml-build/appCNC_HMI_June_Demo](/tmp/hmi_final_artifacts/qml-build/appCNC_HMI_June_Demo)
+- QML 离屏快照: [/tmp/hmi_final_artifacts/qml-offscreen.png](/tmp/hmi_final_artifacts/qml-offscreen.png)
+
+验证结果：
+- `validate examples/june-demo/product.manifest.yaml`：通过，`ok=True errors=0 warnings=0`
+- `generate-web`：通过
+- `generate-qml`：通过
+- `test_generated_outputs_match_snapshots`：通过
+- QML 产物已用 `qt-cmake` + `cmake --build` 编译通过
+- 生成的 QML 可执行文件已用 `QT_QPA_PLATFORM=offscreen` 成功启动并输出快照
+- `test_web_browser_snapshot_matches_baseline`：本机按测试条件被跳过，需要 `HMI_ENABLE_WEB_VISUAL_SNAPSHOT=1` 和浏览器运行时环境
+
+如果你要，我下一步可以直接把这两套最终产物拷到仓库内一个固定发布目录，或者继续跑更重的端到端/视觉测试。</pre>
+</article>
+<article class="msg user">
+<h2>26. User</h2>
+<div class="time">2026-04-14 14:29:54 +0800</div>
+<pre>/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated 下面没有更新</pre>
+</article>
+<article class="msg assistant">
+<h2>27. Codex / commentary</h2>
+<div class="time">2026-04-14 14:30:05 +0800</div>
+<pre>你说得对，我刚才把产物生成到了 `/tmp/hmi_final_artifacts/...` 做验证，没有回写仓库里的 `generated/`。我现在直接把最终产物重新生成到仓库的 [generated](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated) 下，并确认结果。</pre>
+</article>
+<article class="msg assistant">
+<h2>28. Codex / commentary</h2>
+<div class="time">2026-04-14 14:30:30 +0800</div>
+<pre>仓库里其实已经有一套旧的 `generated/` 结构。我现在按这套目录直接刷新 `generated/web`、`generated/qml`，并把 QML 重新编译到 `generated/qml-build`，把可执行文件回填到 `generated/qml-final`。</pre>
+</article>
+<article class="msg assistant">
+<h2>29. Codex / commentary</h2>
+<div class="time">2026-04-14 14:30:41 +0800</div>
+<pre>源码产物已经回写到仓库了。我再把 `generated/qml` 编译成可执行文件，覆盖 `generated/qml-build` / `generated/qml-final`，这样 `generated/` 下面整套都是新的。</pre>
+</article>
+<article class="msg assistant">
+<h2>30. Codex / commentary</h2>
+<div class="time">2026-04-14 14:30:56 +0800</div>
+<pre>QML 正在重编译到仓库内的 `generated/qml-build`。和刚才一样有几条 Qt 的 `qmldir` 警告，但目前配置和编译都在正常推进。</pre>
+</article>
+<article class="msg assistant">
+<h2>31. Codex / final_answer</h2>
+<div class="time">2026-04-14 14:31:28 +0800</div>
+<pre>现在已经回写到仓库内的 `generated/` 了。
+
+已更新：
+- [generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)
+- [generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)
+- [generated/qml-build](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-build)
+- [generated/qml-final/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final/appCNC_HMI_June_Demo)
+
+我刚执行了：
+- `generate-web ... --output generated/web`
+- `generate-qml ... --output generated/qml`
+- `qt-cmake -S generated/qml -B generated/qml-build`
+- `cmake --build generated/qml-build`
+- 把生成出的可执行文件复制到 `generated/qml-final/`
+
+说明：
+- `generated/distribution/` 这次我没有动；如果你希望连这套发布目录也一起刷新，我可以继续补上。</pre>
+</article>
+<article class="msg user">
+<h2>32. User</h2>
+<div class="time">2026-04-14 14:32:21 +0800</div>
+<pre>补上，你以后应该要保证这些目录一致性、</pre>
+</article>
+<article class="msg assistant">
+<h2>33. Codex / commentary</h2>
+<div class="time">2026-04-14 14:32:41 +0800</div>
+<pre>我把 `generated/distribution/` 也补齐，并顺手把“一次生成后四个目录保持一致”固化成脚本/命令，避免以后再出现只更新局部目录的情况。先看当前分发目录结构和现有脚本，再直接补实现。</pre>
+</article>
+<article class="msg assistant">
+<h2>34. Codex / commentary</h2>
+<div class="time">2026-04-14 14:32:53 +0800</div>
+<pre>仓库里本来就有 `tools/generate_targets.sh`，它就是负责把 `generated/web`、`generated/qml`、`generated/qml-build`、`generated/qml-final`、`generated/distribution` 一次性刷新的。问题不是“没有机制”，而是我刚才手工只更新了部分目录。现在我先把 `distribution` 补齐，然后把这个一致性流程收口成我后续默认遵循的路径。</pre>
+</article>
+<article class="msg assistant">
+<h2>35. Codex / commentary</h2>
+<div class="time">2026-04-14 14:33:02 +0800</div>
+<pre>脚本已经开始整套刷新，包含 `distribution/` 和 `docs_html/`。我等它跑完，再核对分发目录里关键文件是否都和新产物一致。</pre>
+</article>
+<article class="msg assistant">
+<h2>36. Codex / commentary</h2>
+<div class="time">2026-04-14 14:33:20 +0800</div>
+<pre>还在跑 `docs_html` 的构建，主目标已经编译完成。等脚本完全退出后，我再做最终一致性确认。</pre>
+</article>
+<article class="msg assistant">
+<h2>37. Codex / commentary</h2>
+<div class="time">2026-04-14 14:33:45 +0800</div>
+<pre>我把整套目录已经补齐了。为了把“以后保持一致”落到流程里，我再给 `tools/generate_targets.sh` 加一个打包后自校验，脚本以后只要成功退出，就代表 `generated/web`、`generated/qml-final`、`generated/distribution` 至少在关键产物上是一致的。</pre>
+</article>
+<article class="msg assistant">
+<h2>38. Codex / commentary</h2>
+<div class="time">2026-04-14 14:34:04 +0800</div>
+<pre>我再把脚本跑一遍，确认新增的一致性校验不会误报。这样后面只要走这条脚本，目录不同步会直接失败，不会静默留下脏状态。</pre>
+</article>
+<article class="msg assistant">
+<h2>39. Codex / commentary</h2>
+<div class="time">2026-04-14 14:34:10 +0800</div>
+<pre>脚本已进入构建阶段；一致性校验是在末尾执行的，等它完全退出才能说明整套目录同步校验通过。</pre>
+</article>
+<article class="msg assistant">
+<h2>40. Codex / commentary</h2>
+<div class="time">2026-04-14 14:34:25 +0800</div>
+<pre>还在收尾编译和后续打包。等脚本退出后，我只汇报最终状态，不再让你自己去猜哪些目录更新到了。</pre>
+</article>
+<article class="msg assistant">
+<h2>41. Codex / final_answer</h2>
+<div class="time">2026-04-14 14:34:46 +0800</div>
+<pre>已经补上，并且把一致性校验加进流程里了。
+
+现在这几个目录已经统一刷新：
+- [generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)
+- [generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)
+- [generated/qml-build](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-build)
+- [generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)
+- [generated/distribution](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution)
+- [docs_html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs_html)
+
+我还改了 [tools/generate_targets.sh](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/generate_targets.sh:1)，现在脚本在打包结束后会主动校验：
+- `generated/web/*` 和 `generated/distribution/web/*` 一致
+- `generated/qml-final/appCNC_HMI_June_Demo` 和 `generated/distribution/qml/appCNC_HMI_June_Demo` 一致
+- `generated/qml/program-root` 和 distribution 里的两份 `program-root` 一致
+
+也就是说，以后只要跑 `./tools/generate_targets.sh` 并成功退出，这几个目录就不会再处于不一致状态。刚才我已经完整跑过一遍，校验通过。  
+构建过程中仍有 Qt 的 `qmlimportscanner`/`XKB` 警告，但没有阻断生成或打包。</pre>
+</article>
+</main>
+</body>
+</html>

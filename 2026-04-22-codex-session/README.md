@@ -27,6 +27,20 @@
 - `project-report.md`: 软面板重构目标、masthead brand switch 收口、retained/generator 改动、验证结果与交付状态总结
 - `conversation-report.md`: 从参考图重排、12 宫格设计、倍率区收口、masthead logo 试装到 Web 截图环境补齐的摘要化过程记录
 - `user-history.md`: 当天用户发言原始导出
+- `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: 从用户新布局要求到 retained/generator 重排、截图验证、报告补齐和 MetaNC 同步的工作流图
 - `architecture-diagram.md`: retained package、QML/Web 生成器、截图资产、报告子模块和 `MetaNC/nrt/hmi` 导出目标之间的关系图
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
+
+<!-- codex-full-export:start -->
+## Complete Codex Conversation Export
+
+- Scope: `2026-04-22`
+- Sessions: `1`
+- Messages: `12`
+- User messages: `3`
+- Codex messages: `9`
+- HTML index: [Open](codex-conversations/index.html)
+- Single-page HTML: [Open](codex-conversations/all.html)
+- Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
+<!-- codex-full-export:end -->

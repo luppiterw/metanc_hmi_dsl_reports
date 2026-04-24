@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我这里需要针对数控系统写一个完整的产品文档，包括并不限于界面设计描述、接口描述、dsl描述等，便于后续ai去参考生成代码，帮我生成一个文档目录，请使用中英文双语言形式，后续也是如此，然后支持mdbo...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>我这里需要针对数控系统写一个完整的产品文档，包括并不限于界面设计描述、接口描述、dsl描述等，便于后续ai去参考生成代码，帮我生成一个文档目录，请使用中英文双语言形式，后续也是如此，然后支持mdbo...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d84c9-3716-7682-90dc-90ab1507f6a7</code></div>
+<div><b>Started</b>: <code>2026-04-13 11:01:12 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/codex-wp/product_hmi</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/13/rollout-2026-04-13T11-01-12-019d84c9-3716-7682-90dc-90ab1507f6a7.jsonl</code></div>
+<div><b>Messages</b>: <code>35</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-13 11:02:40 +0800</div>
+<pre>我这里需要针对数控系统写一个完整的产品文档，包括并不限于界面设计描述、接口描述、dsl描述等，便于后续ai去参考生成代码，帮我生成一个文档目录，请使用中英文双语言形式，后续也是如此，然后支持mdbook生成html，添加git ignore等，记得过滤最终生成的html等，允许中英文切换；</pre>
+</article>
+<article class="msg assistant">
+<h2>2. Codex / commentary</h2>
+<div class="time">2026-04-13 11:02:50 +0800</div>
+<pre>我先检查当前仓库结构，确认是否已经有文档目录或 `mdBook` 配置，然后直接搭一个可生成 HTML 的中英文双语文档骨架。</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / commentary</h2>
+<div class="time">2026-04-13 11:02:58 +0800</div>
+<pre>当前目录看起来几乎是空的，而且还不是一个 Git 仓库。我继续确认目录内容，然后直接生成一套 `mdBook` 文档骨架和 `.gitignore`。</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-13 11:03:20 +0800</div>
+<pre>我已经确认这是一个空目录，所以我会直接搭建文档工程，而不是去兼容现有结构。接下来会补齐 `mdBook` 配置、双语目录、语言切换脚本和 `.gitignore`。</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-13 11:04:12 +0800</div>
+<pre>我在补目录的同时会把文档写作约束也放进去，这样后续继续扩写时能保持中英文结构一致，方便 AI 直接引用。现在先确认一下 `mdBook` 的配置参数，再落盘文件。</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / commentary</h2>
+<div class="time">2026-04-13 11:04:49 +0800</div>
+<pre>接下来开始写文件。我会一次性把目录骨架、双语章节、构建脚本和忽略规则都补齐，然后实际跑一次 `mdbook build` 验证。</pre>
+</article>
+<article class="msg assistant">
+<h2>7. Codex / commentary</h2>
+<div class="time">2026-04-13 11:08:23 +0800</div>
+<pre>骨架已经写完了。现在做两件事：给构建脚本加执行权限，并实际构建一次中英文文档，确认 `mdBook` 配置和语言切换资源都能通过。</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-13 11:08:27 +0800</div>
+<pre>`mdBook v0.5.2` 的配置字段比预期更严格，`multilingual` 不能用。我去掉这两个无效字段后重新构建。</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-13 11:08:44 +0800</div>
+<pre>构建已经通过。最后再快速检查一下生成的 HTML 是否已经挂上语言切换脚本和样式，然后我给你一个可直接继续扩写的结论。</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / final_answer</h2>
+<div class="time">2026-04-13 11:09:07 +0800</div>
+<pre>**结果 / Result**
+
+已在当前工作区搭好一套可直接继续扩写的双语 `mdBook` 文档骨架，核心入口如下：
+
+- 目录总览 / workspace intro: [README.md](/home/iaar/workspace/codex-wp/product_hmi/README.md)
+- 中文目录 / Chinese TOC: [docs/zh/src/SUMMARY.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/SUMMARY.md)
+- 英文目录 / English TOC: [docs/en/src/SUMMARY.md](/home/iaar/workspace/codex-wp/product_hmi/docs/en/src/SUMMARY.md)
+- 构建脚本 / build script: [scripts/build-docs.sh](/home/iaar/workspace/codex-wp/product_hmi/scripts/build-docs.sh)
+- 忽略规则 / ignore rules: [.gitignore](/home/iaar/workspace/codex-wp/product_hmi/.gitignore)
+
+当前目录已经包含这些文档模块，中英文路径一一对应，后续继续补正文时可以按同样方式扩展：
+产品总览、界面设计、功能交互、系统架构、接口设计、DSL 规范、交付与验收、附录与写作规范。
+
+The workspace now contains a mirrored bilingual `mdBook` structure. Chinese and English chapters share the same path layout, which makes later expansion and AI consumption much cleaner.
+
+**验证 / Verification**
+
+我已经实际执行过构建，输出成功：
+
+- 中文 HTML / Chinese HTML: `docs/zh/book/index.html`
+- 英文 HTML / English HTML: `docs/en/book/index.html`
+
+并已确认生成页挂上了语言切换资源，页面右上角可通过 `中文` / `English` 切换。生成产物目录也已加入 `.gitignore`；但要注意，当前目录还不是 Git 仓库，等你后续 `git init` 或放入现有仓库后忽略规则才会正式生效。
+
+如果你要继续下一步，我可以直接开始补第 2 章界面设计、第 5 章接口契约、第 6 章 DSL 规范的完整双语正文。</pre>
+</article>
+<article class="msg user">
+<h2>11. User</h2>
+<div class="time">2026-04-13 11:12:11 +0800</div>
+<pre>1.按照你的计划继续
+2.中英文切换可以改成下拉列表切换，后续可能有其他语言，再一个就是中文的里面不用英文对照，英文的同样，就是每个语言用自己的即可，你现在这样混在一起阅读性有点弱</pre>
+</article>
+<article class="msg assistant">
+<h2>12. Codex / commentary</h2>
+<div class="time">2026-04-13 11:12:30 +0800</div>
+<pre>我继续往可直接落地的方向推进：先把语言切换改成下拉选择，再把中英文内容拆成各自单语版本，然后扩写最关键的三块正文，优先是界面设计、接口契约和 DSL 规范。</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-13 11:12:37 +0800</div>
+<pre>接下来按这个顺序处理：
+
+1. 调整共享主题，把顶部语言切换改成可扩展的下拉列表，默认支持 `中文` 和 `English`，后续只需在配置里补语言项。
+2. 清理现有章节内容，把每个语言版本改成纯单语，不再在同一页里中英混排。
+3. 扩写正文，先补足最适合 AI 生成代码的章节：
+   - `02-ui`：页面分层、页面模板、组件规格、设计令牌
+   - `05-interfaces`：NC/PLC/HMI 数据契约、错误码模型、外部接口模板
+   - `06-dsl`：DSL 语法、语义、校验规则、示例与生成映射
+4. 重新构建中英文 HTML，确认切换控件和内容结构都正常。</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-13 11:13:13 +0800</div>
+<pre>我现在开始改文档源文件，重点是两类修改：一类是全局主题和目录，另一类是正文重写为单语版本。改完后我会重新构建，顺手把构建过程中产生的语言资源目录也补进忽略规则。</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-13 11:20:28 +0800</div>
+<pre>源文件已经重写成单语版本，核心章节也比之前更实了。现在做构建验证，重点看两件事：`mdBook` 是否通过，以及首页是否已经使用下拉语言选择器。</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / commentary</h2>
+<div class="time">2026-04-13 11:20:41 +0800</div>
+<pre>构建已经通过。我再扫一遍目录里的标题和正文，确认没有残留那种中英对照式段落；如果还有，我会顺手清掉。</pre>
+</article>
+<article class="msg assistant">
+<h2>17. Codex / final_answer</h2>
+<div class="time">2026-04-13 11:21:04 +0800</div>
+<pre>已继续推进，当前结果有三块。
+
+第一，语言切换已经改成下拉列表，位于共享主题文件 [docs/theme/lang-switcher.js](/home/iaar/workspace/codex-wp/product_hmi/docs/theme/lang-switcher.js) 和 [docs/theme/lang-switcher.css](/home/iaar/workspace/codex-wp/product_hmi/docs/theme/lang-switcher.css)。现在默认支持 `中文` 和 `English`，后续加其他语言时，只需要在脚本里的语言列表补一项，不需要再改页面结构。
+
+第二，文档内容已经改成按语言单独阅读。中文书只保留中文正文，英文书只保留英文正文，目录也分别改成单语：
+[docs/zh/src/SUMMARY.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/SUMMARY.md)
+[docs/en/src/SUMMARY.md](/home/iaar/workspace/codex-wp/product_hmi/docs/en/src/SUMMARY.md)
+
+第三，我把最关键的 AI 生成输入章节往下写实了一层，不再只是目录骨架。重点扩写了：
+[docs/zh/src/02-ui/README.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/README.md)
+[docs/zh/src/05-interfaces/nc-plc-hmi.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/05-interfaces/nc-plc-hmi.md)
+[docs/zh/src/06-dsl/grammar-and-schema.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/grammar-and-schema.md)
+以及对应英文版。现在已经包含页面模板、接口模板、报警对象、DSL 顶层结构、示例和生成规则，后续可以直接在这个基础上继续补完整规格。
+
+我也重新构建验证过，HTML 正常生成：
+`docs/zh/book/index.html`
+`docs/en/book/index.html`
+
+另外 `.gitignore` 已补充生成物过滤，包括：
+`docs/zh/book/`
+`docs/en/book/`
+`docs/zh/theme/`
+`docs/en/theme/`
+
+下一步我建议直接继续补“完整正文”而不是再补骨架，优先顺序可以是：
+1. 中文版先写完整的界面设计章节
+2. 再写完整的接口章节
+3. 最后把 DSL 章节补成可直接喂给 AI 的规范
+
+如果你同意，我下一轮就从中文版 `02-ui` 开始，把页面清单、导航结构、组件规格、状态栏、报警页、参数页全部写成完整产品文档。</pre>
+</article>
+<article class="msg user">
+<h2>18. User</h2>
+<div class="time">2026-04-13 11:21:29 +0800</div>
+<pre>按照你的规划继续，不用等我确认，完全按照你的规划来</pre>
+</article>
+<article class="msg assistant">
+<h2>19. Codex / commentary</h2>
+<div class="time">2026-04-13 11:21:47 +0800</div>
+<pre>我继续按既定顺序推进，不再停顿确认。下一轮直接把中文版 `02-ui`、`05-interfaces`、`06-dsl` 扩成更完整的规格，再同步补英文版，并在最后重建 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h2>20. Codex / commentary</h2>
+<div class="time">2026-04-13 11:22:00 +0800</div>
+<pre>我准备把三个章节继续拆细，避免所有内容堆在一个页面里。具体会新增页面模板、组件规格、导航权限、数据结构、命令语义、DSL 数据源与运行时规则这些子章节，这样后续补全会更稳，也更适合 AI 分块引用。</pre>
+</article>
+<article class="msg assistant">
+<h2>21. Codex / commentary</h2>
+<div class="time">2026-04-13 11:24:37 +0800</div>
+<pre>我已经把三个章节拆成可持续扩写的结构，新增了 14 个双语子章节。现在进行构建验证，重点确认新目录链接、Markdown 结构和生成 HTML 都正常。</pre>
+</article>
+<article class="msg assistant">
+<h2>22. Codex / final_answer</h2>
+<div class="time">2026-04-13 11:25:01 +0800</div>
+<pre>本轮我继续按既定规划把文档从“章节骨架”推进到了“可直接扩写和引用的规格结构”。
+
+已新增并接入目录的双语子章节包括：
+[docs/zh/src/02-ui/page-templates.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/page-templates.md)
+[docs/zh/src/02-ui/component-specs.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/component-specs.md)
+[docs/zh/src/02-ui/navigation-and-permissions.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/navigation-and-permissions.md)
+[docs/zh/src/05-interfaces/data-structures.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/05-interfaces/data-structures.md)
+[docs/zh/src/05-interfaces/command-semantics.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/05-interfaces/command-semantics.md)
+[docs/zh/src/06-dsl/data-and-actions.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/data-and-actions.md)
+[docs/zh/src/06-dsl/validation-and-runtime.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/validation-and-runtime.md)
+
+英文版也同步补齐了对应章节，目录已经更新：
+[docs/zh/src/SUMMARY.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/SUMMARY.md)
+[docs/en/src/SUMMARY.md](/home/iaar/workspace/codex-wp/product_hmi/docs/en/src/SUMMARY.md)
+
+这次补充的内容重点是把三大块写成更像“规范”而不是“提纲”：
+界面设计里增加了页面模板、核心组件规格、导航与权限矩阵；
+接口设计里增加了核心数据结构、订阅模型、命令语义、超时与重试；
+DSL 里增加了数据源模型、动作模型、校验阶段、运行时规则和错误输出格式。
+
+已重新构建验证，HTML 正常生成：
+`docs/zh/book/index.html`
+`docs/en/book/index.html`
+
+另外语言切换仍然是下拉形式，生成物和主题复制目录仍在忽略范围内：
+[.gitignore](/home/iaar/workspace/codex-wp/product_hmi/.gitignore)
+
+下一轮我会继续往“具体页面规格”和“具体接口实例”推进，优先补首页、报警中心、参数编辑页，以及程序启动、报警确认、参数保存这几条关键流程对应的完整文档。</pre>
+</article>
+<article class="msg user">
+<h2>23. User</h2>
+<div class="time">2026-04-13 11:44:08 +0800</div>
+<pre>~/workspace/codex-wp/metanc_hmi_dsl dsl规范请参考这个路径下的设计来描述</pre>
+</article>
+<article class="msg assistant">
+<h2>24. Codex / commentary</h2>
+<div class="time">2026-04-13 11:44:24 +0800</div>
+<pre>我先读取你给的 `metanc_hmi_dsl` 目录，重点抽取 DSL 的对象模型、语法约束和示例结构，然后把当前文档里的 DSL 章节改成以那套设计为准。</pre>
+</article>
+<article class="msg assistant">
+<h2>25. Codex / commentary</h2>
+<div class="time">2026-04-13 11:44:34 +0800</div>
+<pre>我已经定位到关键参考源了：`docs/dsl-spec.md`、`schemas/ui-structure.schema.json`、`examples/june-demo/ui.structure.yaml`，再加上 `product.manifest.yaml`、`interfaces.machine.yaml` 和 `style.theme.yaml`。接下来我会按这几个文件重写我们当前的 DSL 文档，让它从“通用 UI DSL”变成“包清单 + UI 结构 + 接口 + 样式主题”这一套分层模型。</pre>
+</article>
+<article class="msg assistant">
+<h2>26. Codex / commentary</h2>
+<div class="time">2026-04-13 11:45:13 +0800</div>
+<pre>我现在开始重写 DSL 章节的核心内容。方向已经明确了：不再把 DSL 写成单一页面 DSL，而是按 `metanc_hmi_dsl` 的分包模型来描述，核心就是 `ProductManifest`、`UiStructureCatalog`、`StyleThemeCatalog`、`InterfaceCatalog` 和 `DesignImportBundle` 五类文档。</pre>
+</article>
+<article class="msg assistant">
+<h2>27. Codex / commentary</h2>
+<div class="time">2026-04-13 11:48:31 +0800</div>
+<pre>补丁里混了多文件大改，校验没一次过。我先逐个读取当前 DSL 文件的实际内容，然后分文件重写，避免误覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h2>28. Codex / commentary</h2>
+<div class="time">2026-04-13 11:48:36 +0800</div>
+<pre>我按文件整页替换 DSL 章节，避免局部补丁再次对不上。改完后会同步英文版并重新构建。</pre>
+</article>
+<article class="msg assistant">
+<h2>29. Codex / commentary</h2>
+<div class="time">2026-04-13 11:54:01 +0800</div>
+<pre>DSL 章节已经改成按 `metanc_hmi_dsl` 的分层模型来写了，核心变化是从“单文件页面 DSL”切换成“manifest + ui + style + interface + design_import”这套文档包。现在做构建和快速检查，确认中英文都能正常生成。</pre>
+</article>
+<article class="msg assistant">
+<h2>30. Codex / final_answer</h2>
+<div class="time">2026-04-13 11:54:24 +0800</div>
+<pre>DSL 章节已经改成按 `~/workspace/codex-wp/metanc_hmi_dsl` 的设计来描述，核心不再是“单文件页面 DSL”，而是和参考工程一致的“文档包”模型：
+
+- `ProductManifest`
+- `UiStructureCatalog`
+- `StyleThemeCatalog`
+- `InterfaceCatalog`
+- `DesignImportBundle`
+
+主要更新在这里：
+[docs/zh/src/06-dsl/README.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/README.md)
+[docs/zh/src/06-dsl/grammar-and-schema.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/grammar-and-schema.md)
+[docs/zh/src/06-dsl/examples-and-generation-rules.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/examples-and-generation-rules.md)
+[docs/zh/src/06-dsl/data-and-actions.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/data-and-actions.md)
+[docs/zh/src/06-dsl/validation-and-runtime.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/06-dsl/validation-and-runtime.md)
+
+英文版也同步更新了：
+[docs/en/src/06-dsl/README.md](/home/iaar/workspace/codex-wp/product_hmi/docs/en/src/06-dsl/README.md)
+
+我参考的本地源主要是这些：
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs/dsl-spec.md`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs/authoring-guide.md`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs/naming-conventions.md`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/schemas/ui-structure.schema.json`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/product.manifest.yaml`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/ui.structure.yaml`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/interfaces.machine.yaml`
+`/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/style.theme.yaml`
+
+当前文档已经明确写入了这些参考设计里的关键约束：
+`ui://`、`style://`、`if://`、`state://` 引用体系；
+`snake_case` 和点分语义路径命名；
+先 `manifest` 再 `interfaces` 再 `ui` 再 `style` 再 `design_import` 的编写顺序；
+跨文档校验和生成流程。
+
+HTML 已重新构建通过：
+`docs/zh/book/index.html`
+`docs/en/book/index.html`
+
+下一步我会继续按这个 DSL 体系，把界面章节和接口章节中的示例、页面模型、命令模型进一步改成和这套包结构一致。</pre>
+</article>
+<article class="msg user">
+<h2>31. User</h2>
+<div class="time">2026-04-13 12:43:24 +0800</div>
+<pre>继续并更新</pre>
+</article>
+<article class="msg assistant">
+<h2>32. Codex / commentary</h2>
+<div class="time">2026-04-13 12:43:40 +0800</div>
+<pre>我继续把界面设计和接口设计也对齐到同一套 DSL 包模型，避免现在 DSL 一章已经分层了，但 UI/接口章节还停留在通用规格写法。先读取这两部分现状，再直接改。</pre>
+</article>
+<article class="msg assistant">
+<h2>33. Codex / commentary</h2>
+<div class="time">2026-04-13 12:43:55 +0800</div>
+<pre>我这轮不只是“补内容”，而是把 UI/接口两章的术语和模型切到和 DSL 同一套参考体系里。重点会把“页面模板/组件规格”映射到 `UiStructureCatalog`，把“接口设计”映射到 `InterfaceCatalog` 的 `types / properties / commands / streams / adapter_annotations`。</pre>
+</article>
+<article class="msg assistant">
+<h2>34. Codex / commentary</h2>
+<div class="time">2026-04-13 12:45:42 +0800</div>
+<pre>我已经把界面和接口两章切到和 DSL 同一套参考模型了。现在重新构建，并顺手检查关键章节里是否已经出现 `UiStructureCatalog` / `InterfaceCatalog` 这些锚点，确保不是只改了表述没落到文档。</pre>
+</article>
+<article class="msg assistant">
+<h2>35. Codex / final_answer</h2>
+<div class="time">2026-04-13 12:46:01 +0800</div>
+<pre>已继续更新，重点把界面设计和接口设计两章也对齐到了你指定的 `metanc_hmi_dsl` 参考体系，不再和 DSL 章节脱节。
+
+这次主要调整了两块。
+
+界面设计现在明确映射到 DSL 包结构：
+[docs/zh/src/02-ui/README.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/README.md)
+[docs/zh/src/02-ui/page-templates.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/page-templates.md)
+[docs/zh/src/02-ui/component-specs.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/02-ui/component-specs.md)
+
+这里已经补上了：
+`product.manifest.yaml / ui.structure.yaml / style.theme.yaml / interfaces.machine.yaml / design.import.yaml` 在界面设计里的职责分工；
+页面模板如何落地到 `UiStructureCatalog.pages[*] / root / children / layout / style_ref / bindings / actions`；
+组件如何按 `UiStructureCatalog` 节点模型写，包含 `metric_card`、`footer_softkey` 这类和参考工程一致的写法。
+
+接口设计现在改成 `InterfaceCatalog` 视角：
+[docs/zh/src/05-interfaces/README.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/05-interfaces/README.md)
+[docs/zh/src/05-interfaces/nc-plc-hmi.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/05-interfaces/nc-plc-hmi.md)
+[docs/zh/src/05-interfaces/data-structures.md](/home/iaar/workspace/codex-wp/product_hmi/docs/zh/src/05-interfaces/data-structures.md)
+
+这里已经把主标识从原来偏“接口编号”的写法，切到更接近参考工程的语义路径写法，比如：
+`axis.x.pos_machine`
+`ui.commands.open_page`
+`stream.axis_positions`
+
+也补上了 `types / properties / commands / streams / adapter_annotations` 的分层说明，以及这些结构和前端绑定、状态建模之间的关系。
+
+英文版同步更新完成，HTML 重新构建通过：
+`docs/zh/book/index.html`
+`docs/en/book/index.html`
+
+下一轮我会继续往“具体页面规格”推进，优先把首页、报警页、参数页按 `ui.structure.yaml` 风格写成更接近最终 DSL 的页面示例。</pre>
+</article>
+</main>
+</body>
+</html>

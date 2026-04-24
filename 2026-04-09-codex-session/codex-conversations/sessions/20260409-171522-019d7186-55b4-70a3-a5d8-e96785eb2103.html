@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>go on</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>go on</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d7186-55b4-70a3-a5d8-e96785eb2103</code></div>
+<div><b>Started</b>: <code>2026-04-09 17:15:22 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/codex-wp/metanc_tool_man</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/09/rollout-2026-04-09T17-15-22-019d7186-55b4-70a3-a5d8-e96785eb2103.jsonl</code></div>
+<div><b>Messages</b>: <code>99</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-09 17:15:42 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>2. Codex / commentary</h2>
+<div class="time">2026-04-09 17:15:53 +0800</div>
+<pre>I’m missing the prior turn context, so I’m checking the workspace state to infer what was in progress and what should continue.</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / commentary</h2>
+<div class="time">2026-04-09 17:16:00 +0800</div>
+<pre>The worktree is clean, so there isn’t an uncommitted partial change to resume. I’m reading the project README and the most recent session report to recover the last task context.</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-09 17:16:05 +0800</div>
+<pre>The report confirms a completed session, so I’m checking the handoff doc for explicit “next steps” to continue from the intended backlog rather than guessing.</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-09 17:16:22 +0800</div>
+<pre>I’ve recovered the backlog. The most defensible way to “go on” is to take the first handoff item and extend the replacement/search model with another concrete, testable slice instead of starting adapter or versioning work.</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / commentary</h2>
+<div class="time">2026-04-09 17:16:32 +0800</div>
+<pre>I have enough context to make a concrete move. I’m reading the manager and tests to pick the smallest Phase 2 extension that meaningfully increases search semantics and can be verified end to end.</pre>
+</article>
+<article class="msg assistant">
+<h2>7. Codex / commentary</h2>
+<div class="time">2026-04-09 17:16:53 +0800</div>
+<pre>The main semantic gap in the current code is that search only considers unloaded tools. For a tool-management service, “this usable tool already exists in inventory at slot X” is normally a valid resolution, not a miss. I’m checking whether the docs already imply that, then I’ll wire it through manager, HTTP, and tests.</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-09 17:17:17 +0800</div>
+<pre>I’ve chosen the next slice: search endpoints should resolve already-loaded usable tools, while load-assisted flows remain restricted to unloaded inventory. That expands the search model without conflating “find” and “load.”</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-09 17:18:07 +0800</div>
+<pre>I’m editing the manager now. The change is to split “search inventory” from “select an unloadable tool,” so search routes can return loaded tools without breaking assisted-load behavior.</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / commentary</h2>
+<div class="time">2026-04-09 17:19:16 +0800</div>
+<pre>The manager refactor is in. I’m checking the edited sections for any structural mistakes before I touch tests and docs.</pre>
+</article>
+<article class="msg assistant">
+<h2>11. Codex / commentary</h2>
+<div class="time">2026-04-09 17:19:24 +0800</div>
+<pre>I found one regression from the refactor: rollback state in `load_tool_request_into_empty_slot` was scoped incorrectly. Fixing that, then I’ll add the loaded-inventory tests.</pre>
+</article>
+<article class="msg assistant">
+<h2>12. Codex / commentary</h2>
+<div class="time">2026-04-09 17:19:40 +0800</div>
+<pre>I’m adding focused tests for the new distinction: search may return loaded inventory, assisted loading still selects an unloadable fallback.</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-09 17:20:31 +0800</div>
+<pre>I’m updating the retained docs next so the repository contract matches the new behavior. The user-visible rule is simple: search can return loaded tools with their current location; assisted loading still filters to unloaded tools.</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-09 17:20:57 +0800</div>
+<pre>The code and docs are patched. I’m building and running the test suite now to catch any behavioral mismatch in the refactor.</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-09 17:21:04 +0800</div>
+<pre>The existing `build/` cache points at a different source path, so the previous artifacts are unusable. I’m reconfiguring this repo’s build directory and rerunning build and tests against the current workspace.</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / commentary</h2>
+<div class="time">2026-04-09 17:21:11 +0800</div>
+<pre>The stale `build/` cache is from another checkout, so I’m avoiding it and validating in a fresh `build-local/` directory instead of deleting anything.</pre>
+</article>
+<article class="msg assistant">
+<h2>17. Codex / commentary</h2>
+<div class="time">2026-04-09 17:21:30 +0800</div>
+<pre>Tests are green in `build-local`. I’m waiting for the compile to finish as well so the validation is complete end to end.</pre>
+</article>
+<article class="msg assistant">
+<h2>18. Codex / commentary</h2>
+<div class="time">2026-04-09 17:21:58 +0800</div>
+<pre>I’ve finished the implementation and verification. I’m pulling exact line references for the final handoff so the behavior changes are easy to inspect.</pre>
+</article>
+<article class="msg assistant">
+<h2>19. Codex / final_answer</h2>
+<div class="time">2026-04-09 17:22:13 +0800</div>
+<pre>Continued with the next Phase 2 slice: non-mutating search now resolves already-loaded usable tools, while assisted loading still only selects unloaded inventory.
+
+The behavior split is implemented in [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp#L97) and [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L499). Search paths (`resolve_tool_request`, `resolve_tool_by_group`) now include loaded tools and preserve `location`; load paths still call the same selection logic with `include_loaded=false`, so `load-assisted` won’t try to reload an occupied tool. Coverage was added in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L389) and [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L947).
+
+I also updated the retained docs and changelog so the contract matches the code: [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L37), [architecture.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/architecture.md#L35), [manual-implementation-status.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/manual-implementation-status.md#L30), [README.md](/home/iaar/workspace/codex-wp/metanc_tool_man/README.md#L11), and [CHANGELOG.md](/home/iaar/workspace/codex-wp/metanc_tool_man/CHANGELOG.md#L23).
+
+Validation passed with `cmake -S . -B build-local`, `cmake --build build-local`, and `ctest --test-dir build-local --output-on-failure`. I used `build-local` because the existing `build/` cache points at a different source path and is stale.</pre>
+</article>
+<article class="msg user">
+<h2>20. User</h2>
+<div class="time">2026-04-09 17:22:32 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>21. Codex / commentary</h2>
+<div class="time">2026-04-09 17:22:51 +0800</div>
+<pre>I’m taking the next backlog slice from the same Phase 2 area instead of switching to adapters or versioning. First I’m checking for explicit TODOs and then I’ll implement the next concrete replacement/search behavior that fits the current model and test surface.</pre>
+</article>
+<article class="msg assistant">
+<h2>22. Codex / commentary</h2>
+<div class="time">2026-04-09 17:23:25 +0800</div>
+<pre>I’ve chosen the next extension: add an explicit per-tool search-eligibility flag so auto-resolution can skip tools without overloading wear limits or load state. This deepens replacement/search behavior while keeping manual direct load separate.</pre>
+</article>
+<article class="msg assistant">
+<h2>23. Codex / commentary</h2>
+<div class="time">2026-04-09 17:23:54 +0800</div>
+<pre>I’m wiring the new field through tests now. The rule is: `search_enabled=false` excludes a tool from search and fallback selection, but explicit load-by-ID remains allowed.</pre>
+</article>
+<article class="msg assistant">
+<h2>24. Codex / commentary</h2>
+<div class="time">2026-04-09 17:24:59 +0800</div>
+<pre>I’ve got the behavior in code. I’m updating the retained contract now so the new flag is documented as an automated-resolution control, not a hard inventory lock.</pre>
+</article>
+<article class="msg assistant">
+<h2>25. Codex / commentary</h2>
+<div class="time">2026-04-09 17:25:34 +0800</div>
+<pre>I’m checking the doc diff before validation. One risk is the new `search_enabled` description landing under the wrong endpoint section, and I want that fixed before I rebuild.</pre>
+</article>
+<article class="msg assistant">
+<h2>26. Codex / commentary</h2>
+<div class="time">2026-04-09 17:25:58 +0800</div>
+<pre>The docs are corrected. I’m doing a quick compile-safety scan for any `Tool{...}` designated initializers that now need the new field order before I rebuild.</pre>
+</article>
+<article class="msg assistant">
+<h2>27. Codex / commentary</h2>
+<div class="time">2026-04-09 17:26:10 +0800</div>
+<pre>I’ve finished the code and docs for this slice. Running build, tests, and the report rebuild now so the handoff stays consistent with repository expectations.</pre>
+</article>
+<article class="msg assistant">
+<h2>28. Codex / commentary</h2>
+<div class="time">2026-04-09 17:26:19 +0800</div>
+<pre>The report rebuild succeeded and tests are already green. I’m just waiting for the compile to finish so the validation is complete.</pre>
+</article>
+<article class="msg assistant">
+<h2>29. Codex / commentary</h2>
+<div class="time">2026-04-09 17:27:15 +0800</div>
+<pre>The compile finished after the earlier test run, so I’m rerunning `ctest` once more against the freshly built binary.</pre>
+</article>
+<article class="msg assistant">
+<h2>30. Codex / commentary</h2>
+<div class="time">2026-04-09 17:27:26 +0800</div>
+<pre>The failure is in the new HTTP test, not the behavior: I asked the explicit load route to use a slot already taken by the fallback tool. I’m correcting the test to use a free slot and rerunning validation.</pre>
+</article>
+<article class="msg assistant">
+<h2>31. Codex / commentary</h2>
+<div class="time">2026-04-09 17:27:49 +0800</div>
+<pre>`ctest` raced the rebuild again and picked up the old binary. I’m waiting for the link step to finish, then I’ll rerun tests once against the rebuilt executable.</pre>
+</article>
+<article class="msg assistant">
+<h2>32. Codex / final_answer</h2>
+<div class="time">2026-04-09 17:28:07 +0800</div>
+<pre>Continued Phase 2 with an explicit search-eligibility control. `Tool` now carries `search_enabled` in the retained model and JSON shape, defaulting to `true`, in [model.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/model.hpp#L39). Automated resolution now skips tools with `search_enabled=false` in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L513), while explicit load-by-ID remains available, so this flag only affects search, fallback, and group resolution.
+
+I added manager and HTTP coverage for that behavior in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L420) and [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1055). The retained docs were updated to describe the new contract in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L37), [architecture.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/architecture.md#L27), [agent-handoff.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/agent-handoff.md#L5), [AGENT.md](/home/iaar/workspace/codex-wp/metanc_tool_man/AGENT.md#L7), [README.md](/home/iaar/workspace/codex-wp/metanc_tool_man/README.md#L11), and [CHANGELOG.md](/home/iaar/workspace/codex-wp/metanc_tool_man/CHANGELOG.md#L23).
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.</pre>
+</article>
+<article class="msg user">
+<h2>33. User</h2>
+<div class="time">2026-04-10 07:02:55 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>34. Codex / commentary</h2>
+<div class="time">2026-04-10 07:03:13 +0800</div>
+<pre>I’m continuing from the same replacement/search backlog. First I’m checking the current workspace state and then I’ll take the next concrete search-model extension that fits the retained design and test surface.</pre>
+</article>
+<article class="msg assistant">
+<h2>35. Codex / commentary</h2>
+<div class="time">2026-04-10 07:03:28 +0800</div>
+<pre>The next useful search-model extension is inventory scope selection. I’m implementing explicit `inventory_scope` controls so non-mutating search can ask for `any`, `loaded_only`, or `unloaded_only` instead of hardcoding one behavior.</pre>
+</article>
+<article class="msg assistant">
+<h2>36. Codex / commentary</h2>
+<div class="time">2026-04-10 07:03:32 +0800</div>
+<pre>I’m editing the manager and HTTP layer now. The change is to replace the internal boolean loaded-filter with an explicit `inventory_scope`, then expose that on search routes while keeping load-assisted on `unloaded_only`.</pre>
+</article>
+<article class="msg assistant">
+<h2>37. Codex / commentary</h2>
+<div class="time">2026-04-10 07:04:15 +0800</div>
+<pre>The manager and route shape are patched. I’m adding tests for `loaded_only` and `unloaded_only` so we don’t leave the new search contract implicit.</pre>
+</article>
+<article class="msg assistant">
+<h2>38. Codex / commentary</h2>
+<div class="time">2026-04-10 07:04:46 +0800</div>
+<pre>I’m updating the retained docs next. The user-facing contract is that search can now be restricted to loaded or unloaded inventory explicitly, while assisted loading still remains unloaded-only.</pre>
+</article>
+<article class="msg assistant">
+<h2>39. Codex / commentary</h2>
+<div class="time">2026-04-10 07:05:26 +0800</div>
+<pre>The feature and docs are in. I’m doing a quick readback on the edited search code and API docs before I build, to catch any mismatched parameter order or wording drift.</pre>
+</article>
+<article class="msg assistant">
+<h2>40. Codex / commentary</h2>
+<div class="time">2026-04-10 07:05:35 +0800</div>
+<pre>The API shape looks consistent. I’m building and running tests now, then I’ll rebuild the report so the retained docs stay in sync with the code.</pre>
+</article>
+<article class="msg assistant">
+<h2>41. Codex / commentary</h2>
+<div class="time">2026-04-10 07:05:42 +0800</div>
+<pre>The report rebuild is done and the current test binary is green. I’m waiting for the compile to finish so validation is complete against the rebuilt sources, then I’ll do one final test pass.</pre>
+</article>
+<article class="msg assistant">
+<h2>42. Codex / commentary</h2>
+<div class="time">2026-04-10 07:06:16 +0800</div>
+<pre>I’ve finished the implementation and validation. I’m pulling exact references for the final handoff so the new search contract is easy to inspect.</pre>
+</article>
+<article class="msg assistant">
+<h2>43. Codex / final_answer</h2>
+<div class="time">2026-04-10 07:06:26 +0800</div>
+<pre>Continued Phase 2 by adding explicit inventory-scope filtering to non-mutating search. `resolve_tool_request` and `resolve_tool_by_group` now accept `inventory_scope` with `any`, `loaded_only`, or `unloaded_only` in [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp#L23), parsed in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L81), and enforced in the search paths in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L513). Assisted-load behavior is unchanged and still effectively uses `unloaded_only`.
+
+The HTTP layer now exposes the same control on `GET /tool-groups/{group_id}/resolve` and `POST /tool-search/resolve` in [http_api.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/http_api.cpp#L71). I added manager and HTTP coverage for loaded-only and unloaded-only resolution in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L448) and [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1167), and updated the retained contract docs in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L37) plus the usual handoff/changelog files.
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.</pre>
+</article>
+<article class="msg user">
+<h2>44. User</h2>
+<div class="time">2026-04-10 07:11:06 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>45. Codex / commentary</h2>
+<div class="time">2026-04-10 07:11:18 +0800</div>
+<pre>I’m extending the search contract again rather than switching domains. Next slice: add explicit health filtering so search can require `healthy_only` candidates instead of merely preferring them by strategy.</pre>
+</article>
+<article class="msg assistant">
+<h2>46. Codex / commentary</h2>
+<div class="time">2026-04-10 07:11:22 +0800</div>
+<pre>I’m making the search health filter explicit in the manager and API now. The rule will be `health_scope=any_usable` by default, with `healthy_only` excluding warning-reached candidates from non-mutating search.</pre>
+</article>
+<article class="msg assistant">
+<h2>47. Codex / commentary</h2>
+<div class="time">2026-04-10 07:12:09 +0800</div>
+<pre>The core filter is in. I’m adding targeted tests now: `healthy_only` should reject warning-reached tools even when they’re otherwise usable, while default behavior stays unchanged.</pre>
+</article>
+<article class="msg assistant">
+<h2>48. Codex / commentary</h2>
+<div class="time">2026-04-10 07:12:34 +0800</div>
+<pre>I’m updating the docs now so `health_scope` is clearly described as a filter, separate from the ranking strategies like `healthy_first`.</pre>
+</article>
+<article class="msg assistant">
+<h2>49. Codex / commentary</h2>
+<div class="time">2026-04-10 07:13:15 +0800</div>
+<pre>I’ve patched code and docs. I’m doing a quick sanity check on the new method signatures and test call sites before rebuilding, since this change threads another parameter through several overloads.</pre>
+</article>
+<article class="msg assistant">
+<h2>50. Codex / commentary</h2>
+<div class="time">2026-04-10 07:13:24 +0800</div>
+<pre>The signatures line up. I’m rebuilding and running tests now, then I’ll rebuild the report so the retained handoff stays coherent.</pre>
+</article>
+<article class="msg assistant">
+<h2>51. Codex / commentary</h2>
+<div class="time">2026-04-10 07:13:29 +0800</div>
+<pre>The report rebuild finished and the current test binary is green. I’m waiting for the compile to finish, then I’ll rerun `ctest` once against the rebuilt executable.</pre>
+</article>
+<article class="msg assistant">
+<h2>52. Codex / commentary</h2>
+<div class="time">2026-04-10 07:14:02 +0800</div>
+<pre>I’ve finished the health-scope extension and the verification is clean. I’m pulling the exact references for the close-out.</pre>
+</article>
+<article class="msg assistant">
+<h2>53. Codex / final_answer</h2>
+<div class="time">2026-04-10 07:14:11 +0800</div>
+<pre>Continued the search-model work by adding explicit `health_scope` filtering. Non-mutating search now accepts `health_scope=any_usable` or `healthy_only` in [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp#L23), parsed in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L95), and enforced in group/direct resolution in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L524). This is separate from `healthy_first`: `healthy_only` filters candidates, while `healthy_first` only changes ranking.
+
+The HTTP search routes now expose that filter in [http_api.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/http_api.cpp#L71). I added manager and HTTP coverage for warning-reached tools being excluded under `healthy_only` in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L476) and [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1272), and updated the retained contract docs in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L37) plus the aligned handoff/changelog files.
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.</pre>
+</article>
+<article class="msg user">
+<h2>54. User</h2>
+<div class="time">2026-04-10 08:16:54 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h2>55. Codex / commentary</h2>
+<div class="time">2026-04-10 08:17:32 +0800</div>
+<pre>The next useful step is to add an explicit replacement chain, not just broad group ranking. I’m implementing optional `replacement_tool_id` so a direct request can follow a tool-specific fallback chain before dropping to general group search.</pre>
+</article>
+<article class="msg assistant">
+<h2>56. Codex / commentary</h2>
+<div class="time">2026-04-10 08:17:51 +0800</div>
+<pre>I’m editing the retained model now to add `replacement_tool_id`, then I’ll wire chain traversal into direct-request resolution before the existing group fallback.</pre>
+</article>
+<article class="msg assistant">
+<h2>57. Codex / commentary</h2>
+<div class="time">2026-04-10 08:18:28 +0800</div>
+<pre>The chain traversal is in. I’m updating the test fixtures now so tools can declare `replacement_tool_id`, then I’ll add direct-request cases for chain resolution, chain continuation, and cycle safety.</pre>
+</article>
+<article class="msg assistant">
+<h2>58. Codex / commentary</h2>
+<div class="time">2026-04-10 08:19:21 +0800</div>
+<pre>I’ve added coverage for chain-first resolution, chain continuation through an ineligible tool, cycle termination, and self-reference rejection. Updating the retained docs now so the new fallback order is explicit.</pre>
+</article>
+<article class="msg assistant">
+<h2>59. Codex / commentary</h2>
+<div class="time">2026-04-10 08:20:05 +0800</div>
+<pre>The code and docs are patched for explicit replacement chains. I’m doing a quick readback on the chain logic before rebuilding, mainly to confirm the fallback order and self-reference validation are correct.</pre>
+</article>
+<article class="msg assistant">
+<h2>60. Codex / commentary</h2>
+<div class="time">2026-04-10 08:20:10 +0800</div>
+<pre>I spotted one doc gap: `replacement_tool_id` is in the tool example but not listed under `POST /tools` optional fields. I’m fixing that before validation.</pre>
+</article>
+<article class="msg assistant">
+<h2>61. Codex / commentary</h2>
+<div class="time">2026-04-10 08:20:20 +0800</div>
+<pre>I’ve closed the doc gap. Building, testing, and rebuilding the report now so the retained state stays aligned.</pre>
+</article>
+<article class="msg assistant">
+<h2>62. Codex / commentary</h2>
+<div class="time">2026-04-10 08:20:41 +0800</div>
+<pre>The report rebuild is done and the current test binary is green. I’m waiting for the compile to finish, then I’ll rerun `ctest` once against the rebuilt executable.</pre>
+</article>
+<article class="msg assistant">
+<h2>63. Codex / commentary</h2>
+<div class="time">2026-04-10 08:21:00 +0800</div>
+<pre>I’ve finished the replacement-chain slice and the validation is clean. Pulling exact references for the close-out.</pre>
+</article>
+<article class="msg assistant">
+<h2>64. Codex / final_answer</h2>
+<div class="time">2026-04-10 08:21:09 +0800</div>
+<pre>Continued the replacement/search work by adding explicit replacement chains. `Tool` now has optional `replacement_tool_id` in the retained model and JSON shape in [model.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/model.hpp#L39), with self-reference validation in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L26). Direct-request resolution now follows `replacement_tool_id` links before broader group fallback, with cycle protection, in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L572).
+
+I added manager coverage for chain-first resolution, cycle termination, and self-reference rejection in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L503), plus HTTP coverage for chain-based `/tool-search/resolve` behavior in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1378). The retained contract docs now describe the new fallback order and tool field in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L78).
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.</pre>
+</article>
+<article class="msg user">
+<h2>65. User</h2>
+<div class="time">2026-04-10 08:53:55 +0800</div>
+<pre>继续</pre>
+</article>
+<article class="msg assistant">
+<h2>66. Codex / commentary</h2>
+<div class="time">2026-04-10 08:54:14 +0800</div>
+<pre>我继续沿着同一条 Phase 2 路线推进，不切到适配器或版本化。先检查当前改动状态，然后补下一块对 replacement/search 模型有实际增量的行为。</pre>
+</article>
+<article class="msg assistant">
+<h2>67. Codex / commentary</h2>
+<div class="time">2026-04-10 08:54:29 +0800</div>
+<pre>下一块我准备补“搜索结果可解释性”，因为现在有 replacement chain 了，但返回里只有 `resolution` 和 `tool`，外部看不到实际走了哪条回退路径。我会给 `ToolSearchResult` 增加请求源和 chain trace。</pre>
+</article>
+<article class="msg assistant">
+<h2>68. Codex / commentary</h2>
+<div class="time">2026-04-10 08:54:35 +0800</div>
+<pre>我在管理器里补 trace 生成逻辑。规则很简单: `requested_tool_id` 永远是原始请求刀具，`replacement_path` 记录显式 replacement chain 实际走过的工具 ID。</pre>
+</article>
+<article class="msg assistant">
+<h2>69. Codex / commentary</h2>
+<div class="time">2026-04-10 08:54:46 +0800</div>
+<pre>接着补测试。我要覆盖三种情况: direct 为空路径、replacement-chain 带路径、group-fallback 也保留已走过的 chain。</pre>
+</article>
+<article class="msg assistant">
+<h2>70. Codex / commentary</h2>
+<div class="time">2026-04-10 08:55:07 +0800</div>
+<pre>我也在更新文档，把新的返回字段说清楚，不然 `replacement_chain` 加进来以后响应就不够可审查了。</pre>
+</article>
+<article class="msg assistant">
+<h2>71. Codex / commentary</h2>
+<div class="time">2026-04-10 08:55:37 +0800</div>
+<pre>代码和文档都补完了。我先做一轮回读，重点看 `ToolSearchResult` 的 JSON 形状和新增测试是否一致，然后再跑构建和测试。</pre>
+</article>
+<article class="msg assistant">
+<h2>72. Codex / commentary</h2>
+<div class="time">2026-04-10 08:55:44 +0800</div>
+<pre>回读没发现结构问题，开始跑构建、测试和报告重建。</pre>
+</article>
+<article class="msg assistant">
+<h2>73. Codex / commentary</h2>
+<div class="time">2026-04-10 08:55:48 +0800</div>
+<pre>报告已经重建完成，当前测试二进制也是绿的。我等编译结束后，再用新产物补跑一遍 `ctest`。</pre>
+</article>
+<article class="msg assistant">
+<h2>74. Codex / final_answer</h2>
+<div class="time">2026-04-10 08:56:23 +0800</div>
+<pre>继续把搜索结果做成可审计的形状了。`ToolSearchResult` 现在除了 `resolution` 和 `tool`，还会返回 `requested_tool_id` 与 `replacement_path`，定义在 [model.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/model.hpp#L69)。管理器会在 direct、replacement-chain、group-fallback 三种 direct-request 路径里都填充这些字段，逻辑在 [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L584)。这样即使最后落到 group fallback，也能看出前面尝试过哪些显式 replacement hop。
+
+我补了 manager 和 HTTP 测试，覆盖 direct 空路径、replacement-chain 完整路径、以及 chain miss 后的 group fallback trace，见 [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L503) 和 [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1378)。API 文档也更新了返回字段说明和示例，在 [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L77)。
+
+验证已通过: `cmake --build build-local`、`ctest --test-dir build-local --output-on-failure`、`mdbook build reports/2026-04-09-codex-session`。</pre>
+</article>
+<article class="msg user">
+<h2>75. User</h2>
+<div class="time">2026-04-10 09:03:46 +0800</div>
+<pre>考虑增加数据库相关支持，用于保存刀具信息，具体的你设计一下，根据之前的需求，先规划给我看一下</pre>
+</article>
+<article class="msg assistant">
+<h2>76. Codex / commentary</h2>
+<div class="time">2026-04-10 09:04:00 +0800</div>
+<pre>你要的是先做数据库支持方案，不先改代码。我先看当前持久化边界和状态模型，给出一份能接到现有仓库上的分阶段设计。</pre>
+</article>
+<article class="msg assistant">
+<h2>77. Codex / final_answer</h2>
+<div class="time">2026-04-10 09:04:44 +0800</div>
+<pre>可以，先给你一个贴合当前仓库形态的数据库方案，不先改代码。
+
+**建议方向**
+我建议分两层设计，而不是直接把 `ToolManager` 改成“每次操作都查数据库”。
+
+- 第一阶段用“内存管理器 + 数据库存储后端”。
+- `ToolManager` 继续保持现在的内存状态机和校验逻辑。
+- 启动时从数据库加载为 `StateSnapshot`。
+- 每次成功变更后，把当前快照事务性写回数据库。
+- 这样能最大限度复用现有 `export_state` / `import_state` / 严格一致性校验，也不会把 HTTP 层和业务规则绑死在 SQL 上。
+
+这比“直接把所有业务改成 ORM/SQL 驱动”风险低很多，也更符合你这个仓库现在的阶段。
+
+**推荐数据库**
+先上 `SQLite`，预留后续扩成 `PostgreSQL`。
+
+原因：
+- 当前项目是单进程、小服务、单机持久化，非常适合 SQLite。
+- 部署成本低，没有额外服务依赖。
+- 先把持久化边界设计对，再决定是否需要 PostgreSQL。
+- 现在的自动 file persistence 本质也是单机恢复场景，SQLite 是自然升级。
+
+**推荐架构**
+新增一个持久化抽象层，建议名字用 `StateStore` 或 `PersistenceBackend`。
+
+核心接口建议：
+
+- `load_snapshot() -&gt; std::optional&lt;StateSnapshot&gt;`
+- `save_snapshot(const StateSnapshot&amp;)`
+- `backend_name() -&gt; std::string`
+
+第一批实现：
+- `FileStateStore`
+- `SqliteStateStore`
+
+`ToolManager` 不直接知道文件或数据库细节，只知道：
+- 启动时 load
+- 变更成功后 save
+- save 失败则回滚当前内存变更
+
+这和你现在 file-backed 的行为是一致的。
+
+**数据库模型**
+我建议不要先做“单表 JSON blob”，直接做规范化表结构。原因是你后面大概率不只是“能恢复”，还会想查刀具、查寿命、查装载状态。
+
+建议表：
+
+- `schema_migrations`
+  - `version`
+
+- `tools`
+  - `id` PK
+  - `tool_number` UNIQUE
+  - `name`
+  - `type`
+  - `search_enabled`
+  - `replacement_tool_id` NULL
+  - `group_id` NULL
+  - `wear_group_id` NULL
+  - `replacement_priority`
+  - `location_magazine_id` NULL
+  - `location_slot_index` NULL
+
+- `tool_edges`
+  - `tool_id` FK
+  - `edge_index`
+  - `name`
+  - `length_offset`
+  - `radius`
+  - `warning_limit`
+  - `limit_value`
+  - `used`
+  - PK(`tool_id`, `edge_index`)
+
+- `magazines`
+  - `id` PK
+  - `name`
+
+- `magazine_slots`
+  - `magazine_id` FK
+  - `slot_index`
+  - `tool_id` NULL UNIQUE
+  - PK(`magazine_id`, `slot_index`)
+
+必要约束：
+- `tool_number` 唯一
+- `tool_id` 在 `magazine_slots` 中最多出现一次
+- `replacement_tool_id` 可空，但若非空必须引用已存在 tool
+- `location_magazine_id + location_slot_index` 与 `magazine_slots` 一致
+- 这些约束在数据库层做一部分，在 `import_state` 校验里再做一层
+
+**事务策略**
+沿用你现在的“全量一致性优先”思路。
+
+每次持久化：
+- 开事务
+- 清理并重写 `tool_edges`
+- 清理并重写 `magazine_slots`
+- upsert `tools`
+- upsert `magazines`
+- 提交事务
+
+这是“快照式写入数据库”，不是增量事件流。
+
+优点：
+- 逻辑简单
+- 和现在 file snapshot 语义一致
+- 更容易保证一致性
+
+缺点：
+- 写放大较大
+- 但对当前项目规模完全可接受
+
+**运行配置**
+建议新增环境变量：
+
+- `TOOLMAN_PERSISTENCE_BACKEND=file|sqlite`
+- `TOOLMAN_STATE_PATH=...`
+- `TOOLMAN_SQLITE_PATH=...`
+
+规则：
+- 默认仍然是无持久化
+- `file` 时继续走现有逻辑
+- `sqlite` 时走数据库
+- 不建议一开始同时启两个后端
+
+**迁移策略**
+第一版不要改 HTTP API。
+
+迁移流程建议：
+1. 保留现有 `GET /state` 和 `POST /state/import`
+2. 新增 SQLite backend
+3. 启动时如果 DB 有数据则 load
+4. 如无数据，可选支持一次性从现有 JSON state file 导入
+5. API 对外保持不变
+
+这样外部调用方无感知。
+
+**实现顺序**
+我建议按这 5 步做：
+
+1. 抽出 `StateStore` 接口，把现有 file persistence 挂到接口后面。
+2. 实现 `SqliteStateStore`，先只支持 `load_snapshot/save_snapshot`。
+3. 增加 SQLite schema 初始化和 migration version 1。
+4. 加测试：
+   - SQLite round-trip
+   - 写失败回滚
+   - 启动恢复
+   - DB 数据不一致时拒绝加载
+5. 最后补文档和运行配置。
+
+**测试重点**
+必须补的测试：
+
+- SQLite 保存后新 manager 能恢复完整状态
+- tools / edges / magazines / slots / locations 一致恢复
+- replacement chain / search flags / scopes 都能恢复
+- DB 写失败时，内存状态回滚
+- DB 内部不一致时，load 失败而不是静默修复
+
+**我建议的结论**
+如果你要的是“现在就能稳妥落地”的方案，我建议：
+
+- 先做 `StateStore` 抽象
+- 先做 `SQLite`
+- 持续保持“内存 authoritative，数据库是事务化快照后端”
+- 暂时不要做 PostgreSQL
+- 暂时不要把业务规则下沉到 SQL
+
+如果你认可这个方向，我下一步可以直接给你拆成一版可实施的任务清单：
+- 目录改动
+- 新增类名
+- 表结构 SQL
+- 测试清单
+- 分 2 到 3 个提交的实施顺序</pre>
+</article>
+<article class="msg user">
+<h2>78. User</h2>
+<div class="time">2026-04-10 09:05:23 +0800</div>
+<pre>ok，按照你的规划执行</pre>
+</article>
+<article class="msg assistant">
+<h2>79. Codex / commentary</h2>
+<div class="time">2026-04-10 09:05:38 +0800</div>
+<pre>我按这个方案开始落地，先把现有 file persistence 抽成统一存储接口，再接 SQLite 后端；随后把启动加载和成功变更后的保存都挂到这个抽象上。</pre>
+</article>
+<article class="msg assistant">
+<h2>80. Codex / commentary</h2>
+<div class="time">2026-04-10 09:05:55 +0800</div>
+<pre>这次改动会比较大，我按 4 块执行：
+
+1. 抽 `StateStore` 接口，把现有 file persistence 接到接口后面。  
+2. 加 `SQLite` 后端，先做快照式读写，不改现有 HTTP 合同。  
+3. 接入运行配置和测试，覆盖 file 与 sqlite 两种后端。  
+4. 更新文档，把运行方式、限制和后续边界写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h2>81. Codex / commentary</h2>
+<div class="time">2026-04-10 09:07:16 +0800</div>
+<pre>我在整理 `ToolManager` 的持久化边界，先把路径字符串状态换成真正的 store 抽象，不然 SQLite 只能硬塞进现有 file 逻辑里。</pre>
+</article>
+<article class="msg assistant">
+<h2>82. Codex / commentary</h2>
+<div class="time">2026-04-10 09:07:49 +0800</div>
+<pre>我先把持久化接口文件补出来，后面 file 和 sqlite 都从这个口子走。</pre>
+</article>
+<article class="msg assistant">
+<h2>83. Codex / commentary</h2>
+<div class="time">2026-04-10 09:07:57 +0800</div>
+<pre>SQLite 后端我会做成快照式事务写入，不碰现有 HTTP 合同和规则层。现在开始加实现文件。</pre>
+</article>
+<article class="msg assistant">
+<h2>84. Codex / commentary</h2>
+<div class="time">2026-04-10 09:09:20 +0800</div>
+<pre>我把 SQLite 后端实现加进来了，接下来把构建系统和 manager 接口接上，不然还编不过。</pre>
+</article>
+<article class="msg assistant">
+<h2>85. Codex / commentary</h2>
+<div class="time">2026-04-10 09:10:47 +0800</div>
+<pre>运行配置这块我一并接上。默认仍然兼容旧的 `TOOLMAN_STATE_PATH`，同时新增 `TOOLMAN_SQLITE_PATH` 和显式 backend 选择。</pre>
+</article>
+<article class="msg assistant">
+<h2>86. Codex / commentary</h2>
+<div class="time">2026-04-10 09:11:15 +0800</div>
+<pre>我现在补 SQLite round-trip 和失败回滚测试，确保新后端不是只有代码路径，没有验证。</pre>
+</article>
+<article class="msg assistant">
+<h2>87. Codex / commentary</h2>
+<div class="time">2026-04-10 09:12:08 +0800</div>
+<pre>核心代码已经接上了。我先编一轮，主要是确认 SQLite 依赖、抽象层接口和 manager 改造都能过，再补文档。</pre>
+</article>
+<article class="msg assistant">
+<h2>88. Codex / commentary</h2>
+<div class="time">2026-04-10 09:13:05 +0800</div>
+<pre>先把这轮数据库改造编译起来并跑测试，确认持久化抽象和 SQLite backend 没有破坏现有行为；编译通过后我再补文档和状态说明。</pre>
+</article>
+<article class="msg assistant">
+<h2>89. Codex / commentary</h2>
+<div class="time">2026-04-10 09:13:16 +0800</div>
+<pre>构建先卡在 `SQLite3` 开发库探测，问题不是代码而是当前环境没有可供 CMake 使用的头文件和库路径。我先确认本机能否直接找到 `sqlite3` 头库，如果没有，就把构建改成“有 SQLite 时启用、没有时明确报可选能力不可用”，避免把整个项目构建锁死。</pre>
+</article>
+<article class="msg assistant">
+<h2>90. Codex / commentary</h2>
+<div class="time">2026-04-10 09:13:29 +0800</div>
+<pre>本机确实没有 `sqlite3` 开发头库，所以我会把 SQLite 后端降成可选编译特性：有库就启用，没有库也能正常构建，运行时若显式选择 SQLite 再给出明确错误。接下来我调整 CMake 和后端实现的条件编译，再重新编译验证。</pre>
+</article>
+<article class="msg assistant">
+<h2>91. Codex / commentary</h2>
+<div class="time">2026-04-10 09:13:54 +0800</div>
+<pre>我已经确认要走“可选 SQLite 编译 + 运行时明确信号”这条线，这样既不放弃数据库后端，也不会因为当前机器缺少开发库把整个仓库构建打断。现在开始改构建脚本、存储抽象接口和测试分支。</pre>
+</article>
+<article class="msg assistant">
+<h2>92. Codex / commentary</h2>
+<div class="time">2026-04-10 09:15:19 +0800</div>
+<pre>条件编译已经接上，测试也补了“未编入 SQLite 支持时要明确报错”的分支。我先重新构建，接着跑完整测试；如果还有编译问题，就继续在这轮把它收干净。</pre>
+</article>
+<article class="msg assistant">
+<h2>93. Codex / commentary</h2>
+<div class="time">2026-04-10 09:15:59 +0800</div>
+<pre>构建已经过了，当前环境下 SQLite 后端按预期被编成可选缺省不可用。现在跑完整测试，先确认持久化抽象没有把现有搜索、HTTP 和文件持久化行为带歪。</pre>
+</article>
+<article class="msg assistant">
+<h2>94. Codex / commentary</h2>
+<div class="time">2026-04-10 09:16:13 +0800</div>
+<pre>代码和测试已经稳住了，下一步只剩把文档、交接说明和状态表同步到“文件后端 + 可选 SQLite 后端”的新契约，避免实现与说明脱节。</pre>
+</article>
+<article class="msg assistant">
+<h2>95. Codex / commentary</h2>
+<div class="time">2026-04-10 09:16:38 +0800</div>
+<pre>文档里原来把持久化写死成 file-backed，这部分现在已经过时了。我会把 README、架构、工具说明、handoff、状态矩阵和报告统一改成“StateStore 抽象 + file backend + 可选 SQLite backend + 当前环境无 SQLite dev 包时会自动降级”的表述。</pre>
+</article>
+<article class="msg assistant">
+<h2>96. Codex / commentary</h2>
+<div class="time">2026-04-10 09:17:54 +0800</div>
+<pre>实现层已经结束，这里只剩最后一次文档产物验证。我重新生成报告并检查工作区差异，确认这轮数据库支持相关的改动闭环。</pre>
+</article>
+<article class="msg assistant">
+<h2>97. Codex / commentary</h2>
+<div class="time">2026-04-10 09:18:00 +0800</div>
+<pre>差异检查里能看到既有文件的改动，但 `state_store` 新文件还没进入 `git diff --stat` 统计，因为它们是新增未暂存文件。我再看一眼工作树状态，确保最终汇报里把这些新文件带上。</pre>
+</article>
+<article class="msg assistant">
+<h2>98. Codex / final_answer</h2>
+<div class="time">2026-04-10 09:18:25 +0800</div>
+<pre>数据库持久化这轮已经落地成“内存权威 + 快照后端”架构。新增了 `StateStore` 抽象和两个后端入口，在 [state_store.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/state_store.hpp) 与 [state_store.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/state_store.cpp)；`ToolManager` 改为通过该抽象做启动恢复和变更后提交，在 [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp) 和 [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp)。`main` 现在支持 `TOOLMAN_PERSISTENCE_BACKEND=file|sqlite`、`TOOLMAN_STATE_PATH`、`TOOLMAN_SQLITE_PATH`，见 [main.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/main.cpp)。
+
+SQLite 这边做成了可选编译能力：有 SQLite3 开发库就启用，没有也不会把整个项目构建打断。对应构建逻辑在 [CMakeLists.txt](/home/iaar/workspace/codex-wp/metanc_tool_man/CMakeLists.txt)，测试在 [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp) 里补了三类覆盖：文件持久化回归、SQLite round-trip/回滚、以及“当前构建未带 SQLite 支持时应明确报错”。文档也同步到新契约了，重点更新了 [README.md](/home/iaar/workspace/codex-wp/metanc_tool_man/README.md)、[architecture.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/architecture.md)、[tooling.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/tooling.md)、[agent-handoff.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/agent-handoff.md) 和 [manual-implementation-status.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/manual-implementation-status.md)。
+
+验证已完成：`cmake --build build-local`、`ctest --test-dir build-local --output-on-failure`、`mdbook build reports/2026-04-09-codex-session`。当前这台机器没有 SQLite3 开发头库，所以实际构建结果是“SQLite 后端接口已接入，但本机构建为 unavailable 分支”；文件后端和其余功能全部通过测试。</pre>
+</article>
+<article class="msg user">
+<h2>99. User</h2>
+<div class="time">2026-04-10 09:19:51 +0800</div>
+<pre>引入一下sqlite开发库，怎么自动化管理最方便怎么来</pre>
+</article>
+</main>
+</body>
+</html>

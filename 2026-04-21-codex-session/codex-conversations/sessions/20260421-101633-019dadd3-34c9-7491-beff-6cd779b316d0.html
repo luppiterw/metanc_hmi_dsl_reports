@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dadd3-34c9-7491-beff-6cd779b316d0</code></div>
+<div><b>Started</b>: <code>2026-04-21 10:16:33 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/21/rollout-2026-04-21T10-16-33-019dadd3-34c9-7491-beff-6cd779b316d0.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-21 10:16:48 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: CLI, validator, theme/IR pipeline, adapters, and Web/QML generators.
+- `src/hmi_dsl/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate src/hmi_dsl/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir src/hmi_dsl/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-21&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-21 10:16:48 +0800</div>
+<pre>OpenAI里的temperature 参数是什么意思</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / commentary</h2>
+<div class="time">2026-04-21 10:17:07 +0800</div>
+<pre>我先看一下当前会话里相关的技能说明，确认按现行的 OpenAI 文档工作流来回答这个参数含义。</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-21 10:17:20 +0800</div>
+<pre>使用 `using-superpowers` 确认流程后，我按 `openai-docs` 的方式查一下官方文档里对 `temperature` 的当前表述，再给你一个直接结论。</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-21 10:18:34 +0800</div>
+<pre>我在把官方表述再收紧一点，想找到文档里对 `temperature` 的直接定义，而不是只看接口示例。</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / commentary</h2>
+<div class="time">2026-04-21 10:21:19 +0800</div>
+<pre>文档搜索结果不太直接，我补一条官方站内检索，尽量给你带上更像“定义”的来源。</pre>
+</article>
+<article class="msg user">
+<h2>7. User</h2>
+<div class="time">2026-04-21 10:21:25 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</main>
+</body>
+</html>

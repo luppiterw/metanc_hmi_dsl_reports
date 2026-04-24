@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>请按照之前的规划，保留drogon，其他继续</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>请按照之前的规划，保留drogon，其他继续</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d717d-5610-7291-afea-32179c3275aa</code></div>
+<div><b>Started</b>: <code>2026-04-09 17:05:32 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/codex-wp/prjs/UniNCCollect</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/09/rollout-2026-04-09T17-05-32-019d717d-5610-7291-afea-32179c3275aa.jsonl</code></div>
+<div><b>Messages</b>: <code>19</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-09 17:05:44 +0800</div>
+<pre>请按照之前的规划，保留drogon，其他继续</pre>
+</article>
+<article class="msg assistant">
+<h2>2. Codex / commentary</h2>
+<div class="time">2026-04-09 17:05:51 +0800</div>
+<pre>我先检查当前仓库状态和最近改动，确认“保留 drogon、其余继续”对应到哪些未完成项，然后直接续做实现。</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / commentary</h2>
+<div class="time">2026-04-09 17:06:13 +0800</div>
+<pre>仓库当前没有未提交改动。我在看文档里的迁移/重构路线，先把“之前的规划”落到具体文件和待办，再继续改。</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-09 17:06:26 +0800</div>
+<pre>路线图里 Phase 4 很贴近你这句要求：保留生产线和 drogon 相关实验，把其余历史/实验目录继续做边界清理。我再看下 `labs/` 和文档索引，确认应该删减还是仅做标记与归档。</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-09 17:06:45 +0800</div>
+<pre>我已经确认不是代码半改状态，更像是按路线图继续做仓库边界清理。这个阶段我会偏保守处理：不直接删内容，先把 `labs/` 中 drogon 保留、其余分类标记清楚，并同步文档说明，避免误把历史资产当生产链路。</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / commentary</h2>
+<div class="time">2026-04-09 17:06:55 +0800</div>
+<pre>接下来我会落三个改动：补 `labs/README.md` 做总索引，给关键历史目录加状态说明，另外更新 `docs/` 里的仓库与历史资产章节，使“保留 drogon，其他按实验/历史处理”的规则变成明确文档。</pre>
+</article>
+<article class="msg assistant">
+<h2>7. Codex / commentary</h2>
+<div class="time">2026-04-09 17:07:24 +0800</div>
+<pre>我现在开始写文档和目录说明文件，不动生产代码和现有构建链路，只把边界标识补齐。</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-09 17:08:42 +0800</div>
+<pre>目录级标记已经补上了。现在我检查 diff，确认分类表述和文档引用一致，没有把 `labs` 误写成正式链路。</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-09 17:08:55 +0800</div>
+<pre>我再补两处正向标记，把保留的 Drogon 目录也写清楚，避免现在只有“其他归档”而没有“哪些明确保留”。</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / commentary</h2>
+<div class="time">2026-04-09 17:09:16 +0800</div>
+<pre>改动已经成形，当前是纯文档/目录说明层面的整理，没有碰业务代码。最后我做一次收尾检查，然后给你结果和下一步建议。</pre>
+</article>
+<article class="msg assistant">
+<h2>11. Codex / final_answer</h2>
+<div class="time">2026-04-09 17:09:37 +0800</div>
+<pre>按“保留 Drogon、其他继续收敛”的方向，我先做了非破坏性整理：没有删目录，也没动生产代码，只把 `labs/` 的边界和状态写清楚，避免后续继续把历史资产误当主线。
+
+本次主要改动在 [labs/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/README.md)、[docs/src/labs-and-history.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/labs-and-history.md)、[docs/src/repository.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/repository.md)。我把 `test_drogon`、`login_session`、`xmake_test_drogon` 明确标为“保留参考”，并给历史/本地资料目录补了说明文件，包括 [labs/samples/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/samples/README.md)、[labs/xmake_test_drogon/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/xmake_test_drogon/README.md)、[labs/samples/test_drogon/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/samples/test_drogon/README.md)、[labs/test_ormpp/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/test_ormpp/README.md)、[labs/unicollect_z_try_01/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/unicollect_z_try_01/README.md)、[labs/bk_vscode/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/bk_vscode/README.md)。
+
+还顺手把两个已有但偏“环境笔记”的说明改成了当前定位：[labs/Applications/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/Applications/README.md) 和 [labs/uninccollect_doc/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/uninccollect_doc/README.md)。
+
+这次没跑测试，因为是文档和说明文件整理。下一步如果你要继续“其他”，我建议直接进入实质清理：把确认无用的历史目录移出主仓库，或把仍有价值的非 Drogon 实验内容摘录进 `docs/` 后再删。</pre>
+</article>
+<article class="msg user">
+<h2>12. User</h2>
+<div class="time">2026-04-09 17:11:04 +0800</div>
+<pre>继续</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-09 17:11:23 +0800</div>
+<pre>我继续做下一步收敛：检查哪些非 Drogon 的 `labs` 目录没有被主链路引用，如果确认只是历史实验，就把它们归档到统一位置，并同步修正文档引用。</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-09 17:11:41 +0800</div>
+<pre>这些非 Drogon 目录没有被生产构建和部署主线引用，可以进入下一步物理归档。我会把它们统一移到 `labs/archive/`，保留路径可读性，再把文档说明同步到新位置。</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-09 17:12:24 +0800</div>
+<pre>文档先改成目标结构了，现在开始做目录迁移，把非 Drogon 内容落到 `labs/archive/`。这一轮会直接改目录路径，但只在 `labs/` 内部移动，不删内容。</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / commentary</h2>
+<div class="time">2026-04-09 17:12:51 +0800</div>
+<pre>目录已经迁过去了。我现在做一致性修正，重点看相对链接和文档里是否还有旧路径残留。</pre>
+</article>
+<article class="msg assistant">
+<h2>17. Codex / commentary</h2>
+<div class="time">2026-04-09 17:13:24 +0800</div>
+<pre>源码文档已经改完，但仓库里还有旧的 `docs/build_html` 产物，会跟新路径不一致。我先尝试本地重建文档；如果环境里没有 `mdbook`，我会保留源码改动并说明这一点。</pre>
+</article>
+<article class="msg assistant">
+<h2>18. Codex / commentary</h2>
+<div class="time">2026-04-09 17:13:39 +0800</div>
+<pre>迁移已经完成，`labs/` 顶层现在只剩 Drogon 相关参考和总说明，其他都进了 `labs/archive/`。我做最后一次状态检查，确认结果可以直接继续下一轮。</pre>
+</article>
+<article class="msg assistant">
+<h2>19. Codex / final_answer</h2>
+<div class="time">2026-04-09 17:14:00 +0800</div>
+<pre>我继续把非 Drogon 的 `labs` 内容做了物理归档。现在 `labs/` 顶层只保留了 Drogon 相关参考目录和说明文件：`samples/test_drogon`、`samples/login_session`、`xmake_test_drogon`；其余历史实验和本地资料都移到了 `labs/archive/`。归档入口在 [labs/archive/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/archive/README.md)，总说明在 [labs/README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/labs/README.md)。
+
+同步更新了文档说明：[docs/src/labs-and-history.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/labs-and-history.md) 和 [docs/src/repository.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/repository.md)。文档产物我也重建了，`mdbook build docs` 已通过。
+
+这轮没有改业务代码，也没跑单元测试。需要注意的是，当前 `git status` 会把这些目录迁移显示成“旧路径删除 + 新路径新增”，这是未暂存时的正常表现，不是内容丢失。下一步如果你还要继续，我建议直接做第三步：清理 `docs/` 里对已归档实验的冗余描述，或者开始处理打包/构建链路里的本地路径硬编码。</pre>
+</article>
+</main>
+</body>
+</html>

@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-04-24` | Session bootstrap and Codex user-history export tooling |
 | `2026-04-23` | Session bootstrap and Codex user-history export tooling |
 | `2026-04-22` | Rebuild the shared soft operations panel, then tighten it into a `40x40` hardware-like final layout across retained/QML/Web while restoring the working Web browser screenshot path for final visual verification |
 | `2026-04-20` | Protect downstream-local MetaNC report entry Markdown, consolidate docs/story structure, and hard-migrate the retained package to `src/hmi_dsl` |

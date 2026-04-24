@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Local Conversation Export</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<h1>Codex Local Conversation Export</h1>
+<section class="meta">
+<div><b>Sessions</b>: <code>7</code></div>
+<div><b>Messages</b>: <code>326</code></div>
+<div><b>User messages</b>: <code>36</code></div>
+<div><b>Codex messages</b>: <code>290</code></div>
+<div><b>Full export</b>: <a href="all.html">HTML</a> / <a href="all.md">Markdown</a></div>
+</section>
+<table>
+<thead><tr><th>Started</th><th>Messages</th><th>CWD</th><th>Title</th><th>MD</th><th>HTML</th></tr></thead>
+<tbody>
+<tr><td>2026-04-10 09:24:23 +0800</td><td>8</td><td><code>/home/iaar/workspace/codex-wp/prjs/UniNCCollect</code></td><td>我这部分可以想办法跑到一个docker里面吗，我不想影响现有的环境</td><td><a href="sessions/20260410-092423-019d74fd-7d60-71e2-9cf2-4a1d1024776c.md">md</a></td><td><a href="sessions/20260410-092423-019d74fd-7d60-71e2-9cf2-4a1d1024776c.html">html</a></td></tr>
+<tr><td>2026-04-10 09:24:31 +0800</td><td>10</td><td><code>/home/iaar/workspace/codex-wp/metanc_tool_man</code></td><td>引入一下sqlite开发库，怎么自动化管理最方便怎么来</td><td><a href="sessions/20260410-092431-019d74fd-9d33-76c0-bbfb-d067cfedbf37.md">md</a></td><td><a href="sessions/20260410-092431-019d74fd-9d33-76c0-bbfb-d067cfedbf37.html">html</a></td></tr>
+<tr><td>2026-04-10 09:39:27 +0800</td><td>40</td><td><code>/home/iaar/workspace/codex-wp/metanc_tool_man</code></td><td>继续之前的工作：引入一下sqlite开发库，怎么自动化管理最方便怎么来</td><td><a href="sessions/20260410-093927-019d750b-4c4e-7693-b4f8-bd3f25c9fd52.md">md</a></td><td><a href="sessions/20260410-093927-019d750b-4c4e-7693-b4f8-bd3f25c9fd52.html">html</a></td></tr>
+<tr><td>2026-04-10 09:39:33 +0800</td><td>14</td><td><code>/home/iaar/workspace/codex-wp/prjs/UniNCCollect</code></td><td>继续之前的问题：我这部分可以想办法跑到一个docker里面吗，我不想影响现有的环境</td><td><a href="sessions/20260410-093933-019d750b-63d7-7ba2-91f9-b9da47173cec.md">md</a></td><td><a href="sessions/20260410-093933-019d750b-63d7-7ba2-91f9-b9da47173cec.html">html</a></td></tr>
+<tr><td>2026-04-10 10:24:16 +0800</td><td>73</td><td><code>/home/iaar/workspace/codex-wp/metanc_tool_man</code></td><td>当前边界也写进文档了：这只是 repository-level 换刀状态，不执行真实 magazine motion、spindle motion、PLC handshake 或 NC 指令。下一步...</td><td><a href="sessions/20260410-102416-019d7534-531f-77d1-b556-d589f0efe5e6.md">md</a></td><td><a href="sessions/20260410-102416-019d7534-531f-77d1-b556-d589f0efe5e6.html">html</a></td></tr>
+<tr><td>2026-04-10 11:08:53 +0800</td><td>75</td><td><code>/home/iaar/workspace/codex-wp/prjs/UniNCCollect</code></td><td>目前已经安装了docker及相关服务，你看以下</td><td><a href="sessions/20260410-110853-019d755d-2c2a-7fe2-91ec-56e62c4e3bc9.md">md</a></td><td><a href="sessions/20260410-110853-019d755d-2c2a-7fe2-91ec-56e62c4e3bc9.html">html</a></td></tr>
+<tr><td>2026-04-10 15:01:58 +0800</td><td>106</td><td><code>/home/iaar/workspace/codex-wp/metanc_hmi_dsl</code></td><td>基于现有的内容，更新一下最终输出物</td><td><a href="sessions/20260410-150158-019d7632-8f5e-7451-a69b-0d81d79bc388.md">md</a></td><td><a href="sessions/20260410-150158-019d7632-8f5e-7451-a69b-0d81d79bc388.html">html</a></td></tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>

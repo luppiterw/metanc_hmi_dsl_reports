@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Local Conversation Export</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<h1>Codex Local Conversation Export</h1>
+<section class="meta">
+<div><b>Sessions</b>: <code>7</code></div>
+<div><b>Messages</b>: <code>664</code></div>
+<div><b>User messages</b>: <code>86</code></div>
+<div><b>Codex messages</b>: <code>578</code></div>
+<div><b>Full export</b>: <a href="all.html">HTML</a> / <a href="all.md">Markdown</a></div>
+</section>
+<table>
+<thead><tr><th>Started</th><th>Messages</th><th>CWD</th><th>Title</th><th>MD</th><th>HTML</th></tr></thead>
+<tbody>
+<tr><td>2026-04-21 09:22:56 +0800</td><td>12</td><td><code>/home/iaar/workspace/ccmix-wp/MetaNC</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</td><td><a href="sessions/20260421-092256-019dada2-1f40-7b83-aa38-79fb4c6117dd.md">md</a></td><td><a href="sessions/20260421-092256-019dada2-1f40-7b83-aa38-79fb4c6117dd.html">html</a></td></tr>
+<tr><td>2026-04-21 09:42:31 +0800</td><td>33</td><td><code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</td><td><a href="sessions/20260421-094231-019dadb4-0b3e-7e30-a312-88dcb194bf84.md">md</a></td><td><a href="sessions/20260421-094231-019dadb4-0b3e-7e30-a312-88dcb194bf84.html">html</a></td></tr>
+<tr><td>2026-04-21 10:16:33 +0800</td><td>7</td><td><code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</td><td><a href="sessions/20260421-101633-019dadd3-34c9-7491-beff-6cd779b316d0.md">md</a></td><td><a href="sessions/20260421-101633-019dadd3-34c9-7491-beff-6cd779b316d0.html">html</a></td></tr>
+<tr><td>2026-04-21 10:25:02 +0800</td><td>21</td><td><code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</td><td><a href="sessions/20260421-102502-019dadda-f93c-7622-b89f-3f64e3e92079.md">md</a></td><td><a href="sessions/20260421-102502-019dadda-f93c-7622-b89f-3f64e3e92079.html">html</a></td></tr>
+<tr><td>2026-04-21 10:46:20 +0800</td><td>181</td><td><code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</td><td><a href="sessions/20260421-104620-019dadee-7ade-7e50-be57-0b70aaf004e8.md">md</a></td><td><a href="sessions/20260421-104620-019dadee-7ade-7e50-be57-0b70aaf004e8.html">html</a></td></tr>
+<tr><td>2026-04-21 15:12:20 +0800</td><td>76</td><td><code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</td><td><a href="sessions/20260421-151220-019daee2-029a-7001-893b-776e4976db50.md">md</a></td><td><a href="sessions/20260421-151220-019daee2-029a-7001-893b-776e4976db50.html">html</a></td></tr>
+<tr><td>2026-04-21 17:22:01 +0800</td><td>334</td><td><code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></td><td># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</td><td><a href="sessions/20260421-172201-019daf58-bcc8-77b0-944c-57fc7417cec6.md">md</a></td><td><a href="sessions/20260421-172201-019daf58-bcc8-77b0-944c-57fc7417cec6.html">html</a></td></tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>

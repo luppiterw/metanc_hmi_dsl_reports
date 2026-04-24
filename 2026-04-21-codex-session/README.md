@@ -26,6 +26,20 @@
 - `project-report.md`: Web/QML 顶部栏、overview 主页、QML footer notice rail、主体拉伸/居中收口，以及快照刷新、验证与同步准备总结
 - `conversation-report.md`: 从 header/ops shell 收口继续演进到 overview/QML 主页二次修正，再到主体区拉伸/居中收口的摘要化过程记录、定位路径和关键决策
 - `user-history.md`: 当天用户发言原始导出
+- `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: 从用户反馈到 retained/generator 修正、快照更新、报告补齐、验证与 MetaNC 导出的工作流图
 - `architecture-diagram.md`: 当前仓库、retained package、生成器、报告子模块、快照和 `MetaNC/nrt/hmi` 导出目标之间的关系图
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
+
+<!-- codex-full-export:start -->
+## Complete Codex Conversation Export
+
+- Scope: `2026-04-21`
+- Sessions: `7`
+- Messages: `664`
+- User messages: `86`
+- Codex messages: `578`
+- HTML index: [Open](codex-conversations/index.html)
+- Single-page HTML: [Open](codex-conversations/all.html)
+- Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
+<!-- codex-full-export:end -->

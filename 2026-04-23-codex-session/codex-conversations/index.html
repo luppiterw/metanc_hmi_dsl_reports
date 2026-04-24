@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Local Conversation Export</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<h1>Codex Local Conversation Export</h1>
+<section class="meta">
+<div><b>Sessions</b>: <code>1</code></div>
+<div><b>Messages</b>: <code>900</code></div>
+<div><b>User messages</b>: <code>93</code></div>
+<div><b>Codex messages</b>: <code>807</code></div>
+<div><b>Full export</b>: <a href="all.html">HTML</a> / <a href="all.md">Markdown</a></div>
+</section>
+<table>
+<thead><tr><th>Started</th><th>Messages</th><th>CWD</th><th>Title</th><th>MD</th><th>HTML</th></tr></thead>
+<tbody>
+<tr><td>2026-04-23 08:53:18 +0800</td><td>900</td><td><code>/home/iaar/workspace/ccmix-wp</code></td><td>我现在需要拆分前后端，这样以后不管是web还是qml，都是通过这个后端去和其他cnc plc模块交互，这个后端作为一个前端工程的中间态存在，我需要设计一下这次的分离，你给出一些具体方案，可以参考一下...</td><td><a href="sessions/20260423-085318-019db7d3-b670-7033-9c0f-eba843de3fdb.md">md</a></td><td><a href="sessions/20260423-085318-019db7d3-b670-7033-9c0f-eba843de3fdb.html">html</a></td></tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>

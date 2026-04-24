@@ -135,7 +135,7 @@ MetaNC is under active development. Favor clarity, small changes, and documentat
 <div><b>Started</b>: <code>2026-04-24 13:47:49 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T13-47-49-019dbe07-b525-70a2-9af9-e1ccf04882ea.jsonl</code></div>
-<div><b>Messages</b>: <code>53</code></div>
+<div><b>Messages</b>: <code>54</code></div>
 </section>
 <article class="msg user">
 <h2>1. User</h2>
@@ -484,6 +484,40 @@ python3 -m unittest tests.test_sync_scripts -v
 <div class="time">2026-04-24 14:40:20 +0800</div>
 <pre>mdBook 连 HTML anchor 里的 `.md` href 也会重写，我会把 Markdown 文件链接改成 URL-encoded `all%2Emd`，这样构建后不会被改写，但浏览器仍会访问 `all.md`。</pre>
 </article>
+<article class="msg assistant">
+<h2>54. Codex / final_answer</h2>
+<div class="time">2026-04-24 14:42:23 +0800</div>
+<pre>已处理完成，没提交。
+
+服务已停：`127.0.0.1:8010` 没有我启动的监听进程。
+
+你可以先看这些入口：
+
+- 今天 report：首页 [2026-04-24 build_html/index.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-24-codex-session/build_html/index.html)
+- 今天简约用户历史页：[user-history.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-24-codex-session/build_html/user-history.html)
+- 今天完整 Codex 会话入口：[codex-conversations/index.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-24-codex-session/codex-conversations/index.html)
+- 今天完整单页：[codex-conversations/all.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-24-codex-session/codex-conversations/all.html)
+- reports 总站点：[submodule site/index.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/site/index.html)
+- 主文档 reports 索引：[docs_html/project/reports.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/project/reports.html)
+
+已对所有历史 `*-codex-session` 刷新：
+
+- 每天保留原来的 `user-history.md` 简约用户发言。
+- 每天新增/更新 `codex-conversations/` 完整会话导出。
+- 每天的 `README.md`、`src/SUMMARY.md`、`src/user-history.md`、总 reports session page 都已接入完整会话链接。
+- 今天 `2026-04-24` 新建了完整 session report，full export 是 2 个 sessions、51 条 messages。
+
+验证已跑：
+
+```bash
+./tools/build_docs_html.sh
+mdbook build submodules/metanc_hmi_dsl_reports
+python3 -m unittest tests.test_codex_user_history_export -v
+python3 -m unittest tests.test_sync_scripts -v
+```
+
+注意：`build_html/` 和 `site/` 被 report 子模块 `.gitignore` 忽略，当前只是本地预览产物；后续正常提交会提交 Markdown/source 和 `codex-conversations/`，不会提交这些构建目录，除非你明确要强制提交静态 HTML。</pre>
+</article>
 
 </section>
 <section class="session">
@@ -495,7 +529,7 @@ python3 -m unittest tests.test_sync_scripts -v
 <div><b>Started</b>: <code>2026-04-24 14:45:46 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T14-45-46-019dbe3c-c36f-7143-8bfb-fdcf149bd7db.jsonl</code></div>
-<div><b>Messages</b>: <code>47</code></div>
+<div><b>Messages</b>: <code>52</code></div>
 </section>
 <article class="msg user">
 <h2>1. User</h2>
@@ -814,6 +848,31 @@ python3 -m unittest discover -s tests -p &#x27;test_*.py&#x27; -v
 <div class="time">2026-04-24 15:30:41 +0800</div>
 <pre>当前只有上轮新增的 history append-only exporter 代码未提交，reports 子仓库和 MetaNC 都是干净的。我先跑今天的 report 更新：简约 `user-history.md` 刷新，加上全历史 append-only 会话同步。</pre>
 </article>
+<article class="msg assistant">
+<h2>48. Codex / commentary</h2>
+<div class="time">2026-04-24 15:31:04 +0800</div>
+<pre>历史会话同步完成：扫描到 17 天、80 个 session，本轮新增 11 个、跳过已有 69 个。现在重建 report HTML 和 docs portal，再跑常规 target 生成。</pre>
+</article>
+<article class="msg assistant">
+<h2>49. Codex / commentary</h2>
+<div class="time">2026-04-24 15:31:43 +0800</div>
+<pre>生成链已完成，包括 report book、今天 session book、docs portal、Web/QML/server distribution。现在检查实际可提交变更范围，再同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h2>50. Codex / commentary</h2>
+<div class="time">2026-04-24 15:32:01 +0800</div>
+<pre>本轮 report 同步新增了 2026-04-02、2026-04-03、2026-04-07 的历史 session report 入口，并给 2026-04-24 追加了 2 个新的会话导出；这是符合“只增加、不删除”的。现在把共享 HMI 包导出到 MetaNC，确认下游是否有实际差异。</pre>
+</article>
+<article class="msg assistant">
+<h2>51. Codex / commentary</h2>
+<div class="time">2026-04-24 15:32:34 +0800</div>
+<pre>导出后 `MetaNC/feat/hmi` 仍然干净，说明这次变更都属于 source-only report 工具和 reports 子模块，不会进入 MetaNC 的 HMI 包。提交前我再跑一次相关单测，然后提交/push reports 子仓库和 `metanc_hmi_dsl` 主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h2>52. Codex / commentary</h2>
+<div class="time">2026-04-24 15:32:44 +0800</div>
+<pre>相关单测 24 个通过。现在先提交并推 reports 子仓库，再把子模块指针和 exporter 代码提交推到 `metanc_hmi_dsl/main`。</pre>
+</article>
 
 </section>
 <section class="session">
@@ -1128,7 +1187,7 @@ submodules/metanc_hmi_dsl_reports/
 <div><b>Started</b>: <code>2026-04-24 15:35:05 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T15-35-05-019dbe69-e917-7f20-ad5d-dd9262503c77.jsonl</code></div>
-<div><b>Messages</b>: <code>6</code></div>
+<div><b>Messages</b>: <code>18</code></div>
 </section>
 <article class="msg user">
 <h2>1. User</h2>
@@ -1159,6 +1218,911 @@ submodules/metanc_hmi_dsl_reports/
 <h2>6. Codex / commentary</h2>
 <div class="time">2026-04-24 15:36:53 +0800</div>
 <pre>我现在刷新 Codex conversation/history 报告，目标是把 2026-04-24 以及本地历史里缺的会话页补齐；这个命令是 append-only，不会覆盖已经存在的单会话导出。</pre>
+</article>
+<article class="msg assistant">
+<h2>7. Codex / commentary</h2>
+<div class="time">2026-04-24 15:37:07 +0800</div>
+<pre>历史导出刚跑完：本次只新增了 1 个缺失会话，其余 80 个已存在会话保持不覆盖。接下来跑 exporter 的单元测试，再重建 reports mdBook，确认生成链路没有坏。</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-24 15:37:32 +0800</div>
+<pre>report exporter 测试和两层 mdBook 构建都通过了。现在我收一下实际待提交范围，然后先提交 reports 子模块，再提交 `metanc_hmi_dsl` 主仓的工具/索引更新。</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-24 15:37:47 +0800</div>
+<pre>我现在要 stage reports 子模块的全部生成变更，包括刚新增的 2026-04-24 会话文件；提交顺序会先子模块、再主仓记录新的 submodule 指针。</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / commentary</h2>
+<div class="time">2026-04-24 15:38:05 +0800</div>
+<pre>reports 子模块已提交为 `0e82394`。我先把它推到子模块远端，然后主仓再记录这个新指针和 exporter 的代码/测试改动。</pre>
+</article>
+<article class="msg assistant">
+<h2>11. Codex / commentary</h2>
+<div class="time">2026-04-24 15:38:17 +0800</div>
+<pre>子模块远端已更新。现在我 stage `metanc_hmi_dsl` 主仓的 report 索引、history exporter、测试和新的 submodule 指针。</pre>
+</article>
+<article class="msg assistant">
+<h2>12. Codex / commentary</h2>
+<div class="time">2026-04-24 15:38:37 +0800</div>
+<pre>`metanc_hmi_dsl` 主仓已提交为 `e6a8390`，包含新的 reports 子模块指针和 history exporter 支持。我现在推主仓，然后执行一次 MetaNC export 同步。</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-24 15:38:54 +0800</div>
+<pre>主仓已推到 `origin/main`。现在把当前 `metanc_hmi_dsl` 导出到 `MetaNC/nrt/hmi`，按同步脚本的排除规则验证这轮 source-only 报告工具不会漏进下游。</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-24 15:39:11 +0800</div>
+<pre>MetaNC export 后工作区仍然 clean，说明这次改动确实都落在 source-only/report 范围，没有需要提交到 `MetaNC/nrt/hmi` 的差异。我仍然跑一次 MetaNC push 校验远端状态。</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-24 15:39:33 +0800</div>
+<pre>MetaNC 的 push 是 no-op，远端已经是最新。最后我核对三个工作区状态和提交号，然后给你收口结果。</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / final_answer</h2>
+<div class="time">2026-04-24 15:39:47 +0800</div>
+<pre>已处理完。
+
+- reports 子模块已提交并推送：`0e82394 docs: refresh Codex conversation exports`
+- `metanc_hmi_dsl` 已提交并推送：`e6a8390 feat: export historical Codex report sessions`
+- MetaNC 已执行 export 同步检查，`nrt/hmi` 没有产生差异；`git push` 返回 `Everything up-to-date`
+
+验证已跑：
+
+- `python3 tools/export_codex_user_history.py --mode full --full-scope history`
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests/test_codex_user_history_export.py -v`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-04-24-codex-session`
+
+当前 `metanc_hmi_dsl`、reports 子模块、`MetaNC` 三个工作区都 clean，并且都与各自 `origin` 对齐。</pre>
+</article>
+<article class="msg user">
+<h2>17. User</h2>
+<div class="time">2026-04-24 15:53:05 +0800</div>
+<pre>你现在可以干活吗</pre>
+</article>
+<article class="msg user">
+<h2>18. User</h2>
+<div class="time">2026-04-24 15:53:13 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1>ceshi</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe6f-c6eb-77d2-8d30-8e65eb0a69b6</code></div>
+<div><b>Started</b>: <code>2026-04-24 15:41:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T15-41-29-019dbe6f-c6eb-77d2-8d30-8e65eb0a69b6.jsonl</code></div>
+<div><b>Messages</b>: <code>4</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 15:41:35 +0800</div>
+<pre>ceshi</pre>
+</article>
+<article class="msg assistant">
+<h2>2. Codex / final_answer</h2>
+<div class="time">2026-04-24 15:41:39 +0800</div>
+<pre>收到，测试正常。</pre>
+</article>
+<article class="msg user">
+<h2>3. User</h2>
+<div class="time">2026-04-24 15:43:36 +0800</div>
+<pre>测试</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / final_answer</h2>
+<div class="time">2026-04-24 15:43:39 +0800</div>
+<pre>收到，当前对话正常。</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1>ceshi renwu</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe7e-3fee-7ad3-b874-d864498ddaf5</code></div>
+<div><b>Started</b>: <code>2026-04-24 15:57:18 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T15-57-18-019dbe7e-3fee-7ad3-b874-d864498ddaf5.jsonl</code></div>
+<div><b>Messages</b>: <code>5</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 15:57:28 +0800</div>
+<pre>ceshi renwu</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 15:59:08 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+<article class="msg user">
+<h2>3. User</h2>
+<div class="time">2026-04-24 15:59:20 +0800</div>
+<pre>给我看一下MetaNC本地有哪些分支</pre>
+</article>
+<article class="msg assistant">
+<h2>4. Codex / commentary</h2>
+<div class="time">2026-04-24 15:59:30 +0800</div>
+<pre>先定位 `MetaNC` 仓库，再直接列出本地分支。</pre>
+</article>
+<article class="msg user">
+<h2>5. User</h2>
+<div class="time">2026-04-24 16:00:09 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe86-b9fd-7ab0-bb0d-3b9a17d9d423</code></div>
+<div><b>Started</b>: <code>2026-04-24 16:06:33 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T16-06-33-019dbe86-b9fd-7ab0-bb0d-3b9a17d9d423.jsonl</code></div>
+<div><b>Messages</b>: <code>2</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 16:06:47 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: tooling-core namespace for CLI, compiler, theme/IR pipeline, design import, docs portal, story docs, and adapters.
+- `definition/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-24&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 16:06:47 +0800</div>
+<pre>现在需要检视一下我们这个项目，你总结一下，看一下todo</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe89-b2b5-73b2-a886-8e7b5ced0448</code></div>
+<div><b>Started</b>: <code>2026-04-24 16:09:48 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T16-09-48-019dbe89-b2b5-73b2-a886-8e7b5ced0448.jsonl</code></div>
+<div><b>Messages</b>: <code>3</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 16:09:52 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: tooling-core namespace for CLI, compiler, theme/IR pipeline, design import, docs portal, story docs, and adapters.
+- `definition/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-24&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 16:09:52 +0800</div>
+<pre>给我看一下MetaNC本地有哪些分支</pre>
+</article>
+<article class="msg user">
+<h2>3. User</h2>
+<div class="time">2026-04-24 16:11:24 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe8a-8dbf-7672-8860-80c35c5b1f75</code></div>
+<div><b>Started</b>: <code>2026-04-24 16:10:44 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T16-10-44-019dbe8a-8dbf-7672-8860-80c35c5b1f75.jsonl</code></div>
+<div><b>Messages</b>: <code>3</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 16:10:48 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: tooling-core namespace for CLI, compiler, theme/IR pipeline, design import, docs portal, story docs, and adapters.
+- `definition/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-24&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 16:10:48 +0800</div>
+<pre>你可以做什么</pre>
+</article>
+<article class="msg user">
+<h2>3. User</h2>
+<div class="time">2026-04-24 16:11:25 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe8b-95ba-7063-b3fd-38acb95d3719</code></div>
+<div><b>Started</b>: <code>2026-04-24 16:11:52 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T16-11-52-019dbe8b-95ba-7063-b3fd-38acb95d3719.jsonl</code></div>
+<div><b>Messages</b>: <code>3</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 16:11:56 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: tooling-core namespace for CLI, compiler, theme/IR pipeline, design import, docs portal, story docs, and adapters.
+- `definition/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-24&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 16:11:56 +0800</div>
+<pre>你可以做什么</pre>
+</article>
+<article class="msg user">
+<h2>3. User</h2>
+<div class="time">2026-04-24 16:12:36 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbe8c-e4a8-7143-b4d2-14a0f1a667f3</code></div>
+<div><b>Started</b>: <code>2026-04-24 16:13:17 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T16-13-17-019dbe8c-e4a8-7143-b4d2-14a0f1a667f3.jsonl</code></div>
+<div><b>Messages</b>: <code>2</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 16:13:36 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: tooling-core namespace for CLI, compiler, theme/IR pipeline, design import, docs portal, story docs, and adapters.
+- `definition/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-24&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 16:13:36 +0800</div>
+<pre>你现在可以干什么</pre>
+</article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl &lt;INSTRUCTIONS&gt; # Reposito...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dbeb7-4158-7c23-baaa-ffca19c25d3b</code></div>
+<div><b>Started</b>: <code>2026-04-24 16:59:34 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/24/rollout-2026-04-24T16-59-34-019dbeb7-4158-7c23-baaa-ffca19c25d3b.jsonl</code></div>
+<div><b>Messages</b>: <code>17</code></div>
+</section>
+<article class="msg user">
+<h2>1. User</h2>
+<div class="time">2026-04-24 16:59:45 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+&lt;INSTRUCTIONS&gt;
+# Repository Guidelines
+
+This file is the startup map for contributors and agents. `CLAUDE.md` points here for tool-specific entry, and deeper workflow policy lives under `docs/development_guidelines/`.
+
+## Purpose
+This repository defines the retained CNC HMI DSL, the reference source package, and the Python toolchain that validates retained documents, imports design evidence, and generates Web and Qt/QML prototypes. The retained YAML model is the source of truth; generated output is derived. Keep docs, the source package, and tooling aligned with that model.
+
+## Read First
+- `README.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `docs/development_guidelines/build_and_test.md`
+- `docs/development_guidelines/tooling.md`
+- `docs/development_guidelines/workflow/commit_and_log_conventions.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+
+## Repository Map
+- `tools/hmi_dsl/`: tooling-core namespace for CLI, compiler, theme/IR pipeline, design import, docs portal, story docs, and adapters.
+- `definition/`: canonical retained package with `product.manifest.yaml`, `ui.structure.yaml`, `style.theme.yaml`, `interfaces.machine.yaml`, and `design.import.yaml`.
+- `tests/`: `unittest` coverage and snapshot baselines under `tests/snapshots/`.
+- `docs/`: mdBook source root organized as `product/`, `requirements/`, `development_guidelines/`, `acceptance_reference/`, and `project/`.
+- `submodules/metanc_hmi_dsl_reports/`: session-report book and aggregate report history.
+- `generated/` and `docs_html/`: derived output only. Do not treat them as source of truth.
+
+## Command Gate
+Initialize submodules before validation:
+
+```bash
+git submodule update --init --recursive
+```
+
+Minimum local gate for most changes:
+
+```bash
+python3 -m unittest -v tests.test_pipeline
+mdbook build submodules/metanc_hmi_dsl_reports
+```
+
+Change-specific checks:
+- Retained DSL edits: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- Structural, style, or interface edits: `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generator or packaged output edits: `./tools/generate_targets.sh`
+- Docs portal or story-doc changes: `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- Docs portal rebuild only: `./tools/build_docs_html.sh`
+
+## Hard Rules
+- Keep UI structure, style semantics, interface catalogs, and design-import evidence in separate YAML documents.
+- Do not treat generated HTML, QML, `docs_html/`, or exported design-tool output as retained truth.
+- Keep theme changes semantic and contract-driven, not generator-specific.
+- Preserve screenshots, OCR text, region mappings, style candidates, interface implications, and unresolved review notes whenever available.
+- When renaming a published identifier, keep aliases and update affected references.
+- When behavior changes, update the defining docs in the same round.
+- Update `CHANGELOG.md` whenever retained contracts, source-package behavior, tooling behavior, tests, or contributor workflow expectations change.
+- Keep `CONTRIBUTING.md` and GitHub workflow expectations aligned with the actual repository process.
+
+## Naming &amp; Review
+- Python uses 4-space indentation, nearby module style, and type hints where the surrounding module already uses them.
+- Document-local IDs use lowercase `snake_case`, for example `page_overview` and `status_chip`.
+- Interface members use dot-separated semantic paths such as `machine.axes.x.position`.
+- Prefer semantic names for UI nodes and style roles; keep vendor-specific terms in aliases or annotations.
+- Commit subjects follow `type: short imperative summary` with `feat`, `fix`, `docs`, `test`, `refactor`, or `chore`.
+- Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`, list the validation you ran, state changelog impact, and note remaining risks.
+- Run opt-in visual snapshot checks when touching rendered QML or Web output.
+
+## If the Topic Grows
+Prefer expanding the focused pages under `docs/` instead of turning this file into a long manual.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-04-24&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg user">
+<h2>2. User</h2>
+<div class="time">2026-04-24 16:59:45 +0800</div>
+<pre>你现在可以做什么</pre>
+</article>
+<article class="msg assistant">
+<h2>3. Codex / final_answer</h2>
+<div class="time">2026-04-24 17:00:37 +0800</div>
+<pre>我现在可以在这个仓库里直接协作，例如：
+
+- 阅读和解释代码、DSL YAML、文档和测试
+- 修改实现、文档、测试或 retained model
+- 运行验证命令，比如 `unittest`、`validate`、`build-ir`、生成脚本
+- 排查构建、测试、生成 Web/QML 原型的问题
+- 做代码审查，指出具体文件和行号里的风险
+- 按仓库规范更新 `CHANGELOG.md`、贡献文档、开发指南
+- 帮你准备提交说明、PR 描述或验证清单
+
+当前我在：
+
+`/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl`
+
+我可以读写这个工作区。涉及联网、安装依赖、删除文件、重置 Git 状态等操作时，我会先请求批准。把具体目标、报错或想改的功能发给我，我会直接开始。</pre>
+</article>
+<article class="msg user">
+<h2>4. User</h2>
+<div class="time">2026-04-24 17:02:58 +0800</div>
+<pre>检查一下当前目录文件</pre>
+</article>
+<article class="msg assistant">
+<h2>5. Codex / commentary</h2>
+<div class="time">2026-04-24 17:03:07 +0800</div>
+<pre>我先确认当前路径并列出顶层文件，看看工作区的基本状态。</pre>
+</article>
+<article class="msg assistant">
+<h2>6. Codex / final_answer</h2>
+<div class="time">2026-04-24 17:03:15 +0800</div>
+<pre>当前目录是：
+
+`/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl`
+
+顶层内容包括：
+
+- 配置/入口：`AGENTS.md`、`CLAUDE.md`、`README.md`、`CONTRIBUTING.md`、`CHANGELOG.md`
+- 源与模型：`tools/`、`definition/`、`client/`、`server/`、`contract/`
+- 测试与文档：`tests/`、`docs/`、`submodules/`
+- 派生输出：`generated/`、`docs_html/`、`reports/`
+- Git/工具目录：`.git/`、`.github/`、`.gitignore`、`.gitmodules`
+
+也有一些本地缓存或辅助目录：`.pytest_cache/`、`.pics/`、`.claude/`、`.superpowers/`。</pre>
+</article>
+<article class="msg user">
+<h2>7. User</h2>
+<div class="time">2026-04-24 17:04:51 +0800</div>
+<pre>你帮我检查一下，为什么/compact会失败</pre>
+</article>
+<article class="msg assistant">
+<h2>8. Codex / commentary</h2>
+<div class="time">2026-04-24 17:05:05 +0800</div>
+<pre>我会先在仓库和本地 Codex 配置/日志里找和 `/compact` 相关的痕迹，再判断是命令本身、当前目录里的 `.codex` 文件，还是会话压缩流程出错。</pre>
+</article>
+<article class="msg assistant">
+<h2>9. Codex / commentary</h2>
+<div class="time">2026-04-24 17:05:19 +0800</div>
+<pre>仓库里只有业务代码里的 “compact” 命名，没有发现 `/compact` 命令实现。下一步我看 Codex TUI 日志和本地状态库，那里更可能记录失败原因。</pre>
+</article>
+<article class="msg assistant">
+<h2>10. Codex / commentary</h2>
+<div class="time">2026-04-24 17:05:35 +0800</div>
+<pre>日志里已经有关键错误：`/compact` 请求发出去了，但远端 `https://coding.optcnc.org/responses/compact` 返回了 `502 Bad Gateway`。我再确认一下当前 Codex 版本和 provider 配置，判断是不是本地配置指向的网关不支持 compact 端点。</pre>
+</article>
+<article class="msg assistant">
+<h2>11. Codex / final_answer</h2>
+<div class="time">2026-04-24 17:06:01 +0800</div>
+<pre>我查到原因了：这次 `/compact` 不是当前仓库文件导致的，也不是上下文窗口满了，而是远端压缩接口失败。
+
+关键日志在 `/home/iaar/.codex/log/codex-tui.log`：
+
+```text
+2026-04-24T09:02:47Z remote compaction failed
+compact_error=unexpected status 502 Bad Gateway
+url: https://coding.optcnc.org/responses/compact
+request id: e42442ae-5d40-41c4-95c9-98072d149676
+```
+
+换成本地时间是 **2026-04-24 17:02:47 Asia/Shanghai**。当时请求大小不大：`last_api_response_total_tokens=16408`，`failing_compaction_request_model_visible_bytes=43972`，模型窗口日志里是 `258400` tokens，所以不是因为内容太长。
+
+当前配置里 Codex 指向的是自定义 provider：
+
+```toml
+base_url = &quot;https://coding.optcnc.org&quot;
+wire_api = &quot;responses&quot;
+```
+
+所以 `/compact` 会调用 `https://coding.optcnc.org/responses/compact`。这个网关返回了 `502 Bad Gateway: Upstream request failed`，说明更像是网关/上游接口问题，或者这个自定义服务对 `/responses/compact` 支持不稳定。
+
+另外我还看到同一天有多次类似问题：`/responses` 流断开、`/responses/compact` 返回 `502`，还有一次 compact 返回 `429 Too Many Requests`。所以这是远端服务不稳定/限流的概率很高。
+
+有一个配置风险也值得注意：
+
+```toml
+model_context_window = 1000000
+model_auto_compact_token_limit = 900000
+```
+
+但日志实际识别模型窗口是 `258400`。这会导致自动 compact 阈值设得过高，可能还没触发自动压缩就先撞上下文限制。手动 `/compact` 这次失败不是它造成的，但建议把 `model_auto_compact_token_limit` 调低到实际窗口以内，比如 `200000` 左右。
+
+结论：当前失败主因是 `coding.optcnc.org` 的 `/responses/compact` 返回 502。短期只能重试、开新会话，或临时切回支持 compact 的 provider；长期要修复这个自定义网关的 `/responses/compact` 转发/上游支持。</pre>
+</article>
+<article class="msg user">
+<h2>12. User</h2>
+<div class="time">2026-04-24 17:15:42 +0800</div>
+<pre>更新一下今天的所有文档，然后metanc_hmi_dsl中report相关和user相关都更新提交push，MetaNC里面有相关的内容也更新提交一下，二者一些需要同步的同步一下</pre>
+</article>
+<article class="msg assistant">
+<h2>13. Codex / commentary</h2>
+<div class="time">2026-04-24 17:16:15 +0800</div>
+<pre>我会先把两个仓库的当前状态、今天的报告/用户历史生成脚本、以及同步脚本摸清楚，再做生成、同步、提交和 push。这个任务涉及两个 Git 仓库，我会避免覆盖已有未提交改动。</pre>
+</article>
+<article class="msg assistant">
+<h2>14. Codex / commentary</h2>
+<div class="time">2026-04-24 17:16:32 +0800</div>
+<pre>两个仓库顶层当前都是干净的：`metanc_hmi_dsl` 在 `main`，`MetaNC` 在 `feat/hmi`。我现在把报告导出脚本和同步脚本的用法确认一下，避免把源仓库专用的历史工具误同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h2>15. Codex / commentary</h2>
+<div class="time">2026-04-24 17:16:47 +0800</div>
+<pre>报告工具支持两类刷新：当天 `user-history.md`，以及从本地 Codex sessions 追加完整会话到各日期的 `codex-conversations/`。我会按这个流程先刷新 2026-04-24 的报告，再重新构建报告书和主文档门户。</pre>
+</article>
+<article class="msg assistant">
+<h2>16. Codex / commentary</h2>
+<div class="time">2026-04-24 17:17:14 +0800</div>
+<pre>我会先把三个 Git 工作区快进到远端当前分支：源仓库、报告子模块、MetaNC。这样后面的提交不会基于过期状态。</pre>
+</article>
+<article class="msg assistant">
+<h2>17. Codex / commentary</h2>
+<div class="time">2026-04-24 17:18:05 +0800</div>
+<pre>接下来会写入报告子模块：刷新当天 brief 用户历史、当天完整会话导出，并按 history scope 补齐本地历史中尚未进入报告目录的会话导出。随后我会构建报告书和主文档门户。</pre>
 </article>
 
 </section>

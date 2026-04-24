@@ -75,3 +75,21 @@ Date: 2026-04-24
 - 这个感觉让人来做worktree管理有点费劲，是不是可以指定agent去分任务执行
 - metanc_hmi_dsl中，我需要每次生成/更新report的时候，把所有的历史user session对话检查更新一下，只增加不删除，存在的不要覆写，有办法吗，需要效率高一些的
 - 更新本日所有生成并提交push，MetaNC和metanc_hmi_dsl都同步处理一下
+- go on
+- go on
+- go on
+- 更新本日所有生成并提交push，MetaNC和metanc_hmi_dsl都同步处理一下
+- ceshi
+- 测试
+- 你现在可以干活吗
+- ceshi renwu
+- 给我看一下MetaNC本地有哪些分支
+- 现在需要检视一下我们这个项目，你总结一下，看一下todo
+- 给我看一下MetaNC本地有哪些分支
+- 你可以做什么
+- 你可以做什么
+- 你现在可以干什么
+- 你现在可以做什么
+- 检查一下当前目录文件
+- 你帮我检查一下，为什么/compact会失败
+- 更新一下今天的所有文档，然后metanc_hmi_dsl中report相关和user相关都更新提交push，MetaNC里面有相关的内容也更新提交一下，二者一些需要同步的同步一下

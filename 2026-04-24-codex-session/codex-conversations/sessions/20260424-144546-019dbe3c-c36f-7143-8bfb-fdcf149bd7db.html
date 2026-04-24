@@ -86,7 +86,7 @@ pre {
 <div><b>Started</b>: <code>2026-04-24 14:45:46 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/24/rollout-2026-04-24T14-45-46-019dbe3c-c36f-7143-8bfb-fdcf149bd7db.jsonl</code></div>
-<div><b>Messages</b>: <code>47</code></div>
+<div><b>Messages</b>: <code>52</code></div>
 </section>
 <article class="msg user">
 <h2>1. User</h2>
@@ -404,6 +404,31 @@ python3 -m unittest discover -s tests -p &#x27;test_*.py&#x27; -v
 <h2>47. Codex / commentary</h2>
 <div class="time">2026-04-24 15:30:41 +0800</div>
 <pre>当前只有上轮新增的 history append-only exporter 代码未提交，reports 子仓库和 MetaNC 都是干净的。我先跑今天的 report 更新：简约 `user-history.md` 刷新，加上全历史 append-only 会话同步。</pre>
+</article>
+<article class="msg assistant">
+<h2>48. Codex / commentary</h2>
+<div class="time">2026-04-24 15:31:04 +0800</div>
+<pre>历史会话同步完成：扫描到 17 天、80 个 session，本轮新增 11 个、跳过已有 69 个。现在重建 report HTML 和 docs portal，再跑常规 target 生成。</pre>
+</article>
+<article class="msg assistant">
+<h2>49. Codex / commentary</h2>
+<div class="time">2026-04-24 15:31:43 +0800</div>
+<pre>生成链已完成，包括 report book、今天 session book、docs portal、Web/QML/server distribution。现在检查实际可提交变更范围，再同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h2>50. Codex / commentary</h2>
+<div class="time">2026-04-24 15:32:01 +0800</div>
+<pre>本轮 report 同步新增了 2026-04-02、2026-04-03、2026-04-07 的历史 session report 入口，并给 2026-04-24 追加了 2 个新的会话导出；这是符合“只增加、不删除”的。现在把共享 HMI 包导出到 MetaNC，确认下游是否有实际差异。</pre>
+</article>
+<article class="msg assistant">
+<h2>51. Codex / commentary</h2>
+<div class="time">2026-04-24 15:32:34 +0800</div>
+<pre>导出后 `MetaNC/feat/hmi` 仍然干净，说明这次变更都属于 source-only report 工具和 reports 子模块，不会进入 MetaNC 的 HMI 包。提交前我再跑一次相关单测，然后提交/push reports 子仓库和 `metanc_hmi_dsl` 主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h2>52. Codex / commentary</h2>
+<div class="time">2026-04-24 15:32:44 +0800</div>
+<pre>相关单测 24 个通过。现在先提交并推 reports 子仓库，再把子模块指针和 exporter 代码提交推到 `metanc_hmi_dsl/main`。</pre>
 </article>
 </main>
 </body>

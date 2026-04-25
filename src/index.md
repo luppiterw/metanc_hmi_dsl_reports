@@ -36,6 +36,8 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 | Session | Primary focus |
 | --- | --- |
 | `2026-04-24` | Session bootstrap and Codex user-history export tooling |
+| `2026-04-25` | Story structure tightening, bilingual docs portal output, and page-by-page zh-CN overlay rollout without polluting English source docs |
+| `2026-04-24` | Session bootstrap and Codex user-history export tooling |
 | `2026-04-23` | Session bootstrap and Codex user-history export tooling |
 | `2026-04-22` | Rebuild the shared soft operations panel, then tighten it into a `40x40` hardware-like final layout across retained/QML/Web while restoring the working Web browser screenshot path for final visual verification |
 | `2026-04-21` | Finish the header and ops-shell unification, rework the overview page into a tighter one-page layout, then close the QML-only stage/footer and final per-panel stretch/centering issues before the next MetaNC sync round |

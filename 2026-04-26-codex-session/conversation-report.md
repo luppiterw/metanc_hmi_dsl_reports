@@ -113,6 +113,37 @@
 - `4.25` 从 `11` 个重复 snapshot 收成 `3` 个逻辑 session
 - `4.26` 虽然仍是 `1` 个逻辑 session，但 index 会按当天全部 turn 展开
 
+### 阶段 K: 收口 HMI server 推荐方案包
+
+在 docs portal、report transcript 和导出器问题收住后，讨论重心又转到 `HMI server` 本身。
+这一段工作不是直接改 server 代码，而是围绕后续技术路线整理一套可阅读、可讨论、可落地的方案包，重点包括：
+
+- 当前 `HTTP + JSON + polling` 形态为什么更像过渡态
+- 为什么 northbound 更适合演进到 `HTTPS/REST + WebSocket`
+- 为什么 southbound 应该优先 `OPC UA`，再用工业网关收口 legacy 协议
+- 为什么单站点边缘部署应先用 `Docker Compose + Traefik + PostgreSQL + OTel/Prom/Grafana`
+
+这一阶段最终产出了一份独立文档、一份 PDF，以及两张架构图，全部归档到今天的 report 目录里。
+
+### 阶段 L: 用户指出 report 导出仍然落后
+
+在方案包已经写入 report 并推送后，用户继续检查今天 report，发现：
+
+- `user-history.md` 还停在较早一轮
+- `codex-conversations` 的统计和当天最后几轮对话没有一起刷新
+
+于是又追加了一次 report 收尾：
+
+- 重新导出 `2026-04-26` 的 `user-history.md`
+- 重新导出 `2026-04-26` 的 `codex-conversations/`
+- 将“方案整理完成、PDF 导出完成、用户指出导出落后、然后再次刷新 report”的结果一并回写到今天的摘要文档
+
+这一轮刷新后，今天 report 的完整会话统计从较早快照推进到：
+
+- `2` 个 session
+- `37` 个 user prompts
+- `371` 条 messages
+
 ## 3. 关键决策
 
 ### 先修最终产物，再考虑是否改历史源 transcript
@@ -134,6 +165,11 @@
 当一天只有一个 rollout 文件但里面有很多轮对话时，“一个文件一行”的 index 没有阅读价值。
 这轮之后，完整会话导出以 turn 为主要阅读单位，而不再只把 rollout 文件当作唯一索引粒度。
 
+### report 不是只在“写完正文时”刷新
+
+这次最后一段又证明，session report 不能只在项目文档写完时刷新一次。
+只要当天还在继续对话、继续产生产物，就应该把 `user-history` 和 `codex-conversations` 再同步一轮，否则 report 会落后于真实 session。
+
 ## 4. 总结
 
 2026-04-26 这轮工作的核心不是新增一批文档，而是把已有文档体系真正变成一套：
@@ -144,5 +180,7 @@
 - 发布产物不再继续暴露明显本机路径
 - 主仓库和 MetaNC 行为一致
 - 完整会话导出的 index 和详细页终于更接近真实对话结构
+- `HMI server` 推荐方案、实施清单、图和 PDF 已归档到今天 report
+- 今天 report 在最后一轮对话后又执行了一次导出刷新，避免 session 内容停在旧快照
 
 今天这份 report 本身，也成为这轮“文档与报告产物收口”工作的最终落点。

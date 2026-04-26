@@ -171,3 +171,22 @@
 1. 第一阶段先把 northbound、contract 分层、观测和 Compose 部署打通
 2. 第二阶段补 `OPC UA` 和工业网关链路
 3. 第三阶段再根据规模决定时序库、`Kubernetes` 和更细粒度服务拆分
+
+## 8. report 刷新修正
+
+在方案包已经整理进今天 report 并完成一次推送后，用户又指出一个发布问题：今天的 `Codex user session` 并没有完整刷新进 report，`user-history` 和 `codex-conversations` 仍停在较早一轮快照。
+
+为了解决这个问题，这轮又补做了一次当日 report 刷新：
+
+- 重新导出 `2026-04-26` 的 `user-history.md`
+- 重新导出 `2026-04-26` 的完整 `codex-conversations/`
+- 让今天最后这轮“检查 report 是否落后、要求补进最后对话和结果”的用户消息也进入导出
+- 同时把“方案整理完成、PDF 导出完成、随后刷新 report”的结果写回今天的摘要文档
+
+刷新后，今天完整会话统计更新为：
+
+- `Sessions: 2`
+- `User prompts: 37`
+- `Messages: 371`
+
+这一步的意义不在新增内容，而在保证今天 report 真正对应“截至最后一次交互为止”的 session 状态，而不是停在中途快照。

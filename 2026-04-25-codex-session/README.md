@@ -23,6 +23,20 @@
 - `project-report.md`: 本轮 story 结构重构、多语言 docs 管线、中文镜像补齐和验证结果总结
 - `conversation-report.md`: 从“story 太松散”到“逐页补齐中文镜像”的摘要过程记录
 - `user-history.md`: 当天用户发言原始导出
+- `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: 从 story 重构到双语 docs 输出与报告补齐的工作流图
 - `architecture-diagram.md`: 英文源文档、外部中文 overlay、staging build、双语 docs_html 与 reports 子模块之间的关系图
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
+
+<!-- codex-full-export:start -->
+## Complete Codex Conversation Export
+
+- Scope: `2026-04-25`
+- Sessions: `11`
+- Messages: `655`
+- User messages: `187`
+- Codex messages: `468`
+- HTML index: [Open](codex-conversations/index.html)
+- Single-page HTML: [Open](codex-conversations/all.html)
+- Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
+<!-- codex-full-export:end -->

@@ -1,4 +1,4 @@
-# User History
+# Codex Conversations
 
 ## Complete Codex Conversation Export
 
@@ -10,7 +10,3 @@
 - HTML index: [Open](../codex-conversations/index.html)
 - Single-page HTML: [Open](../codex-conversations/all.html)
 - Single-page Markdown: <a href="../codex-conversations/all%2Emd">Open</a>
-
-## Brief User Prompt Export
-
-{{#include ../user-history.md}}

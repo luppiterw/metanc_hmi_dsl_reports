@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Local Conversation Export</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<h1>Codex Local Conversation Export</h1>
+<section class="meta">
+<div><b>Sessions</b>: <code>11</code></div>
+<div><b>Messages</b>: <code>655</code></div>
+<div><b>User messages</b>: <code>187</code></div>
+<div><b>Codex messages</b>: <code>468</code></div>
+<div><b>Full export</b>: <a href="all.html">HTML</a> / <a href="all.md">Markdown</a></div>
+</section>
+<table>
+<thead><tr><th>Started</th><th>Messages</th><th>CWD</th><th>Title</th><th>MD</th><th>HTML</th></tr></thead>
+<tbody>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>369</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>18</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-2.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-2.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>18</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-3.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-3.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>24</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-4.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-4.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>32</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-5.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-5.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>30</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-6.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-6.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>32</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-7.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-7.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>60</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-8.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-8.html">html</a></td></tr>
+<tr><td>2026-04-25 05:33:24 +0800</td><td>60</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-9.md">md</a></td><td><a href="sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-9.html">html</a></td></tr>
+<tr><td>2026-04-25 07:21:53 +0800</td><td>6</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>Inspect /home/i5/workspace/ccmix-wp/metanc_hmi_dsl story documentation tooling, especially tools/hm...</td><td><a href="sessions/20260425-072153-019dc1cc-ba7f-7252-8c9d-2841416ba633.md">md</a></td><td><a href="sessions/20260425-072153-019dc1cc-ba7f-7252-8c9d-2841416ba633.html">html</a></td></tr>
+<tr><td>2026-04-25 07:21:53 +0800</td><td>6</td><td><code>/home/i5/workspace/ccmix-wp</code></td><td>Inspect /home/i5/workspace/ccmix-wp/metanc_hmi_dsl and /home/i5/workspace/ccmix-wp/MetaNC for any e...</td><td><a href="sessions/20260425-072153-019dc1cc-baba-78a2-90c3-c0f070b11e62.md">md</a></td><td><a href="sessions/20260425-072153-019dc1cc-baba-78a2-90c3-c0f070b11e62.html">html</a></td></tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>

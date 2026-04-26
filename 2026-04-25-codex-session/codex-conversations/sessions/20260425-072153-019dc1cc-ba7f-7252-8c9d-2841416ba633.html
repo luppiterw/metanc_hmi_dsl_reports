@@ -57,6 +57,11 @@ th { background: #efe2ca; position: sticky; top: 0; }
 }
 .msg.user { border-left: 8px solid var(--user); }
 .msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
 .time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
 pre {
   white-space: pre-wrap;
@@ -87,34 +92,37 @@ pre {
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/25/rollout-2026-04-25T07-21-53-019dc1cc-ba7f-7252-8c9d-2841416ba633.jsonl</code></div>
 <div><b>Messages</b>: <code>6</code></div>
+<div><b>Turns</b>: <code>1</code></div>
 </section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
 <article class="msg user">
-<h2>1. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:21:53 +0800</div>
 <pre>Inspect /home/i5/workspace/ccmix-wp/metanc_hmi_dsl story documentation tooling, especially tools/hmi_dsl/story_docs.py, tests/test_story_docs.py, definition/story.catalog.yaml, and related docs. Recommend the smallest practical model/doc changes to support: 1) top-down product story planning, 2) separating product stories from enablers, 3) change management and risk control fields, while minimizing breakage to current generated outputs. Provide concrete field/doc recommendations and note any generator/test updates that would be required.</pre>
 </article>
 <article class="msg assistant">
-<h2>2. Codex / commentary</h2>
+<h3>Codex Response 1 / commentary</h3>
 <div class="time">2026-04-25 07:22:02 +0800</div>
 <pre>I’m inspecting the current story documentation model and generator behavior first so the recommendations stay minimal and compatible with existing outputs. I’ll read the core script, tests, catalog schema/examples, and any nearby docs that define the current story structure.</pre>
 </article>
 <article class="msg assistant">
-<h2>3. Codex / commentary</h2>
+<h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-04-25 07:22:14 +0800</div>
 <pre>I have the current shape: stories are perspective-scoped and directly drive the generated perspective docs, while features/tests/integrations/reports are linked off them. Next I’m reading the rest of the catalog and renderer logic to see which fields are surfaced today and where additive fields would stay non-breaking.</pre>
 </article>
 <article class="msg assistant">
-<h2>4. Codex / commentary</h2>
+<h3>Codex Response 3 / commentary</h3>
 <div class="time">2026-04-25 07:22:27 +0800</div>
 <pre>The existing docs already distinguish top-down planning in `story_map.md` from generator traceability in `story.catalog.yaml`, but the catalog itself still mixes product stories and enablers in one `stories` list. I’m checking whether there’s any existing validation or schema contract around that list before I recommend additive fields.</pre>
 </article>
 <article class="msg assistant">
-<h2>5. Codex / commentary</h2>
+<h3>Codex Response 4 / commentary</h3>
 <div class="time">2026-04-25 07:22:37 +0800</div>
 <pre>I’ve confirmed there’s no stricter schema than “these top-level fields are lists,” so the safest path is additive optional fields plus a small renderer tweak where the new distinctions should surface. I’m checking one more authoring/tooling doc to make sure the recommendations align with how contributors are told to maintain the catalog today.</pre>
 </article>
 <article class="msg assistant">
-<h2>6. Codex / final_answer</h2>
+<h3>Codex Response 5 / final_answer</h3>
 <div class="time">2026-04-25 07:23:31 +0800</div>
 <pre>**Recommendation**
 
@@ -201,6 +209,7 @@ Add only two focused tests:
 
 I would not rewrite existing expected strings or acceptance-reference docs until you actually populate the new fields in the main catalog. That keeps current generated outputs effectively unchanged until the team chooses to use the new model.</pre>
 </article>
+</section>
 </main>
 </body>
 </html>

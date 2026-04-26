@@ -2,6 +2,7 @@
 
 - [Overview](index.md)
 - [Maintenance](maintenance.md)
+- [2026-04-26 Session](sessions/2026-04-26-codex-session.md)
 - [2026-04-25 Session](sessions/2026-04-25-codex-session.md)
 - [2026-04-24 Session](sessions/2026-04-24-codex-session.md)
 - [2026-04-07 Session](sessions/2026-04-07-codex-session.md)

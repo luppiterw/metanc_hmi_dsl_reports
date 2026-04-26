@@ -1,6 +1,5 @@
-# Session Reports
 
-This book is the top-level report index for the `metanc_hmi_dsl_reports` repository.
+| `2026-04-26` | Session bootstrap and Codex user-history export tooling |hmi_dsl_reports` repository.
 It provides one maintained entrypoint for the full daily-session history while keeping each dated session report independently buildable.
 
 ## Structure
@@ -35,7 +34,6 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-04-24` | Session bootstrap and Codex user-history export tooling |
 | `2026-04-25` | Story structure tightening, bilingual docs portal output, and page-by-page zh-CN overlay rollout without polluting English source docs |
 | `2026-04-24` | Session bootstrap and Codex user-history export tooling |
 | `2026-04-23` | Session bootstrap and Codex user-history export tooling |

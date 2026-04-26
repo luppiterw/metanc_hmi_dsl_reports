@@ -57,6 +57,11 @@ th { background: #efe2ca; position: sticky; top: 0; }
 }
 .msg.user { border-left: 8px solid var(--user); }
 .msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
 .time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
 pre {
   white-space: pre-wrap;
@@ -87,14 +92,17 @@ pre {
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/25/rollout-2026-04-25T07-48-22-019dc1e4-fbfd-7ec1-a009-205801636cef.jsonl</code></div>
 <div><b>Messages</b>: <code>18</code></div>
+<div><b>Turns</b>: <code>9</code></div>
 </section>
+<section class="turn">
+<h2>Turn 1</h2>
 <article class="msg user">
-<h2>1. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>metanc_hmi_dsl切换到feat/hmi分支并更新，MetaNC也更新一下</pre>
 </article>
 <article class="msg assistant">
-<h2>2. Codex / final_answer</h2>
+<h3>Codex Response 1 / final_answer</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>已处理。
 
@@ -104,13 +112,16 @@ pre {
 
 如果你要让 `metanc_hmi_dsl` 的 `feat/hmi` 跟踪远端，还需要你指定要跟踪的远端分支，或者我可以直接帮你把这个本地分支推到远端。</pre>
 </article>
+</section>
+<section class="turn">
+<h2>Turn 2</h2>
 <article class="msg user">
-<h2>3. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>metanc_hmi_dsl的submodule更新了吗</pre>
 </article>
 <article class="msg assistant">
-<h2>4. Codex / final_answer</h2>
+<h3>Codex Response 1 / final_answer</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>没有额外把 submodule 拉到它自己远端的最新提交。
 
@@ -123,13 +134,16 @@ pre {
 所以结论是：它和主仓库当前版本是同步的，但我之前没有单独执行“把 submodule 更新到其远端最新”的操作。  
 如果你要，我可以继续把 `metanc_hmi_dsl` 的 submodule 也 fetch/pull 到指定分支或最新提交。</pre>
 </article>
+</section>
+<section class="turn">
+<h2>Turn 3</h2>
 <article class="msg user">
-<h2>5. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>我现在要按story产品需求自上而下的方式来整理一些既有文档，先看一下metanc_hmi_dsl现有内容，然后后续要继续这些story（既有+新增）来持续开发client/server，然后对接后端的cnc plc那些，现在的文档感觉很凌乱，尤其是story这一层</pre>
 </article>
 <article class="msg assistant">
-<h2>6. Codex / final_answer</h2>
+<h3>Codex Response 1 / final_answer</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>看完了。`metanc_hmi_dsl` 的问题不是“没有文档”，而是“story 被放成了验收/追踪产物”，所以你要按产品 story 自上而下推进 client/server/CNC/PLC 时会很拧巴。
 
@@ -153,13 +167,16 @@ pre {
 
 我这轮先做了梳理，还没改文件。你要的话，我下一步就直接开始做第一阶段文档重构。</pre>
 </article>
+</section>
+<section class="turn">
+<h2>Turn 4</h2>
 <article class="msg user">
-<h2>7. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>你帮我创建一个分支来做这个事情，名字要合理一点，然后后续先在这个分支处理，按照你的规划开始</pre>
 </article>
 <article class="msg assistant">
-<h2>8. Codex / final_answer</h2>
+<h3>Codex Response 1 / final_answer</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>分支已经建好：`docs/story-topdown-reorg`。我已经开始在这个分支上做第一阶段整理，核心是把“顶层产品 story 规划”和“派生的 traceability/story pack”分开。
 
@@ -167,27 +184,44 @@ pre {
 
 验证已跑：`python3 -m unittest -v tests.test_story_docs`，3 个测试都通过。下一步就在这个分支继续做第二阶段，把 `definition/story.catalog.yaml` 里的 PM/dev 类 story 下沉成 enabler，并补齐 `program/tool/settings-diagnostics` 这些缺失的产品 story。</pre>
 </article>
+</section>
+<section class="turn">
+<h2>Turn 5</h2>
 <article class="msg user">
-<h2>9. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>提交记录一下这次的变更，后续每次的变更都生成一个提交，方便对照，然后继续你的工作，有些可以开启多agent的你可以使用，再一个就是story的结构要符合一个产品开发的自上而下新增、变更、风险管控等等，然后因为都是AI开发，要符合HARNESS开发原则</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn">
+<h2>Turn 6</h2>
 <article class="msg user">
-<h2>10. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>&lt;subagent_notification&gt;
 {&quot;agent_path&quot;:&quot;019dc1cc-ba7f-7252-8c9d-2841416ba633&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Recommendation**\n\nThe smallest practical change is to keep the existing `stories` list and generated file set, then add a few optional planning fields rather than introducing a second top-level backlog model. Today the generator only groups by `perspective` and renders a fixed set of story bullets, so additive fields are the safest path with minimal output breakage: [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:293), [story.catalog.yaml](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/definition/story.catalog.yaml:13), [story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:96), [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:28).\n\nI’d recommend:\n\n1. Add optional top-level `epics:`.\n2. Keep all backlog items in `stories:`, but add `story_type: product | enabler`.\n3. Add `epic_ref` to stories.\n4. Add a small change/risk block on stories only.\n\nA concrete minimal shape:\n\n```yaml\nepics:\n  - id: epic_overview_dashboard\n    title: Overview dashboard\n    summary: Readable machine-state shell across targets.\n\nstories:\n  - id: story_product_machine_console\n    perspective: product\n    story_type: product\n    epic_ref: epic_overview_dashboard\n    title: Deliver a readable machine overview console on both targets\n    change_scope: [definition, client, tests]\n    risk_level: medium\n    risk_notes:\n      - Layout regressions can break both Web and QML readability.\n    change_controls:\n      - Keep snapshot and visual baselines green before merge.\n\n  - id: story_pm_release_traceability\n    perspective: project_management\n    story_type: enabler\n    epic_ref: epic_cross_cutting_delivery\n    supports_story_refs:\n      - story_product_machine_console\n      - story_product_alarm_handling\n    title: Keep stories, features, tests, and reports traceable in one pack\n    change_scope: [docs, tests]\n    risk_level: low\n```\n\n**Why these fields**\n\n- `epics` + `epic_ref`: adds top-down planning alignment without replacing `story_map.md`. It gives the catalog a stable bridge from Layer 0/1 planning into traceability.\n- `story_type`: cleanly separates product stories from enablers without changing perspective views or existing IDs.\n- `supports_story_refs`: lets enablers stay attached to real product outcomes instead of sitting as peer “stories” with no declared purpose.\n- `change_scope`: captures the delivery slices already described in [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:41) using compact values like `definition`, `client`, `server`, `adapter`, `tests`, `docs`.\n- `risk_level`, `risk_notes`, `change_controls`: enough for change management and release control without inventing a larger workflow system. `test_refs` already covers verification links, so `change_controls` can stay prose.\n\n**Generator updates required**\n\nSmall and additive only:\n\n- In [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:209), optionally validate `epics` as a list, same as existing top-level lists.\n- In `_build_context` at [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:293), add `epics` and `epics_by_id`.\n- In `_render_story_section` at [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:411), conditionally render new bullets only when present:\n  - `Story Type`\n  - `Epic`\n  - `Supports`\n  - `Change Scope`\n  - `Risk`\n  - `Change Controls`\n- Do not change current file names, perspective grouping, traceability matrix columns, or execution-links structure yet. That avoids broad snapshot churn.\n- Optionally add a short “product vs enabler” count to `index.md`, but I would defer that to keep current output nearly unchanged.\n\n**Docs updates required**\n\n- Update [story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:30) to define `epics`, `story_type`, `supports_story_refs`, `change_scope`, `risk_level`, `risk_notes`, `change_controls`.\n- Update [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:65) to give each current epic a stable `epic_*` id that the catalog can reference.\n- Update contributor/tooling guidance in [tooling.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/tooling.md:135) with one short example entry using the new fields.\n\n**Tests required**\n\nExisting tests should mostly survive because they only check for core files and a few stable strings: [test_story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_story_docs.py:18).\n\nAdd only two focused tests:\n\n- Loader test: catalog with `epics:` still loads.\n- Rendering test: a temp catalog containing one `story_type: enabler` story with `epic_ref`, `risk_level`, and `change_controls` produces those labels in the perspective doc.\n\nI would not rewrite existing expected strings or acceptance-reference docs until you actually populate the new fields in the main catalog. That keeps current generated outputs effectively unchanged until the team chooses to use the new model.&quot;}}
 &lt;/subagent_notification&gt;</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn">
+<h2>Turn 7</h2>
 <article class="msg user">
-<h2>11. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>&lt;subagent_notification&gt;
 {&quot;agent_path&quot;:&quot;019dc1cc-baba-78a2-90c3-c0f070b11e62&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No explicit named “HARNESS principles” showed up in either tree. The closest explicit harness guidance is MetaNC’s requirement for a practical development harness, plus HMI traceability/reporting rules. The actionable principles that should shape a top-down AI-driven story structure are:\n\n- Separate planning from generated traceability. In HMI, the story map is the planning surface; the story pack is derived output, not where scope is invented. See [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:3) and [story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:17). Short paraphrase: “new product scope” goes in the story map; the catalog/pack “normalizes” it for traceability.\n\n- Keep the top layer outcome-based. Product stories must describe operator/reviewer outcomes and must not be mixed with docs tooling, reporting mechanics, or workflow chores; those belong in an enabler backlog. See [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:28). This is the clearest rule for story hierarchy.\n\n- Decompose every story through fixed delivery slices. HMI explicitly requires the same slices for every story: `definition`, `client`, `server`, `adapter`, `tests`. See [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:41). For AI planning, this is the backbone of a top-down story template.\n\n- Capture implementation-critical story fields before coding. HMI’s delivery template requires: product outcome, interface scope, client slice, server slice, adapter slice, and verification. See [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:98). That should become the standard schema for story docs.\n\n- Maintain one structured traceability source, then generate views from it. HMI expects one YAML catalog containing stories, features, tests, interface integrations, and report refs, with four required perspectives: `product`, `project_management`, `development`, `user`. See [story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:30) and [story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:96). Good top-down structure: epic map first, perspective views second.\n\n- Make every story traceable to proof. HMI requires each story to link to at least one feature, test, relevant interface paths, and report/execution artifact when available. See [story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:109). This is strong AI-workflow guidance: no story without an evidence chain.\n\n- Update planning docs in a strict order when scope changes. HMI’s required order is scope/epic map, then story map, then story catalog, then implementation docs, then generated outputs. See [story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:109). That is a useful anti-drift rule for agent work.\n\n- Keep status and planning synchronized with reality. HMI requires `status_matrix.md` updates whenever implemented scope, missing scope, or priorities change, and treats it as the maintained implementation-status table. See [agent_handoff.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/workflow/agent_handoff.md:22) and [status_matrix.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/status_matrix.md:3). For top-down story docs, that means each epic/story should reflect current implemented vs missing capability, not aspirational drift.\n\n- Use source-first, AI-readable doc structure. MetaNC’s docs policy is explicit: “Source markdown is the primary artifact. Both humans and AI agents read `.md` files directly.” Docs must be meaningful without SUMMARY, small, tree-structured, and concise. See [docs_policy.md](/home/i5/workspace/ccmix-wp/MetaNC/docs/dev/docs_policy.md:5) and [docs_policy.md](/home/i5/workspace/ccmix-wp/MetaNC/docs/dev/docs_policy.md:68). For story docs, that argues for short index pages plus focused child pages, not giant planning monoliths.\n\n- Run AI development as small, acceptance-criteria-driven slices. MetaNC’s OODA doc says choose “one small slice with clear acceptance criteria,” prefer the “smallest change that reduces highest risk,” and copy the backlog acceptance checklist into execution. See [ooda.md](/home/i5/workspace/ccmix-wp/MetaNC/nrt/gcode_parser/docs/development_guidelines/ooda.md:30). Its backlog format reinforces this with required `Why`, `Scope`, `Acceptance Criteria`, `Out of Scope`, `SPEC Sections`, and `Tests To Add/Update`. See [backlog.md](/home/i5/workspace/ccmix-wp/MetaNC/nrt/gcode_parser/docs/development_guidelines/project_planning/backlog.md:3). This is the best explicit AI-workflow rule for story slicing.\n\n- Keep planning requirements-driven, not ad hoc. MetaNC’s implementation plan is explicitly “requirements-driven,” defines the target architecture, gaps, and work order, and separates runtime, IR, and interface boundaries cleanly. See [implementation_plan_from_requirements.md](/home/i5/workspace/ccmix-wp/MetaNC/nrt/gcode_parser/docs/development_guidelines/design/implementation_plan_from_requirements.md:66). Story docs should reflect architecture boundaries, not vague feature prose.\n\n- Favor milestone ordering and priority rules over opportunistic work. The roadmap is the “single source of truth for direction and sequencing” and prioritizes “reliability over feature breadth” and “SPEC alignment over ad-hoc behavior.” See [roadmap.md](/home/i5/workspace/ccmix-wp/MetaNC/nrt/gcode_parser/docs/development_guidelines/project_planning/roadmap.md:3). A good top-down story structure should therefore show epic order, not just a flat backlog.\n\n- Harness-oriented planning rule: include the development harness in the story, not only the production target. The only explicit harness guidance by name is MetaNC’s Orocos note: it is the “practical harness that AI agents need to run RT-side code, inspect behavior, debug issues, and iterate toward stable results before touching the final platform.” See [architecture.md](/home/i5/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:208). For story docs, that implies every story touching runtime/integration should name its mock/sim/harness path and its migration path to real adapters.\n\nNet result: the strongest repo-wide pattern is `epic -&gt; outcome story -&gt; fixed delivery slices -&gt; acceptance criteria/spec/tests -&gt; generated traceability/evidence`, with docs written in a source-first structure optimized for AI agents and work executed in small, coherent, evidence-backed slices.&quot;}}
 &lt;/subagent_notification&gt;</pre>
 </article>
 <article class="msg assistant">
-<h2>12. Codex / final_answer</h2>
+<h3>Codex Response 1 / final_answer</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>分支已经在 `docs/story-topdown-reorg` 上继续推进，当前工作区是干净的。为方便对照，我已经按轮次做了 3 个提交：
 
@@ -201,33 +235,43 @@ pre {
 
 下一步最合适的是从新补的 planned story 里选一个主线开始往下拆。我建议优先做 `story_product_program_execution_flow`，因为它已经有部分既有实现和报告锚点，最适合继续往 `definition / contract / client / server / adapter / tests` 六层细化。</pre>
 </article>
+</section>
+<section class="turn">
+<h2>Turn 8</h2>
 <article class="msg user">
-<h2>13. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>按照你的规划继续，但是不要太啰嗦，给出关键输出</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn">
+<h2>Turn 9</h2>
 <article class="msg user">
-<h2>14. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:48:22 +0800</div>
 <pre>In /home/i5/workspace/ccmix-wp/metanc_hmi_dsl, inspect docs indexes/portal/navigation and story generation code. Recommend the smallest doc additions/links needed if we add a dedicated program-execution story breakdown document and want it discoverable from the top-down requirements flow. Do not edit files.</pre>
 </article>
 <article class="msg assistant">
-<h2>15. Codex / commentary</h2>
+<h3>Codex Response 1 / commentary</h3>
 <div class="time">2026-04-25 07:48:34 +0800</div>
 <pre>先看 `metanc_hmi_dsl` 里和入口导航相关的索引文档，以及 story 生成代码怎么把内容暴露出来。然后我给出“最小改动面”的推荐，不动文件。</pre>
 </article>
 <article class="msg assistant">
-<h2>16. Codex / commentary</h2>
+<h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-04-25 07:48:46 +0800</div>
 <pre>入口结构已经比较清楚了。接下来我只抓和“可发现性”直接相关的几个文件，看新文档最少要挂几处才会同时出现在 requirements 流和 docs portal 里。</pre>
 </article>
 <article class="msg assistant">
-<h2>17. Codex / commentary</h2>
+<h3>Codex Response 3 / commentary</h3>
 <div class="time">2026-04-25 07:49:42 +0800</div>
 <pre>我确认到一个关键点：`docs` 里现在的入口文档已经有人手工补过，但 `tools/hmi_dsl/docs_portal.py` 里的 portal 生成逻辑还是旧的。也就是说，如果只加 markdown 链接、不补生成器，下一次重建 portal 会把入口退回去。</pre>
 </article>
 <article class="msg assistant">
-<h2>18. Codex / final_answer</h2>
+<h3>Codex Response 4 / final_answer</h3>
 <div class="time">2026-04-25 07:51:15 +0800</div>
 <pre>看过了。最小且安全的方案是把新文档放在 `docs/requirements/`，不要放到 `docs/product/spec/` 或 `docs/acceptance_reference/story_pack/`，因为当前顶层规划入口明确是 requirements，而 story pack 只是派生追踪视图，[story_map.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_map.md:59) 已经这么定义了。
 
@@ -246,6 +290,7 @@ pre {
 
 这轮只做了检查，没有改文件。</pre>
 </article>
+</section>
 </main>
 </body>
 </html>

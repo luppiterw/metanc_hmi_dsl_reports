@@ -1,0 +1,2243 @@
+# Codex Local Conversation Export - All Sessions
+
+## 检查一下metanc_hmi_dsl里的最终生成，我怎么发现report里很多点进去都没有了
+
+- Session ID: `019dc814-163a-7881-a97a-9f494644d1c2`
+- Started: `2026-04-26 12:37:32 +0800`
+- CWD: `/home/i5/workspace/ccmix-wp`
+- Source file: `/home/i5/.codex/sessions/2026/04/26/rollout-2026-04-26T12-37-32-019dc814-163a-7881-a97a-9f494644d1c2.jsonl`
+- Messages: `241`
+- Turns: `23`
+
+<a id="turn-1"></a>
+## Turn 1
+
+### User
+`2026-04-26 12:38:08 +0800`
+
+```
+检查一下metanc_hmi_dsl里的最终生成，我怎么发现report里很多点进去都没有了
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 12:38:19 +0800`
+
+```
+我先检查 `metanc_hmi_dsl` 的生成链路和当前 `report` 产物，确认是生成阶段漏了页面，还是链接指向/输出目录有问题。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 12:38:34 +0800`
+
+```
+我已经定位到报告仓库在 `metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports`。下一步直接核对最新一次 session 的 `src/SUMMARY.md`、生成目录和实际文件，找断链或漏生成的部分。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 12:39:09 +0800`
+
+```
+一个明显异常已经出来了：`src/SUMMARY.md` 里有 `codex-conversations.md`，但 `build_html/` 里没有对应的 `codex-conversations.html`。而且时间戳显示 `build_html` 比源文件更早，像是“先 build，后补文件”，所以我现在去看生成脚本的顺序。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 12:39:36 +0800`
+
+```
+我现在把“最终生成”这条链也串起来看，因为不只是单个 session 目录，`generate_targets.sh` 里还会刷新 docs portal。如果 portal 只重建总索引、不重建每天的 session book，就会出现你看到的“能点但进去没有/不对”的现象。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 12:40:01 +0800`
+
+```
+现在范围缩小了：老一些的 session 在 `docs_html/reports/...` 里是有 `codex-conversations.html` 的，但较新的 `2026-04-23`、`2026-04-25` 看起来没有。这不像总 portal 的问题，更像是最近这批 session 源文件或生成顺序发生了变化。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 12:40:28 +0800`
+
+```
+`2026-04-25` 这一份已经确认不是“构建丢了”，而是源目录里就没有 `src/codex-conversations.md`，`SUMMARY.md` 里也没挂这个入口。也就是说最近这批 report 至少有一部分在源层就没补完整，我把所有 session 统一扫一遍，确认缺口范围。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 12:41:00 +0800`
+
+```
+我又发现一层更关键的问题：`codex-conversations` 这页本来是给“session 自己的 `build_html/`”用的，所以里面写的是 `../codex-conversations/index.html`。但 docs portal 把它重新发布到 `docs_html/reports/<session-id>/` 以后，这个相对路径就跑错目录了，点进去当然会空。现在我直接验证这个链接问题。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 12:41:15 +0800`
+
+```
+原因已经基本坐实了，不是你看错：`report` 里很多 “Open” 入口在最终 `docs_html/reports` 发布物里确实是断的。我要补两件事：一是让 portal 发布时把 `codex-conversations/` 这类会话静态资源一并带上；二是补一条测试把这个回归卡住。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 12:42:02 +0800`
+
+```
+接下来我直接修，不只停在结论：
+
+1. 修 `docs_portal` 的 reports 发布逻辑  
+当前它只 `mdbook build` 了 session book，没有把 `codex-conversations/` 这类会话导出目录一起发布，也没有处理 `../codex-conversations/...` 这类只适用于 session-local `build_html` 的链接。
+
+2. 补回归测试  
+加一条 `docs portal` 测试，检查发布后的 `reports/<session-id>/` 里会带上 `codex-conversations/`，并且页面链接指向发布后的相对路径。
+
+3. 刷新当前缺口最大的 session  
+`2026-04-25` 这一份源里连 `codex-conversations` 页都没有，我会在代码修完后补生成，再重建 `docs_html` 验证最终产物。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 12:42:31 +0800`
+
+```
+我要开始改文件了：先补 `docs_portal` 的发布后处理，再在 `test_docs_portal.py` 里加一个最小可复现用例，直接覆盖这次断链问题。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 12:43:53 +0800`
+
+```
+代码补丁已经落下，我先跑最直接的回归：`test_docs_portal`。通过后再补 `2026-04-25` 的缺失会话导出并重建最终 `docs_html`。
+```
+
+### Codex Response 12 / commentary
+`2026-04-26 12:44:09 +0800`
+
+```
+测试已经把回归点锁住了。现在我补当前最明显缺口的 `2026-04-25`：生成缺失的 `codex-conversations` 源和导出目录，然后重建 `docs_html` 看最终页面是否恢复。
+```
+
+### Codex Response 13 / commentary
+`2026-04-26 12:44:43 +0800`
+
+```
+`2026-04-25` 的源缺口已经补上了。现在重建最终 `docs_html`，顺手把这一天自己的 session-local `build_html` 也刷新掉，避免你如果直接打开 report 子目录时还看到旧页面。
+```
+
+### Codex Response 14 / commentary
+`2026-04-26 12:44:49 +0800`
+
+```
+`docs_html` 总 rebuild 还在跑，我等它收完，再做一轮实地检查，确认 `2026-04-25` 和老 session 的 report 链接都落在正确位置。
+```
+
+### Codex Response 15 / commentary
+`2026-04-26 12:45:25 +0800`
+
+```
+最终产物已经验证通了：现在 `docs_html/reports/<session>/` 下既有 `codex-conversations.html`，也有对应的 `codex-conversations/` 目录，而且链接已经从错误的 `../codex-conversations/...` 改成了发布后可用的 `codex-conversations/...`。我再补一眼工作区状态，给你一个准确收口。
+```
+
+### Codex Response 16 / commentary
+`2026-04-26 12:45:38 +0800`
+
+```
+还有一个本地入口没补：reports 子模块自己的总时间线 `build_html/`。我把 aggregate 也 rebuild 一次，这样不管你是看 `docs_html` 还是直接看 reports 子模块本地 HTML，都不会混着新旧状态。
+```
+
+### Codex Response 17 / commentary
+`2026-04-26 12:45:58 +0800`
+
+```
+你看到“很多都没了”的另一半原因也需要补掉：历史各天目录自己的 `build_html/` 本来就是旧的。我把所有 session-local books 统一重建一遍，这样直接打开 `submodules/metanc_hmi_dsl_reports/<day>/build_html/index.html` 也能对上现在的源。
+```
+
+### Codex Response 18 / commentary
+`2026-04-26 12:46:16 +0800`
+
+```
+历史各天的 session-local `build_html` 也已经批量重建完。最后我只做一个总审计，确认现在没有哪一天还缺 `codex-conversations` 页。
+```
+
+### Codex Response 19 / final_answer
+`2026-04-26 12:47:02 +0800`
+
+```
+问题确认了，确实不是你看错。
+
+- `docs_html/reports` 这条“最终生成”链里，report 发布时只 `mdbook build` 了页面，没有把会话导出目录 `codex-conversations/` 一起带过去；同时页面里还保留了只适用于 session-local `build_html/` 的相对路径 `../codex-conversations/...`，所以最终产物里这些 “Open” 链接会断。我已经在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:14) 修了发布逻辑，发布后会复制会话导出目录，并把链接改成最终产物可用的 `codex-conversations/...`。
+- `2026-04-25` 这份 report 源里本身也缺 `codex-conversations` 页和导出目录，所以它不是单纯 build 问题。我已经补生成，并把入口挂回 [src/SUMMARY.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-25-codex-session/src/SUMMARY.md:1)。
+- 历史各天目录自己的 `submodules/metanc_hmi_dsl_reports/<day>/build_html/` 也普遍是旧的，所以直接打开这些本地 HTML 时会看到“很多点进去没有了”。我已经把所有 session-local books 全部重建了一遍。
+
+我还补了一条回归测试，见 [test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:21)。验证已经跑过：`python3 -m unittest -v tests.test_docs_portal` 通过，`./tools/build_docs_html.sh` 也重建完成。最后做了全量审计，当前所有 `*-codex-session` 都满足：`SUMMARY` 有入口、源页存在、导出目录存在、session-local `build_html` 里也有 `codex-conversations.html`，`missing 0`。
+
+当前未提交改动有两部分：主仓库里的代码/测试修改，以及 `submodules/metanc_hmi_dsl_reports` 里 `2026-04-25` 的 report 补全。如果你要，我下一步可以直接把这两部分整理成提交。
+```
+
+<a id="turn-2"></a>
+## Turn 2
+
+### User
+`2026-04-26 12:55:03 +0800`
+
+```
+commit + push，然后sync到MetaNC commit+push
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 12:55:29 +0800`
+
+```
+我先核对三个仓库的工作树和分支状态：`metanc_hmi_dsl`、它的 `metanc_hmi_dsl_reports` 子模块、以及目标 `MetaNC`，避免把你已有的未提交改动一起带进去。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 12:55:56 +0800`
+
+```
+三个仓库里现在只有这次修复相关改动，`MetaNC` 本身是干净的。我接着看同步脚本和改动摘要，确认按现有链路导出到 `MetaNC`。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 12:56:22 +0800`
+
+```
+我先把本地提交链做完整：reports 子模块一笔、`metanc_hmi_dsl` 一笔，然后再导出到 `MetaNC` 看同步后的差异。推送那一步需要网络权限，我会在本地提交都准备好后再一起发起。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 12:56:36 +0800`
+
+```
+我现在落本地提交：先把 reports 子模块里的 `2026-04-25` 补全单独提交，再提交主仓库里的发布修复和测试。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 12:57:53 +0800`
+
+```
+本地提交已经完成。现在先按顺序推送 `metanc_hmi_dsl_reports`，再推送 `metanc_hmi_dsl`，避免主仓库先引用到一个远端还没有的子模块提交。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 12:59:09 +0800`
+
+```
+源仓库两边都已经推上去了。现在开始同步到 `MetaNC/feat/hmi`，先跑现成的导出脚本，再检查 `MetaNC` 里实际会提交哪些文件。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 12:59:38 +0800`
+
+```
+`MetaNC` 里同步出来的只有两处源码改动，范围是对的。我先在 `MetaNC/nrt/hmi` 里重跑对应测试，确认镜像后的包还能过。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 12:59:49 +0800`
+
+```
+`MetaNC` 镜像验证也过了，内容只包含这次真正应该下游同步的代码和测试。我现在在 `feat/hmi` 上提交，再推送远端。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 13:00:43 +0800`
+
+```
+三边推送已经完成。我最后核对一下三个工作树是否都干净，并把提交号收口给你。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-26 13:01:09 +0800`
+
+```
+已完成并推送。
+
+`metanc_hmi_dsl_reports` 在 `main` 上提交并推送了 `adb26e6` `docs: add 2026-04-25 codex conversation export`。`metanc_hmi_dsl` 在 `main` 上提交并推送了 `b499d61` `fix: publish codex conversation report assets`。这笔主仓库提交包含 `tools/hmi_dsl/docs_portal.py` 和 `tests/test_docs_portal.py`，并更新了 reports 子模块指针。
+
+随后我执行了 `./tools/export_to_metanc.sh /home/i5/workspace/ccmix-wp/MetaNC`，把可镜像的源码同步到 `MetaNC/nrt/hmi`，在 `MetaNC` 的 `feat/hmi` 分支提交并推送了 `cb6f89d` `fix: publish codex conversation report assets`。同步后我在 `MetaNC/nrt/hmi` 里重跑了 `python3 -m unittest -v tests.test_docs_portal`，通过。现在三个工作树都干净。
+```
+
+<a id="turn-3"></a>
+## Turn 3
+
+### User
+`2026-04-26 13:19:34 +0800`
+
+```
+Reports列表里怎么没有看到4月25日的
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 13:19:57 +0800`
+
+```
+我先核对两边的 reports 列表源：`metanc_hmi_dsl` 里的总时间线、以及 `MetaNC/nrt/hmi` 里被保留的 `docs/project/reports.md`，确认 4 月 25 日是没生成，还是同步时被故意保留掉了。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 13:20:17 +0800`
+
+```
+原因已经定位到了，不是 4 月 25 日没生成，而是你看的那个列表不是从 `reports` 子模块现算出来的，而是 `MetaNC` 里被保留的一份下游本地页。它在同步时故意没有被覆盖，所以还停在旧状态。 我再把对应的同步规则和受影响页面对一下，然后直接给你修正方案。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 13:20:47 +0800`
+
+```
+我现在看到的实际情况是：
+
+- 独立仓库这边已经有 `2026-04-25`，`metanc_hmi_dsl/docs_html/en/project/reports.html` 里能看到。
+- 你在 `MetaNC/nrt/hmi` 里看到的那份 `docs/project/reports.md` 还是旧占位内容：`No reports found`。
+- 原因就是同步脚本 `tools/repo_sync/export_to_metanc.sh` 明确把 `docs/index.md`、`docs/project/index.md`、`docs/project/reports.md` 这几页当成 downstream-local 页面保留了，没有随这次 export 覆盖。
+
+我继续看一下这些页面在源仓库里应该长什么样，然后决定是补一次下游页面，还是把同步流程一起修掉。
+```
+
+<a id="turn-4"></a>
+## Turn 4
+
+### User
+`2026-04-26 13:20:57 +0800`
+
+```
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+```
+
+### Codex
+_No Codex response captured for this turn._
+
+<a id="turn-5"></a>
+## Turn 5
+
+### User
+`2026-04-26 13:21:20 +0800`
+
+```
+我的意思是metanc_hmi_dsl最终生成的docs_html索引进去的Reports列表里也没有4月25号的
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 13:21:40 +0800`
+
+```
+我直接核对 `metanc_hmi_dsl/docs_html` 这套最终产物本身，确认英文和中文入口里 `Reports` 页都有没有 `2026-04-25`。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 13:21:57 +0800`
+
+```
+问题更具体了：英文最终页有 `2026-04-25`，但中文最终页没有，缺的不止 `2026-04-25`，连 `2026-04-24` 也没进来。也就是说不是 reports 总索引没生成，而是 `zh-CN` 这条最终页被旧的中文 overlay 覆盖了。 我现在去查中文 overlay 的 `project/reports.md`。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 13:22:29 +0800`
+
+```
+我准备直接把这个问题修到生成链里，不靠手工改 overlay。先看一下当前 `zh-CN` overlay 对首页和 project 页的覆盖范围，决定只修 reports 相关三页，还是更大范围处理。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 13:22:48 +0800`
+
+```
+我直接补中文 overlay 这两页：`zh-CN/project/reports.md` 和 `zh-CN/project/index.md`，然后重建 `docs_html` 验证。这样你看的最终中文入口页会和英文的当前 report 状态一致。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 13:23:19 +0800`
+
+```
+overlay 已补，我现在重建 `metanc_hmi_dsl/docs_html`，然后只核对中文 `Reports` 和 `Project` 两页是否已经带上 `2026-04-25`。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 13:23:31 +0800`
+
+```
+`docs_html` 和测试都还在收尾，我等它们跑完后只查中文最终页的那两个关键位置。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 13:23:51 +0800`
+
+```
+重建和测试都过了。我最后直接看生成后的中文 HTML，确认 `2026-04-25` 已经在 `Reports` 列表里，并且 `Project` 页的 latest report 也同步到了 4 月 25 日。
+```
+
+### Codex Response 8 / final_answer
+`2026-04-26 13:24:16 +0800`
+
+```
+根因找到了：不是 `metanc_hmi_dsl/docs_html` 的英文最终页少了 `2026-04-25`，而是中文最终页被一份过期的本地 overlay 覆盖了。英文页 [reports.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/project/reports.html:193) 一直有 `2026-04-25`；缺的是中文页对应的 overlay 源 `[/home/i5/.codex/memories/metanc_hmi_dsl_i18n/zh-CN/project/reports.md](/home/i5/.codex/memories/metanc_hmi_dsl_i18n/zh-CN/project/reports.md:1)`，它还停在 `2026-04-23`，所以重建时把 `zh-CN` 最终页盖旧了。
+
+我已经把本地 overlay 补到 `2026-04-25`，并重建了 `docs_html`。现在这两个最终产物都已经对上：
+[zh-CN Reports](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/reports.html:193) 里有 `2026-04-25`，  
+[zh-CN Project](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/index.html:192) 的 latest report 也已经是 `2026-04-25`。  
+我还重跑了 `python3 -m unittest -v tests.test_docs_portal`，通过。
+
+要注意一点：这次修的是 `~/.codex/memories/...` 里的中文 overlay，本质上是本机本地内容，不在仓库里。
+```
+
+<a id="turn-6"></a>
+## Turn 6
+
+### User
+`2026-04-26 13:30:56 +0800`
+
+```
+你现在这种中文页方式，是不是换台电脑就没了
+```
+
+### Codex Response 1 / final_answer
+`2026-04-26 13:31:20 +0800`
+
+```
+是，按现在这套方式，换台电脑中文页会丢失你这批“本地补的中文内容”。
+
+原因很直接：生成器默认从本机本地 overlay 目录读中文覆盖层，不在仓库里。入口就在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:15)，默认路径是 `~/.codex/memories/metanc_hmi_dsl_i18n`，你这次补的内容也确实在这里，比如 [reports.md](/home/i5/.codex/memories/metanc_hmi_dsl_i18n/zh-CN/project/reports.md:1) 和 [index.md](/home/i5/.codex/memories/metanc_hmi_dsl_i18n/zh-CN/project/index.md:1)。
+
+准确地说，不是“整个 `zh-CN` 页没了”，而是：
+- 换机器后如果没有同样的 overlay 目录，`docs_html/zh-CN/` 仍然能生成。
+- 但没有 overlay 的那些页会退回英文源内容，不会保留你现在这批手工中文文案。
+
+如果你要这个中文页方案可迁移，得改成下面两种之一：
+- 把 `zh-CN` overlay 放进仓库里，作为受版本管理的源。
+- 或者单独放进一个可同步的 repo/子模块，然后用 `HMI_DSL_DOCS_I18N_ROOT` 指过去。
+
+如果你要，我可以下一步直接把这套中文 overlay 从 `~/.codex/memories/...` 收进 `metanc_hmi_dsl` 仓库内，变成可提交、可同步、换机不丢。
+```
+
+<a id="turn-7"></a>
+## Turn 7
+
+### User
+`2026-04-26 13:38:02 +0800`
+
+```
+你规划一下这个源怎么收进去，但是要注意，后续中文部分不允许同步到MetaNC里面以防污染
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 13:38:23 +0800`
+
+```
+我先把现有机制和同步边界再收一遍，然后给你一套可落地的收口方案，重点保证“中文可版本化，但绝不进 MetaNC”。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 13:38:42 +0800`
+
+```
+我已经把边界确认清楚了：`docs/` 是镜像范围，不能放中文源；而 `tools/repo_sync/export_to_metanc.sh` 现在是“整仓 rsync 再排除”，所以只要新目录没显式排除，就会下沉到 `MetaNC`。方案上最稳的是给中文 overlay 一个“仓库内、但 source-repo-only”的专用根目录，再把生成器和同步脚本一起收口。
+```
+
+### Codex Response 3 / final_answer
+`2026-04-26 13:39:18 +0800`
+
+```
+可以，建议按“仓库内版本化，但仓库外同步隔离”的思路收。
+
+**推荐落点**
+
+我建议把中文 overlay 收到仓库根下新目录：`docs_i18n/zh-CN/`。
+
+理由很简单：
+- 它是文档构建输入，但不是 retained package 的共享源码，不应该放进 `docs/`。
+- 它在仓库内，可提交、可换机、可 code review。
+- 它在 `docs/` 之外，容易在 `export_to_metanc.sh` 里硬排除，避免污染 `MetaNC`。
+- 相对现在的 `~/.codex/memories/metanc_hmi_dsl_i18n/`，它不再依赖单机本地状态。
+
+目录结构保持和 `docs/` 相同，只放“需要覆盖的页”，例如：
+- `docs_i18n/zh-CN/index.md`
+- `docs_i18n/zh-CN/project/index.md`
+- `docs_i18n/zh-CN/project/reports.md`
+
+**代码收口**
+
+需要一起改这几处：
+
+1. `tools/hmi_dsl/docs_portal.py`
+   把 overlay 解析顺序改成：
+   - `HMI_DSL_DOCS_I18N_ROOT`
+   - `repo_root/docs_i18n`
+   - 兼容旧路径 `~/.codex/memories/metanc_hmi_dsl_i18n`
+   
+   这样：
+   - 默认直接吃仓库里的中文源
+   - 还保留临时外部覆盖能力
+   - 旧机器上的本地 overlay 还能平滑迁移
+
+2. `tools/repo_sync/export_to_metanc.sh`
+   明确加：
+   - `--exclude='/docs_i18n'`
+   - 并在 rsync 后执行一次 `rm -rf "${TARGET_PACKAGE_DIR}/docs_i18n"`
+   
+   这个删除步骤很重要，因为 `--exclude` 会让 `--delete` 对该路径失效。只排除不删，不足以保证 MetaNC 绝对干净。
+
+3. `tools/repo_sync/import_from_metanc.sh`
+   理论上现在不用同步 `docs_i18n/`，因为它不在 import 白名单里。
+   但文档里要明确：这是 source-repo-only 目录，禁止从 MetaNC 回灌。
+
+4. 测试
+   至少补两类：
+   - `tests/test_docs_portal.py`
+     验证不设环境变量时，repo-local `docs_i18n/zh-CN/` 会生效。
+   - `tests/test_sync_scripts.py`
+     验证 `export_to_metanc.sh` 排除了 `docs_i18n/`，并声明它不会进入 MetaNC。
+
+5. 文档
+   更新：
+   - `docs/development_guidelines/tooling.md`
+   - `README.md`
+   
+   讲清楚：
+   - 英文 `docs/` 仍是 source of truth
+   - 中文 overlay 在 `docs_i18n/zh-CN/`
+   - `docs_i18n/` 是 source-repo-only，不同步到 MetaNC
+
+**迁移步骤**
+
+建议按这个顺序做：
+
+1. 新建 `docs_i18n/zh-CN/`
+2. 把现有 `~/.codex/memories/metanc_hmi_dsl_i18n/zh-CN/` 内容迁进去
+3. 改 `docs_portal.py` 默认解析到 repo-local overlay
+4. 改 `export_to_metanc.sh` 做强排除和强清理
+5. 补测试和文档
+6. 重建 `docs_html` 验证中英页一致
+7. 跑一次 export 到 `MetaNC`，确认没有 `docs_i18n/` 落进去
+
+**不建议的方案**
+
+不建议把中文直接收进 `docs/`，哪怕放子目录也不合适。因为 `docs/` 本身就是 MetaNC 镜像范围，后面一定会污染下游。
+
+如果你同意，我下一步可以直接按这套方案落代码。
+```
+
+<a id="turn-8"></a>
+## Turn 8
+
+### User
+`2026-04-26 13:40:15 +0800`
+
+```
+可以，按照你的鬼话继续
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 13:40:38 +0800`
+
+```
+我开始把这套方案真正落进仓库：先盘点现有 `zh-CN` overlay 范围和现有同步测试，再改生成器和 sync 脚本，最后把本地中文源迁进 `docs_i18n/` 并验证不会下沉到 `MetaNC`。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 13:40:54 +0800`
+
+```
+我已经确认当前机制就是“外部 overlay + sync 脚本不知情”。接下来我会一起改三块：`docs_portal` 改默认根、sync 脚本显式排除 `docs_i18n/`、再把现有 `zh-CN` 内容迁进仓库。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 13:42:00 +0800`
+
+```
+我已经把要改的面收窄了：实现上会加 repo-local `docs_i18n/`，文档上至少同步 `README`、`tooling`、`agent_handoff`，这样“可版本化但不下沉 MetaNC”的边界是闭合的。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 13:42:54 +0800`
+
+```
+我要开始动代码和文档了：先改 `docs_portal.py` 和 sync 脚本，然后补测试，最后把现有 `zh-CN` 内容整体迁到仓库里的 `docs_i18n/`。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 13:45:30 +0800`
+
+```
+我把流程文档也一起收口了，不过 `story_driven_delivery.md` 那段清单我插了一条新项，编号需要顺手整理一下。我接着修这个，再迁中文源目录。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 13:45:50 +0800`
+
+```
+我现在把现有本地 `zh-CN` overlay 全量迁进仓库里的 `docs_i18n/`。这一步是 bulk copy，不改内容，只是把单机状态转成受版本管理的源。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 13:46:14 +0800`
+
+```
+迁移目录已经进仓库了。接下来我跑回归：`docs_portal`、`sync_scripts`、再重建一次 `docs_html`，确认默认就会吃仓库内的 `docs_i18n/`，不再依赖 `~/.codex/memories`。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 13:46:39 +0800`
+
+```
+测试还在收尾，我等它结束后再重建一次仓库里的 `docs_html`，确认这次即使不看 `~/.codex/memories`，最终中文页也还是对的。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 13:47:08 +0800`
+
+```
+代码和脚本测试已经全绿。现在我刷新一遍本仓库 `docs_html`，把新默认路径真正落到最终产物里，再核对中文 report 页面。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 13:47:26 +0800`
+
+```
+本地最终 `docs_html` 已经按新路径重建完了。我再做一个收口检查：看中文最终页仍然包含 `2026-04-25`，再看这次仓库里总共引入了多少 `docs_i18n` 文件。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 13:47:59 +0800`
+
+```
+我把实现已经落完了。最后补几处精确引用，方便你直接点进去看默认路径、sync 排除和仓库内中文源入口。
+```
+
+### Codex Response 12 / final_answer
+`2026-04-26 13:48:32 +0800`
+
+```
+已经按这条路收进去了，但还没提交。
+
+现在默认机制变成：
+- `HMI_DSL_DOCS_I18N_ROOT`
+- 仓库内 `docs_i18n/`
+- 兼容旧本地目录 `~/.codex/memories/metanc_hmi_dsl_i18n`
+
+实现入口在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:17) 和 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:268)。中文源已经整体迁到仓库里的 `docs_i18n/zh-CN/`，当前共 77 个文件，例如 [reports.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/project/reports.md:1)。
+
+为了保证不污染 `MetaNC`，我把导出脚本改成了显式排除并强清理 `docs_i18n/`，见 [export_to_metanc.sh](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/repo_sync/export_to_metanc.sh:6) 和 [export_to_metanc.sh](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/repo_sync/export_to_metanc.sh:80)。对应回归也加了，见 [test_sync_scripts.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_sync_scripts.py:16) 和 [test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:21)。文档我也同步更新了 `README`、`tooling`、`agent_handoff`、`code_map`、`story_driven_delivery`。
+
+验证已完成：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_sync_scripts`
+- `./tools/build_docs_html.sh`
+
+重建后中文最终页仍然正确，比如 [zh-CN reports](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/reports.html:193) 和 [zh-CN project index](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/index.html:192) 都已经指向 `2026-04-25`。
+
+当前工作树还没提交，改动包括 10 个已跟踪文件和新的 `docs_i18n/` 目录。如果你要，我下一步就直接 `commit + push`，然后再做一轮 `export_to_metanc` 验证 `MetaNC` 侧确实不会出现 `docs_i18n/`。
+```
+
+<a id="turn-9"></a>
+## Turn 9
+
+### User
+`2026-04-26 13:56:15 +0800`
+
+```
+ok 继续
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 13:56:44 +0800`
+
+```
+我现在把这轮仓库内 `docs_i18n` 收口提交掉，然后再导出到 `MetaNC` 做一轮“确实不带中文源目录”的实测。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 13:56:55 +0800`
+
+```
+我先做一次提交前完整性检查，再把仓库内中文源和相关逻辑一次性提交。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 13:57:08 +0800`
+
+```
+测试还在收尾，我等它结束后直接提交。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 13:57:15 +0800`
+
+```
+我现在提交主仓库这轮改动，提交里会包含 `docs_i18n/` 和“禁止同步到 MetaNC”的逻辑与文档。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 13:57:32 +0800`
+
+```
+本地提交已经落了。我先把 `metanc_hmi_dsl` 推上去，然后导出到 `MetaNC` 看同步面，确认 `docs_i18n/` 没有下沉。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 13:57:59 +0800`
+
+```
+源仓库已推送。现在开始做 `MetaNC` 同步验证：先导出，再直接检查 `nrt/hmi` 是否完全没有 `docs_i18n/`。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 13:58:17 +0800`
+
+```
+同步验证通过了，`MetaNC/nrt/hmi` 下面没有 `docs_i18n/`。我再跑一遍镜像侧测试，然后把 `MetaNC/feat/hmi` 的这轮同步也提交推上去。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 13:58:26 +0800`
+
+```
+镜像侧测试也过了，且 `docs_i18n/` 目录本体没有进入 `MetaNC`。我现在把 `MetaNC/feat/hmi` 的这轮同步提交并推上去。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 13:59:03 +0800`
+
+```
+三边都已经推完了。我最后核对一下工作树和提交号，给你一个干净收口。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-26 13:59:20 +0800`
+
+```
+已经完成。
+
+`metanc_hmi_dsl` 提交并推送了 `db6bd15` `docs: track repo-local zh-CN portal overlays`。这笔提交把中文 docs overlay 收进了仓库内的 `docs_i18n/zh-CN/`，并把生成器默认路径改成优先读仓库内 overlay，同时保留 `HMI_DSL_DOCS_I18N_ROOT` 和旧本地路径兼容。
+
+`MetaNC/feat/hmi` 也同步并推送了 `26282f9` `docs: track repo-local zh-CN portal overlays`。这边我已经实测：
+- `./tools/export_to_metanc.sh` 后，`MetaNC/nrt/hmi` 下没有 `docs_i18n/`
+- 镜像侧测试 `python3 -m unittest -v tests.test_docs_portal tests.test_sync_scripts` 通过，`test_sync_scripts` 在 MetaNC 里按预期跳过 source-only 脚本检查
+
+当前状态是干净的：
+- `metanc_hmi_dsl`: `main` 已推送
+- `MetaNC`: `feat/hmi` 已推送
+
+如果你下一步要，我可以继续把 `docs_i18n/zh-CN/` 这套内容再分层整理一下，比如把 `superpowers/` 这类明显不该长期维护的中文覆盖单独清出来。
+```
+
+<a id="turn-10"></a>
+## Turn 10
+
+### User
+`2026-04-26 14:29:01 +0800`
+
+```
+你检查一下所有的文档相关，不合理的地方列一下我们一起探讨
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 14:29:14 +0800`
+
+```
+我先把文档链路过一遍，重点看 `docs/`、`docs_i18n/`、`docs_html/`、构建脚本和同步脚本，确认有哪些设计或维护上的不合理点。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 14:29:30 +0800`
+
+```
+我先看结构和生成规则，尤其是 `docs_i18n` 与 `docs` 的耦合、`docs_html` 是否被当作源码维护、以及同步链路里有没有继续藏着单机状态。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 14:29:39 +0800`
+
+```
+代码里已经冒出几个值得怀疑的点了，继续往下看生成细节和测试覆盖，确认哪些是结构性问题，哪些只是临时补丁。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 14:30:01 +0800`
+
+```
+我在核对覆盖率和仓库形态。现在最可能的不合理点是“生成结果和源码边界不清”以及“中文 overlay 没有完整性校验”，先把数据量化出来。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 14:30:32 +0800`
+
+```
+这里已经有一个比较明确的问题了：仓库里的 `docs/project/reports.md` 还是旧的本地子模块路径，而真正最终页靠构建阶段动态改写。也就是说源码层和最终页已经分叉了，我再把其他入口页一起核一遍。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 14:30:58 +0800`
+
+```
+我在查“过期硬编码”和“静默降级”这两类问题。前者会让源码页越来越假，后者会让构建成功但内容悄悄少掉。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 14:31:19 +0800`
+
+```
+另一层问题是 report HTML 现在有两套分发路径：`submodule/.../build_html` 和 `docs_html/reports/...`。我想确认这是不是已经形成了长期双写。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 14:31:30 +0800`
+
+```
+报告仓库 README 说 `build_html/` 不是 source of truth，但我想确认这些目录到底是不是被跟踪。这个决定直接影响文档维护成本。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 14:31:43 +0800`
+
+```
+我还要查一个运行层面的合理性：文档写了 `mdbook`，但代码实际还依赖 `mdbook-mermaid`。如果文档没把这个依赖讲清楚，构建行为就会继续“看起来成功，结果不完整”。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 14:32:01 +0800`
+
+```
+我发现 story pack 里的 `execution_links` 还在指向 session-local `build_html`。如果最终 `docs_html` 里也保留这个路径，那就是第二类“最终页里仍夹带本地路径”的问题。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 14:32:17 +0800`
+
+```
+`execution_links` 这里比我预期更差：最终 HTML 里已经不是相对路径了，而是编成了你本机绝对路径 `/home/i5/workspace/...`。这类链接换目录、换机器、发给别人都会失效。我要把源头定义也对上。
+```
+
+### Codex Response 12 / commentary
+`2026-04-26 14:32:30 +0800`
+
+```
+源头在 story-doc 生成器里，不只是 Markdown 手填。我看一下它怎么把 `artifact_refs` 变成链接，确认是不是当前逻辑天然会把仓库相对路径解析成绝对文件系统路径。
+```
+
+### Codex Response 13 / commentary
+`2026-04-26 14:32:55 +0800`
+
+```
+我还顺手核对文档指令和脚本行为有没有对不齐，比如文档说某脚本会重建 `docs_html/`，脚本实际上未必做。这个很容易把维护流程搞乱。
+```
+
+### Codex Response 14 / commentary
+`2026-04-26 14:33:10 +0800`
+
+```
+我已经有几条确定的问题了，再补一轮文档相关测试，看看有没有现成用例已经能暴露这些缺口。
+```
+
+### Codex Response 15 / commentary
+`2026-04-26 14:33:19 +0800`
+
+```
+测试在跑，`docs_portal` 现有回归都过了，但这反过来也说明现在有些问题根本没被测试覆盖到，比如 `execution_links` 的本地绝对路径。
+```
+
+### Codex Response 16 / commentary
+`2026-04-26 14:33:55 +0800`
+
+```
+我把要引用的文件行号补齐，最后会按严重度列出来，方便我们逐条讨论而不是泛泛而谈。
+```
+
+### Codex Response 17 / commentary
+`2026-04-26 14:34:42 +0800`
+
+```
+最后补一个覆盖性检查：现有 `story_docs` 测试到底有没有断言 artifact 链接行为。如果没有，这个坑以后还会反复回来。
+```
+
+### Codex Response 18 / commentary
+`2026-04-26 14:35:14 +0800`
+
+```
+我怀疑不只是 report refs，凡是 Markdown 里写到仓库外部文件的链接，最终 HTML 都可能变成“逃出书目录”的本机路径。我做个全局搜。
+```
+
+### Codex Response 19 / commentary
+`2026-04-26 14:35:38 +0800`
+
+```
+还有一个更直接的问题：入口页把 `README.md` 这类仓库文件链成了 `../README.html`、`../CLAUDE.html`，但这些页面大概率根本没生成。我确认一下是不是纯死链。
+```
+
+### Codex Response 20 / commentary
+`2026-04-26 14:36:09 +0800`
+
+```
+我再量化一下“坏链接面”有多大，不然讨论时容易把它当成个别页面问题。
+```
+
+### Codex Response 21 / commentary
+`2026-04-26 14:36:46 +0800`
+
+```
+我把最终产物里的具体断点也定位到行号了，这样讨论时不用再翻。
+```
+
+### Codex Response 22 / commentary
+`2026-04-26 14:37:03 +0800`
+
+```
+我要补一条测试缺口的行号。现在现有回归其实在“帮忙固化”一部分错误行为。
+```
+
+### Codex Response 23 / final_answer
+`2026-04-26 14:38:12 +0800`
+
+```
+**Findings**
+
+- 高: 最终 `docs_html` 入口页里有明确死链。生成器在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:498) 到 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:503) 写入了 `../README.md`、`../CLAUDE.md`、`../AGENTS.md`、`../CHANGELOG.md`，`mdBook` 最终把它们变成了 [docs_html/en/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/index.html:201) 到 [docs_html/en/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/index.html:216) 里的 `../README.html` 等链接，但这些 HTML 文件根本不存在。我实测 `docs_html/README.html`、`CLAUDE.html`、`AGENTS.html`、`CHANGELOG.html` 都不存在，所以最终页的 Quick Access 块是坏的。
+
+- 高: story pack 最终 HTML 还在泄露本机工作区路径，导致发布页不可移植。根因在 [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:801) 到 [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:835)：所有 path-like ref 都会被转成从 staging 目录指向真实仓库文件的链接。结果像 [docs_html/en/acceptance_reference/story_pack/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/acceptance_reference/story_pack/index.html:201) 会直接出现 `/home/i5/workspace/.../definition/product.manifest.yaml`，而 [execution_links.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/acceptance_reference/story_pack/execution_links.html:191) 到 [execution_links.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/acceptance_reference/story_pack/execution_links.html:218) 还指向本地 `submodules/.../build_html`。这不是“展示源码路径”，而是把最终页做成了只在当前机器上勉强可用。
+
+- 中: 源 markdown 和最终页已经分叉，源码入口页是过期的。比如 [docs/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/index.md:32) 还写着 latest report 是 `2026-04-24`，`[docs/project/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/index.md:9)` 也是旧的本地 `build_html` 链接，[docs/project/reports.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/reports.md:7) 到 [docs/project/reports.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/reports.md:24) 整页还没 `2026-04-25`。现在是“构建阶段临时生成正确页，仓库里源页继续过期”，这会持续误导直接看 markdown 的人。
+
+- 中: 构建说明和真实依赖对不上。[build_and_test.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/build_and_test.md:42) 到 [build_and_test.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/build_and_test.md:46) 说 `mdbook` 是 optional，且 `./tools/generate_targets.sh` 不需要它，但脚本实际在 [generate_targets.sh](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/generate_targets.sh:84) 无条件调用 `build_docs_html.sh`。另外 report 发布实际上还依赖 `mdbook-mermaid`，见 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:355)。现在文档在降低依赖要求，代码却在提高依赖要求。
+
+- 中: `mdbook-mermaid` 缺失时，report 会被静默丢掉。`_build_report_books()` 在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:351) 到 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:356) 直接返回空 index，没有 warning，也不 fail。现有测试也比较宽松，[test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:179) 到 [test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:182) 甚至允许 reports 页只剩 “No reports” 或本地 submodule 文案。这类静默降级很容易再次制造“为什么 report 又没了”。
+
+- 低: `zh-CN` overlay 的定位文案已经和现状不一致。[docs_i18n/zh-CN/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/index.md:32) 到 [docs_i18n/zh-CN/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/index.md:34) 还在说中文只在最终构建输出里生成、深层页按英文回退，但现在 `docs_i18n/zh-CN/` 已经是仓库内跟踪源；同时 [docs_i18n/zh-CN/SUMMARY.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/SUMMARY.md:5) 到 [docs_i18n/zh-CN/SUMMARY.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/SUMMARY.md:66) 也是中英混排。不是坏链，但维护模型对后来人不清楚。
+
+- 低: downstream 过滤逻辑对内容做了硬编码匹配，太脆。[docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:38) 到 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:40) 直接写死了 `Current latest report is 2026-04-25` 这整行。下次 report 日期一变，这种过滤就可能失效。
+
+文档相关测试我跑了：`python3 -m unittest -v tests.test_docs_portal tests.test_sync_scripts tests.test_story_docs`，全部通过。但这本身也说明覆盖不够好，因为像 [test_story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_story_docs.py:83) 到 [test_story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_story_docs.py:84) 还在显式接受 `submodules/...` 这种本地路径。
+
+**建议先讨论的顺序**
+
+- 先定一个原则: 最终 `docs_html` 里允不允许链接到仓库源码文件；如果允许，目标应该是 repo-relative 可发布链接，不应该是本机路径。
+- 再定一个原则: `docs/index.md`、`docs/project/*.md` 到底谁是 source of truth；现在“源页过期、构建时覆盖”不适合长期维护。
+- 然后决定 report 缺依赖时是 fail fast 还是显式 warning；我倾向 fail fast。
+- 最后再收 `zh-CN` 的维护边界，是“完整受管镜像”还是“部分 overlay”。
+
+如果你同意，我下一步可以先不改代码，先给你出一版“文档链路收敛方案”，把这几类问题合并成一套最小改法。
+```
+
+<a id="turn-11"></a>
+## Turn 11
+
+### User
+`2026-04-26 14:42:35 +0800`
+
+```
+给一个
+```
+
+### Codex Response 1 / final_answer
+`2026-04-26 14:43:55 +0800`
+
+```
+**方案**
+
+我建议按“最终页自包含、源码页去动态、构建职责分离”这条线收敛。
+
+- 把 `docs_html/` 定义成唯一可发布文档产物，禁止任何跳出 `docs_html/` 的链接。改动入口在 [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:789) 和 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:495)。规则是：
+  - `docs/` 内部文档继续生成正常 HTML 链接
+  - report 统一指向 `docs_html/reports/<session>/index.html`
+  - `definition/*.yaml`、`client/*.py`、`tests/*.py` 这类源码路径只显示为代码路径，不生成 `<a>`
+  - `README`、`CLAUDE`、`AGENTS`、`CHANGELOG` 不再直接挂到不存在的 `../*.html`，要么删掉，要么单独生成 portal 内摘要页
+
+- 把动态 report 信息彻底从手写 markdown 里拿掉。像 [docs/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/index.md:32)、[docs/project/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/index.md:9)、[docs/project/reports.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/reports.md:1) 这种页不再手写日期和 `submodules/.../build_html` 路径，只保留稳定说明；“latest report”和 timeline 只允许由 portal build 动态生成。
+
+- 把 docs 构建从 `generate_targets.sh` 里拆出去。现在 [generate_targets.sh](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/generate_targets.sh:84) 会顺手重建 docs，这让文档依赖反向污染 Web/QML 构建。更合理的是：
+  - `generate_targets.sh` 只管 target 和 distribution
+  - `build_docs_html.sh` 只管 portal
+  - 如果还想保留一键流，再单独加一个 `rebuild_all.sh --with-docs`
+
+- docs 依赖改成显式失败，不再静默降级。现在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:355) 在缺 `mdbook-mermaid` 时直接不出 reports，这不行。建议默认 fail fast；如果真要无 report 构建，显式加 `--skip-reports`。
+
+- `zh-CN` overlay 继续留在仓库内 `docs_i18n/`，继续禁止同步到 MetaNC，但把状态说清楚。像 [docs_i18n/zh-CN/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/index.md:1) 这种文案要改成“仓库内受管 overlay，允许英文回退”，不要再写成像单机临时镜像。再补一个 coverage 说明页，明确哪些页要求翻、哪些页允许回退。
+
+**落地顺序**
+
+- 先修链接策略：清掉最终页里的 `/home/i5/...`、`submodules/.../build_html`、`../README.html`
+- 再清理源码动态页：把 `docs/index.md`、`docs/project/index.md`、`docs/project/reports.md` 改成稳定源
+- 再拆 `generate_targets.sh` 的 docs 步骤
+- 最后补测试
+
+**验收标准**
+
+- `docs_html/` 下不再出现本机绝对路径
+- 最终 portal 里不再出现 `submodules/.../build_html`
+- `docs_html/en/index.html` 和 `zh-CN/index.html` 没有死链到 `../README.html` 这类不存在页面
+- 缺 `mdbook-mermaid` 时构建明确失败或显式 `--skip-reports`
+- `docs_i18n/` 仍然不进入 MetaNC
+
+如果你认可，我下一步就按这个方案拆成一组具体改动清单。
+```
+
+<a id="turn-12"></a>
+## Turn 12
+
+### User
+`2026-04-26 14:45:49 +0800`
+
+```
+全部处理一下，先不要提交，输出最终我检查一下
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 14:46:06 +0800`
+
+```
+我开始落改，先把三块一起收口：`story_docs` 的外跳链接、portal 的过期动态页、以及构建脚本/文档依赖对齐。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 14:46:25 +0800`
+
+```
+我在拆具体改法。接下来会改 portal 生成函数，把 report 首页和 source 首页的职责分开，不再让手写源页背动态数据。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 14:47:27 +0800`
+
+```
+我准备把 `story_docs` 分成两种链接模式：普通生成只保留可读代码路径，portal 构建时才生成最终页可用链接。这样源 markdown 和最终 HTML 都能各自合理。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 14:47:48 +0800`
+
+```
+我也在顺手收一个隐性问题：那些写死日期的过滤规则也会一并去掉，不然每次新 report 都要继续追着修。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 14:48:00 +0800`
+
+```
+我撞到一个额外脏点：`docs/requirements/status_matrix.md` 里现在还有残留冲突标记。这个我会一并清掉，不然文档本身就已经不可信了。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 14:54:15 +0800`
+
+```
+我要先动核心代码，改 `story_docs` 的引用渲染和 `docs_portal` 的页面生成逻辑；随后再回写文档文本和生成产物。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 14:58:43 +0800`
+
+```
+我把 `generate_targets.sh` 里的 docs 构建拆掉，这样 Web/QML 生成不再被 `mdbook` 依赖反向绑住。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 14:58:58 +0800`
+
+```
+我在回写源 markdown，把那些“构建时临时正确、源码里长期过期”的页面改成稳定源，不再手写 latest report 或本地 `build_html` 路径。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 14:59:57 +0800`
+
+```
+我现在在对齐文档说明和真实脚本行为，重点是把 `generate_targets.sh` 与 docs/report 构建边界说清楚，并把状态矩阵里的冲突残留清掉。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 15:01:03 +0800`
+
+```
+我把 downstream 的 report-strip 逻辑也顺手收一下，改成按行过滤，避免再靠整段硬编码替换。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 15:02:01 +0800`
+
+```
+我把会覆盖动态页的中文 overlay 拆掉了，只保留静态翻译；动态首页和 report 页以后直接由 portal 按语言生成。
+```
+
+### Codex Response 12 / commentary
+`2026-04-26 15:03:00 +0800`
+
+```
+我开始补回归，主要盯三件事：portal 首页不再产出死链，story pack 不再带绝对工作区路径，report timeline 链接走最终发布路径。
+```
+
+### Codex Response 13 / commentary
+`2026-04-26 15:03:52 +0800`
+
+```
+我先重生成 story-pack 源文件，再跑回归；这样测试和最终 HTML 都基于同一套新规则。
+```
+
+### Codex Response 14 / commentary
+`2026-04-26 15:04:25 +0800`
+
+```
+测试已经进入 portal 构建回归了。现在重点看它会不会再产出绝对路径或旧 report 链接。
+```
+
+### Codex Response 15 / commentary
+`2026-04-26 15:04:55 +0800`
+
+```
+portal 回归暴露了一个相对路径层级问题：story-pack 到 `reports/` 少退了一层。我修一下这个映射，再跑全量。
+```
+
+### Codex Response 16 / commentary
+`2026-04-26 15:05:23 +0800`
+
+```
+刚才那一刀还不够，因为 portal 生成 story-pack 时输出目录本身不带语言层。我要把 `lang` 显式穿进去，避免再靠路径猜。
+```
+
+### Codex Response 17 / commentary
+`2026-04-26 15:06:19 +0800`
+
+```
+回归过了，接下来重建实际 `docs_html`，然后做一轮结果审计，确认你真正会点到的最终页都已经收敛。
+```
+
+### Codex Response 18 / commentary
+`2026-04-26 15:07:00 +0800`
+
+```
+我在做最后审计：死链、绝对路径、4 月 25 日入口，以及 `generate_targets.sh`/docs 构建边界。审完就给你一份可点的检查清单。
+```
+
+### Codex Response 19 / commentary
+`2026-04-26 15:07:19 +0800`
+
+```
+审计结果已经把 canonical docs 收干净了；剩下的绝对路径只在 `codex-conversations` 报告转录内容里。我再确认一下那里是正文文本残留，还是仍有可点击的坏 `href`。
+```
+
+### Codex Response 20 / commentary
+`2026-04-26 15:07:38 +0800`
+
+```
+还有一个小口子：`project/index.html` 的 latest report 文本显示成了路径字面量，不是 report id。我修一下这个呈现。
+```
+
+### Codex Response 21 / final_answer
+`2026-04-26 15:09:35 +0800`
+
+````
+**已处理**
+
+文档链路已经收敛到现在这套：
+
+- `story_docs` 分成了 source/portal 两种引用模式，最终 `docs_html` 不再把 `definition/*.yaml`、`tests/*.py`、`README.md` 这类源路径渲染成坏链接；report artifact 会转到最终发布页。核心改动在 [story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/story_docs.py:247) 和 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:365)。
+- portal 首页、项目页、report timeline 现在按语言直接生成，不再依赖会漂移的手写页或本地 overlay。死掉的 `README.html` / `CLAUDE.html` / `AGENTS.html` / `CHANGELOG.html` 链接已经去掉，改成代码引用。你可以直接看 [en 首页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/index.html:198)、[zh-CN 首页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/index.html:198)、[en 项目页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/project/index.html:188)、[zh-CN 项目页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/index.html:188)、[en Reports](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/project/reports.html:189)、[zh-CN Reports](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/reports.html:189)。
+- `generate_targets.sh` 不再偷偷重建 `docs_html`，文档构建和 Web/QML 构建正式拆开，见 [generate_targets.sh](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/generate_targets.sh:1)。对应说明我已经同步改到 [README.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/README.md:213)、[build_and_test.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/build_and_test.md:42)、[tooling.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/tooling.md:149)、[agent_handoff.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/development_guidelines/workflow/agent_handoff.md:148)、[story_driven_delivery.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/story_driven_delivery.md:121)。
+- `docs/` 里的过期动态页改成稳定源了，不再手写 latest report 或本地 `build_html` 路径，见 [docs/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/index.md:15)、[docs/project/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/index.md:1)、[docs/project/reports.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/project/reports.md:1)。顺手清掉了 [status_matrix.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/status_matrix.md:13) 里的冲突残留。
+- `zh-CN` 里会覆盖动态页的 overlay 我删掉了：`docs_i18n/zh-CN/index.md`、`project/index.md`、`project/reports.md`。这些页现在由 portal 按语言生成；`SUMMARY.md` 也顺手补成了中文化版本，见 [docs_i18n/zh-CN/SUMMARY.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/SUMMARY.md:1)。
+
+**验证**
+
+我已经跑过：
+
+```bash
+python3 -m unittest -v tests.test_story_docs tests.test_docs_portal tests.test_sync_scripts
+./tools/build_docs_html.sh
+```
+
+额外审计结果：
+
+- `docs_html` 里已经没有 `README.html` / `CLAUDE.html` / `AGENTS.html` / `CHANGELOG.html` 这种死链。
+- `docs_html` 里已经没有指向本机工作区的绝对 `href`。
+- 还剩 13 个包含本机路径字符串的 HTML，全部在 `docs_html/reports/2026-04-25-codex-session/codex-conversations/*`，是转录正文文本，不是链接。
+
+**当前状态**
+
+还没有提交。你现在可以重点检查这几页：
+
+- [docs_html/en/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/index.html:198)
+- [docs_html/zh-CN/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/index.html:198)
+- [docs_html/en/project/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/project/index.html:188)
+- [docs_html/zh-CN/project/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/index.html:188)
+- [docs_html/en/project/reports.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/project/reports.html:189)
+- [docs_html/zh-CN/project/reports.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/project/reports.html:189)
+- [docs_html/en/acceptance_reference/story_pack/execution_links.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/acceptance_reference/story_pack/execution_links.html:188)
+
+如果你认可，我下一步再整理成提交。
+````
+
+<a id="turn-13"></a>
+## Turn 13
+
+### User
+`2026-04-26 15:13:47 +0800`
+
+```
+先提交一下，然后把该合并的内容合并到MetaNC
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 15:13:59 +0800`
+
+```
+我先核对当前两个仓库的改动、分支和未提交内容，然后把这批文档修正整理成提交，再同步进 `MetaNC`。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 15:14:16 +0800`
+
+```
+改动都在 `metanc_hmi_dsl` 主仓库里，`MetaNC` 和 reports 子模块目前是干净的。我先把这批文档变更再验一次测试和 portal 构建，确认可以直接提交。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 15:14:25 +0800`
+
+```
+测试和 portal 重建都已经跑起来了。我再把结果收尾一下，然后就直接做提交和 MetaNC 同步。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 15:14:47 +0800`
+
+```
+我现在把这批文档和构建链路变更打成一个主仓库提交。提交后会先推到 `metanc_hmi_dsl/main`，再执行导出并在 `MetaNC/feat/hmi` 形成对应提交。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 15:15:10 +0800`
+
+```
+主仓库提交已经生成，正在推送到 `origin/main`。推完我就直接同步到 `MetaNC`。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 15:15:47 +0800`
+
+```
+`MetaNC` 侧测试暴露了两个同步策略问题：一部分文档页被 export 脚本刻意保留成下游旧版本，另一部分测试还按旧约束跑。我先对比源仓库和下游实际落地的文件，再把同步规则收紧到这次改动需要的范围。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 15:16:05 +0800`
+
+```
+下游这两个失败点都是真问题，不是测试噪音：
+
+- `MetaNC` 没有 reports 子模块，但 source-mode story pack 仍会把 report 路径作为纯文本保留，测试分支判断太激进。
+- export 脚本还在强保留下游旧的 `docs/index.md` / `docs/project/*.md`，导致这次“稳定源页”改动根本没进 `MetaNC`。
+
+我先把这两个点在源仓库修正，再补一次同步。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 15:16:35 +0800`
+
+```
+我在源仓库补一个跟下游同步相关的修正提交：取消那几个“保留下游旧文档页”的 export 例外，并把测试改成对“无 reports 子模块”的环境可移植。这样同步进 `MetaNC` 后，测试结果才会和实际策略一致。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 15:17:09 +0800`
+
+```
+同步脚本本身已经改对了，剩下是一个测试还在断言那几条旧的“保留路径”。我把这个测试对齐后，再做第二个提交并重新同步。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 15:17:40 +0800`
+
+```
+源仓库这次只补了同步规则和可移植测试，范围很小。我先打一个跟进提交，然后重新 export 到 `MetaNC` 验证。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 15:18:18 +0800`
+
+```
+`MetaNC` 侧现在已经拿到完整同步内容，测试也通过了。我把这些 `nrt/hmi` 变更合成一个下游提交，然后推到 `feat/hmi`。
+```
+
+### Codex Response 12 / final_answer
+`2026-04-26 15:19:02 +0800`
+
+```
+已完成并推送。
+
+`metanc_hmi_dsl/main` 这次有两笔提交：
+- `df45f7f` `docs: make published portal self-contained`
+- `0593a03` `fix: align MetaNC doc sync behavior`
+
+我随后重新执行了 `./tools/export_to_metanc.sh /home/i5/workspace/ccmix-wp/MetaNC`，把需要合并的内容同步到 `MetaNC/nrt/hmi`，并在 `MetaNC/feat/hmi` 提交并推送了：
+- `2822fc7` `docs: sync HMI portal publication updates`
+
+验证也跑过了：
+- 源仓库：`python3 -m unittest -v tests.test_story_docs tests.test_docs_portal tests.test_sync_scripts`
+- `MetaNC/nrt/hmi`：`python3 -m unittest -v tests.test_story_docs tests.test_docs_portal tests.test_sync_scripts`
+
+现在三个工作树都干净：
+- `metanc_hmi_dsl`: `main` 已推送
+- `MetaNC`: `feat/hmi` 已推送
+- `metanc_hmi_dsl_reports`: 无新增改动
+```
+
+<a id="turn-14"></a>
+## Turn 14
+
+### User
+`2026-04-26 15:31:17 +0800`
+
+```
+帮我看一下现在文档部分还有什么问题
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 15:31:32 +0800`
+
+```
+我先做一轮文档链路审计，重点看三类问题：最终 `docs_html` 的坏链接/本机路径、源码 `docs/` 和生成逻辑的偏差、以及 `zh-CN` overlay 这类维护边界。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 15:31:50 +0800`
+
+```
+第一轮扫下来，主 portal 页面的坏链接基本收住了，但 report 转录内容和少数源文档还在泄露旧路径。我再把这些残留分成“真正坏掉的最终页问题”和“仅仅是源文档陈旧/误导”两类。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 15:31:57 +0800`
+
+```
+我再跑一遍静态链接审计，确认现在剩下的是“内容里保留了旧路径”还是“最终 HTML 里真的还有 404 风险”。这一步只读 `docs_html`，不改文件。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 15:32:14 +0800`
+
+```
+链接审计脚本还在跑。我想拿到一个“真正坏链计数”，这样最后给你的结论就不会混着那些只是显示旧路径字符串的转录正文。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 15:32:27 +0800`
+
+```
+坏链计数比我预期的大，主要集中在两块：`print.html` 和 story/requirements 页面里的 repo 源码路径。这说明现在不是只有转录正文残留，portal 正文里还在输出一批不可发布链接。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 15:33:03 +0800`
+
+```
+我把问题再压缩一下：一类是 hand-written 文档本身还在直接链 repo 源文件，另一类是 report 页里有真实坏链。我再把这两个点追到具体源头，不然最后只能给你症状。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 15:33:17 +0800`
+
+```
+`all%2Emd` 那批我先不算死链，它可能只是 URL 编码。我要把审计器改成按浏览器实际解码后的路径再算一次，避免把“能用的编码链接”错报成坏链。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 15:33:45 +0800`
+
+```
+现在比较明确了：真正还没收口的是“portal 正文里还在生成 repo 源文件链接”。这不是统计口径问题，`print.html` 只是把它放大了，普通章节页里也还在。剩下我补两处背景：一个是 `schema_stubs` 的错链源头，一个是这些坏链是不是已有测试兜住。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 15:34:36 +0800`
+
+```
+还有一个我怀疑的问题是 `zh-CN` overlay 自己又漂了。英文 story pack 这次已经改成纯代码引用，但中文 overlay 里还是旧的 markdown 链接；如果是这样，中文页会系统性比英文页更差。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 15:34:44 +0800`
+
+```
+问题画像差不多了。我再取一个“按文件聚合”的结果，这样能看出是少数页面集中爆炸，还是很多页零散坏一点。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 15:35:26 +0800`
+
+```
+我已经能给结论了。剩下的问题不是“还有很多随机 bug”，而是几类比较集中的结构性残留：中文 overlay 过期、少数手写页还在直链 repo 源码、以及 report 转录正文的旧绝对路径。
+```
+
+### Codex Response 12 / final_answer
+`2026-04-26 15:36:25 +0800`
+
+```
+我做了本地静态 `href` 审计。按浏览器解码后的路径计算，`docs_html` 里现在还有 `170` 个 unresolved 链接，集中在 10 个页面，主要是下面几类。
+
+1. 高: `zh-CN` 的 story pack overlay 已经过期，中文最终页还在输出 repo 源文件链接，英文页这轮已经改成纯代码引用了。源头在 [docs_i18n/zh-CN/acceptance_reference/story_pack/feature_backlog.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/acceptance_reference/story_pack/feature_backlog.md:9) 和 [docs_i18n/zh-CN/acceptance_reference/story_pack/test_plan.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/acceptance_reference/story_pack/test_plan.md:12)；最终页里对应坏链已经落到 [docs_html/zh-CN/acceptance_reference/story_pack/test_plan.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/acceptance_reference/story_pack/test_plan.html:194)。这类问题占得最多，`feature_backlog/test_plan/interface_integration` 三页就吃掉了 `64` 个坏链。
+
+2. 高: `program_execution_story_breakdown` 的中英文手写页还在直链 repo 源码，最终 portal 里这些链接全部失效。源 markdown 在 [docs/requirements/program_execution_story_breakdown.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/program_execution_story_breakdown.md:62) 和 [docs_i18n/zh-CN/requirements/program_execution_story_breakdown.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/requirements/program_execution_story_breakdown.md:62)；最终英文页坏链可见于 [docs_html/en/requirements/program_execution_story_breakdown.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/requirements/program_execution_story_breakdown.html:239)。这页中英文各有 `9` 个坏链。
+
+3. 中: `schema_stubs` 页的内部文档路径写错了，最终生成成了不存在的 `product/docs/*.html`。源头在 [docs/product/schema_stubs/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/product/schema_stubs/index.md:19)，最终坏链在 [docs_html/en/product/schema_stubs/index.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/product/schema_stubs/index.html:201)。
+
+4. 中: 中文 `Status Matrix` 还停留在旧状态，内容已经和英文页分叉。中文源 [docs_i18n/zh-CN/requirements/status_matrix.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/requirements/status_matrix.md:33) 仍写“当前最新 report 为 `2026-04-23`”，最终中文页也是这样 [docs_html/zh-CN/requirements/status_matrix.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/requirements/status_matrix.html:218)；但英文页这一行已经改成了更合理的 published-HTML 描述 [docs_html/en/requirements/status_matrix.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/requirements/status_matrix.html:218)。这不是坏链，但会误导中文读者。
+
+5. 中: 已发布的 report 转录正文里仍然保留了旧机器绝对路径和临时目录链接，点进去在别的机器上没法用，也会泄露本机路径。例子在 [docs_html/reports/2026-04-24-codex-session/codex-conversations/all.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-24-codex-session/codex-conversations/all.html:376) 和 [docs_html/reports/2026-04-24-codex-session/codex-conversations/all.html](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-24-codex-session/codex-conversations/all.html:498)。这类问题不在 portal 导航层，而在转录内容层。
+
+6. 低: 现有测试没有真正做“最终 HTML 链接完整性”检查，所以这些问题能一直过。`docs portal` 测试目前只检查少量字符串和几个已知坏链不出现，见 [tests/test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:175)；`story docs` 测试也只盯 markdown 文本，不盯最终 HTML href，见 [tests/test_story_docs.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_story_docs.py:59)。
+
+补充两点判断：
+- `print.html` 里的大部分坏链不是新问题，只是把上面几类问题聚合放大了。
+- `codex-conversations/all%2Emd` 我这次没算成坏链；URL 解码后能对应到 `all.md`，这个点需要按真实部署方式再确认，但不是当前最主要问题。
+
+我建议下一轮按这个顺序修：
+- 先清 `docs_i18n/zh-CN/acceptance_reference/story_pack/` 的过期 overlay。
+- 再把 `program_execution_story_breakdown` 和 `schema_stubs` 的 repo 源码链接改成代码引用或 portal 内可发布链接。
+- 最后补一个 `docs_html` 级别的 link-audit 测试，直接拦住这类回归。
+```
+
+<a id="turn-15"></a>
+## Turn 15
+
+### User
+`2026-04-26 15:37:00 +0800`
+
+```
+按照你的规划继续
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 15:37:15 +0800`
+
+```
+我按刚才那三步直接落代码：先清理 `zh-CN` 过期 overlay，再修 hand-written 页里的不可发布链接，最后补最终 `docs_html` 链接完整性检查并重建 portal。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 15:37:49 +0800`
+
+```
+我已经确认了两个根因：`zh-CN` story pack 确实被过期 overlay 覆盖，`docs_portal` 现在没有保护；另外 `schema_stubs` 这页本身就写错了目标路径。我先把源和 overlay 一起收紧，再补链接审计测试。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 15:38:13 +0800`
+
+```
+我准备同时补发布侧的 sanitization：不只是修源文档，还会把 report 里的绝对 repo 链接在发布时重写成 portal 内链接，重写不了的就降成纯代码文本。这样历史转录不会继续把 `/home/...` 暴露出去。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 15:38:51 +0800`
+
+```
+我先改最确定的三块源：删过期 `zh-CN` story-pack overlay、修 `program_execution_story_breakdown` 的源码引用、修 `schema_stubs` 目标路径。改完后会重建一次看坏链是不是被压下去了，再决定要不要继续做 report 内容级 sanitization。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 15:39:51 +0800`
+
+```
+我要开始改文件了：`docs_portal.py` 会加 overlay 保护和 404/link 审计支撑；文档源会修正几处错链；`zh-CN` 过期 story-pack overlay 会直接删掉，不再允许覆盖生成结果。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 15:40:50 +0800`
+
+```
+我把测试门槛也一起抬上去：不再只查几个字符串，而是直接对生成后的 `en/` 和 `zh-CN/` 做一轮本地链接审计。这样这类 portal 回归以后会立刻爆。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 15:41:28 +0800`
+
+```
+我先跑文档相关测试和一次完整重建。跑完我会再做一遍坏链审计，看是不是只剩 report 转录正文那类非导航问题。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 15:41:47 +0800`
+
+```
+文档书已经重建完成，测试还在收尾。我下一步会直接跑坏链计数脚本，看看这轮改动把 unresolved `href` 压到了什么水平。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 15:42:11 +0800`
+
+```
+测试只剩一个断言文字差异，是真正的生成文案变成了 `功能清单`。我先把这个断言修掉，再看坏链脚本的结果；如果坏链已经归零，就不再引入额外改动。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 15:42:22 +0800`
+
+```
+坏链已经压到 0 了。刚才那轮测试失败不是文档问题，而是我新加的审计 helper 把 `zh-CN -> ../reports/...` 这种跨语言根目录的合法链接误判了；我把 helper 的根范围放宽到整个 `docs_html` 就行。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 15:42:43 +0800`
+
+```
+我只改了测试逻辑，这轮不用再重建文档书，先把 `test_docs_portal` 重跑确认绿掉。然后我会给你一个当前剩余问题清单，区分“已修完”和“还有意识地保留”的部分。
+```
+
+### Codex Response 12 / commentary
+`2026-04-26 15:42:50 +0800`
+
+```
+测试还在最后收口，但状态看起来正常。当前工作树只剩这次文档修复相关改动，没有新的意外脏文件。
+```
+
+### Codex Response 13 / commentary
+`2026-04-26 15:43:18 +0800`
+
+```
+核心回归已经过了。我再补两项收尾审计：一个是全局 unresolved `href` 计数，另一个是 `docs_html` 里还剩多少历史绝对路径字符串，用来区分“坏链已清掉”还是“还有正文文本残留”。
+```
+
+### Codex Response 14 / final_answer
+`2026-04-26 15:44:12 +0800`
+
+```
+文档链路这轮已经收住了，还没提交。
+
+**已处理**
+- `zh-CN` 过期 story-pack overlay 已停用，`docs_portal` 现在不会再让 `docs_i18n/zh-CN/acceptance_reference/story_pack/` 覆盖生成结果；对应逻辑在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:17) 和 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:350)。那 5 个过期 overlay 文件我也直接删掉了。
+- `program_execution_story_breakdown` 中英两页不再直链 repo 源码，只保留代码引用，见 [docs/requirements/program_execution_story_breakdown.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/program_execution_story_breakdown.md:62) 和 [docs_i18n/zh-CN/requirements/program_execution_story_breakdown.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/requirements/program_execution_story_breakdown.md:62)。
+- `schema_stubs` 的错链修到了真实页面，见 [docs/product/schema_stubs/index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/product/schema_stubs/index.md:19)。
+- 中文 `Status Matrix` 的 report 描述已和英文源对齐，见 [docs_i18n/zh-CN/requirements/status_matrix.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/requirements/status_matrix.md:33)。
+- 我顺手把 mdBook 默认 `404.html` 里的根路径 `/` 改成了相对 `./index.html`，避免 portal 子目录部署时再出假死链。
+
+**验证**
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- `./tools/build_docs_html.sh`
+
+我还重新跑了全量 `docs_html` 链接审计。当前 unresolved `href/src` 结果是 `{}`，也就是发布页层面的坏链已经清零。
+
+你可以直接看这几页：
+- [zh-CN story pack feature backlog](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/acceptance_reference/story_pack/feature_backlog.html:185)
+- [en program execution breakdown](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/requirements/program_execution_story_breakdown.html:236)
+- [en schema stubs](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/product/schema_stubs/index.html:199)
+- [zh-CN status matrix](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/zh-CN/requirements/status_matrix.html:217)
+
+**剩余一项**
+- `docs_html/reports/*/codex-conversations/*` 里仍然有历史绝对路径字符串，比如旧会话转录里的 `/home/...`、`/tmp/...`。这些现在是转录正文文本，不是 live `href`，所以不会造成导航坏链；但它们仍然会泄露历史工作路径。这个我这轮没自动清洗，因为那会开始改写历史 transcript 内容本身。
+
+如果你要，我下一步可以继续专门做这层 report transcript 的发布期脱敏。
+```
+
+<a id="turn-16"></a>
+## Turn 16
+
+### User
+`2026-04-26 15:48:38 +0800`
+
+```
+先提交+push一下，然后检测一下report submodule的可访问性
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 15:49:01 +0800`
+
+```
+我先把这轮文档修复提交并推到 `metanc_hmi_dsl/main`，然后单独检查 `submodules/metanc_hmi_dsl_reports` 的可访问性，区分仓库访问、工作树状态和发布入口可达性。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 15:49:23 +0800`
+
+```
+我现在把主仓库这批文档修复入库。提交后会立刻推送，再做 submodule 访问检查和 report 入口抽检。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 15:49:38 +0800`
+
+```
+提交被一个遗留的 `.git/index.lock` 挡住了。我先确认是不是有活跃的 `git` 进程占着锁；如果没有，再决定要不要清掉这个 stale lock 继续提交。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 15:49:56 +0800`
+
+```
+刚才那个 `index.lock` 是并行执行 `git add` 和 `git commit` 撞出来的，不是仓库残留问题。现在我按顺序执行一次 `add -> commit -> push`，然后再做 submodule 可访问性检查。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 15:50:07 +0800`
+
+```
+改动已经都在 index 里了，我直接提交并推送。随后会验证 `metanc_hmi_dsl_reports` 的远端可访问和 portal 报告入口可达。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 15:50:16 +0800`
+
+```
+主仓库提交已经落下，`push` 还在跑。推完我就去做 submodule 的远端访问检查和 report 入口抽检。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 15:50:31 +0800`
+
+```
+`push` 那次又和 `commit` 并行了，结果先跑完，没把新提交带出去。现在我顺序补一次真正的 `push`，然后继续检查 submodule 访问。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 15:50:39 +0800`
+
+```
+这次 `main` 明确是 `ahead 1`，顺序对了。我等这个真正的推送结束，然后开始 submodule 检测。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 15:51:07 +0800`
+
+```
+我把“可访问性”拆成两部分检查：一是 `metanc_hmi_dsl_reports` 这个 git submodule 的远端是否可达，二是主 portal 里挂出去的 report 页面入口是否都能落到实际文件。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 15:51:16 +0800`
+
+```
+本地主 portal 的 report 入口已经确认没问题：`en/project/reports.html` 和 `zh-CN/project/reports.html` 各 19 个报告链接，`missing 0`。我还在等 submodule 的远端 `fetch origin` 返回，用它确认 SSH 远端本身可达。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 15:51:33 +0800`
+
+```
+远端 `fetch origin` 没报错，按 git 的行为这就是成功返回了。我再补一眼主仓库状态，确认这次提交已经推干净。
+```
+
+### Codex Response 12 / final_answer
+`2026-04-26 15:51:55 +0800`
+
+```
+**提交**
+`metanc_hmi_dsl/main` 已提交并推送：
+`c6e0eb4` `docs: tighten portal link hygiene`
+
+当前主仓库状态已对齐远端：
+`c6e0eb4 (HEAD -> main, origin/main, origin/HEAD)`
+
+**report submodule 可访问性**
+`submodules/metanc_hmi_dsl_reports` 这边我查了两层：
+
+- Git 远端可达：`origin` 是 `git@github.com:luppiterw/metanc_hmi_dsl_reports.git`，`git fetch origin` 成功返回。
+- 子模块状态正常：本地 `HEAD` 和 `origin/main` 都是 `adb26e6ff2f476cd40c6c6d1116b1db5498b92ba`，工作树干净，主仓库记录的 submodule 指针也就是这个提交。
+
+另外我抽检了最终 portal 里的 report 入口可达性：
+- `docs_html/en/project/reports.html`：19 个 report 链接，`missing 0`
+- `docs_html/zh-CN/project/reports.html`：19 个 report 链接，`missing 0`
+
+所以现在 report submodule 从仓库访问和最终发布入口两边看都正常。  
+还没动 `MetaNC`。如果你要，我下一步可以把这次主仓库提交同步过去。
+```
+
+<a id="turn-17"></a>
+## Turn 17
+
+### User
+`2026-04-26 15:55:08 +0800`
+
+```
+可以，继续
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 15:55:29 +0800`
+
+```
+我把这次 `metanc_hmi_dsl` 的文档修复同步到 `MetaNC/nrt/hmi`，然后在 `MetaNC/feat/hmi` 提交、推送，并补跑一轮文档相关验证。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 15:55:40 +0800`
+
+```
+先做镜像同步，再看 `MetaNC` 侧到底带进了哪些改动；如果同步内容干净，就直接在 `feat/hmi` 提交。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 15:55:53 +0800`
+
+```
+同步进 `MetaNC` 的内容符合预期，只带了可镜像的源码和测试，没有把 `docs_i18n/` 带进去。现在我在 `MetaNC/nrt/hmi` 跑文档相关回归，再提交。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 15:56:04 +0800`
+
+```
+`MetaNC/nrt/hmi` 的回归已经过了。我现在把这批同步内容在 `MetaNC/feat/hmi` 提交并推送。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 15:56:20 +0800`
+
+```
+提交已经落到 `MetaNC/feat/hmi`。我再推远端并做最后的工作树检查。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 15:56:30 +0800`
+
+```
+状态检查先一步返回了，`feat/hmi` 还是 `ahead 1`。我等推送完成后再确认一次。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 15:56:44 +0800`
+
+```
+远端推送已经完成。我补一眼最终状态，确认 `MetaNC` 和源仓库都干净。
+```
+
+### Codex Response 8 / final_answer
+`2026-04-26 15:57:05 +0800`
+
+```
+已经同步到 `MetaNC` 并推送了。
+
+`metanc_hmi_dsl/main` 是 `c6e0eb4` `docs: tighten portal link hygiene`。  
+`MetaNC/feat/hmi` 是 `a840b44` `docs: sync portal link hygiene fixes`。
+
+这次同步到 `MetaNC/nrt/hmi` 的只有可镜像部分：
+- `docs/product/schema_stubs/index.md`
+- `docs/requirements/program_execution_story_breakdown.md`
+- `tools/hmi_dsl/docs_portal.py`
+- `tests/test_docs_portal.py`
+
+`docs_i18n/` 仍然没有进入 `MetaNC`。
+
+验证我已经跑过：
+- 源仓库：`python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- `MetaNC/nrt/hmi`：`python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+
+另外你前面关心的 report submodule 可访问性，我这边确认还是正常的：
+- `metanc_hmi_dsl_reports` 的 `origin` 可 `fetch`
+- 本地 `HEAD` 和 `origin/main` 都是 `adb26e6`
+- `docs_html/en/project/reports.html` 和 `zh-CN/project/reports.html` 各 `19` 个 report 链接，`missing 0`
+
+现在状态是干净的：
+- `metanc_hmi_dsl/main` 已推送
+- `MetaNC/feat/hmi` 已推送
+- `metanc_hmi_dsl_reports/main` 干净且可访问
+
+如果你要，我下一步可以继续处理 report transcript 里那些历史 `/home/...` 路径文本脱敏。
+```
+
+<a id="turn-18"></a>
+## Turn 18
+
+### User
+`2026-04-26 16:02:34 +0800`
+
+```
+先处理一版我看看有没有问题
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 16:02:58 +0800`
+
+```
+我先做发布侧的脱敏，不动历史源 transcript。这样你可以先看最终 `docs_html/reports/...` 的效果，满意再决定要不要把规则下沉到 report 导出工具本身。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 16:05:27 +0800`
+
+```
+我这版规则会很克制，只做三种脱敏：`/home/.../workspace/...`、`/home/.../.codex/...`、`/tmp/...`。目标是先把明显的本机痕迹拿掉，不去改转录内容的语义。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 16:05:52 +0800`
+
+```
+我补一个最小回归：用临时 report 断言发布后的 `codex-conversations` 文件不再保留 `/home/alice/...` 和 `/tmp/...`，但还保留可读的相对语义。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 16:06:18 +0800`
+
+```
+我先跑 `test_docs_portal` 和重建 portal，看这版脱敏是否稳定，再给你几个实际页面让你直接检查。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 16:06:37 +0800`
+
+```
+构建已经在跑；等它收完，我会直接抽几份 `codex-conversations` 页面，看看 `/home/...` 是否真的被压成了可读的相对别名。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 16:07:09 +0800`
+
+```
+我再收一刀规则边界：把“路径字符”从宽泛文本收紧到 ASCII 路径字符，专门解决那种中文句子里夹了 `/home/.../MetaNC` 但后面直接接 `的更新` 的情况。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 16:07:35 +0800`
+
+```
+我只动了正则边界，先快速重跑 `test_docs_portal` 和 `build_docs_html`，然后再查一次剩余 `/home` 文本。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 16:07:52 +0800`
+
+```
+这次我主要盯剩余的 `/home` 文本，不再看导航。构建结束后会直接给你“还剩多少、剩在哪些页”。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 16:08:16 +0800`
+
+```
+我把这版先停在“发布侧脱敏”，不碰 report 源文件。再补两条定位信息给你，方便你直接看代码入口和生成结果。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-26 16:08:49 +0800`
+
+```
+这版已经处理好了，但还没提交。
+
+现在的策略只作用在最终发布产物上，入口在 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:479) 和 [docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:1091)。规则是：
+- `/home/.../workspace/.../metanc_hmi_dsl/...` 这种绝对路径改成 `metanc_hmi_dsl/...`
+- `/home/.../workspace/.../MetaNC/...` 改成 `MetaNC/...`
+- `CWD` 这种工作目录缩成最后可读别名，比如现在是 `ccmix-wp`
+- `/tmp/...` 改成 `<tmp>/...`
+- report source 路径保留成 `~/.codex/...`，先不彻底抹掉
+
+我还补了回归，见 [test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:82) 和 [test_docs_portal.py](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_docs_portal.py:34)。我已经跑过：
+- `python3 -m unittest -v tests.test_docs_portal`
+- `./tools/build_docs_html.sh`
+
+你可以直接看这几个页面：
+- [2026-04-25 conversations index](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-25-codex-session/codex-conversations/index.html)
+- [2026-04-25 sample session](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-25-codex-session/codex-conversations/sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed-5.html)
+- [2026-04-17 sample session](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-17-codex-session/codex-conversations/sessions/20260417-081421-019d98c9-e46d-7663-8ddd-a973fd1876e8.html)
+
+当前我再扫了一遍 `docs_html/reports`，`/home/...` 和 `/tmp/metanc_hmi_dsl_...` 这两类绝对路径已经查不到了。  
+这版刻意保守，已知还留着一个边界：`Source` 行现在显示 `~/.codex/...`，不是完全隐藏。如果你看着没问题，我下一步可以继续把这层也收掉。
+```
+
+<a id="turn-19"></a>
+## Turn 19
+
+### User
+`2026-04-26 16:11:20 +0800`
+
+```
+提交一下，然后合并MetaNC然后commit+push
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 16:11:37 +0800`
+
+```
+我先把当前这批 report 脱敏改动在 `metanc_hmi_dsl` 提交并推送，然后同步到 `MetaNC/nrt/hmi`，在 `feat/hmi` 提交、推送。之后我会再确认两边工作树都是干净的。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 16:11:51 +0800`
+
+```
+当前只有 2 个文件改动，范围就是 report 发布期脱敏和对应测试。我现在按这个最小集提交，不把别的东西混进去。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 16:12:06 +0800`
+
+```
+主仓库提交已经落下。我接着推到 `origin/main`，然后做 `MetaNC` 同步。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 16:12:34 +0800`
+
+```
+我现在把这次源仓库提交镜像到 `MetaNC/nrt/hmi`，先看实际落下的改动，再在 `feat/hmi` 提交。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 16:12:47 +0800`
+
+```
+同步进 `MetaNC` 的还是同样 2 个文件。我先在 `MetaNC/nrt/hmi` 跑文档回归，确认这批改动在镜像侧也成立。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 16:12:57 +0800`
+
+```
+镜像侧回归通过了。我现在把 `MetaNC/feat/hmi` 这次同步提交并推送。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 16:13:12 +0800`
+
+```
+`MetaNC` 提交已经落下，我接着推远端，然后做最后的状态核对。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 16:13:24 +0800`
+
+```
+状态检查先返回了，`MetaNC` 还是 `ahead 1`。我等推送完成后再确认一次。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 16:13:38 +0800`
+
+```
+推送已经完成。我补最后一眼两边状态，确认都干净且远端对齐。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-26 16:13:52 +0800`
+
+```
+已完成。
+
+`metanc_hmi_dsl/main` 提交并推送了 `79a87db` `docs: sanitize published report transcript paths`。  
+`MetaNC/feat/hmi` 同步后提交并推送了 `6e89251` `docs: sync published report path sanitization`。
+
+这次同步进 `MetaNC/nrt/hmi` 的只有 2 个文件：
+- `tools/hmi_dsl/docs_portal.py`
+- `tests/test_docs_portal.py`
+
+我跑了镜像侧验证：
+- `metanc_hmi_dsl`: `python3 -m unittest -v tests.test_docs_portal`
+- `MetaNC/nrt/hmi`: `python3 -m unittest -v tests.test_docs_portal`
+
+当前状态都干净并已对齐远端：
+- `metanc_hmi_dsl`: `main...origin/main`
+- `MetaNC`: `feat/hmi...origin/feat/hmi`
+
+`metanc_hmi_dsl_reports` 这次没有新增提交。
+```
+
+<a id="turn-20"></a>
+## Turn 20
+
+### User
+`2026-04-26 16:14:48 +0800`
+
+```
+生成一下今天的report，更新关联文档，先不要提交，生成最终产物我看看
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 16:15:09 +0800`
+
+```
+我先按现有报告链路检查今天 `2026-04-26` 的 report 生成入口和关联更新步骤，然后直接把当天 report、reports 索引和 `docs_html` 最终产物一起生成出来，不提交。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 16:15:30 +0800`
+
+```
+我已经确认今天 `2026-04-26` 还没有现成 session 目录。接下来我会用现有报告工具先引导出今天的 `user-history` 和 `codex-conversations`，让 dated report、aggregate reports 和 `docs_html` 都连上，再检查最终入口。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 16:15:50 +0800`
+
+```
+工具已经带有自动 bootstrap：如果当天目录不存在，它会补最小 session 包、aggregate `SUMMARY`/timeline/page，再把 `user-history` 和 `codex-conversations` 接进去。我再看一下 CLI 参数，然后直接跑今天这轮。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 16:16:20 +0800`
+
+```
+自动初始化只能给你一个“占位报告”。我倾向于顺手把今天这轮实际做的文档修复也写进 `README / project-report / conversation-report`，这样你看最终产物时不会全是空壳。先参考一下昨天那份结构，我再落今天这版。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 16:16:51 +0800`
+
+```
+我现在先把当天导出跑起来，拿到 `2026-04-26-codex-session/`、`user-history` 和 `codex-conversations` 的底盘。随后我会把今天这轮实际做的文档修复写进 `README / project-report / conversation-report`，再重建最终 HTML。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 16:17:15 +0800`
+
+```
+当天目录已经引导出来了，`2026-04-26-codex-session` 现在有完整骨架，`codex-conversations` 也已经接上。接下来我把占位内容替换成今天这轮实际工作摘要，再修正 aggregate timeline 的 focus 文案。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 16:18:12 +0800`
+
+```
+我开始补今天这版 report 内容：会把 `README / project-report / conversation-report / workflow-diagram / architecture-diagram` 从占位页替成可读版本，同时把 aggregate timeline 和当天 session 入口页一起改成今天这轮真实 focus。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 16:19:57 +0800`
+
+```
+我现在开始重建产物：先 build reports 子模块总书，再 build 今天这份 session-local 书，最后重建主 `docs_html`。完成后我会把你最该看的入口页列出来。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 16:20:51 +0800`
+
+```
+今天这份 report 已经进入最终产物链里了，`docs_html/reports/2026-04-26-codex-session` 已经生成。等主 portal 构建收尾后，我会抽查今天的 report 首页、session-local HTML 和主站 Reports 列表。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-26 16:21:24 +0800`
+
+```
+今天的 report 已生成，关联文档和最终产物都更新了，还没有提交。
+
+更新内容主要在 `metanc_hmi_dsl_reports` 子模块里：
+- 新增 `2026-04-26-codex-session/`
+- 更新 aggregate timeline 和 session 入口页
+- 生成当天 `user-history` 和 `codex-conversations`
+- 重建了 aggregate report book、session-local book、以及主仓库 `docs_html`
+
+你可以先看这几处：
+
+- [今天的 session README](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-26-codex-session/README.md:1)
+- [今天的 project report](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-26-codex-session/project-report.md:1)
+- [今天的 conversation report](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-26-codex-session/conversation-report.md:1)
+- [今天的 session-local HTML](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-26-codex-session/build_html/index.html)
+- [aggregate reports site](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/site/index.html)
+- [主 docs_html 的 Reports 列表](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/en/project/reports.html:1)
+- [发布后的今天 report](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/index.html:1)
+
+当前工作树状态：
+- `metanc_hmi_dsl`: 只有子模块指针变脏
+- `metanc_hmi_dsl_reports`: `src/SUMMARY.md`、`src/index.md` 更新，新增 `2026-04-26-codex-session/` 和 `src/sessions/2026-04-26-codex-session.md`
+
+如果你看这版没问题，我再帮你整理提交。
+```
+
+<a id="turn-21"></a>
+## Turn 21
+
+### User
+`2026-04-26 16:26:14 +0800`
+
+```
+codex user history这部分我感觉详细的那些现在格式有问题，我希望的是 User对应Codex回应，现在的格式和对话过程看起来很奇怪，你检查一下4.25 4.26两天的看一下
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 16:26:44 +0800`
+
+```
+我先直接看 `2026-04-25` 和 `2026-04-26` 的 `codex-conversations` 最终页与生成逻辑，确认“奇怪”具体出在渲染规则还是原始会话切分上。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 16:27:18 +0800`
+
+```
+我已经定位到“奇怪”的根因了：当前完整会话导出是按“原始消息流”平铺渲染的，所以一个 User 后面会跟一串 `commentary`、最后才有 `final_answer`，读起来不像一问一答。我准备把它改成“按 turn 分组”：每个 User 下面挂对应的 Codex 响应序列，再只重生成 `4.25` 和 `4.26` 给你看。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 16:27:52 +0800`
+
+```
+我准备把导出格式改成“按 turn 分组”，不删任何内容，只改展示层。先补一条最小测试锁住预期，再重导出 `4.25` 和 `4.26` 两天给你对比。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 16:28:26 +0800`
+
+```
+我现在改导出器本身：不改会话内容，只把渲染从“消息流水账”改成“按 turn 分组”。改完我会只重导 `4.25` 和 `4.26`，这样你能直接比较前后差异。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 16:29:51 +0800`
+
+```
+我已经把渲染规则改成 turn 分组了。现在先跑导出工具测试，再只重导 `2026-04-25`、`2026-04-26` 两天，并刷新这两天的 session-local HTML 和主 `docs_html`。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 16:30:08 +0800`
+
+```
+导出器测试已经全绿，`4.25` 和 `4.26` 的完整会话也重导完了。现在刷新这两天的 session-local HTML 和主 `docs_html`，这样你看到的就是新的成品格式。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 16:30:33 +0800`
+
+```
+主 `docs_html` 正在收尾。我接着抽查两天的细节页，确认现在已经不是“消息平铺”，而是“Turn -> User -> Codex responses”的结构。
+```
+
+### Codex Response 8 / final_answer
+`2026-04-26 16:31:08 +0800`
+
+```
+我看了 `4.25` 和 `4.26`，你说的“格式很奇怪”确实成立，根因就是之前按原始消息流平铺，把一串 `commentary` 和 `final_answer` 混在一起展示，不像一问一答。
+
+我已经把展示改成按 turn 分组了：
+- 每个 `Turn`
+- 先是 `User`
+- 下面挂这一轮对应的 `Codex Response 1/2/...`
+- `commentary` 和 `final_answer` 还在，但不再散成整页流水账
+
+这版已经重导并重建了 `2026-04-25`、`2026-04-26` 两天，以及最终 `docs_html`，还没提交。
+
+你可以直接看：
+- [4.25 详细会话 HTML](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-25-codex-session/codex-conversations/sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed.html)
+- [4.26 详细会话 HTML](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/codex-conversations/sessions/20260426-123732-019dc814-163a-7881-a97a-9f494644d1c2.html)
+- [4.25 对应 Markdown](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-25-codex-session/codex-conversations/sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed.md)
+- [4.26 今日 report 首页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/index.html)
+
+我也跑了：
+- `python3 -m unittest -v tests.test_codex_user_history_export`
+- 重导 `2026-04-25`、`2026-04-26`
+- 重建两天的 session-local `build_html`
+- `./tools/build_docs_html.sh`
+
+有一个你可以顺手留意的点：现在格式已经是“User 对应 Codex 响应”，但像 `4.25` 第一轮这种，本来就有很多中间 `commentary`，所以它会变成一个很长的 Turn。  
+如果你还觉得长，我下一步可以继续收成“默认只突出 User + 最终答复，把 commentary 折叠到次级区”。
+```
+
+<a id="turn-22"></a>
+## Turn 22
+
+### User
+`2026-04-26 16:33:31 +0800`
+
+```
+可是明明有多个对话，但是HTML index里还是只显示第一条user发的
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 16:34:01 +0800`
+
+```
+我先看一下 `codex-conversations/index.html` 的生成逻辑和当前产物，确认现在是不是“一整个 rollout 只取第一条 user 作为标题”。如果是，我直接把 index 改成能反映多轮 turn。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 16:34:37 +0800`
+
+```
+根因确认了：`index.html` 这一层还是按“一个 rollout 文件 = 一个 session 标题”，标题直接取第一条 user，所以哪怕下面已经按 turn 分组，索引行仍只显示第一条。我直接把索引改成显示 `Turns` 和多条 user prompt 摘要。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 16:35:09 +0800`
+
+```
+我补一个回归测试，直接锁住“同一个 session 多个 user turn 时，index 要显示 turns 和多条 prompt 摘要”。
+```
+
+### Codex Response 4 / commentary
+`2026-04-26 16:35:40 +0800`
+
+```
+我先把测试跑掉，再只重导 `4.25/4.26` 两天，不去动别的 report。重导后我会直接给你看新的 index 片段。
+```
+
+### Codex Response 5 / commentary
+`2026-04-26 16:35:54 +0800`
+
+```
+测试只差一个转义细节：Markdown 表格里 `|` 会被写成 `\|`。我把断言修掉，然后再刷新今天/昨天的 session-local book 和主 `docs_html`，你看最终页面就行。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 16:36:19 +0800`
+
+```
+我现在把测试补绿，并重建 4.25、4.26 和主 `docs_html`，确保你看的不是半成品。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 16:36:46 +0800`
+
+```
+我最后抽 `index.html` 给你看新的列和摘要，确保你不用再点进 session 才知道里面有多少轮。
+```
+
+### Codex Response 8 / final_answer
+`2026-04-26 16:37:10 +0800`
+
+```
+对，之前 `HTML index` 的确还是只拿第一条 user 当标题，因为它那层一直是“一个 rollout 文件一行”，标题字段直接取第一条 user。
+
+我已经改了两件事，还没提交：
+
+- 详细页现在按 `Turn -> User -> Codex Response 1/2/...` 分组
+- `index.html` 现在新增了 `Turns` 和 `Prompt Summary`，不再只显示第一条 user
+
+你现在可以直接看：
+
+- [4.26 index](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/codex-conversations/index.html)
+- [4.25 index](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-25-codex-session/codex-conversations/index.html)
+- [4.26 详细页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/codex-conversations/sessions/20260426-123732-019dc814-163a-7881-a97a-9f494644d1c2.html)
+- [4.25 详细页](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-25-codex-session/codex-conversations/sessions/20260425-053324-019dc169-6b53-7b91-91d7-d2d538c3a4ed.html)
+
+现在 `4.26 index` 这行会显示类似：
+
+- `Turns: 22`
+- `Prompt Summary: 检查一下... | commit + push... | Reports列表... | +19 more`
+
+也就是说：
+- 还保持“一整个 rollout 一行”
+- 但这行已经能反映它里面不止一个对话
+
+如果你要的是更激进的形式，比如：
+- `index` 里直接一条 turn 一行
+- 点进去自动跳到对应 turn
+那我下一步可以继续把索引改成 turn-level。
+```
+
+<a id="turn-23"></a>
+## Turn 23
+
+### User
+`2026-04-26 16:38:58 +0800`
+
+```
+感觉还是有问题，你去看4.25日的file://wsl$/ubuntu-24.04/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-25-codex-session/codex-conversations/index.html，每一行的Prompt Summary都是一模一样的，然后4.26日file://wsl$/ubuntu-24.04/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/codex-conversations/index.html的只有一行数据，这不是不合理吗
+```
+
+### Codex Response 1 / commentary
+`2026-04-26 16:39:37 +0800`
+
+```
+我去看底层数据和生成规则，不只看 HTML。先确认两件事：`4.25` 那几行是不是其实来自同一组重复 rollout 文件，`4.26` 是不是当天只有一个 rollout 文件但里面包含了很多 turn。
+```
+
+### Codex Response 2 / commentary
+`2026-04-26 16:40:36 +0800`
+
+```
+我准备改两层，不只是表头：
+
+- 同一个 `session_id` 的多份 rollout snapshot 在 index 里会先去重，只保留最完整的一份
+- `index.html` 不再按 session/file 列表，而是按 turn 列表，每个 user prompt 一行，链接直接跳到对应 turn
+
+这样 `4.25` 不会再一堆重复行，`4.26` 也不会只剩一行。
+```
+
+### Codex Response 3 / commentary
+`2026-04-26 16:41:39 +0800`
+
+```
+我已经把导出器改到“去重逻辑 session + turn-level index”这条线上了。现在只差把测试期望对齐，然后重新生成 4.25/4.26 给你看最终效果。
+```

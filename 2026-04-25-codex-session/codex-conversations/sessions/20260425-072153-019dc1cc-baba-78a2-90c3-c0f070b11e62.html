@@ -57,6 +57,11 @@ th { background: #efe2ca; position: sticky; top: 0; }
 }
 .msg.user { border-left: 8px solid var(--user); }
 .msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
 .time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
 pre {
   white-space: pre-wrap;
@@ -87,34 +92,37 @@ pre {
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/25/rollout-2026-04-25T07-21-53-019dc1cc-baba-78a2-90c3-c0f070b11e62.jsonl</code></div>
 <div><b>Messages</b>: <code>6</code></div>
+<div><b>Turns</b>: <code>1</code></div>
 </section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
 <article class="msg user">
-<h2>1. User</h2>
+<h3>User</h3>
 <div class="time">2026-04-25 07:21:53 +0800</div>
 <pre>Inspect /home/i5/workspace/ccmix-wp/metanc_hmi_dsl and /home/i5/workspace/ccmix-wp/MetaNC for any explicit HARNESS principles, AI-development workflow rules, or harness-oriented engineering guidance relevant to story/planning docs. Summarize only actionable principles, with concrete file references and short quotes/paraphrases where useful. Focus on what should shape a top-down story structure for AI-driven development.</pre>
 </article>
 <article class="msg assistant">
-<h2>2. Codex / commentary</h2>
+<h3>Codex Response 1 / commentary</h3>
 <div class="time">2026-04-25 07:22:02 +0800</div>
 <pre>I’m scanning both codebases for story/planning guidance, specifically explicit HARNESS principles, AI workflow rules, and engineering instructions that should shape top-down planning docs. I’ll locate likely docs first, then read only the relevant files and extract actionable principles with file references.</pre>
 </article>
 <article class="msg assistant">
-<h2>3. Codex / commentary</h2>
+<h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-04-25 07:22:20 +0800</div>
 <pre>I’ve identified two useful clusters. In `metanc_hmi_dsl`, the strongest material is the story-map/story-pack and agent workflow docs; in `MetaNC`, the most explicit AI-development guidance is in `docs_policy.md`, `ooda.md`, and the gcode parser planning docs rather than generic architecture text.</pre>
 </article>
 <article class="msg assistant">
-<h2>4. Codex / commentary</h2>
+<h3>Codex Response 3 / commentary</h3>
 <div class="time">2026-04-25 07:22:41 +0800</div>
 <pre>Next I’m reading the MetaNC docs that are explicit about AI-agent behavior and planning discipline: documentation policy, OODA workflow, backlog/roadmap, and the requirements-driven implementation-plan docs. Those are the clearest sources for how story/planning docs should be structured.</pre>
 </article>
 <article class="msg assistant">
-<h2>5. Codex / commentary</h2>
+<h3>Codex Response 4 / commentary</h3>
 <div class="time">2026-04-25 07:23:18 +0800</div>
 <pre>I have the content. I’m pulling exact line numbers for the final references so the summary can point to the specific rules instead of broad file-level citations.</pre>
 </article>
 <article class="msg assistant">
-<h2>6. Codex / final_answer</h2>
+<h3>Codex Response 5 / final_answer</h3>
 <div class="time">2026-04-25 07:23:58 +0800</div>
 <pre>No explicit named “HARNESS principles” showed up in either tree. The closest explicit harness guidance is MetaNC’s requirement for a practical development harness, plus HMI traceability/reporting rules. The actionable principles that should shape a top-down AI-driven story structure are:
 
@@ -146,6 +154,7 @@ pre {
 
 Net result: the strongest repo-wide pattern is `epic -&gt; outcome story -&gt; fixed delivery slices -&gt; acceptance criteria/spec/tests -&gt; generated traceability/evidence`, with docs written in a source-first structure optimized for AI agents and work executed in small, coherent, evidence-backed slices.</pre>
 </article>
+</section>
 </main>
 </body>
 </html>

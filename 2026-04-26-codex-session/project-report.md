@@ -209,6 +209,6 @@
 
 - `Sessions: 2`
 - `User prompts: 38`
-- `Messages: 384`
+- `Messages: 391`
 
-这一步的价值在于让 turn-level index 的字段语义和展示粒度真正一致，避免 session 级时间误导逐行阅读。
+这一步的价值在于让 turn-level index 的字段语义和展示粒度真正一致，避免 session 级时间误导逐行阅读。最终刷新后，这次“时间列修正”和“再次提交推送”的过程也一并进入今天 report。

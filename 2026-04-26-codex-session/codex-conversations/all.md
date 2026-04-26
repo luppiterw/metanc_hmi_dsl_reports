@@ -3108,7 +3108,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 - Started: `2026-04-26 20:08:35 +0800`
 - CWD: `/home/i5/workspace/ccmix-wp`
 - Source file: `/home/i5/.codex/sessions/2026/04/26/rollout-2026-04-26T20-08-35-019dc9b1-0649-7452-8bea-1143355f2fad.jsonl`
-- Messages: `58`
+- Messages: `65`
 - User prompts: `8`
 - Synthetic events: `0`
 
@@ -3764,4 +3764,55 @@ file://wsl.localhost/Ubuntu-24.04/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/subm
 
 ```
 我先把导出器测试跑掉，再刷新今天这份 report 的 `codex-conversations`。如果导出没问题，我会补一段摘要说明这次修的是“turn 行时间语义”，然后分别提交 `metanc_hmi_dsl` 和 report 子模块。
+```
+
+### Codex Response 6 / commentary
+`2026-04-26 21:30:13 +0800`
+
+```
+我把这次修正也记到今天的摘要里：会明确写成“`Prompt Index` 第一列改为 turn-level user prompt time，不再复用 session started time”。这样 report 里能看出为什么今天又刷新了一轮导出。
+```
+
+### Codex Response 7 / commentary
+`2026-04-26 21:32:16 +0800`
+
+```
+我已经把这次时间语义修正写回今天的 report 摘要。现在重建今天这份 session 的 HTML，然后分别提交：
+1. `metanc_hmi_dsl_reports` 子模块里的导出与摘要刷新
+2. `metanc_hmi_dsl` 里的导出器修复和测试更新，以及新的 submodule 指针。
+```
+
+### Codex Response 8 / commentary
+`2026-04-26 21:34:12 +0800`
+
+```
+导出器顺手把 aggregate `src/index.md` 弄坏了，只剩一行时间线。这不是你要的范围，我先把这个文件回退，保证这次提交只改“今天的 report”和导出器本身。
+```
+
+### Codex Response 9 / commentary
+`2026-04-26 21:36:22 +0800`
+
+```
+我再单独执行一次 `git add` 并立即检查 staged 列表，确保不是并行工具的显示问题。
+```
+
+### Codex Response 10 / commentary
+`2026-04-26 21:37:22 +0800`
+
+```
+report 子模块这次提交只包含今天这份 session 的刷新和摘要修正，没有把 aggregate 首页之类别的文件带进去。现在提交并推送它。
+```
+
+### Codex Response 11 / commentary
+`2026-04-26 21:40:58 +0800`
+
+```
+导出器修复本身还在 `metanc_hmi_dsl` 里，我也一起提交，这样下次再刷新 report 时不会回退到旧语义。接着我会把新的 submodule 指针一并带上。
+```
+
+### Codex Response 12 / commentary
+`2026-04-26 21:46:56 +0800`
+
+```
+我再做最后一次导出刷新，把刚才这次“时间列修正 + 两个仓库提交推送”的结果也压进今天的 session。这样 report 就不是停在修之前的快照。刷新后我会再做一轮子模块提交和上层指针提交。
 ```

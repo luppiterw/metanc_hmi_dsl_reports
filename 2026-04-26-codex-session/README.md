@@ -16,11 +16,13 @@
 目录：
 
 - `project-report.md`: 本轮 docs portal、report transcript 和发布验证的结果总结
+- `hmi-server-recommendation.md`: HMI server 推荐方案、技术选型和实施清单
 - `conversation-report.md`: 从“文档还有什么问题”到“生成今天的 report”的摘要过程记录
 - `user-history.md`: 当天用户发言原始导出
 - `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: 从问题审计、源文档修复到最终 report 发布的工作流图
 - `architecture-diagram.md`: `docs/`、`docs_i18n/`、report submodule、`docs_html/` 与 `MetaNC/nrt/hmi` 的关系图
+- `assets/hmi-server-recommendation/`: HMI server 架构图、通信模式图和 PDF 导出版
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
 
 <!-- codex-full-export:start -->

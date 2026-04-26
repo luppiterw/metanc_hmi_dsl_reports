@@ -147,3 +147,27 @@
 1. 继续决定是否把 `~/.codex/...` 这层 source 语义也进一步脱敏
 2. 视需要清理历史 aggregate timeline 里重复或过时的 focus 行
 3. 决定是否把 `<subagent_notification>`、`<turn_aborted>` 这类事件从 turn-level index 中继续降噪
+
+## 7. 新增：HMI Server 方案整理
+
+在这轮 session 末尾，围绕当前 `HMI server` 的技术路线又补做了一份独立整理，目标不是改现有实现，而是把后续 server 演进方向收成一套可阅读、可执行的方案材料。
+
+这份新增材料包括：
+
+- `hmi-server-recommendation.md`
+- `assets/hmi-server-recommendation/hmi-server-recommendation.pdf`
+- `assets/hmi-server-recommendation/hmi-server-transport-current-vs-target.{png,svg}`
+- `assets/hmi-server-recommendation/hmi-recommended-target-architecture.{png,svg}`
+
+整理结论收敛为：
+
+- northbound 推荐从 hand-written transport 演进到 `Drogon + HTTPS/REST + WebSocket`
+- southbound 推荐 `OPC UA` 优先，legacy 协议尽量先经工业网关收口
+- 厂商 `SDK / 专有协议` 只作为 fallback
+- 数据与运维建议先采用 `PostgreSQL + OpenTelemetry + Prometheus + Grafana + Docker Compose + Traefik`
+
+同时把实施清单拆成三段：
+
+1. 第一阶段先把 northbound、contract 分层、观测和 Compose 部署打通
+2. 第二阶段补 `OPC UA` 和工业网关链路
+3. 第三阶段再根据规模决定时序库、`Kubernetes` 和更细粒度服务拆分

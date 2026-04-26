@@ -7,3 +7,4 @@
 - [Codex Conversations](codex-conversations.md)
 - [Workflow Diagram](workflow-diagram.md)
 - [Architecture Diagram](architecture-diagram.md)
+- [HMI Server Recommendation](hmi-server-recommendation.md)

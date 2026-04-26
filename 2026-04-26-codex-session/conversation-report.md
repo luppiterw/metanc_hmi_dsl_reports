@@ -144,6 +144,27 @@
 - `37` 个 user prompts
 - `371` 条 messages
 
+### 阶段 M: 用户继续指出 turn 索引时间语义不对
+
+当 report 已经补进最后一轮 session 后，用户继续检查 `codex-conversations/index.html`，又发现一个更细的展示问题：
+
+- 每一行的第一列虽然叫 `Started`
+- 但实际写的是整个 session 的起始时间
+- 并不是这一行对应 user prompt 的真实发起时间
+
+这个问题不是数据缺失，而是导出器表格字段语义不对。
+
+因此这一步做了两件事：
+
+- 修改 source-repo-only 导出器，让 `Prompt Index` 每一行读取该 turn 的 user timestamp
+- 把列名从 `Started` 改成 `Prompt Time`
+
+修完后，又重新导出今天的 `codex-conversations`，于是今天 report 统计再次前进到：
+
+- `2` 个 session
+- `38` 个 user prompts
+- `384` 条 messages
+
 ## 3. 关键决策
 
 ### 先修最终产物，再考虑是否改历史源 transcript
@@ -170,6 +191,11 @@
 这次最后一段又证明，session report 不能只在项目文档写完时刷新一次。
 只要当天还在继续对话、继续产生产物，就应该把 `user-history` 和 `codex-conversations` 再同步一轮，否则 report 会落后于真实 session。
 
+### turn 索引字段必须用 turn 级时间
+
+当 `index` 已经按 turn 展开后，第一列如果继续沿用 session 级 `started_at`，会误导阅读者，以为每一行都在同一时刻发起。
+所以 turn-level index 的时间列必须直接读取该 turn 的 user message timestamp，而不是 session meta。
+
 ## 4. 总结
 
 2026-04-26 这轮工作的核心不是新增一批文档，而是把已有文档体系真正变成一套：
@@ -182,5 +208,6 @@
 - 完整会话导出的 index 和详细页终于更接近真实对话结构
 - `HMI server` 推荐方案、实施清单、图和 PDF 已归档到今天 report
 - 今天 report 在最后一轮对话后又执行了一次导出刷新，避免 session 内容停在旧快照
+- `Prompt Index` 的时间列已修正为每个 turn 的 user 发起时间，而不再复用 session 起始时间
 
 今天这份 report 本身，也成为这轮“文档与报告产物收口”工作的最终落点。

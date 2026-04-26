@@ -190,3 +190,25 @@
 - `Messages: 371`
 
 这一步的意义不在新增内容，而在保证今天 report 真正对应“截至最后一次交互为止”的 session 状态，而不是停在中途快照。
+
+## 9. codex-conversations 时间列语义修正
+
+在补进最后一轮 session 后，用户继续检查 `codex-conversations/index.html`，指出：
+
+- 表格每一行第一列并不是这一行 user prompt 的实际发起时间
+- 它复用了整段 session 的 `started_at`
+
+这个反馈是成立的。
+
+因此这轮又进一步修了 source-repo-only 导出器：
+
+- `Prompt Index` 第一列改为读取 turn 里的 user timestamp
+- 列名从 `Started` 改成 `Prompt Time`
+
+随后重新导出 `2026-04-26` 的完整会话，今天统计更新为：
+
+- `Sessions: 2`
+- `User prompts: 38`
+- `Messages: 384`
+
+这一步的价值在于让 turn-level index 的字段语义和展示粒度真正一致，避免 session 级时间误导逐行阅读。

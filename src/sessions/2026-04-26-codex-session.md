@@ -26,3 +26,4 @@ Key outcomes:
 - `codex-conversations` detailed pages now group by turn, and the index expands to turn-level rows instead of one first-user title per rollout file
 - A standalone `HMI server` recommendation package with Markdown, PDF, and two diagrams is now archived inside the session report
 - The day-end report export was refreshed again after the user noticed stale session data, so `user-history` and `codex-conversations` now include the latest final discussion
+- The `Prompt Index` time column now uses each turn's user prompt timestamp instead of the parent session start time

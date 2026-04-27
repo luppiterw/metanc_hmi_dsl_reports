@@ -2,35 +2,86 @@
 
 ## 1. 目标
 
-这轮工作的目标比较集中：
+这一天的工作围绕 `metanc_hmi_dsl` 的工程化闭环展开：
 
-1. 确认为什么最终 `docs_html` 里看到的 report 仍然是旧内容
-2. 回答前端 Web 方案后续部署时是否必须依赖 `Nginx`
-3. 把这轮部署选型讨论整理成可阅读的 `Markdown + PDF`
-4. 创建今天的 report，并说明跨机器更新同一天 report 的协作边界
+1. 更新 `metanc_hmi_dsl` 与 `MetaNC` 当前本地分支，确认 reports 子模块状态
+2. 输出并检查 `metanc_hmi_dsl` 的最终产物和 `docs_html`
+3. 为 client/server 补产品定义、需求澄清、工作计划与中英文文档入口
+4. 建立 `docs_i18n/zh-CN` 对英文源文件的翻译进度追踪机制
+5. 分析并落地 server Docker/Drogon 运行路径
+6. 补充前端 Web 部署建议材料
+7. 刷新今天 report，让 `docs_html` 中的当天 report 不再是空会话快照
 
-## 2. 发布问题定位
+## 2. 仓库同步与最终产物检查
 
-用户发现最终 `docs_html` 里的 `2026-04-26` report 没更新，但 session 目录里的内容已经是新的。
+早间先处理了仓库状态：
 
-这次核对后确认：
+- `MetaNC` 当前分支 `feat/hmi` 快进到远端同名分支
+- `metanc_hmi_dsl` 当前分支 `main` 快进到 `origin/main`
+- reports 子模块按父仓库记录同步检出，避免父仓库指针和子模块工作树不一致
 
-- `2026-04-26-codex-session/build_html/` 是最新本地构建产物
-- `metanc_hmi_dsl/docs_html/reports/2026-04-26-codex-session/` 仍停留在更早的发布时间
-- 问题不在 report 源文件，而在最终 portal 发布步骤没有重跑
+随后按用户要求检查并刷新 `metanc_hmi_dsl` 的最终输出，包括生成目录、报告书和 `docs_html` 门户。
 
-因此这轮执行了：
+## 3. client/server 工程化文档
 
-- `./tools/build_docs_html.sh`
+围绕后续 client/server 产品定义、需求澄清、work schedule、设计和实现路线，补充了可供 AI 与人类继续阅读的文档结构。
 
-结果是：
+重点约束包括：
 
-- 最终 `docs_html/reports/2026-04-26-codex-session/` 已同步到最新 session 内容
-- `Prompt Time` 列名、`Messages: 391`、`HMI Server Recommendation` 章节和 PDF/图片链接都已出现在最终发布目录
+- 文档先落在 `metanc_hmi_dsl`，作为上游设计和实现记录
+- 中文对照放在 `docs_i18n/zh-CN`
+- `docs_html` 需要随文档变更同步重建，避免最终产物落后于源 Markdown
 
-## 3. 前端部署方案结论
+## 4. zh-CN 翻译进度记录
 
-这轮没有改前端代码，而是把部署思路收成一份独立建议文档。
+针对中文文档缺少英文源追踪的问题，本日新增了 `docs_i18n` 内部的进度记录设计与实现。
+
+核心目标是：
+
+- 记录每个中文文件对应的英文源
+- 记录英文源最近一次翻译时的状态
+- 当英文源变更后，能判断中文是否仍然 current
+- 这个状态只在 `metanc_hmi_dsl` 中有效，不污染同步到 `MetaNC` 的 retained package
+
+本轮还补充了检查/标记工具和测试，用于后续跨机器或多人协作时继续推进翻译进度。
+
+## 5. Docker/Drogon server 路线
+
+下午重点转向 server 容器化和后端框架选型。
+
+结论是：
+
+- Drogon 支持 WebSocketController，适合作为后续 C++ server 的 REST/WebSocket 后台框架
+- 当前 server 需要保留 legacy 构建路径，同时新增可选 Drogon 传输
+- Docker 镜像应复用 `MetaNC` 现有 vcpkg/Docker 基础能力，避免在宿主机直接污染依赖
+- 容器内 server 应监听 `0.0.0.0`，契约 bundle 路径、host、port 通过环境变量或参数传入
+
+已落地的主要变更包括：
+
+- `server/vcpkg.json`
+- `server/CMakeLists.txt` 的 `HMI_SERVER_TRANSPORT=auto|legacy|drogon`
+- `server/src/main.cpp` 的环境变量和命令行参数入口
+- `server/src/transport/http/http_server.cpp` 的 Drogon REST/WebSocket 分支
+- `docker/hmi-server.Dockerfile`
+- `docker/compose.hmi-server.yml`
+- `tools/docker_hmi_server.sh`
+- 英文与中文 Docker deployment 文档
+
+已执行的验证包括：
+
+- legacy CMake configure/build/ctest
+- 强制 Drogon 缺失时的 configure 失败路径
+- `docker build --check`
+- `docker compose config`
+- `./tools/docker_hmi_server.sh smoke`
+- `./tools/generate_targets.sh`
+- generated server native health check
+- i18n strict check、unit test、`./tools/build_docs_html.sh`
+- `git diff --check`
+
+## 6. 前端部署方案结论
+
+本日还把前端部署思路收成一份独立建议文档。
 
 主结论如下：
 
@@ -45,7 +96,7 @@
 - `Nginx` 处理静态文件、`/api` 反向代理和 `WebSocket` 转发都成熟
 - 未来如果服务规模变大，再演进到 `Traefik` 也不晚
 
-## 4. 本次新增文档
+## 7. 前端部署专题文档
 
 今天这轮新增了一份独立的部署建议材料：
 
@@ -59,23 +110,24 @@
 - 不同阶段的推荐选型
 - 面向 `Web client + /api + /ws + runtime` 的最小推荐拓扑
 
-## 5. 当日自动导出状态
+## 8. 当日自动导出状态
 
-虽然今天已经创建了 `2026-04-27-codex-session/`，但 `Codex user-history` 导出器当前对 `2026-04-27` 返回的仍然是：
+今天 report 最初在 `docs_html` 中看起来“什么都没有”，主要原因是完整会话导出仍停留在零会话快照：
 
 - `Sessions: 0`
 - `User prompts: 0`
 - `Messages: 0`
 
-这不是 report 目录没建出来，而是当前会话的原始本地存档还没有进入导出器扫描范围。
+本次刷新重新执行了当天 brief 与 full export，当前状态已经更新为：
 
-因此今天这轮 report 的有效内容主要来自：
+- `Sessions: 3`
+- `Primary sessions: 3`
+- `User prompts: 17`
+- `Messages: 115`
 
-- 手工整理的 `project-report.md`
-- 手工整理的 `conversation-report.md`
-- 单独导出的前端部署建议文档和 PDF
+因此最终 HTML 里应能看到当天用户历史、完整会话索引和三个 session 的导出页面。
 
-## 6. 跨机器协作边界
+## 9. 跨机器协作边界
 
 关于“另一台机器再更新 report，会不会覆盖本机内容”，需要明确两点：
 
@@ -88,7 +140,7 @@
 - 如果两边同时各自修改后再提交，就可能在 `git pull/merge` 时产生冲突
 - 不建议两台机器并行重导同一天 report，除非明确分工或改目录命名策略
 
-## 7. 当前建议
+## 10. 当前建议
 
 如果后续还要继续双机协作 report，我建议按这个规则执行：
 

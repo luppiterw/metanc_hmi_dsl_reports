@@ -1,7 +1,7 @@
 # 2026-04-27 Codex Session Report
 
-这个目录整理了 2026-04-27 这轮围绕 `docs_html` 最终发布校验、前端 Web 部署选型和 report 协作边界的结构化阅读材料。
-这次 session 的原始 Codex 会话存档还没有进入本地导出器可扫描的数据集，因此 `user-history` 与 `codex-conversations` 仍是零会话快照；本目录补充了手工整理的项目报告、会话摘要和一份独立的前端部署建议文档。
+这个目录整理了 2026-04-27 围绕 `metanc_hmi_dsl` / `MetaNC` 同步、client/server 工程化规划、中文文档与 i18n 进度记录、Docker/Drogon server 路径、前端部署建议，以及当天 report 刷新的结构化阅读材料。
+本次刷新已重新导出当天本地 Codex 会话，`user-history` 与 `codex-conversations` 不再是零会话快照。
 
 目录：
 
@@ -19,14 +19,14 @@
 ## Complete Codex Conversation Export
 
 - Scope: `2026-04-27`
-- Sessions: `0`
-- Primary sessions: `0`
+- Sessions: `3`
+- Primary sessions: `3`
 - Side sessions: `0`
-- User prompts: `0`
-- Synthetic events: `0`
-- Messages: `0`
-- User messages: `0`
-- Codex messages: `0`
+- User prompts: `17`
+- Synthetic events: `2`
+- Messages: `115`
+- User messages: `19`
+- Codex messages: `96`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
@@ -34,7 +34,8 @@
 
 ## Session Notes
 
-- `docs_html/reports/2026-04-26-codex-session/` 一度停在旧发布时间，问题根因是只重建了 session 本地 `build_html`，没有重跑最终 portal 发布。
-- 这轮已确认并重新执行 `./tools/build_docs_html.sh`，最终 `docs_html` 里的 `2026-04-26` report 已同步到最新内容。
-- 围绕前端正式部署补充了一份独立整理，核心结论是：开发预览可用轻量 server，但正式环境仍建议有一层专门的 Web 入口；当前阶段优先推荐 `Nginx + Docker Compose`。
-- 还补充了跨机器协作边界说明：同一天 report 目录是按日期固定命名的，不会“静默覆盖已提交内容”，但两台机器同时更新同一天目录时会修改同一批文件，仍可能在 `git pull/merge` 时产生冲突。
+- 早间完成 `metanc_hmi_dsl` 与 `MetaNC` 当前分支快进同步，并确认 reports 子模块按父仓库记录检出。
+- 为 client/server 路线补齐产品定义、需求澄清、工作计划和中英文文档入口，并让 `docs_html` 重新发布。
+- 在 `docs_i18n/zh-CN` 下加入中文翻译源版本追踪机制，避免英文源变更后中文对照状态不可判断；该进度记录限定在 `metanc_hmi_dsl` 内，不随 MetaNC 同步。
+- 分析并落地 server Docker/Drogon 方向：新增 vcpkg manifest、Drogon REST/WebSocket 传输编译选项、Dockerfile、Compose、封装脚本和中英文部署文档，并完成本地构建、ctest、Docker smoke 与 `docs_html` 重建。
+- 今天 report 原先在最终 `docs_html` 中看起来为空，根因是完整会话导出仍是 `Sessions: 0`；本次重新导出后已更新为 3 个 primary sessions、17 条用户请求、115 条消息。

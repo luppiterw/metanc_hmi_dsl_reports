@@ -2,7 +2,7 @@
 
 Focus:
 
-- `docs_html` final publish refresh, frontend Web deployment recommendation packaging, and same-day report collaboration boundary clarification
+- `metanc_hmi_dsl` / `MetaNC` sync, client/server engineering docs, zh-CN i18n status tracking, Docker/Drogon server implementation, frontend deployment recommendation, and same-day report refresh
 
 Session assets:
 
@@ -20,7 +20,9 @@ Session assets:
 
 Key outcomes:
 
-- Rebuilt the final `docs_html` portal so the published `2026-04-26` report now matches the latest session-local build
-- Archived a standalone frontend deployment recommendation as Markdown and PDF inside the day report
-- Recorded that `Python http.server` is acceptable for local preview only, while current production recommendation remains `Nginx + Docker Compose`
-- Documented the current report-collaboration boundary: same-day reports are date-keyed, so cross-machine edits do not silently overwrite pushed content but can still conflict when both machines modify the same day directory
+- Fast-forwarded the active `MetaNC` and `metanc_hmi_dsl` branches and synchronized the reports submodule checkout.
+- Added client/server engineering docs plus Chinese counterparts under `docs_i18n/zh-CN`.
+- Added zh-CN translation status tracking so English source changes can be compared against Chinese translation state inside `metanc_hmi_dsl` only.
+- Added the Docker/Drogon server path with vcpkg manifest, CMake transport selection, REST/WebSocket runtime transport, Dockerfile, Compose wrapper, and bilingual deployment docs.
+- Re-exported the same-day report from a zero-session snapshot to 3 primary sessions, 17 user prompts, and 115 messages, then prepared it for `docs_html` publication.
+- Archived a standalone frontend deployment recommendation as Markdown and PDF inside the day report.

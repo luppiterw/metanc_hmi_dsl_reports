@@ -11,7 +11,9 @@
 5. 设计并实现 zh-CN 翻译源追踪和状态记录
 6. 检查是否需要合并进 `MetaNC`，并完成一次提交与 push
 7. 分析 `MetaNC` 的 Docker 方案，继续落地 `metanc_hmi_dsl` server Docker/Drogon 路径
-8. 处理今天 report 在 `docs_html` 中显示为空的问题
+8. 移除 server legacy HTTP 路径，改为 Drogon-only native runtime
+9. 补齐 generated client/server 分发和本地测试方式
+10. 处理今天 report 在 `docs_html` 中显示为空的问题
 
 ## 2. 文档与 i18n 主线
 
@@ -55,17 +57,32 @@
 - 倾向直接使用 Drogon 作为后台服务框架
 - 需要确认 Drogon 是否支持 WebSocket 长连接
 
-分析阶段确认 Drogon 支持 WebSocketController，并将 server 路线收敛为：
+分析阶段确认 Drogon 支持 WebSocketController，并将 server 路线先收敛为分阶段实施。
 
-- legacy server 继续可构建
-- Drogon 作为可选/强制传输后端
-- Docker 镜像基于 vcpkg 依赖安装和 CMake 构建
+后续用户明确要求不要再保留 legacy 路径，因此当前实现已经改成：
+
+- native server 直接依赖 `Drogon::Drogon`
 - REST API 保持现有 contract/runtime 语义
-- WebSocket 先提供 runtime snapshot 推送和后续订阅通道
+- WebSocket subscription 提供过滤订阅、snapshot、state changed、command lifecycle 和 journal replay
+- Docker 镜像基于 vcpkg 依赖安装和 CMake 构建
+- generated 分发包可自动通过 host vcpkg 或 Docker builder 生成 Drogon native server
 
-实施阶段补上了 Dockerfile、Compose、wrapper、vcpkg manifest、CMake 选项、Drogon REST/WebSocket 分支和中英文文档，并通过本地 build/test、Docker smoke、生成产物和 docs rebuild 验证。
+实施阶段补上了 Dockerfile、Compose、wrapper、vcpkg manifest、Drogon-only CMake/server 代码、WebSocket subscription 协议、中英文文档和 generated native server 打包逻辑，并通过本地 build/test、Docker smoke、生成产物和 docs rebuild 验证。
 
-## 6. docs_html 和前端部署讨论
+## 6. generated client/server 验证
+
+用户指出原来 `generated` 中用于本地跑 client/server 的入口不能因为 server 切到 Drogon 而失效。
+
+处理后当前可用路径是：
+
+- `./tools/generate_targets.sh` 会重新生成 Web/QML/contract，并构建 native Drogon server
+- `./generated/distribution/run_server_native.sh <port>` 启动 native Drogon server
+- `./generated/distribution/run_client_web.sh --restart <port>` 启动 Web client
+- `./generated/distribution/run_server_fixture.sh <port>` 仍可用于 fixture/mock 快速联调
+
+已用 health/bootstrap 请求验证 native server，bootstrap 中的 `transport` 返回 `drogon-rest-ws`。
+
+## 7. docs_html 和前端部署讨论
 
 在前端部署讨论之前，用户曾指出最终 `docs_html` 页面看起来还是旧的。处理时确认问题不在 report 源，而在最终 portal 发布目录没有重新生成。
 
@@ -84,7 +101,7 @@
 - 这层入口不一定非得是 `Nginx`
 - `Python http.server` 只能做开发预览，不适合作为正式部署方案
 
-## 7. 选型收敛
+## 8. 选型收敛
 
 随后用户继续问“除了 `Nginx` 还可以是什么，`python http server` 可不可以”，再进一步要求给一个选型对比。
 
@@ -99,7 +116,7 @@
 
 - `Nginx + Docker Compose`
 
-## 8. 今天 report 的处理方式
+## 9. 今天 report 的处理方式
 
 用户要求立即更新今天的 report，因为 `docs_html` 里的当天 report 看起来为空。
 
@@ -113,12 +130,12 @@
 
 - `Sessions: 3`
 - `Primary sessions: 3`
-- `User prompts: 17`
-- `Messages: 115`
+- `User prompts: 27`
+- `Messages: 198`
 
 同时补写了本页和项目报告，让当天 report 能反映完整主线，而不是只停留在早些时候的前端部署讨论。
 
-## 9. 跨机器覆盖风险结论
+## 10. 跨机器覆盖风险结论
 
 用户最后关心的是：
 

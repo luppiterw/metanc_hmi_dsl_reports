@@ -10,7 +10,8 @@
 4. 建立 `docs_i18n/zh-CN` 对英文源文件的翻译进度追踪机制
 5. 分析并落地 server Docker/Drogon 运行路径
 6. 补充前端 Web 部署建议材料
-7. 刷新今天 report，让 `docs_html` 中的当天 report 不再是空会话快照
+7. 修正 generated client/server 分发包，使原有 generated 测试入口继续可用
+8. 刷新今天 report，让 `docs_html` 中的当天 report 不再是空会话快照
 
 ## 2. 仓库同步与最终产物检查
 
@@ -52,25 +53,34 @@
 结论是：
 
 - Drogon 支持 WebSocketController，适合作为后续 C++ server 的 REST/WebSocket 后台框架
-- 当前 server 需要保留 legacy 构建路径，同时新增可选 Drogon 传输
+- 当前 server 已移除 legacy HTTP 传输，native server 直接使用 Drogon REST/WebSocket 运行时
 - Docker 镜像应复用 `MetaNC` 现有 vcpkg/Docker 基础能力，避免在宿主机直接污染依赖
 - 容器内 server 应监听 `0.0.0.0`，契约 bundle 路径、host、port 通过环境变量或参数传入
 
 已落地的主要变更包括：
 
 - `server/vcpkg.json`
-- `server/CMakeLists.txt` 的 `HMI_SERVER_TRANSPORT=auto|legacy|drogon`
+- `server/CMakeLists.txt` 直接查找并链接 `Drogon::Drogon`
 - `server/src/main.cpp` 的环境变量和命令行参数入口
-- `server/src/transport/http/http_server.cpp` 的 Drogon REST/WebSocket 分支
+- `server/src/transport/http/http_server.cpp` 的 Drogon REST/WebSocket server
+- `server/include/hmi/transport/http/subscription_protocol.h`
+- `server/src/transport/http/subscription_protocol.cpp`
 - `docker/hmi-server.Dockerfile`
 - `docker/compose.hmi-server.yml`
 - `tools/docker_hmi_server.sh`
 - 英文与中文 Docker deployment 文档
 
+后续又补齐了 WebSocket subscription 协议的具体行为：
+
+- `subscribe` 支持按 event types、components、fields 和 revision 过滤
+- `snapshot` 可返回当前 runtime state
+- `runtime.state.changed` 只发送订阅者关心的变更字段
+- command 生命周期会产生 `runtime.command.requested` 和 `runtime.command.completed`
+- server 内部维护有界事件 journal，便于新连接按 revision replay
+
 已执行的验证包括：
 
-- legacy CMake configure/build/ctest
-- 强制 Drogon 缺失时的 configure 失败路径
+- Drogon-only CMake configure/build/ctest
 - `docker build --check`
 - `docker compose config`
 - `./tools/docker_hmi_server.sh smoke`
@@ -79,7 +89,30 @@
 - i18n strict check、unit test、`./tools/build_docs_html.sh`
 - `git diff --check`
 
-## 6. 前端部署方案结论
+## 6. generated client/server 分发包调整
+
+用户指出“原来 generated 里的那一套”需要继续能工作。处理后，`tools/generate_targets.sh` 不再只生成前端和 mock fixture，而是会同时准备 native Drogon server 分发入口。
+
+当前策略是：
+
+- 有可用 vcpkg toolchain 时走宿主机 CMake 构建
+- 宿主机缺少 vcpkg/Drogon 时自动走 Docker builder
+- builder 复用 `docker/hmi-server.Dockerfile` 的 build target
+- 生成产物复制到 `generated/distribution/server/native/server`
+- `generated/distribution/run_server_native.sh` 负责启动 Drogon native server
+- `generated/distribution/run_server_fixture.sh` 仍保留为 fixture/mock 测试入口
+
+已完成的本地验证包括：
+
+- `./tools/generate_targets.sh`
+- `./generated/distribution/run_server_native.sh 18112`
+- `/api/runtime/health`
+- `/api/runtime/bootstrap`
+- `./generated/distribution/run_server_fixture.sh 18115`
+
+bootstrap 返回的 `transport` 已是 `drogon-rest-ws`。
+
+## 7. 前端部署方案结论
 
 本日还把前端部署思路收成一份独立建议文档。
 
@@ -96,7 +129,7 @@
 - `Nginx` 处理静态文件、`/api` 反向代理和 `WebSocket` 转发都成熟
 - 未来如果服务规模变大，再演进到 `Traefik` 也不晚
 
-## 7. 前端部署专题文档
+## 8. 前端部署专题文档
 
 今天这轮新增了一份独立的部署建议材料：
 
@@ -110,7 +143,7 @@
 - 不同阶段的推荐选型
 - 面向 `Web client + /api + /ws + runtime` 的最小推荐拓扑
 
-## 8. 当日自动导出状态
+## 9. 当日自动导出状态
 
 今天 report 最初在 `docs_html` 中看起来“什么都没有”，主要原因是完整会话导出仍停留在零会话快照：
 
@@ -122,12 +155,12 @@
 
 - `Sessions: 3`
 - `Primary sessions: 3`
-- `User prompts: 17`
-- `Messages: 115`
+- `User prompts: 27`
+- `Messages: 198`
 
 因此最终 HTML 里应能看到当天用户历史、完整会话索引和三个 session 的导出页面。
 
-## 9. 跨机器协作边界
+## 10. 跨机器协作边界
 
 关于“另一台机器再更新 report，会不会覆盖本机内容”，需要明确两点：
 
@@ -140,7 +173,7 @@
 - 如果两边同时各自修改后再提交，就可能在 `git pull/merge` 时产生冲突
 - 不建议两台机器并行重导同一天 report，除非明确分工或改目录命名策略
 
-## 10. 当前建议
+## 11. 当前建议
 
 如果后续还要继续双机协作 report，我建议按这个规则执行：
 

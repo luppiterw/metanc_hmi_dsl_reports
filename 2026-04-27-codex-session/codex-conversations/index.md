@@ -3,11 +3,11 @@
 - Sessions: `3`
 - Primary sessions: `3`
 - Side sessions: `0`
-- User prompts: `17`
-- Synthetic events: `2`
-- Messages: `115`
-- User messages: `19`
-- Codex messages: `96`
+- User prompts: `27`
+- Synthetic events: `3`
+- Messages: `198`
+- User messages: `30`
+- Codex messages: `168`
 
 ## Sessions By Date
 
@@ -33,4 +33,14 @@
 | 2026-04-27 10:52:42 +0800 | 019dcc96 | 10 | metanc_hmi_dsl push | 3 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-10) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-10) |
 | 2026-04-27 13:31:09 +0800 | 019dcc96 | 11 | 看一下MetaNC里的docker相关，如果我后续要让我的metanc_hmi_dsl里的server也是可以docker方式跑，我需要准备哪些，然后我想的是直接使用drogon框架作为我的后台服务框架，drogon支持ws方式长连接的对... | 4 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-11) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-11) |
 | 2026-04-27 13:41:16 +0800 | 019dcc96 | 12 | 可以，按照你的计划继续 | 19 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-12) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-12) |
-| 2026-04-27 14:46:28 +0800 | 019dcc96 | 13 | 先更新一下今天的report，我看docs_html里输出的今天的report啥都没有 | 4 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-13) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-13) |
+| 2026-04-27 14:46:28 +0800 | 019dcc96 | 13 | 先更新一下今天的report，我看docs_html里输出的今天的report啥都没有 | 10 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-13) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-13) |
+| 2026-04-27 14:54:41 +0800 | 019dcc96 | 14 | 你前面建议的：先做 vcpkg + Drogon REST 等价替换 + 0.0.0.0 配置，保证行为不变；第二步再加 WebSocket subscription；第三步再做 Docker runtime image 和 compos... | 2 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-14) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-14) |
+| 2026-04-27 14:59:15 +0800 | 019dcc96 | 15 | 可以，按照你说的拆分提交一下先 | 10 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-15) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-15) |
+| 2026-04-27 15:19:08 +0800 | 019dcc96 | 16 | push一下 | 5 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-16) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-16) |
+| 2026-04-27 15:25:59 +0800 | 019dcc96 | 17 | 前面第 2 步：WebSocket subscription继续完善一下 | 16 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-17) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-17) |
+| 2026-04-27 15:58:10 +0800 | 019dcc96 | 18 | 现在server端已经是直接用drogon了吗，我看了一下代码感觉不是，还是加了define判断 | 2 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-18) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-18) |
+| 2026-04-27 16:04:06 +0800 | 019dcc96 | 19 | 改一下，移除legacy，直接用drogon | 9 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-19) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-19) |
+| 2026-04-27 16:22:16 +0800 | 019dcc96 | 20 | 我现在要怎么在本地编译执行，是不是要进docker | 1 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-20) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-20) |
+| 2026-04-27 16:25:00 +0800 | 019dcc96 | 21 | 是不是原来generated里的那一套不工作了 | 4 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-21) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-21) |
+| 2026-04-27 16:27:53 +0800 | 019dcc96 | 22 | 可以，调整一下，然后全部重新生成一下，然后给我一个可以测试的client/server方法 | 14 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-22) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-22) |
+| 2026-04-27 16:55:02 +0800 | 019dcc96 | 23 | 更新一下今天的所有文档和report，然后metanc_hmi_dsl中提交+push一下，注意commit msg的准确性 | 3 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-23) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-23) |

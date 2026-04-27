@@ -20,3 +20,13 @@ Date: 2026-04-27
 - 看一下MetaNC里的docker相关，如果我后续要让我的metanc_hmi_dsl里的server也是可以docker方式跑，我需要准备哪些，然后我想的是直接使用drogon框架作为我的后台服务框架，drogon支持ws方式长连接的对吧，帮我分析一下
 - 可以，按照你的计划继续
 - 先更新一下今天的report，我看docs_html里输出的今天的report啥都没有
+- 你前面建议的：先做 vcpkg + Drogon REST 等价替换 + 0.0.0.0 配置，保证行为不变；第二步再加 WebSocket subscription；第三步再做 Docker runtime image 和 compose。这样不会把“框架替换、协议升级、容器部署”三个风险揉在一个提交里。现在完成到什么程度了你前面建议的：先做 vcpkg + Drogon REST 等价替换 + 0.0.0.0 配置，保证行为不变；第二步再加 WebSocket subscription；第三步再做 Docker runtime image 和 compose。这样不会把“框架替换、协议升级、容器部署”三个风险揉在一个提交里。现在完成到什么程度了
+- 可以，按照你说的拆分提交一下先
+- push一下
+- 前面第 2 步：WebSocket subscription继续完善一下
+- 现在server端已经是直接用drogon了吗，我看了一下代码感觉不是，还是加了define判断
+- 改一下，移除legacy，直接用drogon
+- 我现在要怎么在本地编译执行，是不是要进docker
+- 是不是原来generated里的那一套不工作了
+- 可以，调整一下，然后全部重新生成一下，然后给我一个可以测试的client/server方法
+- 更新一下今天的所有文档和report，然后metanc_hmi_dsl中提交+push一下，注意commit msg的准确性

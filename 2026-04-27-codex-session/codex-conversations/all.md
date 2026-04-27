@@ -308,9 +308,9 @@ MEMORY.md:137-149|note=[used reports output and portal rebuild workflow]
 - Started: `2026-04-27 09:38:26 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/27/rollout-2026-04-27T09-38-26-019dcc96-763c-7e91-a12f-3a6fb04d3088.jsonl`
-- Messages: `89`
-- User prompts: `13`
-- Synthetic events: `2`
+- Messages: `172`
+- User prompts: `23`
+- Synthetic events: `3`
 
 <a id="turn-1"></a>
 ## Turn 1
@@ -1276,6 +1276,969 @@ MEMORY.md:186-187|note=[metanc_hmi_dsl generated docs and portal validation work
 问题点已经比较明确：今天的 report 目录不空，但 `codex-conversations` 是 `Sessions: 0`，所以 HTML 看起来像“什么都没有”。我现在会用仓库的导出器重新导出 `2026-04-27` 的 brief/full 会话数据，再重建 report book 和 `docs_html`。
 ```
 
+### Codex Response 5 / commentary
+`2026-04-27 14:48:03 +0800`
+
+```
+重新导出后，今天的完整会话已经从 0 个变成 3 个 primary sessions、115 条消息。下一步我会把当天报告正文补到能概括今天实际完成的 Docker/Drogon/server 文档工作，然后再构建 HTML。
+```
+
+### Codex Response 6 / commentary
+`2026-04-27 14:48:26 +0800`
+
+```
+导出的索引已经能列出今天 17 个用户请求，报告正文还停留在早些时候“0 会话 + 前端部署讨论”的状态。我接下来只改今天 report 的 Markdown 源，补上今天完整主线，不碰前面未提交的 server/Docker 源码变更。
+```
+
+### Codex Response 7 / commentary
+`2026-04-27 14:50:31 +0800`
+
+```
+报告正文和聚合索引已经补完，现在开始构建：先构建 reports 聚合书和今天的 session 书，再跑 `docs_html` 门户发布。
+```
+
+### Codex Response 8 / commentary
+`2026-04-27 14:50:47 +0800`
+
+```
+两个 mdBook 构建都通过了。最后重建 `docs_html`，这一步会把 report book 发布到 `docs_html/reports/2026-04-27-codex-session/`。
+```
+
+### Codex Response 9 / commentary
+`2026-04-27 14:51:16 +0800`
+
+```
+`docs_html` 已重建完成，并且输出日志里明确发布了 `docs_html/reports/2026-04-27-codex-session/index.html`。我再做一次内容级核对和 git 状态检查，确认今天页面里能看到会话数和 Docker/Drogon 主线。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-27 14:52:12 +0800`
+
+```
+已更新今天的 report。
+
+本次把 `2026-04-27` 的 `user-history` 和完整会话导出重新生成了，原来 `Sessions: 0` 的快照现在变成：
+
+- `Sessions: 3`
+- `User prompts: 17`
+- `Messages: 115`
+
+同时补写了当天报告正文，让它覆盖今天完整主线：分支同步、client/server 文档、`docs_i18n/zh-CN` 状态追踪、Docker/Drogon server 路径、前端部署建议和本次 report 刷新。主要入口是 [README.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-27-codex-session/README.md)、[project-report.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-27-codex-session/project-report.md)、[conversation-report.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/submodules/metanc_hmi_dsl_reports/2026-04-27-codex-session/conversation-report.md)。
+
+已重建：
+
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-04-27-codex-session`
+- `./tools/build_docs_html.sh`
+
+最终页面已生成到 [docs_html/reports/2026-04-27-codex-session/index.html](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs_html/reports/2026-04-27-codex-session/index.html)，中英文 report timeline 也都能看到 `2026-04-27-codex-session`。`git diff --check` 通过。当前只更新了本地 report/submodule 和生成产物，未提交未 push。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:179-187|note=[report exporter, two-level mdBook layout, and rebuild sequence]
+skills/metanc-hmi-reports-submodule/SKILL.md:47-69|note=[report refresh procedure and build order]
+MEMORY.md:99-102|note=[metanc_hmi_dsl reports submodule scope]
+</citation_entries>
+<rollout_ids>
+019dbe69-e917-7f20-ad5d-dd9262503c77
+019dbe3c-c36f-7143-8bfb-fdcf149bd7db
+019dbe07-b525-70a2-9af9-e1ccf04882ea
+019dadb4-0b3e-7e30-a312-88dcb194bf84
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-14"></a>
+## Turn 14
+
+### User
+`2026-04-27 14:54:41 +0800`
+
+```
+你前面建议的：先做 vcpkg + Drogon REST 等价替换 + 0.0.0.0 配置，保证行为不变；第二步再加 WebSocket subscription；第三步再做 Docker runtime image 和 compose。这样不会把“框架替换、协议升级、容器部署”三个风险揉在一个提交里。现在完成到什么程度了你前面建议的：先做 vcpkg + Drogon REST 等价替换 + 0.0.0.0 配置，保证行为不变；第二步再加 WebSocket subscription；第三步再做 Docker runtime image 和 compose。这样不会把“框架替换、协议升级、容器部署”三个风险揉在一个提交里。现在完成到什么程度了
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 14:55:03 +0800`
+
+```
+我先用当前工作树核对一下，不只按前面记忆回答；重点看三件事分别是源码实现、验证结果和是否已经拆成提交。
+```
+
+### Codex Response 2 / final_answer
+`2026-04-27 14:55:46 +0800`
+
+```
+我刚核对了当前工作树：技术上已经推进到第 3 步，甚至第 2 步也做了一个基础版；但还没有按你说的“三个风险分层”拆成提交，现在全部还在本地未提交改动里。
+
+完成度如下：
+
+1. **第 1 步：vcpkg + Drogon REST 等价替换 + `0.0.0.0` 配置**
+   已完成。
+   - 有 `server/vcpkg.json`
+   - `server/CMakeLists.txt` 已支持 `HMI_SERVER_TRANSPORT=auto|legacy|drogon`
+   - Drogon 可用时走 Drogon REST，否则保留 legacy transport
+   - `HMI_SERVER_HOST` / `HMI_SERVER_PORT` / `HMI_CONTRACT_BUNDLE` 已接入
+   - `run_server_native.sh` 也支持 `HMI_SERVER_HOST=0.0.0.0`
+
+2. **第 2 步：WebSocket subscription**
+   已完成基础 MVP，但还不是完整 subscription 语义。
+   当前已有：
+   - `WS /api/runtime/ws`
+   - connection ready event
+   - initial snapshot
+   - REST state/resource/command mutation 成功后 broadcast snapshot
+
+   还没做的是更细的 subscription filtering、reconnect replay、command lifecycle event 这类完整语义。
+
+3. **第 3 步：Docker runtime image + Compose**
+   已完成。
+   - `.dockerignore`
+   - `docker/hmi-server.Dockerfile`
+   - `docker/compose.hmi-server.yml`
+   - `tools/docker_hmi_server.sh`
+   - runtime env 默认 `HMI_SERVER_HOST=0.0.0.0`
+   - healthcheck 指向 `/api/runtime/health`
+
+前面已经做过的验证包括 legacy CMake build/ctest、Drogon 缺失强制失败路径、Dockerfile check、compose config、Docker smoke、generated server health check、i18n strict check、docs_html rebuild、`git diff --check`。
+
+关键点：**实现已经到第 3 步，但提交还没有拆。** 当前 `git status` 里这些 server/Docker/docs 改动还都是未提交状态，另外刚刚更新今天 report 后 reports 子模块也有未提交改动。下一步最好不要直接一把 commit，而是把当前改动拆成：
+
+1. `feat(server): add drogon rest transport path`
+2. `feat(server): add websocket runtime subscription channel`
+3. `feat(server): add docker runtime image`
+4. 单独一个 report/docs refresh 提交
+
+这样才能回到你前面说的风险分层。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:179-187|note=[report workflow and rebuild sequence used for current status context]
+skills/metanc-hmi-reports-submodule/SKILL.md:47-69|note=[report submodule procedure and build order]
+MEMORY.md:543-543|note=[Docker wrapper validation preference]
+</citation_entries>
+<rollout_ids>
+019dbe69-e917-7f20-ad5d-dd9262503c77
+019dbe3c-c36f-7143-8bfb-fdcf149bd7db
+019dbe07-b525-70a2-9af9-e1ccf04882ea
+019dadb4-0b3e-7e30-a312-88dcb194bf84
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-15"></a>
+## Turn 15
+
+### User
+`2026-04-27 14:59:15 +0800`
+
+```
+可以，按照你说的拆分提交一下先
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 14:59:43 +0800`
+
+```
+我会按四个提交拆：REST 等价替换、WebSocket MVP、Docker/Compose、report 刷新。先核对 diff 边界和子模块状态，避免把 report 子模块和 server 源码混进同一个提交。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 15:00:00 +0800`
+
+```
+现在的状态确认了：server/Docker/docs 仍在父仓库未提交，今天 report 在子模块未提交。接下来我会先处理子模块 report 提交，然后回到父仓库按 server 三层拆分；拆 REST/WS 时需要看 `http_server.cpp` 的具体 diff，避免把 WebSocket 代码混进 REST 提交。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 15:00:44 +0800`
+
+```
+拆分里最需要谨慎的是 `http_server.cpp`：现在工作树里 REST 和 WebSocket 在同一份 diff 内。我会用“只暂存指定 hunks/文件”的方式做提交，保持工作树最终内容不变，但让历史提交边界清楚。
+```
+
+### Codex Response 4 / commentary
+`2026-04-27 15:01:39 +0800`
+
+```
+先提交 reports 子模块本身。它当前是 detached HEAD，但正好在 `origin/main`，我会把子模块本地 `main` 快进到这个位置再提交，避免产生不好追踪的 detached commit。
+```
+
+### Codex Response 5 / commentary
+`2026-04-27 15:06:55 +0800`
+
+```
+子模块 report 已单独提交。现在我先把父仓库工作树里的 server 传输代码临时收敛到“Drogon REST-only”等价替换状态，提交第一个 server commit；之后再把 WebSocket 部分作为第二个提交加回去。
+```
+
+### Codex Response 6 / commentary
+`2026-04-27 15:08:09 +0800`
+
+```
+第一个提交已完成，内容只包含 Drogon REST 传输、vcpkg manifest、环境变量/host 配置和 packaged helper 的 `HMI_SERVER_HOST` 支持。现在加回 WebSocket MVP，并作为第二个提交。
+```
+
+### Codex Response 7 / commentary
+`2026-04-27 15:09:34 +0800`
+
+```
+第二个提交已完成。接下来提交 Docker/runtime/compose 这一层，同时把 server 文档、中文对照和 docs portal 链接一起放在这个部署提交里；提交后我会重新刷新一次 i18n 状态并 amend，避免状态表里留下 `uncommitted` 源记录。
+```
+
+### Codex Response 8 / commentary
+`2026-04-27 15:11:30 +0800`
+
+```
+第三个 server/Docker 提交已完成，并且 i18n 状态里的 `uncommitted` 源记录已通过 amend 修正为该提交。现在只剩父仓库记录 reports 子模块新指针。
+```
+
+### Codex Response 9 / commentary
+`2026-04-27 15:12:24 +0800`
+
+```
+提交拆完了。最后我做一次状态和基础验证：父仓库/子模块状态、diff 空检查、i18n strict check、server legacy build/ctest，并重建一次 `docs_html` 让本地可浏览产物跟最终提交一致。
+```
+
+### Codex Response 10 / final_answer
+`2026-04-27 15:14:53 +0800`
+
+```
+已按风险层拆成提交了，当前都还是本地提交，未 push。
+
+父仓库 `metanc_hmi_dsl` 现在 ahead 4：
+
+- `8022cc1 feat(server): add drogon rest transport path`
+  vcpkg manifest、Drogon REST 等价传输、env/CLI 配置、`HMI_SERVER_HOST=0.0.0.0` 支持。
+- `38a4b09 feat(server): add websocket runtime subscription channel`
+  `WS /api/runtime/ws`、ready event、initial snapshot、REST mutation 后 snapshot broadcast。
+- `c334835 feat(server): add docker runtime image`
+  `.dockerignore`、Dockerfile、Compose、wrapper、server Docker 文档、zh-CN 对照和 i18n 状态。
+- `73a0c11 docs: update reports submodule for 2026-04-27`
+  父仓库记录 reports 子模块新指针。
+
+reports 子模块也单独提交了 1 个：
+
+- `750298c docs: refresh 2026-04-27 codex report`
+
+验证已跑：
+
+- `git diff --check`
+- `python3 docs_i18n/tools/i18n_status.py check --lang zh-CN --strict`
+- `cmake -S server -B /tmp/hmi_server_commit_verify`
+- `cmake --build /tmp/hmi_server_commit_verify`
+- `ctest --test-dir /tmp/hmi_server_commit_verify --output-on-failure`
+- `./tools/build_docs_html.sh`
+
+当前父仓库和 reports 子模块工作区都是干净的。后续 push 时要先 push reports 子模块，再 push父仓库，否则父仓库会引用一个远端还没有的子模块提交。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:180-187|note=[reports submodule layout and push ordering]
+MEMORY.md:201-201|note=[stale submodule pointer risk]
+MEMORY.md:543-543|note=[Docker wrapper validation expectation]
+</citation_entries>
+<rollout_ids>
+019dbe69-e917-7f20-ad5d-dd9262503c77
+019dbe3c-c36f-7143-8bfb-fdcf149bd7db
+019dbe07-b525-70a2-9af9-e1ccf04882ea
+019dadb4-0b3e-7e30-a312-88dcb194bf84
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+019d74fd-7d60-71e2-9cf2-4a1d1024776c
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-16"></a>
+## Turn 16
+
+### User
+`2026-04-27 15:19:08 +0800`
+
+```
+push一下
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 15:19:27 +0800`
+
+```
+我先确认父仓库和 reports 子模块的 ahead 状态，然后按顺序先推子模块、再推父仓库，避免远端父仓库指向一个还没上传的子模块提交。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 15:19:34 +0800`
+
+```
+当前确认是父仓库 ahead 4、reports 子模块 ahead 1；这和预期一致。现在先推 `submodules/metanc_hmi_dsl_reports`。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 15:20:24 +0800`
+
+```
+reports 子模块已经推到远端。接下来推父仓库的 4 个提交。
+```
+
+### Codex Response 4 / commentary
+`2026-04-27 15:20:50 +0800`
+
+```
+父仓库也已推送完成；我再做一次本地/远端状态确认，确保没有残留 ahead。
+```
+
+### Codex Response 5 / final_answer
+`2026-04-27 15:21:06 +0800`
+
+```
+已完成 push。
+
+顺序是：
+1. 先推 reports 子模块：`1c38b15..750298c`
+2. 再推父仓库 `metanc_hmi_dsl`：`059b6ce..73a0c11`
+
+验证结果：父仓库和 `submodules/metanc_hmi_dsl_reports` 都已经和 `origin/main` 对齐，没有残留 ahead。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:187-187|note=[reports submodule should be pushed before parent repo]
+MEMORY.md:201-201|note=[avoid parent pointing to unpublished submodule commit]
+</citation_entries>
+<rollout_ids>
+019dadb4-0b3e-7e30-a312-88dcb194bf84
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-17"></a>
+## Turn 17
+
+### User
+`2026-04-27 15:25:59 +0800`
+
+```
+前面第 2 步：WebSocket subscription继续完善一下
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 15:26:15 +0800`
+
+```
+我先看当前 WebSocket 代码和相关运行时事件模型，确认现在只做到哪一层，再把 subscription 补到不破坏 REST 行为的范围内。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 15:26:29 +0800`
+
+```
+代码里当前 WebSocket 的确还是粗粒度：连接后 ready + snapshot，收到任意消息再发 snapshot，REST mutation 后广播整包 snapshot。下一步我会把它收敛成明确的订阅协议：按 domain/path 过滤、支持 since revision 的重连回放语义，并补 command lifecycle 事件。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 15:29:29 +0800`
+
+```
+我会把协议逻辑拆成一个不依赖 Drogon 的小模块，这样本机即使没有 Drogon 也能编译测试订阅过滤、since revision 和事件序列化；Drogon 部分只负责连接状态和实际推送。
+```
+
+### Codex Response 4 / commentary
+`2026-04-27 15:33:11 +0800`
+
+```
+协议模块和 Drogon 推送路径已经接上了。现在补 smoke test 覆盖过滤、通配路径、command 事件序列化和 bounded replay journal，先保证非 Drogon 构建也能验证核心语义。
+```
+
+### Codex Response 5 / commentary
+`2026-04-27 15:34:04 +0800`
+
+```
+先跑一次 CMake/CTest，把新协议模块和现有 REST 行为一起编过。若这里过了，再更新文档和中文对照。
+```
+
+### Codex Response 6 / commentary
+`2026-04-27 15:35:07 +0800`
+
+```
+核心测试已经通过。现在把 server README、架构/运行/Docker 文档，以及 zh-CN 对照里的“仍未实现”措辞更新成当前语义，并刷新 i18n 状态。
+```
+
+### Codex Response 7 / commentary
+`2026-04-27 15:41:01 +0800`
+
+```
+校验结果：`diff --check` 和 zh-CN i18n strict check 都通过了。接下来重建 `docs_html`，让新 WebSocket 订阅文档和中文页面在浏览版里可见。
+```
+
+### Codex Response 8 / commentary
+`2026-04-27 15:41:49 +0800`
+
+```
+普通构建验证覆盖不了 Drogon 分支，所以我再尝试跑 Docker/Drogon 构建；如果本地镜像和 vcpkg 缓存齐，这一步能直接编到 WebSocket Controller。
+```
+
+### Codex Response 9 / commentary
+`2026-04-27 15:42:32 +0800`
+
+```
+Drogon/Docker 构建也通过了，说明 WebSocket Controller 分支已经实际编译。再跑一次容器 health smoke，确认镜像启动路径没被这次改动破坏。
+```
+
+### Codex Response 10 / commentary
+`2026-04-27 15:42:55 +0800`
+
+```
+容器镜像没问题，smoke 启动失败是主机 `8010` 端口已经被占用。先清理这次 compose 残留，再换一个端口跑 smoke。
+```
+
+### Codex Response 11 / commentary
+`2026-04-27 15:44:46 +0800`
+
+```
+Docker health 过了；我再用一个临时容器做实际 WebSocket 握手和订阅过滤验证，确认 `runtime.subscribe` 后 REST mutation 能推送过滤后的 `runtime.state.changed`。
+```
+
+### Codex Response 12 / commentary
+`2026-04-27 15:46:31 +0800`
+
+```
+实际 WebSocket smoke 也通过了，并且临时容器已清理。最后再跑一次状态和关键校验，确认没有 Docker 残留文件或文档状态回退。
+```
+
+### Codex Response 13 / commentary
+`2026-04-27 15:48:37 +0800`
+
+```
+我顺手收紧了一下协议解析：非 JSON object 的文本消息现在会返回 `runtime.subscription.error`，空对象或未带 `type` 的对象仍按兼容快照请求处理。重新编译测试一下。
+```
+
+### Codex Response 14 / commentary
+`2026-04-27 15:51:14 +0800`
+
+```
+普通构建通过。因为改动在订阅协议源码里，我再重建一次 Drogon 镜像并跑实际 WebSocket smoke，避免 Docker 镜像还停在上一个编译结果。
+```
+
+### Codex Response 15 / commentary
+`2026-04-27 15:53:35 +0800`
+
+```
+这次 WebSocket probe 超时是测试脚本把 handshake 之后同一个 TCP 包里的首个 WS frame 丢掉了，不是服务端构建错误；我用保留 handshake 剩余字节的读法重跑。
+```
+
+### Codex Response 16 / final_answer
+`2026-04-27 15:55:27 +0800`
+
+```
+WebSocket subscription 这一步已经继续完善完，当前改动还未提交。
+
+主要完成了：
+- 新增独立协议模块：`server/include/hmi/transport/http/subscription_protocol.h` / `server/src/transport/http/subscription_protocol.cpp`
+- `WS /api/runtime/ws` 支持：
+  - `runtime.subscribe` / `runtime.unsubscribe`
+  - domain/path 过滤，支持 `prog.*` 这类前缀 selector
+  - `since_revision` bounded replay，过旧时 fallback 到 replay snapshot
+  - `runtime.state.changed`
+  - `runtime.command.requested` / `runtime.command.completed`
+  - `runtime.ping` / `runtime.pong`
+- Drogon REST mutation 后按实际变更 path 推送，不再粗暴广播整包 snapshot。
+- 补了 smoke test 覆盖订阅过滤、事件序列化、command lifecycle、replay journal。
+- 新增中英文文档页：
+  - `docs/server/websocket_subscription.md`
+  - `docs_i18n/zh-CN/server/websocket_subscription.md`
+- 已重建 `docs_html`，新页面在：
+  - `docs_html/zh-CN/server/websocket_subscription.html`
+
+验证已跑：
+- `cmake --build /tmp/hmi_server_ws_subscription`
+- `ctest --test-dir /tmp/hmi_server_ws_subscription --output-on-failure`
+- `./tools/docker_hmi_server.sh build`，Drogon 分支实际编译通过
+- 临时 Docker 容器 WebSocket smoke：握手、subscribe 过滤、REST mutation 推送均通过
+- `python3 docs_i18n/tools/i18n_status.py check --lang zh-CN --strict`
+- `git diff --check`
+
+当前工作区有未提交变更，下一步建议把这次作为单独提交：`feat(server): complete websocket subscription protocol`。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:99-102|note=[metanc_hmi_dsl repo workflow context]
+</citation_entries>
+<rollout_ids>
+019dadb4-0b3e-7e30-a312-88dcb194bf84
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-18"></a>
+## Turn 18
+
+### User
+`2026-04-27 15:58:10 +0800`
+
+```
+现在server端已经是直接用drogon了吗，我看了一下代码感觉不是，还是加了define判断
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 15:58:33 +0800`
+
+```
+我先看一下当前 CMake 和 server transport 文件，按实际代码回答，不靠记忆判断。
+```
+
+### Codex Response 2 / final_answer
+`2026-04-27 15:59:01 +0800`
+
+```
+你看得对：现在还不是“源码层面只用 Drogon”。
+
+当前状态是：
+
+- Docker 构建是强制 Drogon：`docker/hmi-server.Dockerfile` 里用了 `-DHMI_SERVER_TRANSPORT=drogon`
+- 本地默认构建是 `auto`：`server/CMakeLists.txt` 会先找 Drogon，找得到就走 Drogon，找不到就 fallback 到 legacy HTTP
+- `server/src/transport/http/http_server.cpp` 里保留了 `HMI_SERVER_HAS_DROGON` 判断，所以源码里确实还同时存在 Drogon 分支和 legacy socket 分支
+
+也就是说，我前面完成的是“Drogon REST/WebSocket transport path + Docker 强制 Drogon”，不是“彻底删除 legacy transport”。
+
+如果产品定义已经明确 server 必须直接使用 Drogon，我建议下一步做一个单独提交把它收口掉：
+
+- `find_package(Drogon CONFIG REQUIRED)`
+- 删除 `HMI_SERVER_TRANSPORT=auto/legacy`
+- 删除 `HMI_SERVER_HAS_DROGON` define 和 legacy POSIX socket server 分支
+- 文档改成 Drogon 是必需依赖，不再描述 fallback
+- 本地测试也改成必须通过 vcpkg/Drogon 配置跑
+
+这样代码会更干净，也符合你说的“server 直接用 Drogon”。
+```
+
+<a id="turn-19"></a>
+## Turn 19
+
+### User
+`2026-04-27 16:04:06 +0800`
+
+```
+改一下，移除legacy，直接用drogon
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 16:05:02 +0800`
+
+```
+我会把 server transport 收口成 Drogon-only：先改 CMake 和 `http_server.cpp`，再同步 README/docs/zh-CN/i18n，最后用 Docker/Drogon 构建和 WebSocket smoke 验证。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 16:05:14 +0800`
+
+```
+当前工作区已经有上一步 WebSocket 订阅的未提交改动，我会在这些改动基础上继续处理，不回退它们。现在重点是删掉 `auto/legacy` 配置和 POSIX socket 分支，让 `server_core` 必须链接 Drogon。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 16:07:15 +0800`
+
+```
+代码层面的 fallback 已删：CMake 现在 `find_package(Drogon CONFIG REQUIRED)`，`http_server.cpp` 也只剩 Drogon 注册 handler/controller 的实现。接下来把文档里 `auto/legacy` 的描述同步删掉。
+```
+
+### Codex Response 4 / commentary
+`2026-04-27 16:08:19 +0800`
+
+```
+文档里的 `auto/legacy` 描述也清掉了。现在刷新 zh-CN i18n 状态，然后用 Docker/vcpkg 的 Drogon 构建来验证，普通无 vcpkg 的本地 CMake 现在按设计会因为缺 Drogon 而不能 configure。
+```
+
+### Codex Response 5 / commentary
+`2026-04-27 16:09:27 +0800`
+
+```
+Drogon-only 镜像构建已经通过。为了覆盖 `server_smoke_test` 也在 Drogon-only CMake 下可编译，我再用 `optimalcnc/metanc` 容器跑一次完整 build + ctest。
+```
+
+### Codex Response 6 / commentary
+`2026-04-27 16:10:51 +0800`
+
+```
+完整容器 ctest 正在编 vcpkg 依赖，耗时比镜像 build 长一些；不是卡住。与此同时我继续准备文档 HTML 重建。
+```
+
+### Codex Response 7 / commentary
+`2026-04-27 16:12:50 +0800`
+
+```
+完整 Drogon-only build + `server_smoke_test` 已通过。现在重建 docs_html，并再跑一次容器 health / WebSocket 订阅 smoke。
+```
+
+### Codex Response 8 / commentary
+`2026-04-27 16:21:12 +0800`
+
+```
+容器 health 和实际 WebSocket smoke 都通过，临时容器也已清掉。最后做一次 `diff --check`、i18n strict 和状态确认。
+```
+
+### Codex Response 9 / final_answer
+`2026-04-27 16:21:36 +0800`
+
+```
+已改成 Drogon-only。
+
+关键变化：
+- [server/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/server/CMakeLists.txt)：删除 `HMI_SERVER_TRANSPORT=auto/drogon/legacy`，改为 `find_package(Drogon CONFIG REQUIRED)`，`server_core` 直接链接 `Drogon::Drogon`。
+- [server/src/transport/http/http_server.cpp](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/server/src/transport/http/http_server.cpp)：删除 `HMI_SERVER_HAS_DROGON`、所有 legacy POSIX socket 分支和相关 include，只保留 Drogon REST/WebSocket 实现。
+- [docker/hmi-server.Dockerfile](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docker/hmi-server.Dockerfile)：移除 `-DHMI_SERVER_TRANSPORT=drogon`，因为现在已经没有 transport 选项。
+- 同步更新中英文文档，`docs_html` 已重建，页面里现在明确写 Drogon 是必需依赖。
+
+验证已通过：
+- Docker Drogon-only image build
+- 容器内完整 `cmake --build` + `ctest`
+- `HMI_SERVER_PORT=18110 ./tools/docker_hmi_server.sh smoke`
+- 实际 WebSocket handshake + subscribe/filter + REST mutation push smoke
+- `python3 docs_i18n/tools/i18n_status.py check --lang zh-CN --strict`
+- `git diff --check`
+- 已确认没有残留 `HMI_SERVER_TRANSPORT` / `HMI_SERVER_HAS_DROGON` / legacy transport 文案
+
+当前变更还未提交，工作区仍处于未提交状态。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:99-102|note=[metanc_hmi_dsl repo context]
+</citation_entries>
+<rollout_ids>
+019dadb4-0b3e-7e30-a312-88dcb194bf84
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-20"></a>
+## Turn 20
+
+### User
+`2026-04-27 16:22:16 +0800`
+
+```
+我现在要怎么在本地编译执行，是不是要进docker
+```
+
+### Codex Response 1 / final_answer
+`2026-04-27 16:22:39 +0800`
+
+````
+不一定要“进 Docker”，但现在 server 已经是 Drogon-only，所以有两种本地跑法：
+
+**推荐：直接用 Docker wrapper**
+```bash
+cd /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+
+./tools/docker_hmi_server.sh build
+./tools/docker_hmi_server.sh run
+```
+
+如果 `8010` 被占用：
+```bash
+HMI_SERVER_PORT=18110 ./tools/docker_hmi_server.sh run
+```
+
+验证：
+```bash
+curl -fsS http://127.0.0.1:18110/api/runtime/health
+```
+
+WebSocket 地址：
+```text
+ws://127.0.0.1:18110/api/runtime/ws
+```
+
+**不进 Docker 的 native 编译**
+可以，但你的宿主机必须有 vcpkg，并且能找到 Drogon：
+
+```bash
+cd /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/server
+
+cmake -S . -B build \
+  -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
+
+cmake --build build
+ctest --test-dir build --output-on-failure
+```
+
+运行：
+```bash
+./build/server ../generated/distribution/contract/runtime_contract_bundle.json 127.0.0.1 8010
+```
+
+结论：如果你现在宿主机没配 `VCPKG_ROOT` / Drogon，直接走 Docker 最省事；不需要手动进容器。
+````
+
+<a id="turn-21"></a>
+## Turn 21
+
+### User
+`2026-04-27 16:25:00 +0800`
+
+```
+是不是原来generated里的那一套不工作了
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 16:25:17 +0800`
+
+```
+我先看 `generated/distribution` 里原来的启动脚本和 server 包装内容，再判断是哪一层会受 Drogon-only 影响。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 16:25:40 +0800`
+
+```
+我看到关键点了：`generated/distribution` 里分两套，fixture/mock 那套还不依赖 C++ server；native server 那套会受影响，而且当前已有的 native binary 是旧产物。工具脚本 `tools/generate_targets.sh` 还按宿主机 CMake 方式编 server，没有传 vcpkg toolchain，所以在没有本机 Drogon 的机器上会失败。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 16:25:47 +0800`
+
+```
+我再实际跑一下旧的 `generated/distribution/run_server_native.sh`，看它现在启动的是不是旧 legacy binary，以及它返回的 transport 名称。
+```
+
+### Codex Response 4 / final_answer
+`2026-04-27 16:26:22 +0800`
+
+````
+对，但不是整套都坏，是 **generated 里的 native server 这一支变成不一致了**。
+
+现在状态是：
+
+- `generated/distribution/run_server_fixture.sh`：还能工作。它跑的是 Python mock/fixture server，不依赖 Drogon。
+- `generated/distribution/run_split_web.sh` / `run_split_qml.sh`：还能按原来的 mock server 流程跑。
+- `generated/distribution/run_server_native.sh`：现在不应该再信任。它调用的是 `generated/distribution/server/native/server`，这个 binary 是之前 legacy 构建留下来的旧产物。我刚跑了一下，它输出的是：
+  - `transport=legacy-http-json`
+  - 说明它不是现在的 Drogon-only server。
+- `tools/generate_targets.sh`：现在会有问题。它里面还是：
+  ```bash
+  cmake -S "${ROOT_DIR}/server" -B "${SERVER_BUILD_DIR}"
+  ```
+  但 server 现在已经 `find_package(Drogon CONFIG REQUIRED)`，所以没有本机 vcpkg/Drogon 的情况下，重新生成会在 native server build 这步失败。
+
+所以结论是：
+
+**原来的 generated client/mock 流程还能用；原来的 generated native server 流程需要改。**
+
+合理修法是把 `tools/generate_targets.sh` 拆清楚：
+
+- client + fixture 生成继续保持本地可用；
+- native Drogon server 生成要么要求 `VCPKG_ROOT`，用 vcpkg toolchain 编；
+- 要么走 Docker 构建，不再假设宿主机能直接编 Drogon；
+- 旧的 `generated/distribution/server/native/server` 需要重新生成或删除，避免误用 legacy binary。
+````
+
+<a id="turn-22"></a>
+## Turn 22
+
+### User
+`2026-04-27 16:27:53 +0800`
+
+```
+可以，调整一下，然后全部重新生成一下，然后给我一个可以测试的client/server方法
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 16:28:18 +0800`
+
+```
+我会把生成流程改成“client/fixture 本地生成不受影响，native Drogon server 通过 host vcpkg 或 Docker builder 生成”，然后重跑 `tools/generate_targets.sh`，最后给你一套 mock 与 Drogon native 两种本地测试命令。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 16:29:31 +0800`
+
+```
+我会让 `generate_targets.sh` 默认自动选择：有 `VCPKG_ROOT` 就本机 vcpkg 编 Drogon server；没有就用 Docker builder 产出 native server binary 和运行时 `.so`，并把 `run_server_native.sh` 自动设置 `LD_LIBRARY_PATH`。这样 generated 的 native server 不再落回旧 legacy binary。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 16:31:44 +0800`
+
+```
+脚本语法现在是干净的。接着我补一小段构建文档，说明 generated native server 默认会用 Docker builder，或者用 `VCPKG_ROOT` 走本机构建。
+```
+
+### Codex Response 4 / commentary
+`2026-04-27 16:32:34 +0800`
+
+```
+现在开始重跑全量生成：Web、QML、contract、Drogon native server 和 `generated/distribution` 会全部刷新。由于这台机器没有 `VCPKG_ROOT`，脚本会走 Docker builder。
+```
+
+### Codex Response 5 / commentary
+`2026-04-27 16:34:25 +0800`
+
+```
+全量生成已经完成，并且这次 `generated/distribution/server/native/server` 是从 Docker Drogon builder 复制出来的新 binary，不是旧 legacy 产物。我现在验证 packaged native server 能直接启动，并检查 `/bootstrap` 里的 transport。
+```
+
+### Codex Response 6 / commentary
+`2026-04-27 16:35:26 +0800`
+
+```
+packaged native server 已经验证：`/api/runtime/bootstrap` 返回 `transport:"drogon-rest-ws"`，说明 generated 里不再是旧 legacy binary。现在我再启动一套可直接访问的 generated client/server：native Drogon server 走 `18113`，Web client 走 `18000`。
+```
+
+### Codex Response 7 / commentary
+`2026-04-27 16:37:40 +0800`
+
+```
+Web client 还在，但 native server 这边刚才 readiness 后掉了，我需要看一下进程和日志，避免给你一个半可用的地址。
+```
+
+### Codex Response 8 / commentary
+`2026-04-27 16:38:57 +0800`
+
+```
+这里有个运行环境细节：后台进程在工具 shell 退出时被带掉了。再用 `nohup + setsid` 方式启动，让它脱离当前 shell，然后确认 3 秒后仍然可访问。
+```
+
+### Codex Response 9 / commentary
+`2026-04-27 16:43:40 +0800`
+
+```
+刚才后续检查是在 sandbox 网络里跑的，所以看不到外面 detached 的本地端口；这会误报连接失败。我用同样的 escalated 环境再确认一次。
+```
+
+### Codex Response 10 / commentary
+`2026-04-27 16:44:16 +0800`
+
+```
+`run_split_web_native.sh` 的 Web 进程还在，但它托管的 server 子进程退出了，日志里没报错。为了给你一个稳定可测环境，我改用更直接的两进程方式：server 和 web 分别 nohup 后台启动，互不依赖脚本的 cleanup。
+```
+
+### Codex Response 11 / commentary
+`2026-04-27 16:47:32 +0800`
+
+```
+后台保活在 Codex 的 escalated 命令环境里会被回收，但在同一条命令内我已经验证了 generated native server 和 Web client 都能启动并响应。现在再快速验证一下 mock/fixture 这条旧链路，确认它没受 Drogon-only 改动影响。
+```
+
+### Codex Response 12 / commentary
+`2026-04-27 16:48:01 +0800`
+
+```
+mock server 也通过。最后重建 docs_html（因为我补了 build_and_run 文档），再做 i18n 和 diff 检查。
+```
+
+### Codex Response 13 / commentary
+`2026-04-27 16:48:50 +0800`
+
+```
+我会清理刚才为了验证启动的测试端口，避免 18000/18113 这些临时进程占着端口。最终我会给你一组你自己终端里运行的命令。
+```
+
+### Codex Response 14 / final_answer
+`2026-04-27 16:49:23 +0800`
+
+````
+已调整并全量重新生成。
+
+现在 `./tools/generate_targets.sh` 的行为是：
+
+- Web/QML/contract 仍然本地生成；
+- native server 现在固定是 Drogon；
+- 如果本机有 `VCPKG_ROOT`，会用 host vcpkg 编；
+- 如果没有 `VCPKG_ROOT`，会自动用 Docker builder 编 native server，再复制到 `generated/distribution/server/native/server`；
+- `run_server_native.sh` 已支持 packaged runtime lib 路径，避免以后动态库缺失。
+
+我已经跑过：
+- `./tools/generate_targets.sh`
+- generated native server health/bootstrap，返回 `transport:"drogon-rest-ws"`
+- generated fixture/mock server health
+- `./tools/build_docs_html.sh`
+- `i18n_status.py check --strict`
+- `git diff --check`
+
+你本地测试 native client/server 可以这样：
+
+```bash
+cd /home/iaar/workspace/ccmix-wp/metanc_hmi_dsl
+./generated/distribution/run_split_web_native.sh 18114 18001
+```
+
+然后打开：
+
+```text
+http://127.0.0.1:18001/?server=http://127.0.0.1:18114/api/runtime
+```
+
+或者分两个终端跑，更方便看日志：
+
+```bash
+# 终端 A：Drogon server
+./generated/distribution/run_server_native.sh 18114
+```
+
+```bash
+# 终端 B：Web client
+./generated/distribution/run_client_web.sh --restart 18001 http://127.0.0.1:18114/api/runtime
+```
+
+验证 server：
+
+```bash
+curl -fsS http://127.0.0.1:18114/api/runtime/health
+curl -fsS http://127.0.0.1:18114/api/runtime/bootstrap
+```
+
+如果只是测旧 mock/fixture 链路：
+
+```bash
+./generated/distribution/run_split_web.sh 18115
+```
+
+打开：
+
+```text
+http://127.0.0.1:18115/
+```
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:312-319|note=[generate_targets is canonical full regeneration path]
+MEMORY.md:333-333|note=[generated distribution drift should be guarded by checks]
+</citation_entries>
+<rollout_ids>
+</rollout_ids>
+</oai-mem-citation>
+````
+
+<a id="turn-23"></a>
+## Turn 23
+
+### User
+`2026-04-27 16:55:02 +0800`
+
+```
+更新一下今天的所有文档和report，然后metanc_hmi_dsl中提交+push一下，注意commit msg的准确性
+```
+
+### Codex Response 1 / commentary
+`2026-04-27 16:55:26 +0800`
+
+```
+我会先盘一下父仓库、reports 子模块和当前生成产物状态，然后刷新 2026-04-27 的 report、重建 docs_html，最后按“reports 子模块先提交/推送，父仓库再提交/推送”的顺序处理。
+```
+
+### Codex Response 2 / commentary
+`2026-04-27 16:56:47 +0800`
+
+```
+我继续从当前工作树收尾：先确认父仓库和 report 子模块的状态，再刷新 2026-04-27 的报告与 docs_html，最后按“report 子模块先推、父仓库后推”的顺序提交。
+```
+
+### Codex Response 3 / commentary
+`2026-04-27 16:57:10 +0800`
+
+```
+当前父仓库还没提交，report 子模块是干净的。我现在用导出工具把今天的 Codex 会话追加到 report 子模块，再重建报告书和 docs_html，保证最终页面能看到今天内容。
+```
+
 ## Session Events
 
 <a id="event-1"></a>
@@ -1295,6 +2258,18 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 
 #### Event
 `2026-04-27 10:27:03 +0800`
+
+```
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+```
+
+<a id="event-3"></a>
+### Event 3 / turn_aborted
+
+#### Event
+`2026-04-27 15:14:58 +0800`
 
 ```
 <turn_aborted>

@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-04-28` | Drogon native server audit, legacy cleanup, Docker context hardening, generated runtime copy correction, verification, and report publication |
 | `2026-04-27` | `metanc_hmi_dsl` / `MetaNC` sync, client/server engineering docs, zh-CN i18n status tracking, Docker/Drogon server implementation, frontend deployment recommendation, and same-day report refresh |
 | `2026-04-26` | Docs portal link hygiene, zh-CN story-pack overlay cleanup, published report transcript path sanitization, codex-conversations turn-level export formatting, HMI server recommendation packaging, and final report refresh verification |
 | `2026-04-25` | Story structure tightening, bilingual docs portal output, and page-by-page zh-CN overlay rollout without polluting English source docs |

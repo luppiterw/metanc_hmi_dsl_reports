@@ -9,9 +9,11 @@
 3. 梳理非 Docker host 环境下的 vcpkg/Drogon 使用路径
 4. 引入 native server WebSocket subscription，并让 Web client 接入
 5. 补齐 split 模式下软面板命令和 AUTO 程序运行刷新
-6. 修复检查中发现的构建上下文、用户可见文案和 WS revision 问题
-7. 验证 Docker/Drogon 路径、one-shot 启动、split native 浏览器行为和生成器快照
-8. 生成当天 report、完整会话导出、聚合报告入口和最终 HTML 产物
+6. 规划并落地 Web 端 npm/esbuild 拆分，避免继续把第三方库和编辑器逻辑写死在生成器大字符串中
+7. 引入 CodeMirror Program 编辑器，修复编辑区布局、执行时编辑光标被运行行带动、以及选中态对比度不足的问题
+8. 修复检查中发现的构建上下文、用户可见文案和 WS revision 问题
+9. 验证 Docker/Drogon 路径、one-shot 启动、split native 浏览器行为、Web editor 行为和生成器快照
+10. 生成当天 report、完整会话导出、聚合报告入口和最终 HTML 产物
 
 ## 2. Drogon Server 审计
 
@@ -121,7 +123,34 @@ http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
 - 只在 state payload 实际应用后推进 `lastRevision`
 - 增加生成器测试，断言 `payload.state` 必须先于 subscription ready/updated 分支处理，并禁止重新出现旧的提前 revision 更新片段
 
-## 8. 验证结果
+## 8. Web Client 拆分与 Program 编辑器
+
+在 split runtime 闭环稳定后，继续处理 Web/QML 生成方式和 Program 编辑体验。
+
+Web 侧选择 npm + esbuild，而不是直接引入 Vite dev server，原因是当前产物仍以静态 generated/distribution 为主，esbuild 更适合先把第三方依赖和手写前端模块从 Python generator 字符串中拆出，同时保持最终部署形态简单。
+
+本次 Web 侧落地内容：
+
+- 新增 `client/web_client/package.json` 和 `package-lock.json`
+- 新增 `client/web_client/esbuild.config.mjs`
+- 新增 `client/web_client/bundler.py`
+- 新增 `client/web_client/src/` 源码目录
+- 生成 `assets/web-client.bundle.js`
+- 生成 `model.generated.json`
+- 生成 `runtime_seed.generated.json`
+- 更新 `index.html`、`app.js` 和 generator 测试，使 generated Web 产物加载外部 bundle，同时保留静态分发能力
+
+Program 编辑器侧落地内容：
+
+- CodeMirror 作为 Web Program editor provider
+- textarea fallback 仍保留，用于依赖不可用时降级
+- 编辑器容器高度和 Program 页面 grid 行为修复，避免编辑器被压在异常位置
+- 执行程序时不再把执行行写回 Program 编辑器光标；编辑页只反映编辑光标和编辑状态
+- 多行选中态改为高不透明深蓝背景，避免白色代码文字落在偏银色选中背景上不可读
+
+这个拆分为后续替换更强的编辑器、搜索/诊断面板和第三方 Web UI 依赖管理留下了稳定入口。
+
+## 9. 验证结果
 
 已执行的验证：
 
@@ -132,8 +161,13 @@ http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
 - `ctest --test-dir generated/server-build --output-on-failure`
 - `node --check generated/web/runtime.js`
 - `node --check generated/distribution/client/web/runtime.js`
+- `npm run build --silent`
+- `node --check generated/web/assets/web-client.bundle.js`
+- `node --check generated/web/app.js`
 - `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py' -v`
+- `python3 -m unittest discover tests -v`
 - split native browser/CDP 验证 AUTO `CYCLE START`
+- split native browser/CDP 验证 Program 编辑器布局和多行选中态
 - `MetaNC/nrt/hmi` 全量 Python 测试
 
 验证结论：
@@ -145,8 +179,9 @@ http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
 - `metanc_hmi_dsl` 全量 Python 测试通过：76 个测试通过，1 个条件跳过。
 - `MetaNC/nrt/hmi` 全量 Python 测试通过：53 个测试通过，6 个条件跳过。
 - 浏览器真实验证中，AUTO `CYCLE START` 后 execution state 为 `Running`，source 为 `AUTO`，当前行显示到 `N40 G0 X60.000 Z10.000 C0.000`，elapsed 继续增长，X 轴从 `18.337` 继续变化到 `35.007`。
+- 浏览器真实验证中，Program 编辑器由 CodeMirror provider 渲染，编辑区填满主内容区域，多行选中背景为 `rgba(8, 57, 112, 0.88)`，白色文本保持可读。
 
-## 9. Commits and Sync
+## 10. Commits and Sync
 
 当天相关提交：
 
@@ -163,7 +198,7 @@ http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
 - `MetaNC/feat/hmi` 只同步 `nrt/hmi` 必要内容
 - report source 和完整 Codex conversation 导出保留在 `submodules/metanc_hmi_dsl_reports`
 
-## 10. Report 产物
+## 11. Report 产物
 
 随后按当天日期 `2026-04-28` 刷新 report：
 
@@ -181,14 +216,15 @@ http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
 
 - `Sessions: 1`
 - `Primary sessions: 1`
-- `User prompts: 15`
+- `User prompts: 36`
 - `Synthetic events: 1`
-- `Messages: 113`
+- `Messages: 335`
 
-## 11. 当前剩余注意点
+## 12. 当前剩余注意点
 
 - 当前机器 host 构建 native server 仍需要稳定导出 vcpkg toolchain；没有这个环境时应使用 Docker builder/smoke 路径。
 - `drogon_ctl` 已安装在 vcpkg tools 目录，但直接命令可用还需要补 `PATH`。
 - `fixture/mock_runtime_server.py` 仍应保留为测试和 generated 本地联调路径，但不应再被描述为生产 runtime 候选。
 - 当前 client/server split 的通信闭环基本完成，但 server 端数据源仍是 `SimulatorAdapter`。真实 CNC/NCU/PLC 接入需要下一阶段实现真实 `MachineAdapter`。
+- Web 端已经具备 npm/esbuild 入口；后续新增第三方库应优先放入 `client/web_client/src/` 并由 bundle 输出进入 generated Web 产物。
 - 当天 report 在 commit 前仍会随当前会话继续增长；如果后续继续对话，需要再次刷新 full export。

@@ -2,7 +2,7 @@
 
 Focus:
 
-- Drogon native server audit, host vcpkg/Drogon tooling, runtime WebSocket subscription, split Web native command flow, AUTO state revision fix, MetaNC sync, and report publication
+- Drogon native server audit, host vcpkg/Drogon tooling, runtime WebSocket subscription, split Web native command flow, AUTO state revision fix, Web client npm/esbuild split, CodeMirror Program editor fixes, MetaNC sync, and report publication
 
 Session assets:
 
@@ -28,5 +28,7 @@ Key outcomes:
 - Added and verified native server WebSocket subscription so the Web client can bootstrap over HTTP, post commands over HTTP, and receive server-published state over WS.
 - Filled the server simulator command gaps that blocked soft-panel JOG/AUTO operation in split native mode.
 - Fixed the Web client WS revision handling bug that caused AUTO running-line, executing block, elapsed time, and axis updates to be ignored after `CYCLE START`.
+- Split the Web client into source modules plus an npm/esbuild bundle and generated JSON seed files, so third-party Web editor/runtime dependencies can be managed without embedding everything in generator strings.
+- Reworked the Program editor around a CodeMirror provider, fixed its generated layout sizing, stopped execution-line updates from moving the edit cursor, and improved selected-text contrast with a dark high-opacity selection color.
 - Synced the necessary HMI runtime changes into `MetaNC/feat/hmi` and verified downstream `nrt/hmi` tests.
 - Generated the 2026-04-28 report tree, complete Codex conversation export, and aggregate report links.

@@ -1,6 +1,6 @@
 # 2026-04-28 Codex Session Report
 
-这个目录整理了 2026-04-28 围绕 `metanc_hmi_dsl` Drogon server 审计、host vcpkg/Drogon 环境、WebSocket subscription、client/server split runtime、JOG/AUTO 命令闭环、MetaNC 同步，以及当天 report 刷新的结构化阅读材料。
+这个目录整理了 2026-04-28 围绕 `metanc_hmi_dsl` Drogon server 审计、host vcpkg/Drogon 环境、WebSocket subscription、client/server split runtime、JOG/AUTO 命令闭环、Web client npm/esbuild 拆分、CodeMirror Program 编辑器接入、MetaNC 同步，以及当天 report 刷新的结构化阅读材料。
 本次刷新已导出当天本地 Codex 会话，并补齐 project/conversation/diagram 页面，使最终 mdBook 和 `docs_html` 入口可以直接阅读。
 
 目录：
@@ -20,11 +20,11 @@
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `15`
+- User prompts: `36`
 - Synthetic events: `1`
-- Messages: `113`
-- User messages: `16`
-- Codex messages: `97`
+- Messages: `335`
+- User messages: `37`
+- Codex messages: `298`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
@@ -41,4 +41,6 @@
 - 修复 Web client 处理 WS state revision 的顺序问题，避免 AUTO 运行中的后续 state payload 被误判为 no-op，恢复当前行、执行块、elapsed 和轴数据刷新。
 - 通过浏览器/CDP 真实验证 split native 模式：AUTO `CYCLE START` 后界面进入 `Running`，当前块显示到 `N40...`，elapsed 和 X 轴位置继续变化。
 - 明确当前 split 状态：client 数据来自 server 的 HTTP/WS state，server 端当前数据源仍是 `SimulatorAdapter`，真实 CNC 接入是下一阶段工作。
+- 将 Web client 生成路径拆成 npm/esbuild 管理的 bundle、生成器 shell、运行时 JSON seed 和静态 app shell，便于后续引入第三方前端库。
+- 引入 CodeMirror Program editor provider，修复 Program 编辑页布局高度、执行时编辑器光标跟随运行行、以及多行选中后白字落在浅色选区上不可读的问题。
 - 生成并刷新 2026-04-28 report、完整 Codex conversation 导出、聚合 session 入口和最终 HTML 产物，并同步必要内容到 `MetaNC/feat/hmi`。

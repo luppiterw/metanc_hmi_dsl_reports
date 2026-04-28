@@ -2,7 +2,7 @@
 
 Focus:
 
-- Drogon native server audit, legacy cleanup, Docker context hardening, generated runtime copy correction, verification, and report publication
+- Drogon native server audit, host vcpkg/Drogon tooling, runtime WebSocket subscription, split Web native command flow, AUTO state revision fix, MetaNC sync, and report publication
 
 Session assets:
 
@@ -24,4 +24,9 @@ Key outcomes:
 - Replaced stale Web/QML strict-client connection copy that still referenced the old split mock server role.
 - Updated generated runtime snapshots and distribution README wording to match the native HMI server path.
 - Verified Docker smoke, container one-shot startup, and generator snapshot output.
+- Clarified the host vcpkg route for native builds and noted that `drogon_ctl` is installed under the vcpkg Drogon tools directory but still needs PATH exposure for direct shell use.
+- Added and verified native server WebSocket subscription so the Web client can bootstrap over HTTP, post commands over HTTP, and receive server-published state over WS.
+- Filled the server simulator command gaps that blocked soft-panel JOG/AUTO operation in split native mode.
+- Fixed the Web client WS revision handling bug that caused AUTO running-line, executing block, elapsed time, and axis updates to be ignored after `CYCLE START`.
+- Synced the necessary HMI runtime changes into `MetaNC/feat/hmi` and verified downstream `nrt/hmi` tests.
 - Generated the 2026-04-28 report tree, complete Codex conversation export, and aggregate report links.

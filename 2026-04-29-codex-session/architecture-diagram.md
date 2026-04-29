@@ -3,9 +3,13 @@
 ```mermaid
 flowchart LR
     DSL[metanc_hmi_dsl source templates] --> GEN[tools/generate_targets.sh]
-    GEN --> WEB[generated/web README and bundle]
-    GEN --> QML[generated/qml README and app project]
+    DSL --> DESIGN[DESIGN.md and docs design guide]
+    DESIGN --> DOCSHTML[docs_html design guidance]
+    GEN --> WEB[generated/web settings shell and bundle]
+    GEN --> QML[generated/qml settings shell and app project]
     GEN --> DIST[generated/distribution helpers]
+    WEB --> WEBRUN[split Web native preview]
+    QML --> QMLRUN[split QML native preview]
     DIST --> FIXTURE[repo fixture mock server helpers]
     DIST --> NATIVE[packaged native Drogon server helpers]
     DSL --> EXPORT[tools/export_to_metanc.sh]

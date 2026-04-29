@@ -4,6 +4,7 @@ Focus:
 
 - Session bootstrap and Codex user-history export tooling
 - Generated runtime launch-doc audit, Web/QML/distribution README template fixes, regenerated artifacts, MetaNC sync, and 2026-04-29 report publication
+- Design guidance docs, Web/QML settings panels, top-right settings gear, legacy shell-control removal, QML WSL window placement, and Alt-drag window movement
 
 Session assets:
 
@@ -27,3 +28,8 @@ Key outcomes:
 - Regenerated the generated Web/QML/distribution outputs with host vcpkg native-server build mode.
 - Committed and pushed the source changes, exported the HMI package into `MetaNC/nrt/hmi`, and committed/pushed the downstream sync.
 - Created the 2026-04-29 report tree, full Codex conversation export, aggregate report links, and rebuilt the report/doc outputs.
+- Added the design guideline docs path used by root `DESIGN.md`, including zh-CN i18n and development guide navigation.
+- Implemented Web/QML settings panels for runtime connection, server mode, theme, and soft-panel visibility.
+- Moved the settings entry to a top-right gear and removed Web legacy top controls from generated HTML/JS.
+- Added QML screen-safe startup geometry for WSL and `Alt + left mouse` system window move support.
+- Rebuilt final artifacts and validated the updated Web/QML shell behavior with tests and live Web screenshot checks.

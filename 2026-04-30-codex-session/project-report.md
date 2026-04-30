@@ -2,26 +2,32 @@
 
 ## Scope
 
-2026-04-30 的工作承接前一日 runtime logging / persistence 规划，重点是确认规划文档已经进入最终 docs_html 输出，并将这批规划、report、关联索引和 downstream `MetaNC/nrt/hmi` 同步流程收口。
+2026-04-30 的工作承接前一日 runtime logging / persistence 规划，重点从文档规划推进到第一版可运行实现。范围覆盖 native server 真实日志、Web/QML client 日志上传、Diagnostics 页面数据源切换、SQLite 日志持久化、Docker 构建缓存修复、最终产物生成、report/docs 刷新，以及 downstream `MetaNC/nrt/hmi` 同步。
 
 ## Completed Work
 
-- 复查 persistence/logging 新增页面的最终 HTML 输出，发现 zh-CN 页面已生成，但英文 `docs_html/en` 下存在新链接缺少实际页面的问题。
-- 修复 `tools/hmi_dsl/docs_portal.py` 中的静态 mdBook 页面清单，将 runtime logs、persistence layer、server logging、server persistence 和 logging persistence plan 纳入英文/中文 portal 构建。
-- 重新运行 `./tools/build_docs_html.sh`，确认 `docs_html/en` 和 `docs_html/zh-CN` 都生成了对应 HTML 页面。
-- 运行 DSL validation、story docs tests 和 whitespace diff check，确认规划文档、story catalog 与 portal 生成器修复可验证。
-- 将 persistence/logging 规划文档提交为 `docs: plan runtime persistence and logging`。
-- 使用 `tools/export_codex_user_history.py` 创建 2026-04-30 report package，并导出当天 brief user-history。
-- 刷新 2026-04-29 brief/full Codex history export，并把 04-29 report 的人工摘要补齐 logging persistence planning 主线。
-- 更新 aggregate report timeline、04-30 session entry、04-29 session entry 和 report diagrams。
-- 修复 full Codex conversation export 的跨天会话筛选问题：旧逻辑按 session start date 过滤，长会话跨到 04-30 时会导致当天只看到 `user-history.md`，看不到详细 Codex 对话。现在 full export 按 message activity date 收集并按目标日期切片。
+- 复查 persistence/logging 新增页面的最终 HTML 输出，修复英文 `docs_html/en` 缺少新页面的问题，并重新生成 docs portal。
+- 完成 runtime logging 第一版真实接入：native server 记录 lifecycle、command accepted/rejected/result、HTTP/WebSocket/client-log 相关事件；Web/QML generated runtimes 上传低频 lifecycle、transport、command 事件。
+- 将 Diagnostics 日志视图切到 runtime log contract：页面数据来自 server 注入的 `diagnostics.logs.entries` 与 `/api/runtime/logs` 增量查询，不再使用旧的 mock/alarm history。
+- 引入 `LogStore` 边界、`InMemoryLogStore`、`SqliteLogStore` 和 `LogService` 运行时上下文，SQLite backend 可通过 `HMI_PERSISTENCE_BACKEND=sqlite` 启用。
+- 为 SQLite 日志持久化补充配置入口：`HMI_RUNTIME_DATA_DIR`、`HMI_LOG_DB`、`--persistence-backend`、`--runtime-data-dir`、`--log-db`。
+- 为命令行可见性保留 lightweight `ConsoleDiagnosticSink`，本阶段不引入 `spdlog`，避免过早绑定日志库。
+- 修复 Docker native server 构建中 zlib 源码下载失败风险：构建前临时注入 host vcpkg binary cache，Dockerfile 通过 `VCPKG_BINARY_SOURCES` 优先读取缓存，构建后清理上下文。
+- 更新 server logging、persistence、runtime logs、persistence layer、logging persistence plan、Docker deployment、build/run、status matrix 及 zh-CN i18n 对应文档。
+- 使用 `tools/export_codex_user_history.py` 刷新 2026-04-30 brief/full Codex history export，并更新 aggregate report timeline、session entry 和 report diagrams。
 
 ## Verification
 
 - `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
 - `python3 -m unittest -v tests.test_story_docs`
+- `python3 -m unittest -v tests.test_pipeline`
+- `cmake --build server/build --target server_smoke_test`
+- `./server/build/server_smoke_test`
 - `git diff --check`
 - `./tools/build_docs_html.sh`
+- `HMI_SERVER_NATIVE_BUILD_MODE=docker ./tools/generate_targets.sh`
+- `./tools/docker_hmi_server.sh build`
+- `HMI_SERVER_PORT=18150 ./tools/docker_hmi_server.sh smoke`
 - HTML existence checks for:
   - `docs_html/en/project/logging_persistence_plan.html`
   - `docs_html/en/product/spec/runtime_logs.html`
@@ -32,6 +38,6 @@
 
 ## Follow-up Notes
 
-- 04-30 full Codex conversation export 已重新生成：`1` session、`3` user prompts、`29` Codex messages，并且 `codex-conversations/index.html` / `all.html` / session detail HTML 都已落盘。
-- The docs portal generator has its own static page lists; adding `docs/SUMMARY.md` alone is not sufficient for new pages to appear in final `docs_html/en`.
-- The next implementation phase should start from the documented `PersistenceManager` / `LogStore` boundary rather than adding direct SQLite calls into domain services.
+- 04-30 full Codex conversation export 已重新生成：`1` session、`23` user prompts、`154` Codex messages，并且 `codex-conversations/index.html` / `all.html` / session detail HTML 都已落盘。
+- Docker zlib failure was a dependency acquisition/cache issue after adding `sqlite3`, not a C++ compile failure. The current wrapper avoids the network path when host vcpkg binary cache is available.
+- Generated Docker-mode `generated/server-build/` intentionally contains the runtime server binary, not the `server_smoke_test` test executable; use `server/build/server_smoke_test` for native test verification and Docker health smoke for the container path.

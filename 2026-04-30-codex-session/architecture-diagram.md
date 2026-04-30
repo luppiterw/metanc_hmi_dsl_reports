@@ -2,16 +2,21 @@
 
 ```mermaid
 flowchart LR
-    DOCS[docs source pages] --> PORTAL[tools/hmi_dsl/docs_portal.py]
-    I18N[docs_i18n zh-CN overlays] --> PORTAL
-    STORY[definition/story.catalog.yaml] --> PACK[acceptance_reference story pack]
-    PACK --> PORTAL
-    PORTAL --> EN[docs_html/en]
-    PORTAL --> ZH[docs_html/zh-CN]
-    EN --> CHECK[final HTML existence checks]
-    ZH --> CHECK
-    REPORTS[submodules/metanc_hmi_dsl_reports] --> REPORTBOOKS[report mdBook outputs]
-    REPORTBOOKS --> PORTAL
-    DOCS --> EXPORT[tools/export_to_metanc.sh]
+    WEB[Generated Web runtime] --> CLIENTLOG[POST client logs]
+    QML[Generated QML runtime] --> CLIENTLOG
+    HTTP[Drogon REST/WebSocket server] --> SERVICE[LogService]
+    CLIENTLOG --> SERVICE
+    COMMANDS[Runtime commands] --> SERVICE
+    SERVICE --> MEMORY[InMemoryLogStore]
+    SERVICE --> SQLITE[SqliteLogStore]
+    SQLITE --> DB[(runtime-data/hmi_logs.sqlite)]
+    SERVICE --> CONSOLE[ConsoleDiagnosticSink]
+    SERVICE --> QUERY[GET /api/runtime/logs]
+    QUERY --> DIAG[Diagnostics views]
+    HOSTCACHE[Host vcpkg binary cache] --> DOCKERCTX[docker/vcpkg-binary-cache]
+    DOCKERCTX --> DOCKER[Docker server build]
+    DOCS[docs + docs_i18n] --> PORTAL[docs_html]
+    REPORTS[submodules/metanc_hmi_dsl_reports] --> PORTAL
+    PORTAL --> EXPORT[tools/export_to_metanc.sh]
     EXPORT --> METANC[MetaNC nrt/hmi]
 ```

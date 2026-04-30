@@ -3,9 +3,10 @@
 Focus:
 
 - Final documentation verification
-- Persistence/logging planning commit
-- 2026-04-30 report creation and 2026-04-29 report refresh
-- Docs portal rebuild, MetaNC sync, and publication
+- Real runtime log ingest for server and generated clients
+- Diagnostics pages backed by runtime log data
+- SQLite log persistence and Docker vcpkg/zlib cache fix
+- Final artifact refresh, docs portal rebuild, MetaNC sync, and publication
 
 Session assets:
 
@@ -24,11 +25,12 @@ Key outcomes:
 
 - Verified that the new persistence/logging documentation was present in both `docs_html/en` and `docs_html/zh-CN`.
 - Fixed the docs portal generator static page lists so English final HTML includes the new runtime logs, persistence layer, server logging, server persistence, and logging persistence plan pages.
-- Committed the persistence/logging planning documentation as `docs: plan runtime persistence and logging`.
-- Bootstrapped the 2026-04-30 report package and exported the available brief user-history prompts.
-- Refreshed the 2026-04-29 report package so it records the logging persistence planning discussion and documentation outputs.
-- Fixed the full Codex conversation exporter so cross-day sessions are selected by message activity date and sliced to the target report date.
+- Added native server runtime log events, Web/QML client-log upload, and Diagnostics views backed by runtime log entries.
+- Added `SqliteLogStore`, persistence configuration switches, and restart-survival smoke coverage for command lifecycle logs.
+- Kept command-line diagnostic visibility through a lightweight console sink without adding `spdlog` in this slice.
+- Fixed Docker zlib/source download failures by injecting host vcpkg binary cache into Docker build context and cleaning it after build.
+- Refreshed the generated Web/QML/server distribution, docs, story pack, report package, and downstream MetaNC export.
 
 Notes:
 
-- The 2026-04-30 full Codex conversation export now publishes `1` session, `3` user prompts, and `29` Codex messages. The earlier missing-detail symptom was caused by filtering sessions by start date instead of activity date.
+- The 2026-04-30 full Codex conversation export now publishes `1` session, `23` user prompts, and `154` Codex messages.

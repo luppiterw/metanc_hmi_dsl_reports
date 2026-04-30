@@ -1,7 +1,7 @@
 # 2026-04-30 Codex Session Report
 
 这个目录整理了 2026-04-30 这轮项目推进的结构化阅读材料。
-本日重点是确认 persistence/logging 规划最终文档完整生成、修复英文 docs_html 生成缺页、提交规划文档、创建当日报告、刷新 2026-04-29 报告，并准备同步到 `MetaNC/nrt/hmi`。
+本日重点是把 runtime logging 从规划推进到第一版可运行实现：server/client 真实日志接入、Diagnostics 页面使用 server 返回数据、SQLite 日志持久化、Docker vcpkg/zlib 构建缓存修复，以及相关文档、最终产物和 `MetaNC/nrt/hmi` 同步。
 
 目录：
 
@@ -16,7 +16,8 @@
 本次 report 同时更新了：
 
 - 2026-04-30 当天 report package
-- 2026-04-29 report 的 logging persistence planning 记录
+- runtime logging / persistence 相关文档与状态记录
+- Docker native server build 文档中的 vcpkg binary cache 说明
 - aggregate report timeline 与 session link
 - 主仓库 docs portal 输出
 
@@ -27,11 +28,11 @@
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `3`
+- User prompts: `23`
 - Synthetic events: `0`
-- Messages: `32`
-- User messages: `3`
-- Codex messages: `29`
+- Messages: `177`
+- User messages: `23`
+- Codex messages: `154`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

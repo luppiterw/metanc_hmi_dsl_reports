@@ -44,3 +44,34 @@ Date: 2026-04-30
 - go on
 - 过滤一下.codex，然后commit + push
 - 更新一下所有report和关联文件，然后先提交一下，你说的settings/tool/parameter持久化这些先不考虑，等后续有相关模块再说，你提交push后记得sync到MetaNC，然后commit+ push ，msg要合适，然后我们继续下一个议题
+- 07:41:15.461 INFO web lifecycle client.app.started req=req-3 session=web-mol6db6l-b8bc5148 page=page_overview - web client started
+  07:41:15.503 INFO ws ws ws.connection.opened - websocket connection opened
+  07:41:15.670 INFO web transport client.transport.connected req=req-4 session=web-mol6db6l-b8bc5148 page=page_overview - runtime server connected
+  07:41:15.670 INFO web transport client.transport.ws_opened req=req-4 session=web-mol6db6l-b8bc5148 page=page_overview - websocket opened
+  07:41:15.670 INFO ws ws ws.subscription.updated - websocket subscription updated
+  07:41:21.139 INFO web command client.command.requested req=req-5 session=web-mol6db6l-b8bc5148 page=page_diagnostics - command requested
+  07:41:21.139 AUDIT server persistence logs.retention.run - log retention policy executed
+  07:41:24.062 INFO web command client.command.requested req=req-6 session=web-mol6db6l-b8bc5148 page=page_diagnostics - command requested
+  07:41:26.759 INFO web command client.command.requested req=req-7 session=web-mol6db6l-b8bc5148 page=page_diagnostics - command requested
+  07:41:43.287 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:41:43.325 WARN web transport client.transport.ws_subscription_error req=req-8 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error
+  07:42:12.400 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:42:12.462 WARN web transport client.transport.ws_subscription_error req=req-9 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error
+  07:42:40.785 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:42:40.831 WARN web transport client.transport.ws_subscription_error req=req-10 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error
+  07:43:09.763 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:43:09.806 WARN web transport client.transport.ws_subscription_error req=req-11 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error
+  07:43:38.357 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:43:38.423 WARN web transport client.transport.ws_subscription_error req=req-12 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error
+  07:44:08.360 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:44:08.402 WARN web transport client.transport.ws_subscription_error req=req-13 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error
+  07:44:37.175 WARN ws ws ws.message.rejected - non-text websocket message rejected
+  07:44:37.267 WARN web transport client.transport.ws_subscription_error req=req-14 session=web-mol6db6l-b8bc5148 page=page_diagnostics - subscription error看到一堆报警，这是什么情况
+- 可以，提交一下，然后我们开始讨论日志界面功能
+- 可以 定义一下
+- ok，你先做一版我看一下
+- ./generated/distribution/run_split_web_native.sh 8010 8000 启动后显示server不可用，查一下什么问题
+- 先提交一次，然后我们继续讨论log的client功能
+- 可以 按照规划继续
+- 先提交一下
+- update report and docs+sync MetNC + commit + push

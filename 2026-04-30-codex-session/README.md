@@ -1,12 +1,12 @@
 # 2026-04-30 Codex Session Report
 
 这个目录整理了 2026-04-30 这轮项目推进的结构化阅读材料。
-本日重点是把 runtime logging 从规划推进到第一版可运行实现：server/client 真实日志接入、Diagnostics 页面使用 server 返回数据、SQLite 日志持久化、client batch upload、JSONL export、policy clear、manual retention、Docker vcpkg/zlib 构建缓存修复，以及相关文档、最终产物和 `MetaNC/nrt/hmi` 同步。
+本日重点是把 runtime logging 从规划推进到第一版可运行实现，并继续完成 client log 使用闭环：server/client 真实日志接入、Diagnostics 页面使用 server 返回数据、独立 `LOGS` 页面、Web/QML client log event catalog、SQLite 日志持久化、client batch upload、JSONL export、policy clear、manual retention、Docker vcpkg/zlib 构建缓存修复、split Web native 启动健康检查，以及相关文档、最终产物和 `MetaNC/nrt/hmi` 同步。
 
 目录：
 
-- `project-report.md`: 项目进展总结占位页
-- `conversation-report.md`: 会话摘要占位页
+- `project-report.md`: 项目进展总结
+- `conversation-report.md`: 会话摘要
 - `user-history.md`: 当天用户发言原始导出
 - `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: 工作流图占位页
@@ -18,6 +18,8 @@
 - 2026-04-30 当天 report package
 - runtime logging / persistence 相关文档与状态记录
 - Diagnostics log export / clear / retention UI wiring 和 QML persisted offline buffer 记录
+- 独立 Runtime Logs 页面、client log event catalog 和 Web/QML 事件采集规范
+- split Web native 启动脚本的 server health wait 行为
 - Docker native server build 文档中的 vcpkg binary cache 说明
 - aggregate report timeline 与 session link
 - 主仓库 docs portal 输出
@@ -29,11 +31,11 @@
 - Sessions: `2`
 - Primary sessions: `2`
 - Side sessions: `0`
-- User prompts: `33`
+- User prompts: `42`
 - Synthetic events: `0`
-- Messages: `251`
-- User messages: `33`
-- Codex messages: `218`
+- Messages: `331`
+- User messages: `42`
+- Codex messages: `289`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

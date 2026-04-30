@@ -2,7 +2,7 @@
 
 ## Summary
 
-本日会话从 generated 输出是否过期展开，随后扩展到界面设计规范、设置能力、顶部 shell 控件和 QML/WSL 运行体验。先审计并修正 Web/QML/distribution 脚本与 README，再建立 DESIGN.md 引用式文档结构，之后实现 Web/QML 设置面板并把 settings 入口迁移到顶部齿轮。最后处理顶部旧控件清理、QML 启动位置和 Alt 拖动窗口，并按既有流程刷新产物、提交源仓库、同步 MetaNC。
+本日会话从 generated 输出是否过期展开，随后扩展到界面设计规范、设置能力、顶部 shell 控件、QML/WSL 运行体验，以及 runtime logging / persistence 的后续规划。先审计并修正 Web/QML/distribution 脚本与 README，再建立 DESIGN.md 引用式文档结构，之后实现 Web/QML 设置面板并把 settings 入口迁移到顶部齿轮。最后处理顶部旧控件清理、QML 启动位置和 Alt 拖动窗口，并将日志持久化和 server-side persistence 的 Store-boundary 规划落入 docs/story catalog。
 
 ## Decisions
 
@@ -13,6 +13,9 @@
 - 设置入口统一为顶部右侧齿轮；旧的顶部软面板切换和主题下拉不再作为主路径暴露。
 - Web 端旧控件最终从 HTML/JS 中移除，而不是只依赖 CSS 隐藏；QML 端保留生成结构但通过 `headerQuickControlsVisible` 关闭旧入口。
 - QML WSL 启动要使用 `Screen.available*` 做尺寸和位置约束，并支持 `Alt + 鼠标左键` 调用系统窗口移动。
+- server log 是 command/state-change history 的权威侧，client log 只作为诊断输入上传。
+- SQLite 可以作为第一版本地持久化 backend，但必须经过 `LogStore` / `SettingsStore` / `ToolStore` / `ParameterStore` 等接口隔离，避免后续迁移到 PostgreSQL、remote persistence 或 adapter-owned stores 时重写 domain services。
+- 日志、settings、tool data、parameter state 应先声明 authority model，再决定 server 是 source of truth、adapter cache，还是 simulator demo store。
 - report 更新要落到 `submodules/metanc_hmi_dsl_reports`，同时更新 aggregate index 并重建 HTML 输出。
 
 ## Published Artifacts
@@ -22,3 +25,4 @@
 - Aggregate report entry: `src/sessions/2026-04-29-codex-session.md`
 - Session book output: `build_html/index.html`
 - Generated Web/QML/distribution final outputs after shell/settings changes
+- Persistence planning docs and refreshed story-pack outputs in the parent repo

@@ -16,4 +16,9 @@ flowchart LR
     EXPORT --> METANC[MetaNC nrt/hmi]
     DSL --> REPORTS[submodules/metanc_hmi_dsl_reports]
     REPORTS --> DOCS[docs_html report portal]
+    DSL --> PERSIST[Logging and persistence planning docs]
+    PERSIST --> STORY[story catalog persistent logging slices]
+    STORY --> PACK[acceptance_reference story pack]
+    PERSIST --> I18N[docs_i18n zh-CN overlays]
+    I18N --> DOCS
 ```

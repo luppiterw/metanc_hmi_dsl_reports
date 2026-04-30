@@ -33,3 +33,4 @@ Key outcomes:
 - Moved the settings entry to a top-right gear and removed Web legacy top controls from generated HTML/JS.
 - Added QML screen-safe startup geometry for WSL and `Alt + left mouse` system window move support.
 - Rebuilt final artifacts and validated the updated Web/QML shell behavior with tests and live Web screenshot checks.
+- Planned the persistent logging and server-side persistence layer, including SQLite-first storage, replaceable Store interfaces, log/query/export/retention slices, and zh-CN/docs_html coverage.

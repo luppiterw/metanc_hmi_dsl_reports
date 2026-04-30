@@ -11,7 +11,9 @@ flowchart TD
     G --> H[Regenerate Web, QML, native server, and distribution artifacts]
     H --> I[Run generator, DSL, QML build, and live Web checks]
     I --> J[Export filtered HMI package into MetaNC nrt/hmi]
-    J --> K[Update 2026-04-29 report package]
-    K --> L[Rebuild report books and docs portal]
-    L --> M[Commit and push reports submodule, parent repo, and MetaNC]
+    J --> K[Discuss logging persistence and Store-boundary planning]
+    K --> L[Write persistence plan docs and story catalog slices]
+    L --> M[Update 2026-04-29 report package]
+    M --> N[Rebuild report books and docs portal]
+    N --> O[Commit and push reports submodule, parent repo, and MetaNC]
 ```

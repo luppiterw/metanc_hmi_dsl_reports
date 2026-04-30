@@ -2,7 +2,7 @@
 
 ## Scope
 
-2026-04-29 的工作覆盖 generated 产物可用性、设计规范沉淀、设置功能落地和 Web/QML shell 体验收敛。目标是让 `generated/` 下的脚本、README、最终产物、docs_html 和下游 `MetaNC/nrt/hmi` 保持一致，同时让设置能力成为后续扩展 runtime server、主题和软面板显示策略的稳定入口。
+2026-04-29 的工作覆盖 generated 产物可用性、设计规范沉淀、设置功能落地、Web/QML shell 体验收敛，以及 runtime logging / persistence 的下一阶段规划。目标是让 `generated/` 下的脚本、README、最终产物、docs_html 和下游 `MetaNC/nrt/hmi` 保持一致，同时让设置能力和持久化边界成为后续扩展 runtime server、主题、软面板显示策略、日志、刀库和参数存储的稳定入口。
 
 ## Completed Work
 
@@ -18,6 +18,9 @@
 - Web 端彻底移除顶部旧的 `operations-toggle` 和 `theme-select` DOM/JS；QML 端隐藏旧入口，保留 settings 齿轮。
 - QML 端增加基于可用屏幕区域的启动尺寸/位置约束，缓解 WSL 下窗口顶部跑出屏幕的问题，并支持 `Alt + 鼠标左键` 拖动窗口。
 - 刷新并验证 Web/QML/distribution 最终产物，随后准备提交并同步到 `MetaNC/nrt/hmi`。
+- 讨论 client log / server log 的职责划分，以及日志持久化、SQLite-first backend、刀库/参数/设置持久化和未来迁移需求。
+- 明确后续实现必须先引入 Store interface / persistence boundary，避免 domain service 直接耦合 SQLite。
+- 将 logging / persistence 规划落入 `docs/project/logging_persistence_plan.md`、`docs/product/spec/runtime_logs.md`、`docs/product/spec/persistence_layer.md`、`docs/server/logging.md` 和 `docs/server/persistence.md`，并补齐 zh-CN overlay、story catalog slices 和 story-pack 输出。
 
 ## Verification
 
@@ -27,6 +30,8 @@
 - `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
 - QML 临时工程 `qt-cmake` 配置与 `cmake --build`
 - Web split native 实际页面截图验证顶部只剩 settings 齿轮
+- `python3 -m unittest -v tests.test_story_docs`
+- `./tools/build_docs_html.sh`
 - `git diff --check`
 - `MetaNC/nrt/hmi` 同步后运行同一生成快照测试
 
@@ -35,3 +40,4 @@
 - Docker BuildKit 拉取 Docker frontend 时曾遇到 Docker Hub EOF，因此本次最终生成使用本机 `VCPKG_ROOT=/home/iaar/workspace/github/vcpkg` 和 `HMI_SERVER_NATIVE_BUILD_MODE=host` 完成。
 - 当 `run_client_web.sh` 带 server URL 启动时会复制 Web 文件到 `/tmp/client_web_<port>`；如果旧服务未停掉，浏览器可能仍看到旧临时目录。
 - 当前 report 发布仍需要同时更新 reports 子模块、父仓库 submodule pointer 和 `docs_html`，否则可见 portal 会显示旧状态。
+- 04-29 的完整 Codex conversation export 在刷新时只导出了当前可解析的 1 个 session；更完整的用户发言列表保留在 `user-history.md`。

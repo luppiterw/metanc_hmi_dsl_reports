@@ -14,6 +14,7 @@
 - 使用 `tools/export_codex_user_history.py` 创建 2026-04-30 report package，并导出当天 brief user-history。
 - 刷新 2026-04-29 brief/full Codex history export，并把 04-29 report 的人工摘要补齐 logging persistence planning 主线。
 - 更新 aggregate report timeline、04-30 session entry、04-29 session entry 和 report diagrams。
+- 修复 full Codex conversation export 的跨天会话筛选问题：旧逻辑按 session start date 过滤，长会话跨到 04-30 时会导致当天只看到 `user-history.md`，看不到详细 Codex 对话。现在 full export 按 message activity date 收集并按目标日期切片。
 
 ## Verification
 
@@ -31,6 +32,6 @@
 
 ## Follow-up Notes
 
-- 04-30 full Codex conversation export returned zero session files at export time. The visible prompts are still preserved in `user-history.md`.
+- 04-30 full Codex conversation export 已重新生成：`1` session、`3` user prompts、`29` Codex messages，并且 `codex-conversations/index.html` / `all.html` / session detail HTML 都已落盘。
 - The docs portal generator has its own static page lists; adding `docs/SUMMARY.md` alone is not sufficient for new pages to appear in final `docs_html/en`.
 - The next implementation phase should start from the documented `PersistenceManager` / `LogStore` boundary rather than adding direct SQLite calls into domain services.

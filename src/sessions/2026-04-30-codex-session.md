@@ -27,7 +27,8 @@ Key outcomes:
 - Committed the persistence/logging planning documentation as `docs: plan runtime persistence and logging`.
 - Bootstrapped the 2026-04-30 report package and exported the available brief user-history prompts.
 - Refreshed the 2026-04-29 report package so it records the logging persistence planning discussion and documentation outputs.
+- Fixed the full Codex conversation exporter so cross-day sessions are selected by message activity date and sliced to the target report date.
 
 Notes:
 
-- The 2026-04-30 full Codex conversation export reported zero session files at export time, but the brief user prompt export contains the visible 2026-04-30 prompts.
+- The 2026-04-30 full Codex conversation export now publishes `1` session, `3` user prompts, and `29` Codex messages. The earlier missing-detail symptom was caused by filtering sessions by start date instead of activity date.

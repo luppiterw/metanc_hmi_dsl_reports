@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-04-30` | Final docs verification, real runtime log ingest, Diagnostics runtime-log views, SQLite log persistence, Docker vcpkg/zlib cache fix, final artifact refresh, MetaNC sync, and publication |
+| `2026-04-30` | Final docs verification, real runtime log ingest, Diagnostics runtime-log views/actions, client batch upload, JSONL export, policy clear, manual retention, SQLite log persistence, Docker vcpkg/zlib cache fix, final artifact refresh, MetaNC sync, and publication |
 | `2026-04-29` | Generated launch-doc fixes, DESIGN.md/docs_i18n design guidance, Web/QML settings panels, top-right settings gear, legacy control removal, QML WSL window placement, logging persistence planning, final artifact refresh, MetaNC sync, and report publication |
 | `2026-04-28` | Drogon native server audit, host vcpkg/Drogon tooling, runtime WebSocket subscription, split Web native command flow, AUTO state revision fix, Web client npm/esbuild split, CodeMirror Program editor fixes, MetaNC sync, and report publication |
 | `2026-04-27` | `metanc_hmi_dsl` / `MetaNC` sync, client/server engineering docs, zh-CN i18n status tracking, Docker/Drogon server implementation, frontend deployment recommendation, and same-day report refresh |

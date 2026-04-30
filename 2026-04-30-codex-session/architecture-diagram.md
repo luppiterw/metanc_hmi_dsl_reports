@@ -12,7 +12,14 @@ flowchart LR
     SQLITE --> DB[(runtime-data/hmi_logs.sqlite)]
     SERVICE --> CONSOLE[ConsoleDiagnosticSink]
     SERVICE --> QUERY[GET /api/runtime/logs]
+    SERVICE --> OPS[Export / clear / retention APIs]
     QUERY --> DIAG[Diagnostics views]
+    OPS --> DIAG
+    WEB --> WEBBUF[localStorage client-log queue]
+    QML --> QMLBUF[QML UI-state client-log queue]
+    WEBBUF --> CLIENTLOG
+    QMLBUF --> CLIENTLOG
+    STATEBOUNDARY[Settings / Tool / Parameter Store interfaces] -. deferred concrete stores .-> FUTURE[(future hmi_state backend)]
     HOSTCACHE[Host vcpkg binary cache] --> DOCKERCTX[docker/vcpkg-binary-cache]
     DOCKERCTX --> DOCKER[Docker server build]
     DOCS[docs + docs_i18n] --> PORTAL[docs_html]

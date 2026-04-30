@@ -25,3 +25,22 @@ Date: 2026-04-30
 - 先commit一下，然后继续
 - 继续做一下，先出个版本我看看，为什么docker里下载zlib失败、这个也要处理一下
 - update reports and docs,commit + sync MetaNC + push 一版先
+- 现在log这块做到什么程度了
+- - offline client log buffer
+    - batch upload：POST /api/runtime/logs/client/batch
+    - JSONL export endpoint
+    - retention 策略和 retention runner
+    - server-side clear policy
+    - audit policy enforcement
+    - 时间范围查询和正式 cursor pagination
+    - WebSocket connect/disconnect/replay warning 等 server-side WS 事件还没有系统化补全
+    - settings/tool/parameter 这类持久化 state store 还没开始
+  这几个分别是干嘛的
+- 我觉得你的规划没问题，今天可以都搞定吗，开干把
+- 参考git-repo-list-all.xml里面已有的group，新建一个IAAR相关，git-repo-list-all.dtd里面注意添加一下gitee同级的github、现在很多仓库都是github了，然后将/home/iaar/workspace/ccmix-wp下的几个仓库的地址相关写进去（注意补一下http的地址），补完我看一下
+- IAAR group下面的都添加一下gitee的地址留白，后续可能会在上面也添加，然后更新一下对应code-repos的README
+- 看一下这部分现在能正常导出git-repo-list-all.json吗，deal_xml_repo.py这个脚本可能写的有些问题，你尝试使用改一下，默认输出就是输出到.xml同目录那个，然后可以指定输出目录
+- commit + push一下
+- go on
+- 过滤一下.codex，然后commit + push
+- 更新一下所有report和关联文件，然后先提交一下，你说的settings/tool/parameter持久化这些先不考虑，等后续有相关模块再说，你提交push后记得sync到MetaNC，然后commit+ push ，msg要合适，然后我们继续下一个议题

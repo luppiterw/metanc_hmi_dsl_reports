@@ -16,4 +16,8 @@ flowchart TD
     L --> M[Export changes to MetaNC]
     M --> N[Validate MetaNC mirror]
     N --> O[Commit and push MetaNC]
+    O --> P[Regenerate final artifacts for review]
+    P --> Q[Start static Web preview]
+    Q --> R[Clarify native server is not started by static preview]
+    R --> S[Update and republish report]
 ```

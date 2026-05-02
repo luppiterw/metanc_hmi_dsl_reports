@@ -8,6 +8,7 @@ Focus:
 - Web/QML normal-button multi-action execution fix
 - Stale `page_logs` active-page fallback
 - Final artifact refresh, report update, and MetaNC sync preparation
+- Static Web preview confirmation and native server launch-mode clarification
 
 Session assets:
 

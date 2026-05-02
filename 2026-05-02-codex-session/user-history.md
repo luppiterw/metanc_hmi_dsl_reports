@@ -8,3 +8,6 @@ Date: 2026-05-02
 - 现在点击DIAG没反应了，是不是默认菜单进去出问题了
 - DIAGS进去默认还是改成LOGS
 - 创建今天的report，提交一下今天的变更，然后同步一下MetaNC，commit+push
+- 生成最终产物我看一下
+- 你生成的这个没有启动server是吧
+- ok，更新一下今天的report然后提交push

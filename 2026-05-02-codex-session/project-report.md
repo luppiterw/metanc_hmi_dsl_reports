@@ -9,6 +9,7 @@
 - 修复 Web/QML 普通按钮只执行第一条 action 导致 `DIAG` 点击后不进入目标页的问题。
 - 为旧状态里的 `page_logs` 增加回退，避免删除页面后恢复过期 active page。
 - 刷新快照、最终产物、报告与文档入口，并准备同步到 MetaNC。
+- 重新生成最终产物后，明确静态 Web 预览与 native server 模式的区别。
 
 ## Completed Work
 
@@ -20,6 +21,9 @@
 - 在 Web/QML shell 中加入已知页面检查，遇到过期的 `page_logs` active page 时自动回退到默认页。
 - 更新 Runtime Logs 页面的过滤器占位上下文，从旧 `page_logs` 改为 `page_diagnostics`。
 - 刷新 Web/QML 快照，并更新 pipeline 断言以锁定多 action 点击路径。
+- 完成 metanc_hmi_dsl 与 MetaNC 的 commit/push 同步。
+- 用户要求查看最终产物后，重新执行生成流程，产出 Web、QML、native server build 和 distribution 包。
+- 启动 `generated/web` 的静态 HTTP 预览用于浏览生成页面，并确认该预览未启动 native server。
 
 ## Verification
 
@@ -27,6 +31,7 @@
 - `env VCPKG_ROOT=/home/i5/workspace/github/vcpkg HMI_SERVER_NATIVE_BUILD_MODE=host PKG_CONFIG=/usr/bin/pkgconf ./tools/generate_targets.sh` 通过，刷新 Web/QML/server/distribution 最终产物。
 - `./generated/server-build/server_smoke_test` 通过。
 - `git diff --check` 通过。
+- 最终静态 Web 预览通过 `http://127.0.0.1:4173/` 返回 `200 OK`，确认 `generated/web/index.html` 可访问。
 - 生成产物静态检查确认：
   - 默认 `runtime_state.diagnosis_view` 为 `logs`。
   - 外层 `DIAG` 入口包含设置 `logs` 子页和切换 diagnostics 页面两条 action。
@@ -37,3 +42,5 @@
 - 这次变更让 Runtime Logs 只保留一个正式入口：`DIAG > Logs`。
 - MetaNC 同步时仍按既有 export 规则过滤 source-only 报告仓、`docs_i18n` 和本地生成目录。
 - Browser-level 点击验证未作为本轮最终门禁执行，因为当前环境缺少 Playwright；行为由生成器快照、pipeline、QML 编译和服务端 smoke 覆盖。
+- `python3 -m http.server 4173 --bind 127.0.0.1` 只提供静态 Web 预览，不会启动 HMI native server。
+- 带 native server 的最终包入口在 `generated/distribution/` 下，典型命令是 `./run_split_web_native.sh` 或单独执行 `./run_server_native.sh`。

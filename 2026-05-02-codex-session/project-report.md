@@ -11,6 +11,8 @@
 - 刷新快照、最终产物、报告与文档入口，并准备同步到 MetaNC。
 - 重新生成最终产物后，明确静态 Web 预览与 native server 模式的区别。
 - 修复 Web/QML 程序编辑器行号与实际代码行对齐的可靠性问题。
+- 修复 native server 程序工作区只暴露 3 个硬编码示例的问题，恢复 generated contract 中的完整示例程序列表。
+- 修复程序编辑页在系统 idle 时点击 `Execute` 没有切换到主页并执行当前编辑程序的问题，同时拒绝空白、不存在或非 idle 状态的执行准备。
 
 ## Completed Work
 
@@ -31,6 +33,11 @@
 - QML program editor 删除独立行号 `TextArea`，改为由 `Repeater` 绘制行号，并通过编辑器 `TextArea.positionToRectangle(offsetForTextLine(...))` 获取每行真实布局坐标。
 - 更新 pipeline 断言，锁定 Web bundle 中的 CodeMirror `lineNumbers()`、fallback gutter 存在，以及 QML 不再生成 `editorGutter_program_code_editor`。
 - 在同步 MetaNC 前加固 export 脚本，显式排除 `node_modules/`，避免 source-local Web bundle 依赖缓存被 rsync 到下游镜像。
+- 将 native server 的 program backend 改为加载生成出的 `program_workspace.files`，程序浏览器恢复 `MAIN.MPF`、`FACE_MILL.MPF`、`POCKET.MPF`、`LOOP.MPF` 等完整 seed 程序。
+- 补齐 server `prog.commands.load` / `progdir.commands.activate` 的当前程序切换逻辑，`Open` 后同步更新 `prog.name`、`program.document.content`、cursor、selection 和 `progdir.selected_path`。
+- 扩展 `prog.commands.prepare_execute`：Web strict-server 和 QML/Web local runtime 都传入当前 editor 的 `name/content/cursor_line`，并在空白、文件不存在或 runtime 非 idle 时返回 rejected 提示。
+- 更新 `definition/interfaces.machine.yaml`、英中文 data dictionary 与 program execution story breakdown，使 `prepare_execute` 的编辑器载荷和拒绝条件与实现一致。
+- 完成 source commits `248651c`、`149be6e` 与 MetaNC commit `89b1cbc` 的同步和推送。
 
 ## Verification
 
@@ -46,6 +53,8 @@
   - 默认 `runtime_state.diagnosis_view` 为 `logs`。
   - 外层 `DIAG` 入口包含设置 `logs` 子页和切换 diagnostics 页面两条 action。
   - 已无顶层 `page_logs` / `LOGS` 导航入口。
+- `python3 -m unittest -v tests.test_program_execution_contract` 通过，覆盖程序 workspace seed、Open/Activate 切换和 Execute preparation contract。
+- server smoke test 覆盖 `/api/runtime/bootstrap` 中的完整 9 个程序条目，以及 `prog.commands.prepare_execute` 对当前 editor 程序的 accepted/rejected 路径。
 
 ## Notes
 
@@ -55,3 +64,4 @@
 - `python3 -m http.server 4173 --bind 127.0.0.1` 只提供静态 Web 预览，不会启动 HMI native server。
 - 带 native server 的最终包入口在 `generated/distribution/` 下，典型命令是 `./run_split_web_native.sh` 或单独执行 `./run_server_native.sh`。
 - 在没有 npm dependencies 的环境中，Web 仍可生成 fallback bundle；fallback 现在也有行号，但最佳 Web 体验需要先在 `client/web_client` 下执行 `npm ci`，从而打包 CodeMirror 原生行号编辑器。
+- 当前程序示例来自 generated contract 的 deterministic workspace，而不是 server 端单独维护的一份硬编码列表。

@@ -11,6 +11,9 @@ Focus:
 - Static Web preview confirmation and native server launch-mode clarification
 - Web CodeMirror line-number bundle verification and fallback gutter repair
 - QML program-editor line numbers aligned from the main `TextArea` layout
+- Native server program workspace restored from generated contract seed data
+- Program Open/Activate flow switches the current program and editor content
+- Editor Execute prepares the current valid editor program and rejects blank, missing, or non-idle cases
 
 Session assets:
 

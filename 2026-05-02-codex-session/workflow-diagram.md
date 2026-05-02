@@ -22,6 +22,9 @@ flowchart TD
     R --> S[Investigate program editor line numbers]
     S --> T[Build CodeMirror bundle and fix Web fallback gutter]
     T --> U[Align QML line numbers from TextArea layout]
-    U --> V[Refresh artifacts, snapshots, docs, and reports]
-    V --> W[Sync and publish MetaNC]
+    U --> V[Restore server program workspace from generated contract]
+    V --> W[Fix Open and Activate current-program switching]
+    W --> X[Make editor Execute prepare current valid program]
+    X --> Y[Refresh artifacts, snapshots, docs, and reports]
+    Y --> Z[Sync and publish MetaNC]
 ```

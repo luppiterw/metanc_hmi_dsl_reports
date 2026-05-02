@@ -36,4 +36,17 @@ flowchart LR
     QmlEditor --> MainTextArea[main TextArea layout]
     MainTextArea --> PositionRect[positionToRectangle offsets]
     PositionRect --> QmlLineNumbers[aligned line-number delegates]
+
+    ContractWorkspace[generated contract program_workspace.files] --> ServerProgramStore[native server program store]
+    ServerProgramStore --> ProgramBrowser[program.browser.entries]
+    ProgramBrowser --> ProgramOpen[Open / progdir.commands.activate]
+    ProgramOpen --> ProgramDocument[program.document.content]
+    ProgramOpen --> CurrentProgram[prog.name]
+
+    ProgramDocument --> EditorExecute[Editor Execute]
+    CurrentProgram --> EditorExecute
+    EditorExecute --> PrepareExecute[prog.commands.prepare_execute name/content/cursor_line]
+    PrepareExecute --> IdleGate{runtime idle and valid program}
+    IdleGate -->|accepted| Overview[page_overview + current execution program]
+    IdleGate -->|rejected| Notice[operator notification]
 ```

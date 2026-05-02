@@ -96,8 +96,8 @@ pre {
 <div><b>Started</b>: <code>2026-05-01 20:09:10 +0800</code></div>
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/i5/.codex/sessions/2026/05/01/rollout-2026-05-01T20-09-10-019de371-5d2b-7313-8dae-e9e7b331be8b.jsonl</code></div>
-<div><b>Messages</b>: <code>99</code></div>
-<div><b>User prompts</b>: <code>12</code></div>
+<div><b>Messages</b>: <code>163</code></div>
+<div><b>User prompts</b>: <code>16</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -805,6 +805,406 @@ cd /home/i5/workspace/ccmix-wp/metanc_hmi_dsl/generated/distribution
 <h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-05-02 15:07:24 +0800</div>
 <pre>我会把 report 扩展到这次行号问题的根因和修复：Web 当前产物之前因为没有 npm 依赖落到 `inline-fallback`，所以看不到 CodeMirror 原生行号；现在既打包 CodeMirror，也给 fallback 恢复了同步行号，同时 QML 行号按 `TextArea` 真实布局定位。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-02 15:08:20 +0800</div>
+<pre>报告导出已经纳入 12 条用户发言。现在我补 report 正文、流程图、架构图、timeline 和 changelog，把 Web CodeMirror/fallback 与 QML 行号修复都写进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-02 15:09:20 +0800</div>
+<pre>报告和 changelog 已补。接下来我重建 report book 和主 docs_html，确保 report 入口、聚合 timeline 和文档门户都包含这次程序编辑器行号修复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-02 15:10:15 +0800</div>
+<pre>文档门户已经重新生成，包含 `reports/2026-05-02-codex-session`。我再跑文档测试和空白检查，然后先提交 reports 子仓。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-02 15:11:10 +0800</div>
+<pre>验证已经通过。现在先提交并推送 reports 子仓；主仓稍后会记录新的 submodule 指针和源码变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-02 15:12:54 +0800</div>
+<pre>reports 子仓已推送：`350a4bb`。现在提交主仓源码、changelog、快照和新的 report submodule 指针，然后推送 `metanc_hmi_dsl/main`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-02 15:14:40 +0800</div>
+<pre>主仓已推送：`bc30565 fix: align program editor line numbers`。现在把这批 HMI 变更导出到 MetaNC，先检查下游分支状态，再同步和验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-02 15:15:19 +0800</div>
+<pre>同步前发现一个实际风险：我刚刚为了打包 CodeMirror 在 source repo 装了 `node_modules`，而现有 MetaNC export 脚本没有显式排除 `node_modules`。虽然 git ignore 会挡住提交，但 rsync 会把目录拷过去，浪费时间和空间。我会先把 export 脚本加上 `node_modules/` 排除并补提交，再继续同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-02 15:16:12 +0800</div>
+<pre>我补了同步脚本的 `node_modules/` 排除和对应测试，也把这一点加进 changelog/report。现在重新构建报告和文档入口，然后会给 reports 子仓再打一条小提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-02 15:18:10 +0800</div>
+<pre>reports 子仓又补了一条说明并推送：`db921d9`。现在跑同步脚本测试和空白检查，然后给主仓再提交这次 export 排除与 submodule 指针更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-02 15:19:35 +0800</div>
+<pre>`metanc_hmi_dsl` 已全部推送，最新两条是 `bc30565` 和 `d6bcbe1`。现在导出到 MetaNC；新 export 规则会排除 source-local 的 `node_modules/`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-02 15:20:46 +0800</div>
+<pre>导出成功，但脚本的输出提示还没把新排除项 `node_modules/` 列出来。规则已经生效，不过提示不准确；我会顺手修掉并推一个很小的 source 提交，然后重新导出一次。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-02 15:22:30 +0800</div>
+<pre>source repo 的 export 输出也修正并推送了：`db13406`。现在重新导出 MetaNC，并在 MetaNC 里安装 Web bundle 依赖后验证，这样下游生成的 Web 产物也会走 CodeMirror 行号。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-02 15:24:59 +0800</div>
+<pre>我接着从 MetaNC 侧的验证继续，先等刚才跑到一半的测试结束；通过后再生成最终产物、检查行号产物内容，然后提交并推送 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-02 15:25:06 +0800</div>
+<pre>MetaNC 镜像里的单测已经通过，`test_pipeline` 和同步脚本测试一共 34 个用例，7 个同步脚本用例因为 MetaNC 不包含源仓库同步脚本而按预期跳过。现在我在 MetaNC 里重新生成最终产物，确认实际生成包也包含编辑器原生行号。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-02 15:26:02 +0800</div>
+<pre>MetaNC 的最终产物生成完成，Web、QML、server 和 distribution 都重新生成了。接下来我做几项静态和运行时验证：确认 Web bundle 是 CodeMirror 版本、QML 行号绑定到编辑器布局、server smoke 通过，并检查 diff 空白问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-02 15:26:14 +0800</div>
+<pre>验证结果符合预期：MetaNC 生成出的 Web bundle 是 722635 字节，里面有 `renderCodeMirrorProgramEditor`、`lineNumbers()` 和 `.cm-lineNumbers`；QML 里现在用 `positionToRectangle(lineNumberOffset(index))` 定位行号，server smoke 和 `git diff --check` 都通过。提交前我再确认依赖缓存没有进入待提交内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-02 15:26:27 +0800</div>
+<pre>`node_modules/` 在 MetaNC 里确认是 ignored，不会进提交。源仓库和 report 子模块当前都是干净状态；现在只提交 MetaNC 镜像里的 `nrt/hmi` 同步变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-02 15:26:46 +0800</div>
+<pre>MetaNC 提交已创建：`f1ec0ce fix(hmi): align program editor line numbers`。现在推送到 `origin/feat/hmi`，然后做最终状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-02 15:27:03 +0800</div>
+<pre>MetaNC 已推送到远端。最后我再核对三个工作区的状态和最新提交，确认没有遗漏的未提交改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / final_answer</h3>
+<div class="time">2026-05-02 15:27:22 +0800</div>
+<pre>已完成。
+
+- report 和关联文档已更新并重建，report 提交并推送到 `main`：
+  - `350a4bb reports: update 2026-05-02 editor line numbers`
+  - `db921d9 reports: note metanc sync cache exclusion`
+- `metanc_hmi_dsl` 已提交并推送到 `main`：
+  - `bc30565 fix: align program editor line numbers`
+  - `d6bcbe1 chore: exclude local node modules from metanc export`
+  - `db13406 chore: clarify metanc export cache exclusions`
+- 已同步到 `MetaNC` 的 `feat/hmi`，提交并推送：
+  - `f1ec0ce fix(hmi): align program editor line numbers`
+
+验证也跑完了：源码侧和 MetaNC 侧都重新生成了最终产物，MetaNC Web bundle 已确认包含 CodeMirror `lineNumbers()`，QML 已确认使用 `positionToRectangle(lineNumberOffset(index))` 对齐行号；`test_pipeline`、同步脚本测试、docs 测试、server smoke、`git diff --check` 都通过。三个工作区最终都是 clean。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-02 15:30:58 +0800</div>
+<pre>程序选择页点击Open后没有跳转到程序编辑，也没有切换打开的程序，然后我记得原来示例程序里有很多，比如LOOP等程序，我现在只看到3个，是因为什么，这些程序不是server端的了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-02 15:31:11 +0800</div>
+<pre>我先从 `metanc_hmi_dsl` 里查程序选择页、Open 动作和示例程序来源，确认是 Web 客户端状态问题、server 资源列表问题，还是生成产物没有带完整 program-root。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-02 15:31:23 +0800</div>
+<pre>初步看到源码里完整示例程序还在：`definition/program-root` 和生成的 QML `program-root` 都有 9 个文件，包括 `LOOP.MPF`。所以“只看到 3 个”很可能不是文件缺失，而是 Web/server 初始化或程序浏览器只显示了某个 seed 列表；我继续查 Open 动作和 runtime seed。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-02 15:31:52 +0800</div>
+<pre>Web 本地运行时代码里有完整的内存 `programFiles`，Open 会调用 `prog.commands.load` 并切到 `page_program`。但如果前端连的是严格 server runtime，列表和命令就来自 server 快照；我现在重点查 server 端是不是还在用旧的 mock seed，只暴露 3 条、且没有真正处理 load。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-02 15:38:02 +0800</div>
+<pre>根因已经定位：Web 本地 runtime 有完整程序列表，但严格 server 模式下 native `SimulatorAdapter` 会用自己硬编码的 3 个程序覆盖 contract seed；同时 `progdir.commands.activate` 在 server 端只是 no-op，Open 转发给 server 后不会切换 `prog.name`/`program.document.content`。我会把 server 改成读取生成 contract 里的 `program_workspace`，并让 Open 在 strict 模式下也打开编辑页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-02 15:43:30 +0800</div>
+<pre>我已经把关键路径改完：server 现在会从 `runtime_contract_bundle.json` 读取 `program_workspace.files`，`prog.commands.load` / `progdir.commands.activate` 会更新 server 状态和程序内容；Web 在 strict server 模式下点 Open 也会先切到编辑页。接下来跑生成和测试，主要看 C++ server 编译和快照是否需要刷新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-02 15:44:04 +0800</div>
+<pre>Python 侧逻辑测试通过，失败的是 Web 快照里的资源 hash 变了，这是这类 JS 改动后的预期快照刷新项。现在我跑完整最终产物生成，它会编译 native server；如果 C++ 接口改动有问题会在这里暴露。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-02 15:44:37 +0800</div>
+<pre>C++ 编译停在一个语法细节上：`std::istringstream input(std::string(...))` 被解析成函数声明。这个修正很小，我先改成花括号初始化，再重新编译 server。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-02 15:45:37 +0800</div>
+<pre>完整生成和 native server 编译已经通过。接下来跑 server smoke，同时直接检查 server 启动后的程序列表和 `progdir.commands.activate` 返回状态，确认不是只修了静态包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-02 16:14:54 +0800</div>
+<pre>server 的实际 HTTP 验证通过了：bootstrap 返回 9 个程序，POST `progdir.commands.activate` 到 `LOOP.MPF` 后，server 返回 `prog.name=LOOP.MPF` 且 `program.document.content` 已切换。现在刷新因 Web JS 变更导致的快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-05-02 16:16:45 +0800</div>
+<pre>查到了，确实是 server 端路径的问题，不是示例程序丢了。
+
+原因是：生成的 contract 里其实有 9 个程序，包括 `LOOP.MPF`，但 native `SimulatorAdapter` 自己硬编码了 3 个程序，并且启动时覆盖了 contract seed；同时 strict server 模式下 `progdir.commands.activate` 之前只是 no-op，所以 Web 点 Open 后 server 没切 `prog.name` / `program.document.content`，页面也不会可靠跳到编辑器。
+
+我已经改了：
+
+- native server 现在读取 `runtime_contract_bundle.json` 里的 `program_workspace.files`。
+- `prog.commands.load` 和 `progdir.commands.activate` 现在会真正切换当前程序、程序内容、浏览器选择和编辑器 cursor。
+- Web strict server 模式下点程序页 `Open` 会切到程序编辑页。
+- server fixture 和 smoke test 增加了程序 workspace/load 覆盖。
+- 刷新了 Web 快照。
+
+验证已过：
+
+- `./tools/generate_targets.sh`
+- `./generated/server-build/server_smoke_test`
+- `python3 -m unittest -v tests.test_pipeline tests.test_program_execution_contract`
+- `git diff --check`
+- 实际启动 generated server 后，bootstrap 返回 9 个程序；POST `progdir.commands.activate` 到 `LOOP.MPF` 后返回 `prog.name=LOOP.MPF`，内容也切到 `LOOP.MPF`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-02 16:21:58 +0800</div>
+<pre>创建一下提交，然后修复一下程序编辑页面在系统空闲的时候点击execute执行没有跳转到主页并切换执行程序为当前编辑程序的问题（注意，空白或者不存在的编辑程序时不能切换，要有提示）</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-02 16:22:23 +0800</div>
+<pre>我先把刚才已经验证过的程序目录/server 同步改动单独提交，避免和接下来的 Execute 行为修复混在一起。然后再查程序编辑页 Execute 的命令路径和 server/local runtime 处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-02 16:23:00 +0800</div>
+<pre>已提交当前已验证的修复：`248651c fix: load program workspace on server`。现在我开始处理程序编辑页 Execute：先定位按钮定义、`prepare_execute` 命令，以及 Web/server 两侧执行前状态切换逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-02 16:23:32 +0800</div>
+<pre>Execute 这个问题和刚才类似：Web strict server 模式下 `prog.commands.prepare_execute` 会转发到 native server，而 server 目前把 `prog.commands.*` 当成 no-op，所以不会切主页，也不会按当前编辑程序准备 AUTO。接下来我会把 prepare_execute 做成真实命令，并同步补本地 Web/QML 的空白/不存在程序保护。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-02 16:26:56 +0800</div>
+<pre>我会把 Execute 分成两层保护：前端先检查当前编辑程序名、内容、是否在程序列表里、系统是否空闲，失败时只写 notice 不跳页；server 再做同样校验并真正准备 AUTO 执行，避免 strict 模式下绕过前端时状态不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-02 16:29:15 +0800</div>
+<pre>Execute 的代码路径已经改好：Web/QML 本地 runtime 和 native server 都会校验空白、缺失、非空闲状态；Web strict 模式会把当前编辑器里的 program name/content/cursor 一起传给 server，成功后本地跳回主页。现在重新生成产物并编译。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-02 16:30:18 +0800</div>
+<pre>生成和编译通过了。因为 Web/QML runtime 代码变了，接下来刷新对应快照，再跑 pipeline 和 server smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-02 16:30:51 +0800</div>
+<pre>server smoke 已通过，新增的 prepare_execute 断言也覆盖了 idle、缺失程序和空白程序。现在跑完整 pipeline 测试，确认 Web/QML 快照和 QML 编译都一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-05-02 16:32:13 +0800</div>
+<pre>已先创建提交：
+
+`248651c fix: load program workspace on server`
+
+然后我修了 Execute 问题，但这部分目前还没提交。改动点：
+
+- Web strict server 模式下，程序编辑页点 `Execute` 会把当前编辑程序的 `name/content/cursor_line` 传给 server，并本地跳回 `page_overview`。
+- native server 的 `prog.commands.prepare_execute` 现在是真实命令，会准备 AUTO 执行当前编辑程序。
+- Web/QML 本地 runtime 也加了同样校验。
+- 空白程序、程序不存在、系统非空闲时不会切换，会写 notice 提示。
+
+验证已通过：
+
+- `./tools/generate_targets.sh`
+- `./generated/server-build/server_smoke_test`
+- `python3 -m unittest -v tests.test_pipeline`
+- `python3 -m unittest -v tests.test_program_execution_contract`
+- `git diff --check`
+
+当前工作区还有这次 Execute 修复的未提交改动。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-02 16:38:59 +0800</div>
+<pre>commit + sync MetaNC + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-02 16:39:21 +0800</div>
+<pre>我继续按现状做：先把 Execute 修复提交到 `metanc_hmi_dsl`，然后推送源仓库；再用同步脚本导出到 `MetaNC`，在 `MetaNC` 里提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-02 16:39:32 +0800</div>
+<pre>源仓库有一个已提交未推送的 server workspace 修复，还有当前 Execute 修复未提交；MetaNC 当前是干净的。现在提交 Execute 修复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-02 16:39:55 +0800</div>
+<pre>Execute 修复已提交：`149be6e fix: prepare current program for execution`。接下来把源仓库 `main` 推到远端，然后同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-02 16:40:12 +0800</div>
+<pre>`metanc_hmi_dsl` 已推送，包含 `248651c` 和 `149be6e` 两个提交。现在我拉取确认 MetaNC 远端状态，然后执行导出同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-02 16:40:50 +0800</div>
+<pre>MetaNC 已同步出文件变更。接下来在 MetaNC 镜像里生成/编译一次，跑关键测试，再提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-02 16:41:58 +0800</div>
+<pre>MetaNC 里的最终产物生成和 native server 编译通过。现在跑 MetaNC 的关键测试和空白检查，过了就提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-02 16:42:32 +0800</div>
+<pre>MetaNC 侧验证通过：生成、server smoke、pipeline/program contract 测试和 diff check 都正常。现在提交并推送 `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-02 16:43:19 +0800</div>
+<pre>MetaNC 已提交并推送。最后我核对源仓库和 MetaNC 的状态，确认没有未提交改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-05-02 16:43:30 +0800</div>
+<pre>完成。
+
+`metanc_hmi_dsl` 已提交并推送到 `main`：
+
+- `248651c fix: load program workspace on server`
+- `149be6e fix: prepare current program for execution`
+
+MetaNC 已同步、提交并推送到 `feat/hmi`：
+
+- `89b1cbc fix(hmi): prepare current program for execution`
+
+验证已跑过：
+
+- 源仓库和 MetaNC 都重新生成最终产物
+- `server_smoke_test`
+- `tests.test_pipeline`
+- `tests.test_program_execution_contract`
+- `git diff --check`
+
+最终状态：`metanc_hmi_dsl` 和 `MetaNC` 工作区都是 clean。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-02 16:49:37 +0800</div>
+<pre>今天的report更新了吗，所有关联文档更新了吗，没有的话处理一下，然后commit + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-02 16:50:00 +0800</div>
+<pre>我先核对 report 子模块和源仓库状态，再检查今天 `2026-05-02` 的报告内容是否已经包含刚才的 server 程序列表和 Execute 修复。如果没有，我会更新 report/关联文档、重建 docs，然后分别提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-02 16:50:22 +0800</div>
+<pre>报告子模块还停在之前的 `db921d9`，确实没记录刚才两项程序执行相关修复。顺手我也发现 data dictionary 里 `prog.commands.prepare_execute` 仍写成空请求，但现在 Web strict 模式会传 `name/content/cursor_line`，这个属于关联文档，需要一起更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-02 16:50:39 +0800</div>
+<pre>我会先把 contract/data dictionary 对齐到新行为：`prepare_execute` 现在可携带当前编辑器的 `name/content/cursor_line`，并要求空白、缺失或非空闲时拒绝。然后再更新当天 report 和生成文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-02 16:52:53 +0800</div>
+<pre>我继续把今天 report、关联文档和接口说明补齐，然后会跑一次生成/测试，最后分别提交并 push。当前重点是把刚才程序工作区和 Execute 行为的变更写进 2026-05-02 的报告与文档索引。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-02 16:52:59 +0800</div>
+<pre>接口表已经补了 `prepare_execute` 的编辑器载荷字段；我现在把同一件事补进英中文 story 文档，避免需求拆解和接口字典不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-02 16:53:18 +0800</div>
+<pre>接下来先刷新 Codex 会话导出，再更新报告正文和报告站点索引。之后我会重新生成目标产物，因为接口 YAML 也跟着文档口径修正了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-02 16:53:58 +0800</div>
+<pre>报告里目前只写到导航和行号修复，还没记录“server 程序列表恢复 + 编辑器 Execute 切换执行程序”的两次变更。我会把这些追加到 project、conversation、索引和图里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-02 17:00:53 +0800</div>
+<pre>我注意到 story breakdown 里刚才的位置语义不对：`prepare_execute` 当前已实现，不应该列在 “Still outside this story”。我会把它移到 Current Baseline，避免文档误导。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-02 17:01:17 +0800</div>
+<pre>现在开始刷新生成产物。因为接口 YAML 变了，必须重新跑 `generate_targets.sh`，看生成代码和快照是否需要同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-02 17:02:09 +0800</div>
+<pre>生成通过了。现在跑服务端 smoke、pipeline / contract / docs 测试和 diff check；如果接口字段导致快照变更，我会只刷新对应快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-02 17:02:50 +0800</div>
+<pre>测试只有快照哈希失败，原因看起来是接口变更后 Web asset query hash 变了。我先对比快照文件，再刷新最小相关快照并重跑失败项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-02 17:03:16 +0800</div>
+<pre>快照变更范围很窄：`prepare_execute` 的 request fields 出现在 Web/QML 的嵌入 runtime plan 里，另外 Web index 的 cache-bust hash 跟着变了。我只刷新这些快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-02 17:04:07 +0800</div>
+<pre>核心测试已通过。为了让当天会话导出也包含最新用户请求和本轮处理记录，我再刷新一次 user history / full export，然后构建实际报告站点和 docs_html。</pre>
 </article>
 </section>
 

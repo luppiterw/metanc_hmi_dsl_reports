@@ -16,6 +16,10 @@
 
 最后修复程序编辑页的 `Execute`：当 runtime idle 且当前编辑程序存在、内容非空时，执行准备会使用 editor 当前的 `name/content/cursor_line`，切到 overview 并把执行程序切换为当前编辑程序；空白程序、不存在的程序或非 idle 状态都会给出 rejected 提示，不会误切执行目标。
 
+随后用户开始关注日志性能和实时数据发布策略。讨论中明确：坐标、状态、页面数据不应该由 client 全量轮询，也不应该由 server 全量发布；全局变量要全程订阅，页面变量只在对应页面订阅，页面内子视图变量只在对应子视图激活时订阅。日志则需要独立讨论 client/server 交互方式，至少不能继续把默认 logs 塞进 state 和 command response。
+
+本轮实现因此补齐 runtime subscription plan，并让 Web/QML 根据当前 active page 和 local subview state 重新发订阅。server 端也配合收窄：新连接不再先推未过滤 snapshot，状态变化事件只带 changed path。日志方面，默认 bootstrap/state/command response 不再注入 `diagnostics.logs.entries/events`，日志页面改走显式 `/api/runtime/logs`；同时增加 memory/SQLite log store 的可配置硬上限和 query/export/batch/payload caps，避免日志无限增长或一次请求拖垮 UI/通信。
+
 ## Decisions
 
 - 外层独立 `LOGS` 导航删除。
@@ -29,6 +33,12 @@
 - native server 程序列表以 generated contract workspace 为准，不再维护独立硬编码样例。
 - `Open` / `Activate` 必须同步当前程序、编辑器内容和浏览器选择。
 - `Execute` 必须携带当前 editor 程序载荷；空白、不存在或非 idle 状态不能切换执行程序。
+- runtime 数据发布按 runtime plan 分层：global 全程订阅，active page 按页订阅，子视图按条件订阅。
+- server 不应在 WebSocket connect 时先推未过滤全量 state；client 必须先声明订阅。
+- state change WebSocket 事件只发布变化路径，不再每次携带整个 active subscription bucket。
+- logs 不属于普通 state/command response 的默认 payload；日志交互走显式日志 API。
+- server 日志必须有可配置硬上限，memory 和 SQLite 后端行为保持一致。
+- QML 的 WebSocket 支持不能成为构建硬依赖；缺少 QtWebSockets 时应自动 fallback 到 HTTP polling。
 
 ## User-Facing Result
 
@@ -43,6 +53,10 @@
 - 程序选择页恢复完整示例列表，包括 `LOOP.MPF` 等 generated workspace 程序。
 - 选择程序后点击 `Open` 会进入编辑器并打开所选程序。
 - idle 状态下从程序编辑页执行有效当前程序，会返回主页并把运行目标切到该程序；无效程序会提示并保持原状态。
+- Web/QML 在严格 server 模式下会按当前页面和子视图更新 runtime subscription，减少无关变量发布。
+- 日志不会再随 bootstrap/state/command response 默认带回，避免默认 payload 随日志增长而变重。
+- 日志存储现在有 `HMI_LOG_MAX_ROWS` 等容量配置，默认保留有限窗口。
+- QML 最终产物在没有 QtWebSockets 开发包的环境中仍可构建，部署环境具备 QtWebSockets 时会启用 WebSocket subscription。
 
 ## Published Artifacts
 
@@ -54,3 +68,6 @@
 - 更新后的 Web/QML program editor 行号生成逻辑、快照和最终产物。
 - 更新后的 native server program workspace loader、program Open/Activate flow 和 editor Execute preparation flow。
 - 更新后的 `prog.commands.prepare_execute` 接口字典、story 文档和报告索引。
+- 更新后的 runtime subscription plan、Web/QML subscription bridge、server WebSocket filtered delta 和日志容量配置。
+- 更新后的 server/client/logging/persistence/WebSocket 文档、runtime logs spec、status matrix 和 story pack。
+- 重新生成的 Web、QML、native server 和 distribution 最终产物。

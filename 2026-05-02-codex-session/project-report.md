@@ -13,6 +13,10 @@
 - 修复 Web/QML 程序编辑器行号与实际代码行对齐的可靠性问题。
 - 修复 native server 程序工作区只暴露 3 个硬编码示例的问题，恢复 generated contract 中的完整示例程序列表。
 - 修复程序编辑页在系统 idle 时点击 `Execute` 没有切换到主页并执行当前编辑程序的问题，同时拒绝空白、不存在或非 idle 状态的执行准备。
+- 针对日志性能和 runtime pub/sub 语义，补齐 runtime subscription plan：全局变量全程订阅，页面变量按 active page 订阅，诊断/参数等子视图按当前 local state 条件订阅。
+- 将 logs 从默认 bootstrap/state/command response 中移除，改为通过显式 `/api/runtime/logs` 查询交互。
+- 为 server 日志增加可配置硬上限和 query/export/client-batch/payload caps，并同步 memory 与 SQLite log store 行为。
+- 让 Web/QML 严格 server 模式按 runtime plan 更新 WebSocket subscription；QML 在 QtWebSockets 可用时使用 WS，不可用时保留 HTTP polling fallback。
 
 ## Completed Work
 
@@ -38,6 +42,15 @@
 - 扩展 `prog.commands.prepare_execute`：Web strict-server 和 QML/Web local runtime 都传入当前 editor 的 `name/content/cursor_line`，并在空白、文件不存在或 runtime 非 idle 时返回 rejected 提示。
 - 更新 `definition/interfaces.machine.yaml`、英中文 data dictionary 与 program execution story breakdown，使 `prepare_execute` 的编辑器载荷和拒绝条件与实现一致。
 - 完成 source commits `248651c`、`149be6e` 与 MetaNC commit `89b1cbc` 的同步和推送。
+- 在 `contract/runtime_plan.py` 中生成 `subscriptions` 结构，包含 `global`、`pages` 和 `conditions` 三类订阅桶。
+- Web runtime 在 active page / subview local state 变化后重新计算 subscription request，并排除 `diagnostics.logs.*` 正常状态通道。
+- QML runtime 增加同等 subscription 计算逻辑，通过动态 `Qt.createQmlObject` 加载 QtWebSockets，避免本地缺少 QtWebSockets 开发包时阻断 QML 构建。
+- server WebSocket 新连接只发送 `runtime.subscription.ready`，不再在订阅前推送全量 snapshot。
+- server `runtime.state.changed` 消息只序列化 changed path 所在 domain 的单路径 state，订阅和 reconnect snapshot 仍返回过滤后的当前 bucket。
+- `serialize_app_state()` 默认不注入 log resources；`/api/runtime/logs` 和 export endpoint 继续提供日志查询与导出。
+- `ServerConfig` 增加 `log_max_rows`、`log_query_limit_max`、`log_export_limit_max`、`client_log_batch_max` 和 `log_payload_max_bytes`，支持 env 与 CLI 配置。
+- `InMemoryLogStore` 与 `SqliteLogStore` 在 append/batch append 后执行行数硬上限裁剪。
+- 更新 server/client/runtime log 相关 docs、runtime logs spec、status matrix、story catalog 与 generated story pack，使文档与新日志交互边界一致。
 
 ## Verification
 
@@ -55,6 +68,10 @@
   - 已无顶层 `page_logs` / `LOGS` 导航入口。
 - `python3 -m unittest -v tests.test_program_execution_contract` 通过，覆盖程序 workspace seed、Open/Activate 切换和 Execute preparation contract。
 - server smoke test 覆盖 `/api/runtime/bootstrap` 中的完整 9 个程序条目，以及 `prog.commands.prepare_execute` 对当前 editor 程序的 accepted/rejected 路径。
+- `python3 -m unittest -v tests.test_story_docs tests.test_pipeline tests.test_program_execution_contract` 通过，33 个用例通过，1 个 Web visual snapshot 用例按现有配置跳过。
+- `./generated/server-build/server_smoke_test` 通过，覆盖日志默认响应移除、memory/SQLite 日志上限和订阅单路径 delta。
+- `env VCPKG_ROOT=/home/i5/workspace/github/vcpkg HMI_SERVER_NATIVE_BUILD_MODE=host PKG_CONFIG=/usr/bin/pkgconf ./tools/generate_targets.sh` 通过，重新生成 Web、QML、native server 和 distribution 最终产物。
+- `git diff --check` 通过。
 
 ## Notes
 
@@ -65,3 +82,6 @@
 - 带 native server 的最终包入口在 `generated/distribution/` 下，典型命令是 `./run_split_web_native.sh` 或单独执行 `./run_server_native.sh`。
 - 在没有 npm dependencies 的环境中，Web 仍可生成 fallback bundle；fallback 现在也有行号，但最佳 Web 体验需要先在 `client/web_client` 下执行 `npm ci`，从而打包 CodeMirror 原生行号编辑器。
 - 当前程序示例来自 generated contract 的 deterministic workspace，而不是 server 端单独维护的一份硬编码列表。
+- 现在普通 state/command response 不再默认携带最近 200 条 logs；日志页面应通过 `/api/runtime/logs` 进行显式查询。
+- runtime subscription 当前解决的是“按订阅范围发布”和“delta 只带变化路径”，后续日志 UI 的 client/server 交互策略仍需要继续讨论。
+- `HMI_LOG_MAX_ROWS` 是物理硬上限，会裁剪最旧日志；生产环境需要按 audit/retention 策略设置合适值。

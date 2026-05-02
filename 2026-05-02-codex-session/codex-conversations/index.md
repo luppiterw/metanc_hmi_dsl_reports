@@ -3,11 +3,11 @@
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `16`
-- Synthetic events: `0`
-- Messages: `163`
-- User messages: `16`
-- Codex messages: `147`
+- User prompts: `23`
+- Synthetic events: `1`
+- Messages: `206`
+- User messages: `24`
+- Codex messages: `182`
 
 ## Sessions By Date
 
@@ -32,4 +32,11 @@
 | 2026-05-02 15:30:58 +0800 | 019de371 | 13 | 程序选择页点击Open后没有跳转到程序编辑，也没有切换打开的程序，然后我记得原来示例程序里有很多，比如LOOP等程序，我现在只看到3个，是因为什么，这些程序不是server端的了吗 | 10 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-13) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-13) |
 | 2026-05-02 16:21:58 +0800 | 019de371 | 14 | 创建一下提交，然后修复一下程序编辑页面在系统空闲的时候点击execute执行没有跳转到主页并切换执行程序为当前编辑程序的问题（注意，空白或者不存在的编辑程序时不能切换，要有提示） | 8 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-14) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-14) |
 | 2026-05-02 16:38:59 +0800 | 019de371 | 15 | commit + sync MetaNC + push | 9 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-15) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-15) |
-| 2026-05-02 16:49:37 +0800 | 019de371 | 16 | 今天的report更新了吗，所有关联文档更新了吗，没有的话处理一下，然后commit + push | 13 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-16) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-16) |
+| 2026-05-02 16:49:37 +0800 | 019de371 | 16 | 今天的report更新了吗，所有关联文档更新了吗，没有的话处理一下，然后commit + push | 16 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-16) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-16) |
+| 2026-05-02 19:17:05 +0800 | 019de371 | 17 | 你现在考虑过日志性能问题吗，比如说超过多少条以后，界面是否会卡，通讯会否性能受影响等， | 3 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-17) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-17) |
+| 2026-05-02 19:24:21 +0800 | 019de371 | 18 | state 和 command response 里移除默认 logs意思是现在的pub sub里默认带了最多200条日志是麻 | 0 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-18) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-18) |
+| 2026-05-02 19:24:30 +0800 | 019de371 | 19 | state 和 command response 里默认 logs意思是现在的pub sub里默认带了最多200条日志是麻 | 2 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-19) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-19) |
+| 2026-05-02 19:27:44 +0800 | 019de371 | 20 | 日志以外的其他数据，比如坐标等，现在的实现是什么样的，我记得之前说的是server端根据client sub哪些变量去pub，所以那些应该不是client轮询，而是sub之后server端pub的 | 2 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-20) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-20) |
+| 2026-05-02 19:37:47 +0800 | 019de371 | 21 | 是的，还要考虑全局变量和页面变量，全局变量需要的是全程sub，页面变量是切换到对应页才sub，server应该根据sub切换、而不应该全量pub； logs那个也有问题，理论上应该设置server端的log硬上限、这个可以做成一个配置，然... | 1 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-21) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-21) |
+| 2026-05-02 19:41:43 +0800 | 019de371 | 22 | 可以 你做吧 | 21 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-22) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-22) |
+| 2026-05-02 20:20:55 +0800 | 019de371 | 23 | update report& docs , sync MetaNC, commit +push | 3 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-23) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-23) |

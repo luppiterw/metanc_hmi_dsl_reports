@@ -25,4 +25,15 @@ flowchart LR
     QmlShell --> PageGuardQml[pageExists guard]
     PageGuardWeb --> ActivePage
     PageGuardQml --> ActivePage
+
+    WebShell --> WebEditor[Program editor]
+    WebEditor --> CodeMirror[CodeMirror bundle]
+    CodeMirror --> NativeGutter[native lineNumbers gutter]
+    WebEditor --> TextareaFallback[textarea fallback]
+    TextareaFallback --> MeasuredGutter[measured fallback gutter]
+
+    QmlShell --> QmlEditor[QML Program editor]
+    QmlEditor --> MainTextArea[main TextArea layout]
+    MainTextArea --> PositionRect[positionToRectangle offsets]
+    PositionRect --> QmlLineNumbers[aligned line-number delegates]
 ```

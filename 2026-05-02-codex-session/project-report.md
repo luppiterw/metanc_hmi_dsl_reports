@@ -10,6 +10,7 @@
 - 为旧状态里的 `page_logs` 增加回退，避免删除页面后恢复过期 active page。
 - 刷新快照、最终产物、报告与文档入口，并准备同步到 MetaNC。
 - 重新生成最终产物后，明确静态 Web 预览与 native server 模式的区别。
+- 修复 Web/QML 程序编辑器行号与实际代码行对齐的可靠性问题。
 
 ## Completed Work
 
@@ -24,6 +25,11 @@
 - 完成 metanc_hmi_dsl 与 MetaNC 的 commit/push 同步。
 - 用户要求查看最终产物后，重新执行生成流程，产出 Web、QML、native server build 和 distribution 包。
 - 启动 `generated/web` 的静态 HTTP 预览用于浏览生成页面，并确认该预览未启动 native server。
+- 排查 Web 最终产物未显示行号的原因：本地缺少 `client/web_client/node_modules` 时，生成器会输出 346 字节的 `inline-fallback` bundle，导致没有走 CodeMirror。
+- 安装 Web client npm 依赖并重新生成后，`generated/web/assets/web-client.bundle.js` 包含 CodeMirror、`renderCodeMirrorProgramEditor` 和原生 `lineNumbers()`。
+- 保留 Web textarea fallback 行号，但改为从 textarea 的 computed `font-family`、`font-size`、`line-height`、padding 和 scrollTop 同步，避免旧版单独 gutter 度量漂移。
+- QML program editor 删除独立行号 `TextArea`，改为由 `Repeater` 绘制行号，并通过编辑器 `TextArea.positionToRectangle(offsetForTextLine(...))` 获取每行真实布局坐标。
+- 更新 pipeline 断言，锁定 Web bundle 中的 CodeMirror `lineNumbers()`、fallback gutter 存在，以及 QML 不再生成 `editorGutter_program_code_editor`。
 
 ## Verification
 
@@ -32,6 +38,8 @@
 - `./generated/server-build/server_smoke_test` 通过。
 - `git diff --check` 通过。
 - 最终静态 Web 预览通过 `http://127.0.0.1:4173/` 返回 `200 OK`，确认 `generated/web/index.html` 可访问。
+- Web bundle 静态检查确认当前最终产物不是 `inline-fallback`：bundle 大小约 `722635` bytes，并包含 `renderCodeMirrorProgramEditor`、`lineNumbers()` 和 `.cm-lineNumbers`。
+- QML 生成结果静态检查确认不再包含 `editorGutter` / `lineNumberText`，并包含 `lineNumberCount`、`offsetForTextLine` 和 `positionToRectangle(lineNumberOffset(index))`。
 - 生成产物静态检查确认：
   - 默认 `runtime_state.diagnosis_view` 为 `logs`。
   - 外层 `DIAG` 入口包含设置 `logs` 子页和切换 diagnostics 页面两条 action。
@@ -44,3 +52,4 @@
 - Browser-level 点击验证未作为本轮最终门禁执行，因为当前环境缺少 Playwright；行为由生成器快照、pipeline、QML 编译和服务端 smoke 覆盖。
 - `python3 -m http.server 4173 --bind 127.0.0.1` 只提供静态 Web 预览，不会启动 HMI native server。
 - 带 native server 的最终包入口在 `generated/distribution/` 下，典型命令是 `./run_split_web_native.sh` 或单独执行 `./run_server_native.sh`。
+- 在没有 npm dependencies 的环境中，Web 仍可生成 fallback bundle；fallback 现在也有行号，但最佳 Web 体验需要先在 `client/web_client` 下执行 `npm ci`，从而打包 CodeMirror 原生行号编辑器。

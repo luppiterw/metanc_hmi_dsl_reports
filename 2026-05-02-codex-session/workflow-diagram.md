@@ -19,5 +19,9 @@ flowchart TD
     O --> P[Regenerate final artifacts for review]
     P --> Q[Start static Web preview]
     Q --> R[Clarify native server is not started by static preview]
-    R --> S[Update and republish report]
+    R --> S[Investigate program editor line numbers]
+    S --> T[Build CodeMirror bundle and fix Web fallback gutter]
+    T --> U[Align QML line numbers from TextArea layout]
+    U --> V[Refresh artifacts, snapshots, docs, and reports]
+    V --> W[Sync and publish MetaNC]
 ```

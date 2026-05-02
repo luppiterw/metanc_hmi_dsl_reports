@@ -9,6 +9,8 @@ Focus:
 - Stale `page_logs` active-page fallback
 - Final artifact refresh, report update, and MetaNC sync preparation
 - Static Web preview confirmation and native server launch-mode clarification
+- Web CodeMirror line-number bundle verification and fallback gutter repair
+- QML program-editor line numbers aligned from the main `TextArea` layout
 
 Session assets:
 

@@ -30,6 +30,7 @@
 - 保留 Web textarea fallback 行号，但改为从 textarea 的 computed `font-family`、`font-size`、`line-height`、padding 和 scrollTop 同步，避免旧版单独 gutter 度量漂移。
 - QML program editor 删除独立行号 `TextArea`，改为由 `Repeater` 绘制行号，并通过编辑器 `TextArea.positionToRectangle(offsetForTextLine(...))` 获取每行真实布局坐标。
 - 更新 pipeline 断言，锁定 Web bundle 中的 CodeMirror `lineNumbers()`、fallback gutter 存在，以及 QML 不再生成 `editorGutter_program_code_editor`。
+- 在同步 MetaNC 前加固 export 脚本，显式排除 `node_modules/`，避免 source-local Web bundle 依赖缓存被 rsync 到下游镜像。
 
 ## Verification
 
@@ -40,6 +41,7 @@
 - 最终静态 Web 预览通过 `http://127.0.0.1:4173/` 返回 `200 OK`，确认 `generated/web/index.html` 可访问。
 - Web bundle 静态检查确认当前最终产物不是 `inline-fallback`：bundle 大小约 `722635` bytes，并包含 `renderCodeMirrorProgramEditor`、`lineNumbers()` 和 `.cm-lineNumbers`。
 - QML 生成结果静态检查确认不再包含 `editorGutter` / `lineNumberText`，并包含 `lineNumberCount`、`offsetForTextLine` 和 `positionToRectangle(lineNumberOffset(index))`。
+- `tests.test_sync_scripts` 覆盖 `node_modules/`、`__pycache__/` 和 `*.pyc` 等本地依赖/缓存排除规则。
 - 生成产物静态检查确认：
   - 默认 `runtime_state.diagnosis_view` 为 `logs`。
   - 外层 `DIAG` 入口包含设置 `logs` 子页和切换 diagnostics 页面两条 action。

@@ -54,3 +54,24 @@
 后续要补完整报警生命周期时，应增加 server-side AlarmService/active alarm state。
 LogEvent 只记录 `alarm.raised`、`alarm.acknowledged`、`alarm.cleared` 等历史事件；
 OperatorNotice 只负责从 active alarms、command result、runtime error 等输入里选择底部即时展示内容。
+
+## Server API Documentation Decision
+
+随后继续讨论 server-side API tests 与 API docs 的建设节奏。
+
+结论是不等功能完全冻结后再写文档，而是现在开始维护 living API docs：
+
+- 先覆盖当前 generated clients 已经使用的 northbound runtime API。
+- 文档保持人类可读，不急于一次性生成完整 OpenAPI/JSON Schema。
+- 每次 endpoint、WebSocket event 或 shared payload shape 变化时，代码和文档同改。
+- 用轻量测试把源码里的 endpoint/event names 和文档覆盖关系绑起来，避免后续 AI 或开发者只改实现不改文档。
+
+本轮落地了 `docs/server/api/` 与 zh-CN mirror，覆盖 REST API、WebSocket API、Client Flow、Error Model 和 Payload Schemas。
+同时修正 docs portal 的 server navigation，确保 `server/api/*` 会发布为可浏览 HTML。
+
+后续如果要继续推进 server 对外 API 能力，优先级应是：
+
+1. 为 REST endpoints 增加更多 server-side contract tests。
+2. 将现有 Markdown payload sketches 逐步收敛成可生成的 JSON Schema。
+3. 在错误模型稳定后定义统一 error envelope。
+4. 最后再生成 OpenAPI 或类似外部集成文档。

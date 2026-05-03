@@ -3,6 +3,7 @@
 ## Scope
 
 本次工作把 runtime logs 与底部通知的 client/server 边界固定下来，并把实现、文档、生成产物和回归测试同步到 `metanc_hmi_dsl`。
+随后按“先从 living API docs 开始，而不是等功能完全冻结后再补文档”的原则，补齐 native server 当前 REST/WebSocket API 的第一轮人类可读接口文档。
 
 核心结论：
 
@@ -10,6 +11,7 @@
 - 普通 `/api/runtime/bootstrap`、`/api/runtime/state`、property/resource responses 和 command responses 默认不携带日志窗口。
 - 底部 `runtime_state.last_notice` 改为 server-driven immediate feedback，由 WebSocket `runtime.command.completed` 和 `runtime.operator_notice` 更新。
 - `runtime.operator_notice` 是从 server-side `LogEvent` 中筛出的轻量 operator notice，不是完整日志行流，也不替代日志查询、导出和 retention API。
+- server API 文档开始作为 living contract 使用，覆盖 REST endpoints、WebSocket subscription、client flow、error model 和 payload schemas。
 
 ## Runtime Log Design
 
@@ -71,6 +73,30 @@ OperatorNotice = 展示选择，决定底部当前提示哪一条反馈
 后续如果要完整支持报警生命周期，需要补 server-side alarm state / active alarms
 模型，并把它作为 footer notice priority 的输入。
 
+## Server API Living Docs
+
+本轮新增 `docs/server/api/`，把当前已实现的 transport API 拆成五个稳定入口：
+
+- `rest_api.md`：列出 `/api/runtime/*` REST endpoints、请求/响应 shape、log query/export/client upload/retention/clear 行为。
+- `websocket_api.md`：记录 `WS /api/runtime/ws`、`runtime.subscribe` / `runtime.snapshot` / `runtime.ping`、subscription domains、server events、replay 语义。
+- `client_flow.md`：固定 strict server-mode client startup、global/page subscription、command execution、footer notice 和 logs 页面交互流程。
+- `error_model.md`：明确当前 transitional error model，要求 client 同时检查 HTTP status 与 semantic body fields。
+- `payload_schemas.md`：记录 `RuntimeStateSnapshot`、`CommandRequest` / `CommandResponse`、`LogEvent`、`SubscriptionFilter`、`OperatorNotice` 等共享 JSON shapes。
+
+同时新增 zh-CN mirror under `docs_i18n/zh-CN/server/api/`，并更新这些关联入口：
+
+- `docs/SUMMARY.md` 与 `docs_i18n/zh-CN/SUMMARY.md`
+- `docs/server/index.md` 与 zh-CN mirror
+- `docs/product/spec/server_contract.md` 与 zh-CN mirror
+- `docs/server/websocket_subscription.md` 与 zh-CN mirror
+- `docs/server/logging.md` 与 zh-CN mirror
+- `docs/client/runtime_ownership.md` 与 zh-CN mirror
+- `docs/project/server_doc_topology.md` 与 zh-CN mirror
+
+`tools/hmi_dsl/docs_portal.py` 也同步加入 `server/api/*` navigation，避免 docs portal 生成时只复制文件但未发布到 mdBook sidebar。
+
+新增 `tests/test_server_api_docs.py` 从 C++ server source 中抽取 REST routes、WebSocket path 和 runtime message names，再检查 API docs 是否覆盖。这样以后接口变更而文档未更新时会直接失败。
+
 ## Implementation
 
 主要实现点：
@@ -100,6 +126,7 @@ OperatorNotice = 展示选择，决定底部当前提示哪一条反馈
 本轮已执行：
 
 ```bash
+python3 -m unittest tests.test_server_api_docs tests.test_story_docs tests.test_docs_portal
 python3 -m unittest tests.test_pipeline
 python3 -m unittest tests.test_pipeline tests.test_story_docs
 ctest --test-dir generated/server-build --output-on-failure
@@ -108,6 +135,7 @@ python3 -m tools.hmi_dsl generate-data-dictionary definition/product.manifest.ya
 python3 -m tools.hmi_dsl generate-data-dictionary definition/product.manifest.yaml --output docs_i18n/zh-CN/product/spec/data_dictionary.md --lang zh-CN
 ./tools/build_docs_html.sh
 env VCPKG_ROOT=/home/i5/workspace/github/vcpkg HMI_SERVER_NATIVE_BUILD_MODE=host PKG_CONFIG=/usr/bin/pkgconf ./tools/generate_targets.sh
+git diff --check
 ```
 
 `pytest` 入口在本机缺少 `pytest` module 时不可用，使用 `python3 -m unittest` 作为可执行验证入口。

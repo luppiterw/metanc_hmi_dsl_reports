@@ -5,6 +5,7 @@ Focus:
 - Server-driven footer notice design
 - Runtime logs client/server boundary
 - WebSocket `operator_notices` subscription domain
+- Server API living docs and docs portal navigation
 - Bilingual docs, generated story/data docs, and final artifact sync
 
 Session assets:

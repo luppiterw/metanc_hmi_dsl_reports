@@ -1,0 +1,42 @@
+# Conversation Report
+
+## Discussion Summary
+
+今天围绕 runtime logs 与底部通知继续收敛设计。
+
+最初问题集中在日志性能与交互边界：
+
+- 日志超过一定数量后，界面是否会卡。
+- `state` 和 command response 中默认 logs 是否意味着 pub/sub 会带最多 200 条日志。
+- 坐标、全局变量、页面变量等非日志数据是否应按 client subscription 由 server filtered publish，而不是全量轮询。
+- 日志本身是否应该有 server-side hard cap，并单独讨论 client/server 日志交互。
+
+随后明确了方向：
+
+- 非日志数据按 global/page subscription delivery：global variables 全程订阅，page variables 仅在对应页面订阅。
+- 日志表不通过默认 state/command response 或普通 WebSocket state 全量推送。
+- 日志存储要有 server-side hard cap，并通过 query/export/batch/payload caps 控制通信压力。
+- client 操作日志会上传到 server，server-enriched 后进入 log store，但它们仍是 diagnostic only，不作为 audit authority。
+
+## Footer Notice Decision
+
+用户指出底部日志栏如果不反映最新即时反馈，就失去意义。
+因此本次没有把设计留到以后，而是直接改为 server-driven。
+
+最终边界：
+
+- 底部提示仍绑定 `runtime_state.last_notice`。
+- strict server mode 下，底部提示由 WebSocket 驱动，不靠轮询日志表。
+- `runtime.command.completed` 用于 command 执行结果的即时反馈。
+- `runtime.operator_notice` 用于 server-side log events 中筛选出的 operator-visible feedback。
+- `runtime.operator_notice` 是轻量 notice，不是完整日志列表。
+
+## Important Handoff Notes
+
+后续 AI 或开发者不要把这三件事混在一起：
+
+1. **Diagnostics Logs table**：通过 `GET /api/runtime/logs` 查询完整日志历史。
+2. **Client diagnostic upload**：Web/QML 低频诊断事件通过 single/batch endpoint 上传到 server。
+3. **Footer notice**：通过 WebSocket `operator_notices` domain 接收轻量即时反馈。
+
+如果后续继续优化，应优先讨论 operator notice 的过滤策略、不同 level/category 的显示规则、以及底部通知历史是否需要单独的本地小队列，而不是把 full log table 重新塞回 state/pub-sub。

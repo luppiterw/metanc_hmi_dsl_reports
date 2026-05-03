@@ -40,3 +40,17 @@
 3. **Footer notice**：通过 WebSocket `operator_notices` domain 接收轻量即时反馈。
 
 如果后续继续优化，应优先讨论 operator notice 的过滤策略、不同 level/category 的显示规则、以及底部通知历史是否需要单独的本地小队列，而不是把 full log table 重新塞回 state/pub-sub。
+
+## Alarm Follow-Up
+
+继续讨论后，又明确了 alarm 与 notice 的边界：
+
+- Notice 里放最近几条报警/错误是合理的，但它应该是 operator-facing notice feed，不是 raw log tail。
+- 没有报警/错误时，底部仍应显示 operator 有意义的 ephemeral feedback 或 idle/connected/system-ready 状态。
+- 报警是否解除不能通过文本日志判断。
+- 报警对象必须来自 backend active alarm state，例如 CNC、PLC、drive、IO、safety 或 adapter。
+- `acknowledged` 和 `cleared` 是两件事：acknowledged 是 operator 已确认，cleared 是 backend 报警条件消失。
+
+后续要补完整报警生命周期时，应增加 server-side AlarmService/active alarm state。
+LogEvent 只记录 `alarm.raised`、`alarm.acknowledged`、`alarm.cleared` 等历史事件；
+OperatorNotice 只负责从 active alarms、command result、runtime error 等输入里选择底部即时展示内容。

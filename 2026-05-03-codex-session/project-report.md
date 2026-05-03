@@ -50,6 +50,27 @@ runtime.operator_notice
 payload 只包含 `text`、`log_id`、`level`、`source`、`category`、`event_name`、`message`、`command_id` 和 `correlation_id` 等轻量字段。
 Web/QML generated clients 全局订阅 `operator_notices` domain，并把 `runtime.operator_notice` 与 `runtime.command.completed` 写入 `runtime_state.last_notice`。
 
+## Alarm State Boundary
+
+后续讨论进一步明确：报警状态不能靠日志文本判断。
+正确边界是：
+
+```text
+AlarmState = 当前状态，来自 CNC / PLC / drive / IO / safety / adapter
+LogEvent = 历史事件，记录 alarm.raised / alarm.acknowledged / alarm.cleared
+OperatorNotice = 展示选择，决定底部当前提示哪一条反馈
+```
+
+因此底部 Notice 可以显示最近几条报警/错误，也可以做 sticky alarm feedback，
+但 sticky 的 active/cleared 判断必须引用 backend active alarm state。
+`acknowledged` 只表示 operator 已看到报警，不等同于 `cleared`。
+当最高优先级报警 cleared 后，底部应切到下一个 active alarm、短暂的 cleared feedback，
+或正常 idle/system-ready 状态。
+
+这意味着当前 `runtime.operator_notice` 是即时反馈通道，不是 AlarmService。
+后续如果要完整支持报警生命周期，需要补 server-side alarm state / active alarms
+模型，并把它作为 footer notice priority 的输入。
+
 ## Implementation
 
 主要实现点：

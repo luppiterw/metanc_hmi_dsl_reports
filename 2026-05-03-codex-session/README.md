@@ -1,12 +1,12 @@
 # 2026-05-03 Codex Session Report
 
 这个目录整理了 2026-05-03 这轮项目推进的结构化阅读材料。
-本轮主要记录 runtime logs、operator notice 和底部通知的 server-driven 设计与实现。
+本轮主要记录 runtime logs、operator notice、底部通知的 server-driven 设计与实现，以及 alarm state 不能从日志文本推断的后续设计边界。
 
 目录：
 
-- `project-report.md`: 日志与底部通知实现总结、性能边界和验证入口
-- `conversation-report.md`: 设计讨论结论与后续 handoff 注意事项
+- `project-report.md`: 日志、底部通知、alarm state 边界、性能边界和验证入口
+- `conversation-report.md`: 设计讨论结论、alarm/notice 追认和后续 handoff 注意事项
 - `user-history.md`: 当天用户发言原始导出
 - `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: client/server 日志和 footer notice 工作流

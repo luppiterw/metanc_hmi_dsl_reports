@@ -12,6 +12,7 @@
 - 底部 `runtime_state.last_notice` 改为 server-driven immediate feedback，由 WebSocket `runtime.command.completed` 和 `runtime.operator_notice` 更新。
 - `runtime.operator_notice` 是从 server-side `LogEvent` 中筛出的轻量 operator notice，不是完整日志行流，也不替代日志查询、导出和 retention API。
 - server API 文档开始作为 living contract 使用，覆盖 REST endpoints、WebSocket subscription、client flow、error model 和 payload schemas。
+- LOGS 当前先保持最近日志视图：UI 只展示最近 `200` rows，recent stream 保留 `50` rows；历史积压问题主要由 server-side store/retention/query/export 策略处理。
 
 ## Runtime Log Design
 
@@ -29,6 +30,29 @@
 - REST 查询、导出、client batch upload 和 payload bytes 分别有独立上限。
 - full log table 不进入默认 state/command response，也不进入普通 WebSocket state subscription，避免 state channel 被日志量拖慢。
 - Web/QML 本地 client log queue bounded，server 恢复后再批量补传。
+
+## LOGS View Window Decision
+
+针对“LOGS 里显示的日志数量是否有上限、当前是否有问题”的讨论，当前结论是先不改 UI。
+
+现状分层如下：
+
+| Boundary | Current value | Purpose |
+| --- | --- | --- |
+| Diagnostics Logs table | latest `200` rows | 防止 Web/QML table 过大导致渲染和本地 state 压力 |
+| Diagnostics recent stream | latest `50` rows | 轻量 recent/event stream |
+| REST query cap | default `1000` rows per request | 限制单次 `/api/runtime/logs` response |
+| Server store hard cap | default `10000` rows | 限制 memory/SQLite log store 积压 |
+
+因此当前 LOGS 页面是 recent log view，不是完整历史日志管理器。
+真正的历史积压和保留策略主要在 server 端，需要继续确认：
+
+- `HMI_LOG_MAX_ROWS` 是否符合目标现场的保留策略。
+- SQLite retention 是否需要定时执行和分级策略。
+- large query/export 是否需要分页、streaming 或更细的 server-side filter/search。
+- audit/warn/error/client debug/info 是否需要不同保留周期。
+
+在 server-side storage/retention/query/export 边界确认前，UI 暂时不加分页或加载更多。
 
 ## Footer Notice Design
 

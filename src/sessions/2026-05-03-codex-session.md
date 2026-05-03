@@ -6,6 +6,7 @@ Focus:
 - Runtime logs client/server boundary
 - WebSocket `operator_notices` subscription domain
 - Server API living docs and docs portal navigation
+- LOGS recent-view cap decision and server-side retention follow-up
 - Bilingual docs, generated story/data docs, and final artifact sync
 
 Session assets:

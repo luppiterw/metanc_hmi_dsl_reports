@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-05-05` | Session bootstrap and Codex user-history export tooling |
 | `2026-05-04` | Session bootstrap and Codex user-history export tooling |
 | `2026-05-03` | Server-driven footer notices, explicit runtime log query boundary, operator-notice WebSocket subscription, alarm-state boundary, server API living docs, LOGS recent-view cap decision, docs portal API navigation, final artifact refresh, and MetaNC sync |
 | `2026-05-02` | DIAG/LOGS navigation consolidation, Runtime Logs moved under DIAG, top-level LOGS removal, Web/QML multi-action button execution fix, stale page fallback, final artifact refresh, MetaNC sync, static Web preview confirmation, native server launch-mode clarification, Web CodeMirror line-number bundle verification, fallback gutter repair, QML program-editor line-number alignment, native server program workspace restoration, program Open/Activate switching, and editor Execute preparation validation |

@@ -3,11 +3,11 @@
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `13`
-- Synthetic events: `1`
-- Messages: `95`
-- User messages: `14`
-- Codex messages: `81`
+- User prompts: `19`
+- Synthetic events: `2`
+- Messages: `140`
+- User messages: `21`
+- Codex messages: `119`
 
 ## Sessions By Date
 
@@ -29,4 +29,10 @@
 | 2026-05-05 15:50:01 +0800 | 019de371 | 10 | PROG里的第一个Dir改成Select Program或者Select，你看看叫哪个何师 | 0 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-10) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-10) |
 | 2026-05-05 15:50:05 +0800 | 019de371 | 11 | PROG里的第一个Dir改成Select Program或者Select，你看看叫哪个合适 | 11 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-11) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-11) |
 | 2026-05-05 16:09:03 +0800 | 019de371 | 12 | 移除Prog里面的up菜单，这个是不必要的 | 7 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-12) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-12) |
-| 2026-05-05 17:02:28 +0800 | 019de371 | 13 | commit+update report & docs + sync MetaNC + push | 6 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-13) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-13) |
+| 2026-05-05 17:02:28 +0800 | 019de371 | 13 | commit+update report & docs + sync MetaNC + push | 12 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-13) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-13) |
+| 2026-05-05 17:49:38 +0800 | 019de371 | 14 | 我现在执行的时候为什么界面的坐标不变化le | 8 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-14) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-14) |
+| 2026-05-05 18:15:05 +0800 | 019de371 | 15 | 我是点了START，程序行在跳，但是轴数字不变，是不是哪里出问题了 | 13 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-15) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-15) |
+| 2026-05-05 18:52:54 +0800 | 019de371 | 16 | 轴参数显示这些现在不是pub/sub的吗，我记得之前说过要按照这种方式去处理的 | 1 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-16) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-16) |
+| 2026-05-05 18:54:04 +0800 | 019de371 | 17 | 为什么我发现TARGET的位置在目标值和不知道什么值之间都懂 | 0 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-17) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-17) |
+| 2026-05-05 18:54:07 +0800 | 019de371 | 18 | 为什么我发现TARGET的位置在目标值和不知道什么值之间抖动 | 7 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-18) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-18) |
+| 2026-05-05 19:22:43 +0800 | 019de371 | 19 | update report + sync MetaNC + commit + push | 3 | [md](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.md#turn-19) | [html](sessions/20260501-200910-019de371-5d2b-7313-8dae-e9e7b331be8b.html#turn-19) |

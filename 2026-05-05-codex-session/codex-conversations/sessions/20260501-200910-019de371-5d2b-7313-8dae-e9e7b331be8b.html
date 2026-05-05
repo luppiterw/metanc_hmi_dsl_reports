@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-05-01 20:09:10 +0800</code></div>
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/01/rollout-2026-05-01T20-09-10-019de371-5d2b-7313-8dae-e9e7b331be8b.jsonl</code></div>
-<div><b>Messages</b>: <code>31</code></div>
-<div><b>User prompts</b>: <code>4</code></div>
+<div><b>Messages</b>: <code>60</code></div>
+<div><b>User prompts</b>: <code>9</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -352,6 +352,270 @@ MEMORY.md:175-209|note=[MetaNC report boundary and downstream docs hygiene conte
 <h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-05-05 07:33:30 +0800</div>
 <pre>我找到了现有日报流程：`tools/export_codex_user_history.py --mode full` 生成 `submodules/metanc_hmi_dsl_reports/YYYY-MM-DD-codex-session`，然后 rebuild report book 和 `docs_html`。我会按 2026-05-05 这个本地日期执行，并注意 `MetaNC` 不应该同步 reports 内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-05 07:34:03 +0800</div>
+<pre>2026-05-05 的 report 已生成，工具识别到 1 个 primary session、4 条用户 prompt。接下来我会构建 aggregate report book、当天 session book，以及最终 `docs_html` 发布目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-05 07:34:58 +0800</div>
+<pre>`docs_html/reports/2026-05-05-codex-session/index.html` 已经生成，最终门户也刷新了。现在检查 report submodule 的实际变更，并提交 submodule 与父仓库指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-05 07:35:41 +0800</div>
+<pre>自动生成的 report 目录只有占位摘要，我会把今天实际完成的两组变更、验证结果、同步状态补进 `project-report.md` 和 `conversation-report.md`，这样报告本身不是空壳。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-05 07:38:14 +0800</div>
+<pre>report submodule 已提交为 `6a73eeb`，父仓库现在只剩 submodule 指针变化。我会提交父仓库指针，然后执行 MetaNC export 同步检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-05 07:39:30 +0800</div>
+<pre>已创建 2026-05-05 report，并完成 commit + sync。
+
+完成的提交：
+- reports submodule: `6a73eeb docs: add 2026-05-05 session report`
+- `metanc_hmi_dsl`: `0ed484b docs: update 2026-05-05 report pointer`
+
+生成/刷新了：
+- `submodules/metanc_hmi_dsl_reports/2026-05-05-codex-session/`
+- `submodules/metanc_hmi_dsl_reports/site`
+- `docs_html/reports/2026-05-05-codex-session/index.html`
+- `docs_html/en/project/reports.html`
+- `docs_html/zh-CN/project/reports.html`
+
+同步情况：
+- 已执行 `./tools/export_to_metanc.sh /home/i5/workspace/ccmix-wp/MetaNC`
+- `MetaNC` 没有新增 diff，所以没有新 commit；reports 按规则不导出到 `MetaNC/nrt/hmi`
+
+当前状态：
+- `metanc_hmi_dsl`: clean，`ahead 3`
+- `MetaNC`: clean，`ahead 2`
+- reports submodule: clean，detached at `6a73eeb`
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-109|note=[report generation, docs_html refresh, and submodule commit workflow]
+MEMORY.md:200-209|note=[MetaNC must stay free of source-only report content]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dd10a-fc78-72e1-b1fe-a632a48da3ef
+019dc9b1-0649-7452-8bea-1143355f2fad
+019dc169-6b53-7b91-91d7-d2d538c3a4ed
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-05 07:57:13 +0800</div>
+<pre>都push了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-05 07:57:36 +0800</div>
+<pre>还没有。上一轮只做了 commit 和 sync，我最后也标了 `metanc_hmi_dsl ahead 3`、`MetaNC ahead 2`。我现在按正确顺序 push：先 reports submodule，再 `metanc_hmi_dsl`，最后 `MetaNC`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-05 07:57:59 +0800</div>
+<pre>reports submodule 当前是 detached HEAD，commit 在 `6a73eeb`，本地 `main` 分支很旧。为了避免错误推送，我先确认这个 detached commit 是否基于远端 `origin/main` 最新提交，再用 `HEAD:main` 推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-05 07:58:35 +0800</div>
+<pre>reports submodule 已推到远端 `main`。现在推 `metanc_hmi_dsl` 主仓库，然后推 `MetaNC feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-05 08:00:01 +0800</div>
+<pre>刚才还没 push，现在已经都 push 完了。
+
+已推送：
+- reports submodule: `6a73eeb -&gt; origin/main`
+- `metanc_hmi_dsl`: `0ed484b -&gt; origin/main`
+- `MetaNC`: `c0bfe09 -&gt; origin/feat/hmi`
+
+最终检查：
+- `metanc_hmi_dsl`: clean，`main...origin/main`
+- `MetaNC`: clean，`feat/hmi...origin/feat/hmi`
+- reports submodule: clean，当前在 detached HEAD `6a73eeb`，这是 submodule 常见状态。</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-05 08:03:10 +0800</div>
+<pre>生产最终产物和文档产物了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-05 08:03:30 +0800</div>
+<pre>文档产物已经生成过：`docs_html/reports/2026-05-05-codex-session/index.html` 和 report book 都刷新了。最终运行产物还没有在今天代码变更后重新跑完整 `generate_targets.sh`，我现在补生成并确认输出位置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-05 08:05:05 +0800</div>
+<pre>最终运行产物已经补生成完成，包含 web、QML、native server 和 packaged distribution。现在我再做一次路径检查，并确认文档产物还在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-05 08:05:22 +0800</div>
+<pre>现在已经都生成了。
+
+最终运行产物：
+- `generated/distribution/`
+- native server: `generated/server-build/server`
+- QML executable: `generated/qml-final/appCNC_HMI_DSL`
+- 推荐一体运行脚本：`./generated/distribution/run_split_web_native.sh`
+- 其他脚本：
+  - `./generated/distribution/run_client_web.sh`
+  - `./generated/distribution/run_client_qml.sh`
+  - `./generated/distribution/run_server_native.sh`
+
+文档产物：
+- `docs_html/index.html`
+- `docs_html/en/index.html`
+- `docs_html/zh-CN/index.html`
+- 今日 report: `docs_html/reports/2026-05-05-codex-session/index.html`
+- report 本地 book: `submodules/metanc_hmi_dsl_reports/2026-05-05-codex-session/build_html/index.html`
+
+我只生成了产物，没有启动 server。当前 `metanc_hmi_dsl` 工作区仍是 clean。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-05 08:08:17 +0800</div>
+<pre>你测试看看有没有问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-05 08:08:33 +0800</div>
+<pre>我会按三层测试：先跑自动化测试集，再跑 native server 的健康检查，最后启动最终 split web/native 产物做一次本地访问验证。过程中如果有进程常驻，我会测完后停掉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-05 08:09:25 +0800</div>
+<pre>自动化回归都通过了。现在我启动最终 `run_split_web_native.sh`，用独立端口避免冲突，检查 web 首页和 native runtime health/bootstrap，再关闭进程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-05 08:11:55 +0800</div>
+<pre>基础启动和 HTTP 访问正常：server health 返回 ok，web 首页返回 200，bootstrap 里也能看到 9 个示例程序。现在我再测一下今天刚改的程序 mutation command，确认最终产物里的 native server 不是只编译通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-05 13:29:22 +0800</div>
+<pre>我已经跑完主要测试了，现在先把刚才用于验证的 split server 停掉，再补一次仓库状态检查，确认没有测试残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-05 13:29:41 +0800</div>
+<pre>刚才的测试服务还在后台，进程是这次验证启动的 `run_split_web_native.sh 18173 4173`。我会只停这一组测试进程，保留你机器上原本已经在跑的 8011/8001 服务。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-05 13:38:37 +0800</div>
+<pre>测了一轮，没发现功能性问题。
+
+通过项：
+- `ctest --test-dir generated/server-build --output-on-failure`：4/4 passed
+- `python3 -m unittest ...`：43 passed，1 skipped
+- 最终产物 `run_split_web_native.sh 18173 4173` 能正常启动
+- `GET /api/runtime/health` 返回 `{&quot;ok&quot;:true}`
+- Web 入口 `http://127.0.0.1:4173/` 返回 200
+- Headless Chromium 能渲染主界面，看到 `MAIN` 页面和底部 `Connected to HMI server`
+- 程序工作区接口冒烟通过：`SMOKE_TEST.MPF` 创建成功、删除成功，删除后回到 `INDEX_TABLE.MPF`
+- bootstrap 里示例程序正常，包含 `LOOP.MPF` 等 9 个示例程序
+
+有一个非阻塞现象：Chromium 是 snap 版本，headless 运行时有 snap/dbus/UPower 相关警告，但退出码是 0，页面实际渲染正常，不像是应用问题。
+
+我已经停掉这次测试临时启动的 `18173/4173` 服务；你原本机器上已有的 `8011/8001` 服务我没有动。`metanc_hmi_dsl`、`MetaNC`、reports submodule 当前都是 clean。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-05 14:00:34 +0800</div>
+<pre>继续我们之前的讨论，看看接下来做些什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-05 14:00:47 +0800</div>
+<pre>我先快速看一下仓库里现在已有的规划/报告/测试文档，避免只凭聊天记忆给建议。重点会放在日志设计、server API 文档、程序编辑器和后续功能完善这几条线上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-05 14:01:00 +0800</div>
+<pre>当前主仓库是 clean。刚才全文搜索里 reports 子模块里的旧 HTML 噪声很多，我再聚焦读几份源文档和 server README，找真正还没落地的接口/功能缺口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-05 14:01:32 +0800</div>
+<pre>从源文档看，当前不是“能不能跑”的问题，基本端到端已经通了；下一步更像是把 simulator-backed 的闭环逐步替换成真实后端能力，同时把日志/API/订阅这套契约打牢。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-05 14:02:10 +0800</div>
+<pre>我建议接下来按这个顺序推进，不先做 UI 小修小补，除非你现在发现明确问题。
+
+**优先做**
+1. **真实后端 adapter 边界**
+   现在 split Web/native 已经能跑，最大缺口是还停在 simulator/mock-backed。下一步应该把 CNC/PLC/program/tool/parameter 这些真实后端边界先定住，至少先做一层可测试的 adapter interface + fake implementation + 失败语义。这个是当前 P0：见 [status_matrix.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/status_matrix.md:43)。
+
+2. **订阅模型彻底收口**
+   现在 WebSocket filtered subscription 已经有了，但还要把“全局变量全程订阅、页面变量按页订阅、server 不全量 pub”的规则固化成 contract/test。尤其坐标、状态、告警、命令结果这些不能退回 client 轮询或全量 state 推送。契约方向已经写在 [server_contract.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/product/spec/server_contract.md:214)。
+
+3. **server API 变成可消费的正式文档包**
+   现在已有 human-readable API docs，但还没有最终 OpenAPI/JSON Schema 导出，文档里也明确这还不是最终形态：见 [index.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/server/api/index.md:41)。这一步适合给后续 AI、外部调用者、自动测试共用。
+
+4. **日志和底部 notice 继续产品化**
+   日志基本设计已经落文档，server-driven footer notice 也定下来了。下一步不是把 LOGS UI 做大，而是把 retention schedule、查询分页、异常/报警状态模型补齐。特别是 active alarm 不能从日志文本推断，已经写在 [logging.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/server/logging.md:92)。
+
+5. **补 UI 自动化**
+   当前测试更偏 pipeline、server、snapshot。真正容易回归的是：程序选择 Open、编辑器保存/另存/rename/delete、execute 跳转、DIAG/LOGS、断线重连、日志按钮。这些应该上 Playwright/Web 自动化，再考虑 QML 交互覆盖。状态矩阵里也标了 UI automation 还是缺口：见 [status_matrix.md](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/status_matrix.md:55)。
+
+**我建议下一步直接开工的切片**
+先做“真实后端 adapter 边界 + subscription contract 测试”这一刀。它不要求马上接真实 CNC/PLC，但能把 server 的形状定下来：哪些数据由 adapter 提供、哪些 command 由 adapter 接收、哪些变量进入全局/page subscription、错误和降级怎么回给 client。这个做完之后，再接真实 backend 或继续扩日志/API 文档都会更稳。
+
+暂时不建议优先做 Figma/HTML importer、OCR 增强、generator 拆文件，这些在当前阶段不是瓶颈。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-50|note=[confirmed this checkout family report and docs publication context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-05 14:04:08 +0800</div>
+<pre>落一下今天的report和关联文档，如果有必要sync的sync一下MetaNC，然后commit+push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-05 14:04:31 +0800</div>
+<pre>我会按现有发布链处理：先看 `metanc_hmi_dsl`、reports submodule、`MetaNC` 状态，再生成 2026-05-05 report/docs；只有发现 `MetaNC` 需要同步时才同步并提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-05 14:04:45 +0800</div>
+<pre>当前三个工作区都是 clean，`MetaNC` 暂时没有看到必须同步的源变更。接下来先重新导出今天的会话 report，然后重建 report book 和最终 docs portal。</pre>
 </article>
 </section>
 </main>

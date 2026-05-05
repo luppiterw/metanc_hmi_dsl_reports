@@ -7,9 +7,9 @@
 - Started: `2026-05-01 20:09:10 +0800`
 - CWD: `/home/i5/workspace/ccmix-wp`
 - Source file: `/home/i5/.codex/sessions/2026/05/01/rollout-2026-05-01T20-09-10-019de371-5d2b-7313-8dae-e9e7b331be8b.jsonl`
-- Messages: `60`
-- User prompts: `9`
-- Synthetic events: `0`
+- Messages: `95`
+- User prompts: `13`
+- Synthetic events: `1`
 
 <a id="turn-1"></a>
 ## Turn 1
@@ -651,4 +651,309 @@ MEMORY.md:48-50|note=[confirmed this checkout family report and docs publication
 
 ```
 当前三个工作区都是 clean，`MetaNC` 暂时没有看到必须同步的源变更。接下来先重新导出今天的会话 report，然后重建 report book 和最终 docs portal。
+```
+
+### Codex Response 3 / commentary
+`2026-05-05 14:04:56 +0800`
+
+```
+report 已经导出到今天的 reports 子模块目录，这次统计是 1 个主会话、9 个用户提示、60 条消息。现在重建 mdBook 和最终 `docs_html`。
+```
+
+### Codex Response 4 / commentary
+`2026-05-05 14:05:22 +0800`
+
+```
+最终文档门户也已经重建，确认包含 `docs_html/reports/2026-05-05-codex-session/index.html`。我现在检查实际产生的 git 变更，决定是否只提交 reports 指针，还是还需要同步 `MetaNC`。
+```
+
+### Codex Response 5 / commentary
+`2026-05-05 14:05:40 +0800`
+
+```
+变更只在 reports 子模块，父仓库只是 submodule pointer 变化；`MetaNC` 现在没有变更，不需要同步。提交前我先 fetch 一下远端，确认没有远端分叉。
+```
+
+### Codex Response 6 / commentary
+`2026-05-05 14:06:26 +0800`
+
+```
+导出的 report 元数据看起来正常，已包含刚才的讨论和测试后续。现在先提交并 push reports 子模块，再回到父仓库提交新的 submodule pointer。
+```
+
+### Codex Response 7 / commentary
+`2026-05-05 14:07:15 +0800`
+
+```
+reports 已经 push 到 `origin/main`，父仓库现在只需要记录 `submodules/metanc_hmi_dsl_reports` 从 `6a73eeb` 到 `144f8e3` 的指针更新；`MetaNC` 仍然没有变更。
+```
+
+### Codex Response 8 / final_answer
+`2026-05-05 14:08:21 +0800`
+
+```
+已处理完。
+
+今天的 report 已重新导出并生成：
+- `2026-05-05` report：1 个主会话，9 个用户提示，60 条消息
+- 重建了 reports 总 book
+- 重建了今天的 session book
+- 重建了最终 `docs_html` 门户，包含 `docs_html/reports/2026-05-05-codex-session/index.html`
+
+已提交并 push：
+- reports submodule：`144f8e3 docs: refresh 2026-05-05 session report`
+- `metanc_hmi_dsl`：`666d8c4 docs: refresh 2026-05-05 report pointer`
+
+我检查了 `MetaNC`，没有需要同步的源变更，所以没有对它做 commit/push。当前状态：
+- `metanc_hmi_dsl`: clean，`main...origin/main`
+- reports submodule: clean
+- `MetaNC`: clean，`feat/hmi...origin/feat/hmi`
+```
+
+<a id="turn-10"></a>
+## Turn 10
+
+### User
+`2026-05-05 15:50:01 +0800`
+
+```
+PROG里的第一个Dir改成Select Program或者Select，你看看叫哪个何师
+```
+
+### Codex
+_No Codex response captured for this turn._
+
+<a id="turn-11"></a>
+## Turn 11
+
+### User
+`2026-05-05 15:50:05 +0800`
+
+```
+PROG里的第一个Dir改成Select Program或者Select，你看看叫哪个合适
+```
+
+### Codex Response 1 / commentary
+`2026-05-05 15:50:24 +0800`
+
+```
+我会把这个作为 UI 文案调整处理，先定位 `PROG` 底部菜单里 `Dir` 的来源。倾向用 `Select Program`，因为 `Select` 单独放在底部菜单里语义太泛，后续旁边如果还有 Open/Save/Cut 会不够明确。
+```
+
+### Codex Response 2 / commentary
+`2026-05-05 15:50:40 +0800`
+
+```
+第一次搜索把生成目录也扫进来了，噪声太大。我缩小到 DSL 定义和客户端生成源，找底部 softkey 的原始文案。
+```
+
+### Codex Response 3 / commentary
+`2026-05-05 15:51:03 +0800`
+
+```
+定位到了原始定义：`prog_footer_select_program` 的 id 已经叫 select_program，但显示文案还是 `Dir`。我会改成 `Select Program`，同时把 notice 从 “Opened program directory” 调整为更一致的 “Opened program selector”。
+```
+
+### Codex Response 4 / commentary
+`2026-05-05 15:51:21 +0800`
+
+```
+源定义已改。因为这里的 Web/QML 生成快照会锁住文本，我接着查快照更新方式并跑相关测试，避免只改源文件导致测试不一致。
+```
+
+### Codex Response 5 / commentary
+`2026-05-05 15:52:03 +0800`
+
+```
+快照里只有 Web `app.js.snap` 和 QML `Main.qml.snap` 嵌入了这个 softkey 文案和 notice。我会同步这两处文本快照，然后跑 `test_generated_outputs_match_snapshots`。
+```
+
+### Codex Response 6 / commentary
+`2026-05-05 15:53:15 +0800`
+
+```
+我刚才指定了错误的 unittest 类名，测试没有实际跑到业务逻辑。我查一下真实类名后重跑同一个快照测试。
+```
+
+### Codex Response 7 / commentary
+`2026-05-05 15:54:15 +0800`
+
+```
+文案变化会改变 Web 资源 hash，所以还要刷新 `index.html.snap`。我用生成器重新产出一份临时 Web/QML 结果，再把对应快照整体同步，避免漏掉 hash 或嵌入模型变化。
+```
+
+### Codex Response 8 / commentary
+`2026-05-05 15:55:30 +0800`
+
+```
+快照一致性测试已通过。现在我再看一下 diff，确认这次只改了文案相关文件，没有把无关生成快照带进来。
+```
+
+### Codex Response 9 / commentary
+`2026-05-05 15:56:17 +0800`
+
+```
+源码和快照现在都只体现这个文案变化。为了你直接看现有生成产物时也能看到改动，我再重新生成一次最终产物；这会更新 ignored 的 `generated/` 输出，不会额外提交。
+```
+
+### Codex Response 10 / commentary
+`2026-05-05 15:57:33 +0800`
+
+```
+最终产物已重新生成完成。最后确认 generated Web/QML 里已经是新文案，并看一下 git 状态。
+```
+
+### Codex Response 11 / final_answer
+`2026-05-05 15:59:18 +0800`
+
+```
+我改成了 **Select Program**，比 `Select` 更明确，也和这个 softkey 的实际动作“进入程序选择页”一致。
+
+已改：
+- [definition/ui.structure.yaml](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/definition/ui.structure.yaml:210)：`Dir` -> `Select Program`
+- 同步 notice：`Opened program directory` -> `Opened program selector`
+- 更新了 Web/QML 文本快照
+- 已重新生成最终产物，`generated/web` 和 `generated/distribution/client/web/app.js` 里也已经是新文案
+
+验证：
+- `python3 -m unittest tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots` 通过
+
+当前只是本地改动，未 commit。
+```
+
+<a id="turn-12"></a>
+## Turn 12
+
+### User
+`2026-05-05 16:09:03 +0800`
+
+```
+移除Prog里面的up菜单，这个是不必要的
+```
+
+### Codex Response 1 / commentary
+`2026-05-05 16:09:30 +0800`
+
+```
+我会继续在同一批本地 UI 文案改动上处理，不提交。先定位 `PROG` 相关 footer 里的 `Up` 定义，确认是程序选择页的返回上级目录按钮。
+```
+
+### Codex Response 2 / commentary
+`2026-05-05 16:09:40 +0800`
+
+```
+`Up` 是 `page_program_browser` 底部的 `prog_browser_footer_up`，slot 9，用来进入父目录。既然这个入口在当前产品形态里不需要，我会从 DSL 定义里删掉它，并把该 slot 改成空白 softkey，保持底部布局不跳格。
+```
+
+### Codex Response 3 / commentary
+`2026-05-05 16:10:07 +0800`
+
+```
+定义里已经把 slot 9 改成空白项。接下来同步生成快照并跑快照一致性测试。
+```
+
+### Codex Response 4 / commentary
+`2026-05-05 16:10:47 +0800`
+
+```
+快照测试通过。现在重新生成最终产物，让你本地运行时看到 PROG 里已经没有 Up。
+```
+
+### Codex Response 5 / commentary
+`2026-05-05 16:11:43 +0800`
+
+```
+最终产物生成成功。最后我确认生成 Web/QML 中没有 `prog_browser_footer_up` 和 `Up` 菜单残留，再看一下本地 diff。
+```
+
+### Codex Response 6 / commentary
+`2026-05-05 16:12:24 +0800`
+
+```
+去掉菜单后，运行计划里也自动不再把 `progdir.commands.up` 作为当前 UI 使用命令，符合预期；底层接口和运行时处理先保留，避免无必要扩大改动。再跑一个源包校验，确认 DSL 本身没有问题。
+```
+
+### Codex Response 7 / final_answer
+`2026-05-05 16:12:45 +0800`
+
+```
+已移除 `PROG` 程序选择页里的 `Up` 底部菜单入口。
+
+处理方式：
+- [definition/ui.structure.yaml](/home/i5/workspace/ccmix-wp/metanc_hmi_dsl/definition/ui.structure.yaml:494)：`prog_browser_footer_up` 改成空白 slot 9，不移动 `Return`，布局保持稳定
+- 同步更新 Web/QML 快照
+- 重新生成了最终产物，`generated/web` 和 `generated/distribution/client/web/app.js` 里已没有 `prog_browser_footer_up` / `Up`
+
+验证：
+- `test_source_package_validates` 通过
+- `test_generated_outputs_match_snapshots` 通过
+- `./tools/generate_targets.sh` 通过
+
+当前改动仍是本地未提交。
+```
+
+<a id="turn-13"></a>
+## Turn 13
+
+### User
+`2026-05-05 17:02:28 +0800`
+
+```
+commit+update report & docs + sync MetaNC + push
+```
+
+### Codex Response 1 / commentary
+`2026-05-05 17:03:04 +0800`
+
+```
+我会按顺序做：先提交 `metanc_hmi_dsl` 里的 UI 改动，再同步到 `MetaNC` 并提交；最后刷新今天 report 和最终 docs portal，提交 reports 子模块和父仓库指针，再全部 push。
+```
+
+### Codex Response 2 / commentary
+`2026-05-05 17:03:18 +0800`
+
+```
+状态正常：`metanc_hmi_dsl` 只有刚才 PROG 文案和 Up 菜单移除相关改动，reports 和 `MetaNC` 目前 clean。我先提交这批 UI 改动。
+```
+
+### Codex Response 3 / commentary
+`2026-05-05 17:04:13 +0800`
+
+```
+`metanc_hmi_dsl` UI 改动已提交：`d4dce05 feat: refine program softkeys`。现在同步到 `MetaNC`，我会先看同步脚本入口和目标范围，避免把 reports/source-only 内容带过去。
+```
+
+### Codex Response 4 / commentary
+`2026-05-05 17:04:57 +0800`
+
+```
+同步脚本会过滤 reports、generated、docs_html 等源仓库专用内容，目标分支也符合 `feat/hmi`。现在执行导出到 `/home/i5/workspace/ccmix-wp/MetaNC`。
+```
+
+### Codex Response 5 / commentary
+`2026-05-05 17:05:29 +0800`
+
+```
+`MetaNC` 里只同步到了同一组 HMI UI/快照文件，范围正确。我在 `MetaNC/nrt/hmi` 跑同样的源包和快照测试，再提交。
+```
+
+### Codex Response 6 / commentary
+`2026-05-05 17:06:06 +0800`
+
+```
+`MetaNC` 同步提交已完成：`293a878 feat(hmi): refine program softkeys`。现在刷新今天 report 和最终 docs portal，然后提交 reports 子模块与父仓库指针。
+```
+
+## Session Events
+
+<a id="event-1"></a>
+### Event 1 / turn_aborted
+
+#### Event
+`2026-05-05 15:50:02 +0800`
+
+```
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
 ```

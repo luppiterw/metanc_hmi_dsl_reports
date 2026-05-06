@@ -2,42 +2,59 @@
 
 ```mermaid
 flowchart LR
-    subgraph Contract["Runtime Contract"]
+    subgraph Source["Retained Source Package"]
         A[definition/ui.structure.yaml]
-        B[contract/runtime_plan.py]
-        C[runtime_seed.json]
+        B[docs/product/spec/runtime_logs.md]
+        C[docs/requirements/status_matrix.md]
+    end
+
+    subgraph Build["Native Build Targets"]
+        D[server/CMakeLists.txt C++17]
+        E[generated/qml/CMakeLists.txt C++17]
     end
 
     subgraph Web["Generated Web Client"]
-        D[app_shell.py serverStatusChip]
-        E[runtime_shell.py server bridge]
-        F[status chip CSS tones]
+        F[full-width log table]
+        G[bottom detail panel]
+        H[runtime_state.log_detail_open]
     end
 
     subgraph QML["Generated QML Client"]
-        G[generator.py serverStatusChip]
-        H[RuntimeStore.qml state updates]
-        I[status chip value colors]
+        I[ListView log rows]
+        J[bottom detail panel]
+        K[runtime_state.log_detail_open]
     end
 
-    subgraph Server["Runtime Server"]
-        J[Drogon REST/WebSocket]
-        K[bootstrap and subscription]
+    subgraph Runtime["Runtime Server"]
+        L[Drogon REST/WebSocket]
+        M[GET /api/runtime/logs]
+        N[JSONL export / clear / retention]
     end
 
-    A --> C
-    B --> C
-    C --> E
-    C --> H
-    J --> K
-    K --> E
-    K --> H
-    E --> D
-    H --> G
-    D --> F
-    G --> I
+    subgraph Docs["Publishing"]
+        O[submodules/metanc_hmi_dsl_reports]
+        P[bookshelf docs_html]
+        Q[MetaNC nrt/hmi export]
+    end
+
+    A --> F
+    A --> I
+    A --> H
+    A --> K
+    B --> F
+    B --> I
+    C --> O
+    D --> L
+    E --> I
+    L --> M
+    M --> F
+    M --> I
+    N --> F
+    N --> I
+    O --> P
+    P --> Q
 ```
 
-The top status chip is intentionally generated at the shell layer rather than
-inside a page. That keeps Web and QML aligned, and leaves pages focused on
-machine operation instead of transport diagnostics.
+The runtime log store remains server-owned. Generated clients keep only a bounded
+recent window and expose details as a local view concern, so the UI layout change
+does not alter the REST/WebSocket log contract.

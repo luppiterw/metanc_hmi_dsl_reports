@@ -2,8 +2,9 @@
 
 Focus:
 
-- Top status bar server-connection chip, Web/QML runtime state alignment,
-  data dictionary refresh, generated output refresh, and MetaNC sync
+- Native C++17 build floor, bookshelf docs portal, top status bar
+  server-connection chip, icon-only Return softkeys, Logs full-width table with
+  bottom on-demand detail, generated output refresh, and MetaNC sync
 
 Session assets:
 

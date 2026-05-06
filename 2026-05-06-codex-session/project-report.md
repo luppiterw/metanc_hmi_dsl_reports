@@ -4,7 +4,8 @@
 
 2026-05-06 的工作覆盖 native build baseline、docs/report 发布链、Web/QML shell
 交互和 Diagnostics Logs 视图。目标是让当前 HMI DSL 包在本地和 MetaNC 镜像中都保持
-可生成、可构建、可阅读，并修正日志页面右侧详情常驻造成的横向空间浪费。
+可生成、可构建、可阅读，并修正日志页面右侧详情常驻造成的横向空间浪费、日志列比例
+不合理、以及 Web Logs 操作控件缺少交互反馈的问题。
 
 ## Completed Work
 
@@ -31,6 +32,12 @@
 
 - Web Logs 页默认改为全宽日志表格，不再常驻右侧详情预览。
 - 表格列收敛为 `Time / Level / Source / Event / Message`，保留更好的横向扫读空间。
+- Web Logs `More` 面板新增 visible-column controls，支持显示 `Category`、`Request`、
+  `Session`、`Page`、`Command`、`Correlation`、`Revision` 等低频列。
+- Web Logs 新增 `Wrap Message` 和 `Reset Columns`，让长 message 和默认扫读列可以
+  在同一处调整。
+- Web Logs 工具按钮、筛选输入/下拉和列选择 checkbox 行补齐 hover、pressed、
+  focus-visible/focus-within 反馈，避免可点击控件看起来像静态 label。
 - 点击日志行后才在底部展开详情面板，详情支持 `Copy` 和 `Close`。
 - QML Logs 页同步改为列表优先、底部按需详情。
 - 新增 `runtime_state.log_detail_open`，使自动选中日志行不会自动打开详情。
@@ -39,7 +46,7 @@
 ### Generated outputs and documentation
 
 - 重新生成 Web、QML、runtime contract、distribution 和 snapshots。
-- 刷新 runtime logs、server logging、status matrix、CHANGELOG 和本日报告。
+- 刷新 runtime logs、server logging、design guide、status matrix、CHANGELOG 和本日报告。
 - 重新导出当天 brief user history 与完整 Codex conversation export。
 
 ## Verification
@@ -86,7 +93,8 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-05-06-codex-session
 
 ## Remaining Work
 
-- Logs 详情模式后续可做用户偏好项，例如 `Collapsed / Bottom / Side`。
+- Logs 列显示和详情模式后续可继续做成 settings 持久化项，例如 `Collapsed / Bottom / Side`
+  或按用户保存列集。
 - Web 和 QML Logs 仍缺少真实交互级 UI automation；当前主要依靠 generator snapshots
   和 pipeline coverage。
 - server persistence 后续仍需要 settings/tool/parameter store，但这不属于本次 Logs UI

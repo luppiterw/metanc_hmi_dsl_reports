@@ -17,6 +17,8 @@ flowchart LR
         F[full-width log table]
         G[bottom detail panel]
         H[runtime_state.log_detail_open]
+        H1[visible columns and wrap state]
+        H2[interactive toolbar feedback]
     end
 
     subgraph QML["Generated QML Client"]
@@ -41,6 +43,8 @@ flowchart LR
     A --> I
     A --> H
     A --> K
+    A --> H1
+    A --> H2
     B --> F
     B --> I
     C --> O
@@ -56,5 +60,6 @@ flowchart LR
 ```
 
 The runtime log store remains server-owned. Generated clients keep only a bounded
-recent window and expose details as a local view concern, so the UI layout change
-does not alter the REST/WebSocket log contract.
+recent window and expose details, column visibility, message wrapping, and
+toolbar interaction states as local view concerns, so the UI layout changes do
+not alter the REST/WebSocket log contract.

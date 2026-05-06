@@ -5,7 +5,9 @@
 本次会话围绕 `metanc_hmi_dsl` 的当前生成成果继续推进。先确认把 native C++ 最低标准
 降到 C++17 是否有影响，随后完成 C++17 build floor、docs/bookshelf、MetaNC 同步和
 push。接着检查 Logs 页右侧详情常驻的问题，决定采用“全宽表格 + 底部按需详情”的
-布局，并在 Web/QML 生成端实现。
+布局，并在 Web/QML 生成端实现。随后继续处理 Logs 列显示能力：默认保留高价值扫读列，
+把低频字段放到可选列中，并让 `Message` 成为主要宽度列；最后补齐 Web Logs 工具按钮、
+筛选控件和 More 面板控件的 hover/click/focus 反馈。
 
 最后根据用户要求刷新今天的 report、关联文档、生成产物，并准备按 reports submodule、
 source repo、MetaNC downstream 的顺序提交和推送。
@@ -21,6 +23,9 @@ source repo、MetaNC downstream 的顺序提交和推送。
   `runtime_state.log_detail_open` 控制，避免自动选中最新日志导致详情自动展开。
 - Web 和 QML 的 Logs 交互保持一致：点击行打开底部详情，`Close` 收起，`Copy` 复制
   当前日志。
+- Web Logs 默认列为 `Time / Level / Source / Event / Message`；低频字段通过 More
+  面板显示，长 message 可切换 wrap。
+- Logs 操作控件必须显式表达 hover、pressed 和 keyboard focus，不能像静态 label。
 
 ## Commands And Evidence
 
@@ -55,5 +60,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-05-06-codex-session
 ## Follow-up
 
 - 给 Logs 页补 browser-level 行点击和详情收起 smoke。
+- 给 Logs visible-column popover 补 browser-level smoke，包括 column toggle、wrap
+  toggle、reset 和外部点击关闭。
 - 后续设置页可以加入 Logs detail mode，但第一版先保持默认 bottom detail。
 - 如果真实现场日志列更多，应继续把低频字段放进详情面板，而不是恢复常驻右侧详情。

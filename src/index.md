@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-05-06` | Top status bar server-connection chip, Web/QML runtime state alignment, data dictionary refresh, generated output refresh, and MetaNC sync |
+| `2026-05-06` | C++17 native build floor, bookshelf docs portal, top server-connection chip, icon-only Return softkeys, Logs full-width/bottom-detail layout, Web Logs visible-column/message-wrap controls, interactive Logs toolbar feedback, generated output refresh, and MetaNC sync |
 | `2026-05-05` | WebSocket subscription conformance, server simulator program workspace mutations, server API/runtime tests, and MetaNC sync |
 | `2026-05-04` | Session bootstrap and Codex user-history export tooling |
 | `2026-05-03` | Server-driven footer notices, explicit runtime log query boundary, operator-notice WebSocket subscription, alarm-state boundary, server API living docs, LOGS recent-view cap decision, docs portal API navigation, final artifact refresh, and MetaNC sync |

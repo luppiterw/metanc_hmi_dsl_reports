@@ -17,12 +17,19 @@ flowchart TD
     M --> N[Open bottom detail only after row click]
     N --> O[Add runtime_state.log_detail_open]
     O --> P[Update Web and QML generators]
+    K --> K1{Message column loses scan priority?}
+    K1 -->|yes| K2[Add Web visible-column controls]
+    K2 --> K3[Add message wrap and reset controls]
+    K --> K4{Controls look static?}
+    K4 -->|yes| K5[Add hover pressed focus states]
 
     D --> Q[Regenerate Web/QML/distribution]
     G --> Q
     I --> Q
     J --> Q
     P --> Q
+    K3 --> Q
+    K5 --> Q
     Q --> R[Run pipeline tests and diff checks]
     R --> S[Refresh report and docs]
     S --> T[Commit reports submodule]
@@ -33,5 +40,6 @@ flowchart TD
 ```
 
 The key UI rule from this slice is list-first diagnostics: Logs should preserve
-horizontal scan space by default, and detailed payload inspection should be an
-explicit row action.
+horizontal scan space by default, `Message` should remain the dominant scan
+column, low-frequency fields should be opt-in, and every clickable Logs control
+should visibly respond to hover, press, and focus.

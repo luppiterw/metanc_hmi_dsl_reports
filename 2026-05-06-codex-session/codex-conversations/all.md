@@ -7,7 +7,7 @@
 - Started: `2026-05-01 20:09:10 +0800`
 - CWD: `/home/i5/workspace/ccmix-wp`
 - Source file: `/home/i5/.codex/sessions/2026/05/01/rollout-2026-05-01T20-09-10-019de371-5d2b-7313-8dae-e9e7b331be8b.jsonl`
-- Messages: `30`
+- Messages: `37`
 - User prompts: `4`
 - Synthetic events: `0`
 
@@ -323,4 +323,53 @@ update report & docs + sync MetaNC + commit + push
 
 ```
 完整测试通过：`86 tests OK, skipped=1`。我现在再导出一次今天的 report 并重建最终 docs portal，然后开始分仓库提交。
+```
+
+### Codex Response 6 / commentary
+`2026-05-06 21:27:36 +0800`
+
+```
+reports submodule 是正常的 detached HEAD，当前 HEAD 对应 `origin/main`。我会在这个 detached HEAD 上提交 report 更新，并用 `HEAD:main` 推到 reports 远端，再让父仓库记录新的 submodule 指针。
+```
+
+### Codex Response 7 / commentary
+`2026-05-06 21:28:56 +0800`
+
+```
+reports submodule 已提交并 push 到 `main`。现在提交 `metanc_hmi_dsl` 本体，包括 QML LOGS 实现、关联文档、测试断言和新的 submodule 指针。
+```
+
+### Codex Response 8 / commentary
+`2026-05-06 21:30:55 +0800`
+
+```
+`metanc_hmi_dsl` 已提交并 push：`cb731d8 feat: align QML diagnostics logs controls`。现在导出同步到 `MetaNC/nrt/hmi`，再跑下游文档构建检查和提交 push。
+```
+
+### Codex Response 9 / commentary
+`2026-05-06 21:31:43 +0800`
+
+```
+下游同步结果只包含 `nrt/hmi` 里的源代码、英文文档和测试快照；`docs_i18n`、reports、source-only tooling 没有进入 MetaNC，这是预期边界。现在在 MetaNC 里重建 docs 并跑同步后的测试。
+```
+
+### Codex Response 10 / commentary
+`2026-05-06 21:34:05 +0800`
+
+```
+MetaNC 同步后的 docs build 正常，但 downstream 测试暴露了一个旧测试边界问题：`test_docs_portal` 仍硬性期待 reports 出现在 bookshelf，而 MetaNC 里 reports 本来就不允许出现。我要回到 source 修这个测试，让它按是否存在 reports source 判断预期，然后重新测试、提交、同步。
+```
+
+### Codex Response 11 / commentary
+`2026-05-06 21:37:03 +0800`
+
+```
+我修了这个测试边界：source 有 reports 时继续断言 report 出现；downstream 没有 reports source 时反而断言 bookshelf 不含 report。现在再跑 source 完整测试，然后重新刷新 report 和父仓库提交。
+```
+
+### Codex Response 12 / commentary
+`2026-05-06 21:39:10 +0800`
+
+```
+source 完整测试再次通过。现在刷新 report/docs_html，提交 reports 的增量，然后把测试边界修复提交到 `metanc_hmi_dsl`。
 ```

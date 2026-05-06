@@ -5,7 +5,8 @@
 2026-05-06 的工作覆盖 native build baseline、docs/report 发布链、Web/QML shell
 交互和 Diagnostics Logs 视图。目标是让当前 HMI DSL 包在本地和 MetaNC 镜像中都保持
 可生成、可构建、可阅读，并修正日志页面右侧详情常驻造成的横向空间浪费、日志列比例
-不合理、以及 Web Logs 操作控件缺少交互反馈的问题。
+不合理、Web Logs 操作控件缺少交互反馈，以及 Logs `Export JSONL` 只复制到剪贴板而
+不符合文件导出预期的问题。
 
 ## Completed Work
 
@@ -43,6 +44,17 @@
 - 新增 `runtime_state.log_detail_open`，使自动选中日志行不会自动打开详情。
 - log refresh/reset/clear 会关闭详情，避免旧详情残留。
 
+### Diagnostics Logs export
+
+- Web `Export JSONL` 改为文件保存行为：优先使用浏览器 `showSaveFilePicker`，不支持
+  或被取消时回退到下载 `.jsonl` 文件。
+- Web 可见表格 fallback 不再宣称复制到剪贴板，而是准备并下载可保存的 JSONL 内容。
+- QML 通过 `ProgramWorkspaceBackend` 增加 Qt `QFileDialog` 文件保存能力，将 JSONL
+  写入用户选择的路径。
+- QML 生成 target 从 `QGuiApplication` 切换到 `QApplication` 并链接 `Qt6::Widgets`，
+  用于 native save-file dialog。
+- QML 只有在保存失败时才回退到剪贴板，并给出明确的 fallback notice。
+
 ### Generated outputs and documentation
 
 - 重新生成 Web、QML、runtime contract、distribution 和 snapshots。
@@ -74,7 +86,7 @@ env HMI_SKIP_HEAVY_SNAPSHOT_TESTS=1 python3 -m unittest tests/test_pipeline.py -
 git diff --check
 ```
 
-报告和 docs portal 发布链会在本轮提交前继续构建：
+报告和 docs portal 发布链已执行并通过：
 
 ```text
 mdbook build submodules/metanc_hmi_dsl_reports
@@ -97,5 +109,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-05-06-codex-session
   或按用户保存列集。
 - Web 和 QML Logs 仍缺少真实交互级 UI automation；当前主要依靠 generator snapshots
   和 pipeline coverage。
+- QML save-file dialog 依赖 native Widgets dialog；headless/offscreen probe 只验证应用
+  可启动，不能替代人工点击导出路径。
 - server persistence 后续仍需要 settings/tool/parameter store，但这不属于本次 Logs UI
   布局调整范围。

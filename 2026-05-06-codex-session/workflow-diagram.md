@@ -22,6 +22,9 @@ flowchart TD
     K2 --> K3[Add message wrap and reset controls]
     K --> K4{Controls look static?}
     K4 -->|yes| K5[Add hover pressed focus states]
+    K --> K6{Export JSONL only copies?}
+    K6 -->|yes| K7[Web save picker and download fallback]
+    K6 --> K8[QML QFileDialog save path]
 
     D --> Q[Regenerate Web/QML/distribution]
     G --> Q
@@ -30,6 +33,8 @@ flowchart TD
     P --> Q
     K3 --> Q
     K5 --> Q
+    K7 --> Q
+    K8 --> Q
     Q --> R[Run pipeline tests and diff checks]
     R --> S[Refresh report and docs]
     S --> T[Commit reports submodule]
@@ -42,4 +47,6 @@ flowchart TD
 The key UI rule from this slice is list-first diagnostics: Logs should preserve
 horizontal scan space by default, `Message` should remain the dominant scan
 column, low-frequency fields should be opt-in, and every clickable Logs control
-should visibly respond to hover, press, and focus.
+should visibly respond to hover, press, and focus. JSONL export is treated as a
+file export command: Web uses the browser save/download path, while QML uses a
+native save-file dialog with clipboard fallback only after write failure.

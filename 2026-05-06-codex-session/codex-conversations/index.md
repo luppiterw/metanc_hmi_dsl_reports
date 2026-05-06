@@ -3,11 +3,11 @@
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `26`
+- User prompts: `30`
 - Synthetic events: `0`
-- Messages: `238`
-- User messages: `26`
-- Codex messages: `212`
+- Messages: `275`
+- User messages: `30`
+- Codex messages: `245`
 
 ## Sessions By Date
 
@@ -42,4 +42,8 @@
 | 2026-05-06 15:10:13 +0800 | 019dd1a3 | 23 | 先提交一版，sync MetaNC+push | 7 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-23) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-23) |
 | 2026-05-06 15:15:59 +0800 | 019dd1a3 | 24 | Logs列表需要做一些新功能，比如可以显示哪几列，而且目前默认的比例不太合适，一旦MESSAGE列内容很长，你现在的view就很奇怪，而且应该MESSAGE才是主要显示内容吧，你规划看一下 | 13 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-24) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-24) |
 | 2026-05-06 15:33:54 +0800 | 019dd1a3 | 25 | Logs页面的那些功能按钮什么的，都像静态按钮一样，没有hover/click效果，是不是不太好 | 8 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-25) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-25) |
-| 2026-05-06 15:40:45 +0800 | 019dd1a3 | 26 | update report & docs + sync MetaNC + commit + push | 4 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-26) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-26) |
+| 2026-05-06 15:40:45 +0800 | 019dd1a3 | 26 | update report & docs + sync MetaNC + commit + push | 11 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-26) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-26) |
+| 2026-05-06 15:53:36 +0800 | 019dd1a3 | 27 | 日志里有个Run Retention是什么功能 | 2 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-27) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-27) |
+| 2026-05-06 15:57:01 +0800 | 019dd1a3 | 28 | 现在Logs里的Export JSONL功能好像只是拷贝到剪切板，我希望是能够弹出对话框保存，能做吗 | 8 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-28) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-28) |
+| 2026-05-06 16:17:47 +0800 | 019dd1a3 | 29 | qml版本也改一下 | 8 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-29) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-29) |
+| 2026-05-06 16:33:13 +0800 | 019dd1a3 | 30 | update docs & reports + sync MetaNC + commit + push | 8 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-30) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-30) |

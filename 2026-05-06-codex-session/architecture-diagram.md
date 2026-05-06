@@ -19,12 +19,14 @@ flowchart LR
         H[runtime_state.log_detail_open]
         H1[visible columns and wrap state]
         H2[interactive toolbar feedback]
+        H3[save picker / download JSONL]
     end
 
     subgraph QML["Generated QML Client"]
         I[ListView log rows]
         J[bottom detail panel]
         K[runtime_state.log_detail_open]
+        K1[QFileDialog JSONL save]
     end
 
     subgraph Runtime["Runtime Server"]
@@ -45,6 +47,8 @@ flowchart LR
     A --> K
     A --> H1
     A --> H2
+    A --> H3
+    A --> K1
     B --> F
     B --> I
     C --> O
@@ -55,6 +59,8 @@ flowchart LR
     M --> I
     N --> F
     N --> I
+    N --> H3
+    N --> K1
     O --> P
     P --> Q
 ```
@@ -62,4 +68,6 @@ flowchart LR
 The runtime log store remains server-owned. Generated clients keep only a bounded
 recent window and expose details, column visibility, message wrapping, and
 toolbar interaction states as local view concerns, so the UI layout changes do
-not alter the REST/WebSocket log contract.
+not alter the REST/WebSocket log contract. JSONL export still comes from the
+same server-owned history when available; clients only decide how that payload is
+saved locally.

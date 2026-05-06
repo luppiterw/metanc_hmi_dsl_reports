@@ -28,3 +28,7 @@ Date: 2026-05-06
 - Logs列表需要做一些新功能，比如可以显示哪几列，而且目前默认的比例不太合适，一旦MESSAGE列内容很长，你现在的view就很奇怪，而且应该MESSAGE才是主要显示内容吧，你规划看一下
 - Logs页面的那些功能按钮什么的，都像静态按钮一样，没有hover/click效果，是不是不太好
 - update report &amp; docs + sync MetaNC + commit + push
+- 日志里有个Run Retention是什么功能
+- 现在Logs里的Export JSONL功能好像只是拷贝到剪切板，我希望是能够弹出对话框保存，能做吗
+- qml版本也改一下
+- update docs &amp; reports + sync MetaNC + commit + push

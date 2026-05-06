@@ -5,7 +5,8 @@ Focus:
 - Native C++17 build floor, bookshelf docs portal, top status bar
   server-connection chip, icon-only Return softkeys, Logs full-width table with
   bottom on-demand detail, Web Logs visible-column/message-wrap controls,
-  interactive Logs toolbar feedback, generated output refresh, and MetaNC sync
+  interactive Logs toolbar feedback, Web/QML JSONL file-save export, generated
+  output refresh, and MetaNC sync
 
 Session assets:
 

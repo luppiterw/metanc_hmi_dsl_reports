@@ -386,21 +386,21 @@ pre {
 <div class="time">2026-04-14 09:46:58 +0800</div>
 <pre>这次四项都已经落到最终产物里了。
 
-[examples/june-demo/ui.structure.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/ui.structure.yaml)、[examples/june-demo/interfaces.machine.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/interfaces.machine.yaml)、[tools/hmi_dsl/runtime_plan.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/runtime_plan.py) 现在补齐了参数和诊断数据结构：刀偏表、零偏表会显示并允许改值；用户参数页先用 `R` 变量表替代；`NC/PLC Vars` 的 `value` 列也能直接编辑；`Log History` 默认会带 mock 数据，并新增了 `Copy Selected`、`Export History`、`Clear History`。  
+[examples/june-demo/ui.structure.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/ui.structure.yaml)、[examples/june-demo/interfaces.machine.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/interfaces.machine.yaml)、[tools/hmi_dsl/runtime_plan.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/runtime_plan.py) 现在补齐了参数和诊断数据结构：刀偏表、零偏表会显示并允许改值；用户参数页先用 `R` 变量表替代；`NC/PLC Vars` 的 `value` 列也能直接编辑；`Log History` 默认会带 mock 数据，并新增了 `Copy Selected`、`Export History`、`Clear History`。
 [tools/hmi_dsl/generators/web.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/web.py) 和 [tools/hmi_dsl/generators/qml.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/generators/qml.py) 同步补了数据表可编辑交互、日志复制逻辑，以及本地状态选中行支持。操作面板里 `轴选择`、`WCS/MCS`、`+/-` 点动、`RAPID` 也已经恢复到最终生成物里，`FEED override` 和 `SPINDLE override` 都可见且可操作。
 
 最终产物已重刷：
-[generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)  
-[generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)  
-[generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)  
-[generated/distribution/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/web)  
+[generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)
+[generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)
+[generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)
+[generated/distribution/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/web)
 [generated/distribution/qml/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/qml/appCNC_HMI_June_Demo)
 
 已通过验证：
-`test_example_package_validates`  
-`test_generate_web_outputs_static_files`  
-`test_generate_qml_outputs_main_and_theme_store`  
-`test_generated_outputs_match_snapshots`  
+`test_example_package_validates`
+`test_generate_web_outputs_static_files`
+`test_generate_qml_outputs_main_and_theme_store`
+`test_generated_outputs_match_snapshots`
 `test_qml_offscreen_snapshot_matches_baseline`
 
 没跑浏览器视觉快照。</pre>
@@ -464,17 +464,17 @@ pre {
 表格这次也重新整理了：刀偏表、零偏表、用户参数、NC/PLC Vars 都扩了行数和列宽，补了更多 mock 数据，避免数值被折叠；刀偏/零偏/变量值现在都能直接点单元格编辑。数据种子在 [tools/hmi_dsl/runtime_plan.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/runtime_plan.py) 里扩成了更接近实际模块的内容，像 `Tool Name`、`G54-G59`、更多 `NC/PLC` 变量和 `R` 变量都已经加上。
 
 最终产物已经重刷：
-[generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)  
-[generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)  
-[generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)  
-[generated/distribution/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/web)  
+[generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)
+[generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)
+[generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)
+[generated/distribution/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/web)
 [generated/distribution/qml/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/qml/appCNC_HMI_June_Demo)
 
 验证已过：
-`test_example_package_validates`  
-`test_generate_web_outputs_static_files`  
-`test_generate_qml_outputs_main_and_theme_store`  
-`test_generated_outputs_match_snapshots`  
+`test_example_package_validates`
+`test_generate_web_outputs_static_files`
+`test_generate_qml_outputs_main_and_theme_store`
+`test_generated_outputs_match_snapshots`
 `test_qml_offscreen_snapshot_matches_baseline`
 
 没跑浏览器视觉快照。</pre>
@@ -536,17 +536,17 @@ pre {
 急停也补成可操作 mock 了。我新增了 `cnc.commands.estop_toggle`，接口定义在 [examples/june-demo/interfaces.machine.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/interfaces.machine.yaml)。现在点击急停会切换 `io.estop` 状态，并联动停止执行、关掉 feed/spindle、更新状态提示；解除急停后会恢复为复位状态。Web/QML 两端都加了急停激活态视觉。
 
 最终产物已重刷：
-[generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)  
-[generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)  
-[generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)  
-[generated/distribution/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/web)  
+[generated/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/web)
+[generated/qml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml)
+[generated/qml-final](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final)
+[generated/distribution/web](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/web)
 [generated/distribution/qml/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/qml/appCNC_HMI_June_Demo)
 
 验证已过：
-`test_example_package_validates`  
-`test_generate_web_outputs_static_files`  
-`test_generate_qml_outputs_main_and_theme_store`  
-`test_generated_outputs_match_snapshots`  
+`test_example_package_validates`
+`test_generate_web_outputs_static_files`
+`test_generate_qml_outputs_main_and_theme_store`
+`test_generated_outputs_match_snapshots`
 `test_qml_offscreen_snapshot_matches_baseline`
 
 没跑浏览器视觉快照。</pre>
@@ -1347,7 +1347,7 @@ mock/runtime 这块，我把 seed 构造从 [runtime_plan.py](/home/iaar/workspa
 - `generated/qml-final/appCNC_HMI_June_Demo` 和 `generated/distribution/qml/appCNC_HMI_June_Demo` 一致
 - `generated/qml/program-root` 和 distribution 里的两份 `program-root` 一致
 
-也就是说，以后只要跑 `./tools/generate_targets.sh` 并成功退出，这几个目录就不会再处于不一致状态。刚才我已经完整跑过一遍，校验通过。  
+也就是说，以后只要跑 `./tools/generate_targets.sh` 并成功退出，这几个目录就不会再处于不一致状态。刚才我已经完整跑过一遍，校验通过。
 构建过程中仍有 Qt 的 `qmlimportscanner`/`XKB` 警告，但没有阻断生成或打包。</pre>
 </article>
 
@@ -1784,7 +1784,7 @@ python -m pip install -U pip pyyaml pytest
 generated/distribution/run_qml.sh
 ```
 
-正常应当能看到 `generated/distribution/qml/program-root` 下的程序了。  
+正常应当能看到 `generated/distribution/qml/program-root` 下的程序了。
 如果你愿意，我下一步可以把这 3 个修复直接提交推送。</pre>
 </article>
 <article class="msg user">
@@ -1917,7 +1917,7 @@ generated/distribution/run_qml.sh
 generated/distribution/run_qml.sh
 ```
 
-如果你之前程序还开着，先彻底退出后再重开一次。  
+如果你之前程序还开着，先彻底退出后再重开一次。
 重开后去程序页，应该能看到 `INDEX_TABLE.MPF`、`LOOP.MPF` 这些文件。
 
 如果这次 QML 已经正常，我下一步就转去修你提到的 Web 问题：程序选择、软面板显示、`cycle stop` 和布局对齐 QML。</pre>
@@ -1932,7 +1932,7 @@ generated/distribution/run_qml.sh
 <div class="time">2026-04-14 16:05:10 +0800</div>
 <pre>我先把两类问题拆开查：
 1. `run_web.sh` 端口复用和重启问题。
-2. Web 版本相对 QML 的行为偏差：程序选择、软面板、`cycle stop` 和布局。  
+2. Web 版本相对 QML 的行为偏差：程序选择、软面板、`cycle stop` 和布局。
 我会直接对照 Web/QML 生成器和打包脚本，把能复现的差异收敛到具体实现点再改。</pre>
 </article>
 <article class="msg assistant">
@@ -1940,7 +1940,7 @@ generated/distribution/run_qml.sh
 <div class="time">2026-04-14 16:05:37 +0800</div>
 <pre>我继续收敛 Web 侧根因，重点先看两条高概率链路：
 - Web 的程序浏览是否也被“持久化的旧浏览目录”卡住，导致列表空或无法选择。
-- `cycle stop` 之后为什么会被自动恢复。  
+- `cycle stop` 之后为什么会被自动恢复。
 这两条都可能和 Web runtime 的状态机有关，不一定只是渲染层。</pre>
 </article>
 <article class="msg assistant">
@@ -2308,7 +2308,7 @@ START
 generated/distribution/run_web.sh
 ```
 
-这次 `spindle_override_gauge` / `feed_override_gauge` 的 render fallback 应该就没有了。  
+这次 `spindle_override_gauge` / `feed_override_gauge` 的 render fallback 应该就没有了。
 `SPINDLE START` 现在看到的只是按钮文字换行，不是异常；如果你觉得这个视觉也要继续收，我下一轮就专门修操作面板按钮的排版。</pre>
 </article>
 <article class="msg user">
@@ -2444,25 +2444,25 @@ git pull
 <article class="msg assistant">
 <h2>145. Codex / commentary</h2>
 <div class="time">2026-04-14 17:05:04 +0800</div>
-<pre>`claude` 这一个额外提交本身看起来是正向修复，不像会回退现有主线行为：QML 资源路径修正、首帧 `revision` 刷新、以及几处正则写法清理。  
+<pre>`claude` 这一个额外提交本身看起来是正向修复，不像会回退现有主线行为：QML 资源路径修正、首帧 `revision` 刷新、以及几处正则写法清理。
 我再确认一下它和当前 `main` 的祖先关系；如果是纯前进关系，我就直接快进合并并跑一轮关键验证。</pre>
 </article>
 <article class="msg assistant">
 <h2>146. Codex / commentary</h2>
 <div class="time">2026-04-14 17:05:15 +0800</div>
-<pre>分支关系确认了：`origin/claude` 是在当前 `main` 之上再多一个提交，不会把主线拉回旧状态。  
+<pre>分支关系确认了：`origin/claude` 是在当前 `main` 之上再多一个提交，不会把主线拉回旧状态。
 我现在按 `--ff-only` 快进合并，然后直接跑关键生成/快照验证，确认这几个修复不会把现有产物带偏。</pre>
 </article>
 <article class="msg assistant">
 <h2>147. Codex / commentary</h2>
 <div class="time">2026-04-14 17:06:14 +0800</div>
-<pre>关键单测已经过了，完整目标重建也在继续。  
+<pre>关键单测已经过了，完整目标重建也在继续。
 如果这轮 `generate_targets` 正常结束，就说明 `claude` 的改动没有破坏现有主线，反而把 QML 资源路径和首帧显示这种隐藏问题一并补上了。</pre>
 </article>
 <article class="msg assistant">
 <h2>148. Codex / commentary</h2>
 <div class="time">2026-04-14 17:06:28 +0800</div>
-<pre>验证已经通过：`claude` 这组改动没有冲掉当前内容。  
+<pre>验证已经通过：`claude` 这组改动没有冲掉当前内容。
 结论也比较明确，它修的是隐藏正确性问题，不是风格性分叉，所以我会把快进后的 `main` 推到远端。</pre>
 </article>
 <article class="msg assistant">
@@ -2518,13 +2518,13 @@ qrc:/qt/qml/GeneratedHmi/Main.qml: No such file or directory</pre>
 <article class="msg assistant">
 <h2>153. Codex / commentary</h2>
 <div class="time">2026-04-14 17:08:09 +0800</div>
-<pre>`qmake_GeneratedHmi.qrc` 和 `qmldir` 都已经证明资源前缀是 `:/GeneratedHmi/`。也就是说这次 `claude` 的路径修改是明确错误，不是兼容分支差异。  
+<pre>`qmake_GeneratedHmi.qrc` 和 `qmldir` 都已经证明资源前缀是 `:/GeneratedHmi/`。也就是说这次 `claude` 的路径修改是明确错误，不是兼容分支差异。
 我先等这条 QML offscreen 测试跑完，再把生成器和快照一起修正。</pre>
 </article>
 <article class="msg assistant">
 <h2>154. Codex / commentary</h2>
 <div class="time">2026-04-14 17:08:25 +0800</div>
-<pre>问题已经坐实了，而且连现有的 `test_qml_offscreen_snapshot_matches_baseline` 都能复现，所以这是一个直接把 `main` 弄坏的回归。  
+<pre>问题已经坐实了，而且连现有的 `test_qml_offscreen_snapshot_matches_baseline` 都能复现，所以这是一个直接把 `main` 弄坏的回归。
 我现在先把 QML 入口路径修回去，保留 `claude` 里其余有价值的修复，然后重跑运行级测试和生成链，确认 `run_qml.sh` 恢复。</pre>
 </article>
 <article class="msg assistant">
@@ -2545,7 +2545,7 @@ qrc:/qt/qml/GeneratedHmi/Main.qml: No such file or directory</pre>
 <article class="msg assistant">
 <h2>158. Codex / commentary</h2>
 <div class="time">2026-04-14 17:09:41 +0800</div>
-<pre>分发包启动脚本也复测了，`timeout 5s` 只是按预期超时退出，没有再出现 `QQmlApplicationEngine failed to load component`。  
+<pre>分发包启动脚本也复测了，`timeout 5s` 只是按预期超时退出，没有再出现 `QQmlApplicationEngine failed to load component`。
 我现在把这个回归修复直接提交并推回 `main`，避免别人继续拉到坏的 QML 入口。</pre>
 </article>
 <article class="msg assistant">
@@ -2760,7 +2760,7 @@ Main { }
 <article class="msg assistant">
 <h2>181. Codex / commentary</h2>
 <div class="time">2026-04-14 17:26:59 +0800</div>
-<pre>当前主线里表格这块本身已经做了防重叠处理：Web 侧是 `colgroup + 指定列宽 + cell ellipsis + scroll 容器`，不是裸表格；所以你在“其他 AI 那边”看到的重叠，更像是它停在旧提交、没跑 `generate_targets`，或者没带上后续的布局修复。  
+<pre>当前主线里表格这块本身已经做了防重叠处理：Web 侧是 `colgroup + 指定列宽 + cell ellipsis + scroll 容器`，不是裸表格；所以你在“其他 AI 那边”看到的重叠，更像是它停在旧提交、没跑 `generate_targets`，或者没带上后续的布局修复。
 我把当前实现的关键点再核一眼，然后给你一个明确判断。</pre>
 </article>
 <article class="msg assistant">
@@ -2794,7 +2794,7 @@ Main { }
   - [ui.structure.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/ui.structure.yaml:1540)
   - [ui.structure.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/ui.structure.yaml:1600)
 
-我的判断是：你在“其他 AI 那边”看到的表格内容重叠，基本不是当前 `main` 的状态，更像是旧分支/旧产物。  
+我的判断是：你在“其他 AI 那边”看到的表格内容重叠，基本不是当前 `main` 的状态，更像是旧分支/旧产物。
 要对齐到现在这版，最小动作就是：
 
 ```bash
@@ -2822,25 +2822,25 @@ git pull
 <article class="msg assistant">
 <h2>186. Codex / commentary</h2>
 <div class="time">2026-04-15 08:24:50 +0800</div>
-<pre>`claude` 现在比 `main` 多 1 个新提交，范围很小，只动了 QML 表格发射器和对应快照，目标正好是修你之前提到的列重叠。  
+<pre>`claude` 现在比 `main` 多 1 个新提交，范围很小，只动了 QML 表格发射器和对应快照，目标正好是修你之前提到的列重叠。
 我先看具体实现，再决定是否快进合并。</pre>
 </article>
 <article class="msg assistant">
 <h2>187. Codex / commentary</h2>
 <div class="time">2026-04-15 08:24:58 +0800</div>
-<pre>实现方向没问题：它只是让 QML 表格最后一列吃剩余宽度，其他显式宽度列增加 `minimumWidth`，这正是解决“列挤压后文字互相压住”的办法，不会影响当前 Web/QML 功能链。  
+<pre>实现方向没问题：它只是让 QML 表格最后一列吃剩余宽度，其他显式宽度列增加 `minimumWidth`，这正是解决“列挤压后文字互相压住”的办法，不会影响当前 Web/QML 功能链。
 我直接快进合并，然后跑 QML 相关验证和整套目标重建。</pre>
 </article>
 <article class="msg assistant">
 <h2>188. Codex / commentary</h2>
 <div class="time">2026-04-15 08:25:46 +0800</div>
-<pre>合并已经完成，现在在跑两条关键验证：QML offscreen 真启动测试，以及完整 `generate_targets`。  
+<pre>合并已经完成，现在在跑两条关键验证：QML offscreen 真启动测试，以及完整 `generate_targets`。
 如果这两条都过，就说明 `claude` 这次的表格修复可以安全落主线。</pre>
 </article>
 <article class="msg assistant">
 <h2>189. Codex / commentary</h2>
 <div class="time">2026-04-15 08:25:54 +0800</div>
-<pre>验证已经过了，`claude` 这次的 QML 表格修复没有引入回归。  
+<pre>验证已经过了，`claude` 这次的 QML 表格修复没有引入回归。
 我现在把快进后的 `main` 推到远端。</pre>
 </article>
 <article class="msg assistant">
@@ -2884,13 +2884,13 @@ git pull
 <article class="msg assistant">
 <h2>194. Codex / commentary</h2>
 <div class="time">2026-04-15 08:59:51 +0800</div>
-<pre>这次 `claude` 又多了 1 个很针对性的 QML 表格修复，说明它是在继续补昨天那条防重叠修复的遗漏。  
+<pre>这次 `claude` 又多了 1 个很针对性的 QML 表格修复，说明它是在继续补昨天那条防重叠修复的遗漏。
 我先看具体实现，确认它不是引入新的滚动或裁切副作用。</pre>
 </article>
 <article class="msg assistant">
 <h2>195. Codex / commentary</h2>
 <div class="time">2026-04-15 08:59:59 +0800</div>
-<pre>实现确认没问题：它修的是 `ScrollView` 内层 `parent.availableWidth` 在这里其实是 `undefined` 的真实 bug，所以之前列都可能塌到 `x=0`。这次把它改成 `contentWidth: availableWidth` + 内层 `width: parent.width`，方向是正确的。  
+<pre>实现确认没问题：它修的是 `ScrollView` 内层 `parent.availableWidth` 在这里其实是 `undefined` 的真实 bug，所以之前列都可能塌到 `x=0`。这次把它改成 `contentWidth: availableWidth` + 内层 `width: parent.width`，方向是正确的。
 我现在把快进后的 `main` 推到远端，这样你拉下来重建就能拿到最新最终产物。</pre>
 </article>
 <article class="msg assistant">
@@ -2937,13 +2937,13 @@ git pull
 <article class="msg assistant">
 <h2>200. Codex / commentary</h2>
 <div class="time">2026-04-15 09:14:25 +0800</div>
-<pre>这次 `claude` 还是只多了一个很小的 QML 表格修复提交，范围只在 `qml_widget_emitters.py` 和 QML 快照，看起来是在补真实的列塌陷 bug。  
+<pre>这次 `claude` 还是只多了一个很小的 QML 表格修复提交，范围只在 `qml_widget_emitters.py` 和 QML 快照，看起来是在补真实的列塌陷 bug。
 我再确认分支关系；如果 `main` 还没包含它，就快进合并。</pre>
 </article>
 <article class="msg assistant">
 <h2>201. Codex / commentary</h2>
 <div class="time">2026-04-15 09:14:34 +0800</div>
-<pre>分支关系确认了：`origin/claude` 在当前 `main` 之上多一个提交，主线还没包含它。  
+<pre>分支关系确认了：`origin/claude` 在当前 `main` 之上多一个提交，主线还没包含它。
 我直接快进合并，再跑一轮 QML 相关关键验证，确认没有回归。</pre>
 </article>
 <article class="msg assistant">
@@ -3028,7 +3028,7 @@ git pull
 <div class="time">2026-04-15 09:29:09 +0800</div>
 <pre>是，两个判断都成立。
 
-`1.` `CHANGELOG.md` 现在确实没有单独的 `2026-04-12` 和 `2026-04-13` 条目。  
+`1.` `CHANGELOG.md` 现在确实没有单独的 `2026-04-12` 和 `2026-04-13` 条目。
 当前只有：
 - `2026-04-14`
 - `2026-04-11`
@@ -3123,7 +3123,7 @@ generated/distribution/run_web.sh
 <article class="msg assistant">
 <h2>218. Codex / commentary</h2>
 <div class="time">2026-04-15 09:32:29 +0800</div>
-<pre>docs portal 本身已经重建成功了；额外的 `tests.test_docs_portal` 失败不是这次文档内容错误，而是 `mdbook` 在清理仓库内已有 `story-docs/.../build_html/fonts` 时撞上了目录非空，这更像测试环境里的陈旧输出处理问题。  
+<pre>docs portal 本身已经重建成功了；额外的 `tests.test_docs_portal` 失败不是这次文档内容错误，而是 `mdbook` 在清理仓库内已有 `story-docs/.../build_html/fonts` 时撞上了目录非空，这更像测试环境里的陈旧输出处理问题。
 我先核一下工作区状态，把新文档一并纳入，然后提交推送。</pre>
 </article>
 <article class="msg assistant">
@@ -3187,7 +3187,7 @@ generated/distribution/run_web.sh
 - 根目录 `run_qml.sh`：给仓库开发者本地直接启动最新生成的 QML 可执行文件
 - `generated/distribution/run_qml.sh`：给最终分发包使用，入口在分发目录内部，自包含语义更强
 
-所以它不是没用，只是现在更像“开发便捷脚本”，不是最终交付入口。  
+所以它不是没用，只是现在更像“开发便捷脚本”，不是最终交付入口。
 如果你想收口，我建议后面可以明确保留一种策略：
 
 - 要么保留它，并在文档里写清楚“开发态入口”
@@ -3213,7 +3213,7 @@ generated/distribution/run_web.sh
 <article class="msg assistant">
 <h2>227. Codex / commentary</h2>
 <div class="time">2026-04-15 10:04:06 +0800</div>
-<pre>我已经把所有直接写死 `reports/` 的位置扫出来了，量不小，说明这次必须连同文档入口、docs portal、测试和 CI 一起改。  
+<pre>我已经把所有直接写死 `reports/` 的位置扫出来了，量不小，说明这次必须连同文档入口、docs portal、测试和 CI 一起改。
 现在就等新仓库探测结果；如果仓库可达，我就开始把现有报告内容迁进去。</pre>
 </article>
 <article class="msg assistant">
@@ -4154,12 +4154,12 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 - 真正会参与构建的是 [docs/src/index.md](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs/src/index.md:1)
 - 根下这个 `docs/index.md` 只是给人看目录说明，不会进 `docs_html`
 
-所以它现在属于“解释型文件”，不是构建必需文件。  
+所以它现在属于“解释型文件”，不是构建必需文件。
 如果你的目标是让 `docs/` 结构更干净，我建议删掉它，保留：
 - `docs/book.toml`
 - `docs/src/`
 
-这会更符合标准 mdBook 目录心智模型。  
+这会更符合标准 mdBook 目录心智模型。
 如果你要，我下一步就把它删掉，再顺手检查有没有文档引用它。</pre>
 </article>
 <article class="msg user">
@@ -4250,7 +4250,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <div class="time">2026-04-15 11:21:59 +0800</div>
 <pre>对，这里现在有两个你指出的问题，而且判断是对的。
 
-1. `docs/src/reference/docs/` 这个层级不合理  
+1. `docs/src/reference/docs/` 这个层级不合理
 它本质上是在“reference 区里再镜像一份旧仓库里的 `docs/` 目录名”，所以看起来像：
 
 - `docs/src/reference/agent.md`
@@ -4259,12 +4259,12 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 
 这其实是我为了尽量保持原来 `docs_html/reference/...` 的 URL 结构，直接把旧 portal 的分层搬过来了。能用，但目录语义不够干净。
 
-2. `reference/agent.md` 和 `reference/changelog.md` 确实就是根目录那两个文件的 portal 副本  
+2. `reference/agent.md` 和 `reference/changelog.md` 确实就是根目录那两个文件的 portal 副本
 它们不是新的独立文档，来源就是：
 - 根目录 `AGENT.md`
 - 根目录 `CHANGELOG.md`
 
-同理 `reference/repository-readme.md` 也是 `README.md` 的 portal 副本。  
+同理 `reference/repository-readme.md` 也是 `README.md` 的 portal 副本。
 现在这几份副本是由 [tools/hmi_dsl/docs_portal.py](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/hmi_dsl/docs_portal.py:1) 在构建前写进 `docs/src/` 的。
 
 更合理的结构应该是收成两类，不要再出现 `reference/docs` 这种名字：
@@ -4472,7 +4472,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <article class="msg assistant">
 <h2>382. Codex / commentary</h2>
 <div class="time">2026-04-15 11:32:47 +0800</div>
-<pre>根因已经抓到了：`SUMMARY.md` 把根目录文档当成了书内章节，mdBook 顺着 `../README.md` 之类的相对路径，把它们编进了书，输出时就越级吐到了仓库根目录。  
+<pre>根因已经抓到了：`SUMMARY.md` 把根目录文档当成了书内章节，mdBook 顺着 `../README.md` 之类的相对路径，把它们编进了书，输出时就越级吐到了仓库根目录。
 我先确认 `SUMMARY.md` 现在是不是已经修掉了；如果还留着，我直接清理并重建。</pre>
 </article>
 <article class="msg assistant">
@@ -4748,7 +4748,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <article class="msg assistant">
 <h2>407. Codex / commentary</h2>
 <div class="time">2026-04-15 11:45:59 +0800</div>
-<pre>`git switch --orphan` 被当前未提交变更挡住了，这符合预期。  
+<pre>`git switch --orphan` 被当前未提交变更挡住了，这符合预期。
 我先把现在这份导出结果备份到 `/tmp`，再把 `MetaNC` 工作区恢复干净、重建 `feat/hmi` 为 orphan 分支，最后把同一份导出内容放回去。这样你看到的内容不变，只是历史形态变干净。</pre>
 </article>
 <article class="msg assistant">
@@ -4794,10 +4794,10 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 - `docs_html/`
 - `.gitmodules`
 
-这就是一个干净的“首次基线提交前”状态。  
+这就是一个干净的“首次基线提交前”状态。
 你先看，如果你确认可以，我下一步再帮你：
 
-1. 补一个导出脚本到当前主仓库，方便以后重复同步  
+1. 补一个导出脚本到当前主仓库，方便以后重复同步
 2. 在 `MetaNC/feat/hmi` 里提交并推送第一版</pre>
 </article>
 <article class="msg user">
@@ -4945,6 +4945,306 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 ```
 同步出去的内容里就不会再包含 `tools/export_to_metanc.sh` 了。</pre>
 </article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1>1.JOG模式按下-+他没有连续变化，我点一下才变一下，修改一下，保证连续性 2.MDA/AUTO模式下输值变化都是跳变，实际应该是通过电机编码器反馈产生的连续变化，修复一下 3.WCS/MCS切换...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d8435-ee70-7a03-8be2-c42be4e09818</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-04-13 08:20:20 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/codex-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/13/rollout-2026-04-13T08-20-20-019d8435-ee70-7a03-8be2-c42be4e09818.jsonl</code></div>
+<div><b>Messages</b>: <code>41</code></div>
+<div><b>User prompts</b>: <code>3</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-04-14 08:24:01 +0800</div>
+<pre>1.JOG模式按下-+他没有连续变化，我点一下才变一下，修改一下，保证连续性
+2.MDA/AUTO模式下输值变化都是跳变，实际应该是通过电机编码器反馈产生的连续变化，修复一下
+3.WCS/MCS切换，应该发生坐标值的变化，你自己虚拟一套，按照机床数控里的WCS/MCS切换一下
+4.我这边目前需要五个轴，X/Y/Z是直线轴，A/C是旋转轴，补充一下
+5.除了当前的LOOP事例，其他再多写几个，然后你的LOOP也不是循环执行，我记得有一些M代码是跳到程序开头循环执行的，你可以模拟一下
+6.多写几个事例程序，拷贝到最终的输出程序目录，方便我切换测试</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-04-14 08:24:18 +0800</div>
+<pre>我先检查当前运行时和主页/坐标结构，确认连续运动、坐标系切换和五轴显示现在各自卡在哪一层。然后我会直接把运行 mock、界面结构和示例程序一起补齐，并刷新最终产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-04-14 08:24:37 +0800</div>
+<pre>我先把 `JOG +/-` 的触发方式也一起看清楚，确认现在是不是单纯绑了 click。连续变化不仅是 runtime，要连按钮层一起改，不然底层有连续插补也不会被触发。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-04-14 08:25:02 +0800</div>
+<pre>我接下来会从三个层面一起改：
+1. 运行时增加“目标位置 + 实际位置”的连续收敛；
+2. 按钮层给 `JOG +/-` 增加按住重复；
+3. 五轴和多程序样例一起扩到 DSL、mock seed 和分发目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-04-14 08:27:02 +0800</div>
+<pre>我先把五轴和界面结构补齐，再落运行时连续运动。这样即使后面运行态还在调，五轴的显示、选择和样例程序已经先对齐了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-04-14 08:28:02 +0800</div>
+<pre>界面结构已经补到五轴和按住重复了。现在我补程序样例和循环程序，再去做运行时连续运动，这样你测试目录里会先有足够的程序可切。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-04-14 08:30:44 +0800</div>
+<pre>我开始改运行时核心了。这一轮会比较集中：先把 `qml` 的连续运动和五轴/WCS 逻辑收好，再镜像到 `web`，最后统一生成验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-04-14 08:36:15 +0800</div>
+<pre>我先把这轮改动收口并做验证，重点检查连续运动、五轴/WCS-MCS 派生，以及新程序是否进入最终产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-04-14 08:36:23 +0800</div>
+<pre>我先把 mock/runtime 里还没补齐的五轴与坐标系字段补完，再直接生成验证；如果这里不闭环，后面的连续运动和程序样例在 UI 里还是会缺一截。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-04-14 08:36:43 +0800</div>
+<pre>我把还缺的五轴 mock 流和 `offset_c` 类型补完，然后直接跑生成与测试。连续运动这块已经进 runtime 逻辑里了，接下来要靠实际生成结果确认没有语法和绑定问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-04-14 08:36:57 +0800</div>
+<pre>mock 层已经补齐。我现在直接跑校验、生成测试和整套产物构建，优先看这批 runtime 改动有没有把 Web/QML 生成打坏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-04-14 08:37:03 +0800</div>
+<pre>Web 生成没坏，失败是快测里还在断言旧的三轴静态字段。我要先更新这部分断言到新的五轴/派生坐标实现，再继续跑整套生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-04-14 08:37:16 +0800</div>
+<pre>静态断言已经改到新的五轴实现了。我继续跑生成测试和快照对比，先把代码与快照差异定位出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-04-14 08:37:20 +0800</div>
+<pre>生成脚本已经跑起来了，Web/QML 输出里能看到新程序样例已经进了 `generated/qml/program-root`。我等它跑完后会一起刷新快照，再做最终回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-04-14 08:37:49 +0800</div>
+<pre>文本快照肯定要刷新了，当前失败只是老快照还停在三轴版本。我先同步快照，再跑一次文本和离屏快照回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-04-14 08:37:57 +0800</div>
+<pre>离屏快照还在跑构建。我等这项结束，如果基线差异过大，再判断是不是需要连同基线一起刷新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-04-14 08:38:28 +0800</div>
+<pre>我再做一轮轻量自检，不只停留在生成成功。重点看 runtime 里五轴/WCS-MCS 和执行过程是不是按预期在变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-04-14 08:39:02 +0800</div>
+<pre>我顺手把一个会影响真实体验的点也补上：执行态的运动不能在 `feed_hold/reset` 后继续偷偷跑 target。这个不收，连续运动虽然有了，但控制语义还是不对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-04-14 08:40:25 +0800</div>
+<pre>我补了执行态运动的暂停条件和 reset 停止 target。现在再跑一轮生成和轻量自检，确认没有把连续运动链打断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-04-14 08:40:50 +0800</div>
+<pre>我做一轮 runtime 级自检，直接看坐标和执行块是否在时间轴上变化，而不是只看代码结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-04-14 08:41:13 +0800</div>
+<pre>runtime 自检结果是通的：`WCS/MCS` 切换会改显示坐标，`JOG A+` 会连续走到新位置，`AUTO` 在 1.4 秒后仍处于块内运动，坐标是渐进变化不是跳变。我现在只剩最后把快照同步到这版生成结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-04-14 08:41:35 +0800</div>
+<pre>这轮修改已经闭环，生成、文本快照和 QML 离屏快照都过了。我最后看一下工作区改动范围，确保给你的总结只包含这次真正落地的点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / final_answer</h3>
+<div class="time">2026-04-14 08:41:53 +0800</div>
+<pre>这版已经落下来了。
+
+主要变化：
+- `JOG` 的 `- / +` 改成按住连续运动，`RAPID` 也走连续目标，不再是一点一下。
+- `AUTO / MDA` 改成连续插补式 mock，坐标会逐步逼近目标，不再整块跳变。我还补了暂停条件，`feed hold / reset` 后不会继续偷偷跑目标。
+- `WCS / MCS` 现在会切换显示坐标，基于一套模拟的 `G54/G55/G56` 偏置；`X/Y/Z/A/C` 五轴都接上了，`A/C` 作为旋转轴。
+- `LOOP.MPF` 改成 `M99` 循环回起点，另外新增了 `POCKET_FRAME.MPF`、`SWIVEL_5X.MPF`、`INDEX_TABLE.MPF`、`MDA_FACE.SPF`、`ROTARY_TRIM.MPF` 供切换测试。
+
+最终程序样例已经进入分发目录：
+- [generated/distribution/qml/program-root](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution/qml/program-root)
+
+我还做了 runtime 自检：
+- `WCS -&gt; MCS` 切换后显示坐标会变化
+- `JOG A+` 会连续变化
+- `AUTO` 执行 `LOOP.MPF` 时，1.4 秒后坐标仍在连续推进，不是跳变
+
+验证已通过：
+- `python3 -m tools.hmi_dsl validate examples/june-demo/product.manifest.yaml`
+- `python3 -m unittest tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files`
+- `python3 -m unittest tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store`
+- `python3 -m unittest tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
+- `python3 -m unittest tests.test_pipeline.PipelineTests.test_qml_offscreen_snapshot_matches_baseline`
+- `./tools/generate_targets.sh`
+
+如果你要，我下一步可以继续把 `AUTO / MDA` 的 mock 从“逐块到目标”再往前推一层，做成更像真实通道的分段运动和进给倍率影响。</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-04-14 08:44:56 +0800</div>
+<pre>docs目录可以输出一个docs_html（记得git过滤），然后每次更新之后输出个相关html，这样方便我查阅，用mdbook之类的生成，记得每次把AGENT和CHANGELOG那些也包含进索引；然后也要包含代码目录说明，还有之前说的4个视角的入口索引，这样方便不同视角点击进入，也可以关联一下每天的report，形成一个总文档入口</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-04-14 08:45:07 +0800</div>
+<pre>我先看现有 `docs` / `reports` / 构建脚本怎么组织，再把总入口和 `docs_html` 生成链接上，避免再做一套平行文档系统。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-04-14 08:45:19 +0800</div>
+<pre>我在复用现有 story-docs/report 的 mdBook 结构，不会手工散放 HTML。接下来把总入口页、代码目录说明、四视角入口和日报索引统一编进一个 portal，再把 `docs_html` 加到忽略规则和生成脚本里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-04-14 08:46:16 +0800</div>
+<pre>我准备加一个独立的文档 portal 生成器，并把它接到 `generate_targets.sh`。这样以后刷新产物时，`docs_html`、四视角 story docs 和 report html 会一起更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-04-14 08:48:09 +0800</div>
+<pre>我开始落文档 portal 生成器了，会同时处理三件事：重建四视角 story docs、重建所有 report html、再生成一个总入口 `docs_html`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-04-14 08:49:50 +0800</div>
+<pre>portal 代码已经接进 CLI。现在补用户侧入口和默认生成链路：`docs_html` 忽略、单独构建脚本，以及 `generate_targets.sh` 自动更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-04-14 08:50:26 +0800</div>
+<pre>我先跑新 portal 的单测和一次真实构建，确认 `docs_html`、story docs 和 report html 都能一起出来，再决定要不要修正链接细节。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-04-14 08:50:31 +0800</div>
+<pre>portal 第一轮已经跑到位，暴露的是两个纯构建问题：`book.toml` 字段写法和 report `build_html` 清理。我先修这两个，再复跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-04-14 08:50:46 +0800</div>
+<pre>portal 能生成了，但 mdBook 会警告 `reference/index.md` 和 `reference/readme.md` 冲突。我把这个命名收掉，再跑一遍，避免后面一直带噪音。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-04-14 08:51:04 +0800</div>
+<pre>文档 portal 本体已经能出了。我顺手把仓库说明和 changelog 也对齐一下，不然后面别人看到 `docs_html` 和新命令会缺背景。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-04-14 08:51:25 +0800</div>
+<pre>我再跑一轮 portal 构建和相关测试，把 README/CHANGELOG 的变更也吸进去，并确认 `generate_targets.sh` 集成后不会炸。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-04-14 08:51:29 +0800</div>
+<pre>`generate_targets.sh` 已经跑到 QML 构建阶段了；它后面还会顺带把 `docs_html` 刷出来。我等它结束，再做最后一次状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-04-14 08:51:55 +0800</div>
+<pre>已经加上了总文档 portal，并且这次已经实际生成出来了。
+
+入口在 [docs_html/index.html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs_html/index.html)。这个 portal 现在会统一索引：
+- `README / AGENT / CHANGELOG / docs/*`
+- 代码目录说明页 [docs_html/codebase-map.html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs_html/codebase-map.html)
+- 四视角入口页 [docs_html/perspectives.html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs_html/perspectives.html)
+- 每日报告总入口 [docs_html/reports.html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs_html/reports.html)
+
+我同时补了两个生成入口：
+- [tools/build_docs_html.sh](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/build_docs_html.sh)
+- `python3 -m tools.hmi_dsl generate-docs-portal . --output docs_html`
+
+并且已经把它接进 [tools/generate_targets.sh](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/tools/generate_targets.sh)，以后跑这个脚本时会一起刷新：
+- `docs_html/`
+- `examples/june-demo/story-docs/*/build_html/`
+- `reports/*/build_html/`
+
+`docs_html/` 已经加进 `.gitignore`，不会进版本库。
+这次验证通过：
+- `python3 -m unittest tests.test_docs_portal tests.test_story_docs`
+- `./tools/build_docs_html.sh`
+- `./tools/generate_targets.sh`
+
+当前工作区还有你前面那批五轴/连续运动相关修改，一并处于未提交状态。</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-04-14 09:04:45 +0800</div>
+<pre>commit &amp; push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-04-14 09:04:52 +0800</div>
+<pre>我把当前这批改动一起提交并推送，包含五轴/连续运动、程序样例、以及新的 `docs_html` 文档 portal 生成链路。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-04-14 09:04:58 +0800</div>
+<pre>暂存已经完成。我直接提交并推到 `origin/main`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-04-14 09:05:03 +0800</div>
+<pre>提交已经落下，我等推送完成后给你最终结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-04-14 09:05:09 +0800</div>
+<pre>已完成。
+
+提交:
+- `50328b2` `feat: add docs portal and 5-axis motion mocks`
+
+推送:
+- 已推到 `origin/main`
+
+这次提交包含两块：
+- 五轴/WCS-MCS/连续 JOG 与 AUTO/MDA mock 运动、循环与新增程序样例
+- `docs_html` 文档 portal 生成链路、总入口、四视角入口、报告总索引，以及 `generate_targets.sh` 自动刷新文档
+
+现在你可以直接看总入口：
+- [docs_html/index.html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/docs_html/index.html)
+
+当前工作区相对远端是干净的。</pre>
+</article>
+</section>
 
 </section>
 </main>

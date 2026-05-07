@@ -170,7 +170,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <article class="msg assistant">
 <h2>11. Codex / final_answer</h2>
 <div class="time">2026-04-13 08:25:23 +0800</div>
-<pre>已生成 2026-04-12 的报告，目录在 [reports/2026-04-12-codex-session/README.md](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/reports/2026-04-12-codex-session/README.md)。  
+<pre>已生成 2026-04-12 的报告，目录在 [reports/2026-04-12-codex-session/README.md](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/reports/2026-04-12-codex-session/README.md)。
 HTML 入口已构建完成，可直接看 [build_html/index.html](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/reports/2026-04-12-codex-session/build_html/index.html)。
 
 这份报告按 2026-04-12 当天的提交 `8eaa64a` 整理，主题是 program workspace 管理改造，明确排除了当前工作区里更晚的未提交改动。验证方面已执行 `mdbook build reports/2026-04-12-codex-session`，构建成功。</pre>
@@ -386,7 +386,7 @@ HTML 入口已构建完成，可直接看 [build_html/index.html](/home/iaar/wor
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_qml_offscreen_snapshot_matches_baseline`
 
-我还同步刷新了相关文本快照。Web 的浏览器视觉基线这次没跑。  
+我还同步刷新了相关文本快照。Web 的浏览器视觉基线这次没跑。
 如果你要，我可以继续把这批改动 `commit + push`。</pre>
 </article>
 <article class="msg user">
@@ -415,7 +415,7 @@ HTML 入口已构建完成，可直接看 [build_html/index.html](/home/iaar/wor
 - [generated/qml-final/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final/appCNC_HMI_June_Demo)
 - [generated/distribution](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/distribution)
 
-这次 `./tools/generate_targets.sh` 已完整跑通，QML 也重新构建成功。  
+这次 `./tools/generate_targets.sh` 已完整跑通，QML 也重新构建成功。
 如果你要，我下一步可以直接把这批布局修改连同最终产物一起 `commit + push`。</pre>
 </article>
 <article class="msg user">
@@ -513,7 +513,7 @@ HTML 入口已构建完成，可直接看 [build_html/index.html](/home/iaar/wor
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_qml_offscreen_snapshot_matches_baseline`
 
-Web 浏览器视觉基线这轮没有跑。  
+Web 浏览器视觉基线这轮没有跑。
 如果你要，我现在可以直接把这批修改 `commit + push`。</pre>
 </article>
 <article class="msg user">
@@ -1449,7 +1449,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 提交和推送也已完成：
 - `cdc241c` `feat: refine web program flow and add 2026-04-13 report`
 
-已推到 `origin/main`，当前工作区是干净的。  
+已推到 `origin/main`，当前工作区是干净的。
 这次还成功执行了 `mdbook build reports/2026-04-13-codex-session`。</pre>
 </article>
 <article class="msg user">
@@ -2370,7 +2370,7 @@ QML 的阴影问题也继续收了一次。现在程序编辑器改成：
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store`
 - `./tools/generate_targets.sh`
 
-你现在把旧的 QML 进程关掉，重新启动新的 [generated/qml-final/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final/appCNC_HMI_June_Demo) 再试一次。  
+你现在把旧的 QML 进程关掉，重新启动新的 [generated/qml-final/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final/appCNC_HMI_June_Demo) 再试一次。
 如果这次首次打开仍有残影，我下一步会把 QML 高亮层直接改成只读页使用，编辑态完全禁用。</pre>
 </article>
 <article class="msg user">
@@ -2462,7 +2462,7 @@ QML 的阴影问题也继续收了一次。现在程序编辑器改成：
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store`
 - `./tools/generate_targets.sh`
 
-你现在把旧的 QML 进程关掉，重新启动新的 [generated/qml-final/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final/appCNC_HMI_June_Demo) 再看。  
+你现在把旧的 QML 进程关掉，重新启动新的 [generated/qml-final/appCNC_HMI_June_Demo](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml-final/appCNC_HMI_June_Demo) 再看。
 如果这一版还有偏差，我下一步会把行号列也改成直接复用 `TextArea` 的同类文本控件，而不是普通 `Text`。</pre>
 </article>
 <article class="msg user">
@@ -3455,7 +3455,7 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 - `examples/june-demo/story-docs/*/build_html/`
 - `reports/*/build_html/`
 
-`docs_html/` 已经加进 `.gitignore`，不会进版本库。  
+`docs_html/` 已经加进 `.gitignore`，不会进版本库。
 这次验证通过：
 - `python3 -m unittest tests.test_docs_portal tests.test_story_docs`
 - `./tools/build_docs_html.sh`
@@ -3848,6 +3848,47 @@ HTML 已重新构建通过：
 
 下一轮我会继续往“具体页面规格”推进，优先把首页、报警页、参数页按 `ui.structure.yaml` 风格写成更接近最终 DSL 的页面示例。</pre>
 </article>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1>go on</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019d7af7-c223-7182-a9e1-bf20374dd2bf</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-04-11 13:15:50 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/codex-wp/metanc_hmi_dsl</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/11/rollout-2026-04-11T13-15-50-019d7af7-c223-7182-a9e1-bf20374dd2bf.jsonl</code></div>
+<div><b>Messages</b>: <code>2</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>1</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-04-13 08:08:58 +0800</div>
+<pre>go on</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-04-13 08:09:14 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed; verify current state before retrying.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+</section>
 
 </section>
 </main>

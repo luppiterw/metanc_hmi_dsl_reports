@@ -57,6 +57,11 @@ th { background: #efe2ca; position: sticky; top: 0; }
 }
 .msg.user { border-left: 8px solid var(--user); }
 .msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
 .time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
 pre {
   white-space: pre-wrap;
@@ -82,16 +87,29 @@ pre {
 <h1>Codex Local Conversation Export</h1>
 <section class="meta">
 <div><b>Sessions</b>: <code>2</code></div>
+<div><b>Primary sessions</b>: <code>2</code></div>
+<div><b>Side sessions</b>: <code>0</code></div>
+<div><b>User prompts</b>: <code>11</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
 <div><b>Messages</b>: <code>110</code></div>
 <div><b>User messages</b>: <code>11</code></div>
 <div><b>Codex messages</b>: <code>99</code></div>
 <div><b>Full export</b>: <a href="all.html">HTML</a> / <a href="all.md">Markdown</a></div>
 </section>
 <table>
-<thead><tr><th>Started</th><th>Messages</th><th>CWD</th><th>Title</th><th>MD</th><th>HTML</th></tr></thead>
+<thead><tr><th>Prompt Time</th><th>Session</th><th>Turn</th><th>Prompt</th><th>Codex Messages</th><th>MD</th><th>HTML</th></tr></thead>
 <tbody>
-<tr><td>2026-04-07 16:15:03 +0800</td><td>70</td><td><code>/home/iaar/workspace/codex-wp/test_840d_screenshot</code></td><td>根据pics/中的西门子840d功能截图，生成对应的qml实现，并自行编译执行</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html">html</a></td></tr>
-<tr><td>2026-04-07 16:21:35 +0800</td><td>40</td><td><code>/home/iaar/workspace/codex-wp/test_cad</code></td><td>基于web实现cads下的cad导入，要有界面可以查看对应内容</td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.md">md</a></td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.html">html</a></td></tr>
+<tr><td>2026-04-07 16:15:51 +0800</td><td><code>019d6702</code></td><td>1</td><td>根据pics/中的西门子840d功能截图，生成对应的qml实现，并自行编译执行</td><td>17</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-1">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-1">html</a></td></tr>
+<tr><td>2026-04-07 16:24:06 +0800</td><td><code>019d6702</code></td><td>2</td><td>你这个界面显示似乎有问题，窗口显示超出屏幕，然后就是一些按键无法点击切换</td><td>7</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-2">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-2">html</a></td></tr>
+<tr><td>2026-04-07 16:35:29 +0800</td><td><code>019d6702</code></td><td>3</td><td>1. 真正的页面切换逻辑 2. 软键和物理键的一一映射 3. 更细的状态机，比如 AUTO/JOG/MDA/REF 模式联动</td><td>8</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-3">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-3">html</a></td></tr>
+<tr><td>2026-04-07 16:45:31 +0800</td><td><code>019d6702</code></td><td>4</td><td>整理一下代码结构，支持qml和web两套</td><td>13</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-4">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-4">html</a></td></tr>
+<tr><td>2026-04-07 17:01:32 +0800</td><td><code>019d6702</code></td><td>5</td><td>如果你要继续，我下一步建议把 QML 和 Web 的视觉组件也进一步对齐成同一套“页面 schema -&gt; 渲染块”的配置式结构。</td><td>8</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-5">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-5">html</a></td></tr>
+<tr><td>2026-04-07 17:08:35 +0800</td><td><code>019d6702</code></td><td>6</td><td>web版本的840d实现有点简陋啊，和pics/840d_01.png差距有点大</td><td>5</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-6">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-6">html</a></td></tr>
+<tr><td>2026-04-07 17:16:40 +0800</td><td><code>019d6702</code></td><td>7</td><td>你现在的按钮等都不能点击，然后外观也不行</td><td>5</td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.md#turn-7">md</a></td><td><a href="sessions/20260407-161503-019d6702-6509-7d22-a4f4-070559268f87.html#turn-7">html</a></td></tr>
+<tr><td>2026-04-07 16:22:18 +0800</td><td><code>019d6708</code></td><td>1</td><td>基于web实现cads下的cad导入，要有界面可以查看对应内容</td><td>17</td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.md#turn-1">md</a></td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.html#turn-1">html</a></td></tr>
+<tr><td>2026-04-07 16:40:36 +0800</td><td><code>019d6708</code></td><td>2</td><td>提取一下cad中的内容输出可以人工阅读的内容</td><td>7</td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.md#turn-2">md</a></td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.html#turn-2">html</a></td></tr>
+<tr><td>2026-04-07 16:45:46 +0800</td><td><code>019d6708</code></td><td>3</td><td>- JSON 结构化数据 - Excel/CSV 表格 - 按“技术要求/商标/规格/活字块/图签字段”分类的更细清单</td><td>6</td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.md#turn-3">md</a></td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.html#turn-3">html</a></td></tr>
+<tr><td>2026-04-07 16:55:03 +0800</td><td><code>019d6708</code></td><td>4</td><td>我是想导出我打开的cad文件的信息，你导出的是什么，如果不是我想要的，请按照我的要求导出</td><td>6</td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.md#turn-4">md</a></td><td><a href="sessions/20260407-162135-019d6708-5ef7-7123-b08b-30a9bf884610.html#turn-4">html</a></td></tr>
 </tbody>
 </table>
 </main>

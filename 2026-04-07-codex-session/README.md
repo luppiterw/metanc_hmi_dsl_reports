@@ -18,6 +18,10 @@
 
 - Scope: `2026-04-07`
 - Sessions: `2`
+- Primary sessions: `2`
+- Side sessions: `0`
+- User prompts: `11`
+- Synthetic events: `0`
 - Messages: `110`
 - User messages: `11`
 - Codex messages: `99`

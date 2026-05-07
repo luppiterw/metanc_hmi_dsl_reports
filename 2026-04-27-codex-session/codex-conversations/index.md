@@ -3,11 +3,11 @@
 - Sessions: `3`
 - Primary sessions: `3`
 - Side sessions: `0`
-- User prompts: `27`
-- Synthetic events: `3`
-- Messages: `198`
-- User messages: `30`
-- Codex messages: `168`
+- User prompts: `31`
+- Synthetic events: `4`
+- Messages: `228`
+- User messages: `35`
+- Codex messages: `193`
 
 ## Sessions By Date
 
@@ -43,4 +43,8 @@
 | 2026-04-27 16:22:16 +0800 | 019dcc96 | 20 | 我现在要怎么在本地编译执行，是不是要进docker | 1 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-20) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-20) |
 | 2026-04-27 16:25:00 +0800 | 019dcc96 | 21 | 是不是原来generated里的那一套不工作了 | 4 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-21) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-21) |
 | 2026-04-27 16:27:53 +0800 | 019dcc96 | 22 | 可以，调整一下，然后全部重新生成一下，然后给我一个可以测试的client/server方法 | 14 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-22) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-22) |
-| 2026-04-27 16:55:02 +0800 | 019dcc96 | 23 | 更新一下今天的所有文档和report，然后metanc_hmi_dsl中提交+push一下，注意commit msg的准确性 | 3 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-23) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-23) |
+| 2026-04-27 16:55:02 +0800 | 019dcc96 | 23 | 更新一下今天的所有文档和report，然后metanc_hmi_dsl中提交+push一下，注意commit msg的准确性 | 11 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-23) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-23) |
+| 2026-04-27 17:06:28 +0800 | 019dcc96 | 24 | 看一下metanc_hmi_dsl部分合并到MetaNC下（注意之前的规则，然后现在因为调整较大，可以先合并我看一下） | 10 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-24) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-24) |
+| 2026-04-27 17:15:40 +0800 | 019dcc96 | 25 | 可以，提交+push一下，注意commit msg的准确度 | 5 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-25) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-25) |
+| 2026-04-27 17:19:47 +0800 | 019dcc96 | 26 | docker image ls i Info → U In Use IMAGE ID DISK USAGE CONTENT SIZE EXTRA metanc-hmi-server-build:local 31c666a66eb6 7.2... | 0 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-26) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-26) |
+| 2026-04-27 17:20:25 +0800 | 019dcc96 | 27 | docker image ls i Info → U In Use IMAGE ID DISK USAGE CONTENT SIZE EXTRA metanc-hmi-server-build:local 31c666a66eb6 7.2... | 2 | [md](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.md#turn-27) | [html](sessions/20260427-093826-019dcc96-763c-7e91-a12f-3a6fb04d3088.html#turn-27) |

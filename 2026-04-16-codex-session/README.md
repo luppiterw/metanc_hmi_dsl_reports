@@ -39,10 +39,14 @@ HTML 构建说明:
 ## Complete Codex Conversation Export
 
 - Scope: `2026-04-16`
-- Sessions: `10`
-- Messages: `263`
-- User messages: `57`
-- Codex messages: `206`
+- Sessions: `11`
+- Primary sessions: `6`
+- Side sessions: `5`
+- User prompts: `48`
+- Synthetic events: `13`
+- Messages: `318`
+- User messages: `61`
+- Codex messages: `257`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

@@ -351,22 +351,22 @@ ctest --test-dir build-sqlite-bundled --output-on-failure
 **我建议下一步**
 不要直接跳 PLC/NC。现在最值得做的是把“库存智能”和“机器状态”之间的中间层补起来。
 
-1. 先收尾搜索/替换规则  
+1. 先收尾搜索/替换规则
    做一个持久化的 `SearchProfile` / `ReplacementPolicy` 模型，支持命名策略、库存范围、健康范围、优先级规则、允许/禁止已装刀、允许/禁止预警刀、槽位搜索规则。这样现在硬编码的 `priority_first` 等策略能变成配置。
 
-2. 加刀具状态和锁定原因  
+2. 加刀具状态和锁定原因
    给刀具增加 `enabled/locked/blocked/reason` 这类状态。当前只有 `search_enabled`，太粗。实际需要区分：人工禁用、寿命到限、测量未完成、位置未知、装载中、PLC 锁定等。
 
-3. 做报警和事件  
+3. 做报警和事件
    先从寿命报警做起：使用量达到 warning/limit 时生成 retained alarm/event。加 `GET /alarms`、确认报警、清除已恢复报警。这个会让“寿命监控”从 Partial 往 Implemented 走。
 
-4. 建主轴和换刀请求模型  
+4. 建主轴和换刀请求模型
    增加 `MachineState`：当前主轴刀、候选刀、换刀请求、换刀状态。先不接 PLC，只在服务内部建状态机，例如 `requested -> prepared -> loaded -> completed/failed`。
 
-5. 做刀库位置/搬运动作的抽象  
+5. 做刀库位置/搬运动作的抽象
    在有主轴状态后，再做 magazine positioning：换刀点、装载点、当前位置、目标槽位、移动命令状态。否则现在的 load/unload 只是库存突变，不像真实机床。
 
-6. 最后再接 PLC/NC/HMI/RFID  
+6. 最后再接 PLC/NC/HMI/RFID
    等 retained state、报警、换刀状态稳定后，再定义 adapter。否则接口会频繁返工。
 
 如果只选一个最近的开发目标，我建议做第 1 和第 2：**把搜索/替换策略配置化，同时补刀具状态/锁定原因**。这是现有代码自然延伸，测试也好写，并且会直接提升刀具管理核心能力。
@@ -876,9 +876,9 @@ docker run --rm hello-world
 ```
 我已经把状态机方案定下来了，尽量不把仓库结构打散：
 
-1. `prepare` 只建立换刀任务，记录目标刀库槽位。  
-2. 新增分步 `advance`，按“到换刀点 -> 刀库定位 -> 抓取交换 -> 装回/装入主轴”推进。  
-3. 新增 `fail/reset`，并限制 `cancel` 只能发生在真正开始搬运前。  
+1. `prepare` 只建立换刀任务，记录目标刀库槽位。
+2. 新增分步 `advance`，按“到换刀点 -> 刀库定位 -> 抓取交换 -> 装回/装入主轴”推进。
+3. 新增 `fail/reset`，并限制 `cancel` 只能发生在真正开始搬运前。
 4. 在这个过程中把主轴/刀库/搬运臂上的刀具位置一起维护，避免工具同时“在刀库里又在主轴上”。
 ```
 
@@ -3049,3 +3049,1352 @@ I need to be able to switch languages instead of just fixedly displaying Chinese
 - `story-docs` 默认多语言生成通过
 - `zh-CN` 单语言生成也通过
 ```
+
+
+## go on
+
+- Session ID: `019d7185-fe5b-7ae2-9e8f-d5796fcf32b6`
+- Session kind: `primary`
+- Started: `2026-04-09 17:15:00 +0800`
+- CWD: `/home/iaar/workspace/codex-wp/prjs/UniNCCollect`
+- Source file: `/home/iaar/.codex/sessions/2026/04/09/rollout-2026-04-09T17-15-00-019d7185-fe5b-7ae2-9e8f-d5796fcf32b6.jsonl`
+- Messages: `80`
+- User prompts: `5`
+- Synthetic events: `0`
+
+<a id="turn-1"></a>
+## Turn 1
+
+### User
+`2026-04-10 06:46:18 +0800`
+
+```
+go on
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 06:46:33 +0800`
+
+```
+我继续把这批“可构建/可运行”改动收口成提交，先确认工作区只剩源码和文档变更，再直接提交。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 06:46:37 +0800`
+
+```
+变更范围正常，都是构建链路、运行入口和兼容性修复。我现在把这些文件入暂存区并提交。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 06:46:54 +0800`
+
+```
+暂存完成。我先看一眼暂存区摘要，然后直接提交一个聚焦“本地构建与运行可用性”的 commit。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 06:47:55 +0800`
+
+```
+这一步我先核对暂存区状态，然后把“可构建/可运行”的改动单独提交，避免和前面的目录整理混在一起。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 06:48:00 +0800`
+
+```
+暂存区就是上一轮验证通过的那批改动，范围干净，可以直接切成一个独立提交。我现在提交并回查提交号。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 06:48:18 +0800`
+
+```
+提交已经落下来了，我再确认工作区是否干净，并记录当前提交号。
+```
+
+### Codex Response 7 / final_answer
+`2026-04-10 06:48:29 +0800`
+
+```
+已提交，提交号 `d3c74a3`，提交信息是 `Add reproducible local build and run workflow`。当前工作区干净。
+
+这次提交把可复现的本地构建/运行路径固定下来了，核心入口在 [CMakePresets.json](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/CMakePresets.json#L1)、[scripts/install_build_deps_ubuntu.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/install_build_deps_ubuntu.sh#L1)、[scripts/bootstrap_local_deps_ubuntu.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/bootstrap_local_deps_ubuntu.sh#L1)、[scripts/build_local.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/build_local.sh#L1) 和 [scripts/run_local.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/run_local.sh#L1)。同时还把 Drogon 兼容处理和本地配置路径整理进了 [unicollect_server/CMakeLists.txt](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/unicollect_server/CMakeLists.txt#L1) 与 [unicollect_server/cellars/app_config.cpp](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/unicollect_server/cellars/app_config.cpp#L1)，并更新了 [README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/README.md#L1) 和 [docs/src/build-and-run.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/build-and-run.md#L1)。
+
+现在后续机器上有两条标准路径：
+`sudo` 环境用 `./scripts/install_build_deps_ubuntu.sh && ./scripts/build_local.sh && ./scripts/run_local.sh`
+无 `sudo` 环境用 `./scripts/bootstrap_local_deps_ubuntu.sh && ./scripts/build_local.sh && ./scripts/run_local.sh`
+
+如果继续推进，下一步我建议做 CI，把这条构建链在 Ubuntu 上自动跑起来，避免以后靠手工验证。
+```
+
+<a id="turn-2"></a>
+## Turn 2
+
+### User
+`2026-04-10 07:00:27 +0800`
+
+```
+go on
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 07:00:34 +0800`
+
+```
+我继续往前收敛，把这条本地可复现构建链接到 CI 上，目标是让 Ubuntu 环境能自动验证“装依赖、构建、短时启动”这三步。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 07:00:45 +0800`
+
+```
+仓库里还没有现成 CI 配置。我准备补一个最小但有效的流水线，并把“短时启动验证”抽成脚本，避免本地和 CI 各写一套。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 07:01:10 +0800`
+
+```
+我准备补两个东西：一个共享的启动冒烟脚本，另一个 Ubuntu CI workflow。这样后面不管是本地还是 CI，验证逻辑都是同一套。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 07:01:17 +0800`
+
+```
+我先确认子模块是不是构建必需品。如果 CI 默认去拉私有/SSH 子模块，会直接把流水线做死，需要先避开。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 07:01:45 +0800`
+
+```
+编辑开始：我会新增一个 `scripts/smoke_test_local.sh`，再补 `.github/workflows/ubuntu-ci.yml`，并把 README / 文档里把 CI 入口和冒烟命令写进去。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 07:02:22 +0800`
+
+```
+脚本已经写完了，我先把执行权限补上，然后在当前环境下实际跑一次冒烟验证，确认这套脚本不是纸面配置。
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 07:02:27 +0800`
+
+```
+我现在实际跑这套冒烟脚本。由于服务启动要占本地端口，沙箱里会被拦住，所以这一步直接用非沙箱执行来验证真实效果。
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 07:03:37 +0800`
+
+```
+冒烟脚本已经启动，正在等超时收口并检查 `app_config.json` 是否按预期生成。
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 07:03:48 +0800`
+
+```
+这批改动已经过一轮真实冒烟验证了。我再看一眼工作区差异，然后把 CI 和共享脚本一并提交。
+```
+
+### Codex Response 10 / commentary
+`2026-04-10 07:04:03 +0800`
+
+```
+我现在把 workflow、冒烟脚本和文档说明一起入库，提交会单独切出来，后面查历史也更清楚。
+```
+
+### Codex Response 11 / commentary
+`2026-04-10 07:04:06 +0800`
+
+```
+`git add` 在这个环境里也会碰 `.git/index.lock` 权限限制，我直接改用非沙箱把暂存和提交做完。
+```
+
+### Codex Response 12 / commentary
+`2026-04-10 07:11:14 +0800`
+
+```
+这批内容范围已经收敛好了：一个 workflow、一个共享验证脚本、两处文档更新。我直接提交成单独一笔。
+```
+
+### Codex Response 13 / commentary
+`2026-04-10 08:11:58 +0800`
+
+```
+提交已经完成。我最后确认工作区干净和当前提交号，然后给你一个简洁结论。
+```
+
+### Codex Response 14 / final_answer
+`2026-04-10 08:12:08 +0800`
+
+```
+已继续并提交，提交号 `bee2af0`，工作区干净。
+
+这次补的是自动校验链路：新增了 GitHub Actions 工作流 [ubuntu-ci.yml](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/.github/workflows/ubuntu-ci.yml#L1)，以及复用的本地/CI 冒烟脚本 [smoke_test_local.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/smoke_test_local.sh#L1)。现在 Ubuntu 环境会按同一套命令验证：
+`./scripts/install_build_deps_ubuntu.sh`
+`./scripts/build_local.sh`
+`./scripts/smoke_test_local.sh`
+
+文档入口也补上了，见 [README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/README.md#L51) 和 [build-and-run.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/build-and-run.md#L88)。我在当前环境实际执行了 `./scripts/smoke_test_local.sh`，验证通过，服务能启动并在超时后正常收口。
+
+下一步如果还继续，最有价值的是两件事之一：
+1. 把同样的流程补到你真实在用的代码托管平台上，比如 Gitea/GitLab，而不只是 `.github/workflows/`.
+2. 再加一条打包校验，把 `cpack` 或 `deploy/` 产物也纳入自动验证。
+```
+
+<a id="turn-3"></a>
+## Turn 3
+
+### User
+`2026-04-10 08:12:44 +0800`
+
+```
+gitee有吗，有的话也加一下，其他按照你的继续
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 08:12:51 +0800`
+
+```
+我先确认 Gitee 现在有没有可用的仓库级 CI 方案，以及对应配置文件格式；如果有，就按现有本地脚本补一份，再顺手把打包校验也接进现有自动化。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 08:13:47 +0800`
+
+```
+我继续把“构建后可分发”这一步也固化掉，先本地验证打包命令能不能稳定产物；Gitee 那边我会按官方现状加一份可落地的流水线入口，但会明确它更适合接 Ubuntu 自有主机。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 08:13:54 +0800`
+
+```
+打包命令已经跑起来了；我等它出结果，再决定是把它抽成独立脚本还是直接塞进现有 workflow。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 08:15:06 +0800`
+
+```
+我准备补最后一层：把打包也抽成统一脚本，并让 GitHub / Gitee 都跑同一套“构建、冒烟、打包”命令。Gitee 这边会落成 Ubuntu 自有主机版，因为这和现有脚本的依赖假设一致。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 08:15:44 +0800`
+
+```
+文件已经补完。我先把新脚本权限和内容检查好，再在当前环境实际跑一次打包脚本，确认它和现有构建产物能闭环。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 08:15:46 +0800`
+
+```
+我现在跑 `package_local.sh` 做真实验证，确保 `.deb` 产物脚本不是只在文档里成立。
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 08:15:51 +0800`
+
+```
+打包已经进入 CPack 阶段，我等它落盘 `.deb` 后再收口。
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 08:16:01 +0800`
+
+```
+本地打包脚本也验证过了，`build/unicollect-x86_64.deb` 已经能产出。接下来我把 Gitee / GitHub 的 CI 更新和打包脚本一起提交成一笔。
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 08:16:49 +0800`
+
+```
+范围已经固定好了：一份 Gitee Go Ubuntu 主机流水线、一份打包脚本，以及 GitHub workflow 加打包步骤。我现在提交。
+```
+
+### Codex Response 10 / commentary
+`2026-04-10 08:19:38 +0800`
+
+```
+提交完成。我最后确认工作区状态和提交号。
+```
+
+### Codex Response 11 / final_answer
+`2026-04-10 08:19:56 +0800`
+
+```
+有，Gitee 现在有官方的 `Gitee Go` 流水线能力；官方文档也明确了流水线配置放在 `/.workflow/`，并提供了 `shell@agent` 这种在自有主机组上执行脚本的方式。参考：
+[Gitee Go 快速入门](https://gitee.com/help/articles/4293)
+[流水线 YAML 格式说明](https://gitee.com/help/articles/4292?skip_mobile=true)
+[Shell 脚本执行](https://gitee.com/help/articles/4374)
+
+我已经按这个方向补上了，并提交为 `9db67e2`。新增了 Gitee 流水线样例 [gitee-go-ubuntu-agent.yml](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/.workflow/gitee-go-ubuntu-agent.yml#L1) 和说明 [README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/.workflow/README.md#L1)，它会在 Ubuntu/Debian 自有主机上复用现有脚本跑 `install/bootstrap -> build -> smoke -> package`。同时我补了统一打包脚本 [package_local.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/package_local.sh#L1)，并把 GitHub Actions 扩成“构建、冒烟、打包、上传 deb”完整链路，见 [ubuntu-ci.yml](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/.github/workflows/ubuntu-ci.yml#L1)。文档入口也同步更新了 [README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/README.md#L51) 和 [build-and-run.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/build-and-run.md#L88)。
+
+本地验证我已经跑过：
+`./scripts/smoke_test_local.sh`
+`./scripts/package_local.sh`
+都成功，产物是 `build/unicollect-x86_64.deb`。当前工作区干净。
+
+下一步最值钱的是把 `.workflow/gitee-go-ubuntu-agent.yml` 里的 `hostGroupID` 改成你在 Gitee Go 里实际的主机组 ID，然后在 Gitee 仓库里启用这条流水线。之后如果你还要继续，我建议开始收敛 `.deb` 安装后的开机脚本、systemd 服务和部署自检。
+```
+
+<a id="turn-4"></a>
+## Turn 4
+
+### User
+`2026-04-10 08:53:50 +0800`
+
+```
+go on
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 08:54:00 +0800`
+
+```
+我继续往部署侧收敛，先把 `.deb` 安装后的 systemd 服务、启动脚本和最小自检链路摸清，再补成能直接装、能直接起、出问题能快速定位。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 08:54:11 +0800`
+
+```
+我先看现有 deb 安装脚本写到了哪一步，特别是 `postinst` / `prerm` 里有没有 systemd 或自检逻辑，再决定补什么最划算。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 08:54:26 +0800`
+
+```
+现有 `postinst` 确实比较脆：它内联生成 unit、假定 `systemctl` 一定可用、还夹着一段不可交互分支。我准备把 service/unit 和安装后自检拆成仓库内文件，再让安装脚本只做幂等动作。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 08:54:35 +0800`
+
+```
+我还要确认两个细节：安装目录里到底有没有随包带齐运行所需配置，以及现有 `chown` 逻辑会不会和 systemd 部署相冲突。然后我一次性把部署链路补平。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 08:54:45 +0800`
+
+```
+还差一个关键点：进程实际读的是 `server_config.json` 还是 `config.json`。如果装包后 unit 起不来，往往就卡在这个路径不一致上。我先把启动入口读一遍。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 08:56:00 +0800`
+
+```
+我开始改部署链路了，重点是三件事：
+1. 把 systemd unit 变成包内正式文件，不再由 `postinst` 临时拼。
+2. 给安装包加一个随包自检脚本，先校验布局，再按需做短时启动检查。
+3. 把 `postinst` / `prerm` 改成“有 systemd 就接管，没有就降级提示”，避免在容器或非 systemd 环境直接装包失败。
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 08:57:21 +0800`
+
+```
+核心改动已经下去了。我先补可执行权限，再重新打包验证两件事：`.deb` 里是否真的带上了 unit / 自检脚本，和新的 `postinst` 没有把本地打包流程搞坏。
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 08:57:24 +0800`
+
+```
+下一步是重新跑打包脚本。它现在除了产 `.deb`，还会检查包内条目是否齐全，所以这一轮能直接告诉我们部署物是不是完整。
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 08:57:29 +0800`
+
+```
+打包还在收口。等它出最终结果后，我会再看包内容和变更范围，顺手把文档里补上安装后怎么查服务状态。
+```
+
+### Codex Response 10 / commentary
+`2026-04-10 08:57:43 +0800`
+
+```
+我现在检查一个更实质的问题：这个 `.deb` 在别的机器上能不能独立跑。最容易漏的是动态库依赖没跟包走，所以我要直接看 `ldd`。
+```
+
+### Codex Response 11 / commentary
+`2026-04-10 08:58:48 +0800`
+
+```
+我补最后一块实用入口：让 Ubuntu 机器可以直接装运行时依赖并安装本地 `.deb`。同时把 `cpack` 的依赖声明打开，这样包自己也会带 `Depends:`。
+```
+
+### Codex Response 12 / commentary
+`2026-04-10 08:59:12 +0800`
+
+```
+我先把新脚本设成可执行，然后重新打包看 `Depends:` 是否出来。这样能判断后续机器是不是能直接 `apt install ./build/*.deb`。
+```
+
+### Codex Response 13 / commentary
+`2026-04-10 08:59:40 +0800`
+
+```
+`dpkg-shlibdeps` 这条路在当前包结构上走不通，根因是仓库里还带着一批老 `third_party` so，会把自动依赖推导搅乱。这个方向我不硬顶，先恢复可打包状态，再把安装脚本改成显式先装运行时依赖。
+```
+
+### Codex Response 14 / commentary
+`2026-04-10 08:59:48 +0800`
+
+```
+我已经把失败的自动依赖生成撤回了。现在重新验证打包能恢复成功，然后我补文档，把“先装 runtime deps 再装 deb”的路径写清楚。
+```
+
+### Codex Response 15 / commentary
+`2026-04-10 08:59:56 +0800`
+
+```
+打包恢复正常了。我把安装路径和服务排障入口补进文档，然后就可以一起提交。
+```
+
+### Codex Response 16 / commentary
+`2026-04-10 09:00:16 +0800`
+
+```
+我最后做一遍范围核对。当前已经实际验证过 `package_local.sh` 成功，接下来只剩把部署脚本、service 文件和文档一起提交。
+```
+
+### Codex Response 17 / commentary
+`2026-04-10 09:00:22 +0800`
+
+```
+范围够清晰了：这次是部署链路收敛，不动业务代码。我现在把 systemd、自检脚本、安装脚本和文档一起提交。
+```
+
+### Codex Response 18 / commentary
+`2026-04-10 09:01:38 +0800`
+
+```
+暂存区就是我想要的范围。提交信息我会按“部署与自检收敛”来切。
+```
+
+### Codex Response 19 / commentary
+`2026-04-10 09:01:48 +0800`
+
+```
+提交完成。我做最后一遍工作区和提交号确认。
+```
+
+### Codex Response 20 / final_answer
+`2026-04-10 09:02:04 +0800`
+
+```
+已继续并提交，提交号 `a4b8841`，工作区干净。
+
+这次把部署链路补成了更像正式产物的样子。新增了包内 systemd unit [unicollect.service](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/deploy/deb_pack_debian11_amd64/lib/systemd/system/unicollect.service#L1) 和安装后自检脚本 [unicollect_self_check.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/deploy/deb_pack_debian11_amd64/opt/unicollect/bin/unicollect_self_check.sh#L1)，并把 `postinst` / `prerm` / `postrm` 改成幂等、非交互、可在无 systemd 环境下优雅降级的版本，见 [postinst](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/deploy/deb_pack_debian11_amd64/DEBIAN/postinst#L1)。同时补了安装脚本 [install_runtime_deps_ubuntu.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/install_runtime_deps_ubuntu.sh#L1) 和 [install_local_package_ubuntu.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/install_local_package_ubuntu.sh#L1)，以及打包产物校验 [package_local.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/scripts/package_local.sh#L1)。顶层安装规则也更新了，见 [CMakeLists.txt](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/CMakeLists.txt#L52)。
+
+我实际重新跑了 `./scripts/package_local.sh`，结果成功，`build/unicollect-x86_64.deb` 可以正常产出，且包内已经带上 `/lib/systemd/system/unicollect.service` 和 `/opt/unicollect/bin/unicollect_self_check.sh`。文档也同步补到了 [README.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/README.md#L51) 和 [build-and-run.md](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/docs/src/build-and-run.md#L88)。
+
+有一个我已经验证出的现实约束也直接说清楚：当前这包还保留着历史 `third_party` 动态库，所以 `CPack` 自动生成 `Depends:` 这条路现在走不通，我试过，失败点就是旧库版本和当前链接结果不一致。因此我没有把包做成“自动声明全部依赖”，而是改成更稳的路径：目标 Ubuntu / Debian 机器先跑 `./scripts/install_runtime_deps_ubuntu.sh`，再跑 `./scripts/install_local_package_ubuntu.sh`。
+
+如果继续，下一步最值得做的是二选一：
+1. 清理 `deploy/.../third_party` 这批历史 so，改成按当前构建结果生成运行时库包。
+2. 在一台干净 Ubuntu 虚机上实际做一次 `apt install` + `systemctl start/status` 的整链安装验证。
+```
+
+<a id="turn-5"></a>
+## Turn 5
+
+### User
+`2026-04-10 09:03:06 +0800`
+
+```
+先按照2执行一次看看，我希望最新的代码能一次跑通，就在我这边
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 09:03:23 +0800`
+
+```
+我先用当前代码重新打一个最新 `.deb`，然后直接在这台机器上走一次“装运行时依赖 -> 安装包 -> systemd 启动 -> 端口访问”的实机验证。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 09:03:28 +0800`
+
+```
+打包已经进入收口阶段；确认产物落盘后，我就直接在这台机器上安装并拉起服务。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 09:03:34 +0800`
+
+```
+我现在执行实机安装。这一步会改系统包和 systemd 状态，所以我直接按“运行时依赖 + 本地 deb 安装”整链跑。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 09:04:13 +0800`
+
+```
+实机 `apt/sudo` 安装卡住了：这台机器的 `sudo` 需要交互密码，我这边拿不到，所以没法继续系统级安装。为了不空停，我先改做无 root 的“按安装布局解包并启动”验证，把包本身再跑一遍。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 09:04:26 +0800`
+
+```
+我现在把 `.deb` 解到临时目录，用安装后的真实目录结构直接起进程。这个能验证“包内容 + 启动路径 + 动态库布局”是否真的闭环。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 09:04:40 +0800`
+
+```
+包内老 `third_party` 库把 `timeout` 自己也劫持了，这是预料之外但很有价值的信号。我改成只给 `unicollect_server` 注入 `LD_LIBRARY_PATH`，继续跑启动验证。
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 09:05:31 +0800`
+
+```
+现在缺的不是包内布局，而是运行时依赖本身。真实系统安装里这一步会由 `install_runtime_deps_ubuntu.sh` 解决；我在当前机器上先把本地前缀里的运行库一并挂进去，继续验证包启动。
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 09:06:34 +0800`
+
+```
+我先做一个针对性验证：不把那批历史 `third_party` 库塞进运行时路径，只用“包内业务库 + 当前机器运行时依赖”启动一次。如果这能过，问题边界就很清楚了。
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 09:07:33 +0800`
+
+```
+这次已经真正起起来了，说明核心问题不是包布局，而是那批旧 `third_party` 库。等这个 5 秒短跑自然收口后，我就直接把这个坑修掉。
+```
+
+### Codex Response 10 / commentary
+`2026-04-10 09:07:55 +0800`
+
+```
+我已经定位到真正的部署阻塞点了：包里那批历史 `third_party` 运行库会在真实安装场景下抢占系统库，导致 GLIBC / libstdc++ 版本冲突。现在我把它从安装包和安装时 RPATH 里拿掉，再重新打包验证。
+```
+
+### Codex Response 11 / commentary
+`2026-04-10 09:08:13 +0800`
+
+```
+我现在重打包并检查两件事：一是二进制的 RPATH 里不再指向 `third_party`，二是 `.deb` 里也不再塞那批旧库。然后再按“解包即跑”的方式复验一次。
+```
+
+### Codex Response 12 / commentary
+`2026-04-10 09:08:19 +0800`
+
+```
+新的 RPATH 已经从构建产物里把 `third_party` 拿掉了。等打包这一步结束后，我会直接检查新 `.deb` 内容并再跑一次“解包即启动”。
+```
+
+### Codex Response 13 / commentary
+`2026-04-10 09:12:04 +0800`
+
+```
+包里的 `RUNPATH` 还有 `third_party`，说明单改主目标还不够，应该是全局 CMake RPATH 状态被别的子项目带回来了。我把这个来源再追一下，然后一次修干净。
+```
+
+### Codex Response 14 / commentary
+`2026-04-10 09:12:48 +0800`
+
+```
+安装脚本本身已经是对的，所以我再追一层：看 `cmake_install.cmake` 之外还有没有别处把 `third_party` 写回包内二进制。这个点如果不抠出来，后面部署还是会反复踩。
+```
+
+### Codex Response 15 / commentary
+`2026-04-10 09:13:02 +0800`
+
+```
+包本体已经确认修正了，`RUNPATH` 里不再有 `third_party`。我重新换一个全新的临时目录再跑一次“解包即启动”，避免上一个测试目录的旧文件干扰结论。
+```
+
+### Codex Response 16 / commentary
+`2026-04-10 09:13:08 +0800`
+
+```
+新包内容已经干净了，没有 `third_party`。我现在用全新解包目录做最后一次启动验证。
+```
+
+### Codex Response 17 / commentary
+`2026-04-10 09:13:13 +0800`
+
+```
+解包路径看起来有点不对，我先把目录结构确认一下，再继续跑启动，不浪费这一步。
+```
+
+### Codex Response 18 / commentary
+`2026-04-10 09:13:22 +0800`
+
+```
+最后一轮启动验证开始。我直接从新包解出的安装目录启动，只注入当前机器已有的运行时依赖，不再借历史 `third_party`。
+```
+
+### Codex Response 19 / commentary
+`2026-04-10 09:19:59 +0800`
+
+```
+已经起起来了。我等它正常收口，然后再补一个 HTTP 访问验证，确保不只是进程存在。
+```
+
+### Codex Response 20 / commentary
+`2026-04-10 09:20:12 +0800`
+
+```
+我再补一个 HTTP 命中验证：让包内二进制实际监听 `2222`，然后从本机请求首页。这样就不是“只是能起进程”，而是服务链路真的通了。
+```
+
+### Codex Response 21 / commentary
+`2026-04-10 09:20:30 +0800`
+
+```
+最新代码已经在这台机器上按“打包后的安装布局”跑通了，连 HTTP 首页也通了。现在我把修掉的打包问题整理提交，避免这次验证结果只停留在工作区。
+```
+
+### Codex Response 22 / commentary
+`2026-04-10 09:20:32 +0800`
+
+```
+这次收敛很小，只是把包里有毒的旧 `third_party` 路径彻底拿掉。我直接单独提交，方便后面回溯。
+```
+
+### Codex Response 23 / final_answer
+`2026-04-10 09:20:59 +0800`
+
+````
+这次在你这台机器上已经把最新代码按“安装后的包布局”跑通了，并且我顺手修掉了真实部署会炸的那个包问题。最新提交是 `35841a7`，工作区干净。
+
+关键修正是把旧的历史 `third_party` 运行库从安装包和安装时 RPATH 里拿掉了，涉及 [CMakeLists.txt](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/CMakeLists.txt#L1)、[unicollect_server/CMakeLists.txt](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/unicollect_server/CMakeLists.txt#L251) 和 [unicollect_self_check.sh](/home/iaar/workspace/codex-wp/prjs/UniNCCollect/deploy/deb_pack_debian11_amd64/opt/unicollect/bin/unicollect_self_check.sh#L1)。修完后我重新执行了 `./scripts/package_local.sh`，确认新 `.deb` 里已经没有 `third_party`，并且包内 `unicollect_server` 的 `RUNPATH` 只剩 `$ORIGIN:/opt/unicollect/lib/vendor_man:/opt/unicollect/lib/vendors:/opt/unicollect/config`。
+
+实际验证结果是：
+我把新包解到 `/tmp/unicollect-pkg-test2.LhKQOL`，直接从解包后的 [unicollect_server](/tmp/unicollect-pkg-test2.LhKQOL/opt/unicollect/bin/unicollect_server) 启动，进程连续运行 5 秒后被 `timeout` 正常结束，期间成功加载 vendors、读取配置、创建控制器。随后我又做了本机 HTTP 验证，请求 `http://127.0.0.1:2222/`，返回内容是 `<h1>Hello World!</h1>`。
+
+唯一没法由我直接完成的是“真正装到系统里”这一步，因为这台机器的 `sudo` 需要交互密码，我拿不到，所以 `./scripts/install_local_package_ubuntu.sh` 只能停在那儿。现在代码和包本身已经过了本机实测；你如果要完成系统级安装，只需要你本机自己跑一次：
+```bash
+./scripts/install_local_package_ubuntu.sh
+```
+跑完后再看：
+```bash
+sudo systemctl status unicollect.service
+sudo journalctl -u unicollect.service -n 100 --no-pager
+```
+````
+
+## go on
+
+- Session ID: `019d7186-55b4-70a3-a5d8-e96785eb2103`
+- Session kind: `primary`
+- Started: `2026-04-09 17:15:22 +0800`
+- CWD: `/home/iaar/workspace/codex-wp/metanc_tool_man`
+- Source file: `/home/iaar/.codex/sessions/2026/04/09/rollout-2026-04-09T17-15-22-019d7186-55b4-70a3-a5d8-e96785eb2103.jsonl`
+- Messages: `67`
+- User prompts: `7`
+- Synthetic events: `0`
+
+<a id="turn-1"></a>
+## Turn 1
+
+### User
+`2026-04-10 07:02:55 +0800`
+
+```
+go on
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 07:03:13 +0800`
+
+```
+I’m continuing from the same replacement/search backlog. First I’m checking the current workspace state and then I’ll take the next concrete search-model extension that fits the retained design and test surface.
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 07:03:28 +0800`
+
+```
+The next useful search-model extension is inventory scope selection. I’m implementing explicit `inventory_scope` controls so non-mutating search can ask for `any`, `loaded_only`, or `unloaded_only` instead of hardcoding one behavior.
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 07:03:32 +0800`
+
+```
+I’m editing the manager and HTTP layer now. The change is to replace the internal boolean loaded-filter with an explicit `inventory_scope`, then expose that on search routes while keeping load-assisted on `unloaded_only`.
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 07:04:15 +0800`
+
+```
+The manager and route shape are patched. I’m adding tests for `loaded_only` and `unloaded_only` so we don’t leave the new search contract implicit.
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 07:04:46 +0800`
+
+```
+I’m updating the retained docs next. The user-facing contract is that search can now be restricted to loaded or unloaded inventory explicitly, while assisted loading still remains unloaded-only.
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 07:05:26 +0800`
+
+```
+The feature and docs are in. I’m doing a quick readback on the edited search code and API docs before I build, to catch any mismatched parameter order or wording drift.
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 07:05:35 +0800`
+
+```
+The API shape looks consistent. I’m building and running tests now, then I’ll rebuild the report so the retained docs stay in sync with the code.
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 07:05:42 +0800`
+
+```
+The report rebuild is done and the current test binary is green. I’m waiting for the compile to finish so validation is complete against the rebuilt sources, then I’ll do one final test pass.
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 07:06:16 +0800`
+
+```
+I’ve finished the implementation and validation. I’m pulling exact references for the final handoff so the new search contract is easy to inspect.
+```
+
+### Codex Response 10 / final_answer
+`2026-04-10 07:06:26 +0800`
+
+```
+Continued Phase 2 by adding explicit inventory-scope filtering to non-mutating search. `resolve_tool_request` and `resolve_tool_by_group` now accept `inventory_scope` with `any`, `loaded_only`, or `unloaded_only` in [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp#L23), parsed in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L81), and enforced in the search paths in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L513). Assisted-load behavior is unchanged and still effectively uses `unloaded_only`.
+
+The HTTP layer now exposes the same control on `GET /tool-groups/{group_id}/resolve` and `POST /tool-search/resolve` in [http_api.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/http_api.cpp#L71). I added manager and HTTP coverage for loaded-only and unloaded-only resolution in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L448) and [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1167), and updated the retained contract docs in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L37) plus the usual handoff/changelog files.
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.
+```
+
+<a id="turn-2"></a>
+## Turn 2
+
+### User
+`2026-04-10 07:11:06 +0800`
+
+```
+go on
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 07:11:18 +0800`
+
+```
+I’m extending the search contract again rather than switching domains. Next slice: add explicit health filtering so search can require `healthy_only` candidates instead of merely preferring them by strategy.
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 07:11:22 +0800`
+
+```
+I’m making the search health filter explicit in the manager and API now. The rule will be `health_scope=any_usable` by default, with `healthy_only` excluding warning-reached candidates from non-mutating search.
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 07:12:09 +0800`
+
+```
+The core filter is in. I’m adding targeted tests now: `healthy_only` should reject warning-reached tools even when they’re otherwise usable, while default behavior stays unchanged.
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 07:12:34 +0800`
+
+```
+I’m updating the docs now so `health_scope` is clearly described as a filter, separate from the ranking strategies like `healthy_first`.
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 07:13:15 +0800`
+
+```
+I’ve patched code and docs. I’m doing a quick sanity check on the new method signatures and test call sites before rebuilding, since this change threads another parameter through several overloads.
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 07:13:24 +0800`
+
+```
+The signatures line up. I’m rebuilding and running tests now, then I’ll rebuild the report so the retained handoff stays coherent.
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 07:13:29 +0800`
+
+```
+The report rebuild finished and the current test binary is green. I’m waiting for the compile to finish, then I’ll rerun `ctest` once against the rebuilt executable.
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 07:14:02 +0800`
+
+```
+I’ve finished the health-scope extension and the verification is clean. I’m pulling the exact references for the close-out.
+```
+
+### Codex Response 9 / final_answer
+`2026-04-10 07:14:11 +0800`
+
+```
+Continued the search-model work by adding explicit `health_scope` filtering. Non-mutating search now accepts `health_scope=any_usable` or `healthy_only` in [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp#L23), parsed in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L95), and enforced in group/direct resolution in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L524). This is separate from `healthy_first`: `healthy_only` filters candidates, while `healthy_first` only changes ranking.
+
+The HTTP search routes now expose that filter in [http_api.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/http_api.cpp#L71). I added manager and HTTP coverage for warning-reached tools being excluded under `healthy_only` in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L476) and [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1272), and updated the retained contract docs in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L37) plus the aligned handoff/changelog files.
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.
+```
+
+<a id="turn-3"></a>
+## Turn 3
+
+### User
+`2026-04-10 08:16:54 +0800`
+
+```
+go on
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 08:17:32 +0800`
+
+```
+The next useful step is to add an explicit replacement chain, not just broad group ranking. I’m implementing optional `replacement_tool_id` so a direct request can follow a tool-specific fallback chain before dropping to general group search.
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 08:17:51 +0800`
+
+```
+I’m editing the retained model now to add `replacement_tool_id`, then I’ll wire chain traversal into direct-request resolution before the existing group fallback.
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 08:18:28 +0800`
+
+```
+The chain traversal is in. I’m updating the test fixtures now so tools can declare `replacement_tool_id`, then I’ll add direct-request cases for chain resolution, chain continuation, and cycle safety.
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 08:19:21 +0800`
+
+```
+I’ve added coverage for chain-first resolution, chain continuation through an ineligible tool, cycle termination, and self-reference rejection. Updating the retained docs now so the new fallback order is explicit.
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 08:20:05 +0800`
+
+```
+The code and docs are patched for explicit replacement chains. I’m doing a quick readback on the chain logic before rebuilding, mainly to confirm the fallback order and self-reference validation are correct.
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 08:20:10 +0800`
+
+```
+I spotted one doc gap: `replacement_tool_id` is in the tool example but not listed under `POST /tools` optional fields. I’m fixing that before validation.
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 08:20:20 +0800`
+
+```
+I’ve closed the doc gap. Building, testing, and rebuilding the report now so the retained state stays aligned.
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 08:20:41 +0800`
+
+```
+The report rebuild is done and the current test binary is green. I’m waiting for the compile to finish, then I’ll rerun `ctest` once against the rebuilt executable.
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 08:21:00 +0800`
+
+```
+I’ve finished the replacement-chain slice and the validation is clean. Pulling exact references for the close-out.
+```
+
+### Codex Response 10 / final_answer
+`2026-04-10 08:21:09 +0800`
+
+```
+Continued the replacement/search work by adding explicit replacement chains. `Tool` now has optional `replacement_tool_id` in the retained model and JSON shape in [model.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/model.hpp#L39), with self-reference validation in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L26). Direct-request resolution now follows `replacement_tool_id` links before broader group fallback, with cycle protection, in [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L572).
+
+I added manager coverage for chain-first resolution, cycle termination, and self-reference rejection in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L503), plus HTTP coverage for chain-based `/tool-search/resolve` behavior in [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1378). The retained contract docs now describe the new fallback order and tool field in [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L78).
+
+Validation passed with `cmake --build build-local`, `ctest --test-dir build-local --output-on-failure`, and `mdbook build reports/2026-04-09-codex-session`.
+```
+
+<a id="turn-4"></a>
+## Turn 4
+
+### User
+`2026-04-10 08:53:55 +0800`
+
+```
+继续
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 08:54:14 +0800`
+
+```
+我继续沿着同一条 Phase 2 路线推进，不切到适配器或版本化。先检查当前改动状态，然后补下一块对 replacement/search 模型有实际增量的行为。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 08:54:29 +0800`
+
+```
+下一块我准备补“搜索结果可解释性”，因为现在有 replacement chain 了，但返回里只有 `resolution` 和 `tool`，外部看不到实际走了哪条回退路径。我会给 `ToolSearchResult` 增加请求源和 chain trace。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 08:54:35 +0800`
+
+```
+我在管理器里补 trace 生成逻辑。规则很简单: `requested_tool_id` 永远是原始请求刀具，`replacement_path` 记录显式 replacement chain 实际走过的工具 ID。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 08:54:46 +0800`
+
+```
+接着补测试。我要覆盖三种情况: direct 为空路径、replacement-chain 带路径、group-fallback 也保留已走过的 chain。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 08:55:07 +0800`
+
+```
+我也在更新文档，把新的返回字段说清楚，不然 `replacement_chain` 加进来以后响应就不够可审查了。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 08:55:37 +0800`
+
+```
+代码和文档都补完了。我先做一轮回读，重点看 `ToolSearchResult` 的 JSON 形状和新增测试是否一致，然后再跑构建和测试。
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 08:55:44 +0800`
+
+```
+回读没发现结构问题，开始跑构建、测试和报告重建。
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 08:55:48 +0800`
+
+```
+报告已经重建完成，当前测试二进制也是绿的。我等编译结束后，再用新产物补跑一遍 `ctest`。
+```
+
+### Codex Response 9 / final_answer
+`2026-04-10 08:56:23 +0800`
+
+```
+继续把搜索结果做成可审计的形状了。`ToolSearchResult` 现在除了 `resolution` 和 `tool`，还会返回 `requested_tool_id` 与 `replacement_path`，定义在 [model.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/model.hpp#L69)。管理器会在 direct、replacement-chain、group-fallback 三种 direct-request 路径里都填充这些字段，逻辑在 [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp#L584)。这样即使最后落到 group fallback，也能看出前面尝试过哪些显式 replacement hop。
+
+我补了 manager 和 HTTP 测试，覆盖 direct 空路径、replacement-chain 完整路径、以及 chain miss 后的 group fallback trace，见 [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L503) 和 [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp#L1378)。API 文档也更新了返回字段说明和示例，在 [http-api.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/http-api.md#L77)。
+
+验证已通过: `cmake --build build-local`、`ctest --test-dir build-local --output-on-failure`、`mdbook build reports/2026-04-09-codex-session`。
+```
+
+<a id="turn-5"></a>
+## Turn 5
+
+### User
+`2026-04-10 09:03:46 +0800`
+
+```
+考虑增加数据库相关支持，用于保存刀具信息，具体的你设计一下，根据之前的需求，先规划给我看一下
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 09:04:00 +0800`
+
+```
+你要的是先做数据库支持方案，不先改代码。我先看当前持久化边界和状态模型，给出一份能接到现有仓库上的分阶段设计。
+```
+
+### Codex Response 2 / final_answer
+`2026-04-10 09:04:44 +0800`
+
+```
+可以，先给你一个贴合当前仓库形态的数据库方案，不先改代码。
+
+**建议方向**
+我建议分两层设计，而不是直接把 `ToolManager` 改成“每次操作都查数据库”。
+
+- 第一阶段用“内存管理器 + 数据库存储后端”。
+- `ToolManager` 继续保持现在的内存状态机和校验逻辑。
+- 启动时从数据库加载为 `StateSnapshot`。
+- 每次成功变更后，把当前快照事务性写回数据库。
+- 这样能最大限度复用现有 `export_state` / `import_state` / 严格一致性校验，也不会把 HTTP 层和业务规则绑死在 SQL 上。
+
+这比“直接把所有业务改成 ORM/SQL 驱动”风险低很多，也更符合你这个仓库现在的阶段。
+
+**推荐数据库**
+先上 `SQLite`，预留后续扩成 `PostgreSQL`。
+
+原因：
+- 当前项目是单进程、小服务、单机持久化，非常适合 SQLite。
+- 部署成本低，没有额外服务依赖。
+- 先把持久化边界设计对，再决定是否需要 PostgreSQL。
+- 现在的自动 file persistence 本质也是单机恢复场景，SQLite 是自然升级。
+
+**推荐架构**
+新增一个持久化抽象层，建议名字用 `StateStore` 或 `PersistenceBackend`。
+
+核心接口建议：
+
+- `load_snapshot() -> std::optional<StateSnapshot>`
+- `save_snapshot(const StateSnapshot&)`
+- `backend_name() -> std::string`
+
+第一批实现：
+- `FileStateStore`
+- `SqliteStateStore`
+
+`ToolManager` 不直接知道文件或数据库细节，只知道：
+- 启动时 load
+- 变更成功后 save
+- save 失败则回滚当前内存变更
+
+这和你现在 file-backed 的行为是一致的。
+
+**数据库模型**
+我建议不要先做“单表 JSON blob”，直接做规范化表结构。原因是你后面大概率不只是“能恢复”，还会想查刀具、查寿命、查装载状态。
+
+建议表：
+
+- `schema_migrations`
+  - `version`
+
+- `tools`
+  - `id` PK
+  - `tool_number` UNIQUE
+  - `name`
+  - `type`
+  - `search_enabled`
+  - `replacement_tool_id` NULL
+  - `group_id` NULL
+  - `wear_group_id` NULL
+  - `replacement_priority`
+  - `location_magazine_id` NULL
+  - `location_slot_index` NULL
+
+- `tool_edges`
+  - `tool_id` FK
+  - `edge_index`
+  - `name`
+  - `length_offset`
+  - `radius`
+  - `warning_limit`
+  - `limit_value`
+  - `used`
+  - PK(`tool_id`, `edge_index`)
+
+- `magazines`
+  - `id` PK
+  - `name`
+
+- `magazine_slots`
+  - `magazine_id` FK
+  - `slot_index`
+  - `tool_id` NULL UNIQUE
+  - PK(`magazine_id`, `slot_index`)
+
+必要约束：
+- `tool_number` 唯一
+- `tool_id` 在 `magazine_slots` 中最多出现一次
+- `replacement_tool_id` 可空，但若非空必须引用已存在 tool
+- `location_magazine_id + location_slot_index` 与 `magazine_slots` 一致
+- 这些约束在数据库层做一部分，在 `import_state` 校验里再做一层
+
+**事务策略**
+沿用你现在的“全量一致性优先”思路。
+
+每次持久化：
+- 开事务
+- 清理并重写 `tool_edges`
+- 清理并重写 `magazine_slots`
+- upsert `tools`
+- upsert `magazines`
+- 提交事务
+
+这是“快照式写入数据库”，不是增量事件流。
+
+优点：
+- 逻辑简单
+- 和现在 file snapshot 语义一致
+- 更容易保证一致性
+
+缺点：
+- 写放大较大
+- 但对当前项目规模完全可接受
+
+**运行配置**
+建议新增环境变量：
+
+- `TOOLMAN_PERSISTENCE_BACKEND=file|sqlite`
+- `TOOLMAN_STATE_PATH=...`
+- `TOOLMAN_SQLITE_PATH=...`
+
+规则：
+- 默认仍然是无持久化
+- `file` 时继续走现有逻辑
+- `sqlite` 时走数据库
+- 不建议一开始同时启两个后端
+
+**迁移策略**
+第一版不要改 HTTP API。
+
+迁移流程建议：
+1. 保留现有 `GET /state` 和 `POST /state/import`
+2. 新增 SQLite backend
+3. 启动时如果 DB 有数据则 load
+4. 如无数据，可选支持一次性从现有 JSON state file 导入
+5. API 对外保持不变
+
+这样外部调用方无感知。
+
+**实现顺序**
+我建议按这 5 步做：
+
+1. 抽出 `StateStore` 接口，把现有 file persistence 挂到接口后面。
+2. 实现 `SqliteStateStore`，先只支持 `load_snapshot/save_snapshot`。
+3. 增加 SQLite schema 初始化和 migration version 1。
+4. 加测试：
+   - SQLite round-trip
+   - 写失败回滚
+   - 启动恢复
+   - DB 数据不一致时拒绝加载
+5. 最后补文档和运行配置。
+
+**测试重点**
+必须补的测试：
+
+- SQLite 保存后新 manager 能恢复完整状态
+- tools / edges / magazines / slots / locations 一致恢复
+- replacement chain / search flags / scopes 都能恢复
+- DB 写失败时，内存状态回滚
+- DB 内部不一致时，load 失败而不是静默修复
+
+**我建议的结论**
+如果你要的是“现在就能稳妥落地”的方案，我建议：
+
+- 先做 `StateStore` 抽象
+- 先做 `SQLite`
+- 持续保持“内存 authoritative，数据库是事务化快照后端”
+- 暂时不要做 PostgreSQL
+- 暂时不要把业务规则下沉到 SQL
+
+如果你认可这个方向，我下一步可以直接给你拆成一版可实施的任务清单：
+- 目录改动
+- 新增类名
+- 表结构 SQL
+- 测试清单
+- 分 2 到 3 个提交的实施顺序
+```
+
+<a id="turn-6"></a>
+## Turn 6
+
+### User
+`2026-04-10 09:05:23 +0800`
+
+```
+ok，按照你的规划执行
+```
+
+### Codex Response 1 / commentary
+`2026-04-10 09:05:38 +0800`
+
+```
+我按这个方案开始落地，先把现有 file persistence 抽成统一存储接口，再接 SQLite 后端；随后把启动加载和成功变更后的保存都挂到这个抽象上。
+```
+
+### Codex Response 2 / commentary
+`2026-04-10 09:05:55 +0800`
+
+```
+这次改动会比较大，我按 4 块执行：
+
+1. 抽 `StateStore` 接口，把现有 file persistence 接到接口后面。
+2. 加 `SQLite` 后端，先做快照式读写，不改现有 HTTP 合同。
+3. 接入运行配置和测试，覆盖 file 与 sqlite 两种后端。
+4. 更新文档，把运行方式、限制和后续边界写清楚。
+```
+
+### Codex Response 3 / commentary
+`2026-04-10 09:07:16 +0800`
+
+```
+我在整理 `ToolManager` 的持久化边界，先把路径字符串状态换成真正的 store 抽象，不然 SQLite 只能硬塞进现有 file 逻辑里。
+```
+
+### Codex Response 4 / commentary
+`2026-04-10 09:07:49 +0800`
+
+```
+我先把持久化接口文件补出来，后面 file 和 sqlite 都从这个口子走。
+```
+
+### Codex Response 5 / commentary
+`2026-04-10 09:07:57 +0800`
+
+```
+SQLite 后端我会做成快照式事务写入，不碰现有 HTTP 合同和规则层。现在开始加实现文件。
+```
+
+### Codex Response 6 / commentary
+`2026-04-10 09:09:20 +0800`
+
+```
+我把 SQLite 后端实现加进来了，接下来把构建系统和 manager 接口接上，不然还编不过。
+```
+
+### Codex Response 7 / commentary
+`2026-04-10 09:10:47 +0800`
+
+```
+运行配置这块我一并接上。默认仍然兼容旧的 `TOOLMAN_STATE_PATH`，同时新增 `TOOLMAN_SQLITE_PATH` 和显式 backend 选择。
+```
+
+### Codex Response 8 / commentary
+`2026-04-10 09:11:15 +0800`
+
+```
+我现在补 SQLite round-trip 和失败回滚测试，确保新后端不是只有代码路径，没有验证。
+```
+
+### Codex Response 9 / commentary
+`2026-04-10 09:12:08 +0800`
+
+```
+核心代码已经接上了。我先编一轮，主要是确认 SQLite 依赖、抽象层接口和 manager 改造都能过，再补文档。
+```
+
+### Codex Response 10 / commentary
+`2026-04-10 09:13:05 +0800`
+
+```
+先把这轮数据库改造编译起来并跑测试，确认持久化抽象和 SQLite backend 没有破坏现有行为；编译通过后我再补文档和状态说明。
+```
+
+### Codex Response 11 / commentary
+`2026-04-10 09:13:16 +0800`
+
+```
+构建先卡在 `SQLite3` 开发库探测，问题不是代码而是当前环境没有可供 CMake 使用的头文件和库路径。我先确认本机能否直接找到 `sqlite3` 头库，如果没有，就把构建改成“有 SQLite 时启用、没有时明确报可选能力不可用”，避免把整个项目构建锁死。
+```
+
+### Codex Response 12 / commentary
+`2026-04-10 09:13:29 +0800`
+
+```
+本机确实没有 `sqlite3` 开发头库，所以我会把 SQLite 后端降成可选编译特性：有库就启用，没有库也能正常构建，运行时若显式选择 SQLite 再给出明确错误。接下来我调整 CMake 和后端实现的条件编译，再重新编译验证。
+```
+
+### Codex Response 13 / commentary
+`2026-04-10 09:13:54 +0800`
+
+```
+我已经确认要走“可选 SQLite 编译 + 运行时明确信号”这条线，这样既不放弃数据库后端，也不会因为当前机器缺少开发库把整个仓库构建打断。现在开始改构建脚本、存储抽象接口和测试分支。
+```
+
+### Codex Response 14 / commentary
+`2026-04-10 09:15:19 +0800`
+
+```
+条件编译已经接上，测试也补了“未编入 SQLite 支持时要明确报错”的分支。我先重新构建，接着跑完整测试；如果还有编译问题，就继续在这轮把它收干净。
+```
+
+### Codex Response 15 / commentary
+`2026-04-10 09:15:59 +0800`
+
+```
+构建已经过了，当前环境下 SQLite 后端按预期被编成可选缺省不可用。现在跑完整测试，先确认持久化抽象没有把现有搜索、HTTP 和文件持久化行为带歪。
+```
+
+### Codex Response 16 / commentary
+`2026-04-10 09:16:13 +0800`
+
+```
+代码和测试已经稳住了，下一步只剩把文档、交接说明和状态表同步到“文件后端 + 可选 SQLite 后端”的新契约，避免实现与说明脱节。
+```
+
+### Codex Response 17 / commentary
+`2026-04-10 09:16:38 +0800`
+
+```
+文档里原来把持久化写死成 file-backed，这部分现在已经过时了。我会把 README、架构、工具说明、handoff、状态矩阵和报告统一改成“StateStore 抽象 + file backend + 可选 SQLite backend + 当前环境无 SQLite dev 包时会自动降级”的表述。
+```
+
+### Codex Response 18 / commentary
+`2026-04-10 09:17:54 +0800`
+
+```
+实现层已经结束，这里只剩最后一次文档产物验证。我重新生成报告并检查工作区差异，确认这轮数据库支持相关的改动闭环。
+```
+
+### Codex Response 19 / commentary
+`2026-04-10 09:18:00 +0800`
+
+```
+差异检查里能看到既有文件的改动，但 `state_store` 新文件还没进入 `git diff --stat` 统计，因为它们是新增未暂存文件。我再看一眼工作树状态，确保最终汇报里把这些新文件带上。
+```
+
+### Codex Response 20 / final_answer
+`2026-04-10 09:18:25 +0800`
+
+```
+数据库持久化这轮已经落地成“内存权威 + 快照后端”架构。新增了 `StateStore` 抽象和两个后端入口，在 [state_store.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/state_store.hpp) 与 [state_store.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/state_store.cpp)；`ToolManager` 改为通过该抽象做启动恢复和变更后提交，在 [tool_manager.hpp](/home/iaar/workspace/codex-wp/metanc_tool_man/include/toolman/tool_manager.hpp) 和 [tool_manager.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/tool_manager.cpp)。`main` 现在支持 `TOOLMAN_PERSISTENCE_BACKEND=file|sqlite`、`TOOLMAN_STATE_PATH`、`TOOLMAN_SQLITE_PATH`，见 [main.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/src/main.cpp)。
+
+SQLite 这边做成了可选编译能力：有 SQLite3 开发库就启用，没有也不会把整个项目构建打断。对应构建逻辑在 [CMakeLists.txt](/home/iaar/workspace/codex-wp/metanc_tool_man/CMakeLists.txt)，测试在 [tool_manager_tests.cpp](/home/iaar/workspace/codex-wp/metanc_tool_man/tests/tool_manager_tests.cpp) 里补了三类覆盖：文件持久化回归、SQLite round-trip/回滚、以及“当前构建未带 SQLite 支持时应明确报错”。文档也同步到新契约了，重点更新了 [README.md](/home/iaar/workspace/codex-wp/metanc_tool_man/README.md)、[architecture.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/architecture.md)、[tooling.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/tooling.md)、[agent-handoff.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/agent-handoff.md) 和 [manual-implementation-status.md](/home/iaar/workspace/codex-wp/metanc_tool_man/docs/manual-implementation-status.md)。
+
+验证已完成：`cmake --build build-local`、`ctest --test-dir build-local --output-on-failure`、`mdbook build reports/2026-04-09-codex-session`。当前这台机器没有 SQLite3 开发头库，所以实际构建结果是“SQLite 后端接口已接入，但本机构建为 unavailable 分支”；文件后端和其余功能全部通过测试。
+```
+
+<a id="turn-7"></a>
+## Turn 7
+
+### User
+`2026-04-10 09:19:51 +0800`
+
+```
+引入一下sqlite开发库，怎么自动化管理最方便怎么来
+```
+
+### Codex
+_No Codex response captured for this turn._

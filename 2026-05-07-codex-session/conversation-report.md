@@ -17,6 +17,8 @@
 - Merge the separate Search and Replace softkeys into one `Search/Replace` entry.
 - Prevent `Ctrl+F` from opening the native editor/browser search UI and route shortcuts to the
   generated Search/Replace panel.
+- Investigate why saved Program content is lost after switching to another program and reopening it.
+- Investigate why PROG DIR opening A shows the previous program, then opening B still shows A.
 - Generate the daily report, update related docs, sync to MetaNC, then commit and push.
 
 ## Technical Decisions
@@ -43,6 +45,12 @@
   `find_in_program` and `replace_in_program` action names.
 - Own `Ctrl/Cmd+F` in the generated shell so the custom panel opens consistently instead of the
   native CodeMirror search UI.
+- Treat Save/Save As as active-editor-document operations. Generated clients pass the current
+  editor text as command content, and server-side command handling falls back to
+  `program.document.content` if a strict-mode client omits explicit content.
+- Keep the Web editor DOM only while the active Program document identity is unchanged. Runtime
+  execution updates preserve CodeMirror state, but PROG DIR file activation refreshes the visible
+  editor document.
 
 ## Result
 
@@ -54,4 +62,7 @@ state. PROG editor actions now cover direct clipboard paste, natural-line Goto, 
 Search/Replace panel. The Web implementation keeps CodeMirror and `res://program.document.content`
 in sync during replacements, and the visible edit softkey surface now exposes a single
 `Search/Replace` entry with `Ctrl/Cmd+F` / `Ctrl/Cmd+H` routed to the generated panel.
-Documentation and report outputs were refreshed for publication.
+Program Save now persists the edited active document across server, Web/QML runtime shells, and
+fixture mock runtime paths. PROG DIR file activation now updates the visible Web editor when moving
+from one program document to another, while still preserving editor focus/history for same-document
+runtime refreshes. Documentation and report outputs were refreshed for publication.

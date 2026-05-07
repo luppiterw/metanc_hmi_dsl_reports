@@ -60,6 +60,22 @@ Search/Replace 第一版可用、最终产物刷新、文档同步和 MetaNC 下
 - 先后提交 `8a1e573 Add program editor search replace panel` 和
   `d130d3b Unify program search replace entry`，把第一版面板和入口/快捷键收敛
   分成两个可审查提交。
+- 修复 Program Save 在 Web/QML、fixture mock server 和 native Drogon server
+  三条路径上的持久化语义：保存命令现在优先携带当前编辑器文本 `content`，
+  缺省时 server 会从 `program.document.content` 资源回退，避免只保存旧的
+  program-store 内容。
+- 为 native server 的 `prog.commands.save`、`save_as` 和 `prepare_execute`
+  增加 active document resource fallback，保证严格分离模式下当前编辑器文档是
+  Save/AUTO 准备执行的事实源。
+- 增加 mock runtime 和 native REST API 回归测试，覆盖“编辑资源 -> 保存 ->
+  切换到其他程序 -> 再打开原程序仍能看到保存内容”的 Program workspace 流程。
+- 修复 Web PROG DIR 打开 A/B 程序时编辑器显示滞后的问题。此前为避免执行态刷新
+  销毁 CodeMirror 实例，`page_program` 保留 DOM 的条件过宽；现在 Web shell
+  按当前程序文档 key 判断，同一程序保留编辑器，切换程序则重新渲染文档内容。
+- 重新生成 Web、QML、native server、distribution 和 snapshot 输出，并用真实
+  `run_split_web_native.sh` 分离模式验证：打开 `SWITCH_A.MPF` 后编辑器显示 A，
+  再切到 `SWITCH_B.MPF` 后编辑器显示 B，`program.document.content` 与可见编辑器
+  文本一致。
 
 ## Validation
 
@@ -80,6 +96,14 @@ Search/Replace 第一版可用、最终产物刷新、文档同步和 MetaNC 下
 - Headless Web probe verified the unified `Search/Replace` softkey, absence of the old separate
   `Replace` softkey, `Ctrl/Cmd+F` interception, no CodeMirror native search panel, and
   `Ctrl/Cmd+H` focus on the Replace field.
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots
+  tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files
+  tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store
+  tests.test_mock_runtime_server.MockRuntimeServerTests.test_save_persists_current_program_resource_draft`
+- `./generated/server-build/runtime_rest_api_test`
+- Headless Web probe against
+  `./generated/distribution/run_split_web_native.sh 18161 18061` verified Program A/B
+  activation updates both runtime resource content and the visible CodeMirror editor text.
 - Final regression after the Search/Replace entry merge:
   `python3 -m unittest -v tests.test_pipeline.PipelineTests tests.test_mock_runtime_server`
   passed `38` tests with `1` opt-in Web visual snapshot skipped.

@@ -57,6 +57,11 @@ th { background: #efe2ca; position: sticky; top: 0; }
 }
 .msg.user { border-left: 8px solid var(--user); }
 .msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
 .time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
 pre {
   white-space: pre-wrap;
@@ -82,15 +87,39 @@ pre {
 <h1>Codex Local Conversation Export</h1>
 <section class="meta">
 <div><b>Sessions</b>: <code>1</code></div>
+<div><b>Primary sessions</b>: <code>1</code></div>
+<div><b>Side sessions</b>: <code>0</code></div>
+<div><b>User prompts</b>: <code>21</code></div>
+<div><b>Synthetic events</b>: <code>1</code></div>
 <div><b>Messages</b>: <code>166</code></div>
 <div><b>User messages</b>: <code>22</code></div>
 <div><b>Codex messages</b>: <code>144</code></div>
 <div><b>Full export</b>: <a href="all.html">HTML</a> / <a href="all.md">Markdown</a></div>
 </section>
 <table>
-<thead><tr><th>Started</th><th>Messages</th><th>CWD</th><th>Title</th><th>MD</th><th>HTML</th></tr></thead>
+<thead><tr><th>Prompt Time</th><th>Session</th><th>Turn</th><th>Prompt</th><th>Codex Messages</th><th>MD</th><th>HTML</th></tr></thead>
 <tbody>
-<tr><td>2026-04-02 09:18:47 +0800</td><td>166</td><td><code>/home/iaar/workspace/codex-wp/uar</code></td><td>1.web based</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html">html</a></td></tr>
+<tr><td>2026-04-02 09:19:15 +0800</td><td><code>019d4bc5</code></td><td>1</td><td>1.web based</td><td>0</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-1">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-1">html</a></td></tr>
+<tr><td>2026-04-02 09:20:41 +0800</td><td><code>019d4bc5</code></td><td>2</td><td>a web ui project, like simens 840d view, for self defined cnc controller system</td><td>7</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-2">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-2">html</a></td></tr>
+<tr><td>2026-04-02 09:27:33 +0800</td><td><code>019d4bc5</code></td><td>3</td><td>run it for preview</td><td>6</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-3">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-3">html</a></td></tr>
+<tr><td>2026-04-02 10:01:45 +0800</td><td><code>019d4bc5</code></td><td>4</td><td>base with this style, add program edit page, and simulator section, use react or vue or other packs as you wish and jud...</td><td>7</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-4">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-4">html</a></td></tr>
+<tr><td>2026-04-02 10:32:45 +0800</td><td><code>019d4bc5</code></td><td>5</td><td>generate a AGENTS.md file for this project, totally driven by codex</td><td>4</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-5">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-5">html</a></td></tr>
+<tr><td>2026-04-02 10:45:21 +0800</td><td><code>019d4bc5</code></td><td>6</td><td>generate a CHANGELOG_ANGENT.md for your changes; generate a LOG_USER.md for my prompt</td><td>3</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-6">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-6">html</a></td></tr>
+<tr><td>2026-04-02 10:58:49 +0800</td><td><code>019d4bc5</code></td><td>7</td><td>can you integrate with stitch?</td><td>2</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-7">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-7">html</a></td></tr>
+<tr><td>2026-04-02 11:01:23 +0800</td><td><code>019d4bc5</code></td><td>8</td><td>stitch.withgoogle.com</td><td>2</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-8">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-8">html</a></td></tr>
+<tr><td>2026-04-02 11:21:13 +0800</td><td><code>019d4bc5</code></td><td>9</td><td>your ui view seems a bit chaos and complex , and i&#x27;d like to use one screen page rather than scroll ones ,optimize it</td><td>7</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-9">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-9">html</a></td></tr>
+<tr><td>2026-04-02 13:23:59 +0800</td><td><code>019d4bc5</code></td><td>10</td><td>u need 2 support english/chinese switch; simplify page structure; remove useless AGENTS.md contents like Current Stack;...</td><td>9</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-10">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-10">html</a></td></tr>
+<tr><td>2026-04-02 13:35:17 +0800</td><td><code>019d4bc5</code></td><td>11</td><td>run it</td><td>2</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-11">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-11">html</a></td></tr>
+<tr><td>2026-04-02 13:44:27 +0800</td><td><code>019d4bc5</code></td><td>12</td><td>1.quick control show like float section, called by trigger; 2. program list does not need to be displayed at main page;...</td><td>13</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-12">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-12">html</a></td></tr>
+<tr><td>2026-04-02 14:01:22 +0800</td><td><code>019d4bc5</code></td><td>13</td><td>1.offsets should be origin-offsets 2.main page should display running program, and running line should be highlight;3....</td><td>9</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-13">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-13">html</a></td></tr>
+<tr><td>2026-04-02 14:11:07 +0800</td><td><code>019d4bc5</code></td><td>14</td><td>1.tabs change to left, can collapse(show icon) and expand(show icon + text); 2. message line is taller, and change to b...</td><td>13</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-14">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-14">html</a></td></tr>
+<tr><td>2026-04-02 14:19:35 +0800</td><td><code>019d4bc5</code></td><td>15</td><td>update all related files and docs</td><td>4</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-15">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-15">html</a></td></tr>
+<tr><td>2026-04-02 14:28:42 +0800</td><td><code>019d4bc5</code></td><td>16</td><td>try to optimize AGENTS.md ,learning https://github.com/liufang-robot/experimental_gcode_parser/blob/main/AGENTS.md and...</td><td>14</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-16">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-16">html</a></td></tr>
+<tr><td>2026-04-02 14:54:46 +0800</td><td><code>019d4bc5</code></td><td>17</td><td>page top contents like: Operating area-Machine operation and line things seems useless; running program tag seems usele...</td><td>11</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-17">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-17">html</a></td></tr>
+<tr><td>2026-04-02 15:17:47 +0800</td><td><code>019d4bc5</code></td><td>18</td><td>1.quick control can be dragged everywhere; 2.left tab collapse/expand should be different from funtion tabs; 3.main pag...</td><td>10</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-18">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-18">html</a></td></tr>
+<tr><td>2026-04-02 15:30:38 +0800</td><td><code>019d4bc5</code></td><td>19</td><td>quick control feed/spindle overrides cannot drag by cursor now ,fix it;top section:Custom CNC Control Platform Machine...</td><td>7</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-19">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-19">html</a></td></tr>
+<tr><td>2026-04-02 15:39:24 +0800</td><td><code>019d4bc5</code></td><td>20</td><td>when left menu collapsed, MetaNC should be litter either, and it is ugly now especially the border</td><td>5</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-20">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-20">html</a></td></tr>
+<tr><td>2026-04-02 15:47:21 +0800</td><td><code>019d4bc5</code></td><td>21</td><td>logo width should sync with left menu width; bottom message should be in single line(remove current message text);expan...</td><td>9</td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.md#turn-21">md</a></td><td><a href="sessions/20260402-091847-019d4bc5-7e6d-7cf3-83fb-3ff3e497895b.html#turn-21">html</a></td></tr>
 </tbody>
 </table>
 </main>

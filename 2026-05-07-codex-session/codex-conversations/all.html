@@ -96,9 +96,9 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>43</code></div>
-<div><b>User prompts</b>: <code>6</code></div>
-<div><b>Synthetic events</b>: <code>1</code></div>
+<div><b>Messages</b>: <code>145</code></div>
+<div><b>User prompts</b>: <code>23</code></div>
+<div><b>Synthetic events</b>: <code>2</code></div>
 </section>
 <section class="turn" id="turn-1">
 <h2>Turn 1</h2>
@@ -428,6 +428,1211 @@ MEMORY.md:383-387|note=[used generated artifact workflow context for metanc_hmi_
 <div class="time">2026-05-07 08:45:22 +0800</div>
 <pre>我会先用现有 Codex history exporter bootstrap 今天的 report 目录和 user history/full conversation，再补写项目报告内容与索引摘要。随后更新 client logging / visual design / status matrix 中和 QML Logs 面板行为相关的说明。</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 08:46:45 +0800</div>
+<pre>Report bootstrap 已经生成，下面我会把占位内容替换成今天实际内容，并同步英文/中文 docs 的 Logs 行为说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 08:48:34 +0800</div>
+<pre>文档已经同步到英文和 zh-CN overlay，并把这三份中文 overlay 标记为 current。下面重建 report book、当天 session book 和项目 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-07 08:49:43 +0800</div>
+<pre>i18n strict check 现在仍然失败，但失败项是仓库已有的 stale/untracked overlay 队列；本轮修改的三份中文 overlay 已标记 current。接下来先提交并推送 reports 子模块，再提交主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-07 08:50:14 +0800</div>
+<pre>Reports 子模块已 staged，内容包括 2026-05-07 session、完整 Codex conversation 导出和聚合索引更新。我现在提交并先推送这个子模块，避免主仓库记录不可解析的子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-07 08:51:02 +0800</div>
+<pre>Reports 子模块已推送到 `871fc3a`，主仓库现在只剩源代码、docs、i18n 状态、快照和子模块指针更新。`git diff --check` 通过，我现在提交并推送 `metanc_hmi_dsl`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-07 08:52:00 +0800</div>
+<pre>`metanc_hmi_dsl` 已提交并推送到 `cc93f4a`。下一步把当前 HMI 包同步到 `MetaNC` 的 `feat/hmi`，然后检查下游差异再提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-07 08:52:36 +0800</div>
+<pre>MetaNC 差异只在 `nrt/hmi` 的 QML generator/runtime、英文 docs 和 QML 快照，符合 export 过滤规则；`docs_i18n` 和 report 子模块没有进入 MetaNC。现在跑一次下游 HMI pipeline 测试后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-07 08:53:09 +0800</div>
+<pre>MetaNC 下游测试和 `git diff --check -- nrt/hmi` 都通过。现在提交 `feat/hmi`，commit message 会明确说明是 QML Logs 面板状态绑定和文档同步，不用泛泛写 sync。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-05-07 08:54:35 +0800</div>
+<pre>已完成并都 push 了。
+
+提交结果：
+
+- `metanc_hmi_dsl_reports`
+  - `871fc3a docs: publish 2026-05-07 QML logs report`
+- `metanc_hmi_dsl`
+  - `cc93f4a fix(qml): repair diagnostics logs panels`
+- `MetaNC feat/hmi`
+  - `cb430d1 fix(hmi): repair QML diagnostics logs panels`
+
+完成内容：
+
+- 生成 2026-05-07 report，包含 `user-history`、完整 Codex conversation、project/conversation report、workflow/architecture diagram。
+- 更新 report 聚合索引和 docs portal，`docs_html/reports/2026-05-07-codex-session/index.html` 已生成。
+- 更新相关 docs：
+  - client logging
+  - visual design guide
+  - status matrix
+  - zh-CN overlay 和 i18n status
+- 提交并推送 reports 子模块，再提交并推送 `metanc_hmi_dsl`。
+- 通过 `./tools/export_to_metanc.sh /home/iaar/workspace/ccmix-wp/MetaNC` 同步到 `MetaNC/nrt/hmi`，提交并推送 `feat/hmi`。
+
+验证：
+
+- `./tools/generate_targets.sh` 通过。
+- `mdbook build submodules/metanc_hmi_dsl_reports` 通过。
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-07-codex-session` 通过。
+- `./tools/build_docs_html.sh` 通过。
+- `env HMI_SKIP_HEAVY_SNAPSHOT_TESTS=1 python3 -m unittest tests/test_pipeline.py -v` 通过。
+- `env HMI_SKIP_HEAVY_SNAPSHOT_TESTS=1 python3 -m unittest nrt.hmi.tests.test_pipeline -v` 在 MetaNC 通过。
+- `git diff --check` 通过。
+- 三个工作树现在都是 clean：`metanc_hmi_dsl`、reports 子模块、`MetaNC feat/hmi`。
+
+备注：`docs_i18n` strict check 仍有仓库既有 stale/untracked 队列，本轮改到的 3 个 zh-CN overlay 已标记 current。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+skills/metanc-hmi-reports-submodule/SKILL.md:47-69|note=[followed report export, report build, submodule-first publish sequencing]
+skills/metanc-hmi-reports-submodule/SKILL.md:107-116|note=[used verification checklist for report and clean publish]
+MEMORY.md:430-431|note=[used repo guidance for generator snapshot refresh and generate_targets workflow]
+MEMORY.md:383-387|note=[used generated artifact workflow context for metanc_hmi_dsl]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019d8a98-3dc8-7f22-abce-95745f95ec1e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 08:57:23 +0800</div>
+<pre>MetaNC里面现在调用的nrt/hmi文档的逻辑有问题吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 08:57:47 +0800</div>
+<pre>我先看 MetaNC 里当前是怎么引用和构建 `nrt/hmi` 文档的，不先假设有问题。重点会查根目录 docs/portal 脚本、`nrt/hmi` 的导入过滤规则，以及是否还在调用被过滤掉的 `docs_i18n/docs_html/reports` 这些路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 08:58:38 +0800</div>
+<pre>我先按 MetaNC 里的真实调用链查，不先下结论。重点看根目录文档入口、`nrt/hmi` 下实际同步了哪些文档产物，以及有没有脚本/页面引用了不存在的 `docs_html` 或报告路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 08:58:50 +0800</div>
+<pre>初步看起来 MetaNC 根文档已经切到 `mdbook-bookshelf`，`bookshelf.toml` 里直接把 `nrt/hmi/docs/src` 作为 HMI 子书接入；这和之前 `metanc_hmi_dsl` 自己生成 `docs_html/` 的逻辑不是同一条链。我继续确认有没有旧链接还在指向被同步规则排除掉的产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 08:59:17 +0800</div>
+<pre>这里有一个关键事实：MetaNC 里确实存在 `nrt/hmi/docs_html/`，但它被 `nrt/hmi/.gitignore` 忽略且没有被 Git 跟踪；这更像是本机上次生成后残留的预览产物，不应该被当成 MetaNC 调用 HMI 文档的正式入口。接下来我看正式入口是否只依赖源 Markdown。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 08:59:39 +0800</div>
+<pre>我看到一个更实质的问题：MetaNC 根 `bookshelf.toml` 仍然把 HMI 书配置成 `nrt/hmi/docs/src`，但当前同步进来的 HMI 文档源看起来在 `nrt/hmi/docs/` 根下，不是 `docs/src/`。我现在确认这个路径是否真的不存在，并跑一次根文档构建验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-07 09:00:08 +0800</div>
+<pre>`nrt/hmi/docs/src` 不是完全不存在，但它只是一个兼容入口，`SUMMARY.md` 只有一页；真正完整的 HMI 目录在 `nrt/hmi/docs/SUMMARY.md`。这意味着 MetaNC 根 bookshelf 现在接入的是“跳板页”，不是完整 HMI 文档书，我需要验证跳板页里的 `../...` 链接在生成站点里是否会断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-07 09:00:15 +0800</div>
+<pre>当前生成站点里只存在 `.mdbook/site/nrt/hmi/docs/src/index.html`，不存在 `.mdbook/site/nrt/hmi/docs/index.html` 和 `.../product/index.html`，而跳板页已经生成了到这些不存在 HTML 的链接。这基本可以判定是调用逻辑问题；我再跑一次 `book build` 排除“只是旧产物”的可能。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-07 09:01:24 +0800</div>
+<pre>另外，`nrt/hmi` 自己也有一套独立的 `./tools/build_docs_html.sh`，它会生成被忽略的 `nrt/hmi/docs_html/`。所以现在其实有两套文档入口：MetaNC 根 bookshelf 和 HMI 包内独立 portal。我再确认包内独立生成是否可用，避免把两个问题混在一起。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-05-07 09:03:01 +0800</div>
+<pre>有问题，而且不是 HMI 自己的文档生成坏了，是 **MetaNC 根文档接入 `nrt/hmi` 的入口接错了**。
+
+我验证了两条链：
+
+1. `book build` 从 MetaNC 根目录可以成功，但输出里明确是：
+   `HMI: nrt/hmi/docs/src (16ms, 1 page)`
+
+   也就是说根 bookshelf 只把 HMI 当成 1 页书接进来了。配置在 [bookshelf.toml](/home/iaar/workspace/ccmix-wp/MetaNC/bookshelf.toml:25) 和 [bookshelf.toml](/home/iaar/workspace/ccmix-wp/MetaNC/bookshelf.toml:39)，都指向 `nrt/hmi/docs/src`。
+
+2. `nrt/hmi/docs/src` 只是一个兼容跳板页，`SUMMARY.md` 只有一项，见 [nrt/hmi/docs/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/src/SUMMARY.md:3)。真正完整的 HMI 文档树在 [nrt/hmi/docs/SUMMARY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/SUMMARY.md:3)。
+
+结果就是：根站点生成了 `.mdbook/site/nrt/hmi/docs/src/index.html`，但没有生成 `.mdbook/site/nrt/hmi/docs/index.html`、`.mdbook/site/nrt/hmi/docs/product/index.html` 这些完整 HMI 页面。跳板页里的链接，例如 [nrt/hmi/docs/src/index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/src/index.md:7)，在根站点里会跳到不存在的 HTML。
+
+HMI 包内自己的独立生成是能工作的：我跑了 `./nrt/hmi/tools/build_docs_html.sh`，成功生成 `nrt/hmi/docs_html/` 的 en/zh-CN 站点。但这个目录被 [nrt/hmi/.gitignore](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/.gitignore:7) 忽略，它不是 MetaNC 根 `book build` 的正式输出。
+
+建议修复方向：
+
+- 把 MetaNC 根 [bookshelf.toml](/home/iaar/workspace/ccmix-wp/MetaNC/bookshelf.toml:39) 的 HMI `src` 改成 `nrt/hmi/docs`。
+- 把 `HMIRoot` 从 `/nrt/hmi/docs/src` 改成 `/nrt/hmi/docs`。
+- 把 [docs/nrt/index.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/nrt/index.md:8) 的 HMI 链接改成 `/nrt/hmi/docs/index.md`。
+- `nrt/hmi/docs/src` 这个兼容入口后续可以保留但不再作为根文档入口，或者清理掉，避免继续误导。
+
+我没有改文件；这次只做了检查和验证，当前 MetaNC worktree 仍是干净的。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:123-139|note=[used MetaNC nrt hmi scoped inspection and docs entry context]
+MEMORY.md:290-293|note=[used downstream report and sync scope context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dcc96-763c-7e91-a12f-3a6fb04d3088
+019d98f9-6314-7980-aaed-8a6e00054f13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:04:20 +0800</div>
+<pre>可以，按照你的建议先改一版我看看，不要提交</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 09:04:40 +0800</div>
+<pre>我会直接按刚才定位的入口问题改：MetaNC 根 bookshelf 指向完整 `nrt/hmi/docs`，同时把根 NRT 页面里的 HMI 链接同步过去。改完会跑一次 `book build` 看根文档是否真的把 HMI 作为完整书生成出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 09:04:46 +0800</div>
+<pre>工作区当前是干净的，入口配置和页面链接都还停在 `docs/src`。我现在只改这两个正式入口，不动 HMI 包内独立 docs portal。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 09:04:53 +0800</div>
+<pre>入口已经切到完整 HMI 文档树。接下来我重建 MetaNC 根文档，确认 HMI 不是 1 页跳板，而是完整书。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 09:05:20 +0800</div>
+<pre>根文档构建通过，现在输出显示 HMI 是 `nrt/hmi/docs`，共 88 页。再做几个文件存在性检查，确认根站点里 HMI 首页和子页面都生成了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-07 09:05:35 +0800</div>
+<pre>已按建议改了一版，未提交。
+
+改动只有两处：
+
+- [bookshelf.toml](/home/iaar/workspace/ccmix-wp/MetaNC/bookshelf.toml:25)：`HMIRoot` 从 `/nrt/hmi/docs/src` 改成 `/nrt/hmi/docs`
+- [bookshelf.toml](/home/iaar/workspace/ccmix-wp/MetaNC/bookshelf.toml:39)：HMI book 的 `src` 从 `nrt/hmi/docs/src` 改成 `nrt/hmi/docs`
+- [docs/nrt/index.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/nrt/index.md:8)：HMI 链接改到 `/nrt/hmi/docs/index.md`
+
+验证结果：
+
+- `book build` 通过
+- 根文档现在显示：`HMI: nrt/hmi/docs (316ms, 88 pages)`
+- 已确认生成了：
+  - `.mdbook/site/nrt/hmi/docs/index.html`
+  - `.mdbook/site/nrt/hmi/docs/product/spec/index.html`
+  - `.mdbook/site/nrt/hmi/docs/server/index.html`
+
+当前 MetaNC 只有这两个文件处于 modified 状态，没有提交。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:07:37 +0800</div>
+<pre>提交+ push一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 09:07:52 +0800</div>
+<pre>我会把刚才这两个入口修复作为一个小的 docs 提交提交到 `feat/hmi`，先确认 diff 只包含预期文件，然后 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 09:07:58 +0800</div>
+<pre>diff 只包含 `bookshelf.toml` 和 `docs/nrt/index.md`，符合预期。我现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-07 09:08:31 +0800</div>
+<pre>已提交并 push 到 `MetaNC` 的 `feat/hmi`。
+
+提交：`5adb5b5 docs: connect MetaNC HMI book to full docs tree`
+
+当前工作区干净，`feat/hmi` 已与 `origin/feat/hmi` 对齐。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:25:06 +0800</div>
+<pre>讨论一下Prog相关功能及调整</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 09:25:27 +0800</div>
+<pre>我先快速看一下当前 `Prog/Program` 在 DSL、文档和生成代码里的命名与边界，避免只按印象讨论。重点会放在“编辑”和“执行监控”这两条状态线是否已经分开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 09:25:44 +0800</div>
+<pre>我看到当前 `metanc_hmi_dsl` 这边在 `main` 分支，Program 的 DSL 已经有三块：编辑页、编辑工具页、程序浏览页；同时 runtime contract 里已经有 `prog.line_no`/`prog.executing_block` 和 editor cursor 两类概念。现在的讨论重点应该是把这些概念在产品行为上彻底切开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-07 09:26:36 +0800</div>
+<pre>我建议先把 `Prog` 按“三条线”重新定义清楚，否则后面编辑器、执行、文件管理会继续互相污染。
+
+**当前状态**
+现在 DSL 里已经有基础结构：
+
+- `page_program` 是编辑页，绑定 `res://program.document.content` 和 `state://runtime_state.program_editor_cursor_line`，见 [ui.structure.yaml](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/definition/ui.structure.yaml:1441)。
+- `page_program_edit_tools` 是编辑工具页，还是同一个编辑器内容和 cursor。
+- `page_program_browser` 是程序目录页，绑定 `res://program.browser.entries` / `res://program.browser.root_path`。
+- 执行态另有 `prog.line_no`、`prog.executing_block`、`prog.state` 等字段，见 [data_dictionary.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/product/spec/data_dictionary.md:118)。
+
+方向是对的，但概念还没完全收敛。特别是文档里还存在 `prog.cursor_line` 这种看起来像后端属性的字段，而接口说明又明确说“moving the editor cursor is not a backend property write”，见 [interface_integration.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/product/spec/interface_integration.md:220)。这个要清掉或标成 deprecated，不然以后还会误用。
+
+**我建议的产品边界**
+`Prog` 不应该只是一个“正在执行的程序显示器”，它应该是程序工作区：
+
+1. `Program Browser`：浏览、打开、选择程序。
+2. `Program Editor`：编辑当前工作副本，光标、选区、滚动全部属于 client-local state。
+3. `Program Execution Monitor`：显示当前 AUTO/MDI 执行态，跟随 `prog.line_no`，但不能驱动编辑器光标。
+
+也就是说，执行行可以在监控视图里高亮，但不能让编辑器跳光标。未来如果要在编辑器里看执行行，也应该是一个可选 overlay，比如 “Show executing line”，默认不自动滚动、不抢焦点。
+
+**关键调整**
+我建议下一步先做这些：
+
+- 把“编辑 cursor”和“执行 line”在数据字典里彻底分开。
+  - 编辑：`runtime_state.program_editor_cursor_line`
+  - 执行：`prog.line_no` / `prog.executing_block`
+  - 清理或废弃 `prog.cursor_line`
+
+- 引入“准备执行”的概念。
+  - 编辑器里的是 draft/current document。
+  - 点击 `Prepare Execute` 后，server 生成一个 execution snapshot。
+  - `CYCLE START` 只执行 prepared snapshot，不直接执行正在输入的编辑内容。
+  - 如果程序 dirty，启动前提示保存/使用当前草稿/取消。
+
+- `Prog` 页面布局可以改成：
+  - 顶部：当前路径、dirty 状态、prepared 状态、执行状态。
+  - 主体：编辑器，占大部分空间。
+  - 浏览器和工具放到单独页、抽屉或 tab，不长期挤占编辑区域。
+  - 执行监控做成底部小状态条或单独 `Run Monitor` 面板，而不是复用编辑器光标。
+
+- 编辑器功能后续分层：
+  - 第一层：稳定输入、选区、保存、打开、dirty。
+  - 第二层：find/goto/replace/renumber/format。
+  - 第三层：check/decode/simulate，诊断结果可以跳转编辑器，但这是“检查行为”，不是运行时执行行为。
+  - 第四层：引入第三方编辑器，Web 用 CodeMirror 6 会比较合适；QML 先抽象 editor provider，再考虑第三方控件。
+
+我的判断是：先别急着堆 Program 功能，先把 `workspace/editor/execution` 这三条状态线在 DSL 和文档里定死。否则后面换 CodeMirror、加保存、加真实 program workspace、加 restart-from-line 时都会继续撞到同一个问题。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:33:23 +0800</div>
+<pre>方向是对的，但概念还没完全收敛。特别是文档里还存在 prog.cursor_line 这种看起来像后端属性的字段，而接口说明又明确说“moving the editor cursor is not a backend
+  property write”，见 metanc_hmi_dsl/docs/product/spec/interface_integration.md:220。这个要清掉或标成 deprecated，不然以后还会误用。
+这个先处理一下，然后我们再讨论，我发现你说的有些东西实际上已经做了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 09:33:39 +0800</div>
+<pre>我先把 `prog.cursor_line` 的来源查清楚：如果它是从接口定义生成出来的，只改文档会反复被生成覆盖；如果只是文档残留，就只做文档修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 09:33:56 +0800</div>
+<pre>`prog.cursor_line` 不是单纯文档残留，它还在 `definition/interfaces.machine.yaml` 里作为接口属性声明，因此数据字典是从源定义生成出来的。先做一个低风险修正：保留兼容字段，但在接口定义和数据字典描述里明确标成 deprecated，并指向 `state://runtime_state.program_editor_cursor_line`；暂时不删运行时代码，避免一次性破坏已有 AUTO/preview/prepare_execute 逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 09:36:10 +0800</div>
+<pre>我会只做“标明兼容/废弃”的改动，不改执行逻辑和现有接口行为。这样先把概念误导去掉，后面再讨论是否要真正拆掉 `prog.cursor_line` 或改名为执行/预览相关字段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 09:36:43 +0800</div>
+<pre>源定义和说明已经标注完成。现在我重新生成中英文 Data Dictionary，让最终对照表也显示这条 deprecated 说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 09:36:55 +0800</div>
+<pre>Data Dictionary 已重新生成。接下来我跑一次轻量验证，确认包仍可 validate，并检查 diff 是否只包含这次的概念澄清。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-07 09:37:38 +0800</div>
+<pre>已先处理，未提交。
+
+这次做的是低风险收敛：
+
+- 在 [definition/interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/definition/interfaces.machine.yaml:387) 给 `prog.cursor_line` 标了 `deprecated: true`，并声明替代路径是 `state://runtime_state.program_editor_cursor_line`。
+- 更新了 Data Dictionary 生成器里的中英文说明，明确 `prog.cursor_line` 只是旧 AUTO 预览/重启行绑定的兼容路径，不是 Program 编辑器光标契约。
+- 重新生成了中英文 data dictionary：
+  - [docs/product/spec/data_dictionary.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/product/spec/data_dictionary.md:122)
+  - [docs_i18n/zh-CN/product/spec/data_dictionary.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/product/spec/data_dictionary.md:122)
+- 在中英文 `interface_integration.md` 的反例里补充说明：编辑器光标必须走 `state://runtime_state.program_editor_cursor_line`。
+
+验证：
+
+- `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- 结果：`ok=True errors=0 warnings=0`
+
+注意：重新生成 data dictionary 时，也把之前漏掉的几个 Logs 相关 local state 字段补进了表里，这是生成器基于当前 `ui.structure.yaml` 的正常同步结果。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:37:48 +0800</div>
+<pre>测试过了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 09:38:02 +0800</div>
+<pre>刚才只跑了 DSL validate，还没跑单测。我现在补跑和这次改动相关的生成/快照测试，尤其是 data dictionary 生成、runtime plan 和 pipeline 里 cursor 不写 `prog.cursor_line` 的回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 09:38:13 +0800</div>
+<pre>我刚才点名的 3 个 test 名称不对，那个失败是 unittest 找不到方法，不是代码回归。`test_mock_runtime_server` 还在跑，我先等它结束，然后用实际存在的测试名重跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 09:38:32 +0800</div>
+<pre>现在在跑完整 `tests.test_pipeline.PipelineTests`。这组会重新生成 Web/QML/contract 相关临时产物，能覆盖这次 `prog.cursor_line` 标注不会破坏生成链。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 09:39:24 +0800</div>
+<pre>完整 Pipeline 跑完了，30 个里 29 个通过、1 个 snapshot 比对失败。失败点不是 `prog.cursor_line` 行为测试，而是生成的 `index.html` 里静态资源 hash 和当前生成输出不一致；我现在定位是不是这次接口 metadata 触发了生成产物 hash 变化，还是既有 snapshot 过期。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 09:41:47 +0800</div>
+<pre>定位到了：这次在接口定义里加入 `deprecated/replacement/notes` 后，Web/QML 生成模型会把这些 metadata 带进 binding definition，所以 snapshot 变了；这是预期变更，不是运行逻辑坏。我要同步更新对应快照，然后重跑测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-07 09:42:13 +0800</div>
+<pre>快照差异包含 5 个由 `prog.cursor_line` metadata 导致的文件，另有 `web/README.md` 是当前生成器和旧快照已有的不一致。为了让测试真实反映当前生成器输出，我会把这些快照同步到当前生成结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-07 09:42:29 +0800</div>
+<pre>快照已同步。现在重跑完整 PipelineTests 和 mock runtime server 测试，确认没有剩余失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-05-07 09:43:25 +0800</div>
+<pre>现在测试过了。
+
+结果：
+
+- `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`：通过
+- `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml --json`：通过
+- `python3 -m unittest -v tests.test_mock_runtime_server`：7 个通过
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests`：30 个通过，1 个 Web 视觉截图测试按环境变量跳过
+
+中间完整 Pipeline 第一次失败在 snapshot，因为 `prog.cursor_line` 新增的 `deprecated/replacement/notes` 会进入 Web/QML 生成模型，属于预期生成输出变化。我已经同步了对应 snapshots 后重跑通过。
+
+当前未提交，工作区有这次文档/定义/快照更新。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:53:17 +0800</div>
+<pre>ok 我们继续讨论一下PROG页面的调整</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-07 09:53:41 +0800</div>
+<pre>继续看 `PROG` 页，我建议这次只围绕“页面职责和用户工作流”定，不急着进入实现细节。
+
+现在 `PROG` 页已经做了不少事，所以调整方向不是重做，而是把边界更明确：
+
+**1. PROG 主页面**
+主页面应该是“当前程序工作区”，不是执行监控页。
+
+建议保留：
+
+- 当前程序路径/名称
+- dirty 状态
+- 编辑器主体
+- Save / Select Program / Edit Tools / Check / Simulate / Prepare Execute 这类程序工作流按钮
+
+不建议让它持续跟随 AUTO 执行行。执行中的行号、执行块、运行状态应该显示在别处，最多在 PROG 页顶部做一个很轻的状态提示。
+
+**2. AUTO 页面里的程序预览**
+AUTO 模式页面可以跟随执行行。
+
+这里适合展示：
+
+- `prog.line_no`
+- `prog.executing_block`
+- 当前 prepared/executing program name
+- 小窗口预览当前执行附近若干行
+- cycle state、elapsed、block count
+
+这个预览是 read-only execution monitor，不是编辑器。
+
+**3. PROG EDIT TOOLS**
+这个页现在像“编辑器 + 工具软键”。我觉得可以保留，但要明确它是编辑工具上下文，不是另一个独立程序页。
+
+它应该只影响：
+
+- find
+- replace
+- goto line
+- renumber
+- format
+- undo/redo
+- cut/copy/paste
+
+这些动作允许跳光标，因为这是用户主动编辑行为。
+
+**4. PROG DIR**
+目录页是程序选择和文件管理入口。
+
+短期建议先做到：
+
+- select/open
+- up directory
+- refresh/filter/sort
+- delete/rename/new 暂时可以保留按钮，但如果后端没完整实现，最好 disabled 或返回明确 unsupported
+
+后续真实 workspace 做起来后，再扩展存储区、NC/local/USB 之类的概念。
+
+**5. Prepare Execute**
+这是后面最关键的工作流。
+
+我建议把执行前状态分出来：
+
+- 编辑器当前内容：draft/current document
+- 保存后的文件：workspace file
+- 准备执行快照：prepared program
+- 正在执行：executing program
+
+`CYCLE START` 不应该直接隐式拿编辑器当前光标或正在输入的文本。比较稳的是：
+
+- 用户编辑程序
+- 点击 `Prepare Execute`
+- server 校验并锁定一个 execution snapshot
+- `CYCLE START` 执行这个 snapshot
+- 如果编辑器变 dirty，prepared 状态变 stale
+
+这样用户能理解“我现在执行的是哪份程序”。
+
+**我建议下一步先做的小调整**
+先不碰真实文件写入和复杂保存，先把 UI/文档里的概念立住：
+
+1. `PROG` 主编辑器不消费 `prog.line_no`，只消费 `runtime_state.program_editor_cursor_line`。
+2. `AUTO` 页面里的 read-only preview 继续跟随执行态，但最好把字段从 `prog.cursor_line` 迁到更明确的 `prog.line_no`。
+3. `Prepare Execute` 按钮旁边加 prepared/stale/dirty 这类状态显示。
+4. 文档里补一张小表，把 `editor cursor`、`prepared line`、`executing line` 分开。
+
+优先级上，我会先处理第 2 点：把 AUTO preview 从 `prog.cursor_line` 切到 `prog.line_no`。这和刚才 deprecated 的方向一致，而且风险可控。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 09:57:23 +0800</div>
+<pre>我说一下我的理解，对于主页AUTO页面里-&gt;正在执行的程序行（这个可能和CNC对应，也可能未来是一个执行文件的文件位置而非行索引，都有可能，目前先按照行索引来）、对于编辑PROG编辑器里-&gt;当前光标所在行（但不需要再PROG页的上面部分显示这一行的内容、现实很奇怪，只需要有接口能够获取光标行的数据就行、而且不一定要开放的），你确认一下我的理解</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-07 09:57:48 +0800</div>
+<pre>你的理解是对的，我确认一下边界：
+
+**AUTO 页面**
+这里显示的是“执行位置”。
+
+当前阶段可以用 `prog.line_no` 表达，也就是正在执行的程序行号。未来如果真实 CNC/执行引擎给的不是行号，而是文件 offset、block id、execution pointer、interpreter position，也可以把它升级成更通用的 execution position。
+
+所以 AUTO 页面应该关心：
+
+- 当前执行程序
+- 当前执行位置
+- 当前执行 block 文本
+- 运行状态、elapsed、block count 等
+
+它不应该关心编辑器光标。
+
+**PROG 编辑器**
+这里显示的是“编辑位置”。
+
+编辑器光标行属于 editor-local state，当前用 `runtime_state.program_editor_cursor_line` 是合理的。它可以给内部逻辑用，比如：
+
+- goto line
+- find/replace
+- prepare execute 时把当前光标行作为可选上下文传给 server
+- 未来语法检查/译码检查后跳转到错误行
+
+但它不应该作为 backend runtime property，也不需要在 PROG 页顶部显示“当前光标行内容”。你说这个显示很奇怪，我同意。PROG 顶部更应该显示当前文件、dirty、prepared/stale、校验状态，而不是跟着光标展示一行文本。
+
+**结论**
+我们应该把概念定成：
+
+- `prog.line_no`：AUTO 执行位置，backend/runtime authority
+- `prog.executing_block`：AUTO 当前执行块文本，backend/runtime authority
+- `runtime_state.program_editor_cursor_line`：PROG 编辑器光标行，client-local/internal UI state
+- `prog.cursor_line`：兼容遗留字段，不再作为正式概念扩展
+
+下一步最应该改的是：AUTO 预览和相关显示不要再用 `prog.cursor_line`，切到 `prog.line_no`。PROG 页的 summary 也要检查，别再把 cursor line 或那一行内容显示到顶部。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:01:47 +0800</div>
+<pre>然后讨论一下PROG页有必要有一个New按钮用来新增程序吗，还是应该统一改到PROG DIR页去，然后PROG DIR页也没有新建文件夹的功能、是否有必要；然后讨论Save As是否有必要存在，现在的Simulate似乎也没有实际功能，可以考虑先disable掉，Search功能太弱、然后是否应该放到Edit里面去</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 10:02:04 +0800</div>
+<pre>我先看一下当前 DSL 里 PROG 和 PROG DIR 的软键实际放了哪些动作，再按“编辑工作区 vs 文件管理 vs 执行准备”来判断哪些该留、移、禁用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 10:02:18 +0800</div>
+<pre>当前实际按钮分布是：`PROG` 主页有 New/Save/Save As/Search/Check/Simulate/Execute，`PROG DIR` 也有 New/Rename/Delete/Filter/Sort/Refresh。这里确实有职责重复，我按用户操作心智来拆。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-07 10:03:04 +0800</div>
+<pre>我看了当前定义，确实现在有点“功能都摆出来了，但职责还没归位”：
+
+- `PROG` 主页现在有：`Select Program / New / Save / Save As / Edit / Search / Check / Simulate / Execute`
+- `PROG DIR` 现在有：`Open / New / Rename / Delete / Filter / Sort / Refresh`
+- `Simulate` 当前只是做 `programExecutionPreflight()`，没有真实仿真逻辑
+
+我的建议如下。
+
+**New**
+`New` 更应该放在 `PROG DIR`，不建议放在 `PROG` 编辑主页。
+
+原因是 New 本质是“创建文件”，属于 program workspace/file management。`PROG` 主页应该只处理当前打开的程序：编辑、保存、检查、准备执行。否则用户在编辑状态下点 New，会牵涉 dirty 内容是否保存、在哪个目录创建、是否切换当前文件，这些都更像目录/文件管理行为。
+
+建议改成：
+
+- `PROG`：不放 `New`
+- `PROG DIR`：放 `New File`
+- 后续如果有二级菜单，可以叫 `New`，里面分 `File / Folder`
+
+**New Folder**
+有必要，但不一定第一版马上做完整。
+
+因为当前 program browser 已经支持 directory row 的概念，浏览器也会区分 file/dir。如果没有新建文件夹，文件管理是不完整的。建议加接口概念，但 UI 上可以先禁用或放到 `More/File Ops` 里。
+
+建议未来接口类似：
+
+- `progdir.commands.mkdir`
+- request: `name: string`
+- response: `accepted/message`
+
+短期可以先在 `PROG DIR` 预留 `New Folder`，如果 server/adapter 没实现就 disabled，不要做成看起来能用但实际 unsupported。
+
+**Save As**
+我认为 `Save As` 有必要保留，但不要放到 `PROG DIR` 作为目录操作。
+
+它的语义是“把当前编辑器内容另存为一个新程序”，主体是当前 document，不是浏览器选中的文件。它和 `Save` 更接近，应该属于当前编辑工作区。
+
+所以建议：
+
+- `PROG` 保留 `Save`
+- `PROG` 可以保留 `Save As`，但优先级低于 Save，可以放后面
+- `PROG DIR` 里不要叫 `Save As`，如果要做类似功能，应该叫 `Duplicate` 或 `Copy`
+
+**Simulate**
+当前应该 disable 或隐藏。
+
+现在的 `Simulate` 只是 preflight，不是真实仿真。继续放出来会误导用户，以为它会跑刀路/解释程序/模拟执行。短期建议：
+
+- 从 `PROG` 主软键隐藏或 disabled
+- 如果要保留概念，改成后续故事：`Check` 做语法/译码检查，`Simulate` 做真正仿真会话
+- 没有真实 simulation session 前，不建议展示为可操作按钮
+
+**Search**
+应该放进 `Edit` 页面，不应该在 `PROG` 主页面占一个主软键。
+
+Search/Find/Replace/Goto 都是编辑器局部行为，和光标、选区、当前编辑内容强相关。当前 Search 太弱也说明它不适合作为主工作流入口。
+
+建议：
+
+- `PROG` 移除 `Search`
+- `PROG EDIT` 里放 `Find / Replace / Goto`
+- 后续做成一个更完整的 Find panel：keyword、case、whole word、next/prev、replace
+
+**我建议的第一版软键重排**
+`PROG` 主页面：
+
+1. Select
+2. Save
+3. Save As
+4. Edit
+5. Check
+6. Prepare Exec
+7. 空
+8. 空或 disabled Simulate
+9. 空
+10. Return
+
+这里我还建议把现在的 `Execute` 改名为 `Prepare Exec` 或 `Prepare`。因为它调用的是 `prog.commands.prepare_execute`，不是实际 Cycle Start。
+
+`PROG EDIT` 页面：
+
+1. Undo
+2. Redo
+3. Cut
+4. Copy
+5. Paste
+6. Find
+7. Replace
+8. Goto
+9. Format 或 Block No.
+10. Return
+
+`PROG DIR` 页面：
+
+1. Open
+2. New File
+3. New Folder
+4. Rename
+5. Delete
+6. Filter
+7. Sort
+8. Refresh
+9. More 或空
+10. Return
+
+我的结论：先把 `New` 移到 `PROG DIR`，`Search` 移到 `Edit`，`Simulate` disable/隐藏，`Execute` 改名 `Prepare Exec`。`Save As` 保留在 `PROG`，但不作为目录页功能。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:06:14 +0800</div>
+<pre>PROG页 Select、Save、Save As、Edit、Check、Execute
+PROG EDIT页 参考你的建议，6/7合并一下
+PROG DIR页：9为空
+根据我的调整给一下规划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-07 10:06:55 +0800</div>
+<pre>可以，按你的调整我建议规划成一个小 UI 职责收敛 slice，不动真实后端能力，只改按钮布局、命名和禁用策略。
+
+**目标**
+把 `PROG / PROG EDIT / PROG DIR` 三个页面的软键职责固定下来：
+
+- `PROG`：当前程序编辑工作区
+- `PROG EDIT`：编辑器局部工具
+- `PROG DIR`：程序文件/目录管理
+
+**PROG 页**
+保留 6 个主要动作：
+
+| Slot | Button | 行为 |
+|---:|---|---|
+| 1 | Select | 进入 `PROG DIR` |
+| 2 | Save | `prog.commands.save` |
+| 3 | Save As | `prog.commands.save_as` |
+| 4 | Edit | 进入 `PROG EDIT` |
+| 5 | Check | `check_program_for_execute` |
+| 6 | Execute | 暂时继续调用 `prog.commands.prepare_execute` |
+| 7 | 空 | disabled |
+| 8 | 空 | disabled |
+| 9 | 空 | disabled |
+| 10 | Return | 返回主页 |
+
+这里 `Execute` 先不改文案，避免当前用户心智变化太大；文档里要注明它现阶段是 prepare execute，不是 Cycle Start。
+
+移除：
+
+- `New`
+- `Search`
+- `Simulate`
+
+**PROG EDIT 页**
+参考我前面建议，但把 6/7 合并为一个搜索入口。
+
+建议：
+
+| Slot | Button | 行为 |
+|---:|---|---|
+| 1 | Undo | `program_editor_undo` |
+| 2 | Redo | `program_editor_redo` |
+| 3 | Cut | `cut_program_text` |
+| 4 | Copy | `copy_program_text` |
+| 5 | Paste | `paste_program_text` |
+| 6 | Search | 进入统一搜索/替换能力，短期可先触发 `find_in_program` |
+| 7 | Goto | `goto_program_line` |
+| 8 | Block No. | `renumber_program_blocks` |
+| 9 | Format | `format_program_text` |
+| 10 | Return | 回 `PROG` |
+
+6/7 合并后，我建议是把原来的 `Find + Replace` 合成 `Search`，而不是把 `Search + Goto` 合并。因为 Goto 是明确的行定位，操作心智和全文搜索不一样。
+
+短期实现上：
+
+- Slot 6 先触发 `find_in_program`
+- 后续增强成 Search panel，里面包含 Find/Replace/Next/Prev
+- `replace_in_program` 先不放独立软键，但保留 action 类型和内部能力
+
+**PROG DIR 页**
+按你的调整，slot 9 为空：
+
+| Slot | Button | 行为 |
+|---:|---|---|
+| 1 | Open | `progdir.commands.activate` |
+| 2 | New File | `prog.commands.new` |
+| 3 | New Folder | 先 disabled，后续接 `progdir.commands.mkdir` |
+| 4 | Rename | `prog.commands.rename` |
+| 5 | Delete | `prog.commands.delete` |
+| 6 | Filter | `filter_program_browser` |
+| 7 | Sort | `sort_program_browser` |
+| 8 | Refresh | `refresh_program_browser` |
+| 9 | 空 | disabled |
+| 10 | Return | 回 `PROG` |
+
+如果你暂时不想暴露 New Folder，也可以 slot 3 先空。但我建议放 disabled 的 `New Folder`，因为目录页没有这个能力会显得文件管理不完整，disabled 能表达“这是规划中的文件管理功能”。
+
+**实现范围**
+第一版只改：
+
+- `definition/ui.structure.yaml`
+- Web/QML snapshots
+- 必要文档：data dictionary 不一定变，因为接口不变；但 `program_execution_story_breakdown` 或 UI docs 里应补一段页面职责说明
+
+不改：
+
+- server 命令实现
+- `prog.commands.new/save_as/...` 的接口定义
+- 真实文件夹创建能力
+- Simulate 后端能力
+
+**验证**
+建议跑：
+
+- `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests`
+- `python3 -m unittest -v tests.test_mock_runtime_server`
+
+如果改了生成目标，再同步 snapshots。</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:07:41 +0800</div>
+<pre>先按照你说的做，然后紧接着我们做一下不改的部分的功能规划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 10:08:04 +0800</div>
+<pre>我会先把软键布局按刚才规划落到 DSL：`PROG` 去掉 New/Search/Simulate，`PROG EDIT` 合并 Search，`PROG DIR` 增加 disabled 的 New Folder 且 slot 9 留空。然后重新生成快照并跑测试，最后再继续规划那些暂时不改的功能。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 10:08:27 +0800</div>
+<pre>我会把按钮调整做成 DSL 层的职责变更，尽量不动现有命令实现。`New Folder` 先是 disabled 软键，这样不伪装成已实现能力。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 10:09:24 +0800</div>
+<pre>布局已经按目标落到 YAML。接下来我补一段需求文档，明确这只是页面职责收敛：`Execute` 当前仍是 prepare-execute 入口，`Simulate` 和真实目录创建暂不进入本次实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 10:10:16 +0800</div>
+<pre>文档里也加了页面职责表。现在我开始验证 DSL，然后生成 Web/QML 临时输出，对比并更新快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 10:11:01 +0800</div>
+<pre>生成差异正是软键布局和对应模型 hash 变化。现在同步 Web/QML 快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-07 10:11:17 +0800</div>
+<pre>快照已同步。接下来跑完整 PipelineTests 和 mock runtime server 测试，确认生成链和程序运行契约都没被软键重排破坏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-07 10:11:59 +0800</div>
+<pre>测试通过。由于这是 UI 生成源的变化，我还会刷新最终生成产物，让 `generated/` 和 distribution 里的 Web/QML 也看到这版软键布局。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-07 10:13:02 +0800</div>
+<pre>最终 Web/QML/server/distribution 已刷新。因为我也改了需求文档，我再重建一次 `docs_html`，确保文档产物能打开到新页面职责说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-05-07 10:14:22 +0800</div>
+<pre>已按你的调整先落了一版，未提交。
+
+**已改内容**
+- [definition/ui.structure.yaml](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/definition/ui.structure.yaml:218)
+  - `PROG`：`Select / Save / Save As / Edit / Check / Execute`，slot 7/8/9 空。
+  - `PROG EDIT`：`Undo / Redo / Cut / Copy / Paste / Search / Goto / Block No. / Format / Return`，原 `Replace` 独立按钮合并到 `Search` 入口。
+  - `PROG DIR`：`Open / New File / New Folder(disabled) / Rename / Delete / Filter / Sort / Refresh / 空 / Return`。
+  - `New` 从 `PROG` 移到 `PROG DIR`，改名 `New File`。
+  - `Simulate` 不再暴露在 `PROG` 软键上。
+
+- [program_execution_story_breakdown.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/requirements/program_execution_story_breakdown.md:73)
+  - 补了 `PROG / PROG EDIT / PROG DIR` 三个页面的职责表。
+  - 明确当前 `Execute` 仍是 `prog.commands.prepare_execute`，不是 Cycle Start。
+  - 明确 `New Folder` 只是规划入口，当前 disabled。
+
+**已验证**
+- `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`：通过
+- `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml --json`：通过
+- `python3 -m unittest -v tests.test_mock_runtime_server`：7 passed
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests`：30 passed，1 skipped
+- `./tools/generate_targets.sh`：已刷新 Web/QML/server/distribution
+- `./tools/build_docs_html.sh`：已刷新 `docs_html`
+
+**不改部分的功能规划**
+1. `New Folder`
+   - 新增正式接口：`progdir.commands.mkdir`
+   - 请求：`name/path`
+   - 行为：创建目录、刷新 `program.browser.entries`、选中新目录
+   - UI：实现后再启用 `PROG DIR` slot 3
+
+2. `Search/Replace`
+   - 当前 slot 6 只是 Search 入口，短期触发 find。
+   - 下一步做统一 Search panel：Find、Next、Prev、Replace、Replace All。
+   - 这仍然是 client/editor-local 行为，不进 backend command contract。
+
+3. `Simulate`
+   - 暂不恢复按钮，直到有真实 simulation session。
+   - 后续应定义 `simulation.commands.start/stop` 或 `prog.commands.simulate`，以及 simulation diagnostics/resource 输出。
+   - 不能再用 preflight 冒充 simulation。
+
+4. `Execute / Prepare Execute`
+   - 现在保持用户文案 `Execute`，内部还是 `prepare_execute`。
+   - 后续要补 prepared/stale/dirty 状态，让用户知道 Cycle Start 会执行哪份 snapshot。
+
+5. `Save As`
+   - 保留在 `PROG`，但后续要补：重名确认、扩展名策略、目标目录选择、dirty/prepared 状态联动。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:16:04 +0800</div>
+<pre>现在的Block No.和Format是不是功能重复了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 10:16:21 +0800</div>
+<pre>我查一下当前 `renumber_program_blocks` 和 `format_program_text` 的实际实现，再判断它们是概念重复还是只是现在实现太浅。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-07 10:17:20 +0800</div>
+<pre>是的，**当前实现上有一部分重复**，但概念上不应该重复。
+
+现在大概是这样：
+
+- `Format`
+  - 去掉行首行尾空格
+  - 合并多余空格
+  - 删除空行
+  - 不处理 `N10/N20` 这类程序段号
+
+- `Block No.`
+  - 删除已有 `Nxxx`
+  - 重新生成 `N10 / N20 / N30...`
+  - 但同时也会 trim、删空行，所以它和 `Format` 有重叠
+
+所以你感觉重复是对的，主要问题是：**Block No. 当前顺手做了 Format 的一部分事情**。
+
+我建议保留两个概念，但改清楚：
+
+- `Format`：只做文本格式化，不改变程序段号
+- `Block No.` 更名为 `Renumber` 或 `Block Num`：只负责重新编号 `N` 段号，尽量不乱改用户原来的空格、注释和布局
+
+如果想先收敛 UI，我更推荐：
+
+1. `Block No.` 改名为 `Renumber`
+2. 调整实现，让它只改 `N` 编号
+3. `Format` 暂时保留，但后续做成真正的 NC 文本格式化工具
+
+如果你觉得现在软键太多，也可以先把 `Format` disable 掉，等后面有真正格式化规则后再打开。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:18:20 +0800</div>
+<pre>Block No这个功能是必要的吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-07 10:18:39 +0800</div>
+<pre>不是核心必要功能，至少**当前阶段不是**。
+
+`Block No.` 的价值主要在这些场景：
+
+- 给 NC 程序自动生成 `N10 / N20 / N30...`
+- 老式控制器或现场习惯依赖段号定位
+- 后续做 `Restart from block`、译码诊断、报错定位、跳转到某个程序段时，可以用段号辅助
+- 程序打印、归档、对照调试时更容易引用某一段
+
+但它**不应该是执行程序所必需的**。AUTO 执行当前行、编辑器光标行、文件位置、后端运行状态，这些都不应该依赖 `N` 段号。没有 `N` 号的程序也应该能保存、检查、执行。
+
+我建议当前这样处理：
+
+- 不把 `Block No.` 放在一层软键里占位置
+- 保留内部能力，但入口放到 `More` / `Tools` 里，或者先隐藏
+- 以后如果做“按段号重启”“段号跳转”“段号格式策略”，再正式打开
+- 如果保留按钮，名字最好不要叫 `Block No.`，改成 `Renumber` 更准确
+
+所以结论是：**功能可以保留，主界面不必要；当前版本我更倾向于从 PROG EDIT 一级软键里移走或 disable。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:22:51 +0800</div>
+<pre>Block No.和Format入口先隐藏，内部功能可以暂时保留，但加一下注释、以防后续遗忘；然后Undo Redo按钮应该和程序编辑器的当前状态关联起来，比如能Undo的时候才使能Undo按钮、否则disable，Redo按钮逻辑也是，Cut Copy Paste这些理论上也应该这样；然后PROG和PROG EDIT两个页面目前是不是不是用的同一个编辑器对象啊，理论上在PROG页面点击Edit按钮之后，只切换导航按钮栏，而不要切换页面才更合理，你看看是不是现在的实现有问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 10:23:09 +0800</div>
+<pre>我先核对生成器和 DSL 当前是怎么把 PROG、PROG EDIT 以及软键状态串起来的。这里要避免只改生成产物，应该改定义/生成器后重新生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 10:23:22 +0800</div>
+<pre>我看到当前 PROG EDIT 确实把 Block No. 和 Format 作为一级软键；Web 已经有编辑器状态快照接口，但软键启停还没接这个状态。下一步我会看 PROG/PROG EDIT 是否实际复用了同一个编辑器节点，避免把页面结构判断错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 10:26:07 +0800</div>
+<pre>结论已经比较明确：现在确实有实现问题。`page_program` 和 `page_program_edit_tools` 是两个页面、两个不同的 `program_editor` 节点，所以点 Edit 会重建编辑器；我会把它改成“PROG EDIT 只作为页脚工具栏模式”，主编辑区域继续复用 PROG 的编辑器。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 10:27:09 +0800</div>
+<pre>我会改三层：DSL 里隐藏两个入口并增加编辑器能力状态；Web/QML 生成器里让工具栏启停跟编辑器状态走；Shell 层把 `page_program_edit_tools` 映射成 PROG 的同一个主内容区，只换底部软键。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 10:34:11 +0800</div>
+<pre>主要代码已经改完：Block/Format 只剩内部 action；Web 的编辑器能力状态会直接刷新底部软键，不触发整页重绘；QML 也开始把当前 TextArea 的 undo/redo/selection 状态写回本地状态。现在我先跑验证和生成，重点看 QML 是否支持这些 TextArea 信号。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-07 10:34:55 +0800</div>
+<pre>验证结果：DSL 校验和 mock server 测试通过；QML 编译也通过，说明 TextArea 的状态信号可用。pipeline 只有 snapshot mismatch，这是预期的，因为生成器/DSL 输出变化了，我接下来更新生成产物和 snapshot。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-07 10:37:02 +0800</div>
+<pre>生成产物已经刷新，snapshot 也已同步到新的 Web/QML 输出；数据字典中新增的编辑器能力状态也重新生成到了中英文文档。现在复跑测试确认没有剩余回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-07 10:37:47 +0800</div>
+<pre>复测通过：pipeline 30 个通过、1 个浏览器视觉快照按环境跳过；mock runtime server 7 个通过。接下来我再构建 docs_html，确认文档最终输出也没有断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-07 10:40:31 +0800</div>
+<pre>顺手发现数据字典里 `enabled_ref` 这类 props 还没计入 “UI used”，所以新增的 Undo/Redo 状态在表里显示成 No。这个会误导后续看 DSL 字段，我把 runtime plan 的 props 引用采集补上，再重新生成文档和快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-07 10:42:23 +0800</div>
+<pre>props 引用采集修好后，数据字典里新增状态已经显示为 UI used=Yes；runtime_plan 也能追到具体 softkey。这个改动会扩大 runtime snapshot diff，但语义更准确。现在再跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-07 10:44:06 +0800</div>
+<pre>已处理，未提交。
+
+这版改了几件事：
+
+- `Block No.` 和 `Format` 从 `PROG EDIT` 一级软键隐藏，内部 `renumber_program_blocks` / `format_program_text` 仍保留，并在 Web/QML 生成器里加了注释，避免后续忘记为什么存在。
+- `Undo` / `Redo` / `Cut` / `Copy` / `Paste` 现在接编辑器状态：
+  - Undo/Redo 只有编辑器可撤销/重做时启用。
+  - Cut/Copy 只有存在选区时启用。
+  - Paste 在当前程序编辑器可用时启用。
+- Web 版 CodeMirror 的 Undo/Redo 现在走 CodeMirror history，不再靠 `document.execCommand`。
+- Web 版 Copy 改为复制选区，不再复制整份程序；Paste 改为插入到当前光标/选区位置。
+- QML 版接入 `TextArea` 的 `canUndo/canRedo/selectedText`，软键状态和真实编辑器状态联动。
+- `PROG EDIT` 现在作为 PROG 的“底部工具栏模式”处理：点击 `Edit` 不再切到第二个编辑器页面，主编辑器内容保持同一个对象/视图。
+- 顺手修了 runtime plan 对 `enabled_ref` 这类 props 引用的采集，所以数据字典里这些状态现在会正确显示 `UI used = Yes`。
+
+主要文件：
+- [definition/ui.structure.yaml](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/definition/ui.structure.yaml)
+- [client/web_client/app_shell.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/web_client/app_shell.py)
+- [client/web_client/widget_emitters.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/web_client/widget_emitters.py)
+- [client/qml_client/generator.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/qml_client/generator.py)
+- [contract/runtime_plan.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/contract/runtime_plan.py)
+
+验证已过：
+
+- `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests`：30 passed，1 skipped
+- `python3 -m unittest -v tests.test_mock_runtime_server`：7 passed
+- `./tools/build_docs_html.sh`
+
+生成产物和 docs_html 都已刷新。</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:46:32 +0800</div>
+<pre>我感觉你EDIT</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 10:47:17 +0800</div>
+<pre>Undo Redo感觉没有按照实际工作，我修改了文档内容，但是发现Undo没有亮显</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 10:47:39 +0800</div>
+<pre>我先按实际运行链路查这个问题：看 CodeMirror 状态有没有写进 `runtime_state.program_editor_can_undo`，以及底部软键是不是只刷新了样式但没有拿到新状态。这个应该是 Web/QML 生成器联动问题，不需要改后端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 10:47:59 +0800</div>
+<pre>我怀疑原因不是 history 本身，而是我刚才给 Undo/Redo 加了 `programLoaded` 门槛：如果 strict/server 返回的 `prog.name` 为空或还没同步，即使编辑器已有 undo stack，也会被我强制写成 false。这个门槛不该挡编辑器自身能力，我先去掉并复测。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 10:48:58 +0800</div>
+<pre>确认了一点：CodeMirror 的 `undoDepth/redoDepth` 是存在的，刚才不是 API 问题。现在已去掉 `prog.name/current_program_path` 的额外门槛，Undo 只看编辑器自身 undo stack。接下来重新生成并做一次页面级验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-07 10:58:35 +0800</div>
+<pre>当前 8000/8010 那组运行服务已经不在了，所以刚才浏览器实际打开的是 Chrome error 页，不能作为验证。我要重新按你平时的 split web 方式启动一次，再用 CDP 做真实编辑器检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-07 11:01:11 +0800</div>
+<pre>复现到了真实原因：不是 `undoDepth` 本身，而是 Web shell 在 runtime 通知时把 PROG 主区域整块重建了，CodeMirror 对象被销毁，history stack 立刻丢失，所以 Undo 一直回到 disabled。我现在把 PROG/PROG EDIT 的主编辑区域改为同一 content page 下复用，不在每次 runtime notify 时重建编辑器。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-07 11:07:23 +0800</div>
+<pre>我已经定位到 Web 端的关键原因：运行时刷新会重建 PROG 主内容区，把 CodeMirror 实例和它的 undo history 一起销毁，所以编辑后 Undo 状态来不及保持。现在先把回归测试和端口清理检查补完。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-07 11:07:30 +0800</div>
+<pre>端口检查里没有看到这次调试用的 `8000/8010/9224` 监听；测试还在跑，先等两个 unittest 收尾。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-07 11:08:01 +0800</div>
+<pre>两个回归测试都过了。接下来我看一下当前 diff 范围，确认没有意外文件混进来，再给你一个简洁结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-05-07 11:08:14 +0800</div>
+<pre>已处理。根因是 Web 端运行时刷新会重新渲染 PROG 主内容区，导致 CodeMirror 编辑器实例被重建，undo history 被清空，所以你修改内容后 Undo 不会亮显。
+
+我做了两类修复：
+
+- Web/QML 的 Undo/Redo/Cut/Copy/Paste 使能状态改成直接跟编辑器真实状态绑定，不再被 `programLoaded` 之类的额外条件挡住。
+- Web 的 PROG/PROG EDIT 切换现在复用同一个 PROG 编辑器内容区；运行时刷新不会再销毁 CodeMirror 实例。
+
+关键改动在：
+- [client/web_client/app_shell.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/web_client/app_shell.py)
+- [client/web_client/widget_emitters.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/web_client/widget_emitters.py)
+- [client/web_client/src/editors/codemirror-program-editor.js](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/web_client/src/editors/codemirror-program-editor.js)
+- [client/qml_client/generator.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/qml_client/generator.py)
+
+我也用真实 Web 页面验证过：编辑器输入内容后 Undo 亮显，点击 Undo 后内容回退，同时 Redo 亮显。
+
+已重新生成最终产物和 snapshots，并通过测试：
+
+```text
+./tools/generate_targets.sh
+python3 -m unittest -v tests.test_pipeline.PipelineTests
+python3 -m unittest -v tests.test_mock_runtime_server
+```
+
+结果：`30 passed, 1 skipped`，`7 passed`。当前还没提交。</pre>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-07 11:09:32 +0800</div>
+<pre>ok,update report&amp; docs + sync MetaNC + commit + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-07 11:09:49 +0800</div>
+<pre>我会先按现有报告/文档发布流程查一下脚本和仓库状态，然后更新 report/docs、提交 `metanc_hmi_dsl`，再同步到 `MetaNC` 并分别 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-07 11:10:02 +0800</div>
+<pre>`MetaNC` 工作树当前是干净的；`metanc_hmi_dsl` 有这次 PROG/Undo 相关改动和生成快照待提交。我现在确认报告脚本入口，避免只更新源码不更新可见的 docs/report 页面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-07 11:10:19 +0800</div>
+<pre>报告子模块里已经有 `2026-05-07-codex-session` 索引页，我会用现有导出脚本刷新当天对话记录，再补充今天这次 PROG/编辑器状态工作的项目报告内容，然后重建 report book 和 docs_html。</pre>
+</article>
 </section>
 <section>
 <h2>Session Events</h2>
@@ -436,6 +1641,16 @@ MEMORY.md:383-387|note=[used generated artifact workflow context for metanc_hmi_
 <article class="msg user">
 <h3>Event</h3>
 <div class="time">2026-05-07 08:35:52 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-07 10:46:33 +0800</div>
 <pre>&lt;turn_aborted&gt;
 The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
 &lt;/turn_aborted&gt;</pre>

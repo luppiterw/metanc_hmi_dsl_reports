@@ -4,7 +4,8 @@ Focus:
 
 - Remote sync check, final artifact/doc refresh, QML Logs missing typography
   token fix, revision-aware local-state bindings for Filter/More panels,
-  toolbar width repair, docs/report update, and MetaNC sync
+  toolbar width repair, PROG editor responsibility cleanup, live editor
+  capability-state wiring, docs/report update, and MetaNC sync
 
 Session assets:
 

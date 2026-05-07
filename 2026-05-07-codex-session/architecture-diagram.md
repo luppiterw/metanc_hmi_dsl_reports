@@ -11,8 +11,11 @@ flowchart LR
     webapp[generated/web app]
     prog[PROG current-program editor]
     editor[CodeMirror editor instance]
+    search[Search/Replace panel]
+    shortcuts[Shortcut router]
     caps[Editor capability local state]
     local[Client local state]
+    resource[res://program.document.content]
     server[Runtime server log APIs]
     snapshots[Web/QML snapshots and tests]
     reports[Reports submodule and docs_html]
@@ -26,9 +29,16 @@ flowchart LR
     mainqml --> logs
     mainqml --> prog
     webapp --> prog
+    webapp --> shortcuts
     prog --> editor
+    prog --> search
+    shortcuts --> search
+    search --> editor
+    search --> resource
     editor --> caps
+    editor --> resource
     caps --> local
+    search --> local
     store --> local
     logs --> local
     logs --> server

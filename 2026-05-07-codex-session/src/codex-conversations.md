@@ -3,14 +3,14 @@
 ## Complete Codex Conversation Export
 
 - Scope: `2026-05-07`
-- Sessions: `1`
-- Primary sessions: `1`
+- Sessions: `2`
+- Primary sessions: `2`
 - Side sessions: `0`
-- User prompts: `23`
-- Synthetic events: `2`
-- Messages: `145`
-- User messages: `25`
-- Codex messages: `120`
+- User prompts: `44`
+- Synthetic events: `3`
+- Messages: `413`
+- User messages: `47`
+- Codex messages: `366`
 - HTML index: [Open](../codex-conversations/index.html)
 - Single-page HTML: [Open](../codex-conversations/all.html)
 - Single-page Markdown: <a href="../codex-conversations/all%2Emd">Open</a>

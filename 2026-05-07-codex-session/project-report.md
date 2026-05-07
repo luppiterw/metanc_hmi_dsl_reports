@@ -3,9 +3,10 @@
 ## Scope
 
 本轮工作围绕 2026-05-07 的 QML Logs 回归修复、PROG 编辑器工具状态收敛、
-最终产物刷新、文档同步和 MetaNC 下游同步展开。重点不是新增 server log 能力，
-而是让 QML target 与 Web Logs 页面已经具备的交互行为保持一致，同时把 PROG
-编辑页面从执行态跟随中剥离，回到纯编辑器职责。
+Search/Replace 第一版可用、最终产物刷新、文档同步和 MetaNC 下游同步展开。
+重点不是新增 server log 能力，而是让 QML target 与 Web Logs 页面已经具备的
+交互行为保持一致，同时把 PROG 编辑页面从执行态跟随中剥离，回到纯编辑器职责，
+并把查找/替换从临时弹框升级成可持续使用的编辑器内工具。
 
 ## Completed Work
 
@@ -37,7 +38,28 @@
   运行时刷新时不再销毁 CodeMirror 实例和 undo history。
 - Runtime plan 现在会收集 `enabled_ref` 等 node props 中的运行时引用，使编辑器能力
   local state 可以出现在数据字典和 runtime usage 索引中。
+- New File/Save As 对话框选中默认文件名时只选中 stem，不选中 `.MPF` / `.SPF`
+  后缀，降低误删扩展名的概率。
+- Paste 改为直接粘贴系统剪贴板到当前编辑器光标/选区，不再弹二次输入框；Web
+  和 QML 使能状态都尽量读取当前编辑器/平台剪贴板能力。
+- Goto 改为跳转自然文档行号，而不是按 `N` block 编号解析；Web CodeMirror 保留
+  DOM 的同时会显式调用编辑器跳转 API，避免状态写入后光标不动。
+- Search/Replace 第一版可用：Web/QML 都提供编辑器内 Search/Replace 面板，
+  状态保存在 `runtime_state.program_search_*`，替换只更新
+  `res://program.document.content`，不伪装成 backend command。
+- Web CodeMirror Search/Replace 以当前编辑器实例内容为事实源，Replace 通过
+  CodeMirror/textarea 写入编辑器后再回写 resource，避免“resource 已变但界面没变”。
+- Web CodeMirror 支持全部匹配弱高亮、当前匹配强高亮、Next/Prev、Replace、
+  Replace All、match-case 和 whole-word；QML 第一版负责选中并滚动当前匹配。
+- `Search` / `Replace` 两个软键入口收敛为一个 `Search/Replace` 入口，`Goto`
+  前移，旧 `prog_tools_replace` 不再出现在生成物中。
+- Web 端移除 CodeMirror 默认 `searchKeymap`，并在 shell 捕获阶段把
+  `Ctrl/Cmd+F` 路由到自定义 Find、`Ctrl/Cmd+H` / `Ctrl/Cmd+Alt+F` 路由到
+  自定义 Replace；QML 端补齐相同的应用级快捷键入口。
 - 重新生成 Web、QML、distribution、server build、数据字典和测试快照。
+- 先后提交 `8a1e573 Add program editor search replace panel` 和
+  `d130d3b Unify program search replace entry`，把第一版面板和入口/快捷键收敛
+  分成两个可审查提交。
 
 ## Validation
 
@@ -49,6 +71,18 @@
 - `git diff --check`
 - Headless Web probe verified CodeMirror editing: typing enables Undo, clicking Undo clears the
   inserted text and enables Redo.
+- Headless Web probe verified Paste writes clipboard text into the active CodeMirror editor and
+  the Paste softkey follows clipboard/editor capability state.
+- Headless Web probe verified Goto with a 14-line document and input `12` moves CodeMirror to
+  document line 12 while keeping the compatibility cursor state at `120`.
+- Headless Web probe verified Search/Replace updates both the visible CodeMirror document and
+  `res://program.document.content`.
+- Headless Web probe verified the unified `Search/Replace` softkey, absence of the old separate
+  `Replace` softkey, `Ctrl/Cmd+F` interception, no CodeMirror native search panel, and
+  `Ctrl/Cmd+H` focus on the Replace field.
+- Final regression after the Search/Replace entry merge:
+  `python3 -m unittest -v tests.test_pipeline.PipelineTests tests.test_mock_runtime_server`
+  passed `38` tests with `1` opt-in Web visual snapshot skipped.
 - QML offscreen startup with Logs state forced open. The environment produced a
   `1x1` image, so it is useful for QML warning detection only, not visual proof.
 
@@ -57,5 +91,5 @@
 - Add real interaction automation for generated QML controls. Current coverage still relies on
   generated text snapshots plus startup-level QML warning checks.
 - Continue the generator decomposition plan so Logs widgets can be tested in smaller emitted units.
-- Define the next PROG workspace mutation slice before enabling disabled file-management actions
-  such as New Folder, Save As persistence, and full search/check tooling.
+- Define the next PROG workspace mutation slice before broadening Save As persistence,
+  directory creation policy, editor-side Check behavior, and production decode/navigation tooling.

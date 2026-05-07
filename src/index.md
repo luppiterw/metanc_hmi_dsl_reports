@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-05-07` | Remote sync check, final artifact/doc refresh, QML Logs font-token/runtime binding fixes, Filter/More panel layout repair, docs/report update, and MetaNC sync |
+| `2026-05-07` | Remote sync check, final artifact/doc refresh, QML Logs font-token/runtime binding fixes, Filter/More panel layout repair, PROG editor capability-state cleanup, Paste/Goto fixes, in-editor Search/Replace panel, unified Search/Replace softkey, Ctrl/Cmd+F shortcut routing, docs/report update, and MetaNC sync |
 | `2026-05-06` | C++17 native build floor, bookshelf docs portal, top server-connection chip, icon-only Return softkeys, Logs full-width/bottom-detail layout, Web Logs visible-column/message-wrap controls, interactive Logs toolbar feedback, Web/QML JSONL file-save export, generated output refresh, and MetaNC sync |
 | `2026-05-05` | WebSocket subscription conformance, server simulator program workspace mutations, server API/runtime tests, and MetaNC sync |
 | `2026-05-04` | Session bootstrap and Codex user-history export tooling |

@@ -11,6 +11,12 @@
 - Hide duplicated `Block No.`/`Format` entries, keep internal placeholders, and bind edit softkeys
   to actual editor capabilities.
 - Investigate Web Undo not lighting after document edits.
+- Fix New File stem selection, direct clipboard Paste, and natural-line Goto behavior.
+- Design and implement a usable Search/Replace panel instead of the old one-shot prompt.
+- Fix Web Replace so the visible CodeMirror document and runtime resource stay in sync.
+- Merge the separate Search and Replace softkeys into one `Search/Replace` entry.
+- Prevent `Ctrl+F` from opening the native editor/browser search UI and route shortcuts to the
+  generated Search/Replace panel.
 - Generate the daily report, update related docs, sync to MetaNC, then commit and push.
 
 ## Technical Decisions
@@ -28,6 +34,15 @@
   backend property write.
 - Preserve the Web CodeMirror instance across runtime re-renders when the content page remains
   `PROG`, so editor history and capability state survive runtime notifications.
+- Treat Search/Replace/Goto/Paste as client-local editor behavior. They may update local state or
+  `res://program.document.content`, but they must not be routed as backend command shims.
+- Keep the first Search/Replace implementation as a generated client panel backed by
+  `runtime_state.program_search_*`; Web can use CodeMirror decorations, while QML can initially
+  select and scroll the current match.
+- Use one visible `Search/Replace` softkey even if generated clients retain separate internal
+  `find_in_program` and `replace_in_program` action names.
+- Own `Ctrl/Cmd+F` in the generated shell so the custom panel opens consistently instead of the
+  native CodeMirror search UI.
 
 ## Result
 
@@ -35,4 +50,8 @@ The QML Logs page now avoids the missing typography token, updates Filter and Mo
 after clicks, keeps toolbar controls from squeezing the overflow button, and refreshes logs after
 clear/retention actions. PROG editing now keeps execution state separate from editor state, hides
 unfinished duplicated tooling entries, and updates Undo/Redo/Cut/Copy/Paste from the live editor
-state. Documentation and report outputs were refreshed for publication.
+state. PROG editor actions now cover direct clipboard paste, natural-line Goto, and an in-editor
+Search/Replace panel. The Web implementation keeps CodeMirror and `res://program.document.content`
+in sync during replacements, and the visible edit softkey surface now exposes a single
+`Search/Replace` entry with `Ctrl/Cmd+F` / `Ctrl/Cmd+H` routed to the generated panel.
+Documentation and report outputs were refreshed for publication.

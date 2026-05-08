@@ -2,11 +2,11 @@
 
 ## Scope
 
-本轮工作围绕 PROG DIR 的目录层级交互和 workspace mutation 语义展开。
-目标是让程序文件浏览器更接近真实数控 HMI 的文件管理体验：目录层级返回属于
-浏览器列表内部行为，底部 `Return` 只负责回到程序编辑区；进入子目录后新建文件
-或文件夹必须写入当前目录；空目录也应保持固定列表行高和主体区域高度，不应把单行
-条目拉伸成整块卡片。
+本轮工作先围绕 PROG DIR 的目录层级交互和 workspace mutation 语义展开，
+随后处理 MAIN 页面 MDA/MDI 编辑器刷新保护引起的 overview 运行态显示回归。
+目标是让程序文件浏览器更接近真实数控 HMI 的文件管理体验，同时保证 JOG、
+MDI/MDA、AUTO 在 split Web/native 真实启动方式下能持续显示 server 返回的
+执行行、坐标、F/S 和运行状态。
 
 ## Completed Work
 
@@ -27,6 +27,14 @@
   CSS grid 拉伸填满整个主体区域。
 - 更新 Web/QML 生成快照、mock runtime 测试、pipeline 测试和 PROG DIR 相关文档。
 - 生成 2026-05-08 report 与 Codex 完整会话导出，并准备同步到 MetaNC。
+- 为 Web CodeMirror/textarea program editor 增加原地 runtime 状态刷新接口，避免
+  MDA 编辑器在普通 runtime tick 下被整页刷新打断选区。
+- 修复 MDA Cycle Start 后编辑器未进入运行态的前端错误：CodeMirror cursor selection
+  形状使用不正确，导致 runtime refresh 被 catch 掉。
+- 收敛 overview 刷新策略：恢复 MAIN 页面主体随 runtime tick 重绘，让轴坐标、F/S、
+  AUTO 运行行预览继续更新；仅在 MDA 编辑器处于可编辑焦点时保护编辑器实例。
+- 重新生成 Web/QML/server distribution，刷新 Web 快照，使 `run_split_web_native.sh`
+  方式启动的最终产物包含本轮修复。
 
 ## Validation
 
@@ -38,6 +46,14 @@
 - Headless Web split-mode probe against `./generated/distribution/run_split_web_native.sh`
   verified root/no-parent behavior, folder parent-row behavior, footer Return page navigation,
   current-directory file creation, and stable `37px` sparse-directory rows.
+- Split Web/native API probe verified `cnc.commands.reset`, `jog.commands.move_axis`,
+  `cnc.commands.cycle_start` in MDI/MDA, and `cnc.commands.cycle_start` in AUTO all return
+  accepted command results and advance the server-side state.
+- Headless Web overview probe verified the DOM updates from `Ready | Line --` to
+  `Running | Line 002` after AUTO Cycle Start, proving the visible MAIN page now follows
+  server state again.
+- MDA editor probe verified idle text selection is preserved during runtime refresh, then
+  Cycle Start switches the editor to read-only running state without browser console errors.
 
 ## Follow-Up
 
@@ -45,5 +61,7 @@
   management operations.
 - Add durable CI-level browser interaction tests for PROG DIR navigation and current-directory file
   creation, replacing today's ad hoc headless probe with maintained coverage.
+- Promote the overview command-flow and MDA editor refresh probes into maintained CI-level Web
+  interaction coverage so future focus-preservation changes cannot freeze runtime displays.
 - Revisit save-as/new-file naming policy when real filesystem constraints and CNC controller naming
   rules are introduced.

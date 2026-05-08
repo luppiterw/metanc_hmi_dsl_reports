@@ -3,7 +3,9 @@
 Focus:
 
 - PROG DIR parent-row navigation, footer Return scope cleanup, current-directory New File behavior,
-  sparse directory row-height stabilization, bilingual docs/report update, and MetaNC sync
+  sparse directory row-height stabilization, MDA editor focus-preservation with MAIN overview
+  runtime refresh repair, JOG/MDI/AUTO command-flow verification, bilingual docs/report update,
+  and MetaNC sync
 
 Session assets:
 
@@ -24,5 +26,9 @@ Notable outcomes:
 - A generated `..` row appears below root and maps to `progdir.commands.up`.
 - `New File` and `New Folder` are scoped to the current program-browser directory.
 - Sparse program directories keep stable row height instead of stretching entries.
+- MDA editor selection is preserved while idle, but MAIN overview axis/F/S/AUTO displays
+  continue to redraw from server runtime updates.
+- Split Web/native probes confirmed Reset, JOG move, MDI Cycle Start, and AUTO Cycle Start
+  are accepted by the server and visible in the Web overview.
 - The refreshed full Codex conversation export covers `1` primary session, `5` user prompts,
   and `79` messages for 2026-05-08.

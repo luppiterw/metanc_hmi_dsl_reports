@@ -9,6 +9,8 @@
 - Generate and update reports/docs, sync to MetaNC, commit, and push.
 - Investigate why FS Actual remains equal to Target after setting a target and completing
   a JOG move, then fix the simulator behavior.
+- Investigate why pressing Enter in the DEBUG natural-query input does not run the query,
+  and make Enter-triggered query execution available.
 
 ## Technical Decisions
 
@@ -23,6 +25,11 @@
 - Treat target/cmd values as configured intent and actual values as live motion output.
   For discrete JOG, actual feed should drop to zero after the move completes while the
   feed target remains configured.
+- Treat DEBUG natural-query execution as a client-local generated UI behavior. The
+  keyboard submit path should reuse the same parser/query execution path as the visible
+  `Run` action rather than adding a separate backend command.
+- Preserve IME composition behavior for Chinese text input; Enter should submit only
+  after composition has ended.
 
 ## Result
 
@@ -36,3 +43,9 @@ The server simulator now keeps `feed.speed_actual` separate from `feed.speed_cmd
 completed JOG moves. A server smoke assertion covers the regression so a future simulator
 or adapter change does not make Actual stay equal to Target just because the current mode
 is JOG.
+
+The DEBUG natural-query input now supports keyboard execution in both generated targets.
+Web uses a form-backed submit path with Enter handling and IME guards, while QML wires
+`onAccepted`, Return, Enter, and the `Run` button to one submit helper. A headless Web
+probe verified that pressing Enter for `show spindle status` runs the query and renders
+the expected spindle runtime rows.

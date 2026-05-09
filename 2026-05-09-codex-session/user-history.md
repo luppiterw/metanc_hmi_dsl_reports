@@ -36,3 +36,10 @@ Date: 2026-05-09
 - 现在的FS的ACTUAL和TARGET是不是有问题，比如我设了一个TARGET值，然后JOG模式移动一个轴，结果停止的时候ACTUAL还是这个TARGET，是你内部的模拟问题吗
 - 你尝试修复一下
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- 你的菜单里下拉框弹出后怎么还要点一下才消失，互相之间不互斥啊；再就是你现在absolute模式下为什么所有的控件叠在一块儿不能拖到其他地方了呢，不是绝对模式是可以任意位置吗
+- DEBUG里面输入一个查询项后回车好像没有触发查询，是不是这块没做，我觉得有个Enter触发会好一些
+- 你觉得接下来做什么，我希望是编辑功能的完善
+- 按照你的计划先做一下
+- 详细计划说一下
+- generate/update report &amp; docs + sync MetaNC + commit + push
+- 可以 做一下

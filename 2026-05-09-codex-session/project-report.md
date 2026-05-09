@@ -67,6 +67,13 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   - 普通词如 `connection` 不会因为包含 `c` 而误识别为 C 轴。
 - 更新 README、CHANGELOG、status matrix 和 agent handoff，把 DEBUG
   submit stability 和 axis shorthand parser 规则纳入维护文档。
+- 修复 Web MAIN 页 MDI 编辑焦点保护与主模式切换之间的冲突：
+  - `page_overview` 渲染保护现在把 `runtime_state.main_mode_view` 纳入
+    content render signature。
+  - MDI 编辑器普通输入刷新仍然不会强制重建页面，避免重新引入光标跳动。
+  - 当软面板 `AUTO` / `JOG` / `MDI` 改变主模式视图时，主页会重建内容区，
+    让右侧主面板立即从 MDI 编辑器切到 AUTO/JOG/MDI 对应面板。
+  - 同步刷新 Web generated snapshot 和 asset hash snapshot。
 
 ## Validation
 
@@ -87,6 +94,10 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   - `x`, `y`, `z`, `a`, `c`, `xy`, `xyz`, `x actual`, and `x轴` resolve to axis
     property rows;
   - `connection` continues to resolve to server connection local state rather than C-axis data.
+- Headless split Web CDP probe verified that with the MAIN page in MDI mode and
+  the MDI editor focused, clicking the soft-panel `AUTO` button changes both
+  `mode.current` and `runtime_state.main_mode_view` to `AUTO`, hides the MDI
+  panel, and shows the AUTO panel.
 - Headless split Web DOM probe against `./generated/distribution/run_split_web_native.sh`
   verified that after switching to JOG:
   - `main_jog_panel` exists
@@ -110,3 +121,5 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   interaction coverage once the generated Web UI test harness is formalized.
 - Promote the DEBUG axis-shorthand parsing and direct result-panel refresh probes into
   maintained CI-level UI automation rather than leaving them as ad hoc CDP scripts.
+- Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
+  into maintained generated Web UI automation.

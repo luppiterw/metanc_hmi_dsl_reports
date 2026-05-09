@@ -51,3 +51,9 @@ Date: 2026-05-09
 - 为什么我输入x搜不到内容，输入x axis可以，这种是不是要优化，其他轴蕾丝
 - 你的下一步计划是
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- 先别急，你生成个现在的我看一下
+- 现在Container里的内容，是不是没有对齐这些功能，然后像控件刚拖拽进去、看不到宽高信息设置只能拖拽变化一次后才出现
+- 现在MDI模式主页的编辑状态时，点击软面板的AUTO发现主页没有自动切换到AUTO模式、还在MDI的编辑器内，这有问题吧
+- 先把这块做一下，写个计划
+- generate/update report &amp; docs + sync MetaNC + commit + push
+- commit+push，然后我希望菜单在展开的时候，如果光标移动到另一个菜单上面，我希望自动展开那个菜单的内容，就跟vscode里一样

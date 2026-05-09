@@ -14,6 +14,8 @@
 - Investigate why DEBUG queries sometimes appear to do nothing even after Enter is handled.
 - Optimize DEBUG parser behavior so single-axis shorthand such as `x` works like `x axis`,
   and apply the same idea to the other axes.
+- Fix MAIN page behavior where clicking soft-panel `AUTO` while the MDI editor has focus
+  leaves the right-side MAIN content inside the MDI editor instead of switching to AUTO.
 
 ## Technical Decisions
 
@@ -37,6 +39,9 @@
   input focus should not prevent the visible DEBUG result table from updating.
 - Treat bare axis tokens as valid read-only inspection intent only when they are standalone
   axis tokens or compact axis groups, not when the letters appear inside ordinary words.
+- Treat editor focus preservation as a local rendering optimization, not as permission to
+  suppress structural page changes. A MAIN-page mode-view change must rebuild the visible
+  mode panel even if a focused editor would otherwise be protected from rerender.
 
 ## Result
 
@@ -66,3 +71,8 @@ Axis shorthand parsing was expanded across Web and QML. Single-axis entries `x`,
 `a`, `c`, compact groups like `xy` and `xyz`, and mixed forms like `x actual` or `x轴`
 now resolve to axis property rows. A guard prevents unrelated words such as `connection`
 from being interpreted as C-axis requests.
+
+The Web MAIN page now distinguishes ordinary focused-editor refresh from structural
+mode-panel changes. When the MDI editor has focus and the operator clicks soft-panel
+`AUTO`, the runtime mode state and the visible MAIN content both switch to AUTO instead
+of leaving the stale MDI editor in place.

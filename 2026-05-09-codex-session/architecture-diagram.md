@@ -38,4 +38,7 @@ flowchart LR
     STATE --> WS
     WS --> MainJog
     WS --> SoftPanel
+    MODE --> COMMANDS
+    WS --> MODEVIEW[main_mode_view render signature]
+    MODEVIEW --> MainJog
 ```

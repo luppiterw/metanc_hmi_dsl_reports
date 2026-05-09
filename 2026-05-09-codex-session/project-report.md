@@ -115,6 +115,19 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
     marker 顺序。
   - 更新 README、CHANGELOG、status matrix 和 handoff，把下一步拆解重心
     移到 QML generator/widget/runtime source decomposition。
+- 完成 QML widget emitter 源码级拆分：
+  - `client/qml_client/widget_emitters.py` 收敛为 91 行兼容 dispatch 入口。
+  - 新增 `client/qml_client/widget_fragments/`，按职责拆出 Program、Runtime
+    Logs、DEBUG natural-query、tables、gauges、buttons、containers、layout
+    和 utils emitters。
+  - container 与 key grid 的递归渲染改为由 dispatch callback 注入，避免
+    fragment 模块之间形成循环 import。
+  - 新增 generator refactor 测试，锁住 QML widget fragment 名称和 dispatch
+    顺序。
+  - 更新 README、CHANGELOG、status matrix 和 handoff，把后续 QML 拆解重心
+    收敛到 `runtime_shell.py` 与更小的 domain fragments。
+  - 重新生成最终产物，并确认 tracked 的 `generated/qml/Main.qml`、Web
+    `app.js` 等生成文件没有 diff。
 
 ## Validation
 
@@ -137,6 +150,18 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   after the deeper Web generator/runtime split.
 - `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_docs_portal tests.test_story_docs`
   after the deeper Web generator split and before final artifact refresh.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the QML widget fragment split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding QML fragment-order coverage.
+- `python3 -m unittest tests.test_docs_portal`
+  after report/docs routing updates.
+- `./tools/generate_targets.sh`
+  after the QML widget fragment split.
+- `python3 -m unittest tests.test_pipeline`
+  after the final artifact refresh.
+- `git diff --check`
+  after the QML widget source split and docs update.
 - Direct generated-output equivalence check confirmed `web/app.js`, `web/styles.css`,
   `web/index.html`, and `qml/Main.qml` still match the committed snapshots after the
   split.
@@ -182,6 +207,6 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
 - Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
   into maintained generated Web UI automation.
 - Continue the generator decomposition plan on the QML side first:
-  `client/qml_client/widget_emitters.py`, then `client/qml_client/runtime_shell.py`,
-  then `client/qml_client/generator.py`. Keep final generated Web/QML file layout
-  unchanged until source-level decomposition and interaction coverage are stable.
+  `client/qml_client/runtime_shell.py`, then narrower QML runtime/domain fragments,
+  and finally `client/qml_client/generator.py`. Keep final generated Web/QML file
+  layout unchanged until source-level decomposition and interaction coverage are stable.

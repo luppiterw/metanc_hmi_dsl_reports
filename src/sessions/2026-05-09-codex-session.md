@@ -7,6 +7,7 @@ Focus:
 - DEBUG natural-query submit behavior: Web/QML now run the same query path from `Run`, `Enter`, and `Return`.
 - DEBUG natural-query stability and parser coverage: focus-preserved Web queries refresh result rows directly, QML submit is timer-backed, and axis shorthand such as `x`, `xy`, `xyz`, and `x轴` resolves to axis values.
 - Web generator source split into feature JS modules, `widget_core` JS fragments, ordered CSS emitters, legacy shell CSS fragments, and `runtime_fragments` JS templates, with generated Web/QML snapshots kept stable.
+- QML widget emitter source split into focused `widget_fragments/` modules behind the existing dispatch entrypoint, with generated `Main.qml` semantics kept stable.
 - Story catalog, data dictionary, status matrix, generated snapshots, report books, and docs portal refreshed.
 
 Session assets:

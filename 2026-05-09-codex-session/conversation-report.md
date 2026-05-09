@@ -22,6 +22,8 @@
   shell files after the first slice was reviewed.
 - Continue the decomposition by splitting the generated Web runtime shell into source
   fragments while keeping final `runtime.js` stable.
+- Continue the decomposition by splitting the QML widget emitter source into focused
+  fragments while keeping final `Main.qml` stable.
 
 ## Technical Decisions
 
@@ -51,6 +53,9 @@
 - Treat generator decomposition as a source-level refactor first. The first slice should
   keep generated Web/QML outputs byte-stable and avoid changing runtime contracts, server
   behavior, or final generated file layout.
+- Keep QML widget recursion centralized through the public dispatch entrypoint. Fragment
+  modules should own domain emitters, while recursive child rendering is injected as a
+  callback to avoid circular imports.
 
 ## Result
 
@@ -102,3 +107,9 @@ The Web runtime shell was also split at the source-template layer. `runtime_shel
 now stays as a small public builder over ordered `runtime_fragments/`, while the emitted
 `runtime.js` remains byte-stable. The split keeps strict/hybrid server behavior,
 HTTP/WebSocket transport, logs, program workspace, and simulator behavior unchanged.
+
+The QML widget emitter now follows the same compatibility-entrypoint approach. The public
+dispatch file remains `client/qml_client/widget_emitters.py`, while concrete QML widget,
+layout, and utility emitters live under `client/qml_client/widget_fragments/`. Generator
+tests and a full target rebuild confirmed that this source split does not change the
+generated `Main.qml` semantics.

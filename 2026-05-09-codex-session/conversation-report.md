@@ -29,6 +29,9 @@
 - Continue the decomposition by splitting the QML runtime command dispatcher into
   ordered command-domain blocks while preserving the single generated `invokeCommand()`
   entrypoint.
+- Continue the decomposition by splitting QML Program workspace and execution runtime
+  fragments into second-level block packages while preserving generated
+  `RuntimeStore.qml`.
 
 ## Technical Decisions
 
@@ -136,3 +139,11 @@ prelude, while `command_blocks/` owns UI, position, program, program-directory, 
 JOG, manual-operation, alarm, and diagnostics command branches. The command block order
 is locked by tests so future command changes can stay domain-local without silently
 reordering dispatch behavior.
+
+The QML Program workspace and execution runtime fragments were then split one level
+deeper. `program_workspace.py` now assembles focused blocks for program line helpers,
+state, directory, editor, backend, and path utilities, while `execution.py` assembles
+blocks for execution ticks, motion stepping, MDI start, line parsing, cursor prep,
+block application, modal words, completion, timers, and line helpers. The generated
+`RuntimeStore.qml`, Web runtime, QML main file, contract bundle, and runtime-store
+snapshot stayed byte-stable.

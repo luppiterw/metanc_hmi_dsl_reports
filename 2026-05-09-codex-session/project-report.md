@@ -150,6 +150,26 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
     runtime 行为。
   - 新增 generator refactor 测试，锁住 QML runtime fragment 顺序、
     command block 顺序和关键命令 marker 顺序。
+- 完成 QML Program workspace runtime fragment 二级拆分：
+  - `client/qml_client/runtime_fragments/program_workspace.py` 收敛为 31 行
+    兼容 assembler。
+  - 新增 `client/qml_client/runtime_fragments/program_workspace_blocks/`，按职责
+    拆出 program lines、state、directory、editor、backend 和 path utils。
+  - 保留原 QML 函数顺序和 fragment 边界换行折叠，避免影响程序目录、
+    打开/保存、当前文档刷新、目录浏览和 path normalization 行为。
+  - 新增 generator refactor 测试，锁住 Program workspace block 顺序和关键
+    marker 顺序。
+- 完成 QML execution runtime fragment 二级拆分：
+  - `client/qml_client/runtime_fragments/execution.py` 收敛为 41 行兼容
+    assembler。
+  - 新增 `client/qml_client/runtime_fragments/execution_blocks/`，按职责拆出
+    execution tick、motion stepping、tooling、MDI start、line parsing、
+    cursor preparation、block application、modal words、completion、timers
+    和 line helpers。
+  - 保留 AUTO/MDA execution、JOG motion tick、F/S actual/cmd 更新、remain
+    distance、part count、program end/loop 和 single-block pause 的原生成顺序。
+  - 新增 generator refactor 测试，锁住 execution block 顺序和关键 marker
+    顺序。
 
 ## Validation
 
@@ -187,6 +207,22 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   after the final artifact refresh.
 - `git diff --check`
   after the QML source splits and docs update.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the QML Program workspace and execution block splits.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding Program workspace and execution block order coverage.
+- `./tools/generate_targets.sh`
+  after the QML Program workspace and execution block splits.
+- `python3 -m unittest tests.test_docs_portal`
+  after the report/docs refresh.
+- `python3 -m unittest tests.test_pipeline`
+  after the final target regeneration.
+- `git diff --check`
+  after the final QML block split and docs refresh.
+- Key generated-output diff check confirmed `generated/qml/RuntimeStore.qml`,
+  `generated/qml/Main.qml`, `generated/web/app.js`, `generated/web/runtime.js`,
+  `generated/distribution/contract/runtime_contract_bundle.json`, and
+  `tests/snapshots/qml/RuntimeStore.qml.snap` did not change after the source split.
 - Direct generated-output equivalence check confirmed `web/app.js`, `web/styles.css`,
   `web/index.html`, and `qml/Main.qml` still match the committed snapshots after the
   split.
@@ -231,7 +267,8 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   maintained CI-level UI automation rather than leaving them as ad hoc CDP scripts.
 - Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
   into maintained generated Web UI automation.
-- Continue the generator decomposition plan with the remaining large QML runtime
-  fragments first: `program_workspace.py`, `execution.py`, and `transport_ws.py`.
-  Then split the QML generator entrypoint itself. Keep final generated Web/QML file
-  layout unchanged until source-level decomposition and interaction coverage are stable.
+- Continue the generator decomposition plan with the remaining QML runtime
+  fragments first: `transport_ws.py`, then `logs.py` and `derived_state.py` if the
+  WebSocket split remains byte-stable. After that, split the QML generator entrypoint
+  itself. Keep final generated Web/QML file layout unchanged until source-level
+  decomposition and interaction coverage are stable.

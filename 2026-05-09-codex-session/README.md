@@ -30,7 +30,10 @@ containers、layout 和 utils emitters 移入 `client/qml_client/widget_fragment
 `invokeCommand()` 内部命令分支进一步拆到
 `client/qml_client/runtime_fragments/command_blocks/`。这两步都保持最终
 `RuntimeStore.qml` byte-stable，并通过 generator refactor 测试锁住 fragment
-和 command block 的组装顺序。
+和 command block 的组装顺序。随后继续把 QML runtime 中仍偏大的
+`program_workspace.py` 与 `execution.py` 再拆一层，分别落到
+`program_workspace_blocks/` 和 `execution_blocks/`，继续保持最终
+`RuntimeStore.qml`、Web runtime、contract bundle 和快照不发生输出漂移。
 
 目录：
 
@@ -49,11 +52,11 @@ containers、layout 和 utils emitters 移入 `client/qml_client/widget_fragment
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `137`
+- User prompts: `141`
 - Synthetic events: `3`
-- Messages: `1289`
-- User messages: `140`
-- Codex messages: `1149`
+- Messages: `1335`
+- User messages: `144`
+- Codex messages: `1191`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

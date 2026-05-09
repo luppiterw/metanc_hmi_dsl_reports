@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>624</code></div>
-<div><b>User prompts</b>: <code>54</code></div>
+<div><b>Messages</b>: <code>670</code></div>
+<div><b>User prompts</b>: <code>58</code></div>
 <div><b>Synthetic events</b>: <code>3</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -6606,6 +6606,509 @@ git diff -- generated/qml/Main.qml
 <h3>Codex Response 4 / commentary</h3>
 <div class="time">2026-05-09 19:09:55 +0800</div>
 <pre>我会用现有 exporter 刷新今天的 user history 和完整对话导出，然后手动补 report 摘要里缺的两段：QML runtime shell 拆分和 command blocks 二级拆分。这样最终 report 能反映今天后半段的实际工作。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 19:10:24 +0800</div>
+<pre>导出已刷新：今天完整会话导出现在包含 3 个 session、1289 条消息。接下来补 report 和索引内容，再构建 report book/docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 19:12:15 +0800</div>
+<pre>报告正文、会话摘要和索引已经补上 QML runtime/command blocks 的内容。现在构建 reports 子模块、dated report 和主 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 19:12:32 +0800</div>
+<pre>reports 两层 mdBook 已经构建通过，主 `docs_html` 正在用 bookshelf 构建 35 个 book。构建完后我会跑轻量回归和 git 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 19:12:49 +0800</div>
+<pre>docs_html 构建完成，最新 report 已输出到 `docs_html/reports/2026-05-09-codex-session/index.html`。现在跑回归测试和空白检查，然后提交 reports 子模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 19:13:30 +0800</div>
+<pre>回归和 docs portal 测试通过。现在提交并推送 reports 子模块，然后回到父仓库提交源码/文档/子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 19:14:04 +0800</div>
+<pre>reports 子模块已提交为 `e4fc417`。我现在先 push reports 子模块，确保父仓库记录的 submodule 指针可解析。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 19:14:32 +0800</div>
+<pre>reports 已 push。现在提交 `metanc_hmi_dsl`，这次会包含源码拆分、文档、测试快照和新的 reports submodule 指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 19:14:42 +0800</div>
+<pre>状态确认干净，没有未提交的 reports 子模块内部改动。现在 stage 父仓库这批文件和新增 runtime fragments，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 19:15:20 +0800</div>
+<pre>`metanc_hmi_dsl` 已提交为 `8c874e4`。现在 push 源仓库，然后把这次 HMI 包同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 19:15:46 +0800</div>
+<pre>`metanc_hmi_dsl/main` 已 push。现在执行导出脚本同步到 `MetaNC/nrt/hmi`，然后检查 downstream diff、提交并 push `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 19:16:27 +0800</div>
+<pre>MetaNC 同步 diff 只在 `nrt/hmi` 范围，过滤规则没有把 reports/docs_html/generated 本地输出带过去。现在我在 downstream 跑一次轻量 generator refactor 测试，再提交 `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 19:16:54 +0800</div>
+<pre>MetaNC 侧 compile 和 generator refactor 测试通过。现在提交并 push `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 19:17:45 +0800</div>
+<pre>MetaNC 已提交并 push。最后我检查三个工作区是否干净，并整理下一步拆解计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-05-09 19:18:06 +0800</div>
+<pre>已完成。
+
+提交和 push：
+
+- reports submodule: `e4fc417`
+  `docs: refresh 2026-05-09 generator split report`
+- `metanc_hmi_dsl/main`: `8c874e4`
+  `refactor: split QML runtime command fragments`
+- `MetaNC/feat/hmi`: `4150ae9`
+  `refactor: sync HMI QML runtime fragments`
+
+验证过：
+
+- `./tools/generate_targets.sh`
+- `./tools/build_docs_html.sh`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-09-codex-session`
+- `python3 -m unittest tests.test_generator_refactor`
+- `python3 -m unittest tests.test_docs_portal`
+- `python3 -m unittest tests.test_pipeline`
+- MetaNC 侧 `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- MetaNC 侧 `python3 -m unittest tests.test_generator_refactor`
+- `git diff --check`
+
+三个工作区现在都是 clean：`metanc_hmi_dsl`、reports submodule、`MetaNC`。
+
+**下一步拆解计划**
+
+我建议下一轮继续拆 QML runtime 的剩余中等大文件，而不是马上动 3672 行的 `client/qml_client/generator.py`。原因是 runtime 领域边界已经打开，继续拆 `program_workspace / execution / transport_ws` 风险更低，也能减少以后 PROG/AUTO/WS 行为修改时的冲突。
+
+建议顺序：
+
+1. `client/qml_client/runtime_fragments/program_workspace.py`，432 行
+   拆成 program files、directory tree、editor load/save、path helpers。这个最贴近近期 PROG/PROG DIR 高频修改。
+
+2. `client/qml_client/runtime_fragments/execution.py`，417 行
+   拆成 execution tick、motion tick、AUTO/MDI line cursor、feed/spindle actual sync。这个要更谨慎，因为容易影响 AUTO/MDI/JOG 行为。
+
+3. `client/qml_client/runtime_fragments/transport_ws.py`，390 行
+   拆成 WebSocket source builder、subscription lifecycle、message parsing/replay、fallback state。这个会为后续多 client、断线重连、WS 日志补强铺路。
+
+4. 再处理 `client/qml_client/generator.py`，3672 行
+   到这里 runtime/widget 都已经分好，generator.py 可以按 shell/header/footer/page assembly/settings/debug/program/logs 拆，而不是硬切大文件。
+
+当前最高优先级我建议先做第 1 个：`program_workspace.py`。这块收益最大，风险低于 execution。</pre>
+</article>
+</section>
+<section class="turn" id="turn-55">
+<h2>Turn 55</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 19:33:48 +0800</div>
+<pre>可以做个详细计划 然后开始</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 19:34:01 +0800</div>
+<pre>我会按下一刀 `program_workspace.py` 来做：先拆设计边界和验证标准讲清楚，然后直接落实现。目标仍然是 source-only refactor，生成的 `RuntimeStore.qml` 不改变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 19:34:41 +0800</div>
+<pre>具体计划我收敛成 5 个 source blocks，保持 QML 输出顺序不变：
+
+1. `program_lines.py`：程序行读取和查找，`findProgramLine()` / `programLineText()` / `programLines()`。
+2. `state.py`：workspace 初始化、files/directories 构建、summary、backend 检测。
+3. `directory.py`：目录列表、目录项生成、默认新文件/新目录命名、目录选择。
+4. `editor.py`：当前程序载入、清空、编辑器状态恢复。
+5. `backend.py` + `path_utils.py`：后端递归收集和路径/目录判断 helper。
+
+`program_workspace.py` 只保留 ordered assembler 和 `PROGRAM_WORKSPACE_QML` 导出；测试新增 `QML_PROGRAM_WORKSPACE_BLOCK_NAMES` 顺序和关键 marker 顺序。之后做 `RuntimeStore.qml` 等价检查、生成产物、pipeline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 19:36:07 +0800</div>
+<pre>子片段已经生成。先检查 assembler、块文件首尾和 runtime-store 等价，避免出现上轮遇到的边界空行问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 19:36:26 +0800</div>
+<pre>拆出来后等价检查暴露的是子 block 边界多了一行空白，QML 逻辑没变。我会在 `program_workspace.py` 里加一个本地拼接 helper 折叠相邻 block 的边界换行，和 runtime 顶层 assembler 的处理保持一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 19:37:06 +0800</div>
+<pre>`RuntimeStore.qml` 已经字节级等价，`program_workspace.py` 从 432 行降到 31 行，最大新块是 `directory.py` 148 行。接下来补测试，锁住 program workspace block 顺序和关键 marker 顺序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 19:37:45 +0800</div>
+<pre>测试已补。现在跑 compile、generator refactor 测试和 runtime-store 等价检查，确认新 import 和 marker 顺序没问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 19:38:04 +0800</div>
+<pre>局部测试通过，runtime-store 等价也通过。现在执行最终生成并跑完整 pipeline/doc 测试，确认没有生成产物漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 19:39:29 +0800</div>
+<pre>最终产物生成和本地构建通过。现在检查关键生成文件是否仍无 diff，并跑 docs portal、pipeline 和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 19:39:41 +0800</div>
+<pre>关键生成文件没有 diff，`git diff --check` 也通过。docs/pipeline 还在运行，我等它们结束后做最终检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 19:40:25 +0800</div>
+<pre>完整 pipeline 和 docs portal 都通过。现在我检查工作区 diff、行数和新增文件范围；这轮按用户要求没有提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 19:40:38 +0800</div>
+<pre>拆分完成且生成产物/快照没有 diff。当前只有 `program_workspace.py`、新增 `program_workspace_blocks/` 和测试文件处于未提交状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-05-09 19:41:00 +0800</div>
+<pre>已做完，未提交。
+
+这轮把 `client/qml_client/runtime_fragments/program_workspace.py` 拆成了 source-only 子片段：
+
+- `program_workspace.py`: 432 行 -&gt; 31 行
+- 新增 `client/qml_client/runtime_fragments/program_workspace_blocks/`
+  - `program_lines.py`
+  - `state.py`
+  - `directory.py`
+  - `editor.py`
+  - `backend.py`
+  - `path_utils.py`
+
+补了测试：
+
+- 新增 `QML_PROGRAM_WORKSPACE_BLOCK_NAMES`
+- 在 `tests/test_generator_refactor.py` 锁住 program workspace block 顺序和关键 marker 顺序
+
+验证已通过：
+
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `python3 -m unittest tests.test_pipeline`
+- `git diff --check`
+
+关键产物无 diff：
+
+- `generated/qml/RuntimeStore.qml`
+- `generated/qml/Main.qml`
+- `generated/web/app.js`
+- `generated/web/runtime.js`
+- `generated/distribution/contract/runtime_contract_bundle.json`
+- `tests/snapshots/qml/RuntimeStore.qml.snap`
+
+当前未提交改动只有：
+
+- `client/qml_client/runtime_fragments/program_workspace.py`
+- `client/qml_client/runtime_fragments/program_workspace_blocks/`
+- `tests/test_generator_refactor.py`
+
+下一步建议继续拆 `execution.py`，但比 `program_workspace.py` 风险高一点，因为会碰到 AUTO/MDI/JOG 执行 tick、motion、feed/spindle actual sync。建议下一轮仍然按 source-only 做，先拆成 `execution_blocks/tick.py`、`motion.py`、`cursor.py`、`state.py`，保持 `RuntimeStore.qml` 字节不变。</pre>
+</article>
+</section>
+<section class="turn" id="turn-56">
+<h2>Turn 56</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 20:00:39 +0800</div>
+<pre>计划一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 20:01:03 +0800</div>
+<pre>我先看一下 `execution.py` 里的函数顺序和实际职责，再给你一版可执行的拆分计划。重点还是保持 source-only，不改变 `RuntimeStore.qml` 输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 20:01:41 +0800</div>
+<pre>下一步建议拆 `client/qml_client/runtime_fragments/execution.py`，仍然按 **source-only refactor** 做，不改执行语义，不改生成的 `RuntimeStore.qml`。
+
+**目标结构**
+
+```text
+client/qml_client/runtime_fragments/
+  execution.py
+  execution_blocks/
+    __init__.py
+    tick.py
+    motion.py
+    mdi.py
+    lines.py
+    cursor.py
+    block_apply.py
+    modal.py
+    completion.py
+    timers.py
+```
+
+**拆分边界**
+
+1. `tick.py`
+   - `advanceExecutionTick()`
+
+   负责执行主循环，不改里面逻辑，只移动。
+
+2. `motion.py`
+   - `advanceMotionTick()`
+   - `addAxisDelta()`
+   - `setAxisValue()`
+   - `setAxisTarget()`
+   - `stepAxisTowards()`
+   - `applyAxisTarget()`
+   - `updateRemainDistance()`
+
+   这是 JOG/AUTO/MDI 共享的轴运动和 remain distance 区域。
+
+3. `mdi.py`
+   - `startMdiExecution()`
+
+   单独保留 MDI/MDA 启动逻辑，后续 MDA 编辑器/执行行为会更好维护。
+
+4. `lines.py`
+   - `executionContent()`
+   - `executionLines()`
+   - `runtimeLineSummary()`
+   - `firstProgramLineTextFromContent()`
+   - `firstProgramLineNumber()`
+
+   程序文本到执行行模型的转换统一放这里。
+
+5. `cursor.py`
+   - `prepareExecutionCursor()`
+
+   AUTO/MDI 执行游标逻辑单独出来，后续处理“运行行索引 vs 程序行号”更清晰。
+
+6. `block_apply.py`
+   - `applyExecutionBlock()`
+   - `parseBlockWords()`
+
+   负责把一行程序内容解析并写入轴目标、F/S/T/D 等 runtime state。
+
+7. `modal.py`
+   - `applyModalWords()`
+
+   G/M modal 解析单独出来，后续扩展 G54/G90/G91/M3/M4/M5/M8/M9 更好找。
+
+8. `completion.py`
+   - `hasProgramEnd()`
+   - `isProgramLoop()`
+   - `completeExecution()`
+
+   结束、循环、停止状态收口。
+
+9. `timers.py`
+   - `updateExecutionTimers()`
+   - `incrementDurationText()`
+   - `parseDurationText()`
+   - `updateToolOffset()`
+
+   这里有点杂，但体量不大。`updateToolOffset()` 暂时放这里或单独 `tooling.py` 都可以；我倾向第一版先放 `timers.py`，不为了一个函数多建文件。
+
+**测试计划**
+
+新增：
+
+```python
+QML_EXECUTION_BLOCK_NAMES = (
+    &quot;tick&quot;,
+    &quot;motion&quot;,
+    &quot;mdi&quot;,
+    &quot;lines&quot;,
+    &quot;cursor&quot;,
+    &quot;block_apply&quot;,
+    &quot;modal&quot;,
+    &quot;completion&quot;,
+    &quot;timers&quot;,
+)
+```
+
+在 `tests/test_generator_refactor.py` 里锁住：
+
+- block 顺序
+- `EXECUTION_QML` 的关键 marker 顺序
+- `RuntimeStore.qml` 中 `advanceExecutionTick()` 到 `firstProgramLineNumber()` 的顺序不变
+
+**验证标准**
+
+必须通过：
+
+```bash
+python3 -m compileall client/qml_client tests/test_generator_refactor.py
+python3 -m unittest tests.test_generator_refactor
+./tools/generate_targets.sh
+python3 -m unittest tests.test_docs_portal
+python3 -m unittest tests.test_pipeline
+git diff --check
+```
+
+并且这些文件必须无 diff：
+
+```text
+generated/qml/RuntimeStore.qml
+generated/qml/Main.qml
+generated/web/app.js
+generated/web/runtime.js
+generated/distribution/contract/runtime_contract_bundle.json
+tests/snapshots/qml/RuntimeStore.qml.snap
+```
+
+**风险点**
+
+这次比 `program_workspace.py` 风险高，因为 `execution.py` 直接覆盖：
+
+- AUTO 执行行推进
+- MDI/MDA 执行
+- JOG 运动 tick
+- feed/spindle actual 同步
+- 程序结束/循环判断
+- remain distance
+
+所以第一版只做机械拆分，不做任何逻辑优化。尤其不要顺手改 `N` 行号、自然行号、F/S actual、M30/M99、single block 等行为。
+
+我建议下一步就按这个计划做。当前 `program_workspace` 拆分还未提交，最好这两个拆分如果一起做，就保持同一轮验证；如果你想降低风险，也可以先提交当前 `program_workspace`，再拆 `execution.py`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-57">
+<h2>Turn 57</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 20:13:49 +0800</div>
+<pre>ok go</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 20:14:03 +0800</div>
+<pre>我开始按刚才的执行链拆分计划落地，先做机械拆分，目标是生成的 `RuntimeStore.qml` 不发生行为差异。完成后我会跑生成器和关键测试，确保这轮只是结构变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 20:14:39 +0800</div>
+<pre>当前工作区里已经有上一轮 `program_workspace` 拆分的未提交改动，我会保留并叠加这轮 `execution` 拆分，不去回滚已有内容。`execution.py` 现在 417 行，函数边界比较清晰，适合按执行 tick、运动、MDI、行解析、光标、block 应用、modal、完成、计时几个块拆。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 20:15:31 +0800</div>
+<pre>我会稍微调整一下刚才的文件命名：为了保持生成结果 byte-level 不动，不能把当前靠后的 helper 函数提前塞进 `lines.py`，所以会新增 `tooling.py` 和 `line_helpers.py` 这类更贴近现有顺序的块。这样拆分后的结构更碎一些，但风险最低。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 20:17:19 +0800</div>
+<pre>`execution.py` 已经拆成 block 包了，下一步补一个稳定顺序测试。这里测试的作用不是覆盖运行逻辑，而是防止后续重排 QML 函数导致生成物悄悄漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 20:18:02 +0800</div>
+<pre>基础编译和 refactor 单测通过了。现在我会跑完整生成脚本，再检查关键生成输出有没有变化；如果 byte-level 不变，这轮拆分就没有影响 Web/QML 最终产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 20:18:34 +0800</div>
+<pre>生成脚本已进入 native server 构建阶段，vcpkg 这次是从本地 cache 恢复依赖，`zlib` 没有再出现下载失败。等脚本结束后我会继续跑文档/管线测试和 diff 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 20:19:17 +0800</div>
+<pre>生成后的关键产物 diff 为空，说明 `RuntimeStore.qml`、Web runtime、分发 contract 都没有因为拆分发生内容变化。`test_pipeline` 还在跑临时 QML 构建，前面已经看到的 XKB/qmldir 仍是现有环境警告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-05-09 20:20:15 +0800</div>
+<pre>已按计划拆完这一轮，未提交。
+
+这次新增了 `client/qml_client/runtime_fragments/execution_blocks/`，把原来 417 行的 [execution.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/qml_client/runtime_fragments/execution.py:1) 收敛成 41 行组装入口。执行链按 `tick / motion / tooling / mdi / lines / cursor / block_apply / modal / completion / timers / line_helpers` 拆开，并在 [test_generator_refactor.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_generator_refactor.py:188) 加了稳定顺序测试。
+
+验证结果：
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py` 通过
+- `python3 -m unittest tests.test_generator_refactor` 通过，10 tests
+- `./tools/generate_targets.sh` 通过，Web/QML/server/distribution 都已重新生成
+- `python3 -m unittest tests.test_docs_portal` 通过
+- `python3 -m unittest tests.test_pipeline` 通过，30 tests，1 skipped
+- `git diff --check` 通过
+- 关键生成物 diff 为空：`RuntimeStore.qml`、`Main.qml`、`app.js`、`runtime.js`、`runtime_contract_bundle.json`、`RuntimeStore.qml.snap`
+
+当前未提交改动包含上一轮 `program_workspace` 拆分和这一轮 `execution` 拆分。下一步建议是提交这两个结构拆分，或者继续拆 `logs.py` / `transport` 这类相对独立模块。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:552-566|note=[used repo regeneration and final artifact workflow guidance]
+MEMORY.md:519-523|note=[confirmed relevant metanc_hmi_dsl final artifact context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dcc56-93cd-7870-9204-5d2622e0ade2
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-58">
+<h2>Turn 58</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 20:31:28 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC + commit + push;然后新计划出一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 20:31:42 +0800</div>
+<pre>我会先把当前两个拆分改动和报告/文档工作串起来处理：先更新 report/docs，再提交 `metanc_hmi_dsl`，随后导出同步到 `MetaNC` 并分别提交推送。最后我会给下一步拆分计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 20:32:12 +0800</div>
+<pre>报告流程我已经按项目约定确认过了：`submodules/metanc_hmi_dsl_reports` 是报告 submodule，父仓库要在 submodule 推送之后再记录指针。现在 `MetaNC` 干净，`metanc_hmi_dsl` 只有这轮 QML runtime 拆分相关改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 20:32:32 +0800</div>
+<pre>我会把今天报告补到当前实际状态，不只改摘要，还会把关联的 generator code map / build-test 文档同步到 QML runtime 分块后的结构。报告里会明确这轮是源码结构拆分，最终生成物保持 byte-stable。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 20:32:51 +0800</div>
+<pre>我先补文档内容而不是只刷 HTML：会把 2026-05-09 session report 的 completed/validation/follow-up 补到 `program_workspace` 与 `execution` 这两次 QML runtime 二级拆分，并更新 code map 让后续能直接找到这些 fragment 目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 20:33:16 +0800</div>
+<pre>接下来我会先改源文档和报告文本，再跑报告导出/文档构建。因为这次主变更是 generator 源码拆分，我会同步更新 README、CHANGELOG、status matrix、handoff 和中英文 code map，避免只在 report 里留记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 20:33:33 +0800</div>
+<pre>现在我先刷新今天的会话导出，再补手写摘要。导出脚本会更新 `user-history.md` 和完整 Codex conversation 页面，随后报告正文再补上这两次 QML runtime 二级拆分的结论。</pre>
 </article>
 </section>
 <section>

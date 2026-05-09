@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-05-10` | Session bootstrap and Codex user-history export tooling |
 | `2026-05-09` | MAIN/JOG display cleanup, duplicated soft-panel operation controls removed from the dashboard, manual setup/live-status cards retained, server simulator FS Actual/Target semantics fixed for completed JOG moves, DEBUG natural-query Enter/Return submit stability and axis shorthand parsing fixed, Web generator source split into feature JS/modules plus ordered CSS/runtime fragments, QML widget emitter source split into focused fragments, story/data-dictionary/docs refreshed, generated Web/QML snapshots updated, docs portal rebuilt, and MetaNC sync |
 | `2026-05-08` | PROG DIR parent-row navigation, footer Return scope cleanup, current-directory New File behavior, sparse directory row-height stabilization, MDA editor focus-preservation with overview runtime refresh repair, JOG/MDI/AUTO split Web command-flow verification, bilingual docs/report update, and MetaNC sync |
 | `2026-05-07` | Remote sync check, final artifact/doc refresh, QML Logs font-token/runtime binding fixes, Filter/More panel layout repair, PROG editor capability-state cleanup, Paste/Goto fixes, in-editor Search/Replace panel, unified Search/Replace softkey, Ctrl/Cmd+F shortcut routing, Program Save persistence, PROG DIR file-switch editor refresh, docs/report update, and MetaNC sync |

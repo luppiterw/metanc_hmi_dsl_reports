@@ -88,3 +88,15 @@ Date: 2026-05-09
 - 现在的Project Palette的tab切换感觉有点丑，美化一下
 - 我发现一个Container里面的控件没法拖拽到其他Container，这是bug吗
 - 可以 看着没问题，generate/update report &amp; docs + sync MetaNC + commit + push
+- 生成可执行我看一下
+- Container是一个什么概念的东西，是单纯的一个layout容器，还是说也可以作为一个实体存在，比如类似Layout pk Frame，解释一下
+- 所以现在示例里面的Container算什么呢，这种在Preview和Run的时候，需要显示边界虚线吗
+- 所以你的Container更像是QT里的Layout是不是
+- 我没有希望它更接近谁，我需要考虑语义的定义清晰程度，以及考虑以后和web qt android等不同平台的转换，你描述不清楚或者定义模糊，以后不好转换的
+- 继续看一下拆解计划
+- ok 按照现在你的清晰定义更新一下关联内容，文档&amp;代码，然后重新生成一个最新的执行给我
+- ok 按照你的建议做一个计划我看一下，没问题你开始
+- 可以 做一下
+- ok 看一下下一步的编辑建议
+- ok 按照这个做一下
+- 可以 看着没问题，generate/update report &amp; docs + sync MetaNC + commit + push，然后给我一个下一步拆解计划

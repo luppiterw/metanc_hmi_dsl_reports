@@ -6,7 +6,7 @@ Focus:
 - Server simulator FS semantics: completed discrete JOG motion now drops `feed.speed_actual` to zero while preserving target/cmd feed values.
 - DEBUG natural-query submit behavior: Web/QML now run the same query path from `Run`, `Enter`, and `Return`.
 - DEBUG natural-query stability and parser coverage: focus-preserved Web queries refresh result rows directly, QML submit is timer-backed, and axis shorthand such as `x`, `xy`, `xyz`, and `x轴` resolves to axis values.
-- Web generator source split into feature JS modules, `widget_core` JS fragments, ordered CSS emitters, and legacy shell CSS fragments, with generated Web/QML snapshots kept stable.
+- Web generator source split into feature JS modules, `widget_core` JS fragments, ordered CSS emitters, legacy shell CSS fragments, and `runtime_fragments` JS templates, with generated Web/QML snapshots kept stable.
 - Story catalog, data dictionary, status matrix, generated snapshots, report books, and docs portal refreshed.
 
 Session assets:

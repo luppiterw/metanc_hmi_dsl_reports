@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-05-08 10:00:56 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/lup/OminiForge</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/08/rollout-2026-05-08T10-00-56-019e0551-072d-7b01-8879-179803763de6.jsonl</code></div>
-<div><b>Messages</b>: <code>464</code></div>
-<div><b>User prompts</b>: <code>47</code></div>
+<div><b>Messages</b>: <code>498</code></div>
+<div><b>User prompts</b>: <code>55</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -5449,6 +5449,520 @@ http://localhost:5173/
 - `./scripts/build-docs.sh`：通过
 
 已提交并推送：`ce84b72 feat: support moving controls across containers`</pre>
+</article>
+</section>
+<section class="turn" id="turn-48">
+<h2>Turn 48</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:53:01 +0800</div>
+<pre>生成可执行我看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 15:53:18 +0800</div>
+<pre>我先确认本地 Web 预览服务是否还在。如果还在，就直接给你可打开的地址；如果不在，我会把 dev server 拉起来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 15:53:36 +0800</div>
+<pre>可执行预览已经在跑：
+
+`http://localhost:5173/`
+
+当前工作区是干净的，服务也能正常返回页面。</pre>
+</article>
+</section>
+<section class="turn" id="turn-49">
+<h2>Turn 49</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:55:49 +0800</div>
+<pre>Container是一个什么概念的东西，是单纯的一个layout容器，还是说也可以作为一个实体存在，比如类似Layout pk Frame，解释一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 15:56:20 +0800</div>
+<pre>我的建议：`Container` 不应该只是单纯 layout，它应该是一个“可承载子控件的实体控件”。
+
+更准确的关系是：
+
+```text
+Container = 控件实体 / 节点 / 子控件宿主
+Layout    = Container 的布局策略
+Frame     = 一种带可视边框/标题/语义的 Container
+```
+
+也就是说：
+
+```xml
+&lt;Container name=&quot;toolbar&quot; layout=&quot;hbox&quot;&gt;
+  &lt;Button name=&quot;saveBtn&quot; /&gt;
+  &lt;Button name=&quot;cancelBtn&quot; /&gt;
+&lt;/Container&gt;
+```
+
+这里 `Container` 是实体，`hbox` 是它的布局方式。
+
+**三者区别**
+`Layout`：只描述怎么排子元素，比如 `vbox / hbox / grid / absolute / dock / flex`。它不是控件，不应该单独被脚本操作。
+
+`Container`：是控件树里的实体。可以有 `name/id`，可以被选中、拖拽、绑定、隐藏、禁用、设置背景、边距、生命周期，也可以作为脚本对象存在，比如：
+
+```js
+panel1.visible = false
+panel1.layout.gap = &quot;8px&quot;
+```
+
+`Frame / Panel / GroupBox`：是 Container 的一种可视化特例，比如有边框、标题、背景、滚动、折叠等。
+
+**所以当前 OminiForge 里的 Container 应该理解为：**
+
+它是一个“组合控件/容器控件”，不是单纯 layout。
+现在它主要承担布局和承载子控件的能力，后续可以扩展成：
+
+```text
+Container
+  chrome: none        // 纯布局容器，不显示边框
+  layout: vbox
+
+Frame
+  chrome: frame       // 有边框/标题
+  layout: vbox
+
+Panel
+  chrome: panel       // 有背景/内边距
+  layout: absolute
+
+ScrollView
+  chrome: scroll
+  layout: vbox
+```
+
+**我建议 DSL 层这样分：**
+
+```text
+BaseControl
+  Button
+  Label
+  Container
+    Frame
+    Panel
+    ScrollView
+    TabView
+```
+
+`Container` 是基础组合能力，`Frame/Panel/ScrollView` 是带特定视觉或交互语义的容器控件。
+
+所以结论是：`Container` 应该作为实体存在；`Layout` 是它的一个属性；`Frame` 是一种更具体、更有视觉语义的 Container。</pre>
+</article>
+</section>
+<section class="turn" id="turn-50">
+<h2>Turn 50</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:59:19 +0800</div>
+<pre>所以现在示例里面的Container算什么呢，这种在Preview和Run的时候，需要显示边界虚线吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 15:59:45 +0800</div>
+<pre>现在示例里的 `Container` 应该理解为：**基础布局容器 / 透明组合容器**，不是 `Frame`。
+
+所以它的默认语义应该是：
+
+```text
+Edit 模式：可以显示虚线边界
+Preview/Run 模式：不应该显示虚线边界
+```
+
+原因是虚线边界是编辑器辅助信息，用来告诉你这里有一个可选中、可拖入、可调整布局的容器。到了 Preview/Run，它应该模拟真实运行效果，纯 `Container` 默认不产生视觉边框。
+
+更合理的区分是：
+
+```text
+Container
+  默认透明
+  用于布局和承载子控件
+  runtime 不显示边界
+
+Frame / Panel / GroupBox
+  是可视容器
+  runtime 可以显示边框、背景、标题
+
+EditOverlay
+  编辑器辅助层
+  只在 edit 显示虚线、选中框、拖拽提示
+```
+
+所以当前如果 Preview/Run 还能看到 Container 虚线，我认为这是实现上的临时效果，应该改掉。
+保留原则是：**只有用户明确设置了 border/background/chrome 的容器，运行时才显示边界；普通 Container 的虚线只属于编辑态。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-51">
+<h2>Turn 51</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:59:58 +0800</div>
+<pre>所以你的Container更像是QT里的Layout是不是</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:00:17 +0800</div>
+<pre>不完全是。它“用起来像 Qt 的 Layout”，但模型上不能等同于 Qt Layout。
+
+更准确地说：
+
+```text
+OminiForge Container ≈ QWidget + QLayout 的组合
+OminiForge Layout    ≈ QLayout
+```
+
+Qt 里通常是：
+
+```text
+QWidget
+  setLayout(QVBoxLayout)
+    QPushButton
+    QLabel
+```
+
+OminiForge 里是：
+
+```text
+Container
+  layout = vbox
+  children = Button, Label
+```
+
+所以如果只看排版能力，`Container(layout=vbox)` 很像 `QVBoxLayout`。
+但因为它在 DSL 树里有自己的 `id/name/properties/children`，可以被选中、拖拽、隐藏、设置背景、绑定脚本、作为插件承载点，所以它不是纯 Layout。
+
+我建议语义定成：
+
+```text
+Layout：纯布局算法，不是节点
+Container：拥有布局算法的控件节点
+Frame/Panel：有可视外观的 Container 子类型
+```
+
+对应 Qt 可以这样理解：
+
+```text
+OminiForge Layout    -&gt; QLayout / QBoxLayout / QGridLayout
+OminiForge Container -&gt; QWidget + QLayout
+OminiForge Frame     -&gt; QFrame + QLayout
+OminiForge GroupBox  -&gt; QGroupBox + QLayout
+```
+
+如果你希望它更接近 Qt 思维，也可以把普通 `Container` 命名为 `LayoutBox` 或 `Box`，把有视觉实体的叫 `Panel/Frame`。但我不建议让 `Layout` 自己成为控件树节点，否则后面脚本、插件、事件、跨平台映射会容易混乱。</pre>
+</article>
+</section>
+<section class="turn" id="turn-52">
+<h2>Turn 52</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:01:30 +0800</div>
+<pre>我没有希望它更接近谁，我需要考虑语义的定义清晰程度，以及考虑以后和web qt android等不同平台的转换，你描述不清楚或者定义模糊，以后不好转换的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:02:04 +0800</div>
+<pre>你说得对。这里必须把语义钉死，不然后面转 Web/Qt/Android 会乱。
+
+我建议正式定义成这套：
+
+```text
+Layout
+  纯布局规则，不是控件节点，不可被脚本直接当控件操作。
+
+LayoutHost
+  可承载 children 的结构节点，负责应用 layout。
+  默认不产生运行时视觉边界。
+
+VisualContainer
+  有可见外观的容器节点，比如 Panel / Frame / GroupBox / Card / ScrollView。
+```
+
+如果保留现在的名字，则应明确：
+
+```text
+Container = LayoutHost
+```
+
+而不是泛泛的“容器”。
+
+也就是：
+
+```xml
+&lt;Container name=&quot;mainArea&quot; layout=&quot;vbox&quot;&gt;
+  &lt;Button name=&quot;btn1&quot; /&gt;
+&lt;/Container&gt;
+```
+
+语义应是：
+
+```text
+这是一个布局宿主节点。
+它有 id/name/lifecycle/children。
+它默认 chrome = none。
+它的 layout = vbox。
+它在运行时不显示边框。
+```
+
+如果需要可见实体，就不要继续用普通 Container，而应该用：
+
+```xml
+&lt;Panel name=&quot;settingsPanel&quot; layout=&quot;vbox&quot; background=&quot;#fff&quot;&gt;
+  ...
+&lt;/Panel&gt;
+
+&lt;Frame name=&quot;machineFrame&quot; title=&quot;Machine&quot; layout=&quot;grid&quot;&gt;
+  ...
+&lt;/Frame&gt;
+
+&lt;GroupBox name=&quot;axisGroup&quot; title=&quot;Axis&quot;&gt;
+  ...
+&lt;/GroupBox&gt;
+```
+
+**跨平台映射**
+这样转平台就清楚：
+
+```text
+DSL Layout
+  Web: CSS flex/grid/absolute
+  Qt Widgets: QLayout/QBoxLayout/QGridLayout
+  Qt Quick: ColumnLayout/RowLayout/GridLayout/anchors
+  Android: LinearLayout/FrameLayout/ConstraintLayout
+  iOS: UIStackView/AutoLayout
+```
+
+```text
+DSL Container/LayoutHost
+  Web: div，默认无 border/background
+  Qt Widgets: QWidget + QLayout，默认无 frame
+  Qt Quick: Item + Layout
+  Android: ViewGroup/LinearLayout，默认无 background
+  iOS: UIView/UIStackView host，默认无 visual chrome
+```
+
+```text
+DSL Frame/Panel/GroupBox
+  Web: div/fieldset/section + border/background/title
+  Qt Widgets: QFrame/QGroupBox/QWidget styled
+  Qt Quick: Rectangle/GroupBox/Pane
+  Android: MaterialCardView/FrameLayout with background
+  iOS: UIView with layer border/background
+```
+
+所以核心定义应该是：
+
+```text
+Layout 是算法。
+Container 是布局宿主。
+Panel/Frame 是可视容器。
+```
+
+我建议后续文档里不要只写 `Container`，而是写：
+
+```text
+Container / LayoutHost
+```
+
+等模型稳定后，要么把 DSL 类型直接改名为 `LayoutHost`，要么保留 `Container` 但在规范里强制说明：
+
+```text
+Container is a non-visual layout host by default.
+```
+
+这样转换器才不会误以为普通 Container 在运行时必须画边框。</pre>
+</article>
+</section>
+<section class="turn" id="turn-53">
+<h2>Turn 53</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:02:58 +0800</div>
+<pre>ok 按照现在你的清晰定义更新一下关联内容，文档&amp;代码，然后重新生成一个最新的执行给我</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:03:25 +0800</div>
+<pre>我会把这个语义落到两层：文档里明确 `Layout / Container(LayoutHost) / Panel/Frame` 的边界；代码里把普通 `Container` 作为非视觉布局宿主处理，运行态不再显示容器虚线/边框，编辑态保留辅助边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:03:42 +0800</div>
+<pre>当前代码里 `.render-container` 是一直让 Container 虚线边界存在，所以 Preview/Run 会误显示编辑辅助边界。我会把这条改为 edit-only，同时给节点加 `data-mode` 方便 CSS 精确控制。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:03:57 +0800</div>
+<pre>我先把运行态边界问题修掉：Container 默认是 LayoutHost，不是 Frame，所以 `.render-container` 的虚线只在 edit 模式显示。Preview/Run 会保持透明布局宿主。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:04:27 +0800</div>
+<pre>代码层已改。现在我加测试确认普通 Container 在 edit 有辅助边界标识，在 preview/run 仍是布局节点但不会有 edit-only 边框。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:04:52 +0800</div>
+<pre>我会把文档语义补全在 `object-model.md` 和 Web W10 文档里：Layout 是算法，Container 是非视觉 LayoutHost，Frame/Panel 才是可视容器。中文 i18n 也同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:07:00 +0800</div>
+<pre>文档和代码都落了。现在跑测试和构建，同时我会检查还有没有“Container 是可视边框”的表述残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 16:07:14 +0800</div>
+<pre>文档构建通过，语义搜索只剩下我们刚补的准确定义。测试和 Web 构建还在跑，我等结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 16:07:36 +0800</div>
+<pre>验证通过。现在我需要重新生成可执行预览，先确认 dev server 是否反映最新代码；如果当前 5173 是旧进程，我会重启它。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 16:07:50 +0800</div>
+<pre>5173 服务可访问，Vite 会按源码热更新。为了给你确认，我会截 edit/preview 两张：edit 看得到 Container 辅助边界，preview 不应显示普通 Container 虚线。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 16:08:13 +0800</div>
+<pre>基础截图已生成。当前示例默认只有 Root，没有新插入的普通 Container，截图主要用于确认页面可执行。我接下来提交，然后给你最新预览地址。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 16:08:32 +0800</div>
+<pre>diff 符合预期：语义文档 + edit-only chrome。现在我提交并推送这版。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 16:09:06 +0800</div>
+<pre>本地提交完成：`a2776bd feat: clarify container layout host semantics`。我推送两个远程，然后确认状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-09 16:09:55 +0800</div>
+<pre>已按这个定义落下去了：
+
+- 文档明确了：
+  - `Layout` = 纯布局算法
+  - `Container` = 默认非可视 `LayoutHost`
+  - `Panel / Frame / GroupBox / ScrollView` = 可视容器
+- Web 实现已调整：
+  - 普通 `Container` 的虚线边界只在 `Edit` 模式显示
+  - `Preview/Run` 下普通 `Container` 不显示默认边框
+- 中文 i18n 文档同步更新。
+- 加了回归测试确认 Container 作为 LayoutHost 在 preview 仍存在，但 edit-only chrome 不进入运行语义。
+
+最新可执行预览：
+
+`http://localhost:5173/`
+
+截图：[.tmp/ominiforge-container-layouthost-edit.png](/home/iaar/workspace/lup/OminiForge/.tmp/ominiforge-container-layouthost-edit.png)
+
+验证通过：
+- `npm test`：17 files / 154 tests passed
+- `npm run build`：通过
+- `./scripts/build-docs.sh`：通过
+
+已提交并推送：`a2776bd feat: clarify container layout host semantics`</pre>
+</article>
+</section>
+<section class="turn" id="turn-54">
+<h2>Turn 54</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:11:36 +0800</div>
+<pre>ok 看一下下一步的编辑建议</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:12:08 +0800</div>
+<pre>我建议下一步优先做 **编辑态拖拽体验补完**，不要先扩控件数量。
+
+现在虽然已经能把控件拖到其他 Container，但编辑体验还有几个明显缺口：
+
+1. **vbox/hbox 里拖拽没有插入位置反馈**
+   现在拖到容器里基本是追加到末尾，用户不知道会插到哪里。下一步应该做：
+   - 拖动时显示插入线
+   - 支持插到某个控件前/后
+   - `MoveControlCommand` 使用 `beforeId/afterId`
+   - Palette 新控件也支持插入到指定位置
+
+2. **容器 drop target 反馈不够明确**
+   Container 现在是 LayoutHost，Edit 模式需要辅助边界，但拖拽时还应该有：
+   - 当前可投放容器高亮
+   - 不可投放目标禁用态
+   - 选中容器和 hover/drop 容器视觉区分
+
+3. **Panel / Frame 可视容器可以作为下一步或下下一步**
+   Container 语义清楚后，可以新增：
+   - `Panel`：有背景/内边距的可视容器
+   - `Frame`：有边框/标题的可视容器
+   - 普通 `Container` 继续保持运行时透明
+   但我建议先做拖拽插入反馈，否则可视容器加多了，编辑体验还是会乱。
+
+4. **Inspector 可以开始走属性 schema**
+   现在 Inspector 是按当前控件硬写的。后面 Button、Label、Container、Panel、Frame 增多后，应该逐步变成：
+   - 控件类型定义属性集
+   - Inspector 根据 schema 渲染属性编辑器
+   - 通用属性、布局属性、可视属性分组
+
+我的推荐顺序：
+
+```text
+W28 Flow Drop Slot And Container Target Feedback
+W29 Visual Container Types: Panel / Frame
+W30 Property Schema Driven Inspector
+W31 Tree Drag Reparent / Reorder
+```
+
+我建议下一步先做 **W28**：把 vbox/hbox 的拖拽插入线、目标容器高亮、before/after 插入补上。这个对编辑器可用性的提升最大。</pre>
+</article>
+</section>
+<section class="turn" id="turn-55">
+<h2>Turn 55</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:12:38 +0800</div>
+<pre>ok 按照这个做一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:13:05 +0800</div>
+<pre>我会按 W28 做一版：先补命令层支持 palette 插入到 before/after，再在 Web 画布上给 vbox/hbox 增加插入线和 drop target 高亮，最后更新 story 文档和验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:14:16 +0800</div>
+<pre>我把实现拆成三块：先让命令层支持 `beforeId/afterId` 插入 palette 控件；再让 Canvas 根据鼠标位置计算 vbox/hbox 插槽并渲染插入线；最后补 W28 文档和验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:16:02 +0800</div>
+<pre>我先把这一版聚焦在“流式布局拖拽插入槽”和“容器目标反馈”上：先补源命令的 before/after 插入语义，再把 Web 编辑画布的拖拽预览、测试和文档一起补齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:16:12 +0800</div>
+<pre>路径结构和我接手的摘要有一点出入，我先重新扫一下当前仓库的真实目录，再按现有结构改，避免写到不存在的位置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:17:04 +0800</div>
+<pre>我确认了当前实现：绝对布局已经有坐标预览，vbox/hbox 现在只会追加。接下来我会扩展 drop position 为“位置意图”，让流式布局能按子控件中点推导 before/after，并渲染插入线。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:17:29 +0800</div>
+<pre>我准备开始改文件：核心变更会集中在 `source-draft.ts`、`CanvasControl.vue`、`CanvasSurface.vue`、`AppShell.vue` 和 workbench 样式，之后补 Vitest 覆盖和 W28 文档。</pre>
 </article>
 </section>
 </main>

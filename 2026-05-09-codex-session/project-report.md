@@ -101,6 +101,20 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   - 更新 README、CHANGELOG、status matrix 和 handoff 文档，把下一步
     cleanup 目标收敛到 Program search/actions、gauges、runtime refs、
     legacy button styling 和 QML source decomposition。
+- 完成 Web runtime shell 源码级拆分：
+  - `client/web_client/runtime_shell.py` 从 3600 行级别收敛为 31 行
+    public builder/assembler。
+  - 新增 `client/web_client/runtime_fragments/`，按原 JS 顺序拆出
+    header、config、store、command handlers、derived state、execution、
+    program workspace、local state、machine helpers、logs、server bridge、
+    transport helpers、remote state 和 utilities。
+  - 保持最终 `runtime.js` 文件结构和内容 byte-stable，不改变 strict/hybrid
+    mode、HTTP bootstrap/commands、WebSocket subscription/reconnect、runtime logs、
+    program workspace 或 local simulator 语义。
+  - 更新 generator refactor 测试，锁住 runtime fragment 拼接顺序和关键
+    marker 顺序。
+  - 更新 README、CHANGELOG、status matrix 和 handoff，把下一步拆解重心
+    移到 QML generator/widget/runtime source decomposition。
 
 ## Validation
 
@@ -117,8 +131,10 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   after the CSS emitter split.
 - `python3 -m compileall -q client/web_client/widget_emitters.py client/web_client/widget_core client/web_client/style_emitters/legacy_shell.py client/web_client/style_emitters/legacy`
   after the `widget_core` and legacy shell split.
+- `python3 -m compileall -q client/web_client/runtime_shell.py client/web_client/runtime_fragments tests/test_generator_refactor.py`
+  after the Web runtime fragments split.
 - `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
-  after the deeper Web generator split.
+  after the deeper Web generator/runtime split.
 - `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_docs_portal tests.test_story_docs`
   after the deeper Web generator split and before final artifact refresh.
 - Direct generated-output equivalence check confirmed `web/app.js`, `web/styles.css`,
@@ -165,7 +181,7 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   maintained CI-level UI automation rather than leaving them as ad hoc CDP scripts.
 - Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
   into maintained generated Web UI automation.
-- Continue the generator decomposition plan by reducing the remaining large Web
-  source slices such as Program search/actions, gauges, runtime refs, and legacy
-  button styling; then mirror the same source-level split on the QML generator
-  before changing final generated file layout.
+- Continue the generator decomposition plan on the QML side first:
+  `client/qml_client/widget_emitters.py`, then `client/qml_client/runtime_shell.py`,
+  then `client/qml_client/generator.py`. Keep final generated Web/QML file layout
+  unchanged until source-level decomposition and interaction coverage are stable.

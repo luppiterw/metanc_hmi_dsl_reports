@@ -37,6 +37,7 @@ flowchart LR
         CORE[widget_core JS fragments]
         FEAT[features: Program / Logs / DEBUG]
         WIDGET[widget_emitters.py assembly]
+        RUNTIMEJS[runtime_fragments JS template]
     end
 
     UI --> MainJog
@@ -49,6 +50,8 @@ flowchart LR
     CORE --> WIDGET
     FEAT --> WIDGET
     WIDGET --> GENWEB[byte-stable generated app.js]
+    ENTRY --> RUNTIMEJS
+    RUNTIMEJS --> GENRUNTIME[byte-stable generated runtime.js]
     SoftPanel --> COMMANDS
     COMMANDS --> STATE
     STATE --> WS

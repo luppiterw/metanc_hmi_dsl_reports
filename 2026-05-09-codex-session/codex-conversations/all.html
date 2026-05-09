@@ -96,8 +96,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>480</code></div>
-<div><b>User prompts</b>: <code>39</code></div>
+<div><b>Messages</b>: <code>520</code></div>
+<div><b>User prompts</b>: <code>43</code></div>
 <div><b>Synthetic events</b>: <code>2</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -4855,6 +4855,436 @@ def emit_legacy_shell_css() -&gt; str:
 <div class="time">2026-05-09 15:51:09 +0800</div>
 <pre>文档补丁已经落好。接下来我刷新今天的 brief/full Codex 导出，然后构建 report book 和主 docs portal；这一步会更新 report 子模块里的 HTML/索引。</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 15:51:43 +0800</div>
+<pre>导出已刷新，现在今天的 full conversation 统计是 3 个 sessions、106 个用户 prompt、984 条消息。我开始构建 report books 和 docs portal。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 15:52:19 +0800</div>
+<pre>报告书构建和相关单测通过了。现在跑主仓库的 docs portal 构建，这会把最新 report 发布到 `docs_html`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 15:52:55 +0800</div>
+<pre>主 docs portal 已构建完成，`docs_html/reports/2026-05-09-codex-session/index.html` 已更新。现在我检查两个 git 工作区的变更范围，然后按“reports 子模块先提交，再父仓库，再 MetaNC”的顺序发布。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 15:53:10 +0800</div>
+<pre>变更范围符合预期：父仓库是 Web generator 拆分源码和关联文档，report 子模块是今天 session 的导出与正文更新。接下来先提交并推送 report 子模块，避免父仓库记录一个远端还没有的子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 15:53:40 +0800</div>
+<pre>report 子模块已提交为 `3419eff`，现在推送它，然后父仓库会记录这个新指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 15:53:56 +0800</div>
+<pre>report 子模块已经 push。接下来提交 `metanc_hmi_dsl` 主仓库，包括 Web 拆分源码、关联文档和新的 report 子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 15:54:14 +0800</div>
+<pre>父仓库 staged diff 正常，子模块指针从 `2292399` 更新到已推送的 `3419eff`。我现在提交并推送 `metanc_hmi_dsl/main`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 15:54:45 +0800</div>
+<pre>`metanc_hmi_dsl` 已 push 到 `29910cc`。现在我用仓库的 export 脚本同步必要内容到 `MetaNC/nrt/hmi`，然后检查 downstream diff，确保没有把 source-only 的 reports/docs_html 带过去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 15:54:59 +0800</div>
+<pre>同步脚本完成，排除了 reports、generated、docs_html、docs_i18n 等源仓专属内容。接下来在 MetaNC 里跑状态检查、diff check 和相关测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 15:55:27 +0800</div>
+<pre>MetaNC 的同步 diff 也符合预期，只在 `nrt/hmi` 下出现 Web generator 拆分源码和文档更新；targeted 测试通过。现在我提交并 push `MetaNC/feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-09 15:56:19 +0800</div>
+<pre>MetaNC 已 push 到 `fce9b7b`。我最后做一次两个仓库的 clean 状态和最新提交确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-05-09 15:57:05 +0800</div>
+<pre>已完成并 push。
+
+本轮结果：
+- `metanc_hmi_dsl_reports/main`: `3419eff docs: refresh 2026-05-09 generator decomposition report`
+- `metanc_hmi_dsl/main`: `29910cc refactor: split web widget and legacy style emitters`
+- `MetaNC/feat/hmi`: `fce9b7b refactor: sync HMI web widget emitter split`
+
+已更新内容：
+- 今天的 report、user-history、完整 Codex conversation export。
+- `README.md`、`CHANGELOG.md`、`docs/requirements/status_matrix.md`、`agent_handoff.md`。
+- docs portal 已重新生成，最新 report 在 `docs_html/reports/2026-05-09-codex-session/index.html`。
+- 已同步必要 HMI 包内容到 `MetaNC/nrt/hmi`，没有同步 `reports`、`docs_html`、`docs_i18n`、`generated` 等源仓专属内容。
+
+验证通过：
+- `git diff --check`
+- report root/session `mdbook build`
+- `./tools/build_docs_html.sh`
+- `tests.test_generator_refactor`
+- Web generator snapshot/静态输出相关测试
+- `tests.test_docs_portal`
+- MetaNC 下游 `nrt/hmi` targeted 测试
+
+最终状态：`metanc_hmi_dsl`、report 子模块、`MetaNC/feat/hmi` 都是 clean，并且都已推送到对应远端。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:397-420|note=[report submodule publish order and MetaNC protected sync workflow]
+skills/metanc-hmi-reports-submodule/SKILL.md:47-69|note=[report export build and publish procedure]
+MEMORY.md:346-365|note=[report exporter and dated report sync context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+019dbe69-e917-7f20-ad5d-dd9262503c77
+019dbe3c-c36f-7143-8bfb-fdcf149bd7db
+019d98c9-e46d-7663-8ddd-a973fd1876e8
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-40">
+<h2>Turn 40</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:02:22 +0800</div>
+<pre>继续看一下拆解计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:02:43 +0800</div>
+<pre>我先重新扫一下现在拆完后的源码规模和剩余大文件分布，再按风险/收益给你把下一阶段拆解顺序排出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:03:02 +0800</div>
+<pre>当前最大风险已经从 Web CSS/widget 聚合文件转到 QML 侧和 Web runtime shell。为了避免计划只按行数排序，我再看一下这几个大文件的内部边界，判断哪些适合继续拆、哪些先不要碰。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-09 16:03:51 +0800</div>
+<pre>当前拆分进度我建议这样看：
+
+**已完成**
+- Web `generator.py` 已收敛为入口。
+- Web `styles.py` 已拆到 `style_emitters/`。
+- Web `legacy_shell.py` 已拆到 `style_emitters/legacy/`。
+- Web `widget_emitters.py` 已拆到 `widget_core/` + `features/`。
+- 这些拆分都保持了生成输出 byte-stable，并且已提交同步到 MetaNC。
+
+**现在剩余最大块**
+- `client/qml_client/generator.py`: 3672 行
+- `client/web_client/runtime_shell.py`: 3601 行
+- `client/qml_client/runtime_shell.py`: 3596 行
+- `client/qml_client/widget_emitters.py`: 2783 行
+- `client/web_client/app_shell.py`: 1363 行
+
+我建议下一阶段不要急着拆最终生成物，先继续拆“生成器源码层”。顺序如下：
+
+**1. Web runtime_shell 拆分**
+优先拆 `client/web_client/runtime_shell.py`。它现在是 Web strict/hybrid、本地 simulator、WS/HTTP、logs、program workspace、command handler 都混在一个大 JS 模板里。
+
+建议拆成：
+- `runtime_fragments/config.py`
+- `runtime_fragments/bootstrap.py`
+- `runtime_fragments/state_store.py`
+- `runtime_fragments/server_bridge.py`
+- `runtime_fragments/program_workspace.py`
+- `runtime_fragments/command_handlers.py`
+- `runtime_fragments/logs.py`
+- `runtime_fragments/simulator_motion.py`
+- `runtime_fragments/utils.py`
+
+第一版只做 Python 字符串片段拆分，不改 JS 语义，不改生成输出。
+
+**2. QML widget_emitters 拆分**
+然后拆 `client/qml_client/widget_emitters.py`。这个比 QML runtime 好拆，因为里面已经有清晰函数边界。
+
+建议拆成：
+- `qml_widgets/program.py`
+- `qml_widgets/logs.py`
+- `qml_widgets/debug_query.py`
+- `qml_widgets/buttons.py`
+- `qml_widgets/tables.py`
+- `qml_widgets/gauges.py`
+- `qml_widgets/containers.py`
+- `qml_widgets/layout.py`
+- `qml_widgets/utils.py`
+
+这一步目标是先把 QML widget 生成逻辑从 2783 行压到一个 assembly 入口。
+
+**3. QML runtime_shell / generator 拆分**
+再处理两个大模板：
+- `client/qml_client/runtime_shell.py`
+- `client/qml_client/generator.py`
+
+这两个风险更高，因为 QML 里很多窗口状态、RuntimeStore、settings、theme、soft panel、page loader 都互相绑定。建议等 QML widget 拆完、测试稳定后再动。
+
+**4. 最终生成物拆分**
+最后才考虑把最终产物拆成多文件，比如：
+- Web `app.js` 拆成多个 runtime/client modules
+- Web CSS 拆成多文件或构建期 bundle
+- QML `Main.qml` 拆成多个 generated components
+
+这一步会影响最终产物结构、distribution packaging、运行脚本和用户调试方式，所以不应该现在做。
+
+我的建议是下一步先做 **Web runtime_shell 拆分**。这块现在行数最大，而且和前面 Web 拆分链路一致，容易用 snapshot 保证不改行为。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:461-461|note=[prior accepted worker boundaries include Web generator and Qt QML generator]
+MEMORY.md:558-558|note=[Web generator runtime safety context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-41">
+<h2>Turn 41</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:04:37 +0800</div>
+<pre>ok 按照你的建议做一个计划我看一下，没问题你开始</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:04:56 +0800</div>
+<pre>我会先把计划收敛到“第一版可安全落地”的粒度：只拆 `client/web_client/runtime_shell.py` 的源码模板，不改 Web runtime 行为、不改最终 `runtime.js` 文件结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 16:05:11 +0800</div>
+<pre>计划如下，目标是把 `client/web_client/runtime_shell.py` 从 3600 行级别拆成可维护片段，同时保证生成的 `generated/web/runtime.js` 不变。
+
+**核心原则**
+- 第一版只拆源码，不拆最终产物。
+- `runtime_shell.py` 继续保留公开入口：
+  - `build_runtime_config_js()`
+  - `build_runtime_js(payload)`
+- 生成出来的 `runtime.js` 要 byte-stable，snapshot 不能变化。
+- 不改 strict/hybrid、WS、HTTP、logs、program workspace、simulator 行为。
+
+**目标结构**
+新增：
+
+```text
+client/web_client/runtime_fragments/
+  __init__.py
+  header.py
+  config.py
+  store.py
+  server_bridge.py
+  program_workspace.py
+  command_handlers.py
+  logs.py
+  simulator_motion.py
+  execution.py
+  utilities.py
+```
+
+保留：
+
+```text
+client/web_client/runtime_shell.py
+```
+
+它只负责：
+- JSON payload 注入
+- 按固定顺序拼接 runtime fragments
+- 暴露原有 public builder API
+
+**拆分顺序**
+1. 建 `runtime_fragments/`，先把大模板原样拆成有序片段。
+2. `runtime_shell.py` 改成 assembler，不直接保存 3600 行模板。
+3. 增加测试锁定 fragment 顺序，类似这次 `widget_core` / `style_emitters` 的做法。
+4. 跑 snapshot，确认 `runtime.js` 没有变化。
+5. 更新 README / CHANGELOG / status matrix / handoff，把 Web runtime split 状态补上。
+
+**片段职责**
+- `header.py`: `RUNTIME_PLAN` / `RUNTIME_SEED` / `PROGRAM_WORKSPACE` 常量、client log enum、interval 常量。
+- `config.py`: runtime config、localStorage settings、strict/hybrid 判断。
+- `store.py`: runtime API、property/resource/stream/localState 读写、notify/persist。
+- `server_bridge.py`: HTTP bootstrap、command forwarding、WebSocket connect/reconnect/subscription/replay。
+- `program_workspace.py`: program file map、directory listing、open/save/new/delete/rename。
+- `command_handlers.py`: local command dispatch、mode/cycle/jog/program/log command handling。
+- `logs.py`: client log buffer、query/export/retention/clear、batch upload。
+- `simulator_motion.py`: axis motion、JOG、feed/spindle actual/target、derived properties。
+- `execution.py`: AUTO/MDI execution tick、current line/block/runtime update。
+- `utilities.py`: clone/value/format/path/request helper。
+
+**验证**
+最小必须跑：
+```bash
+python3 -m compileall -q client/web_client/runtime_shell.py client/web_client/runtime_fragments
+python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots
+git diff --check
+```
+
+如果第一轮通过，再跑：
+```bash
+./tools/generate_targets.sh
+python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_docs_portal
+```
+
+**风险点**
+最大风险不是 Python 拆分，而是 JS 片段边界。`runtime.js` 里很多函数依赖 `createRuntime()` 作用域内变量，所以第一版不要把 JS 逻辑重排，只按现有顺序切片。后续再考虑语义级重组。
+
+我建议就按这个计划做第一版。</pre>
+</article>
+</section>
+<section class="turn" id="turn-42">
+<h2>Turn 42</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:05:26 +0800</div>
+<pre>可以 做一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:05:50 +0800</div>
+<pre>我开始落第一版，只做源码拆分和 byte-stable 验证。先抓当前 `runtime_shell.py` 的模板边界和现有测试，然后用脚本做机械切分，手工只处理 assembler 和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:06:16 +0800</div>
+<pre>我看到当前没有未提交改动，`runtime_shell.py` 的大模板是单个 Python 字符串。接下来会用 AST 读取当前模板值并按 JS 函数边界机械拆分，这样更容易保证拼接后完全等价。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:06:46 +0800</div>
+<pre>片段边界我会按“现有顺序切开、绝不重排”处理。现在先让脚本列出 `createRuntime()` 内部函数的顺序，作为切分依据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:08:11 +0800</div>
+<pre>现在我会做机械拆分：从当前 committed `runtime_shell.py` 读取模板字符串，按行段生成 `runtime_fragments/*`，再把 `runtime_shell.py` 改成拼装器。这样第一轮能最大化保持 `runtime.js` 完全不变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:09:49 +0800</div>
+<pre>机械拆分已经生成了 `runtime_fragments/`，`runtime_shell.py` 现在只是拼装入口。下一步我先做编译和 snapshot 快测，确认拆分没有改变生成的 `runtime.js`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:10:06 +0800</div>
+<pre>编译发现我生成 `runtime_fragments/__init__.py` 的 tuple 逗号写重了，这是纯生成脚本格式问题，不是 JS 片段问题。我先修这个，再继续跑快测。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 16:10:22 +0800</div>
+<pre>我会顺手把最后一个 fragment 名称也统一成双引号，然后重新编译和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 16:10:59 +0800</div>
+<pre>快测已确认 `runtime.js` snapshot 没漂移。现在我补上 refactor 测试对 runtime fragment 顺序的约束，并更新 README/CHANGELOG/status/handoff，避免拆分状态文档落后。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 16:11:07 +0800</div>
+<pre>文档当前还停在 CSS/widget 拆分状态。我会把 runtime fragments 加进去，并在测试里锁定 `RUNTIME_FRAGMENT_NAMES` 的顺序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 16:11:46 +0800</div>
+<pre>代码和文档都补齐了。现在跑完整的目标测试组合：编译、refactor 测试、pipeline snapshot 和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 16:12:03 +0800</div>
+<pre>目标测试已经通过，`runtime.js` snapshot 没有变化。现在我跑 `generate_targets.sh` 做最终产物刷新验证，这会花一会儿。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 16:12:14 +0800</div>
+<pre>`generate_targets.sh` 已进入 QML/C++ 配置构建阶段，Web/QML/distribution 文件已经重新生成。我继续等完整结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 16:13:12 +0800</div>
+<pre>最终生成完成，只有既有的 Qt XKB/qmlimportscanner 和 ICU 查找警告，没有失败。最后我再跑一次 snapshot/refactor/doc portal 快测和状态检查，确认生成后没有 tracked 漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 16:13:49 +0800</div>
+<pre>最终验证通过。现在我做最后一次状态和行数检查，确认本轮未提交改动范围清楚，然后给你汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / final_answer</h3>
+<div class="time">2026-05-09 16:14:05 +0800</div>
+<pre>已按计划做完第一版 Web `runtime_shell` 源码拆分，未提交。
+
+变更内容：
+- [runtime_shell.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/client/web_client/runtime_shell.py) 从 3600 行级别降到 31 行，只保留 `build_runtime_config_js()` / `build_runtime_js()` 拼装入口。
+- 新增 `client/web_client/runtime_fragments/`，按现有 JS 顺序拆成：
+  - `header`
+  - `config`
+  - `store`
+  - `command_handlers`
+  - `derived_state`
+  - `execution`
+  - `program_workspace`
+  - `local_state`
+  - `machine_helpers`
+  - `logs`
+  - `server_bridge`
+  - `transport_helpers`
+  - `remote_state`
+  - `utilities`
+- 更新 [test_generator_refactor.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_generator_refactor.py)，锁住 runtime fragment 拼接顺序。
+- 更新 `README`、`CHANGELOG`、status matrix、handoff，把 `runtime_fragments/` 状态补进去。
+
+验证通过：
+- `python3 -m compileall -q client/web_client/runtime_shell.py client/web_client/runtime_fragments tests/test_generator_refactor.py`
+- `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
+- `git diff --check`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_docs_portal`
+
+`runtime.js` snapshot 没有变化，最终生成也成功。生成时仍有既有的 Qt XKB/qmlimportscanner 和 ICU 查找警告，但没有失败。
+
+当前剩余大块主要是 QML 侧：
+- `client/qml_client/generator.py`: 3672 行
+- `client/qml_client/runtime_shell.py`: 3596 行
+- `client/qml_client/widget_emitters.py`: 2783 行
+- `client/web_client/app_shell.py`: 1363 行</pre>
+</article>
+</section>
+<section class="turn" id="turn-43">
+<h2>Turn 43</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:15:43 +0800</div>
+<pre>可以 看着没问题，generate/update report &amp; docs + sync MetaNC + commit + push，然后给我一个下一步拆解计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:16:07 +0800</div>
+<pre>我会按发布链路走完：先把 2026-05-09 report 和关联文档补上 runtime fragments 拆分，再重建 report/docs HTML，提交并 push 上游和 report 子模块，最后同步到 MetaNC 并提交 push。最后给你下一步拆分计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:16:24 +0800</div>
+<pre>工作区状态正常：上游只有本轮 runtime split 改动，report 子模块和 MetaNC 目前干净。接下来我补今天 report 正文和聚合页，然后刷新 brief/full Codex 导出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:16:37 +0800</div>
+<pre>今天的 report 还没记录 runtime fragments 这一轮，我会把 README、project/conversation report、diagram 和聚合 session 页都补上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:17:28 +0800</div>
+<pre>报告正文已补。接下来刷新今天的 brief user history 和 full conversation export，再构建 report books 和 docs portal。</pre>
+</article>
 </section>
 <section>
 <h2>Session Events</h2>
@@ -4891,8 +5321,8 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <div><b>Started</b>: <code>2026-05-08 10:00:56 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/lup/OminiForge</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/08/rollout-2026-05-08T10-00-56-019e0551-072d-7b01-8879-179803763de6.jsonl</code></div>
-<div><b>Messages</b>: <code>464</code></div>
-<div><b>User prompts</b>: <code>47</code></div>
+<div><b>Messages</b>: <code>498</code></div>
+<div><b>User prompts</b>: <code>55</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -10248,6 +10678,520 @@ http://localhost:5173/
 - `./scripts/build-docs.sh`：通过
 
 已提交并推送：`ce84b72 feat: support moving controls across containers`</pre>
+</article>
+</section>
+<section class="turn" id="turn-48">
+<h2>Turn 48</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:53:01 +0800</div>
+<pre>生成可执行我看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 15:53:18 +0800</div>
+<pre>我先确认本地 Web 预览服务是否还在。如果还在，就直接给你可打开的地址；如果不在，我会把 dev server 拉起来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 15:53:36 +0800</div>
+<pre>可执行预览已经在跑：
+
+`http://localhost:5173/`
+
+当前工作区是干净的，服务也能正常返回页面。</pre>
+</article>
+</section>
+<section class="turn" id="turn-49">
+<h2>Turn 49</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:55:49 +0800</div>
+<pre>Container是一个什么概念的东西，是单纯的一个layout容器，还是说也可以作为一个实体存在，比如类似Layout pk Frame，解释一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 15:56:20 +0800</div>
+<pre>我的建议：`Container` 不应该只是单纯 layout，它应该是一个“可承载子控件的实体控件”。
+
+更准确的关系是：
+
+```text
+Container = 控件实体 / 节点 / 子控件宿主
+Layout    = Container 的布局策略
+Frame     = 一种带可视边框/标题/语义的 Container
+```
+
+也就是说：
+
+```xml
+&lt;Container name=&quot;toolbar&quot; layout=&quot;hbox&quot;&gt;
+  &lt;Button name=&quot;saveBtn&quot; /&gt;
+  &lt;Button name=&quot;cancelBtn&quot; /&gt;
+&lt;/Container&gt;
+```
+
+这里 `Container` 是实体，`hbox` 是它的布局方式。
+
+**三者区别**
+`Layout`：只描述怎么排子元素，比如 `vbox / hbox / grid / absolute / dock / flex`。它不是控件，不应该单独被脚本操作。
+
+`Container`：是控件树里的实体。可以有 `name/id`，可以被选中、拖拽、绑定、隐藏、禁用、设置背景、边距、生命周期，也可以作为脚本对象存在，比如：
+
+```js
+panel1.visible = false
+panel1.layout.gap = &quot;8px&quot;
+```
+
+`Frame / Panel / GroupBox`：是 Container 的一种可视化特例，比如有边框、标题、背景、滚动、折叠等。
+
+**所以当前 OminiForge 里的 Container 应该理解为：**
+
+它是一个“组合控件/容器控件”，不是单纯 layout。
+现在它主要承担布局和承载子控件的能力，后续可以扩展成：
+
+```text
+Container
+  chrome: none        // 纯布局容器，不显示边框
+  layout: vbox
+
+Frame
+  chrome: frame       // 有边框/标题
+  layout: vbox
+
+Panel
+  chrome: panel       // 有背景/内边距
+  layout: absolute
+
+ScrollView
+  chrome: scroll
+  layout: vbox
+```
+
+**我建议 DSL 层这样分：**
+
+```text
+BaseControl
+  Button
+  Label
+  Container
+    Frame
+    Panel
+    ScrollView
+    TabView
+```
+
+`Container` 是基础组合能力，`Frame/Panel/ScrollView` 是带特定视觉或交互语义的容器控件。
+
+所以结论是：`Container` 应该作为实体存在；`Layout` 是它的一个属性；`Frame` 是一种更具体、更有视觉语义的 Container。</pre>
+</article>
+</section>
+<section class="turn" id="turn-50">
+<h2>Turn 50</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:59:19 +0800</div>
+<pre>所以现在示例里面的Container算什么呢，这种在Preview和Run的时候，需要显示边界虚线吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 15:59:45 +0800</div>
+<pre>现在示例里的 `Container` 应该理解为：**基础布局容器 / 透明组合容器**，不是 `Frame`。
+
+所以它的默认语义应该是：
+
+```text
+Edit 模式：可以显示虚线边界
+Preview/Run 模式：不应该显示虚线边界
+```
+
+原因是虚线边界是编辑器辅助信息，用来告诉你这里有一个可选中、可拖入、可调整布局的容器。到了 Preview/Run，它应该模拟真实运行效果，纯 `Container` 默认不产生视觉边框。
+
+更合理的区分是：
+
+```text
+Container
+  默认透明
+  用于布局和承载子控件
+  runtime 不显示边界
+
+Frame / Panel / GroupBox
+  是可视容器
+  runtime 可以显示边框、背景、标题
+
+EditOverlay
+  编辑器辅助层
+  只在 edit 显示虚线、选中框、拖拽提示
+```
+
+所以当前如果 Preview/Run 还能看到 Container 虚线，我认为这是实现上的临时效果，应该改掉。
+保留原则是：**只有用户明确设置了 border/background/chrome 的容器，运行时才显示边界；普通 Container 的虚线只属于编辑态。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-51">
+<h2>Turn 51</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 15:59:58 +0800</div>
+<pre>所以你的Container更像是QT里的Layout是不是</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:00:17 +0800</div>
+<pre>不完全是。它“用起来像 Qt 的 Layout”，但模型上不能等同于 Qt Layout。
+
+更准确地说：
+
+```text
+OminiForge Container ≈ QWidget + QLayout 的组合
+OminiForge Layout    ≈ QLayout
+```
+
+Qt 里通常是：
+
+```text
+QWidget
+  setLayout(QVBoxLayout)
+    QPushButton
+    QLabel
+```
+
+OminiForge 里是：
+
+```text
+Container
+  layout = vbox
+  children = Button, Label
+```
+
+所以如果只看排版能力，`Container(layout=vbox)` 很像 `QVBoxLayout`。
+但因为它在 DSL 树里有自己的 `id/name/properties/children`，可以被选中、拖拽、隐藏、设置背景、绑定脚本、作为插件承载点，所以它不是纯 Layout。
+
+我建议语义定成：
+
+```text
+Layout：纯布局算法，不是节点
+Container：拥有布局算法的控件节点
+Frame/Panel：有可视外观的 Container 子类型
+```
+
+对应 Qt 可以这样理解：
+
+```text
+OminiForge Layout    -&gt; QLayout / QBoxLayout / QGridLayout
+OminiForge Container -&gt; QWidget + QLayout
+OminiForge Frame     -&gt; QFrame + QLayout
+OminiForge GroupBox  -&gt; QGroupBox + QLayout
+```
+
+如果你希望它更接近 Qt 思维，也可以把普通 `Container` 命名为 `LayoutBox` 或 `Box`，把有视觉实体的叫 `Panel/Frame`。但我不建议让 `Layout` 自己成为控件树节点，否则后面脚本、插件、事件、跨平台映射会容易混乱。</pre>
+</article>
+</section>
+<section class="turn" id="turn-52">
+<h2>Turn 52</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:01:30 +0800</div>
+<pre>我没有希望它更接近谁，我需要考虑语义的定义清晰程度，以及考虑以后和web qt android等不同平台的转换，你描述不清楚或者定义模糊，以后不好转换的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:02:04 +0800</div>
+<pre>你说得对。这里必须把语义钉死，不然后面转 Web/Qt/Android 会乱。
+
+我建议正式定义成这套：
+
+```text
+Layout
+  纯布局规则，不是控件节点，不可被脚本直接当控件操作。
+
+LayoutHost
+  可承载 children 的结构节点，负责应用 layout。
+  默认不产生运行时视觉边界。
+
+VisualContainer
+  有可见外观的容器节点，比如 Panel / Frame / GroupBox / Card / ScrollView。
+```
+
+如果保留现在的名字，则应明确：
+
+```text
+Container = LayoutHost
+```
+
+而不是泛泛的“容器”。
+
+也就是：
+
+```xml
+&lt;Container name=&quot;mainArea&quot; layout=&quot;vbox&quot;&gt;
+  &lt;Button name=&quot;btn1&quot; /&gt;
+&lt;/Container&gt;
+```
+
+语义应是：
+
+```text
+这是一个布局宿主节点。
+它有 id/name/lifecycle/children。
+它默认 chrome = none。
+它的 layout = vbox。
+它在运行时不显示边框。
+```
+
+如果需要可见实体，就不要继续用普通 Container，而应该用：
+
+```xml
+&lt;Panel name=&quot;settingsPanel&quot; layout=&quot;vbox&quot; background=&quot;#fff&quot;&gt;
+  ...
+&lt;/Panel&gt;
+
+&lt;Frame name=&quot;machineFrame&quot; title=&quot;Machine&quot; layout=&quot;grid&quot;&gt;
+  ...
+&lt;/Frame&gt;
+
+&lt;GroupBox name=&quot;axisGroup&quot; title=&quot;Axis&quot;&gt;
+  ...
+&lt;/GroupBox&gt;
+```
+
+**跨平台映射**
+这样转平台就清楚：
+
+```text
+DSL Layout
+  Web: CSS flex/grid/absolute
+  Qt Widgets: QLayout/QBoxLayout/QGridLayout
+  Qt Quick: ColumnLayout/RowLayout/GridLayout/anchors
+  Android: LinearLayout/FrameLayout/ConstraintLayout
+  iOS: UIStackView/AutoLayout
+```
+
+```text
+DSL Container/LayoutHost
+  Web: div，默认无 border/background
+  Qt Widgets: QWidget + QLayout，默认无 frame
+  Qt Quick: Item + Layout
+  Android: ViewGroup/LinearLayout，默认无 background
+  iOS: UIView/UIStackView host，默认无 visual chrome
+```
+
+```text
+DSL Frame/Panel/GroupBox
+  Web: div/fieldset/section + border/background/title
+  Qt Widgets: QFrame/QGroupBox/QWidget styled
+  Qt Quick: Rectangle/GroupBox/Pane
+  Android: MaterialCardView/FrameLayout with background
+  iOS: UIView with layer border/background
+```
+
+所以核心定义应该是：
+
+```text
+Layout 是算法。
+Container 是布局宿主。
+Panel/Frame 是可视容器。
+```
+
+我建议后续文档里不要只写 `Container`，而是写：
+
+```text
+Container / LayoutHost
+```
+
+等模型稳定后，要么把 DSL 类型直接改名为 `LayoutHost`，要么保留 `Container` 但在规范里强制说明：
+
+```text
+Container is a non-visual layout host by default.
+```
+
+这样转换器才不会误以为普通 Container 在运行时必须画边框。</pre>
+</article>
+</section>
+<section class="turn" id="turn-53">
+<h2>Turn 53</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:02:58 +0800</div>
+<pre>ok 按照现在你的清晰定义更新一下关联内容，文档&amp;代码，然后重新生成一个最新的执行给我</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:03:25 +0800</div>
+<pre>我会把这个语义落到两层：文档里明确 `Layout / Container(LayoutHost) / Panel/Frame` 的边界；代码里把普通 `Container` 作为非视觉布局宿主处理，运行态不再显示容器虚线/边框，编辑态保留辅助边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:03:42 +0800</div>
+<pre>当前代码里 `.render-container` 是一直让 Container 虚线边界存在，所以 Preview/Run 会误显示编辑辅助边界。我会把这条改为 edit-only，同时给节点加 `data-mode` 方便 CSS 精确控制。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:03:57 +0800</div>
+<pre>我先把运行态边界问题修掉：Container 默认是 LayoutHost，不是 Frame，所以 `.render-container` 的虚线只在 edit 模式显示。Preview/Run 会保持透明布局宿主。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:04:27 +0800</div>
+<pre>代码层已改。现在我加测试确认普通 Container 在 edit 有辅助边界标识，在 preview/run 仍是布局节点但不会有 edit-only 边框。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:04:52 +0800</div>
+<pre>我会把文档语义补全在 `object-model.md` 和 Web W10 文档里：Layout 是算法，Container 是非视觉 LayoutHost，Frame/Panel 才是可视容器。中文 i18n 也同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:07:00 +0800</div>
+<pre>文档和代码都落了。现在跑测试和构建，同时我会检查还有没有“Container 是可视边框”的表述残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 16:07:14 +0800</div>
+<pre>文档构建通过，语义搜索只剩下我们刚补的准确定义。测试和 Web 构建还在跑，我等结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 16:07:36 +0800</div>
+<pre>验证通过。现在我需要重新生成可执行预览，先确认 dev server 是否反映最新代码；如果当前 5173 是旧进程，我会重启它。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 16:07:50 +0800</div>
+<pre>5173 服务可访问，Vite 会按源码热更新。为了给你确认，我会截 edit/preview 两张：edit 看得到 Container 辅助边界，preview 不应显示普通 Container 虚线。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 16:08:13 +0800</div>
+<pre>基础截图已生成。当前示例默认只有 Root，没有新插入的普通 Container，截图主要用于确认页面可执行。我接下来提交，然后给你最新预览地址。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 16:08:32 +0800</div>
+<pre>diff 符合预期：语义文档 + edit-only chrome。现在我提交并推送这版。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 16:09:06 +0800</div>
+<pre>本地提交完成：`a2776bd feat: clarify container layout host semantics`。我推送两个远程，然后确认状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-09 16:09:55 +0800</div>
+<pre>已按这个定义落下去了：
+
+- 文档明确了：
+  - `Layout` = 纯布局算法
+  - `Container` = 默认非可视 `LayoutHost`
+  - `Panel / Frame / GroupBox / ScrollView` = 可视容器
+- Web 实现已调整：
+  - 普通 `Container` 的虚线边界只在 `Edit` 模式显示
+  - `Preview/Run` 下普通 `Container` 不显示默认边框
+- 中文 i18n 文档同步更新。
+- 加了回归测试确认 Container 作为 LayoutHost 在 preview 仍存在，但 edit-only chrome 不进入运行语义。
+
+最新可执行预览：
+
+`http://localhost:5173/`
+
+截图：[.tmp/ominiforge-container-layouthost-edit.png](/home/iaar/workspace/lup/OminiForge/.tmp/ominiforge-container-layouthost-edit.png)
+
+验证通过：
+- `npm test`：17 files / 154 tests passed
+- `npm run build`：通过
+- `./scripts/build-docs.sh`：通过
+
+已提交并推送：`a2776bd feat: clarify container layout host semantics`</pre>
+</article>
+</section>
+<section class="turn" id="turn-54">
+<h2>Turn 54</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:11:36 +0800</div>
+<pre>ok 看一下下一步的编辑建议</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:12:08 +0800</div>
+<pre>我建议下一步优先做 **编辑态拖拽体验补完**，不要先扩控件数量。
+
+现在虽然已经能把控件拖到其他 Container，但编辑体验还有几个明显缺口：
+
+1. **vbox/hbox 里拖拽没有插入位置反馈**
+   现在拖到容器里基本是追加到末尾，用户不知道会插到哪里。下一步应该做：
+   - 拖动时显示插入线
+   - 支持插到某个控件前/后
+   - `MoveControlCommand` 使用 `beforeId/afterId`
+   - Palette 新控件也支持插入到指定位置
+
+2. **容器 drop target 反馈不够明确**
+   Container 现在是 LayoutHost，Edit 模式需要辅助边界，但拖拽时还应该有：
+   - 当前可投放容器高亮
+   - 不可投放目标禁用态
+   - 选中容器和 hover/drop 容器视觉区分
+
+3. **Panel / Frame 可视容器可以作为下一步或下下一步**
+   Container 语义清楚后，可以新增：
+   - `Panel`：有背景/内边距的可视容器
+   - `Frame`：有边框/标题的可视容器
+   - 普通 `Container` 继续保持运行时透明
+   但我建议先做拖拽插入反馈，否则可视容器加多了，编辑体验还是会乱。
+
+4. **Inspector 可以开始走属性 schema**
+   现在 Inspector 是按当前控件硬写的。后面 Button、Label、Container、Panel、Frame 增多后，应该逐步变成：
+   - 控件类型定义属性集
+   - Inspector 根据 schema 渲染属性编辑器
+   - 通用属性、布局属性、可视属性分组
+
+我的推荐顺序：
+
+```text
+W28 Flow Drop Slot And Container Target Feedback
+W29 Visual Container Types: Panel / Frame
+W30 Property Schema Driven Inspector
+W31 Tree Drag Reparent / Reorder
+```
+
+我建议下一步先做 **W28**：把 vbox/hbox 的拖拽插入线、目标容器高亮、before/after 插入补上。这个对编辑器可用性的提升最大。</pre>
+</article>
+</section>
+<section class="turn" id="turn-55">
+<h2>Turn 55</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:12:38 +0800</div>
+<pre>ok 按照这个做一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:13:05 +0800</div>
+<pre>我会按 W28 做一版：先补命令层支持 palette 插入到 before/after，再在 Web 画布上给 vbox/hbox 增加插入线和 drop target 高亮，最后更新 story 文档和验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:14:16 +0800</div>
+<pre>我把实现拆成三块：先让命令层支持 `beforeId/afterId` 插入 palette 控件；再让 Canvas 根据鼠标位置计算 vbox/hbox 插槽并渲染插入线；最后补 W28 文档和验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:16:02 +0800</div>
+<pre>我先把这一版聚焦在“流式布局拖拽插入槽”和“容器目标反馈”上：先补源命令的 before/after 插入语义，再把 Web 编辑画布的拖拽预览、测试和文档一起补齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:16:12 +0800</div>
+<pre>路径结构和我接手的摘要有一点出入，我先重新扫一下当前仓库的真实目录，再按现有结构改，避免写到不存在的位置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:17:04 +0800</div>
+<pre>我确认了当前实现：绝对布局已经有坐标预览，vbox/hbox 现在只会追加。接下来我会扩展 drop position 为“位置意图”，让流式布局能按子控件中点推导 before/after，并渲染插入线。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:17:29 +0800</div>
+<pre>我准备开始改文件：核心变更会集中在 `source-draft.ts`、`CanvasControl.vue`、`CanvasSurface.vue`、`AppShell.vue` 和 workbench 样式，之后补 Vitest 覆盖和 W28 文档。</pre>
 </article>
 </section>
 

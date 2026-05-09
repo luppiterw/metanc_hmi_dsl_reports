@@ -20,6 +20,8 @@
   generator decomposition slice before the next planning discussion.
 - Continue the decomposition by splitting the remaining large Web widget and legacy
   shell files after the first slice was reviewed.
+- Continue the decomposition by splitting the generated Web runtime shell into source
+  fragments while keeping final `runtime.js` stable.
 
 ## Technical Decisions
 
@@ -95,3 +97,8 @@ JavaScript now lives under `client/web_client/widget_core/`, while legacy shell 
 fragments live under `client/web_client/style_emitters/legacy/`. The original
 `widget_emitters.py` and `legacy_shell.py` files now act as compatibility assembly
 entrypoints, and generator-refactor tests lock the new assembly order.
+
+The Web runtime shell was also split at the source-template layer. `runtime_shell.py`
+now stays as a small public builder over ordered `runtime_fragments/`, while the emitted
+`runtime.js` remains byte-stable. The split keeps strict/hybrid server behavior,
+HTTP/WebSocket transport, logs, program workspace, and simulator behavior unchanged.

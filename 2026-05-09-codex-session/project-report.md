@@ -1,0 +1,58 @@
+# Project Report
+
+## Scope
+
+本轮工作围绕 MAIN 页面 JOG 模式的职责边界展开。用户指出当前 JOG 主页
+重复了大量软面板内容，容易让真实操作入口、状态展示和手动准备值混在一起。
+本轮目标是把 JOG 主页收敛为“manual setup + read-only status”区域，
+而把轴选、JOG +/-、rapid、increment、模式切换、进给/主轴启停、冷却、
+Cycle Start/Stop 等实际操作继续保留在软面板。
+
+## Completed Work
+
+- 重构 `definition/ui.structure.yaml` 的 `main_jog_panel`，删除原有
+  `main_jog_summary` 和 `jog_axis_status_card`。
+- 从 JOG 主页移除重复的软面板操作按钮：
+  - `F ON` / `F OFF`
+  - `CW` / `CCW` / `STOP`
+  - `M8` / `M9`
+  - 轴选、步进、rapid、模式切换和 cycle 类操作
+- 保留并重命名手动准备区域：
+  - `jog_feed_target`
+  - `jog_spindle_target`
+  - `jog_tool_card`
+  - `jog_aux_card`
+- 增加 `jog_live_status_card`，集中显示只读状态：
+  - feed actual / override / enabled
+  - spindle actual / override / running / direction
+- 重新生成 Web/QML 最终产物和快照，使 `generated/` 与 retained DSL 保持一致。
+- 更新 `definition/story.catalog.yaml`，把手动操作故事明确为：
+  - MAIN/JOG 只展示手动准备和只读状态；
+  - 真实操作入口属于 generated soft panel；
+  - 后续 real motion adapter 测试应围绕 soft-panel command surface 展开。
+- 更新 status、runtime split、client/server 计划和 DSL data dictionary 相关文档，
+  清理 `view_runtime.jog_mode_summary` 仍被当前 JOG 主区使用的旧口径。
+- 生成 2026-05-09 report、brief user history 和完整 Codex conversation export。
+
+## Validation
+
+- `./tools/generate_targets.sh`
+- `git diff --check`
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
+- Headless split Web DOM probe against `./generated/distribution/run_split_web_native.sh`
+  verified that after switching to JOG:
+  - `main_jog_panel` exists
+  - `jog_feed_target`, `jog_spindle_target`, `jog_tool_card`, `jog_aux_card`,
+    and `jog_live_status_card` are visible
+  - forbidden duplicated operation nodes such as `jog_feed_on`,
+    `jog_spindle_cw`, and `jog_coolant_on` are absent
+  - `main_jog_panel` contains zero button nodes
+  - soft-panel command buttons remain available in `hardware_console_zone`
+
+## Follow-Up
+
+- Promote the JOG DOM probe into maintained CI-level browser interaction coverage.
+- Decide whether feed/spindle target sliders are long-term setup controls or should move
+  behind a future dedicated manual setup page when real manual-operation adapters arrive.
+- Add the next manual-operation slices for reference return, live override policy, and
+  real motion-adapter rejection semantics.

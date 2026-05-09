@@ -17,5 +17,10 @@ flowchart TD
     M --> N[Commit and push metanc_hmi_dsl main]
     N --> O[Sync filtered HMI package to MetaNC/nrt/hmi]
     O --> P[Validate, commit, and push MetaNC feat/hmi]
-    P --> Q[Plan remote_state.py block split]
+    P --> Q[Split remote_state into remote_state_blocks]
+    Q --> R[Verify request payload snapshot merge and cache order]
+    R --> S[Regenerate final outputs and confirm no generated diff]
+    S --> T[Refresh 2026-05-10 report/docs]
+    T --> U[Commit and push reports, metanc_hmi_dsl, and MetaNC]
+    U --> V[Plan QML generator entrypoint split]
 ```

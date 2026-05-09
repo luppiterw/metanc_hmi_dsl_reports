@@ -11,6 +11,9 @@
   a JOG move, then fix the simulator behavior.
 - Investigate why pressing Enter in the DEBUG natural-query input does not run the query,
   and make Enter-triggered query execution available.
+- Investigate why DEBUG queries sometimes appear to do nothing even after Enter is handled.
+- Optimize DEBUG parser behavior so single-axis shorthand such as `x` works like `x axis`,
+  and apply the same idea to the other axes.
 
 ## Technical Decisions
 
@@ -30,6 +33,10 @@
   `Run` action rather than adding a separate backend command.
 - Preserve IME composition behavior for Chinese text input; Enter should submit only
   after composition has ended.
+- Treat focus preservation and visible result refresh as separate concerns. A protected
+  input focus should not prevent the visible DEBUG result table from updating.
+- Treat bare axis tokens as valid read-only inspection intent only when they are standalone
+  axis tokens or compact axis groups, not when the letters appear inside ordinary words.
 
 ## Result
 
@@ -49,3 +56,13 @@ Web uses a form-backed submit path with Enter handling and IME guards, while QML
 `onAccepted`, Return, Enter, and the `Run` button to one submit helper. A headless Web
 probe verified that pressing Enter for `show spindle status` runs the query and renders
 the expected spindle runtime rows.
+
+The follow-up stability fix makes Web DEBUG query submit state survive rerender timing and
+directly refreshes the visible result panel after applying a query plan, so preserving the
+input focus no longer makes the result table appear stale. QML now uses a Timer-backed
+submit path for the same interaction surface.
+
+Axis shorthand parsing was expanded across Web and QML. Single-axis entries `x`, `y`, `z`,
+`a`, `c`, compact groups like `xy` and `xyz`, and mixed forms like `x actual` or `x轴`
+now resolve to axis property rows. A guard prevents unrelated words such as `connection`
+from being interpreted as C-axis requests.

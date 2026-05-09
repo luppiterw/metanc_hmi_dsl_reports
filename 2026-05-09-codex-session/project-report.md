@@ -8,7 +8,8 @@
 而把轴选、JOG +/-、rapid、increment、模式切换、进给/主轴启停、冷却、
 Cycle Start/Stop 等实际操作继续保留在软面板。随后继续处理两类回归：
 server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-query
-输入框不能通过回车触发查询的问题。
+输入框不能通过回车触发查询、查询偶发看似无响应、单轴缩写不能直接命中轴
+数据的问题。
 
 ## Completed Work
 
@@ -52,6 +53,20 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
 - 更新 README、CHANGELOG、status matrix 和 agent handoff，把 DEBUG
   natural-query 的键盘提交行为纳入维护文档。
 - 重新生成 Web/QML/server/distribution 最终产物，并同步测试快照。
+- 继续收敛 DEBUG natural-query 的稳定性：
+  - Web 端把提交状态提升到 view-level queue，避免输入框 rerender 后丢失
+    pending submit。
+  - Web 端在 `applyDebugQueryPlan()` 后直接刷新当前可见 DEBUG result panel，
+    解决 `preserveFocus` 保护输入焦点时整页不 rerender 导致结果表看似不更新的问题。
+  - QML 端把 `Run`、`Accepted`、`Return` 和 `Enter` 统一到 Timer 延迟提交，
+    降低同一按键路径重复或被 UI 刷新打断的概率。
+- 扩展 DEBUG parser 的轴缩写：
+  - `x` / `y` / `z` / `a` / `c` 直接查询对应轴 machine position。
+  - `xy`、`xyz` 等连续轴写法按多个轴展开。
+  - `x actual`、`x轴` 等写法也会识别为轴查询。
+  - 普通词如 `connection` 不会因为包含 `c` 而误识别为 C 轴。
+- 更新 README、CHANGELOG、status matrix 和 agent handoff，把 DEBUG
+  submit stability 和 axis shorthand parser 规则纳入维护文档。
 
 ## Validation
 
@@ -66,6 +81,12 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   verified that typing `show spindle status` in DEBUG and pressing Enter updates
   `runtime_state.debug_query_text`, produces a `runtime_values` plan, and renders
   6 spindle-related result rows.
+- Headless split Web CDP stability probes verified:
+  - repeated DEBUG Enter queries update status/result rows while input focus is preserved;
+  - rapid query changes followed by Enter settle on the final query result;
+  - `x`, `y`, `z`, `a`, `c`, `xy`, `xyz`, `x actual`, and `x轴` resolve to axis
+    property rows;
+  - `connection` continues to resolve to server connection local state rather than C-axis data.
 - Headless split Web DOM probe against `./generated/distribution/run_split_web_native.sh`
   verified that after switching to JOG:
   - `main_jog_panel` exists
@@ -87,3 +108,5 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   rapid, increment, rejection, and continuous-jog semantics.
 - Promote the DEBUG Enter/Return natural-query browser probe into maintained CI-level
   interaction coverage once the generated Web UI test harness is formalized.
+- Promote the DEBUG axis-shorthand parsing and direct result-panel refresh probes into
+  maintained CI-level UI automation rather than leaving them as ad hoc CDP scripts.

@@ -16,6 +16,8 @@
   and apply the same idea to the other axes.
 - Fix MAIN page behavior where clicking soft-panel `AUTO` while the MDI editor has focus
   leaves the right-side MAIN content inside the MDI editor instead of switching to AUTO.
+- Continue with the previously discussed plan by implementing the first low-risk Web
+  generator decomposition slice before the next planning discussion.
 
 ## Technical Decisions
 
@@ -42,6 +44,9 @@
 - Treat editor focus preservation as a local rendering optimization, not as permission to
   suppress structural page changes. A MAIN-page mode-view change must rebuild the visible
   mode panel even if a focused editor would otherwise be protected from rerender.
+- Treat generator decomposition as a source-level refactor first. The first slice should
+  keep generated Web/QML outputs byte-stable and avoid changing runtime contracts, server
+  behavior, or final generated file layout.
 
 ## Result
 
@@ -76,3 +81,9 @@ The Web MAIN page now distinguishes ordinary focused-editor refresh from structu
 mode-panel changes. When the MDI editor has focus and the operator clicks soft-panel
 `AUTO`, the runtime mode state and the visible MAIN content both switch to AUTO instead
 of leaving the stale MDI editor in place.
+
+The Web generator now has a first source-level decomposition slice. CSS generation lives
+outside the Web entrypoint, and Program, Runtime Logs, and DEBUG natural-query widget
+JavaScript live under feature-specific Python modules before being assembled back into
+the same generated `app.js`. Snapshot and direct equivalence checks confirmed that this
+refactor did not change generated Web/QML output bytes.

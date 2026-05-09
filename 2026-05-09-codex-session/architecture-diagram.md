@@ -30,9 +30,21 @@ flowchart LR
         WS[/api/runtime/ws]
     end
 
+    subgraph WebGenerator[Web Generator Source Split]
+        ENTRY[generator.py entrypoint]
+        CSS[styles.py stylesheet builder]
+        FEAT[features: Program / Logs / DEBUG]
+        WIDGET[widget_emitters.py assembly]
+    end
+
     UI --> MainJog
     UI --> SoftPanel
     STORY --> UI
+    UI --> ENTRY
+    ENTRY --> CSS
+    ENTRY --> WIDGET
+    FEAT --> WIDGET
+    WIDGET --> GENWEB[byte-stable generated app.js]
     SoftPanel --> COMMANDS
     COMMANDS --> STATE
     STATE --> WS

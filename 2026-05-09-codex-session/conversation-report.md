@@ -18,6 +18,8 @@
   leaves the right-side MAIN content inside the MDI editor instead of switching to AUTO.
 - Continue with the previously discussed plan by implementing the first low-risk Web
   generator decomposition slice before the next planning discussion.
+- Continue the decomposition by splitting the remaining large Web widget and legacy
+  shell files after the first slice was reviewed.
 
 ## Technical Decisions
 
@@ -87,3 +89,9 @@ outside the Web entrypoint, and Program, Runtime Logs, and DEBUG natural-query w
 JavaScript live under feature-specific Python modules before being assembled back into
 the same generated `app.js`. Snapshot and direct equivalence checks confirmed that this
 refactor did not change generated Web/QML output bytes.
+
+The Web generator split was then extended one level deeper. Core generated-widget
+JavaScript now lives under `client/web_client/widget_core/`, while legacy shell CSS
+fragments live under `client/web_client/style_emitters/legacy/`. The original
+`widget_emitters.py` and `legacy_shell.py` files now act as compatibility assembly
+entrypoints, and generator-refactor tests lock the new assembly order.

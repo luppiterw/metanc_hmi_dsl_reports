@@ -33,6 +33,8 @@ flowchart LR
     subgraph WebGenerator[Web Generator Source Split]
         ENTRY[generator.py entrypoint]
         CSS[styles.py stylesheet builder]
+        LEGACY[legacy shell CSS fragments]
+        CORE[widget_core JS fragments]
         FEAT[features: Program / Logs / DEBUG]
         WIDGET[widget_emitters.py assembly]
     end
@@ -42,7 +44,9 @@ flowchart LR
     STORY --> UI
     UI --> ENTRY
     ENTRY --> CSS
+    CSS --> LEGACY
     ENTRY --> WIDGET
+    CORE --> WIDGET
     FEAT --> WIDGET
     WIDGET --> GENWEB[byte-stable generated app.js]
     SoftPanel --> COMMANDS

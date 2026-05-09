@@ -89,6 +89,18 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   - 更新 status matrix 和 handoff 文档，把此状态标注为 Web 源码级拆分
     `Partial`，明确 `legacy_shell.py` 仍偏大、QML 拆分和最终生成文件拆分
     还未开始。
+- 完成 Web generator 源码级拆分的第二阶段：
+  - `client/web_client/widget_emitters.py` 现在是 99 行组装入口，核心
+    widget JS 片段拆到 `client/web_client/widget_core/`。
+  - `client/web_client/style_emitters/legacy_shell.py` 现在是兼容 shim，
+    原 legacy shell CSS 拆到 `client/web_client/style_emitters/legacy/`。
+  - 使用 AST 提取和快照测试保持原 Python 字符串运行时值、CSS/JS 输出和
+    最终 Web/QML snapshots 稳定。
+  - 更新 generator refactor 测试，锁住 `widget_core`、Web widget aggregate
+    和 legacy style emitter 的组装顺序。
+  - 更新 README、CHANGELOG、status matrix 和 handoff 文档，把下一步
+    cleanup 目标收敛到 Program search/actions、gauges、runtime refs、
+    legacy button styling 和 QML source decomposition。
 
 ## Validation
 
@@ -103,6 +115,12 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   after the Web generator source split.
 - `python3 -m compileall -q client/web_client/styles.py client/web_client/style_emitters`
   after the CSS emitter split.
+- `python3 -m compileall -q client/web_client/widget_emitters.py client/web_client/widget_core client/web_client/style_emitters/legacy_shell.py client/web_client/style_emitters/legacy`
+  after the `widget_core` and legacy shell split.
+- `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
+  after the deeper Web generator split.
+- `python3 -m unittest -v tests.test_generator_refactor tests.test_pipeline.PipelineTests.test_generate_web_outputs_static_files tests.test_pipeline.PipelineTests.test_generate_qml_outputs_main_and_theme_store tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_docs_portal tests.test_story_docs`
+  after the deeper Web generator split and before final artifact refresh.
 - Direct generated-output equivalence check confirmed `web/app.js`, `web/styles.css`,
   `web/index.html`, and `qml/Main.qml` still match the committed snapshots after the
   split.
@@ -147,7 +165,7 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   maintained CI-level UI automation rather than leaving them as ad hoc CDP scripts.
 - Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
   into maintained generated Web UI automation.
-- Continue the generator decomposition plan by reducing the remaining large
-  `client/web_client/style_emitters/legacy_shell.py` slice, then mirror the same
-  source-level feature split on the QML generator before changing final generated
-  file layout.
+- Continue the generator decomposition plan by reducing the remaining large Web
+  source slices such as Program search/actions, gauges, runtime refs, and legacy
+  button styling; then mirror the same source-level split on the QML generator
+  before changing final generated file layout.

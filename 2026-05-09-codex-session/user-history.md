@@ -82,3 +82,9 @@ Date: 2026-05-09
 - 看一下现在这些py的各个文件的行数
 - generate/update report &amp; docs + sync MetaNC + commit + push
 - 现在Project和Palette部分放在一起，后续如果二者结构拉长，可阅读性就弱了，你看看怎么重构一下设计，再就是你现在Project的树形很丑、可用性也弱、美化优化一下
+- ok 看一下之前的拆分计划到哪里了
+- 你先给一下1 2的详细计划，再去讨论3 4
+- ok 按照你的建议做一下
+- 现在的Project Palette的tab切换感觉有点丑，美化一下
+- 我发现一个Container里面的控件没法拖拽到其他Container，这是bug吗
+- 可以 看着没问题，generate/update report &amp; docs + sync MetaNC + commit + push

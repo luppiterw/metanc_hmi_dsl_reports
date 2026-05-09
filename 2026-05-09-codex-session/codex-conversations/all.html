@@ -96,8 +96,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>550</code></div>
-<div><b>User prompts</b>: <code>47</code></div>
+<div><b>Messages</b>: <code>624</code></div>
+<div><b>User prompts</b>: <code>54</code></div>
 <div><b>Synthetic events</b>: <code>3</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -5640,6 +5640,977 @@ MEMORY.md:403-420|note=[used repo workflow memory to keep this implementation lo
 <div class="time">2026-05-09 16:38:52 +0800</div>
 <pre>我会把这次 “QML widget emitter source split” 写进当天 report 的 overview/project/conversation/聚合 timeline，同时刷新 brief/full Codex 导出。报告内容更新后再跑报告书和 docs portal 构建。</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:39:50 +0800</div>
+<pre>报告导出已经刷新，完整 Codex export 统计也更新了。接下来我会把 QML widget 拆分的实际结果写进今天的项目报告、会话摘要和聚合索引，然后构建报告书和 docs portal。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:40:57 +0800</div>
+<pre>报告正文已更新，下一步执行报告书与 docs portal 构建。这里会同时刷新 `docs_html`，确保 report 网页和主文档都能看到最新内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 16:41:38 +0800</div>
+<pre>报告书和主 docs portal 已经构建完成。我会再跑一次目标生成和测试确认发布前状态，然后提交 submodule、父仓并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 16:42:12 +0800</div>
+<pre>验证已经通过：generator refactor 测试、docs portal 测试和 diff check 都干净。我现在检查整体 diff 与 submodule 变更，随后提交 reports submodule。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 16:42:41 +0800</div>
+<pre>reports submodule 的变更已经 staged，内容包含今天 report 正文、user history、完整 conversation export 和聚合索引。现在先提交并 push submodule，之后父仓才记录新的 submodule 指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 16:43:04 +0800</div>
+<pre>reports submodule 已提交并推送。现在我会把主仓的源码拆分、文档和新的 submodule pointer 一起提交，再推送 `metanc_hmi_dsl/main`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 16:43:49 +0800</div>
+<pre>`metanc_hmi_dsl` 主仓已经提交并推送。接下来同步到 `MetaNC/nrt/hmi`，我会先执行导出脚本，再检查下游具体变更，确认没有误覆盖 protected report 入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 16:44:22 +0800</div>
+<pre>MetaNC 同步只涉及 HMI 源码和维护文档，没有触碰下游 protected 的 report 入口。现在我会把新目录纳入 diff 统计，再跑下游相关测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 16:44:42 +0800</div>
+<pre>MetaNC 侧 generator refactor 测试通过，diff check 也通过。现在 staged 下游变更并提交，commit message 会明确是 QML widget emitter fragments，同步来源清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 16:45:34 +0800</div>
+<pre>MetaNC 已提交并推送。最后我会做两个仓库的清洁状态确认，然后整理下一步拆解计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / final_answer</h3>
+<div class="time">2026-05-09 16:46:13 +0800</div>
+<pre>已完成并推送。
+
+`metanc_hmi_dsl`：
+- reports submodule: `e26e019 docs: refresh 2026-05-09 QML generator split report`
+- main: `4732a6c refactor: split QML widget emitters into fragments`
+- 已 push 到 `origin/main`
+
+`MetaNC`：
+- `9b8e768 refactor: sync HMI QML widget emitter fragments`
+- 已 push 到 `origin/feat/hmi`
+
+验证过：
+- `python3 -m unittest tests.test_generator_refactor`
+- `python3 -m unittest tests.test_docs_portal`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_pipeline`
+- `git diff --check`
+- MetaNC 侧 `python3 -m unittest nrt.hmi.tests.test_generator_refactor`
+- 两边工作树最终 clean
+
+**下一步拆解计划**
+1. 先拆 `client/qml_client/runtime_shell.py`
+   目标和 Web runtime split 对齐：保留 public builder，拆出 config/store/commands/program/logs/transport/debug/local-state 等 fragment，保持 `RuntimeStore.qml` 输出稳定。
+
+2. 再拆 QML runtime 里的高风险长函数
+   优先拆 program workspace、logs、DEBUG natural-query、WebSocket/HTTP polling 这些经常改的块，降低后续 UI 行为修复时的冲突面。
+
+3. 最后拆 `client/qml_client/generator.py`
+   只拆外层 assemble/write/support-file orchestration，不碰生成语义。等 runtime shell 稳定后再动这个入口更稳。
+
+4. 暂不拆最终生成文件布局
+   `Main.qml` / `RuntimeStore.qml` 仍保持单文件输出，先把源码维护性做好，再讨论 generated QML component 化。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+skills/metanc-hmi-reports-submodule/SKILL.md:20-24|note=[used report submodule publish scope]
+skills/metanc-hmi-reports-submodule/SKILL.md:47-69|note=[used report export build and commit sequencing workflow]
+skills/metanc-hmi-reports-submodule/SKILL.md:71-83|note=[used report rebuild and clean-state verification checklist]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-48">
+<h2>Turn 48</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:48:07 +0800</div>
+<pre>给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:48:44 +0800</div>
+<pre>可以，下一步我建议按这个顺序做，仍然坚持“源码拆分优先，最终生成文件不变”。
+
+**目标约束**
+- 不改变 `generated/qml/Main.qml`、`RuntimeStore.qml` 的运行语义。
+- 不改 runtime contract、server API、strict/hybrid 行为。
+- 每一步都加 fragment 顺序测试，避免后续拼接顺序漂移。
+- 每一步都跑生成，确认 tracked generated outputs 没有非预期 diff。
+
+**Step 1：拆 `client/qml_client/runtime_shell.py`**
+先保留 `build_runtime_store_qml()` 作为唯一 public 入口，新建：
+
+```text
+client/qml_client/runtime_fragments/
+  __init__.py
+  header.py
+  config.py
+  store.py
+  local_state.py
+  commands.py
+  program_workspace.py
+  logs.py
+  debug_query.py
+  transport_http.py
+  transport_ws.py
+  polling.py
+  utilities.py
+```
+
+初步职责：
+- `header.py`: imports、RuntimeStore 根对象开头、基础属性声明
+- `config.py`: server mode、server URL、runtime plan/seed 注入
+- `store.py`: properties/resources/streams 读写、revision 状态
+- `local_state.py`: `runtime_state.*` 本地状态读写
+- `commands.py`: command invoke、command args、command guard
+- `program_workspace.py`: 程序目录、打开、保存、文件切换相关 QML/JS
+- `logs.py`: client log buffer、batch upload、export、retention actions
+- `debug_query.py`: natural query parser、query result model
+- `transport_http.py`: bootstrap、command POST、logs query/export
+- `transport_ws.py`: WebSocket subscribe/reconnect/replay
+- `polling.py`: QtWebSockets 不可用时的 HTTP polling fallback
+- `utilities.py`: JSON safe parse、format helper、common helpers
+
+测试：
+- 增加 `QML_RUNTIME_FRAGMENT_NAMES`
+- 在 `tests/test_generator_refactor.py` 里锁 fragment 顺序
+- 用 marker 验证关键代码块顺序，例如 config 在 store 前、transport 在 command 后、utilities 末尾
+- 跑 `generate_targets.sh`，确认 `RuntimeStore.qml` 无语义变化
+
+**Step 2：细拆 runtime 高风险片段**
+第一步拆完后，如果某些 fragment 仍然太大，再二级拆：
+
+```text
+runtime_fragments/logs/
+runtime_fragments/program/
+runtime_fragments/debug_query/
+runtime_fragments/transport/
+```
+
+优先拆：
+1. `logs`：查询、过滤、上传、导出、retention 分开
+2. `program_workspace`：目录模型、编辑文档、save/save-as、selection 分开
+3. `debug_query`：parser、examples、result formatting 分开
+4. `transport`：HTTP、WS、polling、snapshot apply 分开
+
+这一步目标是让后续改 Logs、PROG、DEBUG 时不用碰一个超大 runtime 模板。
+
+**Step 3：拆 `client/qml_client/generator.py`**
+等 runtime shell 稳定后再拆入口文件，避免同时改两个核心拼接层。
+
+建议新建：
+
+```text
+client/qml_client/target_assembly.py
+client/qml_client/main_shell.py
+client/qml_client/theme_assets.py
+client/qml_client/distribution_files.py
+client/qml_client/generated_project.py
+```
+
+职责：
+- `generator.py`: 只保留 `generate_qml()` 主流程
+- `target_assembly.py`: payload 准备、IR/page/global auxiliary 串联
+- `main_shell.py`: `Main.qml` 外壳、window/header/footer/page loader
+- `theme_assets.py`: ThemeStore、asset copy、brand asset
+- `generated_project.py`: CMake/main.cpp/README 输出协调
+- `distribution_files.py`: QML target 文件写出清单
+
+**Step 4：暂不拆最终生成物**
+短期不把 `Main.qml` 拆成多个 generated QML 文件。原因是现在 QML 启动、qrc、qmlcache、Qt import 路径都已经稳定，贸然 component 化会引入运行时路径问题。先让源码可维护，再讨论最终产物结构。
+
+**完成标准**
+- `runtime_shell.py` 和 `generator.py` 都降到 100 行级别的 public entrypoint/assembler。
+- 每个 fragment 最好控制在 100-500 行，超过再拆。
+- `RuntimeStore.qml`、`Main.qml` 生成结果保持稳定。
+- `tests.test_generator_refactor` 覆盖 Web/QML 的主要 fragment 顺序。
+- `tests.test_pipeline` 全过。
+- `./tools/generate_targets.sh` 全过。</pre>
+</article>
+</section>
+<section class="turn" id="turn-49">
+<h2>Turn 49</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:54:44 +0800</div>
+<pre>按照你的计划详细出个计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:55:21 +0800</div>
+<pre>可以。下一步我建议先只做 **QML runtime shell 拆分第一轮**，不要同时动 `generator.py`，这样风险最小。
+
+**目标**
+把 `client/qml_client/runtime_shell.py` 从超大模板文件拆成有顺序的 runtime fragments，但保持：
+- `build_runtime_store_qml()` public 入口不变
+- `generated/qml/RuntimeStore.qml` 生成语义不变
+- Web/QML 最终产物不做结构变化
+- strict/hybrid、HTTP、WebSocket、polling、logs、PROG、DEBUG 行为不变
+
+**计划**
+1. 建立基线
+   - 统计 `runtime_shell.py` 当前函数、模板块、关键 marker。
+   - 先跑一次：
+     - `python3 -m unittest tests.test_generator_refactor`
+     - `python3 -m unittest tests.test_pipeline`
+     - `./tools/generate_targets.sh`
+   - 确认当前生成产物是干净状态。
+
+2. 新建 fragment 目录
+   ```text
+   client/qml_client/runtime_fragments/
+     __init__.py
+     header.py
+     config.py
+     store.py
+     local_state.py
+     commands.py
+     program_workspace.py
+     logs.py
+     debug_query.py
+     transport_http.py
+     transport_ws.py
+     polling.py
+     utilities.py
+   ```
+
+3. 保留兼容入口
+   - `client/qml_client/runtime_shell.py` 只保留：
+     - import fragments
+     - `QML_RUNTIME_FRAGMENT_NAMES`
+     - `RUNTIME_STORE_QML_TEMPLATE = &quot;&quot;.join(...)`
+     - `build_runtime_store_qml(...)`
+   - 目标是让它降到 50-100 行左右。
+
+4. 按现有顺序迁移内容
+   - `header.py`: QML import、RuntimeStore 根对象、顶层属性
+   - `config.py`: runtime plan/seed/server mode/server url 注入
+   - `store.py`: properties/resources/streams/revision 读写
+   - `local_state.py`: `runtime_state.*` local state 读写
+   - `commands.py`: command invoke、args、guards、result handling
+   - `program_workspace.py`: PROG 文件树、打开、保存、当前文档状态
+   - `logs.py`: client buffer、server query、batch upload、JSONL export、retention
+   - `debug_query.py`: natural query parser、examples、result model
+   - `transport_http.py`: bootstrap、HTTP commands、HTTP logs
+   - `transport_ws.py`: WebSocket subscribe/reconnect/replay/apply patch
+   - `polling.py`: HTTP polling fallback
+   - `utilities.py`: JSON parse、format、common helper
+
+5. 避免循环依赖
+   - fragment 只输出字符串常量或 builder 函数。
+   - 不让 fragment 之间互相调用复杂逻辑。
+   - 所有拼接顺序集中在 `runtime_shell.py`，类似现在 Web `runtime_fragments` 的模式。
+
+6. 补测试
+   - 在 `tests/test_generator_refactor.py` 增加：
+     - `QML_RUNTIME_FRAGMENT_NAMES` 顺序断言
+     - `RuntimeStore.qml` 关键 marker 顺序断言
+   - marker 示例：
+     - runtime plan/config 在 store 初始化前
+     - command invoke 在 transport 调用前
+     - WebSocket subscribe 在 polling fallback 附近但不打乱 fallback
+     - logs helpers 在 log actions 前
+     - debug query parser 在 debug query execution 前
+
+7. 生成与对比
+   - 跑：
+     - `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+     - `python3 -m unittest tests.test_generator_refactor`
+     - `./tools/generate_targets.sh`
+   - 检查：
+     - `generated/qml/RuntimeStore.qml` 是否无非预期 diff
+     - `generated/qml/Main.qml` 是否无非预期 diff
+     - Web 产物不应变化
+
+8. 完整验证
+   - 跑：
+     - `python3 -m unittest tests.test_pipeline`
+     - `python3 -m unittest tests.test_docs_portal`
+     - `git diff --check`
+   - 如果生成产物出现 diff，先判断是不是 whitespace/hash/内容顺序变化；不是明确需要的变化就回退调整 fragment 拼接。
+
+9. 文档更新
+   - 更新：
+     - `README.md`
+     - `CHANGELOG.md`
+     - `docs/requirements/status_matrix.md`
+     - `docs/development_guidelines/workflow/agent_handoff.md`
+   - 内容只描述源码级拆分，不宣称最终 QML 产物 component 化。
+
+10. 交付边界
+   - 第一轮只做到 QML `runtime_shell.py` 拆分。
+   - 不动 `client/qml_client/generator.py`。
+   - 不同步 MetaNC、不提交，除非你后面明确说 commit/sync/push。
+
+**完成标准**
+- `runtime_shell.py` 变成小型 assembler。
+- 新增 `runtime_fragments/` 模块职责清楚。
+- `RuntimeStore.qml` 行为稳定。
+- `tests.test_generator_refactor` 锁住 QML runtime fragment 顺序。
+- `generate_targets.sh` 和 pipeline 测试通过。</pre>
+</article>
+</section>
+<section class="turn" id="turn-50">
+<h2>Turn 50</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:56:27 +0800</div>
+<pre>可以 做一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:56:49 +0800</div>
+<pre>我会开始做 QML `runtime_shell.py` 的源码级拆分，范围按刚才计划控制：只拆源模板，不改生成产物结构，也不提交。先建立当前文件结构和生成基线，再动文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:57:04 +0800</div>
+<pre>`runtime_shell.py` 现在只有一个 `build_runtime_store_qml()`，说明拆分方式会是把这个大函数里的模板片段切成 fragment builder，而不是简单搬函数。接下来我会按现有字符串顺序标记片段边界，先做机械拆分，确保 `RuntimeStore.qml` 输出保持一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:57:41 +0800</div>
+<pre>我先定位动态插值点。这个文件大部分是静态 QML/JS 模板，真正依赖 `payload` 的地方很少；如果把动态配置和静态片段分开，能最大程度降低拆分风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 17:01:03 +0800</div>
+<pre>片段边界已经确认：动态插值只有 `runtime_plan`、`runtime_seed`、`program_workspace` 和 WebSocket QML source。这样可以把大部分内容作为静态 f-string fragment 搬走，只有 header 和 WebSocket fragment 保留 builder。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 17:01:54 +0800</div>
+<pre>已完成机械拆分并保留 `build_runtime_store_qml()` 入口。现在先编译新模块，预计会发现少量 f-string 转义或片段边界问题，我会逐个修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 17:02:04 +0800</div>
+<pre>新模块编译通过。下一步我会运行 generator refactor 测试；如果 `RuntimeStore.qml` 拼接字节不一致，会在 marker 或快照层暴露出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 17:02:15 +0800</div>
+<pre>现有 refactor 测试通过。现在我会补 QML runtime fragment 顺序测试，然后跑生成目标确认 `RuntimeStore.qml` 没有输出漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 17:03:16 +0800</div>
+<pre>新增的 QML runtime fragment 顺序测试已经通过。现在重新生成最终产物，确认 `RuntimeStore.qml` 和其他 generated 文件没有发生非预期 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 17:03:43 +0800</div>
+<pre>目标生成正在进行，QML 构建阶段通过到编译阶段；出现的是本机 `gmake` clock skew warning，不是源码错误。我会等 server/QML 构建完整结束后再看 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 17:05:19 +0800</div>
+<pre>生成结果对比是干净的：`RuntimeStore.qml`、`Main.qml`、Web runtime/app 都没有 diff。现在我会补维护文档，把这次 QML runtime source split 记录进去，然后跑完整 pipeline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 17:06:27 +0800</div>
+<pre>文档已补上 QML runtime fragments 的状态。现在运行编译、refactor 测试、docs portal 测试、pipeline 和 diff check，确认最终这版可以给你看。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 17:07:01 +0800</div>
+<pre>完整测试在跑，docs portal 正在构建 35 本书，pipeline 也已进入测试序列。等两边结束后我会检查工作树和生成 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 17:07:32 +0800</div>
+<pre>pipeline 里已经出现一个失败标记，但测试还没全部结束。我会等它完整输出失败详情再判断是这次拆分导致，还是已有生成快照/环境问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 17:07:52 +0800</div>
+<pre>pipeline 失败点是 snapshot 字节级对比：`invokeCommand` 前少了一个空行。生成能编译，但 byte-stable 还没完全达标。我会修正 fragment 边界，让输出和快照完全一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 17:08:58 +0800</div>
+<pre>第一处空行修复后，快照检查继续暴露下一个片段边界：`syncDerivedProperties` 前也需要保留原空行。说明每个 fragment 开头都要保留函数间的分隔空行，我会一次性修正所有静态 fragment 开头，避免逐个撞。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 17:09:35 +0800</div>
+<pre>我已经定位到根因：机械切分时把若干 fragment 边界处的“函数间空行”归到了被排除的行号，导致快照字节级比较失败。现在我会统一把这些边界空行补回 fragment 开头，而不是更新快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 17:10:39 +0800</div>
+<pre>空行批量补得过头了：`store -&gt; config` 这个边界已经有一层空行，config 开头又补了一层，导致三连换行。现在我会按快照逐边界校准，只保留原来应有的单个函数分隔空行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-09 17:11:31 +0800</div>
+<pre>快照专项和 refactor 测试现在都通过，说明 fragment 拼接已经回到 byte-stable。最后跑完整 pipeline、检查生成文件 diff 和工作树。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-05-09 17:13:00 +0800</div>
+<pre>已按计划做完第一版，未提交。
+
+这次拆的是 `client/qml_client/runtime_shell.py`：
+- 原文件从 `3596` 行降到 `46` 行，只保留 `build_runtime_store_qml()` 兼容入口和 fragment 组装。
+- 新增 `client/qml_client/runtime_fragments/`，按顺序拆出：
+  `header / store / config / commands / derived_state / execution / program_workspace / local_state / machine_helpers / logs / transport_ws / transport_http / remote_state / utilities`
+- 增加了 `QML_RUNTIME_FRAGMENT_NAMES` 和测试，锁住 QML runtime 拼接顺序。
+- 更新了 `README.md`、`CHANGELOG.md`、`status_matrix.md`、`agent_handoff.md`。
+
+验证结果：
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `python3 -m unittest tests.test_pipeline`，30 tests OK，skipped 1
+- `git diff --check`
+
+生成产物对比：
+- `generated/qml/RuntimeStore.qml` 无 diff
+- `generated/qml/Main.qml` 无 diff
+- Web `app.js/runtime.js` 无 diff
+
+当前工作树只有这次源码拆分和文档更新，未提交，等你看完再决定是否 commit/sync。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:468-471|note=[used repo generator workflow scope]
+MEMORY.md:505-523|note=[used final artifact regeneration expectations]
+MEMORY.md:541-547|note=[used generated output consistency preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dcc56-93cd-7870-9204-5d2622e0ade2
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-51">
+<h2>Turn 51</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 17:16:11 +0800</div>
+<pre>看起一下现在还有下一步的拆解计划吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 17:16:36 +0800</div>
+<pre>我先看一下当前拆分后的文件规模和剩下的大文件，再给下一步拆解优先级。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 17:18:01 +0800</div>
+<pre>看了，现在还有明确的下一步拆解计划。
+
+当前最大的问题已经不是 `runtime_shell.py`，它已经只剩 46 行；新的“大块”主要是：
+
+- `client/qml_client/generator.py`: 3672 行，仍然是最大文件
+- `client/qml_client/runtime_fragments/commands.py`: 879 行
+- `client/qml_client/runtime_fragments/program_workspace.py`: 432 行
+- `client/qml_client/runtime_fragments/execution.py`: 417 行
+- `client/qml_client/runtime_fragments/transport_ws.py`: 390 行
+- `client/qml_client/widget_fragments/logs.py`: 442 行
+- `client/qml_client/widget_fragments/gauges.py`: 389 行
+- `client/qml_client/widget_fragments/program.py`: 375 行
+
+我建议下一步按这个顺序拆：
+
+1. **先拆 `runtime_fragments/commands.py`**
+   这是最值得先处理的文件。它混了 CNC、JOG、PROG、日志、诊断、状态写入等命令分发逻辑，后续功能很容易继续堆进去。
+   建议拆成类似：
+   - `command_blocks/cnc.py`
+   - `command_blocks/jog.py`
+   - `command_blocks/program.py`
+   - `command_blocks/program_dir.py`
+   - `command_blocks/logs.py`
+   - `command_blocks/diagnostics.py`
+   - `command_blocks/manual_ops.py`
+   - `command_blocks/ui_state.py`
+
+   `commands.py` 只保留 `invokeCommand()` 的骨架和组装顺序。
+
+2. **再拆 `program_workspace.py`**
+   这块和 PROG / PROG DIR / 文件保存 / 当前目录 / 编辑状态关系很密，后续还会继续改。
+   建议拆成：
+   - `program_workspace/state.py`
+   - `program_workspace/path_utils.py`
+   - `program_workspace/editor.py`
+   - `program_workspace/file_ops.py`
+   - `program_workspace/directory_ops.py`
+
+3. **再拆 `execution.py`**
+   AUTO / MDI / MDA 执行模拟、运行行号、进给主轴实际值、程序执行状态都在这里，风险比命令层高一点，所以放第三步。
+   建议拆成：
+   - `execution/tick.py`
+   - `execution/program_runner.py`
+   - `execution/motion.py`
+   - `execution/feed_spindle.py`
+   - `execution/mode_state.py`
+
+4. **然后处理 `qml_client/generator.py`**
+   这个文件最大，但我不建议马上硬拆，因为它还承担 Main.qml 的整体拼装。等上面几个业务块拆干净后，再拆它会更稳。
+   目标是把它收敛成页面组装入口，例如：
+   - `main_shell.py`
+   - `page_overview.py`
+   - `page_program.py`
+   - `page_logs.py`
+   - `page_debug.py`
+   - `footer_nav.py`
+   - `top_bar.py`
+   - `settings_panel.py`
+
+5. **最后再考虑 widget fragment 的二级拆分**
+   比如 `widget_fragments/logs.py`、`program.py`、`gauges.py` 现在还不算失控，可以等页面生成逻辑稳定后再拆。
+
+我的建议是：**下一刀先做 `commands.py` 二级拆分**。这一步收益最高、风险可控，而且能继续保持“生成产物不变化”的验证方式。拆完以后再进入 `program_workspace.py`，这样 PROG/PROG DIR 后续功能会更好维护。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:468-471|note=[used repo generator workflow scope]
+MEMORY.md:505-523|note=[used final artifact regeneration expectations]
+MEMORY.md:541-547|note=[used generated output consistency preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dcc56-93cd-7870-9204-5d2622e0ade2
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-52">
+<h2>Turn 52</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 17:20:54 +0800</div>
+<pre>ok 按照你的规划详细设计一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 17:21:05 +0800</div>
+<pre>我先把 `commands.py` 的实际结构再过一遍，避免设计只停留在文件名层面。重点看它现在有哪些命令域、哪些变量依赖会影响拆分边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 17:21:18 +0800</div>
+<pre>`commands.py` 现在确实是一个纯命令分发大串，拆分时不能把 `invokeCommand()` 的调用上下文打散。设计上要做“块级拆分”：拆出每个命令域的 QML 分支块，保留一个统一入口负责前置日志、strict 转发和最终 unsupported。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 17:21:33 +0800</div>
+<pre>我会把设计收敛成一个可以直接执行的拆分方案：先保证生成出来的 `RuntimeStore.qml` 完全不变，再逐步把命令域拆开。这样它只是源码组织变化，不会夹带运行行为调整。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-09 17:22:14 +0800</div>
+<pre>可以，下一步我建议只设计 **QML runtime command 拆分**，先不碰行为。目标是把 `client/qml_client/runtime_fragments/commands.py` 从 879 行拆到一个小入口 + 多个命令域块，同时保证生成出的 `RuntimeStore.qml` 字节级不变。
+
+**拆分目标**
+
+当前 `commands.py` 里有 52 个 `if (path === &quot;...&quot;)` 分支，全部塞在 `invokeCommand(path, args)` 里。下一步不改命令逻辑，只把它按命令域拆成可维护模块。
+
+建议目标结构：
+
+```text
+client/qml_client/runtime_fragments/
+  commands.py
+  command_blocks/
+    __init__.py
+    ui.py
+    position.py
+    program.py
+    program_dir.py
+    cnc.py
+    jog.py
+    manual_ops.py
+    alarm.py
+    diagnostics.py
+```
+
+`commands.py` 继续导出 `COMMANDS_QML`，但只保留：
+
+```python
+COMMANDS_QML = f&quot;&quot;&quot;
+    function invokeCommand(path, args) {{
+        ...
+        strict server forwarding prelude
+{UI_COMMANDS_QML}
+{POSITION_COMMANDS_QML}
+{PROGRAM_COMMANDS_QML}
+...
+        return fail(&quot;unsupported command&quot;)
+    }}
+&quot;&quot;&quot;
+```
+
+**命令域边界**
+
+`ui.py`：
+- `ui.commands.open_page`
+- `ui.commands.set_state`
+- `ui.commands.copy_log_entry`
+- `ui.commands.export_log_history`
+- `ui.commands.clear_client_log_view`
+- `ui.commands.run_log_retention`
+
+`position.py`：
+- `pos.commands.set_coord_system`
+- `pos.commands.toggle_coord_system`
+- `pos.commands.clear_relative`
+
+`program.py`：
+- `prog.commands.save`
+- `prog.commands.save_as`
+- `prog.commands.rename`
+- `prog.commands.find`
+- `prog.commands.replace`
+- `prog.commands.goto_line`
+- `prog.commands.load`
+- `prog.commands.new`
+- `prog.commands.delete`
+- `prog.commands.prepare_execute`
+- `prog.commands.set_view_mode`
+
+`program_dir.py`：
+- `progdir.commands.new_folder`
+- `progdir.commands.activate`
+- `progdir.commands.up`
+
+`cnc.py`：
+- `cnc.commands.set_mode`
+- `cnc.commands.cycle_start`
+- `cnc.commands.feed_hold`
+- `cnc.commands.reset`
+- `cnc.commands.estop_toggle`
+- `cnc.commands.toggle_single_block`
+- `cnc.commands.restart_from_line`
+
+`jog.py`：
+- `jog.commands.move_axis`
+- `jog.commands.set_mode`
+- `jog.commands.toggle_rapid`
+- `jog.commands.set_increment`
+
+`manual_ops.py`：
+- `spindle.commands.start`
+- `spindle.commands.set_target`
+- `spindle.commands.stop`
+- `feed.commands.start`
+- `feed.commands.set_target`
+- `feed.commands.stop`
+- `coolant.commands.toggle`
+- `coolant.commands.set`
+- `tool.commands.set_offset`
+- `wcs.commands.activate`
+- `wcs.commands.set_offset`
+
+`alarm.py`：
+- `alarm.commands.acknowledge`
+- `alarm.commands.acknowledge_all`
+- `alarm.commands.export_history`
+- `alarm.commands.copy_entry`
+- `alarm.commands.clear_history`
+
+`diagnostics.py`：
+- `param.commands.set_value`
+- `diagnostics.commands.set_var`
+- `auth.commands.set_level`
+
+**关键设计约束**
+
+1. **不改变生成产物**
+   这一轮只移动字符串块，不改 QML 内容。即使现在 `spindle/feed/coolant` 那段缩进有些不一致，也先原样保留，避免行为和快照混在一起变。
+
+2. **保留单一入口**
+   仍然只有一个 `invokeCommand(path, args)`。拆出去的是内部 `if` 分支块，不引入多个 QML 函数，避免改变变量作用域。
+
+3. **保持命令顺序稳定**
+   新增：
+
+```python
+QML_COMMAND_BLOCK_NAMES = (
+    &quot;ui&quot;,
+    &quot;position&quot;,
+    &quot;program&quot;,
+    &quot;program_dir&quot;,
+    &quot;cnc&quot;,
+    &quot;jog&quot;,
+    &quot;manual_ops&quot;,
+    &quot;alarm&quot;,
+    &quot;diagnostics&quot;,
+)
+```
+
+然后测试里锁住这个顺序。
+
+4. **保持旧导入兼容**
+   外部仍然只从：
+
+```python
+from .runtime_fragments.commands import COMMANDS_QML
+```
+
+导入，不影响 `runtime_shell.py`。
+
+**测试设计**
+
+新增或扩展 `tests/test_generator_refactor.py`：
+
+- 校验 `QML_COMMAND_BLOCK_NAMES` 顺序
+- 校验 `COMMANDS_QML` 中关键 marker 顺序：
+  - `function invokeCommand(path, args)`
+  - `ui.commands.open_page`
+  - `pos.commands.set_coord_system`
+  - `prog.commands.save`
+  - `progdir.commands.activate`
+  - `cnc.commands.set_mode`
+  - `jog.commands.move_axis`
+  - `spindle.commands.start`
+  - `alarm.commands.acknowledge`
+  - `auth.commands.set_level`
+  - `return fail(&quot;unsupported command&quot;)`
+
+完整验证命令：
+
+```bash
+python3 -m compileall client/qml_client tests/test_generator_refactor.py
+python3 -m unittest tests.test_generator_refactor
+./tools/generate_targets.sh
+python3 -m unittest tests.test_docs_portal
+python3 -m unittest tests.test_pipeline
+git diff --check
+```
+
+另外重点检查：
+
+```bash
+git diff -- generated/qml/RuntimeStore.qml
+git diff -- generated/qml/Main.qml
+```
+
+预期都应该为空。
+
+**完成后的状态**
+
+拆完后大概会变成：
+
+- `commands.py`: 80-120 行，只负责入口和组装
+- `command_blocks/ui.py`: 100 行左右
+- `command_blocks/program.py`: 220 行左右
+- `command_blocks/cnc.py`: 150 行左右
+- 其他块大多 50-140 行
+
+这样后续改 PROG、JOG、CNC、日志命令时，不会再都挤在一个 879 行的大字符串里。
+
+我的建议是下一步就按这个方案执行，而且这一轮严格定义为 **source-only refactor**：不改命令语义，不修缩进，不调 UI，不更新行为文档，只更新必要的 refactor 文档和测试。</pre>
+</article>
+</section>
+<section class="turn" id="turn-53">
+<h2>Turn 53</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 17:23:00 +0800</div>
+<pre>ok 按照你的计划施行</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 17:23:20 +0800</div>
+<pre>我开始执行这轮 source-only 拆分。会先固定当前状态，然后把 `commands.py` 按命令域拆成 `command_blocks`，最后用生成产物 diff 和测试确认没有夹带行为变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 17:24:09 +0800</div>
+<pre>接下来开始写入拆分文件。这里会刻意保留现有 QML 字符串里的缩进和分支顺序，包括已有的不一致缩进，避免这次 refactor 改到运行结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 17:25:12 +0800</div>
+<pre>我发现一个实际约束：现有命令顺序里 `progdir.commands.new_folder` 插在一组 `prog.commands.*` 中间。为了保证生成结果不变，我会把 PROG 拆成两个有序块、PROG DIR 也拆成两个有序块，而不是强行按域重新排序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 17:25:58 +0800</div>
+<pre>拆分文件已经落下来了，但我需要先校验一下生成入口是否保持干净。这个步骤会暴露字符串组装有没有不小心带入原文件的 Python 包装层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 17:26:33 +0800</div>
+<pre>刚才校验发现入口组装里把旧文件的 Python 包装层也带进了前置字符串，这是纯拆分脚本的边界问题。我现在修正为显式前置 QML 片段，并让各命令块按原顺序拼接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 17:27:13 +0800</div>
+<pre>入口已经修正。我现在跑一次针对运行时 QML 的快照对比，先看 `build_runtime_store_qml()` 输出是否还和当前生成文件一致；如果这里过了，再补测试和跑完整生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 17:28:13 +0800</div>
+<pre>快照对比显示仍有边界空行差异，主要是 fragment 首尾换行造成的，不是命令逻辑变化。我现在按字节稳定目标调整各块的首尾换行，而不是更新生成文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 17:28:53 +0800</div>
+<pre>目前只剩换行边界问题：前置片段和命令块之间少/多了一些换行。下一步我直接按原始 `RuntimeStore.qml` 的边界约束修正，不动命令内容本身。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 17:30:06 +0800</div>
+<pre>快照里剩下的差异已经不是命令块内部，而是 runtime fragment 之间的空行边界。为了继续保证字节稳定，我要看一下这些 fragment 的首尾约定，然后统一到当前生成文件的约定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 17:30:37 +0800</div>
+<pre>当前差异来源已经很清楚：拆分后的多个 runtime fragment 都带了“上一段结尾换行 + 下一段开头换行”，拼接后比原始产物多出空白行。我要在 QML runtime 组装器里做边界折叠，而不是逐个改业务 fragment 内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 17:30:53 +0800</div>
+<pre>边界折叠可以让当前拆分后的输出和现有产物完全一致。现在我把这个组装规则落到 `runtime_shell.py`，并补上命令块顺序测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 17:31:24 +0800</div>
+<pre>拆分和测试已经补齐。我现在先跑单元测试和产物快照对比；通过后再检查文档里是否需要记录这次 command block 边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 17:31:35 +0800</div>
+<pre>`RuntimeStore.qml` 快照已经字节一致，命令入口也降到 62 行。单元测试还在跑，我等它结束后继续跑生成和 pipeline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 17:31:43 +0800</div>
+<pre>单元测试已通过。接下来跑生成脚本，确认最终产物不会出现 tracked diff；随后跑 docs/pipeline 相关测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 17:33:03 +0800</div>
+<pre>生成和本地构建都通过了，过程中只有 Qt/CMake 的既有环境类 warning。现在我检查 tracked 产物 diff，并跑剩下的 docs/pipeline 测试和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 17:33:14 +0800</div>
+<pre>产物 diff 是空的，说明生成后的关键文件没有行为变更。docs 和 pipeline 测试还在运行，我等它们结束后再做最终状态汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 17:33:40 +0800</div>
+<pre>`tests.test_docs_portal` 已通过。`tests.test_pipeline` 中间出现了一个失败标记，我等完整输出定位是哪条断言，再决定是否和这次拆分有关。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-09 17:34:06 +0800</div>
+<pre>失败定位出来了：是 snapshot 对比里的空行边界，和刚才运行时产物对比的边界是同一类问题。我现在看测试断言用的是哪个方向，确认是需要调测试快照还是组装规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-09 17:34:17 +0800</div>
+<pre>这次失败是因为 `generated/qml/RuntimeStore.qml` 已经是旧快照格式，但 `tests/snapshots/qml/RuntimeStore.qml.snap` 之前带了拆分时多出来的空行。我要把测试快照恢复为当前生成结果，这符合“产物不变”的目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-09 17:34:34 +0800</div>
+<pre>测试失败点确认了，是 snapshot 文件还保留了之前多出来的空行，而实际生成产物已经恢复到旧格式。我会把 snapshot 对齐到当前生成结果，然后重跑 pipeline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-09 17:34:45 +0800</div>
+<pre>快照已经对齐到当前生成结果。现在重跑 pipeline，确认这次所有测试通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-09 17:35:31 +0800</div>
+<pre>pipeline 重跑通过了，snapshot 已和当前生成结果对齐。最后我会做一次状态、行数和关键 diff 检查，确认没有误改产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-09 17:35:55 +0800</div>
+<pre>功能拆分已经通过测试了。我再补一小处文档/变更记录，把这次 `command_blocks` 二级拆分写清楚，避免后面只看到文件变化不知道边界设计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-09 17:36:48 +0800</div>
+<pre>文档记录已补。现在做最后一轮快速验证：compile/refactor test、关键产物 diff、diff check 和状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / final_answer</h3>
+<div class="time">2026-05-09 17:38:21 +0800</div>
+<pre>已按计划做完，没有提交。
+
+这轮完成了 QML runtime command 的二级拆分：
+
+- `client/qml_client/runtime_fragments/commands.py` 从 879 行降到 62 行
+- 新增 `client/qml_client/runtime_fragments/command_blocks/`
+  - `ui.py`
+  - `position.py`
+  - `program.py`
+  - `program_dir.py`
+  - `cnc.py`
+  - `jog.py`
+  - `manual_ops.py`
+  - `alarm.py`
+  - `diagnostics.py`
+- 保留单一生成入口 `invokeCommand(path, args)`，只是源码按命令域拆块
+- 补了 `QML_COMMAND_BLOCK_NAMES` 顺序测试，避免后续误改命令拼接顺序
+- 更新了 `CHANGELOG.md`、`agent_handoff.md`、`status_matrix.md`
+
+验证结果：
+
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py` 通过
+- `python3 -m unittest tests.test_generator_refactor` 通过
+- `./tools/generate_targets.sh` 通过
+- `python3 -m unittest tests.test_docs_portal` 通过
+- `python3 -m unittest tests.test_pipeline` 通过，30 tests OK，1 skipped
+- `git diff --check` 通过
+- 关键生成产物无 diff：`generated/qml/RuntimeStore.qml`、`Main.qml`、Web `app.js/runtime.js` 都没有变化
+
+注意：`tests/snapshots/qml/RuntimeStore.qml.snap` 有少量空行回退，是为了和当前实际生成的 `RuntimeStore.qml` 重新保持一致；运行行为没有变化。</pre>
+</article>
+</section>
+<section class="turn" id="turn-54">
+<h2>Turn 54</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 19:08:31 +0800</div>
+<pre>可以 看着没问题，generate/update report &amp; docs + sync MetaNC + commit + push，然后给我一个下一步拆解计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 19:08:54 +0800</div>
+<pre>我先按报告/同步流程走一遍：确认当前两个仓库状态、刷新今天的 report 和 docs，再提交 `metanc_hmi_dsl`，然后同步到 `MetaNC` 并分别 push。最后我会基于拆分后的文件规模给下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 19:09:14 +0800</div>
+<pre>我已经确认 `metanc_hmi_dsl` 有待提交的拆分变更，`MetaNC` 当前是干净的 `feat/hmi`。接下来先刷新 2026-05-09 report 包和 docs_html，然后再进入提交、同步和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 19:09:34 +0800</div>
+<pre>今天的 report 包已经存在，我会在现有 2026-05-09 session 上增量刷新，不重新建一套目录。下一步先看导出脚本参数和当前 session 内容，然后写入这次 QML runtime command 拆分的摘要。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 19:09:55 +0800</div>
+<pre>我会用现有 exporter 刷新今天的 user history 和完整对话导出，然后手动补 report 摘要里缺的两段：QML runtime shell 拆分和 command blocks 二级拆分。这样最终 report 能反映今天后半段的实际工作。</pre>
+</article>
 </section>
 <section>
 <h2>Session Events</h2>
@@ -5686,8 +6657,8 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <div><b>Started</b>: <code>2026-05-08 10:00:56 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/lup/OminiForge</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/08/rollout-2026-05-08T10-00-56-019e0551-072d-7b01-8879-179803763de6.jsonl</code></div>
-<div><b>Messages</b>: <code>529</code></div>
-<div><b>User prompts</b>: <code>58</code></div>
+<div><b>Messages</b>: <code>625</code></div>
+<div><b>User prompts</b>: <code>63</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -11882,6 +12853,770 @@ MEMORY.md:14-14|note=[web workbench context]
 <h3>Codex Response 11 / commentary</h3>
 <div class="time">2026-05-09 16:38:26 +0800</div>
 <pre>Web 单测和构建已经通过。接下来补 W29 文档、delivery/status、story-map 和中文 i18n 导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 16:40:33 +0800</div>
+<pre>W29 文档和导航已经补齐。现在跑全量验证，包括 docs build、Python 校验和 diff check，然后生成一张最新可视化快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 16:40:51 +0800</div>
+<pre>全量验证里只有一个旧菜单栏测试不稳定了：我把 `runWorkbenchCommand` 改成总是先关右键菜单，间接影响了菜单栏测试节奏。我会把关闭右键菜单限定在右键菜单执行路径，避免污染顶部菜单行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 16:41:08 +0800</div>
+<pre>我先复现这个菜单栏测试，判断是测试顺序污染还是实际菜单状态被新代码影响。修复会尽量保持右键菜单和顶部菜单解耦。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 16:41:33 +0800</div>
+<pre>单独跑这个旧测试是通过的，说明是同文件里某个全局监听或未关闭的浮层造成交叉影响。我会把右键菜单测试里的浮层显式关闭/卸载路径收紧，避免污染后续测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 16:41:56 +0800</div>
+<pre>AppShell 单文件跑是稳定通过的，我再跑一次全量确认是否是并发测试偶发。如果还失败，再加测试级清理来隔离全局监听。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 16:42:14 +0800</div>
+<pre>第二次全量测试通过，`diff --check` 和 package 校验也通过。现在我做最终 build/docs/Python 的确认和生成最新截图，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-09 16:42:39 +0800</div>
+<pre>最新页面快照已生成到 `.tmp/w29-workbench-context-menu.png`。我现在检查 staged 前的 diff 范围，确认没有把临时图加入 Git，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-09 16:43:24 +0800</div>
+<pre>已提交 `dbfa612 feat: add edit canvas context menu`。现在推送到两个远端，并做最后的工作区确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / final_answer</h3>
+<div class="time">2026-05-09 16:43:51 +0800</div>
+<pre>已按 W29 实现并推送。
+
+本次完成：
+- 新增编辑态右键菜单组件 `ContextMenu.vue`。
+- 控件右键：Copy / Cut / Duplicate / Delete / Bring Forward / Send Backward / Bring To Front / Send To Back。
+- Root/Container 右键：Select、Paste Here、Insert Button/Label/Container、Show Grid。
+- 空白 canvas 右键：插入到 root；root 为 absolute 时按现有 16px grid 写入 snapped `x/y`。
+- Preview/Run 模式不显示自定义编辑右键菜单。
+- 补了 W29 中英文 slice 文档、delivery/status、story-map、translation-status。
+
+验证已通过：
+- `npm test`：17 files / 163 tests passed
+- `npm run build`
+- `./scripts/build-docs.sh`
+- `python3 -m unittest discover tests`
+- `python3 tools/validate_package.py examples/minimal-app`
+- `git diff --check`
+
+已提交并推送到 `origin` 和 `github`：
+`dbfa612 feat: add edit canvas context menu`
+
+本地入口仍可用：
+`http://localhost:5173/`
+
+快照：
+`.tmp/w29-workbench-context-menu.png`
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[OminiForge repo workflow context]
+MEMORY.md:14-14|note=[web workbench context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-59">
+<h2>Turn 59</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:47:59 +0800</div>
+<pre>现在有多选对其功能吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:48:18 +0800</div>
+<pre>我先快速确认一下当前代码里的 selection/alignment 状态，避免把“容器对齐”和“多选对齐”混在一起说。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 16:48:31 +0800</div>
+<pre>现在没有“多选对齐”功能。
+
+当前已有的是两类相关但不同的东西：
+
+- **单选编辑**：目前是 `selectedNodeId` 单选模型，没有 `selectedIds` / 多选集合。
+- **容器流式对齐**：W18 已做 `alignItems`、`justifyContent`、`flexWrap`，这是对 `vbox/hbox` 容器内部子项布局的属性控制，不是多选控件之间的对齐。
+- **对齐辅助线**：W26 还是 Planned，只是计划“sibling guide lines beyond grid snapping”，也不是多选对齐。
+
+所以如果你说的是类似设计器里的：
+- 选中多个控件
+- 左对齐 / 右对齐 / 顶对齐 / 底对齐
+- 水平居中 / 垂直居中
+- 等宽 / 等高
+- 水平均分 / 垂直均分
+
+这些现在还没有。要做的话，前置第一步应该是 **多选选择模型**，然后再做 **多选几何对齐命令**。我建议拆成两个 slice：先 W30 Multi Selection Basics，再 W31 Multi Selection Alignment。</pre>
+</article>
+</section>
+<section class="turn" id="turn-60">
+<h2>Turn 60</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:54:27 +0800</div>
+<pre>可以 详细设计一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-09 16:55:05 +0800</div>
+<pre>可以。建议拆成两个连续 slice，不要一次把“多选”和“对齐/分布/等尺寸”混在一起做，否则状态模型容易乱。
+
+**W30: Multi Selection Basics**
+
+目标：先让编辑器具备稳定的多选模型。
+
+核心设计：
+
+- 当前 `selectedNodeId` 改为：
+  - `selectedNodeIds: string[]`
+  - `primarySelectedNodeId: string`
+- `primarySelectedNodeId` 是最后选中的控件，用于 Inspector、右键菜单、后续等尺寸参考。
+- 普通点击：清空旧选择，只选当前控件。
+- `Ctrl/Cmd + 点击`：切换选中状态。
+- `Shift + 点击`：第一版可以先等同追加选择，后续再做树顺序区间选择。
+- 点空白 canvas：清空多选，回到 root。
+- Preview/Run：不启用多选编辑语义。
+
+视觉表现：
+
+- 多选控件都显示选中边框。
+- Primary selection 使用更明显边框或 handles。
+- Resize handles 第一版只给 primary 显示，不做多选缩放。
+- Inspector：
+  - 单选时保持现状。
+  - 多选时显示 `N controls selected`。
+  - 第一版只提供通用操作入口，不做混合属性编辑。
+
+多选可用操作：
+
+- Delete selected
+- Copy selected
+- Cut selected
+- Duplicate selected
+- Context menu 支持多选态
+- Layer 第一版可以先仅支持 primary，或禁用多选 layer；我建议先禁用，避免顺序规则复杂。
+
+限制：
+
+- Root 不参与多选。
+- Container 可以参与多选，但如果包含另一个选中子节点，要禁止这种嵌套选择，避免移动/删除时歧义。
+- 第一版多选可以跨容器存在，但对齐类命令后续只允许同一个 absolute parent。
+
+**W31: Multi Selection Alignment**
+
+目标：在 W30 多选稳定后，实现设计器常见对齐能力。
+
+第一版建议只支持：
+
+- 同一父容器
+- 父容器 layout 为 `absolute`
+- 至少选中 2 个可移动控件
+- 不包含 Root
+- 不包含父子嵌套选择
+
+命令设计：
+
+新增批量 source command：
+
+```ts
+interface AlignControlsCommand {
+  type: &#x27;alignControls&#x27;;
+  controlIds: string[];
+  action:
+    | &#x27;left&#x27;
+    | &#x27;right&#x27;
+    | &#x27;top&#x27;
+    | &#x27;bottom&#x27;
+    | &#x27;horizontalCenter&#x27;
+    | &#x27;verticalCenter&#x27;
+    | &#x27;sameWidth&#x27;
+    | &#x27;sameHeight&#x27;
+    | &#x27;distributeHorizontal&#x27;
+    | &#x27;distributeVertical&#x27;;
+}
+```
+
+执行规则：
+
+- `left`：所有控件 `x = min(x)`
+- `right`：所有控件右边缘对齐到 `max(x + width)`
+- `top`：所有控件 `y = min(y)`
+- `bottom`：所有控件底边对齐到 `max(y + height)`
+- `horizontalCenter`：所有控件中心 X 对齐到 selection bounds center
+- `verticalCenter`：所有控件中心 Y 对齐到 selection bounds center
+- `sameWidth`：所有控件宽度等于 primary control 宽度
+- `sameHeight`：所有控件高度等于 primary control 高度
+- `distributeHorizontal`：按 x 排序，固定最左和最右，均分中间间距
+- `distributeVertical`：按 y 排序，固定最上和最下，均分中间间距
+
+UI 入口：
+
+- 顶部菜单新增 `Arrange`
+  - Align Left
+  - Align Right
+  - Align Top
+  - Align Bottom
+  - Align Horizontal Center
+  - Align Vertical Center
+  - Same Width
+  - Same Height
+  - Distribute Horizontal
+  - Distribute Vertical
+- 右键菜单多选态显示同样动作。
+- 后续可再加一个小 toolbar，但第一版先用菜单/右键，避免 UI 复杂化。
+
+关键判断：
+
+- 对齐不是改 `alignItems/justifyContent`。
+- `alignItems/justifyContent` 是容器布局属性。
+- 多选对齐是直接改多个控件的 `x/y/width/height`。
+- 所以它主要属于 absolute layout 的几何编辑能力。
+
+TDD 计划：
+
+- 多选：
+  - 普通点击只选一个。
+  - Ctrl 点击追加选择。
+  - Ctrl 再点取消选择。
+  - 删除多选会删除所有选中控件。
+  - Preview 模式不会触发编辑多选。
+
+- 对齐：
+  - left/top/right/bottom 对齐计算正确。
+  - center 对齐计算正确。
+  - sameWidth/sameHeight 使用 primary 控件尺寸。
+  - distribute 对排序和间距计算正确。
+  - 不同父容器时禁用。
+  - flow parent 时禁用。
+  - 对齐作为一次 history action，可 undo/redo。
+
+我建议先做 W30，不做对齐按钮。等多选状态、右键菜单、多选删除复制这些稳定后，再做 W31。这样风险低，而且每一步都有可见结果。</pre>
+</article>
+</section>
+<section class="turn" id="turn-61">
+<h2>Turn 61</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 16:57:23 +0800</div>
+<pre>按照你的计划做一下，然后对齐可以放到右键菜单这些先，然后以后再一起做工具栏按钮图标功能（类似于一些快捷的操作）</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 16:57:39 +0800</div>
+<pre>我会按刚才拆分的路线直接落：先把单选状态扩成稳定多选模型，再加一组 absolute 同父容器对齐命令，并先只放到右键菜单和菜单命令入口，不做工具栏图标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-09 16:57:55 +0800</div>
+<pre>我确认当前还是单选模型。接下来会先改 source command，让删除/复制/对齐具备批量基础；然后再改 AppShell 的 selection state 和右键菜单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 16:58:11 +0800</div>
+<pre>我会先建一个明确的执行计划，把 W30 多选基础和 W31 对齐命令一起做，但 UI 入口只放菜单/右键，不做工具栏图标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 16:58:33 +0800</div>
+<pre>先改 source 层：批量删除、批量复制和对齐都必须是一条 source history action，否则 undo/redo 会很难用。对齐范围先严格限制为同一 absolute 父容器。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 16:59:26 +0800</div>
+<pre>source 命令类型已经开始扩展。现在我补齐对齐计算 helper：对齐只接受同一 absolute 父容器，并用控件显式尺寸或 Web 默认尺寸做几何计算。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 16:59:49 +0800</div>
+<pre>我正在把 source 层补完整：批量操作和对齐计算需要先稳住，尤其是同父 absolute 的限制、默认尺寸、同一条 history action 这些边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 17:00:58 +0800</div>
+<pre>source 对齐核心已补。现在跑 source 类型/测试前先加针对 align 的单测，避免后面 UI 调用时才发现几何规则有偏差。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 17:01:18 +0800</div>
+<pre>测试文件里的用例命名和我预估不同。我先定位 delete/duplicate 段落，再精确插入批量和对齐测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 17:02:41 +0800</div>
+<pre>source 测试已加。接下来跑 source 测试和 TypeScript build，先把底层问题处理干净，再动 AppShell 多选模型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 17:02:54 +0800</div>
+<pre>source 层通过。现在改 Canvas selection props：把单个 selectedId 扩成 selectedIds，并让 click 事件带原始鼠标事件，AppShell 才能处理 Ctrl/Cmd 追加选择。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 17:03:42 +0800</div>
+<pre>我看到刚才 patch 留了一个旧的 `props.selectedId` 引用，需要清掉并把模板里的 selected class 都切到 `isSelected/isPrimarySelected`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 17:04:39 +0800</div>
+<pre>Canvas 组件已支持 selectedIds/primarySelectedId 并通过 build。下一步是 AppShell：把 `selectedNodeId` 改成 `selectedNodeIds + primarySelectedNodeId`，并把 delete/copy/duplicate/alignment 接到多选集合。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 17:04:50 +0800</div>
+<pre>AppShell 的改动会比较集中，我会尽量保持向后兼容：Inspector 仍看 primary selection，多选时增加状态提示；右键菜单按 selectedIds 判断是否显示对齐项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 17:06:11 +0800</div>
+<pre>多选状态主路径已改，但还需要补一些 helper，并替换剩余 selectedNodeId 赋值。接下来我会补 selection helpers、multi clipboard 和 alignment eligibility。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 17:08:51 +0800</div>
+<pre>我先接上当前工作点，重点是把 AppShell 里剩余的单选状态引用清掉，然后把多选对齐挂到右键菜单；后面再补测试、文档和构建验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 17:09:03 +0800</div>
+<pre>当前未提交改动集中在 Web workbench 的 canvas/source/AppShell。AppShell 里还有几处旧的 `selectedNodeId`，这些会直接影响多选逻辑，我先把它们收敛成 `primarySelectedNodeId + selectedNodeIds`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 17:10:34 +0800</div>
+<pre>接下来我会把右键菜单分两类处理：单控件保持复制/删除/层级操作，多选时显示复制/剪切/删除/复制副本和对齐/同尺寸/分布操作。右键点到已选元素时会保留多选，并把这个元素设为主选择。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-09 17:11:10 +0800</div>
+<pre>核心引用已经替换完一轮。现在我会跑一次类型构建来找剩余断点，然后再补视觉样式和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-09 17:11:19 +0800</div>
+<pre>构建已经过了，说明多选状态和右键命令的类型路径是通的。下一步我补一点样式，让“多选”和“主选择”在画布上可辨认，同时让 Inspector 明确当前还是编辑主选择。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-09 17:11:35 +0800</div>
+<pre>样式已加：多选的非主元素用虚线，主元素仍是实线并显示 resize handle。现在开始补 AppShell 层的行为测试，覆盖 ctrl/command 多选、右键对齐、批量删除这些编辑路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-09 17:14:04 +0800</div>
+<pre>测试用例已经补入，先跑 AppShell 和 source 的针对性测试，确认行为层没有断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-09 17:14:21 +0800</div>
+<pre>针对性测试已经通过。现在我看一下现有 story/slice 文档结构，把 W30/W31 放到同一套状态跟踪里，避免这次只落代码不落计划痕迹。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-09 17:14:33 +0800</div>
+<pre>文档里 S2 已经有 W29，W30/W31 还没登记。我会新增两个 slice：W30 多选基础，W31 右键对齐；同步英文源文档、中文 i18n、SUMMARY、story-map、delivery status 和翻译状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-09 17:16:19 +0800</div>
+<pre>新 slice 文件已落。接着我更新索引和状态页，把 W30/W31 加到导航、story map、delivery 状态和翻译覆盖表里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-09 17:17:50 +0800</div>
+<pre>文档索引和状态页已同步。现在我会跑全量 Web 测试、构建和文档构建，顺手检查是否有 navigation 缺页或 mdBook 生成问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-09 17:18:10 +0800</div>
+<pre>全量 Web 测试、生产构建、Python 校验都通过了。下一步跑 mdBook 构建和 diff 检查；如果生成目录有变化会按项目规则只保留源文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-09 17:18:24 +0800</div>
+<pre>mdBook 双语输出也过了，且 `git diff --check` 没有空白问题。现在我会做一次代码差异审阅，重点看 source 命令语义、多选状态恢复、右键目标选择有没有明显边界问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-09 17:19:14 +0800</div>
+<pre>差异审阅发现两个边界我准备顺手收紧：批量命令应避免父子同时入选导致重复/失败；多选复制的绝对坐标偏移只在同一个 absolute parent 内启用，避免跨容器复制时给 flow 布局控件写入无意义 x/y。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-09 17:19:30 +0800</div>
+<pre>边界收紧完成：批量命令会去掉嵌套子选择，多选复制只有在同一 absolute 容器下才做坐标偏移。现在补一条 source 测试覆盖“父子同时入选只处理父节点”，再跑测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-09 17:20:10 +0800</div>
+<pre>边界测试已补。现在重新跑针对性测试和构建，确认这次收紧没有引入回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-09 17:20:26 +0800</div>
+<pre>回归验证通过。接下来我做一次完整状态检查，并准备生成一个可执行预览链接/截图，确认浏览器侧能打开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-09 17:20:36 +0800</div>
+<pre>本地 Vite 预览还在运行。我会用 HTTP 和一张截图确认当前页面可访问，截图会放在 `.tmp/`，作为你要看结果时的可执行入口旁证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-09 17:21:01 +0800</div>
+<pre>预览 URL 可访问，截图已生成到 `.tmp/w31-multiselect-alignment.png`。现在我做最后一轮全量验证，确保文档和代码都还是绿的，然后提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-09 17:21:24 +0800</div>
+<pre>验证完成。我要把这组 W30/W31 的实现和文档一起提交，提交信息会用 `feat:` 开头，然后推送到当前配置的远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-09 17:22:00 +0800</div>
+<pre>提交已生成：`a155836 feat: add multi-select alignment actions`。现在推送两个远端，保持 Gitee 和 GitHub 都同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-09 17:22:15 +0800</div>
+<pre>两个远端都已推送。最后我确认工作区状态和最新提交，确保没有漏提交的源文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / final_answer</h3>
+<div class="time">2026-05-09 17:22:29 +0800</div>
+<pre>已完成并推送。
+
+本次实现了 Web workbench 的多选编辑基础和右键对齐动作：
+- Ctrl/Cmd 点击 canvas 控件可多选，主选中控件负责 Inspector 和 resize handles。
+- 多选支持批量删除、批量复制，走 source command/history。
+- 多选右键菜单支持 Align Left/Right/Top/Bottom、水平/垂直居中、Same Width/Height、水平/垂直分布。
+- 对齐仅在同一个 absolute parent 下启用；flow layout 下会禁用，避免语义混乱。
+- 顶部新增 `Arrange` 菜单，先复用命令体系，后续工具栏图标可以直接挂这些 command。
+- 补了 W30/W31 中英文 slice 文档、SUMMARY、story-map、delivery status、translation status。
+
+验证已通过：
+- `npm test`：17 files / 175 tests passed
+- `npm run build`
+- `./scripts/build-docs.sh`
+- `python3 -m unittest discover tests`
+- `python3 tools/validate_package.py examples/minimal-app`
+- `git diff --check`
+- 预览可访问：`http://localhost:5173/`
+- 截图：`.tmp/w31-multiselect-alignment.png`
+
+已提交并推送到两个远端：
+`a155836 feat: add multi-select alignment actions`
+`origin/master` 和 `github/master` 都已同步。</pre>
+</article>
+</section>
+<section class="turn" id="turn-62">
+<h2>Turn 62</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 17:23:10 +0800</div>
+<pre>生成个可执行我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 17:23:24 +0800</div>
+<pre>我先确认当前 Web 预览服务还在不在；如果还活着，直接给你可访问链接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 17:23:32 +0800</div>
+<pre>可执行预览已经在跑：
+
+`http://localhost:5173/`
+
+当前服务监听在 `0.0.0.0:5173`，页面也已用 `curl` 确认可访问。</pre>
+</article>
+</section>
+<section class="turn" id="turn-63">
+<h2>Turn 63</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-09 17:28:16 +0800</div>
+<pre>看一下后续开发计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-09 17:28:33 +0800</div>
+<pre>我先按当前仓库里的 delivery/status 和 Web story map 看一下已完成与 planned 项，避免只凭记忆给计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-09 17:28:48 +0800</div>
+<pre>当前工作区干净，后续建议按这个顺序推进：
+
+**下一阶段目标：编辑体验补全**
+
+1. **W32 属性编辑增强**
+   - Inspector 支持多选时的共同属性编辑，比如统一 `width/height`、`visible/enabled`。
+   - 单控件属性区做分组优化：Identity、Layout、Geometry、Style、Binding。
+   - 避免现在多选时只能提示“Inspector edits 主选中控件”。
+
+2. **W33 工具栏快捷操作**
+   - 把已有 command registry 接到顶部/画布工具栏。
+   - 先做常用按钮：复制、剪切、粘贴、删除、撤销、重做、对齐、同尺寸、分布、网格开关。
+   - 图标按钮只调用已有 commands，不新增第二套逻辑。
+
+3. **W34 框选与选择管理**
+   - Canvas 空白区域拖拽框选。
+   - Shift/Ctrl 多选规则整理。
+   - Escape 清空到 root，点击空白选 root。
+   - 后续可支持锁定控件不可选。
+
+4. **W35 图元/控件库第一版**
+   - 现在 Palette 只有 Button/Label/Container，太薄。
+   - 建议补：Input、Switch、Indicator、Image、Gauge 占位、Group/Frame。
+   - 同时定义每类控件的默认属性、可编辑属性、可绑定属性。
+
+5. **W36 编辑辅助线**
+   - W26 原计划 Alignment Guides 可以放这里做。
+   - 拖动/resize 时显示边缘、中心、间距参考线。
+   - 不急着复杂吸附，先显示 guide，再决定是否 snap。
+
+我建议下一步先做 **W32 属性编辑增强** 或 **W35 图元/控件库第一版**。
+如果你更关注“编辑器像样可用”，先 W32；如果你更关注“能组更多页面”，先 W35。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-09 17:29:33 +0800</div>
+<pre>我会按“先补控件库，再把工具栏/属性/选择/辅助线建立在现有 command 和控件模型上”的顺序推进。先检查当前代码结构和测试覆盖，确定最小可落地的切片边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-09 17:29:52 +0800</div>
+<pre>当前仓库是干净的，已完成到 W31。为了五项都落地，我会把顺序调整成：先扩展控件库，再做属性/工具栏，因为后两者需要有更多控件和命令作为承载；最后做框选和辅助线。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-09 17:30:08 +0800</div>
+<pre>先处理 W35。我要看一下 Palette registry、CanvasControl 渲染分支和 Inspector 当前对属性的枚举方式，保证新增控件不是只出现在列表里，而是能插入、显示、导出、测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-09 17:30:44 +0800</div>
+<pre>W35 的实现面我会定义“容器类控件”和“叶子类控件”两类：Frame/Group 作为可承载 children 的容器类，Input/Switch/Indicator/Image/Gauge 作为叶子类。这样后续布局转换和插件控件也能沿用同一个判断入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-09 17:31:33 +0800</div>
+<pre>我已经定位完 W35 的入口。下一步开始改代码：先引入控件类型定义，让“哪些控件是容器、默认宽高、如何渲染、Palette 如何展示”都有统一来源，避免新增控件散落在多个 switch 里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-09 17:33:33 +0800</div>
+<pre>我会继续把 W35 落完：新增控件 catalog，改 Palette 分组和 Canvas 渲染，同时把容器判断从硬编码 `Container` 扩到 `Frame/Group`。这一步会带动 source command 的可插入/可粘贴判断一起更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-09 17:36:19 +0800</div>
+<pre>W35 主要代码已经改完。现在我先跑类型构建，通常这里会暴露 Vue 模板或类型细节问题；再根据失败点补测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-09 17:36:42 +0800</div>
+<pre>类型检查指出 `InspectorPanel` 对可选 node 的判断需要再收紧；测试失败是预期的，因为 Palette 已从 3 个扩到 10 个。先修这两个点，然后补新的 W35 断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-09 17:38:05 +0800</div>
+<pre>W35 代码和定向测试已通过。接下来做 W32：多选时允许编辑共同属性，先覆盖最有价值且风险可控的 `width/height/enabled/visible`，并通过批量 set command 保持一次 history action。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-09 17:39:06 +0800</div>
+<pre>我加了批量属性 command，但测试 import 还没接上，接着补 import 和 AppShell 多选共享属性测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-09 17:39:37 +0800</div>
+<pre>W32 的核心批量属性编辑已通过测试。下一步做 W33 工具栏：不会重写逻辑，只把现有 commandRegistry 暴露为按钮，这样菜单、快捷键、右键、工具栏都走同一套 command。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-09 17:40:54 +0800</div>
+<pre>测试运行过了，但 `vue-tsc` 会检查测试文件类型，`wrapper.get(...).exists()` 这个写法类型不合适。我把它改成 `find(...).exists()`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-09 17:41:18 +0800</div>
+<pre>W33 工具栏已经接上并通过构建。接下来做 W34：框选和选择管理，目标是空白点击/右键保持已有语义，新增按住空白拖拽显示选择框，释放后选择框内 editable controls。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-09 17:42:46 +0800</div>
+<pre>W34 的框选逻辑已接入。这里最容易出问题的是测试环境的元素位置，所以我会给 canvas 和控件设置 mock rect，验证拖拽框选能选中多个控件且 Escape 回到 root。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-09 17:43:20 +0800</div>
+<pre>框选逻辑本身没跑完，因为 jsdom 没有 `setPointerCapture`。我会把 pointer capture 做成可选调用，同时修正类型收窄。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-09 17:44:06 +0800</div>
+<pre>我看到两个问题：一是 TypeScript 对 `surface` 没有完成非空收窄；二是测试里的 pointer 事件在 jsdom 下需要更明确地等待 window listener 完成。我先把实现收紧，再用一条小调试路径确认框选计算。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-09 17:44:54 +0800</div>
+<pre>框选实现构建已经过了，当前只剩一条 jsdom 测试没有选中。我在这里收窄测试和实现的差异：浏览器路径没问题，测试环境主要是元素 rect 和 window pointer event 的模拟细节。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-09 17:47:10 +0800</div>
+<pre>我先接着把当前工作树和失败点核对一下，重点看 W34 框选测试为什么没有把控件选中，然后再补 W36 和文档收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-09 17:47:43 +0800</div>
+<pre>框选逻辑里用 `event.currentTarget` 和全局查询混在一起，测试环境下容易拿不到稳定的 surface。这里我会把本次框选绑定到开始时的画布元素上，结束时只用这个元素计算命中区域。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-09 17:48:27 +0800</div>
+<pre>框选的用例已经稳定通过了。接下来补 W36 的编辑辅助线，我会先做一个可验证的版本：绝对布局拖放预览时显示横/竖参考线，和现有背景网格开关一起作为编辑辅助。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-09 17:51:12 +0800</div>
+<pre>W36 的第一版也落下来了，单测覆盖了绝对布局拖放时的横竖参考线。下面我会同步 story/slice/status/翻译状态文档，再跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-09 17:51:54 +0800</div>
+<pre>文档这块我发现中文侧比英文侧落后了几项：不仅要加 W32-W36，W18/W19/W24/W25 也已经在英文侧存在但中文侧没对应页面。我会顺手把这些导航和状态拉齐，避免翻译状态表继续说“完成”但文件不存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-09 17:52:10 +0800</div>
+<pre>我会把这些 slice 文档按“英文源在 `docs/`，中文翻译在 `docs_i18n/zh/src/`”的现有规则补齐；W36 会明确写成第一版拖拽参考线，后续兄弟对齐吸附仍保留为 W26。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-09 17:58:04 +0800</div>
+<pre>我还看到 S1 的 W27 已经有英文文档但没有进入 SUMMARY，中文侧也缺对应页；这类导航缺口会让 mdBook 和翻译表不可信。我已经补了中文 W27，接下来把中英文 SUMMARY、story map 和 translation-status 一次性校正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-09 17:59:47 +0800</div>
+<pre>代码和文档的主体已经补齐，现在进入完整验证。先跑 Web 全量测试、Python 校验、示例包校验和文档构建；如果某个命令暴露出导航或类型问题，我会直接修掉再复跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-09 18:00:03 +0800</div>
+<pre>全量测试、Python 单测、示例包校验、mdBook 构建和 `git diff --check` 都已经通过。还需要跑一次生产构建，并用浏览器/截图确认当前 workbench 可视结果没有明显坏掉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-09 18:00:20 +0800</div>
+<pre>生产构建也通过了，当前已有 Vite 预览进程在 `5173`。我会用它做一次实际页面探测，确认工具栏、Palette 新分组和画布元素可见。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-09 18:00:45 +0800</div>
+<pre>截图已经生成成功。我会快速看一下图像，确认没有空白屏或明显布局压坏，然后再做最后的代码审查和提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-09 18:01:09 +0800</div>
+<pre>截图看起来是正常渲染：顶部菜单、工具栏、资源 tab、项目树、画布和 Inspector 都在。提交前我再做一轮关键 diff 审查，重点看新控件目录、命令链路和文档导航有没有明显遗漏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-09 18:01:31 +0800</div>
+<pre>审查时我注意到一个小的健壮性点：如果框选过程中切换模式或卸载组件，应该统一清理框选状态和事件监听。我会补一个集中清理函数，避免后续编辑交互叠加时留下悬挂监听。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-09 18:01:51 +0800</div>
+<pre>我补了框选清理路径，避免切模式、按 Escape 或卸载时留下半状态。现在会复跑前面关键验证，确认这个小改动没有影响测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-09 18:02:07 +0800</div>
+<pre>关键验证复跑仍然通过。我还会复跑 Python 和示例包校验，然后整理工作树准备提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-09 18:02:24 +0800</div>
+<pre>最后一个清理点：框选开始时我已经移除了旧的 move 监听，也把旧的 pointerup 监听一起移掉，避免切模式后留下无效的一次性监听。这个改动很小，我会跑针对 AppShell 的测试和构建再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-09 18:02:55 +0800</div>
+<pre>针对测试、构建和 whitespace 检查都通过了。现在我会确认没有误纳 `.mdbook/dist` 之类生成物，然后暂存、提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-09 18:03:25 +0800</div>
+<pre>暂存内容只包含本次代码和文档，没有生成物。我会提交为一个 `feat:` commit，然后推送到当前两个远程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-05-09 18:03:48 +0800</div>
+<pre>本地提交已完成，工作树是干净的。现在推送到 `origin/master` 和 `github/master`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-09 18:04:02 +0800</div>
+<pre>两个远程都推送成功了。我做最后一次状态确认和目标完成标记，然后给你一个简明收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / final_answer</h3>
+<div class="time">2026-05-09 18:04:34 +0800</div>
+<pre>已完成并提交推送。
+
+本次落地了：
+- W32：Inspector 多选共享属性编辑。
+- W33：顶部命令工具栏。
+- W34：画布框选和 Escape 清选。
+- W35：扩展控件库，新增 Input/Switch/Indicator/Image/Gauge/Frame/Group。
+- W36：absolute 拖拽预览横竖参考线。
+- 同步了英文 `docs/` 和中文 `docs_i18n/zh/src/` 的 story、slice、status、translation-status。
+
+验证通过：
+- `npm test`：17 files / 182 tests passed
+- `npm run build`
+- `python3 -m unittest discover tests`
+- `python3 tools/validate_package.py examples/minimal-app`
+- `./scripts/build-docs.sh`
+- `git diff --check`
+- Headless Chrome 截图确认页面正常渲染：`/tmp/ominiforge-workbench-w36.png`
+
+提交：
+- `a714286 feat: expand web editor interactions`
+- 已推送到 `origin/master` 和 `github/master`
+
+目标已完成，用时 2160 秒。当前工作树干净，生成物 `.mdbook/` 和 `platforms/web/app/dist/` 仍是 ignored。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[OminiForge repo workflow context]
+MEMORY.md:14-14|note=[web workbench context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
 </article>
 </section>
 

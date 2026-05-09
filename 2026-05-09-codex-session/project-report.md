@@ -128,6 +128,28 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
     收敛到 `runtime_shell.py` 与更小的 domain fragments。
   - 重新生成最终产物，并确认 tracked 的 `generated/qml/Main.qml`、Web
     `app.js` 等生成文件没有 diff。
+- 完成 QML runtime store 源码级拆分：
+  - `client/qml_client/runtime_shell.py` 从 3600 行级别收敛为 55 行
+    compatibility builder/assembler。
+  - 新增 `client/qml_client/runtime_fragments/`，按原 `RuntimeStore.qml`
+    输出顺序拆出 header、store、config、commands、derived state、
+    execution、program workspace、local state、machine helpers、logs、
+    WebSocket/HTTP transport、remote state 和 utilities。
+  - 组装器增加 fragment 边界换行折叠，避免源码片段首尾换行影响最终
+    `RuntimeStore.qml` 快照。
+  - 通过直接 runtime-store 等价检查确认生成后的
+    `generated/qml/RuntimeStore.qml` 与当前产物 byte-stable。
+- 完成 QML runtime command 二级拆分：
+  - `client/qml_client/runtime_fragments/commands.py` 收敛为 62 行
+    `invokeCommand()` 入口和有序 block assembler。
+  - 新增 `client/qml_client/runtime_fragments/command_blocks/`，按职责拆出
+    `ui`、`position`、`program`、`program_dir`、`cnc`、`jog`、
+    `manual_ops`、`alarm` 和 `diagnostics` 命令块。
+  - 保留单一生成入口 `invokeCommand(path, args)` 和原命令分支顺序，避免
+    改变 strict forwarding、PROG、CNC、JOG、manual operation 或 diagnostics
+    runtime 行为。
+  - 新增 generator refactor 测试，锁住 QML runtime fragment 顺序、
+    command block 顺序和关键命令 marker 顺序。
 
 ## Validation
 
@@ -154,14 +176,17 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   after the QML widget fragment split.
 - `python3 -m unittest tests.test_generator_refactor`
   after adding QML fragment-order coverage.
+- Direct runtime-store equivalence check confirmed `build_runtime_store_qml()`
+  still matches `generated/qml/RuntimeStore.qml` byte-for-byte after the
+  QML runtime and command block source splits.
 - `python3 -m unittest tests.test_docs_portal`
   after report/docs routing updates.
 - `./tools/generate_targets.sh`
-  after the QML widget fragment split.
+  after the QML widget, runtime, and command block fragment splits.
 - `python3 -m unittest tests.test_pipeline`
   after the final artifact refresh.
 - `git diff --check`
-  after the QML widget source split and docs update.
+  after the QML source splits and docs update.
 - Direct generated-output equivalence check confirmed `web/app.js`, `web/styles.css`,
   `web/index.html`, and `qml/Main.qml` still match the committed snapshots after the
   split.
@@ -206,7 +231,7 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   maintained CI-level UI automation rather than leaving them as ad hoc CDP scripts.
 - Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
   into maintained generated Web UI automation.
-- Continue the generator decomposition plan on the QML side first:
-  `client/qml_client/runtime_shell.py`, then narrower QML runtime/domain fragments,
-  and finally `client/qml_client/generator.py`. Keep final generated Web/QML file
+- Continue the generator decomposition plan with the remaining large QML runtime
+  fragments first: `program_workspace.py`, `execution.py`, and `transport_ws.py`.
+  Then split the QML generator entrypoint itself. Keep final generated Web/QML file
   layout unchanged until source-level decomposition and interaction coverage are stable.

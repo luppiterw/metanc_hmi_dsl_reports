@@ -24,6 +24,11 @@
   fragments while keeping final `runtime.js` stable.
 - Continue the decomposition by splitting the QML widget emitter source into focused
   fragments while keeping final `Main.qml` stable.
+- Continue the decomposition by splitting the QML runtime store source into ordered
+  fragments while keeping final `RuntimeStore.qml` stable.
+- Continue the decomposition by splitting the QML runtime command dispatcher into
+  ordered command-domain blocks while preserving the single generated `invokeCommand()`
+  entrypoint.
 
 ## Technical Decisions
 
@@ -56,6 +61,10 @@
 - Keep QML widget recursion centralized through the public dispatch entrypoint. Fragment
   modules should own domain emitters, while recursive child rendering is injected as a
   callback to avoid circular imports.
+- Keep QML runtime command decomposition block-based rather than function-based for now.
+  The generated client should still expose one `invokeCommand(path, args)` function so
+  existing command variables, strict forwarding, and local simulator state remain in the
+  same QML scope.
 
 ## Result
 
@@ -113,3 +122,17 @@ dispatch file remains `client/qml_client/widget_emitters.py`, while concrete QML
 layout, and utility emitters live under `client/qml_client/widget_fragments/`. Generator
 tests and a full target rebuild confirmed that this source split does not change the
 generated `Main.qml` semantics.
+
+The QML runtime store was then split using the same source-template pattern.
+`client/qml_client/runtime_shell.py` now stays as a small public builder over ordered
+`runtime_fragments/`, while generated `RuntimeStore.qml` remains byte-stable. The split
+keeps strict/hybrid setup, command invocation, derived-state sync, execution simulation,
+program workspace, logs, transports, and remote-state application in their original
+generated order.
+
+The QML runtime command dispatcher was further decomposed into command-domain blocks.
+`commands.py` now owns the single `invokeCommand()` wrapper and strict forwarding
+prelude, while `command_blocks/` owns UI, position, program, program-directory, CNC,
+JOG, manual-operation, alarm, and diagnostics command branches. The command block order
+is locked by tests so future command changes can stay domain-local without silently
+reordering dispatch behavior.

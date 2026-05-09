@@ -25,7 +25,12 @@ byte-stable，不改变 strict/hybrid、HTTP/WebSocket、logs、program workspac
 随后继续推进 QML generator 源码拆分的第一步：`widget_emitters.py` 仅保留
 兼容 dispatch，具体 Program、Logs、DEBUG、tables、gauges、buttons、
 containers、layout 和 utils emitters 移入 `client/qml_client/widget_fragments/`，
-同时确认最终 `Main.qml` 和 Web 产物没有生成语义变化。
+同时确认最终 `Main.qml` 和 Web 产物没有生成语义变化。随后继续把 QML
+`runtime_shell.py` 拆成有序 `client/qml_client/runtime_fragments/`，并把
+`invokeCommand()` 内部命令分支进一步拆到
+`client/qml_client/runtime_fragments/command_blocks/`。这两步都保持最终
+`RuntimeStore.qml` byte-stable，并通过 generator refactor 测试锁住 fragment
+和 command block 的组装顺序。
 
 目录：
 
@@ -44,11 +49,11 @@ containers、layout 和 utils emitters 移入 `client/qml_client/widget_fragment
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `125`
+- User prompts: `137`
 - Synthetic events: `3`
-- Messages: `1119`
-- User messages: `128`
-- Codex messages: `991`
+- Messages: `1289`
+- User messages: `140`
+- Codex messages: `1149`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

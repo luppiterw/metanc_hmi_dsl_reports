@@ -3,6 +3,7 @@
 Focus:
 
 - MAIN/JOG display cleanup: operation controls stay in the soft panel while the dashboard keeps manual setup and read-only live status.
+- Server simulator FS semantics: completed discrete JOG motion now drops `feed.speed_actual` to zero while preserving target/cmd feed values.
 - Story catalog, data dictionary, status matrix, generated snapshots, report books, and docs portal refreshed.
 
 Session assets:

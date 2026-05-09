@@ -30,3 +30,9 @@ Date: 2026-05-09
 - 所以你的布局这些其实还没做是吗，那我的拖拽编辑一点儿用都没有啊
 - commit + push
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- 有最终产物我看一下吗
+- 比之前好一些，但是现在的layout是不是应该做成list可选，然后你的padding是不是改成上下左右可设置
+- 你做一下
+- 现在的FS的ACTUAL和TARGET是不是有问题，比如我设了一个TARGET值，然后JOG模式移动一个轴，结果停止的时候ACTUAL还是这个TARGET，是你内部的模拟问题吗
+- 你尝试修复一下
+- generate/update report &amp; docs + sync MetaNC + commit + push

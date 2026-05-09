@@ -170,6 +170,27 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
     distance、part count、program end/loop 和 single-block pause 的原生成顺序。
   - 新增 generator refactor 测试，锁住 execution block 顺序和关键 marker
     顺序。
+- 完成 QML WebSocket transport runtime fragment 二级拆分：
+  - `client/qml_client/runtime_fragments/transport_ws.py` 收敛为 33 行兼容
+    assembler。
+  - 新增 `client/qml_client/runtime_fragments/transport_ws_blocks/`，按职责拆出
+    connection/bootstrap、lifecycle、subscription、messages、notices、retry
+    和 dynamic Qt WebSocket source。
+  - 保持 strict/hybrid WebSocket bootstrap、reconnect/fallback、subscription
+    request、`since_revision` replay、operator notice 和 command notice 行为
+    的原生成顺序。
+  - 新增 generator refactor 测试，锁住 transport block 顺序和关键 marker
+    顺序。
+- 完成 QML runtime logs fragment 二级拆分：
+  - `client/qml_client/runtime_fragments/logs.py` 收敛为 41 行兼容
+    assembler。
+  - 新增 `client/qml_client/runtime_fragments/log_blocks/`，按职责拆出
+    clear/export、query/retention args、client buffer/upload、poll/apply 和
+    normalization。
+  - 保留 `LOG_QUERY_QML` 和 `CLIENT_LOGS_QML` 两段 public export，因为
+    `runtime_shell.py` 会把 log query 放在 transport 之前、client log
+    buffer 放在 HTTP/WebSocket transport 之后。
+  - 新增 generator refactor 测试，锁住 log block 顺序和关键 marker 顺序。
 
 ## Validation
 
@@ -213,6 +234,12 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
   after adding Program workspace and execution block order coverage.
 - `./tools/generate_targets.sh`
   after the QML Program workspace and execution block splits.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the QML WebSocket transport and runtime log block splits.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding transport/log block order coverage.
+- `./tools/generate_targets.sh`
+  after the QML WebSocket transport and runtime log block splits.
 - `python3 -m unittest tests.test_docs_portal`
   after the report/docs refresh.
 - `python3 -m unittest tests.test_pipeline`
@@ -268,7 +295,7 @@ server simulator 中 FS Actual/Target 的语义混用，以及 DEBUG natural-que
 - Promote the MDI-editor-focus plus soft-panel AUTO/JOG/MDI mode-switch probe
   into maintained generated Web UI automation.
 - Continue the generator decomposition plan with the remaining QML runtime
-  fragments first: `transport_ws.py`, then `logs.py` and `derived_state.py` if the
-  WebSocket split remains byte-stable. After that, split the QML generator entrypoint
-  itself. Keep final generated Web/QML file layout unchanged until source-level
-  decomposition and interaction coverage are stable.
+  fragments first: `derived_state.py`, then `remote_state.py` if the derived-state
+  split remains byte-stable. After that, split the QML generator entrypoint itself.
+  Keep final generated Web/QML file layout unchanged until source-level decomposition
+  and interaction coverage are stable.

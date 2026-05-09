@@ -34,6 +34,11 @@ containers、layout 和 utils emitters 移入 `client/qml_client/widget_fragment
 `program_workspace.py` 与 `execution.py` 再拆一层，分别落到
 `program_workspace_blocks/` 和 `execution_blocks/`，继续保持最终
 `RuntimeStore.qml`、Web runtime、contract bundle 和快照不发生输出漂移。
+随后继续拆 `transport_ws.py` 与 `logs.py`，分别落到 `transport_ws_blocks/`
+与 `log_blocks/`。其中 `logs.py` 仍保留 `LOG_QUERY_QML` 与
+`CLIENT_LOGS_QML` 两段导出，因为 runtime store 会把 log query 和 client
+log buffer 放在 transport 片段两侧；本轮保持 `RuntimeStore.qml`、Web/QML
+产物、contract bundle 与快照不发生输出漂移。
 
 目录：
 
@@ -52,11 +57,11 @@ containers、layout 和 utils emitters 移入 `client/qml_client/widget_fragment
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `141`
+- User prompts: `146`
 - Synthetic events: `3`
-- Messages: `1335`
-- User messages: `144`
-- Codex messages: `1191`
+- Messages: `1379`
+- User messages: `149`
+- Codex messages: `1230`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

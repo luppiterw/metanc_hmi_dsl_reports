@@ -32,6 +32,9 @@
 - Continue the decomposition by splitting QML Program workspace and execution runtime
   fragments into second-level block packages while preserving generated
   `RuntimeStore.qml`.
+- Continue the decomposition by splitting QML WebSocket transport and runtime logging
+  fragments into second-level block packages while preserving generated
+  `RuntimeStore.qml` and the original log fragment placement.
 
 ## Technical Decisions
 
@@ -68,6 +71,10 @@
   The generated client should still expose one `invokeCommand(path, args)` function so
   existing command variables, strict forwarding, and local simulator state remain in the
   same QML scope.
+- Keep QML runtime log query and client-log buffer exports separate even though their
+  implementation now comes from smaller blocks. `LOG_QUERY_QML` is assembled before the
+  transport fragments, while `CLIENT_LOGS_QML` is assembled after HTTP/WebSocket
+  transport, so merging them would silently reorder generated runtime behavior.
 
 ## Result
 
@@ -147,3 +154,11 @@ blocks for execution ticks, motion stepping, MDI start, line parsing, cursor pre
 block application, modal words, completion, timers, and line helpers. The generated
 `RuntimeStore.qml`, Web runtime, QML main file, contract bundle, and runtime-store
 snapshot stayed byte-stable.
+
+The QML WebSocket transport and runtime logging fragments were then split one level
+deeper. `transport_ws.py` now assembles blocks for connection/bootstrap, lifecycle,
+subscription, message handling, notices, retry, and the dynamic Qt WebSocket source.
+`logs.py` now assembles log clear/export, query, client buffering/upload, polling/apply,
+and normalization blocks while preserving the old two-export runtime placement. The
+generated `RuntimeStore.qml`, Web/QML outputs, contract bundle, and QML runtime-store
+snapshot remained byte-stable.

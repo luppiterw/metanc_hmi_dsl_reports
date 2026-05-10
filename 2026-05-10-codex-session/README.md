@@ -41,6 +41,10 @@ generated outputs 继续无 diff。
 editor history、Cut/Copy/Paste enablement、execution preflight 和 local Program
 actions。`generator.py` 进一步收敛到 2131 行，tracked generated outputs
 继续无 diff。
+随后继续拆出 Settings panel helper：新增 `main_qml_parts/settings.py`，
+承接 settings category、panel open/apply/reset/test、server URL normalization、
+server mode normalization、boolean preference parsing 和 theme option guard。
+`generator.py` 进一步收敛到 2031 行，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -59,11 +63,11 @@ actions。`generator.py` 进一步收敛到 2131 行，tracked generated outputs
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `10`
+- User prompts: `11`
 - Synthetic events: `0`
-- Messages: `241`
-- User messages: `10`
-- Codex messages: `231`
+- Messages: `261`
+- User messages: `11`
+- Codex messages: `250`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

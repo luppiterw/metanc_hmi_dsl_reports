@@ -8,6 +8,7 @@ Focus:
 - Binding/reference helper extraction into `main_qml_parts/bindings.py`
 - Program search/editor action helper extraction into
   `main_qml_parts/program_search.py`
+- Settings panel helper extraction into `main_qml_parts/settings.py`
 
 Session assets:
 

@@ -33,5 +33,8 @@ flowchart TD
     AC --> AD[Move Program search editor action helpers]
     AD --> AE[Regenerate outputs and confirm Main.qml has no diff]
     AE --> AF[Refresh docs reports sync commit push]
-    AF --> AG[Plan command guard settings shell helper split]
+    AF --> AG[Move Settings panel helpers]
+    AG --> AH[Regenerate outputs and confirm Main.qml has no diff]
+    AH --> AI[Refresh docs reports sync commit push]
+    AI --> AJ[Plan shell state and command guard helper split]
 ```

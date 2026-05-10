@@ -6,6 +6,7 @@ flowchart LR
     MainParts --> Context[context.py]
     MainParts --> Masthead[masthead.py]
     MainParts --> Combo[combo_box.py]
+    MainParts --> Settings[settings.py]
     MainParts --> Bindings[bindings.py]
     MainParts --> Dialogs[dialogs.py]
     MainParts --> LogExport[log_export.py]
@@ -44,6 +45,7 @@ flowchart LR
     Context --> MainQml[Generated Main.qml]
     Masthead --> MainQml
     Combo --> MainQml
+    Settings --> MainQml
     Bindings --> MainQml
     Dialogs --> MainQml
     LogExport --> MainQml
@@ -68,6 +70,11 @@ flowchart LR
     Bindings --> BindingFormat[binding value formatting]
     Bindings --> RefPaths[state and interface reference paths]
     Bindings --> ActionArgs[recursive action argument resolving]
+
+    Settings --> SettingsCategories[settings categories]
+    Settings --> SettingsLifecycle[panel open close apply reset test]
+    Settings --> SettingsNormalize[server URL mode and boolean normalization]
+    Settings --> ThemeGuard[theme option guard]
 
     ProgramSearch --> SearchReplace[Search and replace panel helpers]
     ProgramSearch --> GotoHistory[Goto and editor history helpers]

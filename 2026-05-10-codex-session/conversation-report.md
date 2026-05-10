@@ -21,6 +21,8 @@
   sync MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the Program search/editor action helper slice, then refresh
   reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the Settings panel helper slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -56,6 +58,10 @@
   editor history, clipboard action state, execution preflight, and local Program
   action helpers can move out of `generator.py`, but generated `Main.qml` must
   stay byte-stable.
+- Keep the Settings panel slice source-only: panel category, lifecycle,
+  apply/reset/test, server URL/mode normalization, boolean preference parsing,
+  and theme option guard helpers can move out of `generator.py`, but generated
+  `Main.qml` must stay byte-stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -105,3 +111,8 @@ The Program search/editor action helper slice is now in place. Search/Replace,
 Goto, editor history, clipboard action state, execution preflight, and local
 Program actions moved into `main_qml_parts/program_search.py`. Generated
 `Main.qml` and the tracked final outputs remained byte-stable.
+
+The Settings panel helper slice is now in place. Settings category, panel
+lifecycle, apply/reset/test, server URL/mode normalization, boolean preference
+parsing, and theme option guard helpers moved into `main_qml_parts/settings.py`.
+Generated `Main.qml` and the tracked final outputs remained byte-stable.

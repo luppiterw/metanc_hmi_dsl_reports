@@ -45,6 +45,10 @@ actions。`generator.py` 进一步收敛到 2131 行，tracked generated outputs
 承接 settings category、panel open/apply/reset/test、server URL normalization、
 server mode normalization、boolean preference parsing 和 theme option guard。
 `generator.py` 进一步收敛到 2031 行，tracked generated outputs 继续无 diff。
+随后继续拆出 shell state helper：新增 `main_qml_parts/shell_state.py`，
+承接 page existence、active/content page state、page metadata、window screen
+constraint、footer model selection 和 footer return icon glyph。`generator.py`
+进一步收敛到 1986 行，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -63,11 +67,11 @@ server mode normalization、boolean preference parsing 和 theme option guard。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `11`
+- User prompts: `12`
 - Synthetic events: `0`
-- Messages: `261`
-- User messages: `11`
-- Codex messages: `250`
+- Messages: `283`
+- User messages: `12`
+- Codex messages: `271`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

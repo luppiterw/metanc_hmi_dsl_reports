@@ -23,6 +23,8 @@
   reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the Settings panel helper slice, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the shell state helper slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -62,6 +64,10 @@
   apply/reset/test, server URL/mode normalization, boolean preference parsing,
   and theme option guard helpers can move out of `generator.py`, but generated
   `Main.qml` must stay byte-stable.
+- Keep the shell state slice source-only: page existence, active/content page
+  state, page metadata, window screen constraint, footer model selection, and
+  return icon helper can move out of `generator.py`, but generated `Main.qml`
+  must stay byte-stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -116,3 +122,8 @@ The Settings panel helper slice is now in place. Settings category, panel
 lifecycle, apply/reset/test, server URL/mode normalization, boolean preference
 parsing, and theme option guard helpers moved into `main_qml_parts/settings.py`.
 Generated `Main.qml` and the tracked final outputs remained byte-stable.
+
+The shell state helper slice is now in place. Page existence, active/content
+page state, page metadata, window screen constraint, footer model selection, and
+return icon glyph helpers moved into `main_qml_parts/shell_state.py`. Generated
+`Main.qml` and the tracked final outputs remained byte-stable.

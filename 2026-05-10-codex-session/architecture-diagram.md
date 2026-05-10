@@ -6,6 +6,7 @@ flowchart LR
     MainParts --> Context[context.py]
     MainParts --> Masthead[masthead.py]
     MainParts --> Combo[combo_box.py]
+    MainParts --> ShellState[shell_state.py]
     MainParts --> Settings[settings.py]
     MainParts --> Bindings[bindings.py]
     MainParts --> Dialogs[dialogs.py]
@@ -45,6 +46,7 @@ flowchart LR
     Context --> MainQml[Generated Main.qml]
     Masthead --> MainQml
     Combo --> MainQml
+    ShellState --> MainQml
     Settings --> MainQml
     Bindings --> MainQml
     Dialogs --> MainQml
@@ -70,6 +72,11 @@ flowchart LR
     Bindings --> BindingFormat[binding value formatting]
     Bindings --> RefPaths[state and interface reference paths]
     Bindings --> ActionArgs[recursive action argument resolving]
+
+    ShellState --> PageState[page existence and active content page]
+    ShellState --> PageMeta[page metadata]
+    ShellState --> WindowFit[window screen constraint]
+    ShellState --> FooterState[footer model and return icon]
 
     Settings --> SettingsCategories[settings categories]
     Settings --> SettingsLifecycle[panel open close apply reset test]

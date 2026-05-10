@@ -103,7 +103,7 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
   522 行源码 helper，`settings.py` 承接 119 行源码 helper，`shell_state.py`
   承接 73 行源码 helper，`command_actions.py` 承接 231 行源码 helper。
 - `client/qml_client/generator.py` 从 shell state helper split 后的 1986 行
-  继续降到 1769 行。
+  继续降到 1767 行。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -212,7 +212,7 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 1769 lines after the command action/guard helper split and has a clear
+  file is 1767 lines after the command action/guard helper split and has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
 - Split the next cohesive QML `Main.qml` groups around small runtime value/name
   helpers first, then the remaining page/footer/template body assembly.

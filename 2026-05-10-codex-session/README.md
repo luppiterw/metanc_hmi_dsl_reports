@@ -52,7 +52,7 @@ constraint、footer model selection 和 footer return icon glyph。`generator.py
 随后继续拆出 command action/guard helper：新增
 `main_qml_parts/command_actions.py`，承接 `writeLocalNotice()`、action
 dispatch、local log action dispatch，以及 `executeCommandWithGuards()` 中的
-Program/Program Dir/log guard 逻辑。`generator.py` 进一步收敛到 1769 行，
+Program/Program Dir/log guard 逻辑。`generator.py` 进一步收敛到 1767 行，
 `command_actions.py` 承接 231 行源码 helper；生成器测试和 pipeline snapshot
 验证确认最终 Web/QML/server/distribution 输出继续保持 byte-stable。
 

@@ -54,5 +54,8 @@ flowchart TD
     AX --> AY[Move data-row helpers]
     AY --> AZ[Regenerate outputs and confirm Main.qml has no diff]
     AZ --> BA[Refresh docs reports sync commit push]
-    BA --> BB[Plan table-edit helper split]
+    BA --> BB[Move table-edit helpers]
+    BB --> BC[Regenerate outputs and confirm Main.qml has no diff]
+    BC --> BD[Refresh docs reports sync commit push]
+    BD --> BE[Plan log option helper split]
 ```

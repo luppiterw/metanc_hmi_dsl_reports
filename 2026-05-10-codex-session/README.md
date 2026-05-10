@@ -73,6 +73,10 @@ generated outputs 继续无 diff。
 承接 binding value/text/rows 解析，以及 Program browser rows 的 filter、
 sort 和 parent-row 注入逻辑。`generator.py` 进一步收敛到 1493 行，
 tracked generated outputs 继续无 diff。
+随后继续拆出 table-edit helpers：新增 `main_qml_parts/table_edit.py`，
+承接 data table numeric/text formatting、row selection、row write routing、
+edit command config 和 prompt-driven edit execution。`generator.py` 进一步
+收敛到 1372 行，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -91,11 +95,11 @@ tracked generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `17`
+- User prompts: `18`
 - Synthetic events: `1`
-- Messages: `392`
-- User messages: `18`
-- Codex messages: `374`
+- Messages: `409`
+- User messages: `19`
+- Codex messages: `390`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

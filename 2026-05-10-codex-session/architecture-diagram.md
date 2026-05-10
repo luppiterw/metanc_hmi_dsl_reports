@@ -20,6 +20,7 @@ flowchart LR
     MainParts --> VisualModels[visual_models.py]
     MainParts --> NodeState[node_state.py]
     MainParts --> DataRows[data_rows.py]
+    MainParts --> TableEdit[table_edit.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -66,6 +67,7 @@ flowchart LR
     VisualModels --> MainQml
     NodeState --> MainQml
     DataRows --> MainQml
+    TableEdit --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -125,6 +127,11 @@ flowchart LR
     DataRows --> BrowserFilter[Program browser filter]
     DataRows --> BrowserSort[Program browser sort]
     DataRows --> ParentRow[parent directory row]
+
+    TableEdit --> TableText[table numeric and text formatting]
+    TableEdit --> RowSelection[row selection and writes]
+    TableEdit --> EditConfig[table edit command config]
+    TableEdit --> EditPrompt[prompt-driven edit execution]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

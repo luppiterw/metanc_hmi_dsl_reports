@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `392`
-- User prompts: `17`
+- Messages: `409`
+- User prompts: `18`
 - Synthetic events: `1`
 
 <a id="turn-1"></a>
@@ -3489,6 +3489,172 @@ data-row 模块已经拆出。现在先跑编译和 generator-refactor 测试，
 
 ```
 维护文档和 report 源已更新。现在重新导出今日 user history/完整对话，并重建 report book 和 docs_html。
+```
+
+### Codex Response 10 / commentary
+`2026-05-10 17:36:17 +0800`
+
+```
+文档和报告 HTML 都重建完成。现在跑 docs portal 测试与 diff check，然后开始按 submodule、主仓库、MetaNC 的顺序提交推送。
+```
+
+### Codex Response 11 / commentary
+`2026-05-10 17:37:06 +0800`
+
+```
+docs portal 测试也通过。现在先提交并推送 reports submodule，然后提交主仓库。
+```
+
+### Codex Response 12 / commentary
+`2026-05-10 17:38:04 +0800`
+
+```
+reports submodule 已推送。现在检查主仓库 diff，然后提交并推送 `metanc_hmi_dsl`。
+```
+
+### Codex Response 13 / commentary
+`2026-05-10 17:39:05 +0800`
+
+```
+`metanc_hmi_dsl` 已提交推送。现在同步到 MetaNC，验证后提交推送下游。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 17:40:23 +0800`
+
+```
+MetaNC 侧验证通过。现在提交并推送下游。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 17:41:15 +0800`
+
+```
+MetaNC 已提交并推送。最后确认三边 clean，并查看剩余 table-edit helper 的边界，给下一步计划。
+```
+
+### Codex Response 16 / final_answer
+`2026-05-10 17:41:57 +0800`
+
+```
+已完成这一轮。
+
+本轮拆分了 QML `Main.qml` 的 data-row helpers：新增 `client/qml_client/main_qml_parts/data_rows.py`，迁出 `bindingValue`、`bindingText`、`bindingRows`、`programBrowserRows`。`generator.py` 从 1564 行降到 1493 行，tracked generated outputs 无 diff。
+
+已验证：
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_pipeline`
+- `python3 -m unittest tests.test_docs_portal`
+- `git diff --check`
+- MetaNC 侧 compileall、generator-refactor、docs portal、diff check 都通过
+
+已提交并 push：
+- reports: `3d61cbb docs: refresh 2026-05-10 QML data row report`
+- metanc_hmi_dsl: `91258d8 refactor: split QML data row helpers`
+- MetaNC: `3babe5e refactor: sync HMI QML data row helpers`
+
+三个工作区当前都是 clean 且与远程分支对齐。
+
+下一步计划：拆 table-edit helper 组
+
+1. 新增 `client/qml_client/main_qml_parts/table_edit.py`
+2. 迁出以下连续函数：
+   - `numericBindingValue(binding)`
+   - `tableCellText(row, key)`
+   - `tableRowSelected(path, value, useLocalState)`
+   - `selectDataTableRow(propertyPath, statePath, value)`
+   - `dataTableEditConfig(nodeId, row, columnKey)`
+   - `openDataTableEditor(nodeId, title, row, columnKey, columnLabel)`
+3. `generator.py` 只保留插入点：`table_edit_helpers = TABLE_EDIT_HELPERS_QML`
+4. 补 `QML_MAIN_PART_NAMES` 和 marker 顺序测试
+5. 重新生成并确认 `generated/qml/Main.qml`、Web、contract、snapshot 继续无 diff
+
+这组完成后，剩余较适合拆的是 Logs UI option/filter helpers，之后再处理 page/footer/template body assembly。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:347-436|note=[reports submodule docs portal and MetaNC sync workflow]
+</citation_entries>
+<rollout_ids>
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+019dbe69-e917-7f20-ad5d-dd9262503c77
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-18"></a>
+## Turn 18
+
+### User
+`2026-05-10 17:58:45 +0800`
+
+```
+做一下下一步计划，然后开始做，然后generate/update report & docs + sync MetaNC + commit + push，然后给我看下一步计划
+```
+
+### Codex Response 1 / commentary
+`2026-05-10 17:59:13 +0800`
+
+```
+我继续按上一轮计划做 table-edit helper 拆分：先迁出表格数值格式化、选中状态、行选择写入和单元格编辑弹窗配置这组函数，目标仍然是 source-only，生成出的 Web/QML/contract 不发生行为变化。
+```
+
+### Codex Response 2 / commentary
+`2026-05-10 17:59:42 +0800`
+
+```
+三个工作区起点干净。table-edit 这组函数是 `data_row_helpers` 后面的连续块，我先取完整函数边界和现有测试位置，再做小范围迁移。
+```
+
+### Codex Response 3 / commentary
+`2026-05-10 17:59:55 +0800`
+
+```
+迁出边界已经清楚：`numericBindingValue` 到 `openDataTableEditor` 是连续块，后面才进入 runtime log option helpers。我现在新增 `table_edit.py`，并在测试里锁住这组函数顺序。
+```
+
+### Codex Response 4 / commentary
+`2026-05-10 18:01:03 +0800`
+
+```
+table-edit 模块已迁出。现在跑源级编译和 refactor 测试，确认插入点和 helper 顺序没有问题。
+```
+
+### Codex Response 5 / commentary
+`2026-05-10 18:01:36 +0800`
+
+```
+源级测试通过。接下来重新生成最终产物并检查 tracked generated diff，重点看 `Main.qml` 是否仍 byte-stable。
+```
+
+### Codex Response 6 / commentary
+`2026-05-10 18:02:47 +0800`
+
+```
+生成产物检查通过，tracked generated outputs 仍然无 diff；`generator.py` 已降到 1372 行，新 `table_edit.py` 是 130 行。现在跑 pipeline 和 diff check。
+```
+
+### Codex Response 7 / commentary
+`2026-05-10 18:03:40 +0800`
+
+```
+pipeline 与 diff check 都通过。现在更新 README/CHANGELOG/status matrix/中英文 handoff 和今天 report，记录 table-edit 拆分与下一步 Logs option/filter helper。
+```
+
+### Codex Response 8 / commentary
+`2026-05-10 18:03:49 +0800`
+
+```
+我会把 `main_qml_parts` 的说明补上 `table_edit.py`，同时把下一步计划从 table-edit 推进到 Logs option/filter helper。接着再导出会话、构建报告和文档。
+```
+
+### Codex Response 9 / commentary
+`2026-05-10 18:05:58 +0800`
+
+```
+文档源已更新。现在导出今天会话并重建 report book 与 docs_html。
 ```
 
 ## Session Events

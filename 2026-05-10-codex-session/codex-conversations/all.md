@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `213`
-- User prompts: `9`
+- Messages: `241`
+- User prompts: `10`
 - Synthetic events: `0`
 
 <a id="turn-1"></a>
@@ -1859,5 +1859,251 @@ binding helper 注册和 marker 测试已经补好。现在跑编译、generator
 
 ```
 文档和 report 已补上 `bindings.py`。现在我刷新 session 索引 focus、导出 user history/full conversations，并构建 docs。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 10:03:24 +0800`
+
+```
+会话导出已刷新。接下来构建 report 根书、当天 report 书和 docs_html，再跑 docs portal 测试。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 10:03:40 +0800`
+
+```
+docs_html 和 docs portal 测试在跑；我等它们结束后做最终 diff/status 检查并提交。
+```
+
+### Codex Response 16 / commentary
+`2026-05-10 10:03:57 +0800`
+
+```
+文档构建和 portal 测试通过。现在做最终检查，随后按顺序提交 reports 子模块、主仓库，再同步 MetaNC。
+```
+
+### Codex Response 17 / commentary
+`2026-05-10 10:04:13 +0800`
+
+```
+最终检查通过：没有 whitespace 问题，tracked 生成物无 diff。现在先提交并推送 reports 子模块。
+```
+
+### Codex Response 18 / commentary
+`2026-05-10 10:05:29 +0800`
+
+```
+reports 子模块已推送。现在提交并推送 `metanc_hmi_dsl` 主仓库。
+```
+
+### Codex Response 19 / commentary
+`2026-05-10 10:06:24 +0800`
+
+```
+`metanc_hmi_dsl` 已推送。接下来同步到 MetaNC 的 `nrt/hmi`，验证后提交并推送 `feat/hmi`。
+```
+
+### Codex Response 20 / commentary
+`2026-05-10 10:07:02 +0800`
+
+```
+MetaNC 同步范围正常。现在在下游 `nrt/hmi` 跑 compileall、generator-refactor 和 docs portal 测试。
+```
+
+### Codex Response 21 / commentary
+`2026-05-10 10:07:26 +0800`
+
+```
+MetaNC 验证通过。现在提交并推送 `feat/hmi`，之后做三边 clean 状态确认。
+```
+
+### Codex Response 22 / commentary
+`2026-05-10 10:08:34 +0800`
+
+```
+MetaNC 已推送。最后我确认三边状态和 commit id，然后给下一步拆分计划。
+```
+
+### Codex Response 23 / final_answer
+`2026-05-10 10:09:08 +0800`
+
+```
+已完成这一轮。
+
+本次做了 QML `Main.qml` 的 binding/reference helper 拆分：新增 `client/qml_client/main_qml_parts/bindings.py`，迁出了 binding value formatting、unit display、state/interface ref path resolving、command path resolving 和 recursive action args resolving。`generator.py` 从 2731 行降到 2644 行，生成后的 `Main.qml` / Web / RuntimeStore / contract bundle 仍保持无 diff。
+
+已验证：
+- `./tools/generate_targets.sh`
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `python3 -m unittest tests.test_pipeline`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-10-codex-session`
+- `./tools/build_docs_html.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `git diff --check`
+- MetaNC 侧也跑了 compileall、`tests.test_generator_refactor`、`tests.test_docs_portal`、`git diff --check -- nrt/hmi`
+
+已提交并 push：
+- reports submodule: `e037b2d docs: refresh 2026-05-10 QML binding helper report`
+- metanc_hmi_dsl: `ec71c4b refactor: split QML binding helpers`
+- MetaNC `feat/hmi`: `d7fc92f refactor: sync HMI QML binding helpers`
+
+三个工作区当前都是 clean。
+
+**下一步详细计划**
+
+建议继续拆 QML `Main.qml` 里的 Program search/editor action helper 组。
+
+1. 新增 `client/qml_client/main_qml_parts/program_search.py`
+   - 迁出 `programSearchQuery`
+   - 迁出 search options/state/match helpers
+   - 迁出 `openProgramSearchPanel` / shortcut handler
+   - 迁出 find next/prev、replace one/all 这类 client-local search/replace action helpers
+
+2. 保持 source-only：
+   - `generator.py` 只增加 `program_search_helpers = PROGRAM_SEARCH_HELPERS_QML`
+   - 模板中用 `{program_search_helpers}` 替换原连续函数块
+   - 不改 generated QML 文件结构
+
+3. 风险点：
+   - 这组 helper 更大，和 active editor、resource write、notice、dialog helper 有交叉调用。
+   - 先只整体迁出，不拆内部二级文件，避免边界过细造成调用顺序问题。
+
+4. 验证：
+   - `generated/qml/Main.qml` 必须无 diff
+   - 跑 compileall、generator_refactor、pipeline、generate_targets、docs portal
+   - 更新 README / CHANGELOG / status matrix / code map / handoff / 中文 overlay / report
+
+这一步完成后，`generator.py` 里剩下最值得拆的是 Program file/workspace action helpers 或 shell settings helpers。
+```
+
+<a id="turn-10"></a>
+## Turn 10
+
+### User
+`2026-05-10 10:09:48 +0800`
+
+```
+做一下，然后generate/update report & docs + sync MetaNC + commit + push，然后做下一步详细计划
+```
+
+### Codex Response 1 / commentary
+`2026-05-10 10:10:06 +0800`
+
+```
+我继续按上一轮计划拆 QML `Main.qml` 的 Program search/editor action helper。先确认三边状态和这组 helper 的连续边界，再迁出到 `main_qml_parts/program_search.py`，目标仍是生成物 byte-stable。
+```
+
+### Codex Response 2 / commentary
+`2026-05-10 10:10:24 +0800`
+
+```
+三个工作区都是干净的。我看到 `openProgramSearchFromShortcut` 在模板前部，不和主体 Program search helper 连续；这次先拆主体连续的 search/replace/action helper，保留 shortcut 小入口，避免跨越大量 UI 模板。
+```
+
+### Codex Response 3 / commentary
+`2026-05-10 10:11:24 +0800`
+
+```
+我会把 `openProgramEditorPage` 到 `triggerLocalProgramAction` 这一段整体迁出；`triggerAction` 自身同时分发 log、本地状态写和 server command，边界更像通用 action dispatcher，先保留在 `generator.py`。这样这轮只移动 Program editor/search/local action helper，不动全局 action 分发语义。
+```
+
+### Codex Response 4 / commentary
+`2026-05-10 10:12:49 +0800`
+
+```
+我继续按上一轮拆分计划处理：先把 QML Main 里的 Program 搜索/编辑动作辅助函数拆成独立 part，确保生成结果不漂移，再更新报告、文档和两边仓库。
+```
+
+### Codex Response 5 / commentary
+`2026-05-10 10:13:09 +0800`
+
+```
+仓库当前是干净的。我会做一次机械拆分：从已生成的 `Main.qml` 抽取目标函数块，放进新的 `program_search.py`，然后把 generator 模板中的原地大段代码替换为 helper 占位。
+```
+
+### Codex Response 6 / commentary
+`2026-05-10 10:14:21 +0800`
+
+```
+我现在开始改文件。这个块比较大，用脚本做一次可复验的机械迁移，然后再用测试和生成 diff 验证没有改变最终 QML 行为。
+```
+
+### Codex Response 7 / commentary
+`2026-05-10 10:14:51 +0800`
+
+```
+模板替换完成了，当前 generator 只保留占位和调度入口；新 helper 文件已经生成。接下来我会补上 part 注册和 refactor contract 测试，再跑生成一致性验证。
+```
+
+### Codex Response 8 / commentary
+`2026-05-10 10:15:33 +0800`
+
+```
+编译检查通过，`generator.py` 已降到 2131 行，新 `program_search.py` 是 522 行。下一步跑单测和全量生成，重点确认 `generated/` 最终产物没有非预期变化。
+```
+
+### Codex Response 9 / commentary
+`2026-05-10 10:15:52 +0800`
+
+```
+`tests.test_generator_refactor` 通过了。pipeline 测试正在编译临时 QML 目标，我等它完成后再判断是否需要调整生成文本边界。
+```
+
+### Codex Response 10 / commentary
+`2026-05-10 10:16:06 +0800`
+
+```
+pipeline 测试通过了，说明生成出来的 QML 可以继续编译。现在我会重新生成最终产物并检查 tracked generated diff，确保这次是源码拆分而不是产物变化。
+```
+
+### Codex Response 11 / commentary
+`2026-05-10 10:16:49 +0800`
+
+```
+全量生成正在进行，QML 已完成，server 这边也用本机 vcpkg 命中缓存，没有再遇到 zlib 下载失败。等 build 完我会立即检查 generated diff。
+```
+
+### Codex Response 12 / commentary
+`2026-05-10 10:17:14 +0800`
+
+```
+生成后的 tracked `generated/` 没有任何 diff，这次拆分没有改变最终 Web/QML/server 产物内容。接下来更新说明文档和今天的报告，把这次拆分和下一步计划写进去。
+```
+
+### Codex Response 13 / commentary
+`2026-05-10 10:17:30 +0800`
+
+```
+上一条 `rg` 把 report 生成的 HTML/minified 文件也扫出来了，输出很吵；我会改用针对 Markdown 源文件的精确读取，避免碰生成 HTML。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 10:18:06 +0800`
+
+```
+现在进入文档/report 阶段。我会只更新源 Markdown，不手改生成出来的 HTML；HTML 后面通过 export/build 重新生成。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 10:18:18 +0800`
+
+```
+我会把“Program search/editor action helpers 已拆出”同步到 README、CHANGELOG、状态矩阵和 handoff/code map，中英文一起改，避免文档还指向上一轮的待办。
+```
+
+### Codex Response 16 / commentary
+`2026-05-10 10:19:37 +0800`
+
+```
+维护文档已经更新到“Program search/editor action helper 已拆出”的状态。现在我更新 2026-05-10 report 源文件，并把后续计划从这块切到下一个可拆范围。
+```
+
+### Codex Response 17 / commentary
+`2026-05-10 10:20:19 +0800`
+
+```
+报告源文件已经追加了本轮内容。下一步刷新 Codex history 导出、重建 report books 和 docs_html，然后跑 docs portal 测试。
 ```
 

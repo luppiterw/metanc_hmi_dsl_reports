@@ -19,6 +19,8 @@
   sync MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the binding/reference helper slice, then refresh reports/docs,
   sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the Program search/editor action helper slice, then refresh
+  reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -50,6 +52,10 @@
   local-state path extraction, interface/state ref resolving, and recursive
   action argument resolving can move out of `generator.py`, but generated
   `Main.qml` must stay byte-stable.
+- Keep the Program search/editor action slice source-only: Search/Replace, Goto,
+  editor history, clipboard action state, execution preflight, and local Program
+  action helpers can move out of `generator.py`, but generated `Main.qml` must
+  stay byte-stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -94,3 +100,8 @@ The binding/reference helper slice is now in place. Binding value formatting,
 unit normalization, state/interface path resolving, command path resolving, and
 recursive action argument resolving moved into `main_qml_parts/bindings.py`.
 Generated `Main.qml` and the tracked final outputs remained byte-stable.
+
+The Program search/editor action helper slice is now in place. Search/Replace,
+Goto, editor history, clipboard action state, execution preflight, and local
+Program actions moved into `main_qml_parts/program_search.py`. Generated
+`Main.qml` and the tracked final outputs remained byte-stable.

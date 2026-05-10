@@ -10,6 +10,7 @@ flowchart LR
     MainParts --> Dialogs[dialogs.py]
     MainParts --> LogExport[log_export.py]
     MainParts --> ProgramEditor[program_editor.py]
+    MainParts --> ProgramSearch[program_search.py]
     MainParts --> DebugQuery[debug_query.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
@@ -47,6 +48,7 @@ flowchart LR
     Dialogs --> MainQml
     LogExport --> MainQml
     ProgramEditor --> MainQml
+    ProgramSearch --> MainQml
     DebugQuery --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
@@ -66,4 +68,10 @@ flowchart LR
     Bindings --> BindingFormat[binding value formatting]
     Bindings --> RefPaths[state and interface reference paths]
     Bindings --> ActionArgs[recursive action argument resolving]
+
+    ProgramSearch --> SearchReplace[Search and replace panel helpers]
+    ProgramSearch --> GotoHistory[Goto and editor history helpers]
+    ProgramSearch --> ClipboardState[Cut copy paste action state]
+    ProgramSearch --> Preflight[Program execution preflight]
+    ProgramSearch --> LocalProgramActions[local Program action dispatch]
 ```

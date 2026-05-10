@@ -36,6 +36,11 @@ shorthand、row materialization、metadata 和 value formatting helper。
 binding value formatting、unit display、state/interface ref path resolving 和
 action argument resolving。`generator.py` 进一步收敛到 2644 行，tracked
 generated outputs 继续无 diff。
+随后继续拆出 Program search/editor action helper：新增
+`main_qml_parts/program_search.py`，承接 Program Search/Replace、Goto、
+editor history、Cut/Copy/Paste enablement、execution preflight 和 local Program
+actions。`generator.py` 进一步收敛到 2131 行，tracked generated outputs
+继续无 diff。
 
 目录：
 
@@ -54,11 +59,11 @@ generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `9`
+- User prompts: `10`
 - Synthetic events: `0`
-- Messages: `213`
-- User messages: `9`
-- Codex messages: `204`
+- Messages: `241`
+- User messages: `10`
+- Codex messages: `231`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

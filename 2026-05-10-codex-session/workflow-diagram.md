@@ -30,5 +30,8 @@ flowchart TD
     Z --> AA[Fix insertion newline and rerun generator pipeline tests]
     AA --> AB[Move binding reference and action argument helpers]
     AB --> AC[Regenerate outputs docs reports sync commit push]
-    AC --> AD[Plan Program search editor action helper split]
+    AC --> AD[Move Program search editor action helpers]
+    AD --> AE[Regenerate outputs and confirm Main.qml has no diff]
+    AE --> AF[Refresh docs reports sync commit push]
+    AF --> AG[Plan command guard settings shell helper split]
 ```

@@ -6,6 +6,8 @@ Focus:
 - Program editor helper extraction into `main_qml_parts/program_editor.py`
 - DEBUG natural-query helper extraction into `main_qml_parts/debug_query.py`
 - Binding/reference helper extraction into `main_qml_parts/bindings.py`
+- Program search/editor action helper extraction into
+  `main_qml_parts/program_search.py`
 
 Session assets:
 

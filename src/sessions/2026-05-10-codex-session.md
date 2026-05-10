@@ -21,6 +21,7 @@ Focus:
 - Page/global auxiliary assembly extraction into `main_qml_parts/page_assembly.py`
 - Footer body assembly extraction into `main_qml_parts/footer_body.py`
 - Overlay body assembly extraction into `main_qml_parts/overlay_body.py`
+- Stage body assembly extraction into `main_qml_parts/stage_body.py`
 
 Session assets:
 

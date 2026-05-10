@@ -45,6 +45,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the overlay body assembly slice, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the stage body assembly slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -124,6 +126,10 @@
 - Keep the overlay body assembly slice source-only: dialog overlay and Settings
   panel overlay QML body assembly can move out of `generator.py`, but generated
   `Main.qml` byte layout and behavior must stay stable.
+- Keep the stage body assembly slice source-only: main canvas, stage frame,
+  operations overlay, overlay insertion, and clipboard proxy body assembly can
+  move out of `generator.py`, but generated `Main.qml` byte layout and behavior
+  must stay stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -240,3 +246,8 @@ panel overlay body assembly moved into `main_qml_parts/overlay_body.py`, while
 `generator.py` only passes the existing Settings ComboBox style snippets into
 that builder. Generated `Main.qml` and the tracked final outputs remained
 byte-stable.
+
+The stage body assembly slice is now in place. Main canvas, stage frame,
+operations overlay, overlay insertion, and clipboard proxy body assembly moved
+into `main_qml_parts/stage_body.py`. Generated `Main.qml` and the tracked final
+outputs remained byte-stable.

@@ -72,4 +72,8 @@ flowchart TD
     BP --> BQ[Regenerate outputs and confirm Main.qml has no diff]
     BQ --> BR[Refresh docs reports sync commit push]
     BR --> BS[Plan shell frame or top-level template body split]
+    BS --> BT[Move main stage body assembly]
+    BT --> BU[Regenerate outputs and confirm Main.qml has no diff]
+    BU --> BV[Refresh docs reports sync commit push]
+    BV --> BW[Plan header shell or top-level template body split]
 ```

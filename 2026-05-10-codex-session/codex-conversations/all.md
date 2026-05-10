@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `494`
-- User prompts: `22`
+- Messages: `511`
+- User prompts: `23`
 - Synthetic events: `1`
 
 <a id="turn-1"></a>
@@ -4444,6 +4444,160 @@ MEMORY.md:347-436|note=[reports submodule docs portal and MetaNC sync workflow]
 
 ```
 报告源已补上本轮第十八片。现在刷新 user history 和完整会话导出，然后重建 report book 与 docs_html。
+```
+
+### Codex Response 12 / commentary
+`2026-05-10 20:31:16 +0800`
+
+```
+report/docs 已刷新，`docs_html` 也已重新生成。现在跑 docs portal 回归和空白检查，之后进入提交与 MetaNC 同步。
+```
+
+### Codex Response 13 / commentary
+`2026-05-10 20:32:30 +0800`
+
+```
+所有验证都过了，变更范围符合预期：源码是 overlay body 拆分，report 子模块是今天会话更新。现在按顺序提交并推送 report 子模块，然后提交主仓库。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 20:34:18 +0800`
+
+```
+metanc_hmi_dsl 和 reports 已提交并推送。现在同步到 MetaNC，之后在 `nrt/hmi` 范围内跑同一组轻量验证，再提交 push MetaNC。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 20:35:35 +0800`
+
+```
+MetaNC 同步后验证通过，变更范围只在 `nrt/hmi`。现在提交并 push MetaNC 的同步结果。
+```
+
+### Codex Response 16 / commentary
+`2026-05-10 20:36:08 +0800`
+
+```
+MetaNC 已推送。最后确认三个仓库状态、最近提交和剩余行数，保证没有遗漏的未提交内容。
+```
+
+### Codex Response 17 / final_answer
+`2026-05-10 20:37:04 +0800`
+
+```
+完成了。
+
+本轮做的是 QML overlay body 拆分：新增 `client/qml_client/main_qml_parts/overlay_body.py`，把 dialog overlay 和 Settings panel overlay 的 QML body 从 `generator.py` 移出。`generator.py` 从 905 行降到 665 行，`overlay_body.py` 255 行。生成后的 `Main.qml`、Web/QML/runtime contract 等 tracked generated outputs 仍无 diff。
+
+已更新并生成：
+- `generated/distribution`
+- `docs_html`
+- 2026-05-10 report、完整 Codex conversation export、report mdBook
+- 英文/中文关联文档
+
+已验证：
+- `compileall`
+- `tests.test_generator_refactor`
+- `tests.test_pipeline`
+- `tests.test_docs_portal`
+- `./tools/generate_targets.sh`
+- `mdbook build` reports
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+- MetaNC 同步后也跑了 `compileall`、`tests.test_generator_refactor`、`tests.test_docs_portal`、`git diff --check -- nrt/hmi`
+
+已提交并 push：
+- reports submodule: `5d0e35b docs: refresh 2026-05-10 QML overlay body report`
+- metanc_hmi_dsl: `9584052 refactor: split QML overlay body assembly`
+- MetaNC `feat/hmi`: `de1e906 refactor: sync HMI QML overlay body assembly`
+
+三个仓库当前都干净，并已与远程同步。
+
+下一步计划：
+1. 检查剩余 `generator.py` 665 行，优先定位 top shell frame body：header/masthead/status chip row、main stage frame、operations overlay wrapper、alt window move area。
+2. 如果边界清晰，下一片建议拆 `shell_body.py` 或 `stage_body.py`，只移动 QML body，不改 helper 和行为。
+3. 加 marker-order 测试，例如 `id: statusColumn`、`id: mainCanvas`、`id: stageFrame`、`id: operationsOverlay`、`id: altWindowMoveArea`。
+4. 继续保持 `generated/qml/Main.qml` byte-stable，暂时不拆 generated QML 文件布局。
+```
+
+<a id="turn-23"></a>
+## Turn 23
+
+### User
+`2026-05-10 20:41:41 +0800`
+
+```
+做一下下一步计划，然后开始做，然后generate/update report & docs + sync MetaNC + commit + push，然后给我看下一步计划
+```
+
+### Codex Response 1 / commentary
+`2026-05-10 20:42:00 +0800`
+
+```
+我按上一轮给出的方向继续：先确认当前工作树干净和 `generator.py` 剩余结构，然后选一个边界最清晰的 shell/stage body 片段拆出去，保持 `Main.qml` 生成结果不变。之后照旧重建产物、更新 report/docs、同步 MetaNC 并提交 push。
+```
+
+### Codex Response 2 / commentary
+`2026-05-10 20:42:31 +0800`
+
+```
+两个仓库当前都是干净并已跟远程对齐。`generator.py` 剩 665 行，这一轮我会优先看 header/stage shell body，因为 overlay/footer 已经移出，剩下的大块主要就是应用窗口主体模板。
+```
+
+### Codex Response 3 / commentary
+`2026-05-10 20:42:58 +0800`
+
+```
+我选定的下一片是 `stage_body.py`：它只承接主内容区 `mainCanvas`、`stageFrame`、右侧 operations overlay、已拆出的 overlay body 和隐藏 clipboard proxy。这个边界参数少，只需要 `page_loaders` 和 `overlay_body`，比直接拆整个 header/shell 风险低。
+```
+
+### Codex Response 4 / commentary
+`2026-05-10 20:43:20 +0800`
+
+```
+`stage_body.py` 已新增。现在把 `generator.py` 中主舞台块替换成 `{stage_body}`，并把新模块纳入 main parts 顺序和测试。
+```
+
+### Codex Response 5 / commentary
+`2026-05-10 20:43:54 +0800`
+
+```
+源码替换完成。现在先跑 Python 编译和 generator-refactor 测试；如果 `Main.qml` 有纯拼接换行差异，再只修拼接边界。
+```
+
+### Codex Response 6 / commentary
+`2026-05-10 20:44:58 +0800`
+
+```
+编译、生成器结构测试和 pipeline 测试都过了。现在生成最终产物并检查 tracked generated 文件是否仍然 byte-stable。
+```
+
+### Codex Response 7 / commentary
+`2026-05-10 20:46:34 +0800`
+
+```
+最终产物已生成，tracked generated outputs 仍无 diff。`generator.py` 降到 560 行，新增 `stage_body.py` 117 行。接下来更新文档和今天 report。
+```
+
+### Codex Response 8 / commentary
+`2026-05-10 20:46:40 +0800`
+
+```
+我会把文档中的 main_qml_parts 描述补上 `stage body assembly`，同时把“下一步 shell frame/dialog/template”收窄成“header shell 或 top-level template”。这些只是文档状态同步，不影响产物。
+```
+
+### Codex Response 9 / commentary
+`2026-05-10 20:47:57 +0800`
+
+```
+源码文档已补齐。现在更新今天 report 中的 project/conversation/diagram/session 索引，记录 stage body 这一片和新的下一步方向。
+```
+
+### Codex Response 10 / commentary
+`2026-05-10 20:48:45 +0800`
+
+```
+report 源已更新。现在刷新今天的 user history 和完整会话导出，然后重建 report mdBook 与 docs_html。
 ```
 
 ## Session Events

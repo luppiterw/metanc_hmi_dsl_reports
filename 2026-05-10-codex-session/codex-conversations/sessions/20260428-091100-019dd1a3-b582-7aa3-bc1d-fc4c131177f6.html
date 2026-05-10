@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>473</code></div>
-<div><b>User prompts</b>: <code>21</code></div>
+<div><b>Messages</b>: <code>494</code></div>
+<div><b>User prompts</b>: <code>22</code></div>
 <div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -3393,6 +3393,156 @@ MEMORY.md:347-436|note=[reports submodule docs portal and MetaNC sync workflow]
 <h3>Codex Response 15 / commentary</h3>
 <div class="time">2026-05-10 19:34:16 +0800</div>
 <pre>报告源文件已补齐。现在开始跑会话导出、report mdBook、docs portal 和最终产物检查；这些步骤会确认 HTML 文档和 generated/distribution 仍然是当前源码生成的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-10 19:34:45 +0800</div>
+<pre>会话导出与 report book 构建完成，完整会话统计也更新了。下一步跑主文档 portal、单元测试和 diff 检查，然后再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-10 19:35:42 +0800</div>
+<pre>文档 portal 和 docs portal 测试已经通过，`git diff --check` 也干净。现在我会检查两边变更清单，确认没有意外生成物，然后按 report submodule、metanc_hmi_dsl、MetaNC 的顺序提交和同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-10 19:35:51 +0800</div>
+<pre>变更清单符合预期：源码只新增 `footer_body.py` 并缩小 `generator.py`，报告侧是今天会话导出和报告页面更新。现在先提交并 push reports 子模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-10 19:36:27 +0800</div>
+<pre>reports 子模块已提交并推送。接下来提交 metanc_hmi_dsl 主仓库，它会包含源码拆分、文档更新和子模块指针更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-10 19:37:06 +0800</div>
+<pre>metanc_hmi_dsl 主仓库已提交并推送。现在用现有同步脚本导出到 MetaNC，然后在 MetaNC 的 `nrt/hmi` 范围内做编译/测试/diff 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-10 19:38:04 +0800</div>
+<pre>MetaNC 同步后的核心测试也通过了。现在检查 MetaNC 变更范围，确认只有 `nrt/hmi`，然后提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-10 19:38:18 +0800</div>
+<pre>MetaNC 变更范围只落在 `nrt/hmi`，符合导出规则；中文 i18n 文档按同步脚本当前规则不进入 MetaNC。现在提交 MetaNC 的 HMI 同步结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-10 19:39:01 +0800</div>
+<pre>MetaNC 已提交并 push。最后我做一次状态和最近提交确认，把最终 commit hash、验证项和下一步拆分计划整理给你。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / final_answer</h3>
+<div class="time">2026-05-10 19:39:29 +0800</div>
+<pre>完成了。
+
+本轮已按计划把 QML footer body 拆出来：新增 `client/qml_client/main_qml_parts/footer_body.py`，承接 footer status rail 和 footer softkey row 的 QML body；`generator.py` 从 1035 行降到 905 行，`footer_body.py` 139 行。生成后的 `Main.qml`、Web/QML/runtime contract 等 tracked generated outputs 仍保持无 diff。
+
+已更新并生成：
+- `generated/distribution`
+- `docs_html`
+- 2026-05-10 report、完整 Codex conversation export、report mdBook
+- 英文/中文相关开发文档
+
+已验证：
+- `compileall`
+- `tests.test_generator_refactor`
+- `tests.test_pipeline`
+- `tests.test_docs_portal`
+- `./tools/generate_targets.sh`
+- `mdbook build` reports
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+- MetaNC 同步后也跑了 `compileall`、`tests.test_generator_refactor`、`tests.test_docs_portal`、`git diff --check -- nrt/hmi`
+
+已提交并 push：
+- reports submodule: `3c41bf9 docs: refresh 2026-05-10 QML footer body report`
+- metanc_hmi_dsl: `6d815db refactor: split QML footer body assembly`
+- MetaNC `feat/hmi`: `73df806 refactor: sync HMI QML footer body assembly`
+
+三个仓库当前状态都干净，并已与远程分支同步。
+
+下一步拆解计划：
+1. 先检查 `generator.py` 剩余 905 行的结构，区分“shell frame 外层模板”“modal/dialog body”“page template 插槽”三类。
+2. 优先拆 dialog/settings/prompt/confirm 这些 body 级 QML 片段，因为它们边界比 shell frame 更清晰，风险更低。
+3. 给新片段加 marker-order 测试，继续保证 `generated/qml/Main.qml` byte-stable。
+4. 暂时不拆 generated QML 文件布局，继续只做 source-level decomposition，避免影响运行时行为。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:347-436|note=[reports submodule docs portal and MetaNC sync workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+019dbe69-e917-7f20-ad5d-dd9262503c77
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-10 20:20:08 +0800</div>
+<pre>做一下下一步计划，然后开始做，然后generate/update report &amp; docs + sync MetaNC + commit + push，然后给我看下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-10 20:20:21 +0800</div>
+<pre>我先按上次收敛出的方向继续：检查 `generator.py` 里剩余的 QML body 边界，优先挑一个低风险、可测试、不会改变 `Main.qml` 输出的拆分片。然后照旧生成最终产物、更新 report/docs、同步 MetaNC 并提交 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-10 20:20:48 +0800</div>
+<pre>初始状态干净。现有 `generator.py` 还有 905 行，`main_qml_parts` 已经承接了大部分 helper；我现在看剩余模板块，目标是只搬一个清晰的 body 片段，不触碰行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-10 20:21:20 +0800</div>
+<pre>剩余模板里最清晰的下一片是中间层 overlay body：普通 prompt/confirm dialog overlay 和 Settings panel overlay。它们都是纯 QML body，已有 helper 函数独立出来了；本轮只移动 body 组装，不改交互逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-10 20:21:47 +0800</div>
+<pre>我会做一个 `overlay_body.py`，把 dialog overlay 和 settings panel overlay 作为一个 body builder 接出来；里面只接收现有 ComboBox style 字符串，因此最终 `Main.qml` 应该完全不变。接下来开始改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-10 20:23:18 +0800</div>
+<pre>`overlay_body.py` 已创建。现在把 `generator.py` 的原始 overlay 块替换为 `{overlay_body}` 插入点，并给测试增加 overlay body 的顺序/marker 覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-10 20:24:44 +0800</div>
+<pre>源码拆分已完成，接下来跑格式/编译和 generator-refactor 测试，重点看 `Main.qml` 是否 byte-stable。如果有换行边界差异，我会只修拼接边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-10 20:25:48 +0800</div>
+<pre>编译和核心测试通过。现在跑生成最终产物，并检查 tracked generated outputs 是否保持无 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-10 20:26:56 +0800</div>
+<pre>最终产物已重新生成，tracked generated outputs 没有变化。`generator.py` 现在降到 665 行，新增 `overlay_body.py` 255 行；接下来更新 README/CHANGELOG/开发文档和今天 report。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-10 20:27:52 +0800</div>
+<pre>文档更新里有一处换行插入不够干净，我会先修正英文 handoff 的段落，再同步更新中英文 status/code map，把“overlay body assembly”纳入当前结构，避免文档看起来像重复拼接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-10 20:28:59 +0800</div>
+<pre>源文档已同步到 overlay body 这片。现在更新今天 report 的项目报告、会话摘要和图表页，再跑导出刷新完整 conversation。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-10 20:30:02 +0800</div>
+<pre>报告源已补上本轮第十八片。现在刷新 user history 和完整会话导出，然后重建 report book 与 docs_html。</pre>
 </article>
 </section>
 <section>

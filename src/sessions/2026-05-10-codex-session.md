@@ -20,6 +20,7 @@ Focus:
 - Runtime log view helper extraction into `main_qml_parts/log_view.py`
 - Page/global auxiliary assembly extraction into `main_qml_parts/page_assembly.py`
 - Footer body assembly extraction into `main_qml_parts/footer_body.py`
+- Overlay body assembly extraction into `main_qml_parts/overlay_body.py`
 
 Session assets:
 

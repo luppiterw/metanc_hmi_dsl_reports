@@ -24,6 +24,7 @@ flowchart LR
     MainParts --> TableEdit[table_edit.py]
     MainParts --> LogView[log_view.py]
     MainParts --> FooterBody[footer_body.py]
+    MainParts --> OverlayBody[overlay_body.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -75,6 +76,7 @@ flowchart LR
     TableEdit --> MainQml
     LogView --> MainQml
     FooterBody --> MainQml
+    OverlayBody --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -149,6 +151,10 @@ flowchart LR
     FooterBody --> FooterRail[footer status rail]
     FooterBody --> FooterSoftkeys[footer softkey row]
     FooterBody --> FooterActions[footer action dispatch wiring]
+
+    OverlayBody --> DialogOverlay[dialog overlay body]
+    OverlayBody --> SettingsOverlay[Settings panel overlay body]
+    OverlayBody --> SettingsCombos[Settings ComboBox style insertion]
 
     PageAssembly --> PageComponents[page component assembly]
     PageAssembly --> PageLoaders[page loader assembly]

@@ -89,6 +89,9 @@ tracked generated outputs 继续无 diff。
 随后继续拆出 footer body assembly：新增 `main_qml_parts/footer_body.py`，
 承接 footer status rail 与 footer softkey row 的 QML body 组装。
 `generator.py` 进一步收敛到 905 行，tracked generated outputs 继续无 diff。
+随后继续拆出 overlay body assembly：新增 `main_qml_parts/overlay_body.py`，
+承接 dialog overlay 与 Settings panel overlay 的 QML body 组装。
+`generator.py` 进一步收敛到 665 行，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -107,11 +110,11 @@ tracked generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `21`
+- User prompts: `22`
 - Synthetic events: `1`
-- Messages: `473`
-- User messages: `22`
-- Codex messages: `451`
+- Messages: `494`
+- User messages: `23`
+- Codex messages: `471`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

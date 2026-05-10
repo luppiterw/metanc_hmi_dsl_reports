@@ -48,5 +48,8 @@ flowchart TD
     AR --> AS[Move top-shell visual model helpers]
     AS --> AT[Normalize insertion newline and rerun pipeline snapshots]
     AT --> AU[Refresh docs reports sync commit push]
-    AU --> AV[Plan node state helper split]
+    AU --> AV[Move node state helpers]
+    AV --> AW[Regenerate outputs and confirm Main.qml has no diff]
+    AW --> AX[Refresh docs reports sync commit push]
+    AX --> AY[Plan data-row helper split]
 ```

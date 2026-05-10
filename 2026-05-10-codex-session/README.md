@@ -65,6 +65,10 @@ outputs 继续无 diff。
 chip、notice text、status chip color/border/value color、alert overlay、ESTOP
 和 percent suffix helpers。`generator.py` 进一步收敛到 1635 行，tracked
 generated outputs 继续无 diff。
+随后继续拆出 node state helpers：新增 `main_qml_parts/node_state.py`，
+承接 node selected/enabled/status 判断、enabled reference lookup 和
+meaningful-value 判断。`generator.py` 进一步收敛到 1564 行，tracked
+generated outputs 继续无 diff。
 
 目录：
 
@@ -83,11 +87,11 @@ generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `15`
+- User prompts: `16`
 - Synthetic events: `1`
-- Messages: `358`
-- User messages: `16`
-- Codex messages: `342`
+- Messages: `374`
+- User messages: `17`
+- Codex messages: `357`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

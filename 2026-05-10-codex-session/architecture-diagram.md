@@ -18,6 +18,7 @@ flowchart LR
     MainParts --> CommandActions[command_actions.py]
     MainParts --> DebugQuery[debug_query.py]
     MainParts --> VisualModels[visual_models.py]
+    MainParts --> NodeState[node_state.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -62,6 +63,7 @@ flowchart LR
     CommandActions --> MainQml
     DebugQuery --> MainQml
     VisualModels --> MainQml
+    NodeState --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -109,6 +111,12 @@ flowchart LR
     VisualModels --> NoticeText[notice text]
     VisualModels --> StatusColors[status chip colors]
     VisualModels --> AlertState[alert and ESTOP state]
+
+    NodeState --> NodeSelected[node selected state]
+    NodeState --> NodeEnabled[node enabled state]
+    NodeState --> NodeStatus[button status active state]
+    NodeState --> EnabledRefs[state and interface enabled refs]
+    NodeState --> MeaningfulValue[meaningful value checks]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

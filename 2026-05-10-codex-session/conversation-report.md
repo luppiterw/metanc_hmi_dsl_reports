@@ -31,6 +31,8 @@
   sync MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the top-shell visual model helper slice, then refresh
   reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the node state helper slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -85,6 +87,10 @@
 - Keep the visual model slice source-only: top-shell status chip model, notice,
   alert, ESTOP, and status color helpers can move out of `generator.py`, but
   generated `Main.qml` byte layout and behavior must stay stable.
+- Keep the node state slice source-only: node selected/enabled/status helpers,
+  enabled reference lookup, and meaningful-value checks can move out of
+  `generator.py`, but generated `Main.qml` byte layout and behavior must stay
+  stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -163,3 +169,8 @@ server status chip, notice text, status chip color/border/value color, alert
 overlay, ESTOP, and percent suffix helpers moved into
 `main_qml_parts/visual_models.py`. Generated `Main.qml` and the tracked final
 outputs remained byte-stable after normalizing the insertion newline boundary.
+
+The node state helper slice is now in place. Node selection, enablement, status
+active, enabled-ref lookup, and meaningful-value helpers moved into
+`main_qml_parts/node_state.py`. Generated `Main.qml` and the tracked final
+outputs remained byte-stable.

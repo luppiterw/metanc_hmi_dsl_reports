@@ -18,6 +18,10 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
 runtime preview rows、active editor content 和 editor line helpers 移入
 `client/qml_client/main_qml_parts/program_editor.py`，继续保持 `Main.qml`
 输出无 diff。
+随后继续第四片拆分，把 DEBUG natural-query 的 query parser、log query
+plan、axis shorthand、row materialization、metadata 和 value formatting helper
+移入 `client/qml_client/main_qml_parts/debug_query.py`，仍保持 `Main.qml`
+输出无 diff。
 
 ## Completed Work
 
@@ -55,12 +59,15 @@ runtime preview rows、active editor content 和 editor line helpers 移入
     fallback helpers
   - `program_editor.py`: Program editor line/offset helpers, syntax
     highlighting, runtime preview rows, and active editor state helpers
+  - `debug_query.py`: DEBUG natural-query parser, log-query plan, axis
+    shorthand, row materialization, metadata, and value-format helpers
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
   ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
-  最后迁出 Program editor helper 函数组；同时保留 `generate_qml()` 和
-  `_build_main_qml()` 作为兼容入口。
-- `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 3167 行，
-  新增的 `program_editor.py` 承接 221 行源码 helper。
+  再迁出 Program editor helper 函数组；最后迁出 DEBUG natural-query helper
+  函数组；同时保留 `generate_qml()` 和 `_build_main_qml()` 作为兼容入口。
+- `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 2731 行；
+  `program_editor.py` 承接 221 行源码 helper，`debug_query.py` 承接 446 行
+  源码 helper。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -96,6 +103,10 @@ runtime preview rows、active editor content 和 editor line helpers 移入
   after the Program editor helper split.
 - `python3 -m unittest tests.test_generator_refactor`
   after adding Program editor helper marker coverage.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the DEBUG natural-query helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding DEBUG helper marker-order coverage.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -116,13 +127,16 @@ runtime preview rows、active editor content 和 editor line helpers 移入
 - The Program editor helper split also kept the tracked generated-output diff set
   empty, including `generated/qml/Main.qml`, `RuntimeStore.qml`, generated Web
   assets, the distribution contract bundle, and the QML runtime snapshot.
+- The DEBUG natural-query helper split kept the same tracked generated-output
+  diff set empty after fixing the helper insertion newline boundary.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 3167 lines after the Program editor helper split and now has a clear
+  file is 2731 lines after the DEBUG helper split and now has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
-- Split DEBUG natural-query helpers next because they form a cohesive helper
-  group and can be locked with marker-order tests before any UI behavior change.
+- Split binding/reference/action helpers next because they sit directly after
+  `program_editor_state_helpers`, are used by both footer actions and generated
+  page controls, and can be isolated without changing UI output.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

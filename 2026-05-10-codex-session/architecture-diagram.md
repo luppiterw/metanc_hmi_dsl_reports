@@ -9,6 +9,7 @@ flowchart LR
     MainParts --> Dialogs[dialogs.py]
     MainParts --> LogExport[log_export.py]
     MainParts --> ProgramEditor[program_editor.py]
+    MainParts --> DebugQuery[debug_query.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -44,6 +45,7 @@ flowchart LR
     Dialogs --> MainQml
     LogExport --> MainQml
     ProgramEditor --> MainQml
+    DebugQuery --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -52,4 +54,10 @@ flowchart LR
     RuntimeStore --> ExecutionControl[Execution pause/resume helpers]
     RuntimeStore --> ServerPayload[Server payload and snapshot application]
     RuntimeStore --> PositionSources[Position source caches]
+
+    DebugQuery --> QueryParser[query parser and intent guard]
+    DebugQuery --> LogQuery[log query plan]
+    DebugQuery --> AxisScope[axis shorthand and metric scope]
+    DebugQuery --> ResultRows[result row materialization]
+    DebugQuery --> ValueMeta[property and local-state metadata]
 ```

@@ -28,6 +28,10 @@ tracked generated outputs byte-stable。
 highlight、runtime preview rows、current editor content 和 editor line helper
 从 `generator.py` 移出；`generator.py` 收敛到 3167 行，`program_editor.py`
 承接 221 行源码 helper，最终 generated `Main.qml` 仍保持无 diff。
+随后继续按同一规则拆出 DEBUG natural-query helper：新增
+`main_qml_parts/debug_query.py`，承接 query parser、log query plan、axis
+shorthand、row materialization、metadata 和 value formatting helper。
+`generator.py` 进一步收敛到 2731 行，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -46,11 +50,11 @@ highlight、runtime preview rows、current editor content 和 editor line helper
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `7`
+- User prompts: `8`
 - Synthetic events: `0`
-- Messages: `159`
-- User messages: `7`
-- Codex messages: `152`
+- Messages: `189`
+- User messages: `8`
+- Codex messages: `181`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

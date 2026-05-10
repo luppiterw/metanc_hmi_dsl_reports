@@ -15,6 +15,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the Program editor helper slice, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the DEBUG natural-query helper slice, then refresh reports/docs,
+  sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -39,6 +41,9 @@
 - Keep the Program editor slice source-only: line/offset helpers, syntax
   highlighting, runtime preview rows, and editor state helpers can move out of
   `generator.py`, but generated `Main.qml` behavior must stay byte-stable.
+- Keep the DEBUG natural-query slice source-only: parser, log-query plan, axis
+  shorthand, row materialization, metadata, and formatting helpers can move out
+  of `generator.py`, but the generated `Main.qml` byte layout must stay stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -72,3 +77,9 @@ line/offset helpers, syntax highlighting, runtime preview rows, active editor
 content, and editor-line derivation moved into
 `main_qml_parts/program_editor.py`; generated `Main.qml` and the tracked final
 outputs remained byte-stable.
+
+The DEBUG natural-query helper slice is now in place. Runtime query parsing,
+log-query planning, axis shorthand matching, display-row derivation, metadata
+lookup, and value formatting moved into `main_qml_parts/debug_query.py`.
+Generated `Main.qml` and the tracked final outputs remained byte-stable after
+normalizing the helper insertion newline.

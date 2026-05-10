@@ -26,5 +26,7 @@ flowchart TD
     V --> W[Move context masthead ComboBox dialog and log-export helpers]
     W --> X[Move Program editor text and state helpers]
     X --> Y[Regenerate final outputs and confirm Main.qml has no diff]
-    Y --> Z[Refresh report docs sync commit push and plan DEBUG helper split]
+    Y --> Z[Move DEBUG natural-query parser rows metadata and formatting helpers]
+    Z --> AA[Fix insertion newline and rerun generator pipeline tests]
+    AA --> AB[Refresh report docs sync commit push and plan binding helper split]
 ```

@@ -33,6 +33,8 @@
   reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the node state helper slice, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the data-row helper slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -91,6 +93,9 @@
   enabled reference lookup, and meaningful-value checks can move out of
   `generator.py`, but generated `Main.qml` byte layout and behavior must stay
   stable.
+- Keep the data-row slice source-only: binding value/text/rows and Program
+  browser row preparation can move out of `generator.py`, but generated
+  `Main.qml` byte layout and behavior must stay stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -173,4 +178,9 @@ outputs remained byte-stable after normalizing the insertion newline boundary.
 The node state helper slice is now in place. Node selection, enablement, status
 active, enabled-ref lookup, and meaningful-value helpers moved into
 `main_qml_parts/node_state.py`. Generated `Main.qml` and the tracked final
+outputs remained byte-stable.
+
+The data-row helper slice is now in place. Binding value/text/row conversion and
+Program browser row filtering, sorting, and parent-row injection moved into
+`main_qml_parts/data_rows.py`. Generated `Main.qml` and the tracked final
 outputs remained byte-stable.

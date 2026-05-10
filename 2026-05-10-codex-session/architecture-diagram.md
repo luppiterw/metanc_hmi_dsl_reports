@@ -19,6 +19,7 @@ flowchart LR
     MainParts --> DebugQuery[debug_query.py]
     MainParts --> VisualModels[visual_models.py]
     MainParts --> NodeState[node_state.py]
+    MainParts --> DataRows[data_rows.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -64,6 +65,7 @@ flowchart LR
     DebugQuery --> MainQml
     VisualModels --> MainQml
     NodeState --> MainQml
+    DataRows --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -117,6 +119,12 @@ flowchart LR
     NodeState --> NodeStatus[button status active state]
     NodeState --> EnabledRefs[state and interface enabled refs]
     NodeState --> MeaningfulValue[meaningful value checks]
+
+    DataRows --> BindingValue[binding value text rows]
+    DataRows --> ProgramRows[Program browser rows]
+    DataRows --> BrowserFilter[Program browser filter]
+    DataRows --> BrowserSort[Program browser sort]
+    DataRows --> ParentRow[parent directory row]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

@@ -15,6 +15,7 @@ Focus:
   and `main_qml_parts/program_names.py`
 - Top-shell visual model helper extraction into `main_qml_parts/visual_models.py`
 - Node state helper extraction into `main_qml_parts/node_state.py`
+- Data-row helper extraction into `main_qml_parts/data_rows.py`
 
 Session assets:
 

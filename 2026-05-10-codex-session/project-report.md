@@ -55,6 +55,10 @@ overlay、ESTOP 和 percent suffix helpers，仍保持 `Main.qml` 输出无 diff
 `client/qml_client/main_qml_parts/node_state.py`，包括 node selected/enabled
 判断、button status active 判断、enabled reference lookup 和 meaningful-value
 判断，仍保持 `Main.qml` 输出无 diff。
+随后继续第十三片拆分，把 data-row helpers 移入
+`client/qml_client/main_qml_parts/data_rows.py`，包括 binding value/text/rows
+解析和 Program browser row filter/sort/parent-row 注入，仍保持 `Main.qml`
+输出无 diff。
 
 ## Completed Work
 
@@ -109,20 +113,23 @@ overlay、ESTOP 和 percent suffix helpers，仍保持 `Main.qml` 输出无 diff
     ESTOP, and status color helpers
   - `node_state.py`: node selection, enablement, status-active, enabled-ref,
     and meaningful-value helpers
+  - `data_rows.py`: binding value/text/row conversion and Program browser row
+    filtering, sorting, and parent-row injection
   - `debug_query.py`: DEBUG natural-query parser, log-query plan, axis
     shorthand, row materialization, metadata, and value-format helpers
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
   ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
   迁出 binding/reference helper 函数组；再迁出 Program editor helper 函数组；
-  最后迁出 top-shell visual model helper 和 node state helper 函数组；同时保留
-  `generate_qml()` 和 `_build_main_qml()` 作为兼容入口。
+  最后迁出 top-shell visual model、node state 和 data-row helper 函数组；
+  同时保留 `generate_qml()` 和 `_build_main_qml()` 作为兼容入口。
 - `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 1986 行；
   `bindings.py` 承接 95 行源码 helper，`program_editor.py` 承接 221 行源码
   helper，`debug_query.py` 承接 446 行源码 helper，`program_search.py` 承接
   522 行源码 helper，`settings.py` 承接 119 行源码 helper，`shell_state.py`
   承接 73 行源码 helper，`command_actions.py` 承接 231 行源码 helper，
   `runtime_values.py` 承接 24 行源码 helper，`program_names.py` 承接 34 行源码 helper，
-  `visual_models.py` 承接 101 行源码 helper，`node_state.py` 承接 80 行源码 helper。
+  `visual_models.py` 承接 101 行源码 helper，`node_state.py` 承接 80 行源码 helper，
+  `data_rows.py` 承接 80 行源码 helper。
 - `client/qml_client/generator.py` 从 shell state helper split 后的 1986 行
   继续降到 1767 行。
 - `client/qml_client/generator.py` 从 command action/guard helper split 后的
@@ -131,6 +138,8 @@ overlay、ESTOP 和 percent suffix helpers，仍保持 `Main.qml` 输出无 diff
   1727 行继续降到 1635 行。
 - `client/qml_client/generator.py` 从 top-shell visual model helper split 后的
   1635 行继续降到 1564 行。
+- `client/qml_client/generator.py` 从 node state helper split 后的 1564 行
+  继续降到 1493 行。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -216,6 +225,12 @@ overlay、ESTOP 和 percent suffix helpers，仍保持 `Main.qml` 输出无 diff
   after adding node state helper marker-order coverage.
 - `python3 -m unittest tests.test_pipeline`
   after the node state helper split and final target regeneration.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the data-row helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding data-row helper marker-order coverage.
+- `python3 -m unittest tests.test_pipeline`
+  after the data-row helper split and final target regeneration.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -262,14 +277,18 @@ overlay、ESTOP 和 percent suffix helpers，仍保持 `Main.qml` 输出无 diff
 - The node state helper split kept the same tracked generated-output diff set
   empty, including `generated/qml/Main.qml`, generated Web assets, the
   distribution contract bundle, and the QML runtime snapshot.
+- The data-row helper split kept the same tracked generated-output diff set
+  empty, including `generated/qml/Main.qml`, generated Web assets, the
+  distribution contract bundle, and the QML runtime snapshot.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 1564 lines after the node state helper split and has a clear
+  file is 1493 lines after the data-row helper split and has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
-- Split the next cohesive QML `Main.qml` data-row group around `bindingValue`,
-  `bindingText`, `bindingRows`, and `programBrowserRows` before tackling
+- Split the next cohesive QML `Main.qml` table-edit helper group around
+  `numericBindingValue`, `tableCellText`, `tableRowSelected`,
+  `selectDataTableRow`, and `dataTableEditConfig` before tackling
   page/footer/template body assembly.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

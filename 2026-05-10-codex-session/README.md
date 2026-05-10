@@ -69,6 +69,10 @@ generated outputs 继续无 diff。
 承接 node selected/enabled/status 判断、enabled reference lookup 和
 meaningful-value 判断。`generator.py` 进一步收敛到 1564 行，tracked
 generated outputs 继续无 diff。
+随后继续拆出 data-row helpers：新增 `main_qml_parts/data_rows.py`，
+承接 binding value/text/rows 解析，以及 Program browser rows 的 filter、
+sort 和 parent-row 注入逻辑。`generator.py` 进一步收敛到 1493 行，
+tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -87,11 +91,11 @@ generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `16`
+- User prompts: `17`
 - Synthetic events: `1`
-- Messages: `374`
-- User messages: `17`
-- Codex messages: `357`
+- Messages: `392`
+- User messages: `18`
+- Codex messages: `374`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

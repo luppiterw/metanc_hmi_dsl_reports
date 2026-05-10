@@ -72,6 +72,9 @@ wrap、visible-row filtering、column value formatting 和 log detail text，仍
 `client/qml_client/main_qml_parts/page_assembly.py`，让 `context.py` 只聚合
 `Main.qml` 上下文，后续再拆 shell frame/footer/template body 时有明确边界，
 仍保持 `Main.qml` 输出无 diff。
+随后继续第十七片拆分，把 footer status rail 和 footer softkey row 的
+QML body 组装移入 `client/qml_client/main_qml_parts/footer_body.py`，让
+`generator.py` 只保留模板插入点，继续保持 `Main.qml` 输出无 diff。
 
 ## Completed Work
 
@@ -137,6 +140,7 @@ wrap、visible-row filtering、column value formatting 和 log detail text，仍
     detail text helpers
   - `debug_query.py`: DEBUG natural-query parser, log-query plan, axis
     shorthand, row materialization, metadata, and value-format helpers
+  - `footer_body.py`: footer status rail and footer softkey row body assembly
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
   ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
   迁出 binding/reference helper 函数组；再迁出 Program editor helper 函数组；
@@ -155,6 +159,8 @@ wrap、visible-row filtering、column value formatting 和 log detail text，仍
 - `context.py` 中的 page component、page loader 和 global auxiliary component
   组装被进一步拆到 `page_assembly.py`，为后续 shell frame/footer/template body
   拆分建立边界；该拆分不改变 `generator.py` 行数。
+- `client/qml_client/generator.py` 从 page/global auxiliary assembly split 后的
+  1035 行继续降到 905 行；`footer_body.py` 承接 139 行 footer body assembly。
 - `client/qml_client/generator.py` 从 shell state helper split 后的 1986 行
   继续降到 1767 行。
 - `client/qml_client/generator.py` 从 command action/guard helper split 后的
@@ -276,6 +282,12 @@ wrap、visible-row filtering、column value formatting 和 log detail text，仍
   after adding page assembly context coverage.
 - `python3 -m unittest tests.test_pipeline`
   after the page assembly split and final target regeneration.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the footer body assembly split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding footer body marker-order coverage.
+- `python3 -m unittest tests.test_pipeline`
+  after the footer body split and final target regeneration.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -335,13 +347,17 @@ wrap、visible-row filtering、column value formatting 和 log detail text，仍
 - The page/global auxiliary assembly split kept the same tracked generated-output
   diff set empty, including `generated/qml/Main.qml`, generated Web assets, the
   distribution contract bundle, and the QML runtime snapshot.
+- The footer body assembly split kept the same tracked generated-output diff set
+  empty, including `generated/qml/Main.qml`, generated Web assets, the
+  distribution contract bundle, and the QML runtime snapshot.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 1035 lines after the runtime log view helper split and has a clear
+  file is 905 lines after the footer body assembly split and has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
-- Next target should move from low-level helper extraction to QML shell frame and
-  footer body boundaries, because page/global auxiliary assembly is now isolated.
+- Next target should move from footer extraction to QML shell frame, dialog body,
+  or template body boundaries, because footer body and page/global auxiliary
+  assembly are now isolated.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

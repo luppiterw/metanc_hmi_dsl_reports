@@ -41,6 +41,8 @@
   sync MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the page/global auxiliary assembly slice, then refresh
   reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the footer body assembly slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -114,6 +116,9 @@
   page loader, and global auxiliary component string assembly can move out of
   `context.py`, but generated `Main.qml` byte layout and behavior must stay
   stable.
+- Keep the footer body assembly slice source-only: footer status rail and footer
+  softkey row QML body assembly can move out of `generator.py`, but generated
+  `Main.qml` byte layout and behavior must stay stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -219,3 +224,8 @@ loader, and global auxiliary component assembly moved into
 `main_qml_parts/page_assembly.py`, while `context.py` remains the context
 aggregation entrypoint. Generated `Main.qml` and the tracked final outputs
 remained byte-stable.
+
+The footer body assembly slice is now in place. Footer status rail and footer
+softkey row body assembly moved into `main_qml_parts/footer_body.py`, while
+`generator.py` only keeps the template insertion point. Generated `Main.qml`
+and the tracked final outputs remained byte-stable.

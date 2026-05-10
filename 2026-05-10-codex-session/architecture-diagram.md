@@ -23,6 +23,7 @@ flowchart LR
     MainParts --> DataRows[data_rows.py]
     MainParts --> TableEdit[table_edit.py]
     MainParts --> LogView[log_view.py]
+    MainParts --> FooterBody[footer_body.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -73,6 +74,7 @@ flowchart LR
     DataRows --> MainQml
     TableEdit --> MainQml
     LogView --> MainQml
+    FooterBody --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -143,6 +145,10 @@ flowchart LR
     LogView --> LogColumns[visible column model]
     LogView --> LogRows[visible row filtering and search]
     LogView --> LogFormatting[column values and detail text]
+
+    FooterBody --> FooterRail[footer status rail]
+    FooterBody --> FooterSoftkeys[footer softkey row]
+    FooterBody --> FooterActions[footer action dispatch wiring]
 
     PageAssembly --> PageComponents[page component assembly]
     PageAssembly --> PageLoaders[page loader assembly]

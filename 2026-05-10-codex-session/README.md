@@ -86,6 +86,9 @@ generated outputs 继续无 diff。
 `main_qml_parts/page_assembly.py`，承接 page components、page loaders 和 global
 auxiliary component 组装，使 `context.py` 只负责聚合 `Main.qml` 上下文。
 tracked generated outputs 继续无 diff。
+随后继续拆出 footer body assembly：新增 `main_qml_parts/footer_body.py`，
+承接 footer status rail 与 footer softkey row 的 QML body 组装。
+`generator.py` 进一步收敛到 905 行，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -104,11 +107,11 @@ tracked generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `20`
+- User prompts: `21`
 - Synthetic events: `1`
-- Messages: `451`
-- User messages: `21`
-- Codex messages: `430`
+- Messages: `473`
+- User messages: `22`
+- Codex messages: `451`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

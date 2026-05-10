@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `451`
-- User prompts: `20`
+- Messages: `473`
+- User prompts: `21`
 - Synthetic events: `1`
 
 <a id="turn-1"></a>
@@ -4048,6 +4048,210 @@ MetaNC 已提交并推送。最后我做三边 clean 状态、最新提交和当
 
 ```
 报告源也补好了。现在导出最新 user history/full conversation，并构建 report 和 docs_html。
+```
+
+### Codex Response 11 / commentary
+`2026-05-10 19:10:42 +0800`
+
+```
+docs_html 已包含新的 report。接下来做提交前最终校验和状态确认。
+```
+
+### Codex Response 12 / commentary
+`2026-05-10 19:11:06 +0800`
+
+```
+最终校验通过。现在先提交并推送 reports 子模块，再提交并推送主仓库。
+```
+
+### Codex Response 13 / commentary
+`2026-05-10 19:12:31 +0800`
+
+```
+主仓库和 reports 子模块已提交推送。现在同步到 MetaNC 并跑同步后的校验。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 19:13:17 +0800`
+
+```
+MetaNC 侧校验通过，变更只在 `nrt/hmi`。现在提交并推送 MetaNC。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 19:14:36 +0800`
+
+```
+MetaNC 已提交推送。最后确认三边状态、最新提交和当前关键文件行数。
+```
+
+### Codex Response 16 / final_answer
+`2026-05-10 19:15:22 +0800`
+
+```
+已完成这一轮。
+
+本轮做的是 QML page/global auxiliary assembly 拆分：
+
+- 新增 `client/qml_client/main_qml_parts/page_assembly.py`
+- 把 page components、page loaders、global auxiliary component 的组装从 `context.py` 移出
+- `context.py` 现在更像纯上下文聚合入口
+- `generator.py` 保持 `1035` 行，这一刀主要是建立后续拆 shell frame/footer/template body 的边界
+- tracked generated 输出无 diff，`Main.qml` 保持 byte-stable
+
+已生成/更新：
+
+- `generated/distribution`
+- `docs_html`
+- 2026-05-10 report
+- Codex user history / full conversation export
+- README / CHANGELOG / status matrix / code map / handoff docs
+- 中文 i18n 关联文档
+
+校验通过：
+
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `python3 -m unittest tests.test_pipeline`
+- `./tools/generate_targets.sh`
+- `./tools/build_docs_html.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `git diff --check`
+- MetaNC 侧 compile/refactor/docs portal/diff check
+
+已提交并 push：
+
+- reports submodule: `3564aa9 docs: refresh 2026-05-10 QML page assembly report`
+- metanc_hmi_dsl: `b7e25e1 refactor: split QML page assembly context`
+- MetaNC: `0d5eb93 refactor: sync HMI QML page assembly context`
+
+三边状态都是 clean。
+
+**下一步计划**
+
+下一刀建议从 `generator.py` 的大 QML shell 模板里拆一个更明确的 body 区块，但要控制风险：
+
+1. 先定位 `ApplicationWindow` 内部的 shell frame 主体：masthead、main stage、operations overlay、dialog overlay、footer rail/softkey。
+2. 优先拆 footer body，因为它相对独立，依赖集中在 `footerModelFor()`、`buttonIconGlyph()`、theme role 和 `triggerActions()`。
+3. 新建 `main_qml_parts/footer_body.py`，只承接 footer status rail + footer softkey row 的 QML 字符串。
+4. `generator.py` 用 `{footer_body}` 插入，保持原始缩进和空行，要求 `generated/qml/Main.qml` byte-stable。
+5. 增加 marker 测试，覆盖 `footerStatusRailShell`、`footerSoftkeyButton`、`footerModelFor(activePageState())`、`triggerActions(modelData.actions || [])`。
+6. 验证通过后，再考虑拆 dialog overlay 或 main stage body。
+```
+
+<a id="turn-21"></a>
+## Turn 21
+
+### User
+`2026-05-10 19:22:49 +0800`
+
+```
+做一下下一步计划，然后开始做，然后generate/update report & docs + sync MetaNC + commit + push，然后给我看下一步计划
+```
+
+### Codex Response 1 / commentary
+`2026-05-10 19:23:03 +0800`
+
+```
+我继续按上一轮计划走：先拆 QML footer body，目标是把 footer status rail 和 softkey row 从 `generator.py` 的大模板里移到 `main_qml_parts/footer_body.py`，生成出的 `Main.qml` 必须保持 byte-stable。
+```
+
+### Codex Response 2 / commentary
+`2026-05-10 19:23:43 +0800`
+
+```
+我先把 footer 区块按生成后的真实 QML 文本提取，避免手工从 f-string 双大括号还原时引入格式差异。接下来新增 `footer_body.py`，再用 `{footer_body}` 替换原模板区块。
+```
+
+### Codex Response 3 / commentary
+`2026-05-10 19:24:06 +0800`
+
+```
+我发现刚才查看 `generated/qml/Main.qml` 的固定行号落到了前面的 JSON 模型区，实际 footer QML 在后面。现在用 marker 定位，确保新模块里的文本和生成后的 QML 完全一致。
+```
+
+### Codex Response 4 / commentary
+`2026-05-10 19:24:34 +0800`
+
+```
+我会把 footer QML 存成普通 raw string，所以文件里使用真实 QML 的单大括号；`generator.py` 只插入 `{footer_body}`，不会再让 f-string 解释这些 QML braces。这样能最大限度避免生成输出变化。
+```
+
+### Codex Response 5 / commentary
+`2026-05-10 19:25:38 +0800`
+
+```
+现在我会用脚本按原 footer 区块的起止 marker 做一次机械替换，只把两段 footer Rectangle 替换为 `{footer_body}`。替换后马上跑生成器测试来抓任何空行或 brace 差异。
+```
+
+### Codex Response 6 / commentary
+`2026-05-10 19:26:18 +0800`
+
+```
+footer body 已拆出来并加了 marker 顺序测试。现在跑编译、refactor 测试和 pipeline，重点看生成的 `Main.qml` 是否完全一致。
+```
+
+### Codex Response 7 / commentary
+`2026-05-10 19:26:59 +0800`
+
+```
+编译和 refactor 测试已过，`generator.py` 从 1035 行降到 905 行。pipeline 还在跑最后部分，我等它结束后检查 generated diff。
+```
+
+### Codex Response 8 / commentary
+`2026-05-10 19:28:09 +0800`
+
+```
+`generate_targets.sh` 还在 server 编译阶段，前半段已经把 Web/QML 重新生成并且依赖仍走本地 cache。等它完成后我再检查 tracked generated diff。
+```
+
+### Codex Response 9 / commentary
+`2026-05-10 19:28:42 +0800`
+
+```
+生成产物无 diff，当前还只改了源码和测试。下一步更新 README/CHANGELOG/状态文档和 report，然后构建 docs。
+```
+
+### Codex Response 10 / commentary
+`2026-05-10 19:28:59 +0800`
+
+```
+源码和生成校验已经稳定，`generator.py` 现在降到 905 行。接下来我把结构文档和 report 里的描述从“计划拆 footer”更新为“footer body 已拆到 `footer_body.py`”。
+```
+
+### Codex Response 11 / commentary
+`2026-05-10 19:31:38 +0800`
+
+```
+文档已更新。接下来更新今天的 report，把 footer body 拆分、行数和验证结果写进去。
+```
+
+### Codex Response 12 / commentary
+`2026-05-10 19:33:01 +0800`
+
+```
+我继续从已经完成的 QML footer body 拆分往后收尾：先把今天的 report/docs 补齐，再重建文档和最终产物，最后完成 metanc_hmi_dsl 与 MetaNC 的提交、同步和 push。
+```
+
+### Codex Response 13 / commentary
+`2026-05-10 19:33:19 +0800`
+
+```
+源码侧已经是预期的未提交状态；report 子模块目前还干净，所以接下来只需要把本轮 footer body 拆分写进今天的报告入口、会话页和图表页，再跑导出/构建。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 19:33:33 +0800`
+
+```
+我会把报告里“page/global auxiliary assembly”后的缺口补上：明确记录本轮第十七片是 footer status rail 与 footer softkey row 的 QML body 拆分，并把下一步计划从 footer 转向 dialog/template/shell frame 边界。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 19:34:16 +0800`
+
+```
+报告源文件已补齐。现在开始跑会话导出、report mdBook、docs portal 和最终产物检查；这些步骤会确认 HTML 文档和 generated/distribution 仍然是当前源码生成的。
 ```
 
 ## Session Events

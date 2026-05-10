@@ -19,6 +19,7 @@ Focus:
 - Table-edit helper extraction into `main_qml_parts/table_edit.py`
 - Runtime log view helper extraction into `main_qml_parts/log_view.py`
 - Page/global auxiliary assembly extraction into `main_qml_parts/page_assembly.py`
+- Footer body assembly extraction into `main_qml_parts/footer_body.py`
 
 Session assets:
 

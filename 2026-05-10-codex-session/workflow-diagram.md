@@ -64,4 +64,8 @@ flowchart TD
     BH --> BI[Regenerate outputs and confirm Main.qml has no diff]
     BI --> BJ[Refresh docs reports sync commit push]
     BJ --> BK[Plan shell frame footer body split]
+    BK --> BL[Move footer status rail and softkey row body assembly]
+    BL --> BM[Regenerate outputs and confirm Main.qml has no diff]
+    BM --> BN[Refresh docs reports sync commit push]
+    BN --> BO[Plan shell frame dialog and template body split]
 ```

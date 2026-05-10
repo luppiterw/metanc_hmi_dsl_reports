@@ -63,6 +63,11 @@ overlay、ESTOP 和 percent suffix helpers，仍保持 `Main.qml` 输出无 diff
 `client/qml_client/main_qml_parts/table_edit.py`，包括 numeric binding value、
 table cell text、row selection/write routing、edit command config 和 prompt
 execution，仍保持 `Main.qml` 输出无 diff。
+随后继续第十五片拆分，把 runtime log view helpers 移入
+`client/qml_client/main_qml_parts/log_view.py`，包括 log level/time options、
+option index/value helpers、panel state helpers、visible column model、message
+wrap、visible-row filtering、column value formatting 和 log detail text，仍保持
+`Main.qml` 输出无 diff。
 
 ## Completed Work
 
@@ -121,6 +126,9 @@ execution，仍保持 `Main.qml` 输出无 diff。
     filtering, sorting, and parent-row injection
   - `table_edit.py`: data-table numeric/text formatting, row selection/write
     routing, edit command config, and prompt-driven edit execution
+  - `log_view.py`: runtime log filter options, panel state helpers, visible
+    column model, message wrapping, row filtering/search, column formatting, and
+    detail text helpers
   - `debug_query.py`: DEBUG natural-query parser, log-query plan, axis
     shorthand, row materialization, metadata, and value-format helpers
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
@@ -136,6 +144,8 @@ execution，仍保持 `Main.qml` 输出无 diff。
   `runtime_values.py` 承接 24 行源码 helper，`program_names.py` 承接 34 行源码 helper，
   `visual_models.py` 承接 101 行源码 helper，`node_state.py` 承接 80 行源码 helper，
   `data_rows.py` 承接 80 行源码 helper，`table_edit.py` 承接 130 行源码 helper。
+- `client/qml_client/generator.py` 从 table-edit helper split 后的 1372 行
+  继续降到 1035 行；`log_view.py` 承接 347 行 runtime log view helper。
 - `client/qml_client/generator.py` 从 shell state helper split 后的 1986 行
   继续降到 1767 行。
 - `client/qml_client/generator.py` 从 command action/guard helper split 后的
@@ -245,6 +255,12 @@ execution，仍保持 `Main.qml` 输出无 diff。
   after adding table-edit helper marker-order coverage.
 - `python3 -m unittest tests.test_pipeline`
   after the table-edit helper split and final target regeneration.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the runtime log view helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding runtime log view helper marker-order coverage.
+- `python3 -m unittest tests.test_pipeline`
+  after the runtime log view helper split and newline-boundary normalization.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -297,14 +313,18 @@ execution，仍保持 `Main.qml` 输出无 diff。
 - The table-edit helper split kept the same tracked generated-output diff set
   empty, including `generated/qml/Main.qml`, generated Web assets, the
   distribution contract bundle, and the QML runtime snapshot.
+- The runtime log view helper split kept the same tracked generated-output diff
+  set empty after normalizing the helper insertion newline boundary, including
+  `generated/qml/Main.qml`, generated Web assets, the distribution contract
+  bundle, and the QML runtime snapshot.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 1372 lines after the table-edit helper split and has a clear
+  file is 1035 lines after the runtime log view helper split and has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
-- Split the next cohesive QML `Main.qml` log option/filter group around runtime
-  log level/time options, option index lookup, selected values, and filter/dropdown
-  helpers before tackling page/footer/template body assembly.
+- Next target should move from low-level helper extraction to page/footer/template
+  body assembly boundaries, starting with the generated QML global auxiliary or
+  footer/page component assembly slices only after inspecting dependencies.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

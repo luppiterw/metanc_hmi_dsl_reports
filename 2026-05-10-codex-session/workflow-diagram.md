@@ -57,5 +57,8 @@ flowchart TD
     BA --> BB[Move table-edit helpers]
     BB --> BC[Regenerate outputs and confirm Main.qml has no diff]
     BC --> BD[Refresh docs reports sync commit push]
-    BD --> BE[Plan log option helper split]
+    BD --> BE[Move runtime log view helpers]
+    BE --> BF[Normalize insertion newline and rerun pipeline snapshots]
+    BF --> BG[Refresh docs reports sync commit push]
+    BG --> BH[Plan page footer template body split]
 ```

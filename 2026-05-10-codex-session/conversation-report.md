@@ -37,6 +37,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the table-edit helper slice, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the runtime log view helper slice, then refresh reports/docs,
+  sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -102,6 +104,10 @@
   row write routing, edit command config, and prompt execution can move out of
   `generator.py`, but generated `Main.qml` byte layout and behavior must stay
   stable.
+- Keep the runtime log view slice source-only: filter options, panel state,
+  visible column model, row filtering/search, column formatting, and detail text
+  can move out of `generator.py`, but generated `Main.qml` byte layout and
+  behavior must stay stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -195,3 +201,9 @@ The table-edit helper slice is now in place. Numeric binding values, table cell
 text, row selection/write routing, edit command config, and prompt-driven edit
 execution moved into `main_qml_parts/table_edit.py`. Generated `Main.qml` and
 the tracked final outputs remained byte-stable.
+
+The runtime log view helper slice is now in place. Runtime Logs filter options,
+option index/value helpers, panel state, visible-column model, message wrapping,
+row filtering/search, column formatting, and detail text moved into
+`main_qml_parts/log_view.py`. Generated `Main.qml` and the tracked final outputs
+remained byte-stable after normalizing the helper insertion newline boundary.

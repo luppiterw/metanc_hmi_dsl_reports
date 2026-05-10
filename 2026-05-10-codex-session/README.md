@@ -77,6 +77,11 @@ tracked generated outputs 继续无 diff。
 承接 data table numeric/text formatting、row selection、row write routing、
 edit command config 和 prompt-driven edit execution。`generator.py` 进一步
 收敛到 1372 行，tracked generated outputs 继续无 diff。
+随后继续拆出 runtime log view helpers：新增 `main_qml_parts/log_view.py`，
+承接 Runtime Logs 的 level/time options、option index/value、panel state、
+visible-column model、message wrapping、row filtering/search、column formatting
+和 detail text helpers。`generator.py` 进一步收敛到 1035 行，tracked
+generated outputs 继续无 diff。
 
 目录：
 
@@ -95,11 +100,11 @@ edit command config 和 prompt-driven edit execution。`generator.py` 进一步
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `18`
+- User prompts: `19`
 - Synthetic events: `1`
-- Messages: `409`
-- User messages: `19`
-- Codex messages: `390`
+- Messages: `434`
+- User messages: `20`
+- Codex messages: `414`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

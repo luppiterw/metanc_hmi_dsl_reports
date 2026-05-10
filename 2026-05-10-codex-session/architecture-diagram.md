@@ -21,6 +21,7 @@ flowchart LR
     MainParts --> NodeState[node_state.py]
     MainParts --> DataRows[data_rows.py]
     MainParts --> TableEdit[table_edit.py]
+    MainParts --> LogView[log_view.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -68,6 +69,7 @@ flowchart LR
     NodeState --> MainQml
     DataRows --> MainQml
     TableEdit --> MainQml
+    LogView --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -132,6 +134,12 @@ flowchart LR
     TableEdit --> RowSelection[row selection and writes]
     TableEdit --> EditConfig[table edit command config]
     TableEdit --> EditPrompt[prompt-driven edit execution]
+
+    LogView --> LogOptions[level and time options]
+    LogView --> LogPanelState[filter and actions panel state]
+    LogView --> LogColumns[visible column model]
+    LogView --> LogRows[visible row filtering and search]
+    LogView --> LogFormatting[column values and detail text]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

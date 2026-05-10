@@ -17,6 +17,7 @@ Focus:
 - Node state helper extraction into `main_qml_parts/node_state.py`
 - Data-row helper extraction into `main_qml_parts/data_rows.py`
 - Table-edit helper extraction into `main_qml_parts/table_edit.py`
+- Runtime log view helper extraction into `main_qml_parts/log_view.py`
 
 Session assets:
 

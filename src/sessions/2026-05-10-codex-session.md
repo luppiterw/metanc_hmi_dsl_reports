@@ -13,6 +13,7 @@ Focus:
 - Command action/guard helper extraction into `main_qml_parts/command_actions.py`
 - Runtime value/name helper extraction into `main_qml_parts/runtime_values.py`
   and `main_qml_parts/program_names.py`
+- Top-shell visual model helper extraction into `main_qml_parts/visual_models.py`
 
 Session assets:
 

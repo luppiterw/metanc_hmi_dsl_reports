@@ -17,6 +17,7 @@ flowchart LR
     MainParts --> ProgramSearch[program_search.py]
     MainParts --> CommandActions[command_actions.py]
     MainParts --> DebugQuery[debug_query.py]
+    MainParts --> VisualModels[visual_models.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
@@ -60,6 +61,7 @@ flowchart LR
     ProgramSearch --> MainQml
     CommandActions --> MainQml
     DebugQuery --> MainQml
+    VisualModels --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]
@@ -101,6 +103,12 @@ flowchart LR
 
     ProgramNames --> NextProgramName[next Program file name]
     ProgramNames --> NextFolderName[next Program folder name]
+
+    VisualModels --> StatusChips[top-shell status chips]
+    VisualModels --> ServerChip[server connection chip]
+    VisualModels --> NoticeText[notice text]
+    VisualModels --> StatusColors[status chip colors]
+    VisualModels --> AlertState[alert and ESTOP state]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

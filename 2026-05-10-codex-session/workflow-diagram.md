@@ -45,5 +45,8 @@ flowchart TD
     AO --> AP[Move runtime value and Program name helpers]
     AP --> AQ[Normalize insertion newlines and rerun pipeline snapshots]
     AQ --> AR[Refresh docs reports sync commit push]
-    AR --> AS[Plan visual model helper split]
+    AR --> AS[Move top-shell visual model helpers]
+    AS --> AT[Normalize insertion newline and rerun pipeline snapshots]
+    AT --> AU[Refresh docs reports sync commit push]
+    AU --> AV[Plan node state helper split]
 ```

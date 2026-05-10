@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>342</code></div>
-<div><b>User prompts</b>: <code>14</code></div>
+<div><b>Messages</b>: <code>358</code></div>
+<div><b>User prompts</b>: <code>15</code></div>
 <div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -2410,6 +2410,130 @@ MEMORY.md:419-436|note=[report submodule parent repo and MetaNC sync workflow]
 <h3>Codex Response 11 / commentary</h3>
 <div class="time">2026-05-10 15:48:56 +0800</div>
 <pre>文档源码已更新。接下来刷新 Codex history/export、构建 report book 和 docs_html，然后做 docs portal 测试与 whitespace 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-10 15:50:20 +0800</div>
+<pre>验证通过，包括 docs portal。现在我提交 reports submodule，再提交主仓库并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-10 15:51:16 +0800</div>
+<pre>reports 已提交并推送。接下来提交主仓库的 helper 拆分、文档更新和 submodule 指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-10 15:52:15 +0800</div>
+<pre>主仓库已提交推送。现在同步到 MetaNC，检查 diff 范围并在 MetaNC 侧跑必要验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-10 15:53:22 +0800</div>
+<pre>MetaNC 验证也通过了。现在提交并推送 `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-10 15:54:26 +0800</div>
+<pre>MetaNC 已推送。最后我做完成审计：检查三个仓库 clean、关键产物存在、提交记录和本轮文件证据，然后给下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-05-10 15:54:56 +0800</div>
+<pre>已完成这一轮，并已推送。
+
+本轮做的是上一轮计划里的 runtime value/name helper 拆分：
+- 新增 `client/qml_client/main_qml_parts/runtime_values.py`
+  - `stateValue()`
+  - `propertyValue()`
+  - `resourceValue()`
+- 新增 `client/qml_client/main_qml_parts/program_names.py`
+  - `nextProgramName()`
+  - `nextFolderName()`
+- `client/qml_client/generator.py` 从 1767 行降到 1727 行。
+- 生成出的 `Main.qml` / Web / contract / snapshot 保持无 diff。
+
+已验证：
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_pipeline`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-10-codex-session`
+- `./tools/build_docs_html.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `git diff --check`
+- MetaNC 侧也跑了 compileall、`test_generator_refactor`、`test_docs_portal`、`git diff --check -- nrt/hmi`
+
+提交：
+- reports: `3f49343 docs: refresh 2026-05-10 QML runtime value report`
+- metanc_hmi_dsl: `76f0e55 refactor: split QML runtime value helpers`
+- MetaNC: `e3c009f refactor: sync HMI QML runtime value helpers`
+
+三个工作区当前都是 clean：
+- `metanc_hmi_dsl/main`
+- `metanc_hmi_dsl_reports/main`
+- `MetaNC/feat/hmi`
+
+下一步计划：
+1. 拆 `Main.qml` 剩余的 visual model helper，优先看 `statusChipModel()`、和页面顶部/状态栏/视图模型相关的小函数。
+2. 仍然保持 source-only 拆分，不改 generated `Main.qml` 文件结构。
+3. 新增对应 `main_qml_parts/visual_models.py` 或更贴近实际职责的模块名。
+4. 补 `test_generator_refactor.py` marker 顺序测试。
+5. 跑同样的 regenerate + pipeline + docs/report + MetaNC sync 流程。
+6. 这一片完成后，再评估是否进入更大的 `page_components/page_loaders/template body` 拆分。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-10 16:10:48 +0800</div>
+<pre>做一下下一步计划，然后开始做，然后generate/update report &amp; docs + sync MetaNC + commit + push，然后给我看下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-10 16:11:06 +0800</div>
+<pre>我按上一轮的下一步计划开始：先拆 `Main.qml` 里剩余的 visual model helper，目标是小范围 source-only 拆分，继续保持 generated 输出不变；完成后走生成、文档、report、MetaNC 同步和提交推送全流程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-10 16:12:19 +0800</div>
+<pre>当前三个工作区都是干净的。visual model helper 的第一片我会先抽 `statusChipModel/serverStatusChip/noticeText/status chip color/alert/estop/suffixPercent` 这一组，它们集中服务顶部状态视觉模型，边界清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-10 16:12:34 +0800</div>
+<pre>我现在动手拆第一片 visual model helper：只迁出顶部状态 chip、server 状态、notice 和 alert/estop/percent 这组连续函数，避免把节点 enable/selection 逻辑混进来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-10 16:14:24 +0800</div>
+<pre>visual model helper 拆分已落下去。现在先跑编译和 refactor 单测，再看 generated snapshot 是否需要调整空行边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-10 16:16:10 +0800</div>
+<pre>生成产物没有 diff。pipeline 正在跑完整验证；如果 snapshot 抓出空行边界，我会按同样方式修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-10 16:16:49 +0800</div>
+<pre>这次也是 helper 后面多一行空行。我把 `visual_model_helpers` 后的模板边界压回原始格式，再重跑 refactor 和 pipeline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-10 16:18:10 +0800</div>
+<pre>验证通过。现在更新 report/docs 并重建文档，记录 visual model helper 拆分和新的行数。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-10 16:18:21 +0800</div>
+<pre>当前 `generator.py` 已降到 1635 行。我要把 docs/report 从“计划 visual model”更新为“已完成 visual model”，并把下一步计划推进到节点状态/enablement helper 或 page body 拆分前置片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-10 16:22:40 +0800</div>
+<pre>docs 和 report 源码已更新。现在刷新今天的 user history/full export，然后重建 report book 和 docs_html。</pre>
 </article>
 </section>
 <section>

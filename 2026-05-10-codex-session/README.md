@@ -20,6 +20,9 @@ payload application、client session id、remote snapshot merge、object merge
 preparation、masthead brand fragment 和 shared ComboBox styling 从
 `generator.py` 移出，同时保持 generated `Main.qml`、Web/QML/runtime
 contract 和 distribution 输出无 diff。
+随后继续第二片低风险拆分，把 dialog helpers 和 runtime log export helpers
+移入 `main_qml_parts/dialogs.py`、`main_qml_parts/log_export.py`，同样保持
+tracked generated outputs byte-stable。
 
 目录：
 
@@ -38,11 +41,11 @@ contract 和 distribution 输出无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `5`
+- User prompts: `6`
 - Synthetic events: `0`
-- Messages: `92`
-- User messages: `5`
-- Codex messages: `87`
+- Messages: `127`
+- User messages: `6`
+- Codex messages: `121`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

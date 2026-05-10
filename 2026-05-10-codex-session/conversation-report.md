@@ -11,6 +11,8 @@
   decomposition rule.
 - Start the first QML generator entrypoint split and keep generated outputs
   byte-stable.
+- Continue the QML main-shell helper split, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -30,6 +32,8 @@
   runtime fragment.
 - Keep the first QML `Main.qml` entrypoint split focused on low-risk helpers:
   context preparation, masthead brand fragments, and shared ComboBox styling.
+- Keep the second QML main-shell slice focused on isolated functions: dialog
+  helpers and log export helpers.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -52,3 +56,8 @@ owns `generate_qml()` and the large `Main.qml` template, while
 `main_qml_parts/` owns main-shell context preparation, masthead brand fragments,
 and shared ComboBox styling. Generated Web/QML/server/distribution outputs were
 regenerated and remained unchanged for the tracked generated files.
+
+The second QML main-shell helper slice is also in place. Dialog prompt/confirm
+helpers and runtime log export/save/clipboard fallback helpers moved into
+`main_qml_parts/dialogs.py` and `main_qml_parts/log_export.py`; generated
+`Main.qml` remained byte-stable.

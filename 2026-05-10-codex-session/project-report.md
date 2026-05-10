@@ -12,6 +12,8 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
 本轮最后启动 QML generator entrypoint 的低风险拆分第一片，把 `Main.qml`
 生成前的 context、masthead 和 ComboBox 样式准备逻辑移入
 `client/qml_client/main_qml_parts/`，仍保持最终生成产物 byte-stable。
+随后继续第二片拆分，把 dialog helpers 与 runtime log export helpers
+移入同一 `main_qml_parts/` 包，继续保持 `Main.qml` 输出无 diff。
 
 ## Completed Work
 
@@ -44,9 +46,12 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
     context preparation
   - `masthead.py`: masthead text/logo brand fragment preparation
   - `combo_box.py`: shared QML ComboBox styling snippets
+  - `dialogs.py`: prompt/confirm dialog helper functions
+  - `log_export.py`: visible log JSONL export, save dialog, and clipboard
+    fallback helpers
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
-  ComboBox 样式准备逻辑迁出，同时保留 `generate_qml()` 和 `_build_main_qml()`
-  作为兼容入口。
+  ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
+  同时保留 `generate_qml()` 和 `_build_main_qml()` 作为兼容入口。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -74,6 +79,10 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   after the first QML main-shell helper split.
 - `python3 -m unittest tests.test_generator_refactor`
   after adding QML main-shell helper contract coverage.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the dialog/log-export helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding dialog/log-export helper marker coverage.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -89,12 +98,14 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
 - The QML main-shell split also left `generated/qml/Main.qml`,
   `generated/qml/RuntimeStore.qml`, `generated/web/app.js`,
   `generated/web/runtime.js`, and the distribution contract bundle unchanged.
+- The dialog/log-export helper split kept the same tracked generated-output diff
+  set empty, including `generated/qml/Main.qml`.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is still 3518 lines after the first slice and now has a clear
-  `main_qml_parts/` destination for low-level helpers.
+  file is 3376 lines after the first two main-shell helper slices and now has a
+  clear `main_qml_parts/` destination for low-level helpers.
 - Split helper JavaScript functions inside the `Main.qml` template only after
   grouping them by responsibility and locking generated-output diff checks.
 - Defer generated page/component file layout changes until source-level

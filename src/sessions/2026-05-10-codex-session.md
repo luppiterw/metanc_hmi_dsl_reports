@@ -11,6 +11,8 @@ Focus:
 - Settings panel helper extraction into `main_qml_parts/settings.py`
 - Shell state helper extraction into `main_qml_parts/shell_state.py`
 - Command action/guard helper extraction into `main_qml_parts/command_actions.py`
+- Runtime value/name helper extraction into `main_qml_parts/runtime_values.py`
+  and `main_qml_parts/program_names.py`
 
 Session assets:
 

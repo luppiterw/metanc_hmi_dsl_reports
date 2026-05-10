@@ -42,6 +42,11 @@ model selection 和 footer return icon glyph，仍保持 `Main.qml` 输出无 di
 `client/qml_client/main_qml_parts/command_actions.py`，包括 local notice
 writer、general action dispatch、local log action dispatch，以及 Program /
 Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
+随后继续第十片拆分，把 runtime value/name helpers 移入
+`client/qml_client/main_qml_parts/runtime_values.py` 和
+`client/qml_client/main_qml_parts/program_names.py`，包括 state/property/resource
+access helper 与 Program/folder generated name helper，仍保持 `Main.qml`
+输出无 diff。
 
 ## Completed Work
 
@@ -80,6 +85,7 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
     window screen constraint, footer model selection, and return icon helpers
   - `command_actions.py`: local notice writer, action dispatch, local log action
     dispatch, and guarded Program / Program Dir / log command invocation helpers
+  - `runtime_values.py`: local state, property, and resource value access helpers
   - `bindings.py`: binding value formatting, unit display, reference path
     resolving, command path resolving, and recursive action argument resolving
   - `dialogs.py`: prompt/confirm dialog helper functions
@@ -87,6 +93,7 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
     fallback helpers
   - `program_editor.py`: Program editor line/offset helpers, syntax
     highlighting, runtime preview rows, and active editor state helpers
+  - `program_names.py`: generated Program and Program folder name helpers
   - `program_search.py`: Program Search/Replace, Goto, editor history,
     clipboard action state, execution preflight, and local Program action
     helpers
@@ -95,15 +102,18 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
   ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
   迁出 binding/reference helper 函数组；再迁出 Program editor helper 函数组；
-  最后迁出 command action/guard helper 函数组；同时保留 `generate_qml()` 和
+  最后迁出 runtime value/name helper 函数组；同时保留 `generate_qml()` 和
   `_build_main_qml()` 作为兼容入口。
 - `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 1986 行；
   `bindings.py` 承接 95 行源码 helper，`program_editor.py` 承接 221 行源码
   helper，`debug_query.py` 承接 446 行源码 helper，`program_search.py` 承接
   522 行源码 helper，`settings.py` 承接 119 行源码 helper，`shell_state.py`
-  承接 73 行源码 helper，`command_actions.py` 承接 231 行源码 helper。
+  承接 73 行源码 helper，`command_actions.py` 承接 231 行源码 helper，
+  `runtime_values.py` 承接 24 行源码 helper，`program_names.py` 承接 34 行源码 helper。
 - `client/qml_client/generator.py` 从 shell state helper split 后的 1986 行
   继续降到 1767 行。
+- `client/qml_client/generator.py` 从 command action/guard helper split 后的
+  1767 行继续降到 1727 行。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -171,6 +181,12 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
   after adding command action/guard helper marker-order coverage.
 - `python3 -m unittest tests.test_pipeline`
   after the command action/guard helper split and newline-boundary normalization.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the runtime value/name helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding runtime value/name helper marker-order coverage.
+- `python3 -m unittest tests.test_pipeline`
+  after the runtime value/name helper split and newline-boundary normalization.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -208,13 +224,16 @@ Program Dir / log command guard 逻辑，仍保持 `Main.qml` 输出无 diff。
 - The command action/guard helper split kept the same tracked generated-output
   diff set empty, including `generated/qml/Main.qml`, generated Web assets, the
   distribution contract bundle, and the QML runtime snapshot.
+- The runtime value/name helper split kept the same tracked generated-output
+  diff set empty, including `generated/qml/Main.qml`, generated Web assets, the
+  distribution contract bundle, and the QML runtime snapshot.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 1767 lines after the command action/guard helper split and has a clear
+  file is 1727 lines after the runtime value/name helper split and has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
-- Split the next cohesive QML `Main.qml` groups around small runtime value/name
-  helpers first, then the remaining page/footer/template body assembly.
+- Split the next cohesive QML `Main.qml` group around remaining visual model
+  helpers first, then the page/footer/template body assembly.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

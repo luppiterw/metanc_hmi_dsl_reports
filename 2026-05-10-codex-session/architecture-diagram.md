@@ -8,10 +8,12 @@ flowchart LR
     MainParts --> Combo[combo_box.py]
     MainParts --> ShellState[shell_state.py]
     MainParts --> Settings[settings.py]
+    MainParts --> RuntimeValues[runtime_values.py]
     MainParts --> Bindings[bindings.py]
     MainParts --> Dialogs[dialogs.py]
     MainParts --> LogExport[log_export.py]
     MainParts --> ProgramEditor[program_editor.py]
+    MainParts --> ProgramNames[program_names.py]
     MainParts --> ProgramSearch[program_search.py]
     MainParts --> CommandActions[command_actions.py]
     MainParts --> DebugQuery[debug_query.py]
@@ -49,10 +51,12 @@ flowchart LR
     Combo --> MainQml
     ShellState --> MainQml
     Settings --> MainQml
+    RuntimeValues --> MainQml
     Bindings --> MainQml
     Dialogs --> MainQml
     LogExport --> MainQml
     ProgramEditor --> MainQml
+    ProgramNames --> MainQml
     ProgramSearch --> MainQml
     CommandActions --> MainQml
     DebugQuery --> MainQml
@@ -75,6 +79,10 @@ flowchart LR
     Bindings --> RefPaths[state and interface reference paths]
     Bindings --> ActionArgs[recursive action argument resolving]
 
+    RuntimeValues --> StateAccess[local state values]
+    RuntimeValues --> PropertyAccess[property values]
+    RuntimeValues --> ResourceAccess[resource values]
+
     ShellState --> PageState[page existence and active content page]
     ShellState --> PageMeta[page metadata]
     ShellState --> WindowFit[window screen constraint]
@@ -90,6 +98,9 @@ flowchart LR
     ProgramSearch --> ClipboardState[Cut copy paste action state]
     ProgramSearch --> Preflight[Program execution preflight]
     ProgramSearch --> LocalProgramActions[local Program action dispatch]
+
+    ProgramNames --> NextProgramName[next Program file name]
+    ProgramNames --> NextFolderName[next Program folder name]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

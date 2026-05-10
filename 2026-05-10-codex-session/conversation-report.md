@@ -27,6 +27,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the command action/guard helper slice, then refresh
   reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the runtime value/name helper slice, then refresh reports/docs,
+  sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -74,6 +76,10 @@
   dispatch, local log action handling, and guarded command invocation can move
   out of `generator.py`, but generated `Main.qml` byte layout and behavior must
   stay stable.
+- Keep the runtime value/name slice source-only: state/property/resource access
+  helpers and generated Program/folder name helpers can move out of
+  `generator.py`, but generated `Main.qml` byte layout and behavior must stay
+  stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -139,3 +145,10 @@ action dispatch, local log action handling, and guarded Program/Program Dir/log
 command invocation moved into `main_qml_parts/command_actions.py`. Generated
 `Main.qml` and the tracked final outputs remained byte-stable after normalizing
 the helper insertion newline boundaries.
+
+The runtime value/name helper slice is now in place. `stateValue()`,
+`propertyValue()`, and `resourceValue()` moved into
+`main_qml_parts/runtime_values.py`; `nextProgramName()` and `nextFolderName()`
+moved into `main_qml_parts/program_names.py`. Generated `Main.qml` and the
+tracked final outputs remained byte-stable after normalizing insertion newline
+boundaries.

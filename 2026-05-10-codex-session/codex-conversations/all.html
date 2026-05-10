@@ -96,9 +96,9 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>308</code></div>
-<div><b>User prompts</b>: <code>13</code></div>
-<div><b>Synthetic events</b>: <code>0</code></div>
+<div><b>Messages</b>: <code>342</code></div>
+<div><b>User prompts</b>: <code>14</code></div>
+<div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
 <h2>Turn 1</h2>
@@ -2166,6 +2166,268 @@ MEMORY.md:420-436|note=[report submodule parent repo and MetaNC sync workflow]
 <div class="time">2026-05-10 12:49:35 +0800</div>
 <pre>报告源码已经补齐。现在我刷新 user history / full conversation export，再构建 report book 和主 docs_html，确保网页里能看到这轮内容。</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-10 12:50:19 +0800</div>
+<pre>文档最终产物已生成，`docs_html/reports/2026-05-10-codex-session/index.html` 也在输出列表里。现在我跑 docs portal 测试和 diff check，再准备提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-10 12:50:51 +0800</div>
+<pre>`docs portal` 测试也通过了，`git diff --check` 没有 whitespace 问题。我现在看一眼 diff 范围，然后先提交 reports submodule，再提交主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-10 12:51:15 +0800</div>
+<pre>reports submodule 已提交。下一步推 reports，然后把主仓库里生成器拆分和文档更新作为一组提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-10 12:52:14 +0800</div>
+<pre>`metanc_hmi_dsl` 和 reports 都已提交并推送。现在我把这次 HMI 包同步到 MetaNC 的 `nrt/hmi`，再在 MetaNC 侧跑必要验证、提交、推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-10 12:52:59 +0800</div>
+<pre>MetaNC diff 范围和预期一致：只有 `nrt/hmi` 下的生成器拆分和英文文档同步，不包含 reports/docs_i18n 这类被 export 脚本排除的内容。现在我在 MetaNC 的 `nrt/hmi` 跑编译/单测/文档入口验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-10 12:53:41 +0800</div>
+<pre>MetaNC 侧验证通过。我现在提交并推送 `feat/hmi`，提交信息会明确是同步 QML command action helper 拆分。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-10 12:54:36 +0800</div>
+<pre>MetaNC 也已提交并推送。最后我检查三个工作区状态，确认没有留下未提交文件，然后整理下一步拆分计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-10 12:54:48 +0800</div>
+<pre>最后状态是三个仓库都干净。检查下一步计划时我发现 report 里的 `generator.py` 行数写成了 1769，但当前 `wc -l` 是 1767；这是文档精度问题，我会顺手更正 reports submodule 指针并补一个小提交，避免报告里留错数。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-10 12:55:40 +0800</div>
+<pre>我更正了报告里的行数。因为这会改变 reports submodule commit 和主仓库 gitlink，我会重新构建报告/portal后补提交并同步 MetaNC 侧的父提交状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-10 12:57:00 +0800</div>
+<pre>reports 的小更正也推上去了。现在主仓库只会有 submodule 指针变化，我补一个文档指针提交并推送；MetaNC 不包含 reports submodule，所以不需要再改 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-10 12:57:45 +0800</div>
+<pre>行数修正已经单独补推，MetaNC 不受这个 reports 指针影响。我再做最终状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / final_answer</h3>
+<div class="time">2026-05-10 12:58:21 +0800</div>
+<pre>已完成这一轮。
+
+做了这些：
+- 新增 `client/qml_client/main_qml_parts/command_actions.py`，把 QML `Main.qml` 里的 notice、action dispatch、local log action、command guard helper 从 `generator.py` 拆出。
+- `generator.py` 从 1986 行降到 1767 行，生成出的 `Main.qml` 保持 byte-stable。
+- 更新 README / CHANGELOG / status matrix / code map / handoff docs，以及中文 i18n 对应文档。
+- 更新 2026-05-10 report、Codex conversation export，并重新生成 docs_html。
+- 同步到 MetaNC 的 `nrt/hmi`。
+
+验证已跑：
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `python3 -m unittest tests.test_pipeline`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `git diff --check`
+- MetaNC 侧也跑了 compileall、`test_generator_refactor`、`test_docs_portal`、`git diff --check -- nrt/hmi`
+
+提交和推送：
+- reports: `f108a35 docs: refresh 2026-05-10 QML command action report`
+- reports: `f41c644 docs: correct 2026-05-10 generator line count`
+- metanc_hmi_dsl: `740b735 refactor: split QML command action helpers`
+- metanc_hmi_dsl: `22a725f docs: update report submodule line count correction`
+- MetaNC: `71a9a13 refactor: sync HMI QML command action helpers`
+
+三个工作区现在都是 clean：
+- `metanc_hmi_dsl/main`
+- `metanc_hmi_dsl_reports/main`
+- `MetaNC/feat/hmi`
+
+下一步详细计划建议：
+
+1. 先拆 `generator.py` 里剩余的小 helper，不碰 page/body 大模板。目标是 `stateValue()`、`propertyValue()`、`resourceValue()` 这类 runtime value access helper，以及 `nextProgramName()`、`nextFolderName()` 这类 Program name helper。
+2. 新增 `main_qml_parts/runtime_values.py` 或拆成 `runtime_values.py` + `program_names.py`，保持所有 helper 仍在同一个 QML scope 中，避免影响 `command_actions.py` 的调用。
+3. 更新 `QML_MAIN_PART_NAMES` 和 `tests/test_generator_refactor.py`，锁定 marker 顺序。
+4. 跑同一套验证，重点确认 `generated/qml/Main.qml` 仍无 diff。
+5. 这一小片稳定后，再规划更大的 `Main.qml` page/footer/template body assembly 拆分，那一块风险更高，应该单独做。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:419-436|note=[report submodule parent repo and MetaNC sync workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+019dbe69-e917-7f20-ad5d-dd9262503c77
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-10 14:16:03 +0800</div>
+<pre>我先做一次完成审计，不继续改代码：把用户这轮要求拆成可验证交付项，然后用当前仓库状态、提交和验证产物逐项确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-10 14:16:21 +0800</div>
+<pre>三个仓库都干净且分支已跟踪远端。我再抽查关键产物和文档内容，确认“做一下”和“report/docs/sync/commit/push/下一步计划”不是只停留在提交记录上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / final_answer</h3>
+<div class="time">2026-05-10 14:16:49 +0800</div>
+<pre>完成审计也过了，目标可以关闭。
+
+审计结论：
+- “做一下”：`command_actions.py` 已落地，MetaNC 也有同步文件。
+- “generate/update report &amp; docs”：`docs_html/reports/2026-05-10-codex-session/index.html` 存在，report/docs 中有本轮 command action/guard 记录。
+- “sync MetaNC”：`MetaNC/nrt/hmi` 已同步并提交。
+- “commit + push”：三个仓库当前都是 clean 且跟踪远端。
+- “下一步详细计划”：已在上一条回复给出，下一步建议拆 runtime value/name helpers。
+
+最终 goal 已标记完成。用时：73 秒。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-10 14:46:04 +0800</div>
+<pre>我重新做一遍当前状态审计，不重复改动：这次只确认交付物、提交、文档产物和 MetaNC 同步是否仍然成立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-10 14:46:25 +0800</div>
+<pre>仓库状态和提交记录都符合。为了满足完成审计，我继续抽查实际文件和最终产物，不只依赖 git log。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / final_answer</h3>
+<div class="time">2026-05-10 14:46:52 +0800</div>
+<pre>完成审计已再次确认，目标已完成并关闭。
+
+证据摘要：
+- `metanc_hmi_dsl`、reports submodule、`MetaNC` 三个工作区都是 clean。
+- `command_actions.py` 已存在并被 `generator.py` / `test_generator_refactor.py` 引用。
+- docs/report 已记录 command action/guard 拆分、`generator.py` 1767 行、下一步 runtime value/name helper 拆分计划。
+- 最终产物存在：`docs_html/reports/2026-05-10-codex-session/index.html`、`generated/qml/Main.qml`、`generated/qml-final/appCNC_HMI_DSL`、`generated/server-build/server`、distribution contract bundle。
+- MetaNC `nrt/hmi` 已同步同一拆分。
+- 最新提交仍是：
+  - `metanc_hmi_dsl`: `22a725f`, `740b735`
+  - reports: `f41c644`, `f108a35`
+  - MetaNC: `71a9a13`
+
+最终 goal 用时：71 秒。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-10 15:19:53 +0800</div>
+<pre>我看到目标又被重新激活了；我不会重复改代码，只做当前状态的完成审计，确认交付物仍然存在且仓库没有新的未提交变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-10 15:20:19 +0800</div>
+<pre>状态和提交仍然干净一致。我再抽查关键文件、文档和最终产物作为审计证据，然后关闭目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / final_answer</h3>
+<div class="time">2026-05-10 15:20:37 +0800</div>
+<pre>完成审计再次通过，目标已关闭。
+
+确认点：
+- 三个仓库都是 clean：`metanc_hmi_dsl/main`、reports submodule `main`、`MetaNC/feat/hmi`。
+- `command_actions.py` 已存在并被生成器和测试引用。
+- report/docs 已记录 command action/guard 拆分、`generator.py` 1767 行、下一步 runtime value/name helper 拆分计划。
+- 最终产物存在：`docs_html` report、`generated/qml/Main.qml`、QML final executable、native server、distribution contract bundle。
+- MetaNC `nrt/hmi` 已同步同一拆分。
+- 最新提交仍为：
+  - `metanc_hmi_dsl`: `22a725f`, `740b735`
+  - reports: `f41c644`, `f108a35`
+  - MetaNC: `71a9a13`
+
+最终 goal 用时：69 秒。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-10 15:36:40 +0800</div>
+<pre>做一下下一步计划，然后开始做，然后generate/update report &amp; docs + sync MetaNC + commit + push，然后给我看下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-10 15:37:03 +0800</div>
+<pre>我按上一轮已经收敛出的下一步做：先拆 QML `Main.qml` 里剩余的小 runtime value/name helper，不碰 page/body 大模板；完成后生成产物、更新 report/docs、同步 MetaNC、提交推送，再给下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-10 15:37:37 +0800</div>
+<pre>我已经确认三边都是干净状态。当前实施范围就是上一轮计划里的第一步：把 `stateValue/propertyValue/resourceValue` 和 `nextProgramName/nextFolderName` 这种小 helper 拆出去，保持生成的 `Main.qml` 不变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-10 15:38:33 +0800</div>
+<pre>我会拆成两个片段：`runtime_values.py` 放 `stateValue/propertyValue/resourceValue`，`program_names.py` 放 `nextProgramName/nextFolderName`。这两个都只是 QML 函数字符串迁移，插入位置保持原先顺序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-10 15:39:51 +0800</div>
+<pre>拆分代码已落地。现在先跑编译和 refactor 单测，重点看 QML 字符串边界和 helper 顺序测试是否准确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-10 15:40:15 +0800</div>
+<pre>基础单测通过。下一步重新生成最终产物并跑 pipeline，确认 `Main.qml` 不因为空行边界产生 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-10 15:41:40 +0800</div>
+<pre>最终产物已重新生成，关键 generated 路径没有 diff。`test_pipeline` 正在跑，它包含 snapshot 对比和临时 QML 构建，我等完整结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-10 15:42:05 +0800</div>
+<pre>`test_pipeline` 抓到的是 helper 插入点多了一行空行。代码行为没变，但 snapshot 是 byte-level；我把 `runtime_value_helpers` 和后续函数之间的模板空行调回原格式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-10 15:43:24 +0800</div>
+<pre>第二处是 `program_name_helpers` 和 page components 之间多一行空行。我继续压回原始边界，再跑 pipeline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-10 15:44:27 +0800</div>
+<pre>pipeline 通过了。现在更新文档和 report，把这次 runtime value/name helper 拆分记录进去，并重建 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-10 15:44:36 +0800</div>
+<pre>当前 `generator.py` 已降到 1727 行。我要把这个进度写入英文/中文 docs 和今天 report，同时更新流程图和结构图里的 helper 节点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-10 15:48:56 +0800</div>
+<pre>文档源码已更新。接下来刷新 Codex history/export、构建 report book 和 docs_html，然后做 docs portal 测试与 whitespace 检查。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-10 15:36:16 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
 </section>
 
 </section>

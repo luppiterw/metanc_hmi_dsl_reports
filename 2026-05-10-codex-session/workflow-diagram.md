@@ -42,5 +42,8 @@ flowchart TD
     AL --> AM[Move command action and guard helpers]
     AM --> AN[Normalize insertion newlines and rerun pipeline snapshots]
     AN --> AO[Refresh docs reports sync commit push]
-    AO --> AP[Plan runtime value/name helper split]
+    AO --> AP[Move runtime value and Program name helpers]
+    AP --> AQ[Normalize insertion newlines and rerun pipeline snapshots]
+    AQ --> AR[Refresh docs reports sync commit push]
+    AR --> AS[Plan visual model helper split]
 ```

@@ -39,6 +39,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the runtime log view helper slice, then refresh reports/docs,
   sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the page/global auxiliary assembly slice, then refresh
+  reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -108,6 +110,10 @@
   visible column model, row filtering/search, column formatting, and detail text
   can move out of `generator.py`, but generated `Main.qml` byte layout and
   behavior must stay stable.
+- Keep the page/global auxiliary assembly slice source-only: page component,
+  page loader, and global auxiliary component string assembly can move out of
+  `context.py`, but generated `Main.qml` byte layout and behavior must stay
+  stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -207,3 +213,9 @@ option index/value helpers, panel state, visible-column model, message wrapping,
 row filtering/search, column formatting, and detail text moved into
 `main_qml_parts/log_view.py`. Generated `Main.qml` and the tracked final outputs
 remained byte-stable after normalizing the helper insertion newline boundary.
+
+The page/global auxiliary assembly slice is now in place. Page component, page
+loader, and global auxiliary component assembly moved into
+`main_qml_parts/page_assembly.py`, while `context.py` remains the context
+aggregation entrypoint. Generated `Main.qml` and the tracked final outputs
+remained byte-stable.

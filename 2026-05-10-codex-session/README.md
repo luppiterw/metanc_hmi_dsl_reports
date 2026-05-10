@@ -82,6 +82,10 @@ edit command config 和 prompt-driven edit execution。`generator.py` 进一步
 visible-column model、message wrapping、row filtering/search、column formatting
 和 detail text helpers。`generator.py` 进一步收敛到 1035 行，tracked
 generated outputs 继续无 diff。
+随后继续拆出 page/global auxiliary assembly：新增
+`main_qml_parts/page_assembly.py`，承接 page components、page loaders 和 global
+auxiliary component 组装，使 `context.py` 只负责聚合 `Main.qml` 上下文。
+tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -100,11 +104,11 @@ generated outputs 继续无 diff。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `19`
+- User prompts: `20`
 - Synthetic events: `1`
-- Messages: `434`
-- User messages: `20`
-- Codex messages: `414`
+- Messages: `451`
+- User messages: `21`
+- Codex messages: `430`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

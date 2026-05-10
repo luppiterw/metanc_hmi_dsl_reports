@@ -4,6 +4,7 @@
 flowchart LR
     MainGen[generator.py Main.qml entrypoint] --> MainParts[main_qml_parts package]
     MainParts --> Context[context.py]
+    MainParts --> PageAssembly[page_assembly.py]
     MainParts --> Masthead[masthead.py]
     MainParts --> Combo[combo_box.py]
     MainParts --> ShellState[shell_state.py]
@@ -52,6 +53,8 @@ flowchart LR
     PositionCache --> RuntimeStore
 
     Context --> MainQml[Generated Main.qml]
+    PageAssembly --> Context
+    PageAssembly --> MainQml
     Masthead --> MainQml
     Combo --> MainQml
     ShellState --> MainQml
@@ -140,6 +143,10 @@ flowchart LR
     LogView --> LogColumns[visible column model]
     LogView --> LogRows[visible row filtering and search]
     LogView --> LogFormatting[column values and detail text]
+
+    PageAssembly --> PageComponents[page component assembly]
+    PageAssembly --> PageLoaders[page loader assembly]
+    PageAssembly --> GlobalAux[global auxiliary component assembly]
 
     CommandActions --> NoticeWriter[local notice writer]
     CommandActions --> ActionDispatch[general action dispatch]

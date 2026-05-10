@@ -60,5 +60,8 @@ flowchart TD
     BD --> BE[Move runtime log view helpers]
     BE --> BF[Normalize insertion newline and rerun pipeline snapshots]
     BF --> BG[Refresh docs reports sync commit push]
-    BG --> BH[Plan page footer template body split]
+    BG --> BH[Move page and global auxiliary assembly]
+    BH --> BI[Regenerate outputs and confirm Main.qml has no diff]
+    BI --> BJ[Refresh docs reports sync commit push]
+    BJ --> BK[Plan shell frame footer body split]
 ```

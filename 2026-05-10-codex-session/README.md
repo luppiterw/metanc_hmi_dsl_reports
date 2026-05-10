@@ -15,7 +15,11 @@ handoff 文档，并生成/刷新报告与 docs_html。随后继续把
 payload application、client session id、remote snapshot merge、object merge
 和 position cache sync 分别拆入 `remote_state_blocks/`。这一步同样保持
 `RuntimeStore.qml`、Web/QML 产物、contract bundle 与 QML snapshot 无 diff。
-下一步计划转向风险更高的 QML generator entrypoint 拆分。
+随后启动风险更高的 QML generator entrypoint 拆分第一片：新增
+`client/qml_client/main_qml_parts/`，把 `Main.qml` 生成前的 context
+preparation、masthead brand fragment 和 shared ComboBox styling 从
+`generator.py` 移出，同时保持 generated `Main.qml`、Web/QML/runtime
+contract 和 distribution 输出无 diff。
 
 目录：
 
@@ -34,11 +38,11 @@ payload application、client session id、remote snapshot merge、object merge
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `3`
+- User prompts: `5`
 - Synthetic events: `0`
-- Messages: `43`
-- User messages: `3`
-- Codex messages: `40`
+- Messages: `92`
+- User messages: `5`
+- Codex messages: `87`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

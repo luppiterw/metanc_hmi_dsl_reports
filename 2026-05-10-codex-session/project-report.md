@@ -9,6 +9,9 @@ stream、motion output 和 execution pause/resume helper 时的耦合。
 随后继续处理 `remote_state.py`，把 server bootstrap / WebSocket / HTTP
 polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 block，
 同样保持 generated QML 输出不变。
+本轮最后启动 QML generator entrypoint 的低风险拆分第一片，把 `Main.qml`
+生成前的 context、masthead 和 ComboBox 样式准备逻辑移入
+`client/qml_client/main_qml_parts/`，仍保持最终生成产物 byte-stable。
 
 ## Completed Work
 
@@ -36,6 +39,16 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   - `position_cache.py`: `syncPositionCachesFromProperties()`
 - 新增 `QML_REMOTE_STATE_BLOCK_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 remote-state block 顺序和关键 marker 顺序测试。
+- 新增 `client/qml_client/main_qml_parts/`：
+  - `context.py`: `Main.qml` page/footer/theme/settings/loader/global-aux
+    context preparation
+  - `masthead.py`: masthead text/logo brand fragment preparation
+  - `combo_box.py`: shared QML ComboBox styling snippets
+- 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
+  ComboBox 样式准备逻辑迁出，同时保留 `generate_qml()` 和 `_build_main_qml()`
+  作为兼容入口。
+- 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
+  增加 main-shell helper contract 测试。
 - 更新维护文档：
   - `README.md`
   - `CHANGELOG.md`
@@ -57,6 +70,10 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   after the remote-state block split.
 - `python3 -m unittest tests.test_generator_refactor`
   after adding remote-state block order coverage.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the first QML main-shell helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding QML main-shell helper contract coverage.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -69,11 +86,16 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   `generated/qml/Main.qml`, `generated/web/app.js`, `generated/web/runtime.js`,
   `generated/distribution/contract/runtime_contract_bundle.json`, and
   `tests/snapshots/qml/RuntimeStore.qml.snap` did not change after the source splits.
+- The QML main-shell split also left `generated/qml/Main.qml`,
+  `generated/qml/RuntimeStore.qml`, `generated/web/app.js`,
+  `generated/web/runtime.js`, and the distribution contract bundle unchanged.
 
 ## Follow-Up
 
-- Plan `client/qml_client/generator.py` decomposition before editing because it
-  is still a 3672-line entrypoint and touches output file writing, packaging
-  assumptions, and generated auxiliary files.
-- Keep the first QML generator-entrypoint slice source-only and preserve all
-  generated outputs byte-for-byte.
+- Continue `client/qml_client/generator.py` decomposition incrementally. The
+  file is still 3518 lines after the first slice and now has a clear
+  `main_qml_parts/` destination for low-level helpers.
+- Split helper JavaScript functions inside the `Main.qml` template only after
+  grouping them by responsibility and locking generated-output diff checks.
+- Defer generated page/component file layout changes until source-level
+  decomposition and interaction tests are stable.

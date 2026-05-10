@@ -9,6 +9,8 @@
 - Provide a detailed next-step plan.
 - Continue from `derived_state.py` to `remote_state.py` with the same source-only
   decomposition rule.
+- Start the first QML generator entrypoint split and keep generated outputs
+  byte-stable.
 
 ## Technical Decisions
 
@@ -26,6 +28,10 @@
   state sync all depend on these helpers being in the same generated QML scope.
 - Lock block order with generator-refactor tests before moving to the next
   runtime fragment.
+- Keep the first QML `Main.qml` entrypoint split focused on low-risk helpers:
+  context preparation, masthead brand fragments, and shared ComboBox styling.
+- Do not split generated QML output files yet; only reshape source modules until
+  the source decomposition has stronger tests.
 
 ## Result
 
@@ -40,3 +46,9 @@ The split separates JSON/text request helpers, server payload application,
 client session id generation, remote snapshot/local-state merge, object merge
 helpers, and position-cache synchronization without changing generated runtime
 output. The next planning target is the larger QML generator entrypoint.
+
+The first QML generator entrypoint slice is now in place. `generator.py` still
+owns `generate_qml()` and the large `Main.qml` template, while
+`main_qml_parts/` owns main-shell context preparation, masthead brand fragments,
+and shared ComboBox styling. Generated Web/QML/server/distribution outputs were
+regenerated and remained unchanged for the tracked generated files.

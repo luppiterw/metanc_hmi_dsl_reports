@@ -13,6 +13,7 @@ flowchart LR
     MainParts --> LogExport[log_export.py]
     MainParts --> ProgramEditor[program_editor.py]
     MainParts --> ProgramSearch[program_search.py]
+    MainParts --> CommandActions[command_actions.py]
     MainParts --> DebugQuery[debug_query.py]
 
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
@@ -53,6 +54,7 @@ flowchart LR
     LogExport --> MainQml
     ProgramEditor --> MainQml
     ProgramSearch --> MainQml
+    CommandActions --> MainQml
     DebugQuery --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
@@ -88,4 +90,9 @@ flowchart LR
     ProgramSearch --> ClipboardState[Cut copy paste action state]
     ProgramSearch --> Preflight[Program execution preflight]
     ProgramSearch --> LocalProgramActions[local Program action dispatch]
+
+    CommandActions --> NoticeWriter[local notice writer]
+    CommandActions --> ActionDispatch[general action dispatch]
+    CommandActions --> LogActionDispatch[local log action dispatch]
+    CommandActions --> CommandGuards[Program Program Dir and log command guards]
 ```

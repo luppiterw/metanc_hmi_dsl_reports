@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `283`
-- User prompts: `12`
+- Messages: `308`
+- User prompts: `13`
 - Synthetic events: `0`
 
 <a id="turn-1"></a>
@@ -2487,5 +2487,210 @@ pipeline 正在编译临时 QML 目标。等它完成后会继续做全量 `gene
 
 ```
 report 源已更新。现在刷新当天 user history 和 full conversation export，然后重建 report books 和 docs_html。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 12:23:30 +0800`
+
+```
+docs portal 测试通过，diff 检查也干净。现在提交 reports submodule，再提交父仓库。
+```
+
+### Codex Response 16 / commentary
+`2026-05-10 12:24:54 +0800`
+
+```
+reports submodule 已提交推送为 `631de97`。现在提交并推送 `metanc_hmi_dsl` 主仓库。
+```
+
+### Codex Response 17 / commentary
+`2026-05-10 12:25:55 +0800`
+
+```
+`metanc_hmi_dsl` 已提交推送为 `c4c6695`。接下来同步 MetaNC，跑关键验证后提交推送。
+```
+
+### Codex Response 18 / commentary
+`2026-05-10 12:26:46 +0800`
+
+```
+MetaNC 同步范围符合预期，只有 `nrt/hmi` 内源码和英文文档。现在在 MetaNC 侧跑 compileall、generator-refactor 和 docs portal。
+```
+
+### Codex Response 19 / commentary
+`2026-05-10 12:27:14 +0800`
+
+```
+MetaNC 侧验证通过。现在提交并推送 `feat/hmi`。
+```
+
+### Codex Response 20 / commentary
+`2026-05-10 12:28:19 +0800`
+
+```
+MetaNC 已提交推送为 `1fc0545`。最后确认三处 clean 状态并看剩余 QML command guard 边界，给下一步计划。
+```
+
+### Codex Response 21 / final_answer
+`2026-05-10 12:29:12 +0800`
+
+```
+已完成这一轮。
+
+本次拆分：新增 `client/qml_client/main_qml_parts/shell_state.py`，把 QML shell 的 page existence、active/content page state、page metadata、window screen constraint、footer model selection、return icon glyph 拆出。`generator.py` 从 2031 行降到 1986 行，tracked `generated/` 仍无 diff。
+
+已提交并 push：
+- reports submodule: `631de97 docs: refresh 2026-05-10 QML shell state report`
+- metanc_hmi_dsl: `c4c6695 refactor: split QML shell state helpers`
+- MetaNC `feat/hmi`: `1fc0545 refactor: sync HMI QML shell state helpers`
+
+验证通过：
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+- `python3 -m unittest tests.test_generator_refactor`
+- `python3 -m unittest tests.test_pipeline`
+- `./tools/generate_targets.sh`
+- `mdbook build ...`
+- `./tools/build_docs_html.sh`
+- `python3 -m unittest tests.test_docs_portal`
+- `git diff --check`
+- MetaNC `nrt/hmi` 侧 compileall、generator-refactor、docs portal 也通过
+
+三处工作区现在都是 clean，并与远程同步。
+
+下一步详细计划：建议拆 `command_actions.py`，范围更大但已经是剩余最明确的一组：
+1. 先迁出 `triggerAction()`、`triggerActions()`、`triggerLocalLogAction()`。
+2. 再评估 `executeCommandWithGuards()` 是否同一轮迁出；它包含 program file dialogs、save/save_as、goto、rename/delete/execute 等 guard，依赖较多，建议如果 marker 测试稳定就一起迁出。
+3. `writeLocalNotice()` 可以跟 command actions 一起迁出，作为本地 action notice helper。
+4. 补 `QML_MAIN_PART_NAMES` 和 marker-order 测试，重点覆盖 command dispatch、log action、program command guard 顺序。
+5. 跑 compileall、generator-refactor、pipeline、generate_targets，并确认 `generated/qml/Main.qml` 仍无 diff。
+```
+
+<a id="turn-13"></a>
+## Turn 13
+
+### User
+`2026-05-10 12:35:17 +0800`
+
+```
+做一下，然后generate/update report & docs + sync MetaNC + commit + push，然后做下一步详细计划
+```
+
+### Codex Response 1 / commentary
+`2026-05-10 12:35:32 +0800`
+
+```
+我继续做下一片：拆 QML `Main.qml` 的 command action/guard helper 组。这个块依赖 Program、Log、state write 和 server command 分发，我会先按原函数顺序整体迁出，确保 generated `Main.qml` 不变。
+```
+
+### Codex Response 2 / commentary
+`2026-05-10 12:36:17 +0800`
+
+```
+这次会把 command action 拆成两段插回原位：`writeLocalNotice` 留在原来的 notice 位置，`triggerAction/triggerActions/triggerLocalLogAction/executeCommandWithGuards` 整体放到后面的 command action 位置，避免改变生成顺序。
+```
+
+### Codex Response 3 / commentary
+`2026-05-10 12:37:42 +0800`
+
+```
+我先接着上一轮的拆分点做：把 QML 里的 command action/guard helper 从 `generator.py` 里抽出去，先保证生成出的最终 QML 不发生行为变化，再更新文档、report、同步到 MetaNC。
+```
+
+### Codex Response 4 / commentary
+`2026-05-10 12:38:09 +0800`
+
+```
+当前仓库是干净的。我先读一下生成器中要抽出的两块和现有 refactor 测试，避免抽取后引入空行或顺序变化。
+```
+
+### Codex Response 5 / commentary
+`2026-05-10 12:38:23 +0800`
+
+```
+抽取范围比较清晰：一个本地 notice 写入 helper，和一组 action dispatch / log action / command guard helper。下一步我会先新增独立模块，再把 `generator.py` 改成只负责拼装这些片段。
+```
+
+### Codex Response 6 / commentary
+`2026-05-10 12:38:33 +0800`
+
+```
+我现在开始改文件：新增 `command_actions.py` 保存原始 QML 片段，`generator.py` 只引用这些片段；测试会补稳定契约，防止后续误删或重排这些 guard。
+```
+
+### Codex Response 7 / commentary
+`2026-05-10 12:40:40 +0800`
+
+```
+拆分代码已经落下去了。现在我跑 Python 编译和 refactor 单测，先抓语法/契约问题，再重新生成最终产物验证输出是否等价。
+```
+
+### Codex Response 8 / commentary
+`2026-05-10 12:40:51 +0800`
+
+```
+单测通过。接下来生成目标文件并看生成目录是否只有预期变化；如果 QML 输出出现纯空行差异，我会先把拼装边界调平。
+```
+
+### Codex Response 9 / commentary
+`2026-05-10 12:42:22 +0800`
+
+```
+生成产物没有变化，说明这次是纯生成器拆分，不改变最终 QML/Web/contract 输出。我再跑一组 pipeline 单测，然后更新文档和 report。
+```
+
+### Codex Response 10 / commentary
+`2026-05-10 12:42:37 +0800`
+
+```
+`test_pipeline` 里有一个失败，我先等它完整输出看具体断点；这类通常是 refactor 名称白名单或生成结构快照没跟上。
+```
+
+### Codex Response 11 / commentary
+`2026-05-10 12:43:06 +0800`
+
+```
+失败点是抽出的 `writeLocalNotice` 和 DEBUG helper 之间多了一行空行，行为没变但 snapshot 是字节级比较。我先把模板拼接边界压回原来的格式，再重跑相关测试。
+```
+
+### Codex Response 12 / commentary
+`2026-05-10 12:44:01 +0800`
+
+```
+第二个差异是 command guard helper 和 `nextProgramName()` 之间多了一行空行。我把这个边界也恢复成原始快照格式。
+```
+
+### Codex Response 13 / commentary
+`2026-05-10 12:45:01 +0800`
+
+```
+验证通过了，包含 snapshot 等价检查和临时 QML 构建。现在我会更新结构文档和 5 月 10 日 report，说明这轮是 source-only 拆分且最终产物保持不变。
+```
+
+### Codex Response 14 / commentary
+`2026-05-10 12:45:31 +0800`
+
+```
+我会把文档中的“command guard helpers 仍待拆”更新掉，并把这轮新增的 `command_actions.py` 纳入中英文结构说明。之后再导出 Codex history 和构建 docs_html。
+```
+
+### Codex Response 15 / commentary
+`2026-05-10 12:47:45 +0800`
+
+```
+代码拆分和快照验证已经完成；我继续把 report 里的“本轮进度、验证、后续计划”同步到当前状态，然后重建文档。
+```
+
+### Codex Response 16 / commentary
+`2026-05-10 12:48:11 +0800`
+
+```
+我已经完成代码和主文档更新，接下来补齐 session report 的结构图、流程图和会话摘要。报告里会明确这次 `command_actions.py` 是 source-only 拆分，最终生成文件保持 byte-stable。
+```
+
+### Codex Response 17 / commentary
+`2026-05-10 12:49:35 +0800`
+
+```
+报告源码已经补齐。现在我刷新 user history / full conversation export，再构建 report book 和主 docs_html，确保网页里能看到这轮内容。
 ```
 

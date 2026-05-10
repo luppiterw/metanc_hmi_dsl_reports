@@ -49,6 +49,12 @@ server mode normalization、boolean preference parsing 和 theme option guard。
 承接 page existence、active/content page state、page metadata、window screen
 constraint、footer model selection 和 footer return icon glyph。`generator.py`
 进一步收敛到 1986 行，tracked generated outputs 继续无 diff。
+随后继续拆出 command action/guard helper：新增
+`main_qml_parts/command_actions.py`，承接 `writeLocalNotice()`、action
+dispatch、local log action dispatch，以及 `executeCommandWithGuards()` 中的
+Program/Program Dir/log guard 逻辑。`generator.py` 进一步收敛到 1769 行，
+`command_actions.py` 承接 231 行源码 helper；生成器测试和 pipeline snapshot
+验证确认最终 Web/QML/server/distribution 输出继续保持 byte-stable。
 
 目录：
 
@@ -57,7 +63,7 @@ constraint、footer model selection 和 footer return icon glyph。`generator.py
 - `user-history.md`: 当天用户发言原始导出
 - `codex-conversations/`: Codex 完整会话导出目录
 - `workflow-diagram.md`: QML runtime 二级拆分、生成、验证、同步工作流图
-- `architecture-diagram.md`: QML runtime derived-state 与 remote-state block 结构图
+- `architecture-diagram.md`: QML runtime block 与 QML Main.qml helper 结构图
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
 
 <!-- codex-full-export:start -->
@@ -67,11 +73,11 @@ constraint、footer model selection 和 footer return icon glyph。`generator.py
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `12`
+- User prompts: `13`
 - Synthetic events: `0`
-- Messages: `283`
-- User messages: `12`
-- Codex messages: `271`
+- Messages: `308`
+- User messages: `13`
+- Codex messages: `295`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

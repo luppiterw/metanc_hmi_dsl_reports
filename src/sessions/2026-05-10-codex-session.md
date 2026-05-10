@@ -10,6 +10,7 @@ Focus:
   `main_qml_parts/program_search.py`
 - Settings panel helper extraction into `main_qml_parts/settings.py`
 - Shell state helper extraction into `main_qml_parts/shell_state.py`
+- Command action/guard helper extraction into `main_qml_parts/command_actions.py`
 
 Session assets:
 

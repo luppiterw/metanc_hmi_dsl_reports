@@ -25,6 +25,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the shell state helper slice, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the command action/guard helper slice, then refresh
+  reports/docs, sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -68,6 +70,10 @@
   state, page metadata, window screen constraint, footer model selection, and
   return icon helper can move out of `generator.py`, but generated `Main.qml`
   must stay byte-stable.
+- Keep the command action/guard slice source-only: notice writing, action
+  dispatch, local log action handling, and guarded command invocation can move
+  out of `generator.py`, but generated `Main.qml` byte layout and behavior must
+  stay stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -127,3 +133,9 @@ The shell state helper slice is now in place. Page existence, active/content
 page state, page metadata, window screen constraint, footer model selection, and
 return icon glyph helpers moved into `main_qml_parts/shell_state.py`. Generated
 `Main.qml` and the tracked final outputs remained byte-stable.
+
+The command action/guard helper slice is now in place. `writeLocalNotice()`,
+action dispatch, local log action handling, and guarded Program/Program Dir/log
+command invocation moved into `main_qml_parts/command_actions.py`. Generated
+`Main.qml` and the tracked final outputs remained byte-stable after normalizing
+the helper insertion newline boundaries.

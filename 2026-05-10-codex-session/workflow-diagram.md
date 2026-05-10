@@ -39,5 +39,8 @@ flowchart TD
     AI --> AJ[Move shell state helpers]
     AJ --> AK[Regenerate outputs and confirm Main.qml has no diff]
     AK --> AL[Refresh docs reports sync commit push]
-    AL --> AM[Plan command guard helper split]
+    AL --> AM[Move command action and guard helpers]
+    AM --> AN[Normalize insertion newlines and rerun pipeline snapshots]
+    AN --> AO[Refresh docs reports sync commit push]
+    AO --> AP[Plan runtime value/name helper split]
 ```

@@ -28,5 +28,7 @@ flowchart TD
     X --> Y[Regenerate final outputs and confirm Main.qml has no diff]
     Y --> Z[Move DEBUG natural-query parser rows metadata and formatting helpers]
     Z --> AA[Fix insertion newline and rerun generator pipeline tests]
-    AA --> AB[Refresh report docs sync commit push and plan binding helper split]
+    AA --> AB[Move binding reference and action argument helpers]
+    AB --> AC[Regenerate outputs docs reports sync commit push]
+    AC --> AD[Plan Program search editor action helper split]
 ```

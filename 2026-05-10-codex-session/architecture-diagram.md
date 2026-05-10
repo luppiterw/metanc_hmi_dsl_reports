@@ -6,6 +6,7 @@ flowchart LR
     MainParts --> Context[context.py]
     MainParts --> Masthead[masthead.py]
     MainParts --> Combo[combo_box.py]
+    MainParts --> Bindings[bindings.py]
     MainParts --> Dialogs[dialogs.py]
     MainParts --> LogExport[log_export.py]
     MainParts --> ProgramEditor[program_editor.py]
@@ -42,6 +43,7 @@ flowchart LR
     Context --> MainQml[Generated Main.qml]
     Masthead --> MainQml
     Combo --> MainQml
+    Bindings --> MainQml
     Dialogs --> MainQml
     LogExport --> MainQml
     ProgramEditor --> MainQml
@@ -60,4 +62,8 @@ flowchart LR
     DebugQuery --> AxisScope[axis shorthand and metric scope]
     DebugQuery --> ResultRows[result row materialization]
     DebugQuery --> ValueMeta[property and local-state metadata]
+
+    Bindings --> BindingFormat[binding value formatting]
+    Bindings --> RefPaths[state and interface reference paths]
+    Bindings --> ActionArgs[recursive action argument resolving]
 ```

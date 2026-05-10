@@ -22,6 +22,10 @@ runtime preview rows、active editor content 和 editor line helpers 移入
 plan、axis shorthand、row materialization、metadata 和 value formatting helper
 移入 `client/qml_client/main_qml_parts/debug_query.py`，仍保持 `Main.qml`
 输出无 diff。
+随后继续第五片拆分，把 binding/reference/action argument helper 移入
+`client/qml_client/main_qml_parts/bindings.py`，包括 binding value formatting、
+display unit normalization、state/interface path resolving 和 recursive action
+argument resolving，仍保持 `Main.qml` 输出无 diff。
 
 ## Completed Work
 
@@ -54,6 +58,8 @@ plan、axis shorthand、row materialization、metadata 和 value formatting help
     context preparation
   - `masthead.py`: masthead text/logo brand fragment preparation
   - `combo_box.py`: shared QML ComboBox styling snippets
+  - `bindings.py`: binding value formatting, unit display, reference path
+    resolving, command path resolving, and recursive action argument resolving
   - `dialogs.py`: prompt/confirm dialog helper functions
   - `log_export.py`: visible log JSONL export, save dialog, and clipboard
     fallback helpers
@@ -63,11 +69,12 @@ plan、axis shorthand、row materialization、metadata 和 value formatting help
     shorthand, row materialization, metadata, and value-format helpers
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
   ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
-  再迁出 Program editor helper 函数组；最后迁出 DEBUG natural-query helper
-  函数组；同时保留 `generate_qml()` 和 `_build_main_qml()` 作为兼容入口。
-- `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 2731 行；
-  `program_editor.py` 承接 221 行源码 helper，`debug_query.py` 承接 446 行
-  源码 helper。
+  迁出 binding/reference helper 函数组；再迁出 Program editor helper 函数组；
+  最后迁出 DEBUG natural-query helper 函数组；同时保留 `generate_qml()` 和
+  `_build_main_qml()` 作为兼容入口。
+- `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 2644 行；
+  `bindings.py` 承接 95 行源码 helper，`program_editor.py` 承接 221 行源码
+  helper，`debug_query.py` 承接 446 行源码 helper。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -107,6 +114,10 @@ plan、axis shorthand、row materialization、metadata 和 value formatting help
   after the DEBUG natural-query helper split.
 - `python3 -m unittest tests.test_generator_refactor`
   after adding DEBUG helper marker-order coverage.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the binding/reference helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding binding helper marker-order coverage.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -129,14 +140,15 @@ plan、axis shorthand、row materialization、metadata 和 value formatting help
   assets, the distribution contract bundle, and the QML runtime snapshot.
 - The DEBUG natural-query helper split kept the same tracked generated-output
   diff set empty after fixing the helper insertion newline boundary.
+- The binding/reference helper split kept the same tracked generated-output diff
+  set empty after normalizing the helper insertion newline boundary.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 2731 lines after the DEBUG helper split and now has a clear
+  file is 2644 lines after the binding/reference helper split and now has a clear
   `main_qml_parts/` destination for remaining low-level helpers.
-- Split binding/reference/action helpers next because they sit directly after
-  `program_editor_state_helpers`, are used by both footer actions and generated
-  page controls, and can be isolated without changing UI output.
+- Split Program search/editor action helpers next because they are the next
+  large cohesive client-local helper group in the `Main.qml` template.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

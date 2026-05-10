@@ -32,6 +32,10 @@ highlight、runtime preview rows、current editor content 和 editor line helper
 `main_qml_parts/debug_query.py`，承接 query parser、log query plan、axis
 shorthand、row materialization、metadata 和 value formatting helper。
 `generator.py` 进一步收敛到 2731 行，tracked generated outputs 继续无 diff。
+随后拆出 binding/reference helper：新增 `main_qml_parts/bindings.py`，承接
+binding value formatting、unit display、state/interface ref path resolving 和
+action argument resolving。`generator.py` 进一步收敛到 2644 行，tracked
+generated outputs 继续无 diff。
 
 目录：
 
@@ -50,11 +54,11 @@ shorthand、row materialization、metadata 和 value formatting helper。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `8`
+- User prompts: `9`
 - Synthetic events: `0`
-- Messages: `189`
-- User messages: `8`
-- Codex messages: `181`
+- Messages: `213`
+- User messages: `9`
+- Codex messages: `204`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

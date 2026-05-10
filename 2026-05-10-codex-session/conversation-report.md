@@ -17,6 +17,8 @@
   MetaNC, commit, push, and produce the next detailed plan.
 - Continue with the DEBUG natural-query helper slice, then refresh reports/docs,
   sync MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the binding/reference helper slice, then refresh reports/docs,
+  sync MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -44,6 +46,10 @@
 - Keep the DEBUG natural-query slice source-only: parser, log-query plan, axis
   shorthand, row materialization, metadata, and formatting helpers can move out
   of `generator.py`, but the generated `Main.qml` byte layout must stay stable.
+- Keep the binding/reference slice source-only: formatting, unit normalization,
+  local-state path extraction, interface/state ref resolving, and recursive
+  action argument resolving can move out of `generator.py`, but generated
+  `Main.qml` must stay byte-stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -83,3 +89,8 @@ log-query planning, axis shorthand matching, display-row derivation, metadata
 lookup, and value formatting moved into `main_qml_parts/debug_query.py`.
 Generated `Main.qml` and the tracked final outputs remained byte-stable after
 normalizing the helper insertion newline.
+
+The binding/reference helper slice is now in place. Binding value formatting,
+unit normalization, state/interface path resolving, command path resolving, and
+recursive action argument resolving moved into `main_qml_parts/bindings.py`.
+Generated `Main.qml` and the tracked final outputs remained byte-stable.

@@ -5,6 +5,7 @@ Focus:
 - QML runtime and Main.qml source decomposition with byte-stable generated outputs
 - Program editor helper extraction into `main_qml_parts/program_editor.py`
 - DEBUG natural-query helper extraction into `main_qml_parts/debug_query.py`
+- Binding/reference helper extraction into `main_qml_parts/bindings.py`
 
 Session assets:
 

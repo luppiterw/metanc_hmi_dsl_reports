@@ -13,6 +13,8 @@
   byte-stable.
 - Continue the QML main-shell helper split, then refresh reports/docs, sync
   MetaNC, commit, push, and produce the next detailed plan.
+- Continue with the Program editor helper slice, then refresh reports/docs, sync
+  MetaNC, commit, push, and produce the next detailed plan.
 
 ## Technical Decisions
 
@@ -34,6 +36,9 @@
   context preparation, masthead brand fragments, and shared ComboBox styling.
 - Keep the second QML main-shell slice focused on isolated functions: dialog
   helpers and log export helpers.
+- Keep the Program editor slice source-only: line/offset helpers, syntax
+  highlighting, runtime preview rows, and editor state helpers can move out of
+  `generator.py`, but generated `Main.qml` behavior must stay byte-stable.
 - Do not split generated QML output files yet; only reshape source modules until
   the source decomposition has stronger tests.
 
@@ -61,3 +66,9 @@ The second QML main-shell helper slice is also in place. Dialog prompt/confirm
 helpers and runtime log export/save/clipboard fallback helpers moved into
 `main_qml_parts/dialogs.py` and `main_qml_parts/log_export.py`; generated
 `Main.qml` remained byte-stable.
+
+The Program editor helper slice is now in place as well. Program editor
+line/offset helpers, syntax highlighting, runtime preview rows, active editor
+content, and editor-line derivation moved into
+`main_qml_parts/program_editor.py`; generated `Main.qml` and the tracked final
+outputs remained byte-stable.

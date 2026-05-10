@@ -2,7 +2,8 @@
 
 Focus:
 
-- Session bootstrap and Codex user-history export tooling
+- QML runtime and Main.qml source decomposition with byte-stable generated outputs
+- Program editor helper extraction into `main_qml_parts/program_editor.py`
 
 Session assets:
 

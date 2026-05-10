@@ -23,6 +23,11 @@ contract 和 distribution 输出无 diff。
 随后继续第二片低风险拆分，把 dialog helpers 和 runtime log export helpers
 移入 `main_qml_parts/dialogs.py`、`main_qml_parts/log_export.py`，同样保持
 tracked generated outputs byte-stable。
+本轮最后完成第三片 QML main-shell helper 拆分：新增
+`main_qml_parts/program_editor.py`，把 Program editor 的 line/offset、syntax
+highlight、runtime preview rows、current editor content 和 editor line helper
+从 `generator.py` 移出；`generator.py` 收敛到 3167 行，`program_editor.py`
+承接 221 行源码 helper，最终 generated `Main.qml` 仍保持无 diff。
 
 目录：
 
@@ -41,11 +46,11 @@ tracked generated outputs byte-stable。
 - Sessions: `1`
 - Primary sessions: `1`
 - Side sessions: `0`
-- User prompts: `6`
+- User prompts: `7`
 - Synthetic events: `0`
-- Messages: `127`
-- User messages: `6`
-- Codex messages: `121`
+- Messages: `159`
+- User messages: `7`
+- Codex messages: `152`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

@@ -14,6 +14,10 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
 `client/qml_client/main_qml_parts/`，仍保持最终生成产物 byte-stable。
 随后继续第二片拆分，把 dialog helpers 与 runtime log export helpers
 移入同一 `main_qml_parts/` 包，继续保持 `Main.qml` 输出无 diff。
+本轮最后继续第三片拆分，把 Program editor 的行号/offset、语法高亮、
+runtime preview rows、active editor content 和 editor line helpers 移入
+`client/qml_client/main_qml_parts/program_editor.py`，继续保持 `Main.qml`
+输出无 diff。
 
 ## Completed Work
 
@@ -49,9 +53,14 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   - `dialogs.py`: prompt/confirm dialog helper functions
   - `log_export.py`: visible log JSONL export, save dialog, and clipboard
     fallback helpers
+  - `program_editor.py`: Program editor line/offset helpers, syntax
+    highlighting, runtime preview rows, and active editor state helpers
 - 将 `client/qml_client/generator.py` 中对应的输入模型、masthead 和
   ComboBox 样式准备逻辑迁出；随后迁出 dialog 与 log export helper 函数组；
-  同时保留 `generate_qml()` 和 `_build_main_qml()` 作为兼容入口。
+  最后迁出 Program editor helper 函数组；同时保留 `generate_qml()` 和
+  `_build_main_qml()` 作为兼容入口。
+- `client/qml_client/generator.py` 从本日早前的 3376 行继续降到 3167 行，
+  新增的 `program_editor.py` 承接 221 行源码 helper。
 - 新增 `QML_MAIN_PART_NAMES`，并在 `tests/test_generator_refactor.py`
   增加 main-shell helper contract 测试。
 - 更新维护文档：
@@ -83,6 +92,10 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   after the dialog/log-export helper split.
 - `python3 -m unittest tests.test_generator_refactor`
   after adding dialog/log-export helper marker coverage.
+- `python3 -m compileall client/qml_client tests/test_generator_refactor.py`
+  after the Program editor helper split.
+- `python3 -m unittest tests.test_generator_refactor`
+  after adding Program editor helper marker coverage.
 - `./tools/generate_targets.sh`
   after the source splits, confirming final Web/QML/server/distribution outputs
   regenerate successfully.
@@ -100,13 +113,16 @@ polling 共用的 request、payload、snapshot 和 cache helper 拆成更小 blo
   `generated/web/runtime.js`, and the distribution contract bundle unchanged.
 - The dialog/log-export helper split kept the same tracked generated-output diff
   set empty, including `generated/qml/Main.qml`.
+- The Program editor helper split also kept the tracked generated-output diff set
+  empty, including `generated/qml/Main.qml`, `RuntimeStore.qml`, generated Web
+  assets, the distribution contract bundle, and the QML runtime snapshot.
 
 ## Follow-Up
 
 - Continue `client/qml_client/generator.py` decomposition incrementally. The
-  file is 3376 lines after the first two main-shell helper slices and now has a
-  clear `main_qml_parts/` destination for low-level helpers.
-- Split helper JavaScript functions inside the `Main.qml` template only after
-  grouping them by responsibility and locking generated-output diff checks.
+  file is 3167 lines after the Program editor helper split and now has a clear
+  `main_qml_parts/` destination for remaining low-level helpers.
+- Split DEBUG natural-query helpers next because they form a cohesive helper
+  group and can be locked with marker-order tests before any UI behavior change.
 - Defer generated page/component file layout changes until source-level
   decomposition and interaction tests are stable.

@@ -2,6 +2,14 @@
 
 ```mermaid
 flowchart LR
+    MainGen[generator.py Main.qml entrypoint] --> MainParts[main_qml_parts package]
+    MainParts --> Context[context.py]
+    MainParts --> Masthead[masthead.py]
+    MainParts --> Combo[combo_box.py]
+    MainParts --> Dialogs[dialogs.py]
+    MainParts --> LogExport[log_export.py]
+    MainParts --> ProgramEditor[program_editor.py]
+
     Shell[runtime_shell.py] --> Derived[derived_state.py assembler]
     Shell --> Remote[remote_state.py assembler]
     Derived --> SyncRoot[derived_state_blocks/sync_root.py]
@@ -29,6 +37,13 @@ flowchart LR
     Snapshot --> RuntimeStore
     Merge --> RuntimeStore
     PositionCache --> RuntimeStore
+
+    Context --> MainQml[Generated Main.qml]
+    Masthead --> MainQml
+    Combo --> MainQml
+    Dialogs --> MainQml
+    LogExport --> MainQml
+    ProgramEditor --> MainQml
 
     RuntimeStore --> Main[MAIN dashboard state]
     RuntimeStore --> ProgramDir[Program browser view state]

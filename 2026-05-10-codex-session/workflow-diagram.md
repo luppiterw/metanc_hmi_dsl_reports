@@ -22,5 +22,9 @@ flowchart TD
     R --> S[Regenerate final outputs and confirm no generated diff]
     S --> T[Refresh 2026-05-10 report/docs]
     T --> U[Commit and push reports, metanc_hmi_dsl, and MetaNC]
-    U --> V[Plan QML generator entrypoint split]
+    U --> V[Split first QML Main.qml helper slices]
+    V --> W[Move context masthead ComboBox dialog and log-export helpers]
+    W --> X[Move Program editor text and state helpers]
+    X --> Y[Regenerate final outputs and confirm Main.qml has no diff]
+    Y --> Z[Refresh report docs sync commit push and plan DEBUG helper split]
 ```

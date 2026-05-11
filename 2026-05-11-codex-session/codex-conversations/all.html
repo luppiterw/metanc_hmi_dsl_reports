@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Local Conversation Export - All Sessions</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="index.html">Back to index</a></p>
+<h1>Codex Local Conversation Export - All Sessions</h1>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1>给一下下一步详细拆分计划</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dd1a3-b582-7aa3-bc1d-fc4c131177f6</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 08:11:54 +0800</div>
+<pre>给一下下一步详细拆分计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-11 08:12:27 +0800</div>
+<pre>下一步建议拆 `header_body.py`，也就是 QML `Main.qml` 顶部 header/body 区域。
+
+**目标**
+把 `generator.py` 里顶部状态栏相关 QML body 移到：
+
+`client/qml_client/main_qml_parts/header_body.py`
+
+当前 `generator.py` 已经降到 560 行，剩余最大且相对独立的 body 是 header 区域。拆完后预计能再降约 150-190 行。
+
+**拆分范围**
+本轮只移动 QML body，不改行为、不改 UI、不改 generated 文件布局。
+
+建议包含：
+
+- 顶部 `Rectangle`
+- `statusColumn`
+- masthead brand/title 区域
+- `statusChipRow`
+- `operationsToggleButton`
+- `themeSelector`
+- `settingsHeaderButton`
+
+不包含：
+
+- `ApplicationWindow` 外层属性
+- `RuntimeStore`
+- Shortcut
+- footer/stage/overlay body
+- helper functions
+- generated QML 文件拆分
+
+**新模块接口**
+新增：
+
+```python
+def build_header_body(
+    *,
+    masthead_brand_row_height: str | int,
+    masthead_brand_preferred_height: str | int,
+    masthead_brand_spacing: str | int,
+    masthead_brand_content: str,
+    theme_selector_style: str,
+) -&gt; str:
+    ...
+```
+
+`generator.py` 中只保留：
+
+```python
+header_body = build_header_body(...)
+```
+
+模板里替换为：
+
+```qml
+{header_body}
+{stage_body}
+{footer_body}
+```
+
+**测试计划**
+更新 `tests/test_generator_refactor.py`：
+
+- import `build_header_body`
+- `QML_MAIN_PART_NAMES` 加入 `&quot;header_body&quot;`
+- 增加 marker-order coverage：
+
+```text
+id: statusColumn
+id: statusChipRow
+id: operationsToggleButton
+id: themeSelector
+id: settingsHeaderButton
+onClicked: openSettingsPanel()
+```
+
+同时确认 header body 内包含：
+
+```text
+statusChipModel()
+pageMeta(contentPageState()).title
+ThemeStore.theme(window.currentThemeId)
+```
+
+**验证计划**
+执行：
+
+```bash
+python3 -m compileall client/qml_client tests/test_generator_refactor.py
+python3 -m unittest tests.test_generator_refactor
+python3 -m unittest tests.test_pipeline
+./tools/generate_targets.sh
+git diff -- generated/qml/Main.qml generated/qml/RuntimeStore.qml generated/web/app.js generated/web/runtime.js generated/distribution/contract/runtime_contract_bundle.json tests/snapshots/qml/RuntimeStore.qml.snap
+```
+
+目标是 tracked generated outputs 无 diff。
+
+**文档/report 更新**
+同步更新：
+
+- `README.md`
+- `CHANGELOG.md`
+- `docs/development_guidelines/code_map.md`
+- `docs/development_guidelines/workflow/agent_handoff.md`
+- `docs/requirements/status_matrix.md`
+- `docs_i18n/zh-CN/...`
+- `submodules/metanc_hmi_dsl_reports/2026-05-11-codex-session` 或当天 report
+- report architecture/workflow/session index
+
+**提交同步计划**
+完成后按固定顺序：
+
+1. report submodule commit + push
+2. metanc_hmi_dsl commit + push
+3. `./tools/export_to_metanc.sh /home/iaar/workspace/ccmix-wp/MetaNC`
+4. MetaNC `nrt/hmi` 验证
+5. MetaNC commit + push
+
+**本轮后的下一步**
+拆完 `header_body.py` 后，`generator.py` 剩下主要会是：
+
+- `ApplicationWindow` shell/template 外框
+- top-level properties
+- shortcuts
+- small inline helper functions
+- helper insertion order
+
+再下一步应该考虑 `window_shell.py` 或 `template_frame.py`，但那一片风险更高，需要先看剩余结构再定。</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 08:16:43 +0800</div>
+<pre>ok 做一下先，然后generate/update report &amp; docs + sync MetaNC + commit + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 08:17:03 +0800</div>
+<pre>我开始执行这片 `header_body.py` 拆分：先确认当前仓库状态和剩余 `generator.py` 结构，再按计划只移动 QML body，目标是不改变生成的 `Main.qml`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-11 08:17:33 +0800</div>
+<pre>工作树是干净的，reports 子模块也对齐。现在我读取 header 区域和测试位置，准备拆出 `header_body.py` 并补 marker-order coverage。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-11 08:18:46 +0800</div>
+<pre>我先接着上一轮的拆分计划落地：把 QML 顶部 header body 从 `generator.py` 里拆出去，然后再跑生成、文档、report、同步和提交链路。先快速确认当前文件状态，避免覆盖你本地的新改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-11 08:19:08 +0800</div>
+<pre>当前三个仓库都是干净的。`generator.py` 里顶部 header 仍然是一整段内联 QML，我现在会把这段原样抽到 `main_qml_parts/header_body.py`，并补上稳定契约测试，确保生成产物只发生结构性拆分。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-11 08:21:10 +0800</div>
+<pre>拆分代码和契约测试已经补上了。下一步我先跑快速 Python/QML 生成相关测试，如果生成快照没有变化，再更新文档和 report。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-11 08:21:19 +0800</div>
+<pre>快速测试通过。现在我会跑完整的生成器回归和最终产物生成，重点看 `generated/` 是否保持语义稳定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-11 08:21:58 +0800</div>
+<pre>完整 pipeline 也通过了，包含 QML 临时构建。接下来重新生成最终产物，并检查这次拆分没有改动生成结果本身。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-11 08:22:44 +0800</div>
+<pre>最终产物生成还在跑，QML 和 server 都在本机路径完成编译，vcpkg 包也都是从本地缓存恢复，没有再出现下载失败。等 server/distribution 打包结束后我会继续做文档/report。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-11 08:23:12 +0800</div>
+<pre>生成后的关键产物 diff 为空，说明这次是源码结构拆分，不改变最终 Web/QML/contract 输出。当前 `generator.py` 已从 560 行降到 375 行，新增的 header body 模块 210 行。现在我更新文档中的拆分状态和后续计划描述。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-11 08:25:01 +0800</div>
+<pre>文档里的 “header shell” 余留已经清掉，后续拆分点现在只剩 QML 顶层模板。接下来我生成今天的 report 历史和报告页，再构建 docs_html。</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1>这个现在怎么生成web版本</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e0551-072d-7b01-8879-179803763de6</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-08 10:00:56 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/lup/OminiForge</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/08/rollout-2026-05-08T10-00-56-019e0551-072d-7b01-8879-179803763de6.jsonl</code></div>
+<div><b>Messages</b>: <code>4</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 08:23:31 +0800</div>
+<pre>这个现在怎么生成web版本</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 08:23:51 +0800</div>
+<pre>我先核对一下当前 Web app 的脚本和项目入口，避免把上次的记忆当成现状。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-11 08:24:10 +0800</div>
+<pre>我看到当前 Web 版本是 `platforms/web/app` 里的 Vue3 + Vite 应用。生成方式分成“开发预览”和“生产静态产物”两种。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-11 08:24:31 +0800</div>
+<pre>现在 Web 版本在 `platforms/web/app`，是 Vue3 + TS + Vite。
+
+开发预览：
+
+```bash
+cd /home/iaar/workspace/lup/OminiForge/platforms/web/app
+npm install
+npm run dev
+```
+
+打开：
+
+```text
+http://localhost:5173/
+```
+
+生产构建：
+
+```bash
+cd /home/iaar/workspace/lup/OminiForge/platforms/web/app
+npm run build
+```
+
+生成产物在：
+
+```text
+/home/iaar/workspace/lup/OminiForge/platforms/web/app/dist/
+```
+
+如果要打成带 manifest 的 Web 发布包：
+
+```bash
+cd /home/iaar/workspace/lup/OminiForge
+python3 tools/package_web_dist.py \
+  --dist platforms/web/app/dist \
+  --out .tmp/web-package \
+  --archive .tmp/ominiforge-web-workbench.zip
+```
+
+校验静态部署包：
+
+```bash
+python3 tools/check_static_host_deploy.py \
+  --package .tmp/web-package \
+  --out .tmp/static-host-report.json
+```
+
+最常用就是：`npm run build` 生成 `dist/`，部署时把 `dist/` 目录丢到 nginx、静态服务器、对象存储都可以。</pre>
+</article>
+</section>
+
+</section>
+</main>
+</body>
+</html>

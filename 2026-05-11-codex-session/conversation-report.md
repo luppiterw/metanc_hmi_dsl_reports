@@ -20,6 +20,8 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
 - `program_search.py` 第一阶段低风险拆分完成，Program navigation、Search
   local state 和 Search engine 被移入二级 fragments，动作层暂时保留。
 - 测试与最终产物生成均通过。
+- 后续重新生成 Web、Qt/QML、server/distribution 和 docs_html 最终产物，供
+  用户检查当前效果。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 

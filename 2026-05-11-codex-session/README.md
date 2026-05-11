@@ -17,6 +17,8 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 三块，不触碰 replace、clipboard、execution preflight 和 local Program action
 等高行为风险逻辑。`program_search.py` 从 522 行降到 391 行，新增三个
 40-70 行级别的二级 fragments，tracked generated outputs 继续无 diff。
+本轮后续又按用户要求重新生成 Web、Qt/QML、server/distribution 和最终文档
+产物，用于人工检查当前效果；生成后的源码与 reports 工作区保持 clean。
 
 目录：
 
@@ -35,11 +37,11 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `7`
-- Synthetic events: `0`
-- Messages: `49`
-- User messages: `7`
-- Codex messages: `42`
+- User prompts: `12`
+- Synthetic events: `1`
+- Messages: `75`
+- User messages: `13`
+- Codex messages: `62`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

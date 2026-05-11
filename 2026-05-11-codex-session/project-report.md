@@ -55,6 +55,14 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
   - native server: `generated/server-build/server`
   - QML executable: `generated/qml-final/appCNC_HMI_DSL`
   - distribution: `generated/distribution`
+- 后续按检查请求再次刷新 Web、Qt/QML、server/distribution 和 docs_html：
+  - Web entry: `generated/web/index.html`
+  - Web bundle: `generated/web/assets/web-client.bundle.js`
+  - QML entry: `generated/qml/Main.qml`
+  - QML executable: `generated/qml-final/appCNC_HMI_DSL`
+  - server binary: `generated/server-build/server`
+  - docs portal: `docs_html/index.html`
+  - latest session report: `docs_html/reports/2026-05-11-codex-session/index.html`
 
 ## Validation
 
@@ -62,10 +70,14 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
 - `python3 -m unittest tests.test_generator_refactor`
 - `python3 -m unittest tests.test_pipeline`
 - `./tools/generate_targets.sh`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-11-codex-session`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `./tools/build_docs_html.sh`
 - `git diff -- generated/qml/Main.qml generated/qml/RuntimeStore.qml generated/web/app.js generated/web/runtime.js generated/distribution/contract/runtime_contract_bundle.json tests/snapshots/qml/RuntimeStore.qml.snap`
 
 Validation result: tests passed, final artifacts regenerated, and tracked
-generated outputs remained unchanged for the structural split.
+generated outputs remained unchanged for the structural split. The final
+artifact refresh also completed without creating source changes.
 
 ## Current File Sizes
 

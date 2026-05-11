@@ -29,6 +29,14 @@ flowchart LR
     M --> H
     CB --> H
 
+    subgraph Web QML Parity Tracking
+        PARDOC[docs/client/web_qml_parity.md]
+        PARZH[docs_i18n/zh-CN/client/web_qml_parity.md]
+        PARTST[tests/test_web_qml_parity_docs.py]
+        PARDOC --> PARTST
+        PARZH --> PARTST
+    end
+
     subgraph Header Body Responsibility
         H1[Top status shell]
         H2[Masthead title and brand]

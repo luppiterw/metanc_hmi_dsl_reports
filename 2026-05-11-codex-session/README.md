@@ -24,6 +24,11 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 `ListView` row anchor；显式 reset refresh 仍会回到顶部。该修复还顺手收紧了
 分发版 Web 启动脚本的 `--restart PORT` 参数解析，并避免 packaged `config.js`
 被错误覆盖为 strict 空 server URL。
+最后落地 Web/QML parity tracking 第一版：新增英文与中文
+`client/web_qml_parity.md`，用矩阵跟踪 Shell、MAIN、软面板、PROG DIR、
+PROG EDIT、Diagnostics Logs、DEBUG Query 和 Runtime Transport/Reconnect
+的 Web/QML 状态、差异类型、验证方式、优先级和 follow-up，并新增轻量
+docs 测试锁定矩阵枚举和 P0 规则。
 
 目录：
 
@@ -42,11 +47,11 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `31`
-- Synthetic events: `2`
-- Messages: `234`
-- User messages: `33`
-- Codex messages: `201`
+- User prompts: `40`
+- Synthetic events: `3`
+- Messages: `302`
+- User messages: `43`
+- Codex messages: `259`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

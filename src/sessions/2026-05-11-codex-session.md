@@ -6,6 +6,7 @@ Focus:
 - QML Program search navigation/state/search-engine decomposition
 - Generated artifact stability validation
 - Diagnostics Logs refresh viewport preservation for Web and QML
+- Web/QML parity tracking matrix and docs guard test
 - Report/docs refresh and MetaNC sync preparation
 
 Session assets:

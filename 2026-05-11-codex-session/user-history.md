@@ -21,3 +21,12 @@ Date: 2026-05-11
 - ok 按照你的计划做一下
 - ok 按照你的计划做一下
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- ok 按照你的计划做一下
+- 计划一下
+- 看一下现在我们这套hmi的功能框架完整度如何
+- do + 完成后commit + push + do detail plan
+- qml和web两部分的功能同步性呢
+- 具体怎么做呢
+- 嗯 按照你的计划开始落一下我看看
+- generate/update report &amp; docs + sync MetaNC + commit + push
+- do + 完成后commit + push + do detail plan

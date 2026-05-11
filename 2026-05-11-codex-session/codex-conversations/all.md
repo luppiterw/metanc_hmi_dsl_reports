@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `163`
-- User prompts: `13`
+- Messages: `199`
+- User prompts: `18`
 - Synthetic events: `1`
 
 <a id="turn-1"></a>
@@ -1764,6 +1764,544 @@ generate/update report & docs + sync MetaNC + commit + push
 我开始落文件更新：先刷新 2026-05-11 的 user-history/full conversation，然后把 Logs 滚动保持写进当天 report 和关联日志文档。之后会统一构建 docs portal 和报告 HTML。
 ```
 
+### Codex Response 6 / commentary
+`2026-05-11 10:41:43 +0800`
+
+```
+Codex history 已刷新，今天的 full conversation 统计从 75 条消息更新到 234 条消息，会覆盖到 report HTML 里。现在补 report 正文和关联文档。
+```
+
+### Codex Response 7 / commentary
+`2026-05-11 10:45:15 +0800`
+
+```
+report 正文已经补到今天的 session 里了。刚才更新 session 索引时我指错了路径，实际 aggregate session 页在 reports 子模块根下的 `src/sessions/`，我现在修正它，并把图里的流程也补上 Logs viewport 这一支。
+```
+
+### Codex Response 8 / commentary
+`2026-05-11 10:46:07 +0800`
+
+```
+源码文档和 report 已更新。下一步我重新生成 story/docs/final artifacts，跑文档构建和测试；如果 i18n manifest 因文档修改变 stale，我会按现有流程标记对应中文页为 current。
+```
+
+### Codex Response 9 / commentary
+`2026-05-11 10:46:18 +0800`
+
+```
+i18n strict 检查显示仓库里已有一批历史 stale/untracked 条目，这不是本轮全量新增；本轮涉及的三对中文页我已经同步更新。接下来只对这三对文档刷新 i18n 状态，不顺手改动无关历史条目。
+```
+
+### Codex Response 10 / commentary
+`2026-05-11 10:46:52 +0800`
+
+```
+story docs 已重新生成，没有报错。现在跑最终产物生成和 docs/report HTML 构建，确保 `generated/`、`docs_html/`、reports site 都是最新。
+```
+
+### Codex Response 11 / commentary
+`2026-05-11 10:47:56 +0800`
+
+```
+最终产物生成完成，Web/QML/server/distribution 都已刷新。现在同步快照基线，并构建 reports submodule、今天的 session book 和 docs_html。
+```
+
+### Codex Response 12 / commentary
+`2026-05-11 10:48:31 +0800`
+
+```
+docs_html 构建完成，37 本书都已输出。现在跑完整测试和 diff 检查，再准备按 reports 子模块 -> 主仓库 -> MetaNC 的顺序提交推送。
+```
+
+### Codex Response 13 / commentary
+`2026-05-11 10:48:40 +0800`
+
+```
+主仓库 diff 检查干净，但 full conversation 导出的 `all.md` 末尾多了一个空行，reports 子模块的 `diff --check` 会拦。这个是导出器产物的小格式问题，我先修掉末尾空行再继续。
+```
+
+### Codex Response 14 / commentary
+`2026-05-11 10:49:41 +0800`
+
+```
+校验现在过了：45 个 unittest 通过、主仓库和 reports 子模块 `diff --check` 都干净。接下来先提交并推送 reports 子模块，随后提交主仓库，最后同步 MetaNC。
+```
+
+### Codex Response 15 / commentary
+`2026-05-11 10:50:28 +0800`
+
+```
+reports 子模块已提交并推到 `34ddf9a`。现在提交 metanc_hmi_dsl 主仓库，内容包括 Logs 滚动修复、文档/i18n、生成快照、分发脚本修正和新的 reports submodule 指针。
+```
+
+### Codex Response 16 / commentary
+`2026-05-11 10:51:13 +0800`
+
+```
+metanc_hmi_dsl 已推到 `c6acd8a`。现在同步到 MetaNC，我会先用导出脚本更新 `nrt/hmi`，然后检查 MetaNC diff，只提交必要内容。
+```
+
+### Codex Response 17 / commentary
+`2026-05-11 10:51:34 +0800`
+
+```
+MetaNC diff 只包含 `nrt/hmi` 下的必要同步内容，没有 reports/docs_i18n/generated_html 之类源仓库专用内容。现在在 MetaNC 跑基础校验后提交推送。
+```
+
+### Codex Response 18 / commentary
+`2026-05-11 10:52:25 +0800`
+
+```
+MetaNC 的同步校验也通过了：`diff --check` 干净，45 个 HMI 单测通过。现在提交 `feat/hmi` 并 push。
+```
+
+### Codex Response 19 / commentary
+`2026-05-11 10:53:06 +0800`
+
+```
+MetaNC 已推到 `3bf2e44`。最后我收尾检查三边状态，确认没有漏提交或残留本地变更。
+```
+
+### Codex Response 20 / final_answer
+`2026-05-11 10:53:20 +0800`
+
+```
+已完成并推送。
+
+提交结果：
+
+- reports submodule: `34ddf9a docs: update 2026-05-11 logs viewport report`
+- metanc_hmi_dsl `main`: `c6acd8a fix: preserve diagnostics logs viewport on refresh`
+- MetaNC `feat/hmi`: `3bf2e44 fix: sync HMI logs viewport preservation`
+
+这轮包含：
+
+- 更新 2026-05-11 report、user-history、full conversation、workflow/architecture diagram
+- 更新 Logs 相关 docs、中文 docs_i18n 和 i18n 状态
+- 重新生成 Web/QML/server/distribution 最终产物
+- 重新构建 reports book、当天 session book、`docs_html`
+- 同步必要内容到 `MetaNC/nrt/hmi`
+
+验证：
+
+- `./tools/generate_targets.sh` 通过
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-11-codex-session` 通过
+- `mdbook build submodules/metanc_hmi_dsl_reports` 通过
+- `./tools/build_docs_html.sh` 通过
+- `python3 -m unittest tests.test_generator_refactor tests.test_pipeline` 通过
+- MetaNC 下同组 HMI tests 通过
+- 三个工作区现在都是 clean：`metanc_hmi_dsl`、reports submodule、`MetaNC`
+```
+
+<a id="turn-14"></a>
+## Turn 14
+
+### User
+`2026-05-11 10:54:41 +0800`
+
+```
+看一下现在我们这套hmi的功能框架完整度如何
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 10:55:03 +0800`
+
+```
+我先按当前仓库文档和状态矩阵做一次框架完整度盘点，不改代码。重点区分“框架/链路已经搭起来”和“真实 CNC/PLC/持久化生产能力还没补齐”这两类完整度。
+```
+
+### Codex Response 2 / commentary
+`2026-05-11 10:55:32 +0800`
+
+```
+我已经看了当前 `status_matrix` 和 README。为了把“功能框架完整度”说得更具体，我再快速看一下 retained UI 页、接口目录和 runtime contract 的规模，这样评估不会只停在文档主观判断。
+```
+
+### Codex Response 3 / final_answer
+`2026-05-11 10:56:10 +0800`
+
+```
+我看完当前 `status_matrix`、README、DSL 定义和生成 contract 后，结论是：
+
+这套 HMI 的“功能框架”已经比较完整，适合继续往真实 backend/生产适配推进；但它还不是生产级 CNC HMI，核心缺口集中在真实运行时适配、通用命令语义、持久化 state store、自动化交互测试。
+
+当前大致完整度我会这样判断：
+
+| 层级 | 完整度 | 判断 |
+| --- | ---: | --- |
+| DSL/文档/生成链路 | 85-90% | retained DSL、IR、Web/QML/server/distribution/docs/report 链路都成型 |
+| Web/QML 原型功能 | 75-80% | MAIN/PROG/DIAG/DEBUG/Settings/Logs/软面板主要交互都有了 |
+| client/server 分离 | 70-75% | HTTP bootstrap/commands + WS state/notice 已跑通，strict/hybrid 都有路径 |
+| 运行时模拟能力 | 65-70% | JOG/AUTO/MDI、程序编辑、日志、DEBUG 查询等 simulator 路径可用 |
+| 真实 CNC/PLC backend | 20-30% | 目前仍主要是 simulator/mock-backed，真实 adapter 是最大缺口 |
+| 生产级验证 | 40-50% | snapshot/pipeline 很强，但 UI 自动交互和真实集成测试还不足 |
+
+当前已经比较扎实的部分：
+
+- 页面框架：当前 retained UI 有 7 个主要页面：`overview`、`program`、`program edit tools`、`program browser`、`parameters`、`diagnostics`、`debug`。
+- 接口框架：`interfaces.machine.yaml` 里已有 80 个 properties、46 个 commands、2 个 streams、12 个 resources。
+- 运行时计划：当前实际生成 runtime plan 用到 21 个 properties、25 个 commands、1 个 stream、72 个 local states、10 个 resources。
+- Web/QML 双端：两端都能生成，QML 有 native executable，Web 有 npm/esbuild bundle 和分发脚本。
+- Program：目录、打开、编辑、保存、Save As、Goto、Undo/Redo、Search/Replace、PROG/PROG EDIT 合一编辑器这些都已成型。
+- Runtime Logs：server log store、SQLite log persistence、client upload、查询、导出、retention、列配置、底部详情、刷新保持滚动位置都已经有了。
+- DEBUG：自然语言/模糊查询的第一版已经可用，支持中英文混合的一些查询、轴缩写、Enter 提交。
+- 分离式运行：Web strict 模式可通过 native server 的 HTTP/WS 路径工作，QML 也有 WebSocket/HTTP fallback 设计。
+
+主要不完整点：
+
+- 真实 backend adapter 没完成：CNC/PLC/程序资源/流数据目前还没有接真实系统。
+- command schema 还不够生产化：现在有很多命令能跑 simulator，但还不是完整通用的生产命令模型。
+- streams 还缺真实来源：WS 管道有了，但下面的数据源仍偏 mock/simulator。
+- 持久化层只完成 logs 第一块：settings/tool/parameter 等 durable state store 还没开始或没收敛 authority。
+- property write 通路没泛化：读比较完整，写还不是系统化能力。
+- UI 自动化不足：现在大量靠 snapshot、pipeline 和临时 headless probe，缺稳定 CI 级 Web/QML interaction test。
+- generated 输出仍是单体：源码拆分已经做很多，但最终 `Main.qml/app.js` 仍是 monolithic，这个是可接受但后续维护会继续有压力。
+
+我对当前阶段的判断：
+
+这套 HMI 已经从“原型页面”进入“可运行框架 + simulator-backed HMI package”的阶段。现在最值得继续投入的不是再大规模改 UI 框架，而是优先做三件事：
+
+1. 真实 runtime adapter 边界：先把 CNC/PLC/program backend authority 接出来。
+2. 持久化 state store：在现有 LogStore/SQLite 经验上扩展 settings/tool/parameter。
+3. 交互自动化测试：把现在临时验证过的 PROG、Logs、DEBUG、JOG/AUTO/MDI 关键流固化成 CI 级测试。
+
+换句话说，框架完整度已经够支撑下一阶段真实接入；短板不是“页面不够”，而是“真实数据/命令/状态权威还没接稳”。
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:484-589|note=[metanc_hmi_dsl generator docs and artifact workflow context]
+</citation_entries>
+<rollout_ids>
+019dadda-f93c-7622-b89f-3f64e3e92079
+019dcc56-93cd-7870-9204-5d2622e0ade2
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-15"></a>
+## Turn 15
+
+### User
+`2026-05-11 11:02:18 +0800`
+
+```
+qml和web两部分的功能同步性呢
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 11:02:37 +0800`
+
+```
+我按“用户可见功能是否两端都能用、运行语义是否一致、实现细节是否还有分叉”来看。先快速核一下当前文档和测试里对 Web/QML parity 的描述，再给你结论。
+```
+
+### Codex Response 2 / final_answer
+`2026-05-11 11:03:13 +0800`
+
+```
+同步性总体还可以，我会评为 **70-80% 功能同步**，但不是“完全等价实现”。
+
+比较同步的部分：
+
+- **页面结构**：Web/QML 都来自同一套 retained DSL、IR、runtime plan，主页面、PROG、DIAG/Logs、DEBUG、Settings、软面板这些大框架是一致的。
+- **运行时语义**：两端都按同一套 `state://`、`res://`、commands、resources 工作，不是两套产品逻辑。
+- **Program 编辑主流程**：打开、编辑、保存、Save As、Goto、Search/Replace、Undo/Redo/Cut/Copy/Paste 的语义基本同步。
+- **Logs**：现在两端都有过滤、列配置、message wrap、JSONL export、retention、clear、底部详情、刷新保持当前位置。
+- **DEBUG 查询**：两端共用确定性 parser 思路，`Run/Enter/Return`、轴缩写、中文输入这类主流程已对齐。
+- **client/server 分离**：Web/QML 都走同一 server contract，WebSocket/HTTP fallback 语义也对齐。
+
+主要不同步或天然差异：
+
+- **编辑器体验不同**：Web 是 CodeMirror，QML 是 Qt TextArea + 自己实现的行号/查找逻辑。语义接近，但体验和能力不会完全一致。
+- **平台能力不同**：Web 的下载、剪贴板、文件访问受浏览器限制；QML 用 QFileDialog、Qt clipboard、ProgramWorkspaceBackend，能力边界不同。
+- **Web strict 路径验证更充分**：很多临时 headless probe 主要是 Web；QML 有 build/snapshot/运行路径，但交互自动化覆盖弱一些。
+- **QML WebSocket 是条件能力**：有 QtWebSockets 就走 WS，否则 fallback 到 HTTP polling；Web strict 模式基本默认尝试 WS。
+- **视觉像素级不同步**：布局和功能目标同步，但 Web/CSS 与 QML Controls 的渲染细节不同，不能按像素级一致来要求。
+
+我现在会这样判断：
+
+| 模块 | 同步性 |
+| --- | --- |
+| Shell/nav/theme/settings | 高 |
+| MAIN/AUTO/MDI/JOG 显示与命令入口 | 中高 |
+| 软面板 | 中高 |
+| PROG/PROG DIR/PROG EDIT | 中高 |
+| Search/Replace | 中高，Web 体验更强 |
+| Logs | 高 |
+| DEBUG | 中高 |
+| server strict/hybrid runtime | 中高 |
+| 文件/剪贴板/下载等平台能力 | 中 |
+| 自动化验证同步性 | 中偏低 |
+
+所以结论是：**功能定义和用户主流程已经基本同步，Web/QML 不是两套割裂实现；但验证深度和平台体验还没有完全同步。**
+
+下一步如果要提升同步性，我建议优先做一个 **Web/QML parity checklist + parity test matrix**，按模块列出：
+
+- 是否同一入口
+- 是否同一 command/resource/state
+- Web 状态
+- QML 状态
+- 已验证方式
+- 差异是否平台必然
+- 是否需要补测试
+
+这样以后每做一个功能，不会只在 Web 上调通，QML 之后才发现漏了。
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:484-589|note=[metanc_hmi_dsl generator docs and artifact workflow context]
+</citation_entries>
+<rollout_ids>
+019dadda-f93c-7622-b89f-3f64e3e92079
+019dcc56-93cd-7870-9204-5d2622e0ade2
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-16"></a>
+## Turn 16
+
+### User
+`2026-05-11 11:04:43 +0800`
+
+```
+具体怎么做呢
+```
+
+### Codex Response 1 / final_answer
+`2026-05-11 11:05:20 +0800`
+
+```
+我建议分三层做：**先有矩阵，再有规则，最后自动化验证**。不要一上来就写很多测试，否则很容易变成维护负担。
+
+**1. 建一个 Web/QML Parity Matrix**
+
+放在：
+
+- `docs/client/web_qml_parity.md`
+- 中文版：`docs_i18n/zh-CN/client/web_qml_parity.md`
+- 加到 `docs/SUMMARY.md` 和中文 SUMMARY
+
+表格字段建议这样：
+
+| 模块 | 功能点 | Contract/State | Web 状态 | QML 状态 | 差异类型 | 验证方式 | 优先级 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| PROG EDIT | Search/Replace | `runtime_state.program_search_*` | Done | Done | 平台体验差异 | unit + manual | P0 |
+| Logs | Refresh preserve viewport | `diagnostics.logs.entries` | Done | Done | 实现差异 | Web probe + QML build | P0 |
+| DEBUG | Enter submit | `runtime_state.debug_query` | Done | Done | IME 差异 | Web probe + manual QML | P1 |
+
+差异类型不要只写“不同”，要分清楚：
+
+- `none`: 完全一致
+- `platform`: 平台天然差异，比如 QFileDialog vs browser download
+- `implementation`: 实现方式不同但语义一致，比如 CodeMirror vs TextArea
+- `gap`: 真缺功能
+- `untested`: 可能有，但没验证
+
+**2. 定义同步规则**
+
+同一个文档里加规则：
+
+- 新功能默认必须同时说明 Web/QML 状态。
+- 如果只做 Web，必须在矩阵里标 `QML: gap` 或 `untested`。
+- 如果差异是平台导致，必须写清楚“用户看到的结果是否等价”。
+- Contract、command、resource、state 名称必须同源，不允许 Web/QML 自己各定义一套。
+- 每次改 PROG、Logs、DEBUG、Settings、软面板，都要更新 parity matrix。
+
+**3. 把验证分成三档**
+
+不要所有都自动化，先按风险分层。
+
+P0 自动化或半自动化：
+
+- PROG save/open/search/goto
+- Logs filter/export/refresh position
+- DEBUG query/Enter
+- JOG/AUTO/MDI mode switch
+- server reconnect
+- settings server URL/theme/soft panel visibility
+
+P1 文档 + 手动 checklist：
+
+- 视觉布局对齐
+- 快捷键
+- popup/dropdown 行为
+- 文件对话框/下载行为
+
+P2 只记录差异：
+
+- Web/QML 字体渲染差异
+- CodeMirror/TextArea 体验差异
+- 平台剪贴板限制
+
+**4. 测试落地方式**
+
+已有的 `tests/test_generator_refactor.py` 和 `tests/test_pipeline.py` 适合做结构验证，但不适合覆盖真实交互。可以新增：
+
+- `tests/test_web_qml_parity_docs.py`
+
+先检查矩阵质量：
+
+- 每个 P0 功能必须有 Web/QML 状态
+- 不允许空的 `验证方式`
+- 不允许 `gap` 没有 follow-up
+- 差异类型只能用固定枚举
+
+再逐步加真实交互测试：
+
+- Web：继续用 headless Chromium probe 固化成脚本
+- QML：先保留 build/snapshot/manual checklist，后续再研究 Qt Quick Test 或可脚本化 runtime probe
+
+**5. 第一版我建议这样收敛**
+
+第一版不要太大，只覆盖 8 个主模块：
+
+1. Shell / Navigation / Settings
+2. MAIN / AUTO / MDI / JOG
+3. Soft Panel
+4. PROG DIR
+5. PROG EDIT
+6. Diagnostics Logs
+7. DEBUG Query
+8. Runtime Transport / Reconnect
+
+每个模块先列 5-10 个功能点，够用了。目标不是一次穷尽所有细节，而是建立“以后每次改功能都知道要同步检查哪里”的机制。
+
+如果要我落地，我会先做这几个文件：
+
+- `docs/client/web_qml_parity.md`
+- `docs_i18n/zh-CN/client/web_qml_parity.md`
+- 更新 `docs/SUMMARY.md`
+- 更新 `docs_i18n/zh-CN/SUMMARY.md`
+- 新增 `tests/test_web_qml_parity_docs.py`
+- 在 `docs/requirements/status_matrix.md` 里加一条 parity tracking 状态说明
+```
+
+<a id="turn-17"></a>
+## Turn 17
+
+### User
+`2026-05-11 11:06:57 +0800`
+
+```
+嗯 按照你的计划开始落一下我看看
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 11:07:12 +0800`
+
+```
+我按刚才说的第一版落地：先加 Web/QML parity 文档和中文版本，再接入导航、status matrix，并补一个轻量测试保证矩阵字段不会漂。不会提交，先做成本地版本给你看。
+```
+
+### Codex Response 2 / commentary
+`2026-05-11 11:07:57 +0800`
+
+```
+我已经确认当前文档导航、状态矩阵和测试结构。现在开始实际新增 parity 文档和测试；测试会直接解析矩阵，防止以后有人只写 Web 状态、不写 QML 状态。
+```
+
+### Codex Response 3 / commentary
+`2026-05-11 11:10:14 +0800`
+
+```
+文档主体已经落好了，第一版覆盖 8 个模块和 27 条功能点。现在补测试，规则会约束状态枚举、差异枚举、P0 验证方式和 follow-up，避免以后矩阵失控。
+```
+
+### Codex Response 4 / commentary
+`2026-05-11 11:10:51 +0800`
+
+```
+测试文件也加好了。现在跑新增测试和相关 docs 测试，再看是否需要刷新 i18n 状态和 docs_html。
+```
+
+### Codex Response 5 / commentary
+`2026-05-11 11:11:10 +0800`
+
+```
+新增测试已经开始跑，i18n 检查提示这次新增的 `docs/client/web_qml_parity.md` 还没登记，同时 `SUMMARY/client/index/status_matrix` 因为导航变更变 stale。我只标记本轮实际同步过的中文页，不处理历史遗留 stale。
+```
+
+### Codex Response 6 / commentary
+`2026-05-11 11:11:37 +0800`
+
+```
+parity 文档测试和 docs portal 测试都通过了。我已经把本轮新增/同步的 4 个中文 overlay 标记为 current；现在再跑一次目标测试和 diff 检查，确认没有格式问题。
+```
+
+### Codex Response 7 / commentary
+`2026-05-11 11:11:50 +0800`
+
+```
+本轮新增内容验证通过，`diff --check` 也干净。i18n strict 仍有一批历史 stale/untracked，但本轮新增的 parity 文档和对应导航/status matrix 已经进入 current；我会在最终里明确这点。
+```
+
+### Codex Response 8 / final_answer
+`2026-05-11 11:12:07 +0800`
+
+```
+已落地第一版，未提交。
+
+新增内容：
+
+- [docs/client/web_qml_parity.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/client/web_qml_parity.md)
+- [docs_i18n/zh-CN/client/web_qml_parity.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs_i18n/zh-CN/client/web_qml_parity.md)
+- [tests/test_web_qml_parity_docs.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/tests/test_web_qml_parity_docs.py)
+
+已接入：
+
+- `docs/SUMMARY.md`
+- `docs_i18n/zh-CN/SUMMARY.md`
+- `docs/client/index.md`
+- `docs_i18n/zh-CN/client/index.md`
+- `docs/requirements/status_matrix.md`
+- `docs_i18n/zh-CN/requirements/status_matrix.md`
+- `docs_i18n/zh-CN/i18n.status.*`
+
+矩阵第一版覆盖 8 类：
+
+- Shell / Navigation / Settings
+- MAIN / AUTO / MDI / JOG
+- Soft Panel
+- PROG DIR
+- PROG EDIT
+- Diagnostics Logs
+- DEBUG Query
+- Runtime Transport / Reconnect
+
+测试规则也加了：状态枚举、差异类型枚举、P0 行 verification/follow-up、英文/中文矩阵行一致、SUMMARY 链接、status matrix 入口。
+
+验证：
+
+- `python3 -m unittest tests.test_web_qml_parity_docs` 通过
+- `python3 -m unittest tests.test_web_qml_parity_docs tests.test_docs_portal` 通过
+- `git diff --check` 通过
+
+注意：`docs_i18n/tools/i18n_status.py check --lang zh-CN --strict` 仍会因为仓库里已有的一批历史 stale/untracked 文档失败；本轮新增的 parity 文档和相关导航/status matrix 已经标记 current。
+```
+
+<a id="turn-18"></a>
+## Turn 18
+
+### User
+`2026-05-11 11:13:36 +0800`
+
+```
+generate/update report & docs + sync MetaNC + commit + push
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 11:13:56 +0800`
+
+```
+我继续按既有顺序处理：先把这轮 Web/QML parity 矩阵写进今天 report 和 docs_html，再提交 reports 子模块、提交并推送 metanc_hmi_dsl，最后导出到 MetaNC 的 `nrt/hmi`、验证、提交并推送。
+```
+
+### Codex Response 2 / commentary
+`2026-05-11 11:14:29 +0800`
+
+```
+当前只有刚才 parity 文档相关改动，MetaNC 和 reports 子模块都干净。现在先刷新今天的 user-history/full conversation，并把 parity 矩阵工作补进 2026-05-11 report。
+```
+
 ## Session Events
 
 <a id="event-1"></a>
@@ -1786,9 +2324,9 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 - Started: `2026-05-08 10:00:56 +0800`
 - CWD: `/home/iaar/workspace/lup/OminiForge`
 - Source file: `/home/iaar/.codex/sessions/2026/05/08/rollout-2026-05-08T10-00-56-019e0551-072d-7b01-8879-179803763de6.jsonl`
-- Messages: `47`
-- User prompts: `6`
-- Synthetic events: `1`
+- Messages: `79`
+- User prompts: `10`
+- Synthetic events: `2`
 
 <a id="turn-1"></a>
 ## Turn 1
@@ -2403,6 +2941,417 @@ M2 文档确认了：这次不引入真实浏览器文件 API，先做 mockable 
 MenuBar 的 W50 覆盖已经补上，组件本身不需要改。现在我会给 AppShell 增加 mock adapter 测试，再按测试要求接 lifecycle 状态和文件命令。
 ```
 
+### Codex Response 9 / commentary
+`2026-05-11 10:43:26 +0800`
+
+```
+AppShell 的改动会比较集中：新增 `projectFileAdapter` 可选 prop，默认 adapter 不做真实文件操作；新增 lifecycle ref，让所有 source edit、undo/redo/save/revert 都同步 lifecycle；File 菜单注册 W50 命令。
+```
+
+### Codex Response 10 / commentary
+`2026-05-11 10:45:41 +0800`
+
+```
+AppShell 是无 scoped CSS 的现有样式文件片段，新增状态直接复用顶栏文本区域，不引入复杂布局。现在跑 M2 focused，先看类型和交互失败点。
+```
+
+### Codex Response 11 / commentary
+`2026-05-11 10:46:08 +0800`
+
+```
+Focused test 剩两个问题：一个是测试流程本身在没有 save target 时还想触发 Save 错误；另一个是一个既有 resize 测试里选择态没及时稳定，导致 resize handle 没渲染。前者改成先 Save As 建立目标再测 save cancel/error；后者我会让测试等一拍选择渲染，避免和新增 lifecycle 更新同 tick 竞争。
+```
+
+### Codex Response 12 / commentary
+`2026-05-11 10:47:49 +0800`
+
+```
+M2 focused tests 已经通过。接下来我会跑 M1 回归和全量 Web 构建，重点看生命周期接入有没有破坏已有编辑器操作。
+```
+
+### Codex Response 13 / commentary
+`2026-05-11 10:48:11 +0800`
+
+```
+M1 回归、全量 Web 测试、生产构建都通过了。现在我会跑 Python/package/docs 验证，然后更新 M2 worksheet、implementation board、next tracker 和 reports session。
+```
+
+### Codex Response 14 / commentary
+`2026-05-11 10:48:24 +0800`
+
+```
+验证链条已通过，接下来进入文档和报告更新。我会只把 M2 标为 Done，不把 W50 整体标 Verified；W50 仍需要 M3 closeout。
+```
+
+### Codex Response 15 / commentary
+`2026-05-11 10:49:58 +0800`
+
+```
+主仓 M2 文档状态已更新。接下来补 reports 子模块的 M2 session，仍然只提交源文档，不把生成 HTML 当作源文件。
+```
+
+### Codex Response 16 / commentary
+`2026-05-11 10:50:48 +0800`
+
+```
+reports M2 源文档也已补齐。现在重新构建主文档和 reports 文档，然后做最终全量验证与 diff 检查。
+```
+
+### Codex Response 17 / commentary
+`2026-05-11 10:51:32 +0800`
+
+```
+最终验证和 diff 检查通过。现在提交 reports 子模块，再提交主仓并推送两个远端。
+```
+
+### Codex Response 18 / commentary
+`2026-05-11 10:52:21 +0800`
+
+```
+reports 子模块 M2 报告已提交并推送。现在提交主仓代码、文档和子模块指针。
+```
+
+### Codex Response 19 / final_answer
+`2026-05-11 10:53:30 +0800`
+
+```
+已完成 W50 M2 并提交推送。
+
+本次落地：
+- 新增 `project-file-adapter.ts`：mockable 文件适配器契约和 success/cancel/error 结果类型
+- 新增 `project-lifecycle-commands.ts`：W50 File 命令 ID 和 enablement 规则
+- 扩展 `MenuBar` 测试，确认 W50 命令仍通过通用菜单渲染
+- `AppShell` 接入 lifecycle：项目名、dirty、open/save/saveAs/import/export/revert/discard recovery 都走 lifecycle + adapter
+- 保留 `file.exportDraft`，新增 `file.exportSource`
+- 更新 M2 worksheet、implementation board、next tracker
+- reports 子模块新增 W50 M2 session report
+
+验证：
+- M1 regression：4 files / 73 tests passed
+- M2 focused：4 files / 117 tests passed
+- `npm test`：31 files / 300 tests passed
+- `npm run build`：passed
+- `python3 -m unittest discover tests`：22 tests passed
+- `python3 tools/validate_package.py examples/minimal-app`：0 errors，保留既有 reference-only warning
+- `./scripts/build-docs.sh`、reports root/session mdBook build、diff checks 均通过
+
+提交：
+- reports：`9ac98a5 feat: add W50 M2 session report`，已 push
+- 主仓：`8708fb5 feat: add W50 file command integration`，已 push 到 `origin` 和 `github`
+- 当前主仓和子模块 worktree 都是 clean
+
+下一步进入 M3：W50 closeout evidence、W51 readiness bridge，然后再决定是否进入 W51 schema model。
+```
+
+<a id="turn-7"></a>
+## Turn 7
+
+### User
+`2026-05-11 10:53:51 +0800`
+
+```
+ok 按照你的计划做一下
+```
+
+### Codex
+_No Codex response captured for this turn._
+
+<a id="turn-8"></a>
+## Turn 8
+
+### User
+`2026-05-11 10:54:06 +0800`
+
+```
+计划一下
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 10:54:27 +0800`
+
+```
+我先把当前仓库状态和 W50 M3/W51 readiness 文档重新对齐一下，再给你一个可执行计划；这次先只规划，不直接改代码。
+```
+
+### Codex Response 2 / final_answer
+`2026-05-11 10:55:14 +0800`
+
+```
+可以，下一步我建议做 **M3：W50 验证关闭 + W51 启动准备**。这一步不新增功能，核心是把 W50 从“已实现 M1/M2”推进到“可以正式关闭并作为 W51 前置基础”。
+
+**当前状态**
+- 主仓 clean。
+- 最新主仓 commit：`8708fb5 feat: add W50 file command integration`
+- W50 M1、M2 已分别完成代码、测试、报告和推送。
+- W50 还没在 `docs/delivery/status.md` 里标 Verified，这是 M3 的目标。
+
+**M3 执行计划**
+1. 证据回收
+   更新这些文档，把 Todo 全部用真实证据补齐：
+   - `W50-closeout-evidence-checklist.md`
+   - `W50-verification-and-handoff.md`
+   - `W51-readiness-bridge-from-W50.md`
+   - `W50-M3-verification-readiness-plan.md`
+
+2. 全量复验
+   重新跑 W50 关闭所需命令：
+   - M1 focused tests
+   - M2 focused tests
+   - `npm test`
+   - `npm run build`
+   - `python3 -m unittest discover tests`
+   - `python3 tools/validate_package.py examples/minimal-app`
+   - `./scripts/build-docs.sh`
+   - reports mdBook build
+   - `git diff --check` / staged diff check
+
+3. 状态升级
+   如果全部通过：
+   - `docs/delivery/status.md`：W50 从 `Planned` 改为 `Verified`
+   - `implementation-board.md`：W50 closeout 状态补齐
+   - `next-milestone-tracker.md`：M3 标 Done，下一步切到 M4/W51 schema model foundation
+
+4. W51 readiness 决策
+   明确 W51 可以开始，但必须遵守：
+   - 先做纯 TS schema/model 模块
+   - 不碰真实文件 API
+   - 不把 schema UI metadata 写入 source export
+   - 不依赖 AppShell save target/status text
+
+5. reports 子模块
+   新增一份 W50 M3 closeout report，记录：
+   - M1 commit
+   - M2 commit
+   - M3 closeout validation
+   - W50 limitations
+   - W51 readiness decision
+   - pushed remotes
+
+6. 提交推送
+   建议两个 commit：
+   - reports：`feat: add W50 M3 closeout report`
+   - 主仓：`feat: close W50 verification handoff`
+
+**M3 完成后的下一步**
+进入 **M4：W51 Schema Model Foundation**，开始做：
+- `control-property-schema.ts`
+- `control-schema-registry.ts`
+- `inspector-field-model.ts`
+
+先不迁移 `InspectorPanel.vue`，先把 schema/field model 的纯模型和测试打稳。
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:1-4|note=[OminiForge repo workflow context]
+MEMORY.md:41-46|note=[docs workflow and autonomous execution preference]
+MEMORY.md:57-66|note=[verified validation command set]
+</citation_entries>
+<rollout_ids>
+019e0551-072d-7b01-8879-179803763de6
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-9"></a>
+## Turn 9
+
+### User
+`2026-05-11 11:01:58 +0800`
+
+```
+do + 完成后commit + push + do detail plan
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 11:02:14 +0800`
+
+```
+我会直接执行 M3 closeout：先复验当前状态和 W50 文档，然后更新 closeout/readiness/delivery/report，最后跑完整验证、提交并推送。完成后我会给你一份下一阶段 W51 的详细执行计划。
+```
+
+### Codex Response 2 / commentary
+`2026-05-11 11:03:10 +0800`
+
+```
+我已确认：工作区干净，M1/M2 commit 都在，W50 仍只在 delivery status 里是 Planned。现在我会把 M3 关闭证据写入 W50 closeout、handoff、W51 readiness、S7 README/status/tracker 这些位置。
+```
+
+### Codex Response 3 / commentary
+`2026-05-11 11:03:20 +0800`
+
+```
+我会用已有验证结果和本次要跑的 M3 复验命令填充 closeout 文档。注意这里不会声称实现了真实浏览器文件 picker，W50 Verified 的含义是“mockable adapter + GUI lifecycle 命令闭环已验证，真实浏览器文件 API 仍作为后续 adapter 实现限制记录”。
+```
+
+### Codex Response 4 / commentary
+`2026-05-11 11:07:06 +0800`
+
+```
+主仓 closeout 文档已更新。下一步补 reports 子模块 M3 closeout report，记录 M1/M2 commit、M3 验证、W51 readiness 和限制。
+```
+
+### Codex Response 5 / commentary
+`2026-05-11 11:08:02 +0800`
+
+```
+M3 report 源文件已经补好。接下来我会跑 W50 focused、full Web、Python/package、主文档和 reports 构建，再做 diff check。
+```
+
+### Codex Response 6 / commentary
+`2026-05-11 11:08:42 +0800`
+
+```
+W50 focused、全量 Web 测试和 build 都通过。现在继续跑 Python/package、主文档和 reports 文档构建。
+```
+
+### Codex Response 7 / commentary
+`2026-05-11 11:08:58 +0800`
+
+```
+所有验证构建通过。现在做主仓和 reports 子模块的 diff check、状态检查，然后提交。
+```
+
+### Codex Response 8 / commentary
+`2026-05-11 11:09:06 +0800`
+
+```
+diff check 已通过。现在先提交并推送 reports 子模块，再提交主仓。
+```
+
+### Codex Response 9 / commentary
+`2026-05-11 11:10:04 +0800`
+
+```
+reports 子模块已经提交并推送。接下来提交主仓，包括 W50 Verified 文档、W51 readiness 和子模块指针。
+```
+
+### Codex Response 10 / commentary
+`2026-05-11 11:11:27 +0800`
+
+```
+M3 已提交并推送，主仓和 reports 子模块都 clean。最后我整理 W51 M4 的详细执行计划，方便下一轮直接开工。
+```
+
+### Codex Response 11 / commentary
+`2026-05-11 11:11:58 +0800`
+
+```
+W51 M4 的计划文档已读取，下一步不需要再写代码。当前 M3 已完成，我会在最终答复里给出已完成事项、验证、commit/push，以及 M4 的详细执行计划。
+```
+
+### Codex Response 12 / final_answer
+`2026-05-11 11:12:24 +0800`
+
+```
+已完成 M3 closeout，并提交推送。
+
+完成内容：
+- W50 标记为 `Verified`
+- W50 closeout evidence 填完整
+- W50 verification/handoff 更新为已验证状态
+- W51 readiness bridge 标记为 `Accepted`
+- `docs/delivery/status.md` 更新 W50 证据
+- S7 tracker 下一步切到 M4 / W51 schema model foundation
+- reports 子模块新增 W50 M3 closeout report
+
+验证已通过：
+- M1 focused：4 files / 73 tests passed
+- M2 focused：4 files / 117 tests passed
+- `npm test`：31 files / 300 tests passed
+- `npm run build`：passed
+- `python3 -m unittest discover tests`：22 tests passed
+- `python3 tools/validate_package.py examples/minimal-app`：0 errors，保留既有 reference-only warning
+- `./scripts/build-docs.sh`：中英文 mdBook 通过
+- reports root book 和 W50 M3 session book build 通过
+- `git diff --check` / `git diff --cached --check` 通过
+
+提交：
+- reports：`a5f5044 feat: add W50 M3 closeout report`，已 push
+- 主仓：`49793e0 feat: close W50 verification handoff`，已 push 到 `origin` 和 `github`
+- 当前主仓和 reports 子模块 worktree 都是 clean
+
+**W51 M4 详细计划**
+目标：先做纯模型，不迁移 `InspectorPanel.vue`。
+
+1. Preflight
+   跑：
+   - `npm test -- src/inspector/InspectorPanel.test.ts src/source/source-draft.test.ts src/app-shell/AppShell.test.ts`
+   - 确认 W50 readiness 已 Accepted
+
+2. `control-property-schema.ts`
+   先写测试再实现：
+   - field defaults
+   - supported value types
+   - readonly / multiEdit
+   - plugin string/number/boolean normalization
+   - unsupported plugin type safe handling
+
+3. `control-schema-registry.ts`
+   覆盖：
+   - Root
+   - Button / Label / Input / Switch / Indicator / Image / Gauge
+   - Container / Frame / Group
+   - shared geometry fields
+   - shared layout/padding/alignment fields
+   - plugin type exclusion
+
+4. `inspector-field-model.ts`
+   覆盖：
+   - built-in schema fields
+   - stable aria labels：`Edit text`、`Edit width`、`Edit layout`
+   - plugin schema merge
+   - generic fallback fields
+   - absolute parent x/y visibility
+   - flow alignment display rules
+   - identity / bindings / metadata readonly sections
+
+5. Validation
+   - W51 focused command
+   - Inspector regression gate
+   - `npm test`
+   - `npm run build`
+   - Python/package/docs/reports/diff checks
+
+6. Commit
+   建议 commit：
+   - `feat: add W51 schema field model foundation`
+
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:1-4|note=[OminiForge repo workflow context]
+MEMORY.md:41-46|note=[docs workflow and autonomous implementation preference]
+MEMORY.md:57-66|note=[verified validation command set]
+</citation_entries>
+<rollout_ids>
+019e0551-072d-7b01-8879-179803763de6
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-10"></a>
+## Turn 10
+
+### User
+`2026-05-11 11:13:39 +0800`
+
+```
+do + 完成后commit + push + do detail plan
+```
+
+### Codex Response 1 / commentary
+`2026-05-11 11:13:56 +0800`
+
+```
+我会按 M4 执行：先复核 W51 文档和现有 Inspector/control/plugin 结构，然后按 TDD 落 `control-property-schema`、`control-schema-registry`、`inspector-field-model`，跑完整验证，更新 W51 M4 文档和 reports，最后提交推送并给出 M5 详细计划。
+```
+
+### Codex Response 2 / commentary
+`2026-05-11 11:14:31 +0800`
+
+```
+当前主仓和 reports 子模块都是 clean，最新主仓 commit 是 W50 closeout。现在我开始读 W51 需要抽出的现有 Inspector 逻辑和 control/plugin schema 结构，先把模型边界定准再动文件。
+```
+
 ## Session Events
 
 <a id="event-1"></a>
@@ -2410,6 +3359,18 @@ MenuBar 的 W50 覆盖已经补上，组件本身不需要改。现在我会给 
 
 #### Event
 `2026-05-11 10:20:37 +0800`
+
+```
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+```
+
+<a id="event-2"></a>
+### Event 2 / turn_aborted
+
+#### Event
+`2026-05-11 10:53:53 +0800`
 
 ```
 <turn_aborted>

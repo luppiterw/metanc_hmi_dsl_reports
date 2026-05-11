@@ -29,6 +29,11 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   同页数据刷新时保留外层 scroll；QML `ListView` 同步加入 row-anchor 恢复。
 - Headless Web 验证覆盖了 `120` 条日志滚到 `probe-0075`，刷新成 `123` 条后
   可见行仍保持为 `probe-0075`。
+- 用户继续追问 QML 和 Web 两端功能同步性，随后确认按计划落地第一版
+  parity tracking。
+- 本轮新增 Web/QML parity 文档、中文 overlay、SUMMARY/client index/status
+  matrix 入口，并补 `tests/test_web_qml_parity_docs.py` 约束矩阵字段、枚举、
+  P0 验证/follow-up 和中英文行一致性。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
@@ -39,3 +44,5 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   gauges、Web runtime command handlers/server bridge、legacy button styling。
 - Logs UI 后续若继续扩展，应把 viewport preservation 纳入固定交互验证，而不是
   只靠 snapshot 或静态 DOM 断言。
+- Web/QML parity matrix 的 follow-up 行应逐步转化为 durable interaction
+  automation，避免只在 Web probe 中验证主流程。

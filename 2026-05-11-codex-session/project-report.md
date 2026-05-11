@@ -73,6 +73,16 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
   - 分发版 Web 启动脚本修正 `--restart PORT` 参数解析，并保留 generated
     Web `config.js` 的 hybrid 默认配置，不再在 packaging 阶段覆盖成 strict 空
     server URL。
+- 落地 Web/QML parity tracking 第一版：
+  - 新增 `docs/client/web_qml_parity.md` 和
+    `docs_i18n/zh-CN/client/web_qml_parity.md`。
+  - 覆盖 Shell、MAIN、软面板、PROG DIR、PROG EDIT、Diagnostics Logs、
+    DEBUG Query、Runtime Transport/Reconnect 八个模块。
+  - 矩阵记录 `Contract / State`、Web 状态、QML 状态、差异类型、验证方式、
+    优先级和 follow-up。
+  - 接入英文/中文 SUMMARY、client index、status matrix 和 i18n 状态。
+  - 新增 `tests/test_web_qml_parity_docs.py`，检查状态枚举、差异枚举、
+    P0 verification/follow-up、英文/中文矩阵行一致性和导航入口。
 
 ## Validation
 
@@ -87,12 +97,15 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
 - headless Chromium CDP probe for Diagnostics Logs viewport preservation:
   `120` rows -> scroll to visible `probe-0075` -> refresh to `123` rows ->
   visible row remains `probe-0075`.
+- `python3 -m unittest tests.test_web_qml_parity_docs`
+- `python3 -m unittest tests.test_web_qml_parity_docs tests.test_docs_portal`
 - `git diff --check`
 
 Validation result: tests passed, final artifacts regenerated, tracked generated
 outputs remained unchanged for the structural split, and the Logs refresh probe
-kept the visible row stable after new rows arrived. The final artifact refresh
-also completed without creating unrelated source changes.
+kept the visible row stable after new rows arrived. The parity matrix docs test
+and docs portal test passed; the final artifact refresh also completed without
+creating unrelated source changes.
 
 ## Current File Sizes
 
@@ -115,3 +128,6 @@ template body unless there is a direct maintenance need. Better next candidates:
 2. Split `main_qml_parts/debug_query.py` if DEBUG natural-query work continues.
 3. Split `main_qml_parts/log_view.py` or `widget_fragments/logs.py` before the
    next Logs UI expansion.
+4. Promote the parity matrix follow-up rows into durable Web/QML interaction
+   automation, starting with QML runtime smokes for PROG, Logs, DEBUG, and
+   reconnect behavior.

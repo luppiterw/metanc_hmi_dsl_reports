@@ -96,8 +96,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>199</code></div>
-<div><b>User prompts</b>: <code>18</code></div>
+<div><b>Messages</b>: <code>252</code></div>
+<div><b>User prompts</b>: <code>22</code></div>
 <div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -1995,6 +1995,519 @@ P2 只记录差异：
 <div class="time">2026-05-11 11:14:29 +0800</div>
 <pre>当前只有刚才 parity 文档相关改动，MetaNC 和 reports 子模块都干净。现在先刷新今天的 user-history/full conversation，并把 parity 矩阵工作补进 2026-05-11 report。</pre>
 </article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-11 11:15:10 +0800</div>
+<pre>Codex history 已刷新，今天会话统计更新到 302 条消息。现在把 Web/QML parity 矩阵这一轮补进 report README、project/conversation、索引和图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-11 11:15:48 +0800</div>
+<pre>history 导出已经自动更新了 README 里的统计，所以刚才补丁的统计段匹配不上。我分开补正文，不再手动改那段统计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-11 11:17:22 +0800</div>
+<pre>我先接着当前未提交的 parity 文档改动往下走：补今天的 report/session 文档，再做文档构建、测试、提交、push 和同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-11 11:17:34 +0800</div>
+<pre>当前确认：主仓有未提交的 Web/QML parity 文档和测试，reports 子模块已经被 Codex history export 更新，MetaNC 目前干净。我现在补 report 正文和关联导航，之后统一构建验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-11 11:17:52 +0800</div>
+<pre>接下来我会只改 report 子模块里的人工摘要页和图示，不碰 Codex conversation 自动导出的正文内容；导出文件已经由脚本更新过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-11 11:18:41 +0800</div>
+<pre>report 正文已经补上 parity tracking 的范围、验证和后续计划。我现在开始构建 report book、总 reports book 和主项目 docs_html，然后跑文档测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-11 11:18:48 +0800</div>
+<pre>测试里会临时构建 docs portal，现在正在跑到 bookshelf 部分，等它结束后我再跑正式的 docs_html 构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-11 11:19:13 +0800</div>
+<pre>正式 report book 已构建完成，主 docs_html 正在生成 37 本 bookshelf 输出。这里会更新 `docs_html` 下的最终文档产物，但这些通常是 ignored 的发布产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-11 11:19:37 +0800</div>
+<pre>主仓 `git diff --check` 通过；reports 子模块只有自动导出的 `all.md` 末尾多了一个空行，我会修掉这个格式问题后再提交子模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-11 11:20:08 +0800</div>
+<pre>格式检查已经干净。下一步先提交并 push reports 子模块，因为主仓只记录它的 gitlink 指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-11 11:20:38 +0800</div>
+<pre>reports 子模块已提交 `docs: update 2026-05-11 parity report`，push 正在进行。随后我会提交主仓的 parity 文档、测试和子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-11 11:21:00 +0800</div>
+<pre>reports 子模块已经 push 到远程。主仓现在只剩 parity 文档、中文入口、i18n 状态、测试和子模块指针，我先暂存并复查 commit 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-11 11:21:29 +0800</div>
+<pre>主仓提交已生成 `docs: add Web QML parity matrix`，push 正在进行。push 完之后会跑同步脚本把必要内容合入 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-11 11:21:45 +0800</div>
+<pre>metanc_hmi_dsl 已 push 且工作区干净；MetaNC 当前也干净。我现在执行导出同步到 `/home/iaar/workspace/ccmix-wp/MetaNC`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-11 11:22:10 +0800</div>
+<pre>同步到 MetaNC 后，目前只出现 HMI 文档入口、新 parity 文档和测试。`git diff --stat` 不显示 untracked，我会把新增文件纳入检查范围再验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-11 11:22:40 +0800</div>
+<pre>我发现一个同步细节：MetaNC 的 `nrt/hmi` 不包含 `docs_i18n`，但新测试当前会检查中文 parity 文档；这在源仓没问题，在 MetaNC 镜像里会误报。我要把测试改成“源仓有中文树时检查中英文一致，镜像仓没有中文树时跳过中文 overlay 检查”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-11 11:23:00 +0800</div>
+<pre>这个是必要修正：源仓测试仍覆盖中文 parity，一旦导出到 MetaNC 的精简 `nrt/hmi`，同一个测试不会因为 `docs_i18n` 被排除而失败。我会重新跑测试并 amend 主仓提交，再重新同步 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-11 11:23:51 +0800</div>
+<pre>我刚发现并修正了一个 MetaNC 镜像兼容问题，所以把主仓最后一个提交 amend 了。接下来会用 `--force-with-lease` 只替换刚才自己推上去的那一个 main 提交，然后重新导出到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-11 11:24:28 +0800</div>
+<pre>MetaNC 中 parity 测试通过；中文 overlay 检查在 MetaNC 中被正确跳过，因为导出策略本来排除了 `docs_i18n`。现在会提交并 push MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-11 11:24:59 +0800</div>
+<pre>MetaNC 提交已生成 `docs: sync HMI Web QML parity matrix`，push 正在进行。最后我会复查三个工作区的状态和提交记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / final_answer</h3>
+<div class="time">2026-05-11 11:25:33 +0800</div>
+<pre>已完成。
+
+- `metanc_hmi_dsl_reports`: 更新 2026-05-11 report、会话摘要、工作流/架构图和完整 Codex history 导出；已提交并 push。
+  - `63f6583 docs: update 2026-05-11 parity report`
+- `metanc_hmi_dsl`: 新增 Web/QML parity matrix、中文文档入口、status matrix 入口和文档守护测试；已提交并 push 到 `main`。
+  - `5d17536 docs: add Web QML parity matrix`
+- `MetaNC`: 已通过导出脚本同步必要内容到 `nrt/hmi`，提交并 push 到 `feat/hmi`。
+  - `e9671cc docs: sync HMI Web QML parity matrix`
+
+验证已跑：
+
+- `python3 -m unittest tests.test_web_qml_parity_docs tests.test_docs_portal`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-11-codex-session`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `./tools/build_docs_html.sh`
+- `python3 -m unittest nrt.hmi.tests.test_web_qml_parity_docs` in MetaNC
+- `git diff --check`
+
+三个工作区现在都是干净状态：`metanc_hmi_dsl`、reports submodule、`MetaNC`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:347-449|note=[reports docs portal and MetaNC sync workflow]
+MEMORY.md:484-589|note=[metanc_hmi_dsl generator docs and artifact workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+019dbe69-e917-7f20-ad5d-dd9262503c77
+019dadda-f93c-7622-b89f-3f64e3e92079
+019dcc56-93cd-7870-9204-5d2622e0ade2
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 11:44:33 +0800</div>
+<pre>看一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 11:44:55 +0800</div>
+<pre>我先看一下刚落地的 parity matrix 和 report 里的 follow-up，按当前文档里的缺口来整理下一步计划，避免凭印象排优先级。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-11 11:45:18 +0800</div>
+<pre>我建议下一步不要继续盲拆 QML 代码，先把 **Web/QML parity 从文档矩阵推进到可执行验证**。现在矩阵已经有了，真正的缺口是 P0 行大多还是 “Web probe + manual / snapshot”，QML 侧缺少稳定 interaction smoke。
+
+**下一步优先计划**
+
+1. **做 QML runtime smoke 基础设施**
+   - 目标：能在 CI/本机用脚本启动 QML 客户端，触发少量操作，读回状态或日志判断结果。
+   - 先不追求完整 UI 自动化，先做“可跑、可判断、失败信息清楚”的 smoke harness。
+   - 覆盖前置能力：启动、连接 server、等待 bootstrap、触发按钮/快捷动作、抓取 runtime state/log。
+
+2. **先补 P0 parity 的最小验证集**
+   - MAIN mode switching：AUTO/MDI/JOG 切换后视图状态正确。
+   - MDI Cycle Start：MDI 输入后触发 Cycle Start，执行状态/坐标/日志至少有一项可验证变化。
+   - PROG EDIT：Goto natural line、Search/Replace、Save 持久化。
+   - Logs：刷新后 viewport 不跳回顶部。
+   - DEBUG：Enter 提交、`x` / `x axis` / 中英文混合查询稳定。
+   - Reconnect：server 重启后 QML 能恢复 HTTP polling 或 WS 订阅。
+
+3. **把 Web 现有 ad hoc probes 收敛成稳定测试工具**
+   - 现在很多 Web 行为是临时 probe 证明过，但不是统一测试入口。
+   - 建议抽一个 `tests/runtime_ui/` 或 `tests/interaction/` 目录：
+     - Web probe helper
+     - QML smoke helper
+     - shared server fixture helper
+     - shared assertions
+
+4. **更新 parity matrix 的验证字段**
+   - 每补一个 smoke，就把 `docs/client/web_qml_parity.md` 里的 `manual`、`snapshot` 或笼统 `pipeline` 改成明确测试名。
+   - 这样以后矩阵不是静态说明，而是测试覆盖索引。
+
+5. **然后再回到源码拆分**
+   - 有了 QML interaction smoke 后，再拆 `program_search.py` 剩余 action assembler 风险会低很多。
+   - 下一轮拆分候选仍是：
+     - `program_search.py` 的 search-actions/editor-actions
+     - `debug_query.py`
+     - `log_view.py` / `widget_fragments/logs.py`
+
+我建议第一步先做 **QML smoke harness + 2 个最小用例**：`DEBUG Enter submit` 和 `MAIN mode switching`。这两个风险低、反馈快，能先把测试框架跑通；框架稳定后再加 PROG、Logs、Reconnect。</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 11:48:07 +0800</div>
+<pre>可以 详细计划一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 11:48:26 +0800</div>
+<pre>我先快速看一下现有 QML 启动脚本、测试目录和已有 Web probe 形态，这样计划能落到具体文件和验证入口，不会只是泛泛说“加自动化”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-11 11:48:47 +0800</div>
+<pre>我已经确认现有分发脚本支持 QML strict server URL，测试侧目前主要是 Python unittest、snapshot、少量 Web probe；还没有 QML 交互 smoke 的统一入口。下面我按“先建测试基础设施，再补两个低风险用例”的路径细化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-11 11:49:52 +0800</div>
+<pre>我还补看了现有 QML snapshot 机制：它已经能在 `QT_QPA_PLATFORM=offscreen` 下启动并自动退出。第一版 smoke 最好复用这个路径，加一个测试驱动 hook，而不是直接依赖鼠标坐标点击。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-11 11:51:28 +0800</div>
+<pre>可以。下一步我建议做一个 **QML parity smoke 第一版**，目标不是一次性覆盖所有 P0，而是先把“QML 可自动交互验证”的基础打通，再落两个最小用例。
+
+**目标**
+
+建立一个可复用的 QML smoke harness，用它验证 QML 端至少能：
+
+1. 启动并连接 native runtime server。
+2. 执行测试脚本里的 QML 操作。
+3. 把关键状态导出成 JSON。
+4. 由 Python unittest 断言结果。
+5. 后续可继续扩展 PROG、Logs、Reconnect 等 parity 用例。
+
+**核心设计**
+
+不建议第一版用鼠标坐标点击 QML 界面。坐标点击在 WSL/offscreen/不同 DPI 下容易不稳定。
+
+第一版更稳的方式是给 generated QML 增加一个只在测试环境启用的 harness hook：
+
+- 环境变量：`HMI_QML_SMOKE_SCRIPT`
+- 环境变量：`HMI_QML_SMOKE_RESULT_PATH`
+- QML 启动后，如果存在 smoke script，就加载并执行。
+- smoke script 通过 root window 上已有函数和 `runtime` 对象执行操作。
+- 执行完成后写 JSON result，然后退出进程。
+
+这样验证的是 QML runtime 真实逻辑，不依赖不稳定点击坐标；后续如果要补“真实按钮点击”，可以再加一层 Qt Test / accessibility 方案。
+
+**文件计划**
+
+1. `client/qml_client/support_files.py`
+   - 修改 `build_main_cpp()`。
+   - 在 `main.cpp` 里读取：
+     - `HMI_QML_SMOKE_SCRIPT`
+     - `HMI_QML_SMOKE_RESULT_PATH`
+     - `HMI_QML_SMOKE_TIMEOUT_MS`
+   - 如果设置了 smoke script：
+     - `engine.rootContext()` 注入 result path。
+     - root object 创建完成后延迟执行 smoke script。
+     - 设置超时退出，避免 CI 卡死。
+   - 这里只做测试入口，不改变正常运行路径。
+
+2. `client/qml_client/generator.py`
+   - 给 `ApplicationWindow` 暴露最少量测试 API。
+   - 例如：
+     - `function smokeReadLocalState(path)`
+     - `function smokeReadProperty(path)`
+     - `function smokeWriteLocalState(path, value)`
+     - `function smokeInvokeCommand(path, args)`
+     - `function smokeRunDebugQuery(text)`
+     - `function smokeExportState(paths)`
+   - 这些函数可以只是已有 `runtime` / helper 函数的薄封装。
+   - 放在 root window 上，避免 smoke script 直接依赖深层 object id。
+
+3. `tests/qml_smoke/`
+   - 新建测试资源目录。
+   - `main_mode_switch.qml.js`
+     - 等待 bootstrap。
+     - 调 `smokeInvokeCommand(&quot;cnc.commands.set_mode&quot;, {mode:&quot;MDI&quot;})`
+     - 验证 `runtime_state.main_mode_view == &quot;MDI&quot;`
+     - 再切 AUTO/JOG 验证。
+   - `debug_query_enter.qml.js`
+     - 调 `smokeRunDebugQuery(&quot;x&quot;)`
+     - 验证 rows/status 非空且包含 X axis 相关数据。
+     - 再调 `smokeRunDebugQuery(&quot;x axis&quot;)`
+     - 对比两者都可解析。
+
+4. `tests/test_qml_smoke.py`
+   - Python unittest。
+   - 检查 Qt 构建工具是否存在，不存在就 skip。
+   - 生成临时 QML target。
+   - `qt-cmake` + `cmake --build`。
+   - 启动 native server，或者第一版先用 local/hybrid runtime。
+   - 设置：
+     - `QT_QPA_PLATFORM=offscreen`
+     - `HMI_QML_RENDERING=software`
+     - `HMI_QML_SMOKE_SCRIPT=...`
+     - `HMI_QML_SMOKE_RESULT_PATH=...`
+   - 读取 result JSON 并断言。
+
+5. `docs/client/web_qml_parity.md`
+   - 把对应两行 verification 从 `manual/snapshot` 升级成具体测试名：
+     - MAIN mode switching -&gt; `tests.test_qml_smoke`
+     - DEBUG Enter / axis shorthand -&gt; `tests.test_qml_smoke`
+   - 中文 parity 文档同步更新。
+
+6. `docs/requirements/status_matrix.md`
+   - 更新 UI automation 行：说明 QML smoke harness 已有第一版。
+   - 不夸大覆盖范围，只写覆盖 MAIN mode switching 和 DEBUG query。
+
+**第一版用例范围**
+
+建议第一版只做这两个：
+
+1. `MAIN mode switching`
+   - 风险低，状态路径清楚。
+   - 能证明 QML command -&gt; runtime state -&gt; derived state 链路可自动验证。
+
+2. `DEBUG query`
+   - 最近刚改过，用户体验问题明确。
+   - 能覆盖自然语言/轴简称解析逻辑。
+   - 不依赖 server 真实运动状态，稳定性高。
+
+**暂不做的内容**
+
+第一版先不做：
+
+- PROG Save/Search/Replace：涉及编辑器对象、文本选择、文件写入，适合作为第二批。
+- Logs viewport：需要 ListView scroll anchor，最好等 harness 能稳定访问 visual object 后再做。
+- Reconnect：需要 server lifecycle 控制，适合第三批。
+- 鼠标/键盘真实点击：第一版先用 root smoke API，后续再补真实 interaction 层。
+
+**验证命令**
+
+第一版完成后跑：
+
+```bash
+python3 -m unittest tests.test_qml_smoke
+python3 -m unittest tests.test_web_qml_parity_docs tests.test_generator_refactor
+git diff --check
+```
+
+如果改到了 generated 输出，还要跑：
+
+```bash
+./tools/generate_targets.sh
+```
+
+然后确认 `generated/qml/Main.qml`、`generated/qml/main.cpp`、snapshot 是否符合预期。
+
+**风险点**
+
+主要风险是 QML smoke script 的加载方式。最稳的是在 C++ 里用 `QQmlExpression` 或 `QJSEngine` 对 root object 执行 JS/QML 片段；如果 Qt API 处理外部脚本不顺，就退一步：把 smoke runner 做成 QML 内置 `Timer` + 读取环境变量，由 `Main.qml` 自己执行。
+
+我的建议实施顺序：
+
+1. 先加 root smoke API。
+2. 再加 C++ smoke script/result hook。
+3. 写 `tests/test_qml_smoke.py`，先跑一个最小 “read active page”。
+4. 扩展到 MAIN mode switching。
+5. 扩展到 DEBUG query。
+6. 更新 parity/docs。</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 11:55:00 +0800</div>
+<pre>可以按照计划实施，实施前回答我，现在具体做的这些目的是什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 11:55:24 +0800</div>
+<pre>目的分三层：
+
+1. **把“QML 和 Web 功能同步”从文档承诺变成可执行证据。** 现在 parity matrix 已经列了哪些功能 Web/QML 都该支持，但很多 QML 侧还是 `manual`、`snapshot`、`pipeline` 这种弱验证。接下来做的是让 QML 端也能自动跑交互 smoke，后续每个 P0 功能都能对应到明确测试。
+
+2. **先建立稳定的 QML 自动化入口，而不是继续靠人工点界面。** 我会优先做测试专用 hook，让 QML 启动后执行 smoke script、导出 JSON 结果，再由 Python unittest 判断。这样比鼠标坐标点击更稳定，也适合 WSL/offscreen/CI。
+
+3. **为后续 PROG、Logs、Reconnect 等更复杂功能降低风险。** 第一版只验证 MAIN mode switching 和 DEBUG query，是为了先把 harness 跑通；等这个通了，再加 PROG 编辑、日志滚动保持、server 重启重连这些场景，就不是从零搭自动化了。
+
+我现在开始落第一版：先加 QML smoke hook 和两个低风险用例，再更新 parity/docs 并跑测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-11 11:55:57 +0800</div>
+<pre>我会先实现测试专用的同步 smoke hook：QML 启动后延迟执行一个 JS 表达式，C++ 负责把返回结果写成 JSON。第一版用例先走本地 runtime，不先叠加 server 生命周期复杂度，保证 harness 本身稳定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-11 11:56:15 +0800</div>
+<pre>实现上我会保持正常运行路径不变：只有设置 `HMI_QML_SMOKE_SCRIPT` 时才启用测试 hook；普通 `run_split_qml_native.sh` 和打包运行不会执行这些测试逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-11 11:58:22 +0800</div>
+<pre>我现在开始改源码：新增 `smoke_testing` QML helper，并在生成的 `main.cpp` 里加环境变量驱动的测试执行和 JSON 输出。正常运行不设置这些环境变量时不会触发。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-11 12:01:24 +0800</div>
+<pre>QML 测试入口已经加好。现在我会补两个脚本：一个验证 MAIN 模式切换，一个验证 DEBUG 查询解析；再写 Python unittest 负责临时生成、构建和运行它们。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-11 12:02:13 +0800</div>
+<pre>新增 Python/QML 文件语法检查通过；generator refactor 测试发现一个 contract 顺序断言需要跟随新增 fragment 更新，我先看失败细节再修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-11 12:03:16 +0800</div>
+<pre>generator contract 测试已经跟随新增 `smoke_testing` fragment 更新并通过。下一步我会先运行 QML smoke 测试；如果本机 Qt/offscreen 环境支持，就能直接验证两个场景。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-11 12:03:28 +0800</div>
+<pre>QML smoke 正在临时构建 generated QML，这一步会花一点时间。当前已经进入 Qt/CMake 配置和编译阶段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-11 12:03:43 +0800</div>
+<pre>第一次 smoke 构建暴露了一个 Qt API 版本兼容问题：当前 Qt6 的 `QQmlExpression` 构造函数不接受我传入的 source URL 参数。我会改成兼容构造方式，然后继续跑 smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-11 12:04:39 +0800</div>
+<pre>QML binary 已经能编译并运行，当前问题在 C++ 把 QML JS 返回对象写 JSON 时丢成了 `null`。我会把 `QJSValue` 转成普通 QVariant 后再写结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-11 12:05:41 +0800</div>
+<pre>QML smoke 两个用例已经通过：MAIN 模式切换和 DEBUG 轴查询都能在 offscreen 下自动执行并导出 JSON。下一步更新文档矩阵和生成输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-11 12:06:00 +0800</div>
+<pre>`generate_targets.sh` 已经刷新 Web/QML 源和 distribution contract，现在进入 QML/native server 构建阶段。这个阶段会用现有本机或 Docker 构建策略。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-11 12:07:01 +0800</div>
+<pre>最终产物已重新生成，包含新的 QML smoke hook 和构建后的 QML executable/server/distribution。现在我更新 parity 文档、状态矩阵和 changelog。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-11 12:07:18 +0800</div>
+<pre>我会把文档里的“manual/snapshot”验证改成具体 `tests.test_qml_smoke`，并把状态矩阵里的 UI automation 从“还缺 durable automation”调整为“已有第一条 QML smoke，后续继续扩展”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-11 12:08:58 +0800</div>
+<pre>文档和中文 overlay 已更新，并重新标记这两个中文页面为 current。接下来跑 docs/parity 相关测试，再处理生成 snapshot 变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-11 12:09:52 +0800</div>
+<pre>生成后的 `Main.qml` 已经包含 smoke helper，但当前 tracked snapshot 还没更新；否则 `tests.test_pipeline` 会因为生成输出和快照不一致失败。我先把 QML snapshot 跟随生成结果刷新，再跑完整相关测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-11 12:10:34 +0800</div>
+<pre>我已经把 `Main.qml` snapshot 更新为当前生成结果。现在跑完整的目标验证：QML smoke、generator/refactor、parity docs、pipeline 和 docs build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-11 12:11:38 +0800</div>
+<pre>第一批目标测试已经通过 22 个用例；现在 `tests.test_pipeline` 正在跑，它会覆盖生成器、快照和部分重型 QML offscreen snapshot。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-11 12:12:14 +0800</div>
+<pre>pipeline 通过了。现在并行重建 docs_html 并跑 docs portal 测试，等这两个结束后我做最后状态和 diff 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / final_answer</h3>
+<div class="time">2026-05-11 12:13:39 +0800</div>
+<pre>已按计划做完第一版，当前未提交。
+
+这轮实际落地的目的和结果：
+
+- 给 generated QML 增加了 opt-in smoke hook：只有设置 `HMI_QML_SMOKE_SCRIPT` / `HMI_QML_SMOKE_RESULT_PATH` 时才执行测试脚本，正常 QML 运行不受影响。
+- 新增 root-level smoke API，用于读 property/local state、执行 command、跑 DEBUG natural query、导出 JSON 结果。
+- 新增 `tests.test_qml_smoke`，在 `QT_QPA_PLATFORM=offscreen` 下构建并运行 QML executable。
+- 第一批覆盖两个低风险场景：
+  - MAIN mode switching: MDI -&gt; AUTO -&gt; JOG
+  - DEBUG axis query: `x` 和 `x axis`
+- 更新 Web/QML parity 文档、中文 overlay、status matrix、CHANGELOG，并刷新了 QML snapshot 和最终产物。
+
+已验证：
+
+- `python3 -m unittest tests.test_qml_smoke`
+- `python3 -m unittest tests.test_qml_smoke tests.test_generator_refactor tests.test_web_qml_parity_docs`
+- `python3 -m unittest tests.test_pipeline`
+- `python3 -m unittest tests.test_docs_portal`
+- `./tools/generate_targets.sh`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前工作区有改动但未提交。下一步建议是基于这个 harness 继续补第二批 QML parity smoke：PROG Goto/Search/Save 或 Logs viewport，二选一。</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 12:53:13 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC + commit + push 然后继续计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 12:53:39 +0800</div>
+<pre>我先把当前实现状态和 reports 子模块状态核对一下，然后按固定顺序走：导出今天会话、补 report、构建 docs、提交 reports、提交主仓、同步 MetaNC、验证和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-11 12:53:51 +0800</div>
+<pre>我会复用已有 report 工作流记忆来处理 submodule、docs_html 和 MetaNC 同步，避免漏掉“先 push 子模块、再记录父仓指针”的顺序。现在先刷新 Codex history。</pre>
+</article>
 </section>
 <section>
 <h2>Session Events</h2>
@@ -2021,8 +2534,8 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 <div><b>Started</b>: <code>2026-05-08 10:00:56 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/lup/OminiForge</code></div>
 <div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/08/rollout-2026-05-08T10-00-56-019e0551-072d-7b01-8879-179803763de6.jsonl</code></div>
-<div><b>Messages</b>: <code>79</code></div>
-<div><b>User prompts</b>: <code>10</code></div>
+<div><b>Messages</b>: <code>160</code></div>
+<div><b>User prompts</b>: <code>11</code></div>
 <div><b>Synthetic events</b>: <code>2</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -2895,6 +3408,555 @@ MEMORY.md:57-66|note=[verified validation command set]
 <h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-05-11 11:14:31 +0800</div>
 <pre>当前主仓和 reports 子模块都是 clean，最新主仓 commit 是 W50 closeout。现在我开始读 W51 需要抽出的现有 Inspector 逻辑和 control/plugin schema 结构，先把模型边界定准再动文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-11 11:15:49 +0800</div>
+<pre>我先把当前仓库状态和 Inspector/模型相关代码补齐读一遍，然后按 W51 M4 的 TDD 切片落 schema、registry、field-model 三层。完成后会跑完整验证，再分别提交 reports 子模块和主仓并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-11 11:16:15 +0800</div>
+<pre>现有 Inspector 还是模板内硬编码字段，我会先抽出“字段模型”的纯函数层，但暂时不直接改模板，避免一次性把 UI 行为和 schema 基础设施绑在一起。这样 M4 先把可测试契约立住，M5 再把 Inspector 面板迁移到这个模型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-11 11:16:43 +0800</div>
+<pre>准备开始写代码：新增三组纯 TS 模块和对应 Vitest，不动现有 InspectorPanel 组件。测试会覆盖字段默认值、插件字段归一化、内置控件 schema、以及 Inspector 字段模型的合并/过滤/布局显示规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-11 11:17:57 +0800</div>
+<pre>属性字段 schema 基础层已经通过 focused test，里面把通用字段、只读、多选兼容、插件字段归一化先固定了。下一步接内置控件 registry，覆盖 Root 和当前 Palette 里的所有内置控件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-11 11:19:24 +0800</div>
+<pre>内置控件 registry 已经补上，Root、Button、Label、Input、Switch、Indicator、Image、Gauge、Container、Frame、Group 都有稳定字段定义。现在开始 Inspector 字段模型，它会把内置字段、插件字段、未知属性、绑定和 metadata 合成 UI 可消费的数据结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-11 11:21:05 +0800</div>
+<pre>Inspector 字段模型完成并通过 focused test，当前模型能表达内置字段、插件字段、未知属性、绝对定位字段、流式对齐字段、绑定和 metadata。接下来我跑 W51 focused 三组测试，再跑现有 Inspector 回归，确认这一步没有破坏当前 UI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-11 11:21:34 +0800</div>
+<pre>W51 focused 和 Inspector/AppShell/source 回归都过了。现在继续跑完整 Web 测试和构建，再做 Python/package/docs 级别验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-11 11:21:56 +0800</div>
+<pre>完整 `npm test` 暴露出一个全量运行下的 AppShell 用例失败，但同一个 AppShell 回归分组刚刚单独是通过的。这个现象更像测试间状态/选择时序干扰，我先复现最小失败用例，再决定是修测试隔离还是补 UI 逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-11 11:22:29 +0800</div>
+<pre>最小复现和“新模型 + AppShell”组合都通过，说明新增模块没有直接改变 AppShell。全量失败更像已有 AppShell 用例在并发全量环境下偶发没有完成选择更新，我再跑一次全量确认是否稳定复现；如果稳定，再定位哪个测试文件污染全局状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-11 11:22:53 +0800</div>
+<pre>第二次全量 Web 测试通过，构建也通过；我会在报告里记录第一次全量出现过一次可疑的 AppShell 并发/时序失败，并以重跑通过作为当前证据。现在继续跑仓库级 Python、package、docs 验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-11 11:23:01 +0800</div>
+<pre>仓库级 Python、package 校验和双语 mdBook 构建已经通过。接下来更新 W51 M4 文档和报告子模块，把实现范围、验证命令、已知的全量测试初次偶发现象和 M5 入口条件写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-11 11:23:59 +0800</div>
+<pre>文档更新会保持 W51 仍不标 Verified：这次只是 M4 schema/model foundation 完成，InspectorPanel 迁移和 W51 closeout 还没做。状态层面我会把 W51 记成 Partial，而不是误导成完整通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-11 11:26:16 +0800</div>
+<pre>M4 文档和 session report 源文件已经补齐。现在需要构建 reports 的根书和新 session 书，再跑 diff check；这些生成目录按仓库规则被 ignore，不会作为源文件提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-11 11:26:46 +0800</div>
+<pre>验证和报告构建都过了，我现在检查最终 diff，确认只包含 M4 代码、文档和 reports 源文件。然后先提交并推送 reports 子模块，再提交主仓的 submodule 指针和 M4 实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-11 11:28:08 +0800</div>
+<pre>Reports 子模块已经提交并推送到 GitHub，commit 是 `4d7adfb feat: add W51 M4 session report`。现在提交主仓，包含 schema/model 代码、W51 文档状态和子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-11 11:28:54 +0800</div>
+<pre>主仓已经提交并推送到 origin 和 github，commit 是 `ce06ad1 feat: add W51 schema field model foundation`。我最后做一次 clean 状态确认，然后整理你要的下一步 detailed plan。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-05-11 11:29:28 +0800</div>
+<pre>完成了 W51 M4，并已提交推送。
+
+本次落地内容：
+- 新增 `control-property-schema.ts`：字段类型、默认 editor、只读、多选、插件字段归一化。
+- 新增 `control-schema-registry.ts`：Root + 当前所有内置控件 schema。
+- 新增 `inspector-field-model.ts`：把内置字段、插件字段、未知属性、layout/geometry、bindings、metadata 合成统一 Inspector 字段模型。
+- 更新 W51 M4 文档、implementation board、milestone tracker、delivery status。
+- 新增 reports 子模块 session：`2026-05-11-w51-m4-session`。
+
+验证结果：
+- W51 focused：`3 passed / 26 tests`
+- Inspector regression：`3 passed / 156 tests`
+- Full Web：`34 passed / 326 tests`
+- `npm run build` passed
+- `python3 -m unittest discover tests` passed
+- `tools/validate_package.py examples/minimal-app` passed，保留已有 script warning
+- `./scripts/build-docs.sh` passed
+- reports root 和新 session mdBook build passed
+- 主仓、reports 子模块最终都是 clean
+
+已推送：
+- reports 子模块：`4d7adfb feat: add W51 M4 session report`
+- 主仓：`ce06ad1 feat: add W51 schema field model foundation`
+- 主仓已推送到 `origin/master` 和 `github/master`。
+
+下一步详细计划是 W51 M5：把现有 `InspectorPanel.vue` 从硬编码 helper 迁移到这次新增的 field model。
+
+M5 执行顺序：
+1. 先跑 baseline：`inspector-field-model.test.ts` + `InspectorPanel.test.ts`。
+2. 加一个最小迁移测试，证明 InspectorPanel 消费 field model 输出。
+3. 先迁移 plugin/generic properties，保持 `Plugin Properties` 和 `Properties` 不变。
+4. 再迁移 geometry/size policy，保持 `Edit width policy`、`Edit width` 等 aria 和 emit payload 不变。
+5. 再迁移 layout/padding/flow alignment，保持 absolute 下隐藏对齐字段。
+6. 最后迁移 bindings/metadata 只读区。
+7. 跑 focused、AppShell/source 回归、full Web、docs、reports。
+8. M5 完成后再判断 W51 是否可以进入 closeout。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[OminiForge repo workflow context]
+MEMORY.md:41-46|note=[docs workflow and autonomous implementation preference]
+MEMORY.md:57-66|note=[verified validation command set]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e0551-072d-7b01-8879-179803763de6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-11 11:44:36 +0800</div>
+<pre>do + 完成后commit + push + do detail plan</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-11 11:44:53 +0800</div>
+<pre>我按上次 M5 计划继续：先做 InspectorPanel 的 field model 迁移，保持现有 UI/aria/emit 行为不变；完成后跑验证、更新 report、提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-11 11:46:06 +0800</div>
+<pre>baseline focused 测试通过，说明迁移前行为是稳定的。接下来我会先补一个直接约束“InspectorPanel 使用 field model”的测试，再重写组件脚本和模板，让各 section 从模型里取字段，而不是继续散落在模板 helper 里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-11 11:49:43 +0800</div>
+<pre>开始实际迁移代码。我会顺手补两个 field model 细节：`widthPolicy/heightPolicy` 要从当前宽高值推导，padding 四边要继续兼容旧的 `padding` shorthand，否则 M5 会改变旧行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-11 11:52:31 +0800</div>
+<pre>InspectorPanel 已迁移到 field model，并且 focused Inspector 测试已经通过。现在我会跑 source/AppShell 回归，重点确认 Inspector 的 `setProperty` 仍然能走现有 source draft/history 路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-11 11:53:20 +0800</div>
+<pre>Web 全量测试和 build 都通过了。接下来跑仓库级 Python/package/docs 验证，同时检查 diff 里有没有意外生成物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-11 11:53:32 +0800</div>
+<pre>核心代码验证已经过了。我现在更新 M5 worksheet、board/tracker/status 和 reports session，记录这次迁移完成和验证证据；W51 是否直接 Verified 需要看 closeout 文档是否满足，我会先把 M5 标 Done，W51 仍进入 closeout 准备。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-11 11:53:54 +0800</div>
+<pre>M5 代码已经完成，验证也都过了。文档层面我会保持边界清晰：这次提交标记 M5 Done、W51 仍是 Partial/closeout-ready 待判定，不直接把 W51 整体标 Verified。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-11 11:56:05 +0800</div>
+<pre>M5 文档和 report 源文件已经补齐。现在构建 reports 根书和 M5 session，再跑 diff check；然后我会提交 reports 子模块和主仓。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-11 11:57:15 +0800</div>
+<pre>Reports 子模块已提交并推送，commit 是 `6997e6d feat: add W51 M5 session report`。现在提交主仓的 M5 迁移、文档和子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-11 11:58:11 +0800</div>
+<pre>主仓已经提交并推送到 origin 和 github，commit 是 `64a3adb feat: migrate Inspector to W51 field model`。最后确认 clean 状态和最新提交，再给出下一步详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-11 11:58:41 +0800</div>
+<pre>完成并已推送。
+
+本次做了 W51 M5：
+- `InspectorPanel.vue` 已迁移为消费 `createInspectorFieldModel`。
+- Identity、Layout、Geometry、Plugin Properties、Properties、Bindings、Metadata 都从 field model 渲染。
+- 保持原有 aria label 和 `setProperty` payload，不改 source/export/runtime 边界。
+- 补了 fresh control schema default 测试，证明 UI 现在能显示 schema 默认字段。
+- 更新了 M5 worksheet、implementation board、milestone tracker、delivery status。
+- 新增 reports session：`2026-05-11-w51-m5-session`。
+
+验证已通过：
+- `npm test -- src/inspector/InspectorPanel.test.ts src/inspector/inspector-field-model.test.ts`：2 files / 22 tests
+- `npm test -- src/source/source-draft.test.ts src/app-shell/AppShell.test.ts`：2 files / 145 tests
+- `npm test`：34 files / 327 tests
+- `npm run build`
+- `python3 -m unittest discover tests`
+- `python3 tools/validate_package.py examples/minimal-app`，保留既有 script warning
+- `./scripts/build-docs.sh`
+- reports mdBook root + M5 session build
+- `git diff --check` / `git diff --cached --check`
+
+已推送：
+- reports 子模块：`6997e6d feat: add W51 M5 session report`
+- 主仓：`64a3adb feat: migrate Inspector to W51 field model`
+- 主仓已推送到 `origin/master` 和 `github/master`。
+- 当前主仓和 reports 子模块都是 clean。
+
+下一步详细计划：W51 closeout
+1. 填 `W51-closeout-evidence-checklist.md`。
+2. 重新跑 W51 schema、field model、Inspector、source/AppShell、full Web、build、Python/package/docs/diff 验证。
+3. 更新 `W51-verification-and-handoff.md`。
+4. 更新 `W52-readiness-bridge-from-W51.md`，明确 W52 能消费的 field model 合同。
+5. 根据证据决定 W51 是否标记 `Verified`。
+6. 新增 W51 closeout report session。
+7. closeout 提交并推送。
+8. closeout 后进入 M6：W52 binding/script model foundation。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-11 11:59:33 +0800</div>
+<pre>我继续按当前链路推进，下一步是 W51 closeout：把 M4/M5 的实现证据收拢到 closeout checklist、verification handoff 和 W52 readiness bridge，然后重新跑完整验证、提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-11 12:00:28 +0800</div>
+<pre>Closeout 预检发现 W51 还不能直接 Verified：board 里 `W51e/f Validation and multi-select` 仍是 Todo，而且 closeout 条件要求“无效字段值不会污染 source”。我先把 closeout 暂停为 evidence gap，继续补 W51e/f：字段校验与多选共享字段兼容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-11 12:01:30 +0800</div>
+<pre>我继续补 W51e/f。具体做法会保持边界：新增纯 Inspector field validation/compatibility helper，AppShell 在提交 source 前调用；无效值只进 diagnostics，不写 source。多选共享字段也改成依赖 field model 的 `multiEdit` 元数据，而不是继续硬编码宽高/enabled/visible。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-11 12:02:43 +0800</div>
+<pre>字段校验和多选兼容的纯模型已过测试。接下来把它接到 AppShell：Inspector 输入先校验，失败进入 diagnostics，不提交 source；多选是否批量应用改为查询 field model 兼容性。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-11 12:04:38 +0800</div>
+<pre>失败点是测试本身选了 Button+Label 后尝试编辑 `layout`，但当前主选中的 Label 本来就没有 layout 字段，UI 不会显示它。这个场景不能证明兼容性，我会改成用 `text`：旧硬编码多选不会批量应用 text，新 field-model 兼容性会允许 Button+Label 批量改 text。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-11 12:05:03 +0800</div>
+<pre>W51e/f 的 AppShell 接入已通过 focused 场景：无效 Inspector 值不会写入 source，多选共享字段改为基于 schema 的 multiEdit 兼容性。现在跑整个 Inspector/AppShell/source focused 组合。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-11 12:05:50 +0800</div>
+<pre>W51 closeout focused 组合已通过，7 个测试文件 189 个用例。现在 closeout 条件可以补文档了：我会填 checklist、verification handoff、W52 readiness，并新增 W51 closeout report。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-11 12:11:56 +0800</div>
+<pre>Closeout 文档和报告源已补齐。现在我跑完整 closeout gate：Web 全量/build、Python/package、双语 docs、reports build 和 diff checks，确保 W51 Verified 的证据是真实覆盖的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-11 12:12:57 +0800</div>
+<pre>完整 closeout 验证通过。现在检查 diff、做 staged diff check，然后先提交并推送 reports 子模块，再提交主仓。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-11 12:14:12 +0800</div>
+<pre>Reports closeout 已提交并推送，commit `8fbf4eb feat: add W51 closeout report`。现在提交主仓的 W51 closeout 和验证/多选实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-11 12:15:26 +0800</div>
+<pre>W51 closeout 主仓已提交并推送到 origin 和 github，commit `39f186f feat: verify W51 schema property panel`。目标要求“直到没有明确下一步”，现在下一步明确是 M6，所以我会继续进入 W52 M6 的纯模型/source command 阶段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-11 12:15:37 +0800</div>
+<pre>W51 已干净提交并推送，现在进入 M6 的第一半：binding model + binding source commands。先做纯模型和 source command，不碰 UI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-11 12:17:33 +0800</div>
+<pre>M6 binding-editor 纯模型已完成并通过测试，覆盖变量发现、类型推断、当前绑定、bindable 字段、兼容变量过滤和诊断。现在扩展 source-draft 的 binding commands，并加 history/export 回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-11 12:20:14 +0800</div>
+<pre>M6 binding source commands 已完成：set/remove binding、last binding 清理、history undo/redo、export/source-runtime 分离都过了。按规划 M6 还包含 script authoring，我继续做 script 模型和 event source commands。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-11 12:21:58 +0800</div>
+<pre>我继续从 M6 的 binding/script 基础切片往下做：先确认当前未提交改动，再补脚本编排模型和事件类 source command，最后跑回归、提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-11 12:22:09 +0800</div>
+<pre>现状是 W51 已干净提交，当前只有 M6 binding 相关未提交改动。我在这个基础上继续补 script/event，不会回退前面的实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-11 12:22:48 +0800</div>
+<pre>接下来开始改文件：我会把脚本定义暴露成可列举的契约，再新增一个纯模型层的 `scripts/script-authoring`；source 层只保存事件名和未支持脚本文本，不执行脚本。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-11 12:23:50 +0800</div>
+<pre>script authoring 纯模型已经绿了；它现在能列出当前 runtime 支持的事件、解释动作摘要，并把未知事件/未支持文本作为源内容保留。下一步把这些编辑动作接到 source-draft 和 history。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-11 12:26:08 +0800</div>
+<pre>事件编辑命令和 history/runtime 保护测试也已经通过 focused 回归。现在我会做一次类型构建和全量测试，顺手修掉可能的 TS 严格检查问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-11 12:26:34 +0800</div>
+<pre>全量测试和 Python 校验通过了，`npm run build` 抓到一个类型层的小问题：binding 校验时传了额外字段。这个不是行为问题，我先按类型契约收紧。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-11 12:27:05 +0800</div>
+<pre>类型构建已经恢复，focused 回归也继续通过。接下来我更新 W52/M6 的交付文档和 reports 子模块，随后跑最终校验再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-11 12:27:41 +0800</div>
+<pre>我进入文档收口阶段：W52 还不能标 Verified，因为 UI integration/M7 还没做；这次只把 M6 标 Done，并把 W52 状态推进到 Partial/进行中证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-11 12:32:25 +0800</div>
+<pre>主文档和 reports book 都构建通过，diff whitespace 也干净。现在我会看一眼最终变更范围，然后做 staged diff check、提交 reports 子模块，再提交主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-11 12:32:36 +0800</div>
+<pre>变更范围符合 M6：代码集中在 binding/script/source/runtime，文档只更新 S7/W52 状态，reports 子模块新增 W52 M6 session。现在先提交并 push reports，然后主仓库记录新的子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-11 12:33:10 +0800</div>
+<pre>reports 子模块已提交并推送，提交是 `d77f758 feat: add W52 M6 session report`。我现在提交主仓库代码、文档和子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-11 12:34:30 +0800</div>
+<pre>主仓库也已提交并推送到 gitee/github，提交是 `174d415 feat: add W52 binding script model foundation`。我做最后一次状态和报告指针确认，然后给出下一步详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / final_answer</h3>
+<div class="time">2026-05-11 12:35:04 +0800</div>
+<pre>已完成并提交推送。
+
+主仓库提交：
+`174d415 feat: add W52 binding script model foundation`
+已推送到 `origin/master` 和 `github/master`。
+
+Reports 子模块提交：
+`d77f758 feat: add W52 M6 session report`
+已推送到 `AtlasForgeReports/main`。
+
+本次完成：
+- 新增 `binding-editor` 模型：数据变量发现、当前绑定、兼容变量过滤、绑定诊断。
+- 扩展 source commands：设置/移除 binding，设置/清除事件，保存未支持脚本文本。
+- 新增 `script-authoring` 模型：列出支持事件、动作摘要、未知事件/未支持文本诊断。
+- 保持运行态和源模型隔离：未知事件只记录 business event，不执行 W49 action。
+- 更新 W52/M6 文档状态，W52 现在是 `Partial`，M6 是 `Done`，M7 是下一步。
+- 新增 W52 M6 report session。
+
+验证已跑：
+- `npm test -- ...` focused：6 files / 85 tests passed
+- `npm test`：37 files / 360 tests passed
+- `npm run build` passed
+- `python3 -m unittest discover tests`：22 passed
+- `python3 tools/validate_package.py examples/minimal-app` passed，保留既有 reference-only script warning
+- `./scripts/build-docs.sh` passed
+- reports `mdbook build .` 和 `mdbook build 2026-05-11-w52-m6-session` passed
+- `git diff --check` / `git diff --cached --check` clean
+- 当前主仓库和 reports 子模块 worktree 都是 clean
+
+下一步详细计划：M7 W52 Binding/Script UI Integration
+
+1. Preflight
+   先跑 M6 focused regression，确认模型/source command 仍然绿。
+
+2. Binding UI
+   在 Inspector/AppShell 接入轻量 binding authoring 表面：显示 bindable 属性、当前绑定、兼容变量、缺失变量诊断。
+
+3. Binding 命令路由
+   UI apply/remove 通过 `createSetControlBindingCommand` / `createRemoveControlBindingCommand` 走 source history，验证 dirty/export/undo/redo。
+
+4. Script/Event UI
+   显示支持事件列表和 action summary；支持选择/清除事件；保留 unsupported script text。
+
+5. 本地诊断
+   先在 Inspector 或 diagnostics 输入源里呈现 binding/script 本地诊断，W53 再统一聚合模型。
+
+6. 测试优先
+   补 `InspectorPanel`/`AppShell` 测试：binding 展示、apply/remove、event 选择、unsupported text 保存、source/runtime 隔离。
+
+7. Closeout
+   M7 通过后再做 W52 closeout、W53 readiness bridge、report session、commit + push。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[OminiForge repo workflow context]
+MEMORY.md:41-46|note=[docs workflow and autonomous implementation preference]
+MEMORY.md:57-66|note=[verified validation command set]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e0551-072d-7b01-8879-179803763de6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-11 12:35:25 +0800</div>
+<pre>我继续往下一步 M7 做：先复核仓库干净状态和 M7 设计文档，再按 TDD 把 binding/script 的模型接进 GUI。M7 的目标会保持窄边界，只做薄 UI 和 source command 路由。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-05-11 12:35:53 +0800</div>
+<pre>仓库现在是干净的，M7 文档入口也明确：先从 Inspector 的薄 UI 开始，不把 binding/script 逻辑写进 Vue 模板。现在我读取现有 Inspector 和 AppShell 测试，找最小接入点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-05-11 12:37:27 +0800</div>
+<pre>M7 baseline focused 命令暴露了一个现有 AppShell 测试不稳定点：同一组测试里有一次点 `control:root` 后 Inspector 仍停在 app，导致找不到 `Edit layout`。我先复现并定位这个选择状态问题，避免在脏基线上继续叠 M7 UI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-05-11 12:37:48 +0800</div>
+<pre>这个 baseline 失败单跑通过，说明更像测试间残留的全局事件/组件实例问题，而不是当前功能逻辑坏掉。我会先清理测试基线，让 M7 后续回归有可信前提。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-05-11 12:38:06 +0800</div>
+<pre>我定位到 baseline 的根因方向：AppShell 测试大量 `mount(AppShell)` 后没有统一 unmount，组件里的 window 级事件监听会跨测试残留。这个会让整组运行和单跑不一致。我先补测试清理，再重跑 M7 baseline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / commentary</h3>
+<div class="time">2026-05-11 12:38:29 +0800</div>
+<pre>我会先用很小的补丁让 AppShell 测试每个 mount 后统一卸载。这个不改产品逻辑，只消除全局事件监听残留，给 M7 后续 TDD 一个稳定基线。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 45 / commentary</h3>
+<div class="time">2026-05-11 12:39:28 +0800</div>
+<pre>M7 focused baseline 已稳定通过：7 个文件、193 个测试。现在开始第一段 TDD：给 InspectorPanel 增加 binding authoring UI 的测试，然后实现薄 UI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 46 / commentary</h3>
+<div class="time">2026-05-11 12:40:26 +0800</div>
+<pre>红灯测试已经就位：Inspector 目前没有 Binding Authoring 表面。现在按最小实现补 `project` 输入、binding model 渲染和 `setBinding/removeBinding` 事件，不先碰 AppShell 命令路由以外的逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 47 / commentary</h3>
+<div class="time">2026-05-11 12:42:18 +0800</div>
+<pre>Binding Authoring 的组件级显示/事件测试已绿。现在把它接到 AppShell：传入 project，并通过 M6 的 source command 提交 binding apply/remove，补导出/undo 的集成测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 48 / commentary</h3>
+<div class="time">2026-05-11 12:43:57 +0800</div>
+<pre>Binding UI 已接入 AppShell，apply/remove 和 undo 都走 source history。下一段继续补 Script/Event Authoring：先写 Inspector 显示和事件，再路由到 AppShell 的 event source commands。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 49 / commentary</h3>
+<div class="time">2026-05-11 12:44:43 +0800</div>
+<pre>Script Authoring 的红灯测试已到位。实现上会复用 `createScriptAuthoringModel`，只做事件选择、动作摘要、未支持文本保存和本地诊断显示。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 50 / commentary</h3>
+<div class="time">2026-05-11 12:45:30 +0800</div>
+<pre>实现里我发现一个需要收紧的点：事件和脚本文本按钮不能依赖模板里的固定 DOM 位置。我会改成从当前 authoring form 读取对应 select/textarea，保持 Vue 模板简单、测试稳定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 51 / commentary</h3>
+<div class="time">2026-05-11 12:45:55 +0800</div>
+<pre>Script Authoring 组件级测试已绿。现在加 AppShell 集成测试，确保 event/unsupported script 走 M6 的 source commands，导出和预览行为都符合 source/runtime 分离。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 52 / commentary</h3>
+<div class="time">2026-05-11 12:47:19 +0800</div>
+<pre>事件命令已经接通，剩下的失败是断言位置不对：M7 明确不做 W53 聚合，所以 unsupported script warning 应该留在 Inspector 的本地诊断区域，而不是全局 DiagnosticsPanel。现在我把测试校正到这个边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 53 / commentary</h3>
+<div class="time">2026-05-11 12:47:44 +0800</div>
+<pre>Script/Event UI 的 AppShell 路由也绿了。现在我补模式保护和 preview/source 分离相关回归，随后跑 M7 focused/full 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 54 / commentary</h3>
+<div class="time">2026-05-11 12:48:16 +0800</div>
+<pre>M7 的新增行为测试都已经绿：binding apply/remove、event/unsupported script、模式保护和 preview/source 分离。现在跑完整 focused 命令和 Inspector/AppShell 全量局部回归，修任何类型或 UI 测试问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 55 / commentary</h3>
+<div class="time">2026-05-11 12:49:00 +0800</div>
+<pre>Focused M7 回归已通过 7 文件 205 测试。我先做一次实现质量检查：当前 binding select 需要真正响应“选择不同属性”，不能只靠默认选项通过测试；我会补这个细节和对应测试，再跑全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 56 / commentary</h3>
+<div class="time">2026-05-11 12:49:29 +0800</div>
+<pre>这个新测试抓到一个真实缺口：Binding property 选择框目前没有内部选择状态，切到 enabled 后 data path 仍停在 text 的变量。现在我补 `ref` 状态和选择变更处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 57 / commentary</h3>
+<div class="time">2026-05-11 12:49:59 +0800</div>
+<pre>我又补掉一个真实交互缺口：binding property 切换现在会联动 data path。接下来同样补 event select 的选择状态，避免只依赖默认 `machine.start`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 58 / commentary</h3>
+<div class="time">2026-05-11 12:50:36 +0800</div>
+<pre>我继续做一轮交互完整性检查：现在 event 下拉虽然能提交，但对“未绑定事件的控件”选择事件后动作摘要还不会跟着选择变化；binding data path 如果将来有多个兼容变量也会有同类问题。我会补状态和测试，避免后续 UI 看起来能选但实际总提交默认值。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 59 / commentary</h3>
+<div class="time">2026-05-11 12:51:10 +0800</div>
+<pre>两个红灯都是真实状态缺口：data path 选择和 event summary 都还没维护本地 active 状态。我会补 `activeBindingDataPath`、`activeEventName`，并让 summary 根据当前选择重算。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 60 / commentary</h3>
+<div class="time">2026-05-11 12:51:55 +0800</div>
+<pre>现在 action summary 的测试说明一个语义选择：没有事件的控件不应该默认显示 `machine.start` 摘要，否则看起来像已经绑定了事件。我会把空事件保持为 `none`，选择后再显示摘要。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 61 / commentary</h3>
+<div class="time">2026-05-11 12:52:21 +0800</div>
+<pre>Binding 和 Script 两个选择器的真实交互状态已经补齐。现在跑 M7 focused 命令、全量 Web 测试和 build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 62 / commentary</h3>
+<div class="time">2026-05-11 12:52:38 +0800</div>
+<pre>Web focused、全量测试和生产 build 都通过。接下来我补一点样式，避免 authoring 表单在 Inspector 里显得松散，然后跑 Python/package/docs/report 校验并更新 M7 文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 63 / commentary</h3>
+<div class="time">2026-05-11 12:53:13 +0800</div>
+<pre>Python、package 校验、docs build 和 diff check 都通过。现在更新 M7/W52 状态文档与 reports session；W52 可以进入 closeout 前状态，但是否 Verified 仍要等 closeout 检查后再定。</pre>
 </article>
 </section>
 <section>

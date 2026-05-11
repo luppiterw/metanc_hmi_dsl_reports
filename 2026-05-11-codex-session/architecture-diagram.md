@@ -11,6 +11,7 @@ flowchart LR
     G --> M[main_qml_parts/masthead.py]
     G --> CB[main_qml_parts/combo_box.py]
     G --> PS[main_qml_parts/program_search.py]
+    G --> SM[main_qml_parts/smoke_testing.py]
     G --> LV[main_qml_parts/log_view.py]
     G --> CA[main_qml_parts/command_actions.py]
     WG[widget_fragments/logs.py] --> QML
@@ -25,6 +26,7 @@ flowchart LR
     F --> QML
     O --> QML
     PS --> QML
+    SM --> QML
     C --> QML
     M --> H
     CB --> H
@@ -33,8 +35,12 @@ flowchart LR
         PARDOC[docs/client/web_qml_parity.md]
         PARZH[docs_i18n/zh-CN/client/web_qml_parity.md]
         PARTST[tests/test_web_qml_parity_docs.py]
+        QSMOKE[tests/test_qml_smoke.py]
+        QSCRIPTS[tests/qml_smoke/*.js]
         PARDOC --> PARTST
         PARZH --> PARTST
+        QSCRIPTS --> QSMOKE
+        QSMOKE --> QML
     end
 
     subgraph Header Body Responsibility

@@ -7,6 +7,7 @@ Focus:
 - Generated artifact stability validation
 - Diagnostics Logs refresh viewport preservation for Web and QML
 - Web/QML parity tracking matrix and docs guard test
+- QML offscreen smoke harness for MAIN mode and DEBUG query parity
 - Report/docs refresh and MetaNC sync preparation
 
 Session assets:

@@ -29,6 +29,11 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 PROG EDIT、Diagnostics Logs、DEBUG Query 和 Runtime Transport/Reconnect
 的 Web/QML 状态、差异类型、验证方式、优先级和 follow-up，并新增轻量
 docs 测试锁定矩阵枚举和 P0 规则。
+在此基础上又推进第一条可执行 QML parity smoke：generated QML 现在只在
+`HMI_QML_SMOKE_SCRIPT` / `HMI_QML_SMOKE_RESULT_PATH` 环境变量存在时启用
+测试 hook，offscreen QML executable 会执行脚本、导出 JSON 结果，并由
+`tests.test_qml_smoke` 验证 MAIN mode switching 和 DEBUG axis query。
+这一步把 parity matrix 中部分手工/快照验证升级为可重复的 runtime evidence。
 
 目录：
 
@@ -47,11 +52,11 @@ docs 测试锁定矩阵枚举和 P0 规则。
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `40`
+- User prompts: `45`
 - Synthetic events: `3`
-- Messages: `302`
-- User messages: `43`
-- Codex messages: `259`
+- Messages: `436`
+- User messages: `48`
+- Codex messages: `388`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

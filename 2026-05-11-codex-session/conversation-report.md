@@ -34,6 +34,11 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
 - 本轮新增 Web/QML parity 文档、中文 overlay、SUMMARY/client index/status
   matrix 入口，并补 `tests/test_web_qml_parity_docs.py` 约束矩阵字段、枚举、
   P0 验证/follow-up 和中英文行一致性。
+- 用户随后要求按计划实施 QML parity smoke，并先确认目的：把 Web/QML parity
+  从文档矩阵推进到可执行证据，减少后续 PROG、Logs、Reconnect 调整风险。
+- 本轮新增 QML smoke hook、root-level smoke helper、两个 smoke scripts 和
+  `tests/test_qml_smoke.py`，第一版覆盖 MAIN mode switching 与 DEBUG `x` /
+  `x axis` 查询。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
@@ -46,3 +51,5 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   只靠 snapshot 或静态 DOM 断言。
 - Web/QML parity matrix 的 follow-up 行应逐步转化为 durable interaction
   automation，避免只在 Web probe 中验证主流程。
+- 下一轮更适合继续把 PROG Goto/Search/Save 接入 QML smoke，而不是立即继续
+  大拆 Program action assembler。

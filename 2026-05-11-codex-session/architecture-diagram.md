@@ -38,10 +38,12 @@ flowchart LR
         QSMOKE[tests/test_qml_smoke.py]
         QSCRIPTS[tests/qml_smoke/*.js]
         QPROG[PROG Save/Goto smoke scripts]
+        QPROG2[PROG file-switch and Search/Replace smoke scripts]
         PARDOC --> PARTST
         PARZH --> PARTST
         QSCRIPTS --> QSMOKE
         QPROG --> QSMOKE
+        QPROG2 --> QSMOKE
         QSMOKE --> QML
     end
 

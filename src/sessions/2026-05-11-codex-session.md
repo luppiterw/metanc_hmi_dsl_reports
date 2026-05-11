@@ -9,6 +9,7 @@ Focus:
 - Web/QML parity tracking matrix and docs guard test
 - QML offscreen smoke harness for MAIN mode and DEBUG query parity
 - QML PROG smoke coverage for Save persistence and natural-line Goto
+- QML PROG smoke coverage for file-switch freshness and Search/Replace
 - Report/docs refresh and MetaNC sync preparation
 
 Session assets:

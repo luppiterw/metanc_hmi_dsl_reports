@@ -43,6 +43,10 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   新增 PROG Save persistence 与 natural-line Goto 两个脚本，并把
   Web/QML parity matrix 中 PROG Save/Goto 的验证方式更新为
   `tests.test_qml_smoke`。
+- 用户继续要求按第二批设计落地 PROG file switch 与 Search/Replace 覆盖，
+  本轮新增 file-switch freshness、Search/Replace current 和 no-match 三个
+  QML smoke 场景。新增 helper 直接调用 Search/Replace 状态和匹配引擎，
+  不依赖 offscreen 环境下不稳定的真实键盘/focus。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
@@ -55,5 +59,5 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   只靠 snapshot 或静态 DOM 断言。
 - Web/QML parity matrix 的 follow-up 行应逐步转化为 durable interaction
   automation，避免只在 Web probe 中验证主流程。
-- 下一轮更适合继续把 PROG file-switch freshness 和 Search/Replace 接入 QML
-  smoke，而不是立即继续大拆 Program action assembler。
+- 下一轮更适合把 Logs viewport preservation 和 strict-server reconnect 接入
+  QML smoke，再考虑继续拆 Program action/search assembler。

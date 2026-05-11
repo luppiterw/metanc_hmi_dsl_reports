@@ -110,6 +110,21 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
   - 更新 Web/QML parity matrix、中文文档、status matrix、CHANGELOG 和
     QML `Main.qml` snapshot，使 PROG Save/Goto 的 QML runtime evidence
     进入固定回归路径。
+- 扩展 QML PROG smoke 第二批：
+  - `smoke_testing.py` 新增 Search/Replace 测试 helper，直接复用现有
+    `programSearchSnapshot()` 与 `replaceCurrentProgramSearchMatch()`，避免
+    offscreen smoke 依赖真实键盘或编辑器 focus。
+  - 新增 `tests/qml_smoke/prog_file_switch_freshness.js`，覆盖
+    `SHAFT_A.MPF -> SHAFT_B.MPF -> SHAFT_A.MPF` 的内容即时刷新，防止再次出现
+    打开 B 仍显示 A 的旧问题。
+  - 新增 `tests/qml_smoke/prog_search_replace_current.js`，覆盖隔离测试程序中
+    `X10.000 -> X20.000` 的查找、当前匹配替换、dirty 状态和保存后端文件。
+  - 新增 `tests/qml_smoke/prog_search_no_match.js`，覆盖无匹配查询不会修改
+    `program.document.content`，也不会改变 dirty 状态。
+  - `tests.test_qml_smoke` 从 4 个场景扩展到 7 个场景，PROG file-switch、
+    Search/Replace current 和 no-match 均进入 QML runtime 回归路径。
+  - 更新 Web/QML parity matrix、中文 overlay、status matrix、CHANGELOG、
+    i18n status 和 QML snapshot。
 
 ## Validation
 
@@ -131,13 +146,17 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
 - `python3 -m unittest tests.test_qml_smoke tests.test_generator_refactor tests.test_web_qml_parity_docs tests.test_docs_portal`
 - `git diff --check`
 - `python3 -m unittest tests.test_pipeline`
+- `python3 -m unittest tests.test_generator_refactor tests.test_web_qml_parity_docs`
+- `./tools/generate_targets.sh`
+- `./tools/build_docs_html.sh`
 
 Validation result: tests passed, final artifacts regenerated, tracked generated
 outputs remained unchanged for the structural split, and the Logs refresh probe
 kept the visible row stable after new rows arrived. The parity matrix docs test
 and docs portal test passed. The QML smoke harness built and ran offscreen,
-covering MAIN mode switching, DEBUG axis queries, PROG Save persistence, and
-PROG natural-line Goto. The final artifact refresh also completed without
+covering MAIN mode switching, DEBUG axis queries, PROG file-switch freshness,
+PROG Save persistence, PROG natural-line Goto, and PROG Search/Replace
+current/no-match behavior. The final artifact refresh also completed without
 creating unrelated source changes.
 
 ## Current File Sizes
@@ -149,22 +168,25 @@ creating unrelated source changes.
 - `client/qml_client/main_qml_parts/program_navigation.py`: 65 lines
 - `client/qml_client/main_qml_parts/program_search_state.py`: 41 lines
 - `client/qml_client/main_qml_parts/program_search_engine.py`: 71 lines
-- `client/qml_client/main_qml_parts/smoke_testing.py`: 96 lines
-- `tests/test_qml_smoke.py`: 132 lines
+- `client/qml_client/main_qml_parts/smoke_testing.py`: 132 lines
+- `tests/test_qml_smoke.py`: 159 lines
 - `tests/qml_smoke/prog_goto_natural_line.js`: 39 lines
 - `tests/qml_smoke/prog_save_persistence.js`: 79 lines
+- `tests/qml_smoke/prog_file_switch_freshness.js`: 37 lines
+- `tests/qml_smoke/prog_search_replace_current.js`: 70 lines
+- `tests/qml_smoke/prog_search_no_match.js`: 48 lines
 
 ## Follow-Up Plan
 
 The next QML source-level split should stay away from `Main.qml` top-level
 template body unless there is a direct maintenance need. Better next candidates:
 
-1. Extend QML smoke coverage to the remaining PROG high-risk actions:
-   file-switch freshness and Search/Replace.
-2. Add QML Logs viewport smoke after the harness can address visual list anchors
+1. Add QML Logs viewport smoke after the harness can address visual list anchors
    reliably.
-3. Add strict-server QML reconnect smoke by controlling the native server
+2. Add strict-server QML reconnect smoke by controlling the native server
    lifecycle from the Python harness.
+3. Add real key-event smoke for Search/Replace and editor focus once a stable
+   QML UI-driver helper exists.
 4. Only then split the remaining Program search/editor action assembler into
    search-actions and editor-actions, using the new smoke tests to reduce
    regression risk.

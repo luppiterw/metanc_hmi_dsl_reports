@@ -37,3 +37,6 @@ Date: 2026-05-11
 - generate/update report &amp; docs + sync MetaNC + commit + push 然后继续计划
 - 给出详细计划
 - 按你的最小闭环做一下
+- 你详细设计一下
+- 按你说的额做一下
+- generate/update report &amp; docs + sync MetaNC + commit + push 然后继续计划

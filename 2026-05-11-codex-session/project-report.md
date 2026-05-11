@@ -125,6 +125,26 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
     Search/Replace current 和 no-match 均进入 QML runtime 回归路径。
   - 更新 Web/QML parity matrix、中文 overlay、status matrix、CHANGELOG、
     i18n status 和 QML snapshot。
+- 补齐 QML 交互防退化 smoke 闭环：
+  - Program editor 的 `runtimeCursorLine` 和 `runtimeContent` 不再直接持续
+    binding 到运行态刷新；编辑器在 `Component.onCompleted`、runtime revision
+    signal 和显式 Goto/Search cursor move 中同步内容/光标，避免 focused editor
+    被运行时行号刷新拉动。
+  - `setProgramEditorCursor()` 会直接调用 active editor 的
+    `setExternalCursorLine()`，保留 Goto/Search 的明确跳转语义。
+  - `SmokeInputDriver` 增加系统剪贴板和 mouse press/release 支撑，QML
+    smoke helpers 注册 Logs `ListView` 与 repeat-while-pressed 软面板按钮。
+  - 新增 `tests/qml_smoke/prog_clipboard_cut_copy_key_event.js`，验证系统剪贴板
+    Ctrl+C 和 Ctrl+X 会复制/剪切 active program editor 中的真实选区。
+  - 新增 `tests/qml_smoke/logs_real_scroll_refresh_viewport.js`，验证真实
+    `ListView.positionViewAtIndex()` 建立的可见行在追加日志后仍保持稳定。
+  - 新增 `tests/qml_smoke/soft_panel_jog_hold_release.js`，验证软面板 JOG `+`
+    按下触发 `jog.commands.move_axis`，松开停止 repeat timer，并保持 JOG/X 状态。
+  - `tests/test_qml_smoke.py` 为每个 smoke script 隔离 `XDG_CONFIG_HOME` 和
+    `XDG_CACHE_HOME`，防止 strict-server reconnect 测试写入的 QSettings 偏好污染
+    后续本地模拟测试。
+  - `prog_clipboard_paste_key_event` 捕获 QML stderr，明确断言旧
+    `Binding loop detected for property "runtimeCursorLine"` 不再出现。
 
 ## Validation
 
@@ -149,6 +169,10 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
 - `python3 -m unittest tests.test_generator_refactor tests.test_web_qml_parity_docs`
 - `./tools/generate_targets.sh`
 - `./tools/build_docs_html.sh`
+- `python3 -m unittest tests.test_qml_smoke`
+- `python3 -m unittest tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_server_restart_reconnect tests.test_qml_smoke.QmlSmokeTests.test_soft_panel_jog_hold_release_key_event`
+- `python3 -m unittest tests.test_pipeline`
+- `python3 -m unittest tests.test_generator_refactor tests.test_web_qml_parity_docs tests.test_docs_portal docs_i18n.tests.test_i18n_status`
 
 Validation result: tests passed, final artifacts regenerated, tracked generated
 outputs remained unchanged for the structural split, and the Logs refresh probe
@@ -156,8 +180,11 @@ kept the visible row stable after new rows arrived. The parity matrix docs test
 and docs portal test passed. The QML smoke harness built and ran offscreen,
 covering MAIN mode switching, DEBUG axis queries, PROG file-switch freshness,
 PROG Save persistence, PROG natural-line Goto, and PROG Search/Replace
-current/no-match behavior. The final artifact refresh also completed without
-creating unrelated source changes.
+current/no-match behavior, PROG clipboard Paste/Cut/Copy, Logs filter/empty/
+metadata-anchor and real `ListView` viewport refresh, soft-panel JOG hold/release,
+strict bootstrap/command forwarding, late-server reconnect, and true server-restart
+reconnect. The final artifact refresh also completed without creating unrelated
+source changes.
 
 ## Current File Sizes
 
@@ -169,24 +196,25 @@ creating unrelated source changes.
 - `client/qml_client/main_qml_parts/program_search_state.py`: 41 lines
 - `client/qml_client/main_qml_parts/program_search_engine.py`: 71 lines
 - `client/qml_client/main_qml_parts/smoke_testing.py`: 132 lines
-- `tests/test_qml_smoke.py`: 159 lines
+- `tests/test_qml_smoke.py`: 431 lines
 - `tests/qml_smoke/prog_goto_natural_line.js`: 39 lines
 - `tests/qml_smoke/prog_save_persistence.js`: 79 lines
 - `tests/qml_smoke/prog_file_switch_freshness.js`: 37 lines
 - `tests/qml_smoke/prog_search_replace_current.js`: 70 lines
 - `tests/qml_smoke/prog_search_no_match.js`: 48 lines
+- `tests/qml_smoke/prog_clipboard_cut_copy_key_event.js`: 78 lines
+- `tests/qml_smoke/logs_real_scroll_refresh_viewport.js`: 74 lines
+- `tests/qml_smoke/soft_panel_jog_hold_release.js`: 60 lines
 
 ## Follow-Up Plan
 
-The next QML source-level split should stay away from `Main.qml` top-level
-template body unless there is a direct maintenance need. Better next candidates:
+The next QML source-level split can resume after the new interaction smoke gate
+stays stable. Better next candidates:
 
-1. Add QML Logs viewport smoke after the harness can address visual list anchors
-   reliably.
-2. Add strict-server QML reconnect smoke by controlling the native server
-   lifecycle from the Python harness.
-3. Add real key-event smoke for Search/Replace and editor focus once a stable
-   QML UI-driver helper exists.
-4. Only then split the remaining Program search/editor action assembler into
-   search-actions and editor-actions, using the new smoke tests to reduce
-   regression risk.
+1. Add WebSocket-only QML reconnect smoke when QtWebSockets is available in CI.
+2. Extend soft-panel hold/release coverage to minus-axis, rapid/continuous jog,
+   and stop/release edge cases.
+3. Add wheel/pointer-scroll coverage for Logs once the UI driver supports wheel
+   events, keeping the current real `ListView` anchor smoke as the baseline.
+4. Split the remaining Program search/editor action assembler into search-actions
+   and editor-actions, using the current QML smoke coverage to catch regressions.

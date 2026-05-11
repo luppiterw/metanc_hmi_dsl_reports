@@ -63,6 +63,16 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
   - server binary: `generated/server-build/server`
   - docs portal: `docs_html/index.html`
   - latest session report: `docs_html/reports/2026-05-11-codex-session/index.html`
+- 修复 Diagnostics Logs 刷新时滚动位置跳回顶部：
+  - Web Logs 记录 `data-log-id` 行锚点，并同时处理 `.log-table-panel`
+    内部滚动和外层 `pageShell` 滚动。
+  - `renderPage()` 在同页数据刷新并替换内容时保留外层 page scroll；
+    真正切换页面或切换 Program document 时仍按既有逻辑回到顶部。
+  - QML Logs `ListView` 记录 row id、anchor offset 和 `contentY`，普通
+    refresh 后恢复当前 viewport，显式 reset refresh 返回顶部。
+  - 分发版 Web 启动脚本修正 `--restart PORT` 参数解析，并保留 generated
+    Web `config.js` 的 hybrid 默认配置，不再在 packaging 阶段覆盖成 strict 空
+    server URL。
 
 ## Validation
 
@@ -74,10 +84,15 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
 - `mdbook build submodules/metanc_hmi_dsl_reports`
 - `./tools/build_docs_html.sh`
 - `git diff -- generated/qml/Main.qml generated/qml/RuntimeStore.qml generated/web/app.js generated/web/runtime.js generated/distribution/contract/runtime_contract_bundle.json tests/snapshots/qml/RuntimeStore.qml.snap`
+- headless Chromium CDP probe for Diagnostics Logs viewport preservation:
+  `120` rows -> scroll to visible `probe-0075` -> refresh to `123` rows ->
+  visible row remains `probe-0075`.
+- `git diff --check`
 
-Validation result: tests passed, final artifacts regenerated, and tracked
-generated outputs remained unchanged for the structural split. The final
-artifact refresh also completed without creating source changes.
+Validation result: tests passed, final artifacts regenerated, tracked generated
+outputs remained unchanged for the structural split, and the Logs refresh probe
+kept the visible row stable after new rows arrived. The final artifact refresh
+also completed without creating unrelated source changes.
 
 ## Current File Sizes
 

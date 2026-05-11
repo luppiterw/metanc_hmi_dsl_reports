@@ -22,6 +22,13 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
 - 测试与最终产物生成均通过。
 - 后续重新生成 Web、Qt/QML、server/distribution 和 docs_html 最终产物，供
   用户检查当前效果。
+- 用户反馈 Logs 页面拖到中间查看日志时，刷新后仍会跳回顶部；本轮定位到
+  Web 端除了表格内滚动外，还存在父层 `renderPage()` 同页刷新后重置
+  `pageShell.scrollTop` 的路径。
+- 修复方案改为双层保持：Logs 组件按日志行 id 记录可见 anchor，父层页面渲染在
+  同页数据刷新时保留外层 scroll；QML `ListView` 同步加入 row-anchor 恢复。
+- Headless Web 验证覆盖了 `120` 条日志滚到 `probe-0075`，刷新成 `123` 条后
+  可见行仍保持为 `probe-0075`。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
@@ -30,3 +37,5 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
 - 是否继续拆 Program search/editor action assembler。
 - 是否转向 QML DEBUG/log view helpers 或 Web Program search/actions、Web
   gauges、Web runtime command handlers/server bridge、legacy button styling。
+- Logs UI 后续若继续扩展，应把 viewport preservation 纳入固定交互验证，而不是
+  只靠 snapshot 或静态 DOM 断言。

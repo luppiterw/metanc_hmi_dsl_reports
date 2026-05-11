@@ -11,11 +11,16 @@ flowchart LR
     G --> M[main_qml_parts/masthead.py]
     G --> CB[main_qml_parts/combo_box.py]
     G --> PS[main_qml_parts/program_search.py]
+    G --> LV[main_qml_parts/log_view.py]
+    G --> CA[main_qml_parts/command_actions.py]
+    WG[widget_fragments/logs.py] --> QML
     PS --> PN[program_navigation.py]
     PS --> PSS[program_search_state.py]
     PS --> PSE[program_search_engine.py]
     PS --> PSA[program_search action assembler]
     H --> QML[generated/qml/Main.qml]
+    LV --> QML
+    CA --> QML
     S --> QML
     F --> QML
     O --> QML
@@ -37,4 +42,13 @@ flowchart LR
     H --> H3
     H --> H4
     H --> H5
+
+    subgraph Logs Viewport Preservation
+        WLOG[client/web_client/features/logs.py]
+        WSHELL[client/web_client/app_shell.py]
+        QLOG[widget_fragments/logs.py]
+        WLOG --> WANCHOR[Web row anchor + table/page scroll]
+        WSHELL --> WANCHOR
+        QLOG --> QANCHOR[QML ListView row anchor]
+    end
 ```

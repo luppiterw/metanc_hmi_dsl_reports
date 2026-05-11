@@ -19,6 +19,11 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 40-70 行级别的二级 fragments，tracked generated outputs 继续无 diff。
 本轮后续又按用户要求重新生成 Web、Qt/QML、server/distribution 和最终文档
 产物，用于人工检查当前效果；生成后的源码与 reports 工作区保持 clean。
+随后修复 Diagnostics Logs 刷新时滚动位置跳回顶部的问题：Web 端现在同时
+保留 table scroller 与外层 page shell 的可见日志行锚点，QML 端保留
+`ListView` row anchor；显式 reset refresh 仍会回到顶部。该修复还顺手收紧了
+分发版 Web 启动脚本的 `--restart PORT` 参数解析，并避免 packaged `config.js`
+被错误覆盖为 strict 空 server URL。
 
 目录：
 
@@ -37,11 +42,11 @@ Program navigation/Goto、Search/Replace local state、search matching engine
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `12`
-- Synthetic events: `1`
-- Messages: `75`
-- User messages: `13`
-- Codex messages: `62`
+- User prompts: `31`
+- Synthetic events: `2`
+- Messages: `234`
+- User messages: `33`
+- Codex messages: `201`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

@@ -5,6 +5,7 @@ Focus:
 - QML `Main.qml` header body source decomposition
 - QML Program search navigation/state/search-engine decomposition
 - Generated artifact stability validation
+- Diagnostics Logs refresh viewport preservation for Web and QML
 - Report/docs refresh and MetaNC sync preparation
 
 Session assets:

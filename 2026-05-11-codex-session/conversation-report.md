@@ -17,12 +17,14 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
 
 - `header_body.py` 已新增并纳入 stable part registry。
 - `generator.py` 继续收敛，只保留 header body builder 调用和模板插入点。
+- `program_search.py` 第一阶段低风险拆分完成，Program navigation、Search
+  local state 和 Search engine 被移入二级 fragments，动作层暂时保留。
 - 测试与最终产物生成均通过。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
 下一轮讨论点：
 
-- 是否继续拆 QML `Main.qml` 顶层模板 body。
-- 是否优先转向 Web Program search/actions、Web gauges、Web runtime command
-  handlers/server bridge 或 legacy button styling。
+- 是否继续拆 Program search/editor action assembler。
+- 是否转向 QML DEBUG/log view helpers 或 Web Program search/actions、Web
+  gauges、Web runtime command handlers/server bridge、legacy button styling。

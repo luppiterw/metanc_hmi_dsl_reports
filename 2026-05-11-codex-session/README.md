@@ -12,6 +12,11 @@ handoff 文档，并重新生成 Web/QML/server/distribution 最终产物和 doc
 `generator.py` 从上一轮 stage body 拆分后的 560 行继续降到 375 行，
 `header_body.py` 承接 210 行 header body assembly，tracked generated Web/QML
 和 contract 输出保持无 diff。
+随后继续按同一低风险策略拆分 `main_qml_parts/program_search.py`：先只抽出
+Program navigation/Goto、Search/Replace local state、search matching engine
+三块，不触碰 replace、clipboard、execution preflight 和 local Program action
+等高行为风险逻辑。`program_search.py` 从 522 行降到 391 行，新增三个
+40-70 行级别的二级 fragments，tracked generated outputs 继续无 diff。
 
 目录：
 
@@ -19,22 +24,22 @@ handoff 文档，并重新生成 Web/QML/server/distribution 最终产物和 doc
 - `conversation-report.md`: 会话摘要
 - `user-history.md`: 当天用户发言原始导出
 - `codex-conversations/`: Codex 完整会话导出目录
-- `workflow-diagram.md`: QML header body 拆分、生成、验证、同步工作流图
-- `architecture-diagram.md`: QML Main.qml helper 结构图
+- `workflow-diagram.md`: QML source decomposition、生成、验证、同步工作流图
+- `architecture-diagram.md`: QML Main.qml helper 与 Program search fragment 结构图
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
 
 <!-- codex-full-export:start -->
 ## Complete Codex Conversation Export
 
 - Scope: `2026-05-11`
-- Sessions: `2`
+- Sessions: `3`
 - Primary sessions: `2`
-- Side sessions: `0`
-- User prompts: `3`
+- Side sessions: `1`
+- User prompts: `7`
 - Synthetic events: `0`
-- Messages: `17`
-- User messages: `3`
-- Codex messages: `14`
+- Messages: `49`
+- User messages: `7`
+- Codex messages: `42`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

@@ -10,10 +10,16 @@ flowchart LR
     G --> C[main_qml_parts/context.py]
     G --> M[main_qml_parts/masthead.py]
     G --> CB[main_qml_parts/combo_box.py]
+    G --> PS[main_qml_parts/program_search.py]
+    PS --> PN[program_navigation.py]
+    PS --> PSS[program_search_state.py]
+    PS --> PSE[program_search_engine.py]
+    PS --> PSA[program_search action assembler]
     H --> QML[generated/qml/Main.qml]
     S --> QML
     F --> QML
     O --> QML
+    PS --> QML
     C --> QML
     M --> H
     CB --> H

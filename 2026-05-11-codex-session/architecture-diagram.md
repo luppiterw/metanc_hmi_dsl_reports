@@ -37,9 +37,11 @@ flowchart LR
         PARTST[tests/test_web_qml_parity_docs.py]
         QSMOKE[tests/test_qml_smoke.py]
         QSCRIPTS[tests/qml_smoke/*.js]
+        QPROG[PROG Save/Goto smoke scripts]
         PARDOC --> PARTST
         PARZH --> PARTST
         QSCRIPTS --> QSMOKE
+        QPROG --> QSMOKE
         QSMOKE --> QML
     end
 

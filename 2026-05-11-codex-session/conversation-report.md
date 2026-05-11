@@ -39,6 +39,10 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
 - 本轮新增 QML smoke hook、root-level smoke helper、两个 smoke scripts 和
   `tests/test_qml_smoke.py`，第一版覆盖 MAIN mode switching 与 DEBUG `x` /
   `x axis` 查询。
+- 用户随后要求按最小闭环先做 PROG 覆盖，本轮继续扩展 QML smoke helper，
+  新增 PROG Save persistence 与 natural-line Goto 两个脚本，并把
+  Web/QML parity matrix 中 PROG Save/Goto 的验证方式更新为
+  `tests.test_qml_smoke`。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
@@ -51,5 +55,5 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   只靠 snapshot 或静态 DOM 断言。
 - Web/QML parity matrix 的 follow-up 行应逐步转化为 durable interaction
   automation，避免只在 Web probe 中验证主流程。
-- 下一轮更适合继续把 PROG Goto/Search/Save 接入 QML smoke，而不是立即继续
-  大拆 Program action assembler。
+- 下一轮更适合继续把 PROG file-switch freshness 和 Search/Replace 接入 QML
+  smoke，而不是立即继续大拆 Program action assembler。

@@ -10,7 +10,8 @@ flowchart TD
     F --> G[Fix Logs refresh viewport preservation]
     G --> H[Add Web/QML parity matrix and docs guard]
     H --> I[Add QML smoke hook and first smoke scripts]
-    I --> J[Run compileall, generator, pipeline, docs, and QML smoke tests]
+    I --> I2[Extend QML PROG Save and Goto smoke]
+    I2 --> J[Run compileall, generator, pipeline, docs, and QML smoke tests]
     J --> K[Run Logs viewport browser probe]
     K --> L[Regenerate final targets]
     L --> M{Generated artifact diff?}

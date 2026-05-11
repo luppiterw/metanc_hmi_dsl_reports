@@ -35,3 +35,5 @@ Date: 2026-05-11
 - 可以 详细计划一下
 - 可以按照计划实施，实施前回答我，现在具体做的这些目的是什么
 - generate/update report &amp; docs + sync MetaNC + commit + push 然后继续计划
+- 给出详细计划
+- 按你的最小闭环做一下

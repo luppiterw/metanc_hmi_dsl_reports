@@ -34,6 +34,10 @@ docs 测试锁定矩阵枚举和 P0 规则。
 测试 hook，offscreen QML executable 会执行脚本、导出 JSON 结果，并由
 `tests.test_qml_smoke` 验证 MAIN mode switching 和 DEBUG axis query。
 这一步把 parity matrix 中部分手工/快照验证升级为可重复的 runtime evidence。
+随后按最小闭环继续补 PROG 覆盖：QML smoke helper 现在能读取/写入 PROG
+editor 状态、打开程序、执行 Save/Save As、读取后端 program 文件并执行自然
+文档行 Goto；`tests.test_qml_smoke` 新增 PROG Save persistence 和
+natural-line Goto 两个场景，先锁住历史上最容易回归的保存与跳转行为。
 
 目录：
 
@@ -52,11 +56,11 @@ docs 测试锁定矩阵枚举和 P0 规则。
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `45`
+- User prompts: `47`
 - Synthetic events: `3`
-- Messages: `436`
-- User messages: `48`
-- Codex messages: `388`
+- Messages: `515`
+- User messages: `50`
+- Codex messages: `465`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

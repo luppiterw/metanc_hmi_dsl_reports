@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>给一下下一步计划</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>给一下下一步计划</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019dd1a3-b582-7aa3-bc1d-fc4c131177f6</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
+<div><b>Messages</b>: <code>35</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 08:01:13 +0800</div>
+<pre>给一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-12 08:01:41 +0800</div>
+<pre>我建议下一步先做 **QML WebSocket-only reconnect smoke**，因为这是当前 Web/QML strict-client parity 里最明显的剩余关键点。
+
+**阶段 0：收口当前本地变更**
+- 先确认上一轮 QML soft-panel smoke 改动是否需要提交/同步。
+- 如果你确认效果没问题，再走 `commit + sync MetaNC + push`。
+- 不建议在未提交状态继续叠太多功能，否则后面定位回归会混在一起。
+
+**阶段 1：QML WebSocket-only reconnect smoke**
+目标：验证 QML 在 QtWebSockets 可用时真的走 `/api/runtime/ws`，而不是只靠 HTTP polling。
+
+计划：
+- 检测测试环境是否可用 QtWebSockets。
+- 新增 QML smoke 场景：
+  - strict server 启动
+  - QML client 连接 WebSocket
+  - 收到 subscription snapshot / patch
+  - server 重启或断开
+  - client 自动重连
+  - 重连后状态继续收敛
+- 如果环境没有 QtWebSockets，测试应明确 skip，而不是失败。
+- 更新 `docs/client/web_qml_parity.md`：把 WebSocket subscription 的 QML 验证从 manual 推进到 smoke-gated。
+
+**阶段 2：soft-panel 剩余轴和 release 边界**
+目标：把现在的 `X + / X - / C rapid +` 扩展成更接近真实操作的边界覆盖。
+
+计划：
+- 增加 `Y/Z/A/C` 代表性场景，不必全组合爆炸。
+- 增加 release edge cases：
+  - press 后立即 release
+  - mode 切换前后 release
+  - disable/hidden 状态不应残留 repeat timer
+- 保持测试重点是“命令停止”和“repeat timer 不泄漏”，不要依赖坐标绝对静止。
+
+**阶段 3：command-domain strict-server parity**
+目标：把软面板里最容易出问题的几个命令也纳入 QML strict-server smoke。
+
+优先覆盖：
+- `cnc.commands.cycle_start`
+- `cnc.commands.feed_hold`
+- `cnc.commands.reset`
+- `jog.commands.set_mode`
+- `jog.commands.set_increment`
+
+验证点：
+- QML 发出的命令确实到 server。
+- server 返回 accepted/rejected。
+- UI/runtime state 跟随 server 返回更新。
+- 与 Web 现有 strict probe 的行为一致。
+
+我建议执行顺序是：先提交当前 slice，然后做阶段 1。WebSocket-only reconnect 是架构风险最高的一块，先锁住它最划算。</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 08:16:44 +0800</div>
+<pre>可以 按照你的计划继续、</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-12 08:17:02 +0800</div>
+<pre>我先执行计划里的阶段 0：把上一轮 soft-panel QML smoke slice 收口提交，并同步到 MetaNC。之后再进入 WebSocket-only reconnect smoke，避免两个功能混在一个提交里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-12 08:17:32 +0800</div>
+<pre>阶段 0 的状态是明确的：source repo 有 QML smoke/docs 变更，reports 子模块有 5 月 11 日报告补充，MetaNC 目前干净。接下来我按 reports 子模块 -&gt; source repo -&gt; MetaNC mirror 的顺序提交，保证子模块指针不悬空。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-12 08:18:18 +0800</div>
+<pre>reports 子模块已提交，commit 是 `402c3a3 docs: record expanded QML soft-panel smoke coverage`。我现在推送子模块，然后提交父仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-12 08:19:09 +0800</div>
+<pre>source repo 已提交，commit 是 `b578e22 test: expand QML soft-panel jog smoke coverage`。现在推送 source repo，再把这版导出到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-12 08:19:40 +0800</div>
+<pre>MetaNC 导出完成，`docs_i18n` 和 reports 仍按规则不导入下游。现在我在 MetaNC 侧检查变更并跑同一组核心测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-12 08:21:03 +0800</div>
+<pre>MetaNC 侧同步测试里普通 QML smoke 基本过了，但两个 strict-server reconnect/command 场景超时，错误是 “strict command state did not update”。这类测试之前偶发受启动/时钟 skew 影响，我先针对 strict 两项单独复跑并看 server/client 过程，不会直接提交这个不确定状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-12 08:22:29 +0800</div>
+<pre>MetaNC 侧这个失败不是本轮 soft-panel 改动本身造成的，失败点在 strict 测试使用的 native server：QML 已连接，但 `cnc.commands.set_mode` 后 server state 没更新。MetaNC 导出规则不覆盖 `generated/`，所以我先刷新 MetaNC 下的 HMI 生成产物和 server binary，再复跑 strict 测试确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-12 08:22:45 +0800</div>
+<pre>MetaNC 里的 `generated/server-build/server` 和 contract bundle 是 4 月 24 日旧产物，而且不在 Git 跟踪里；strict smoke 用的正是这个旧 server。先在 MetaNC/nrt/hmi 本地重新生成 ignored 产物，仅用于验证，再提交同步进来的源码文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-12 08:23:46 +0800</div>
+<pre>MetaNC 本地 ignored 产物已刷新，native server 重新构建完成。现在复跑 strict 两项和整体同步测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-12 08:25:41 +0800</div>
+<pre>MetaNC 侧验证通过了。刚才失败的原因确认是下游 ignored generated server 太旧，刷新本地产物后 strict 测试恢复。现在我提交并推送 MetaNC 的 `nrt/hmi` 同步源码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-12 08:26:34 +0800</div>
+<pre>阶段 0 已完成并推送到两个仓库。现在我进入阶段 1，先检查 QML WebSocket support 的现有实现和测试环境能否加载 QtWebSockets，再设计最小 smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-12 08:26:55 +0800</div>
+<pre>阶段 1 开始：先不直接写测试，我会先看 QML WebSocket runtime 的状态字段和 fallback 逻辑，确认 smoke 能判定“真的走了 WebSocket”，而不是误把 HTTP polling 当通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-12 08:29:14 +0800</div>
+<pre>我现在的判断是：只看 QML “连接成功”不够，因为 HTTP bootstrap/poll 也能让它显示正常。这个 smoke 要证明两件事：QtWebSockets 模块被加载且 subscription open；随后一个不经 QML runtime HTTP response 应用的 server-side state change 能通过 WS 到达 QML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-12 08:31:42 +0800</div>
+<pre>具体实现我会保持最小：只给 smoke helper 暴露 WebSocket runtime 状态，再新增一个 WS-only 场景。场景会先等 WS subscription open，然后通过外部 HTTP 写 `mode.current`，QML 必须靠 WS delta 收到变化；之后断 server、重启 server，再次等 WS open 并用同样方式验证重连后的 delta。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-12 08:32:09 +0800</div>
+<pre>接下来会改三处：QML smoke helper 增加 `smokeTransportState()`，测试 harness 增加一个能在 client 运行期间对 server 发 HTTP property 写入并重启 server 的 runner，再加 `runtime_strict_websocket_reconnect.js` 用这个 runner 验证 WS delta。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-12 08:35:56 +0800</div>
+<pre>我继续做下一步：把 QML 的 WebSocket-only 重连烟测补齐，并让它通过外部命令变更来证明数据是从 WS 推过来的，而不是 HTTP 轮询兜底。先确认当前工作区状态和 QtWebSockets 环境，再接测试实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-12 08:36:17 +0800</div>
+<pre>当前源码里已经有 `test_qml_smoke.py` 的本地改动，我先读一下，避免覆盖已有变更。QtWebSockets 没在常见 Debian 路径下，后面测试会加成“模块存在才跑，否则 skip”，避免 CI/宿主机环境差异导致误报。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-12 08:36:44 +0800</div>
+<pre>`test_qml_smoke.py` 里已经有一版未完成的探针代码，但里面的等待函数实际上没检查 QML 状态，容易假通过或卡住。我会把这块收敛成一个明确的外部命令驱动测试：QML 只等 WS 推送，Python 负责停启 server 和发 set_mode 命令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-12 08:37:31 +0800</div>
+<pre>现在开始改文件：删掉那几个不可靠的“等 result 文件”的占位函数，改成真实 REST command 触发 `cnc.commands.set_mode`，然后 QML 只通过 WS 状态判断 MDA/JOG 是否到达。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-12 08:38:35 +0800</div>
+<pre>测试入口已经补上了，不过本机常见路径没找到 QtWebSockets。先跑单测看实际结果；如果是 skip，我会再确认是否有其他 Qt import 路径，避免把“没装模块”误当成功能已验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-12 08:39:25 +0800</div>
+<pre>单测在这台机上是正常 skip：系统没有 `qml6-module-qtwebsockets` / `libqt6websockets6`，所以不能真正打开 QML WebSocket。这个处理符合预期，CI 或装了 QtWebSockets 的机器会跑完整链路；本机至少验证了构建和 skip 条件不会破坏现有 QML 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-12 08:40:29 +0800</div>
+<pre>现有严格模式重连测试也通过了，新 WS-only 测试在本机因为缺 QtWebSockets 被 skip。下一步我会重新生成最终产物和 QML snapshot，再跑整组相关测试，确保生成结果和源代码一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-12 08:41:42 +0800</div>
+<pre>最终 web、QML、server 产物已经重新生成，server 这次走 host vcpkg 且从本地 cache 恢复依赖，没有再触发 zlib 下载失败。接着同步 QML snapshot 并跑生成器/烟测相关验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-12 08:42:38 +0800</div>
+<pre>生成器和重构测试通过，包含 1 个按环境跳过的 QML 测试。现在跑完整 QML smoke，确认新增 helper 没影响其它页面行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-12 08:43:58 +0800</div>
+<pre>我发现一个潜在的跨机器时序问题：如果机器比较慢，Python 发 set_mode 时 QML 可能还没完成订阅，之后通过重连快照也能拿到正确模式，但 revision 的“必须变大”断言会变得脆弱。这里改成只断言传输状态和模式结果，避免把测试写成时序敏感。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-12 08:44:13 +0800</div>
+<pre>我去掉了 revision 相对大小断言，只保留“WS 已创建/打开、无 polling fallback、断线能观察到、重连后外部命令模式能到达”的核心证据。现在再跑一次轻量验证，然后更新文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-12 08:44:26 +0800</div>
+<pre>我刚才指定了一个不存在的 unittest 类名，这是测试命令写错，不是代码失败；前面完整 `tests.test_pipeline tests.test_generator_refactor` 已经过了。等正在跑的 QML 单测结束后，我会用模块级命令重跑需要的集合。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-12 08:45:40 +0800</div>
+<pre>验证已回到绿色：文档 parity 测试 5 个通过，生成器/重构测试 45 个通过、1 个环境 skip。现在我更新 parity/status/report 文档，把 QML WS-only 重连覆盖和本机 QtWebSockets 缺失的验证边界写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-12 08:46:33 +0800</div>
+<pre>我会保持 report 子模块的既有结构：新增 2026-05-12 session 索引页和报告内容，并让聚合 `SUMMARY.md` 能看到它。完整 Codex conversation 导出会用现有工具更新，避免再次出现“只有 user history 没有 Codex 详情”的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-12 08:47:11 +0800</div>
+<pre>我继续从刚才的状态收尾：源码和 smoke 已经改完并验证过，现在进入文档/report、docs_html、提交推送、同步 MetaNC 这一段。先重新确认当前工作区和报告目录，避免 compaction 后漏掉未提交文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-12 08:47:23 +0800</div>
+<pre>工作区和 reports 子模块都很干净，当前只有这一轮 QML WS smoke 的源码改动。接下来我会先落文档和 2026-05-12 report，再统一构建 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-12 08:47:46 +0800</div>
+<pre>我接下来会让 report 工具先创建/刷新 2026-05-12 的 user history 和完整 Codex conversation 导出，然后再补人工 project/conversation/diagram 内容。这样 report 网页里会同时有用户历史和 Codex 对话详情。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

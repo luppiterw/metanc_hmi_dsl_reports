@@ -18,6 +18,12 @@ runner 侧通过 REST `/api/runtime/commands` 发送 `cnc.commands.set_mode`。
 QML smoke script 只观察 WebSocket 连接态和 `mode.current` 到达情况。这样
 QML 端不会因为自己发起 HTTP command response 而掩盖 WebSocket 推送路径。
 
+随后继续收敛 CI 边界：当前本机没有 QtWebSockets，所以 smoke 会 skip；这不
+能代表 CI 也允许长期 skip。最终方案是在 `tests.test_qml_smoke` 中加入
+`HMI_REQUIRE_QTWEBSOCKETS=1` 开关，并让 GitHub Actions 的 QML runtime smoke
+job 安装 QtWebSockets 后设置该开关。这样本地无依赖仍可开发，CI 则必须真实
+执行 WebSocket-only reconnect。
+
 ## Key Decisions
 
 - QML WebSocket-only smoke 使用 `QtWebSockets` module 探测作为执行前置条件。
@@ -26,6 +32,7 @@ QML 端不会因为自己发起 HTTP command response 而掩盖 WebSocket 推送
 - 文档中继续标记 QML WebSocket subscription 为 `partial`，因为不安装
   QtWebSockets 时仍会回退 HTTP polling；但 verification 已从 manual 提升到
   gated smoke。
+- CI 中的 gated smoke 会把 QtWebSockets 缺失或测试被 skip 当成失败。
 - report 刷新必须包含完整 `codex-conversations/` 导出，避免只看到 user
   history、看不到 Codex 对话详情。
 
@@ -34,4 +41,6 @@ QML 端不会因为自己发起 HTTP command response 而掩盖 WebSocket 推送
 - 新增 QML WebSocket-only reconnect smoke script 和 Python runner。
 - 生成的 QML smoke helper 增加 transport state inspection。
 - parity matrix、status matrix、CHANGELOG 和中文 overlay 已更新。
+- CI workflow、visual snapshot workflow 和 build/test 文档已更新，记录
+  QtWebSockets 依赖与 `HMI_REQUIRE_QTWEBSOCKETS` 语义。
 - 2026-05-12 report 已包含 user history 和完整 Codex conversation export。

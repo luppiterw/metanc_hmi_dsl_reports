@@ -20,12 +20,16 @@ flowchart LR
     subgraph Test Runner
         PY[tests/test_qml_smoke.py]
         DETECT[QtWebSockets module probe]
+        REQUIRE[HMI_REQUIRE_QTWEBSOCKETS]
         PROC[server stop/restart control]
     end
 
     PY --> DETECT
+    PY --> REQUIRE
     DETECT -->|available| SCRIPT
     DETECT -->|missing| SKIP[environment skip]
+    REQUIRE -->|enabled and missing| FAIL[CI failure]
+    FAIL --> DETECT
     PY --> PROC
     PY --> REST
     REST --> ADAPTER
@@ -41,11 +45,13 @@ flowchart LR
         PARITY[docs/client/web_qml_parity.md]
         ZHPARITY[docs_i18n/zh-CN/client/web_qml_parity.md]
         STATUS[docs/requirements/status_matrix.md]
+        CI[.github/workflows/ci.yml]
         REPORT[2026-05-12 session report]
     end
 
     SCRIPT --> PARITY
     PARITY --> ZHPARITY
     SCRIPT --> STATUS
+    REQUIRE --> CI
     STATUS --> REPORT
 ```

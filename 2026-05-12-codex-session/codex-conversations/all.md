@@ -7,8 +7,8 @@
 - Started: `2026-04-28 09:11:00 +0800`
 - CWD: `/home/iaar/workspace/ccmix-wp`
 - Source file: `/home/iaar/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl`
-- Messages: `35`
-- User prompts: `2`
+- Messages: `71`
+- User prompts: `4`
 - Synthetic events: `0`
 
 <a id="turn-1"></a>
@@ -311,6 +311,327 @@ MetaNC 侧验证通过了。刚才失败的原因确认是下游 ignored generat
 我接下来会让 report 工具先创建/刷新 2026-05-12 的 user history 和完整 Codex conversation 导出，然后再补人工 project/conversation/diagram 内容。这样 report 网页里会同时有用户历史和 Codex 对话详情。
 ```
 
+### Codex Response 33 / commentary
+`2026-05-12 08:48:26 +0800`
+
+```
+2026-05-12 的 report 骨架和完整对话导出已生成，包含 3 个 Codex sessions。现在我会补当天项目报告内容，并更新 parity/status/CHANGELOG 这些关联文档。
+```
+
+### Codex Response 34 / commentary
+`2026-05-12 08:48:53 +0800`
+
+```
+报告工具已经把聚合 SUMMARY 和 timeline 加了 2026-05-12，但 focus 还是默认占位。我现在会把 focus、README、project/conversation report、workflow/architecture 图，以及英文/中文 parity/status 文档改成真实内容。
+```
+
+### Codex Response 35 / commentary
+`2026-05-12 08:49:45 +0800`
+
+```
+我要批量更新多份 Markdown/YAML 文档，内容都是当前同一变更的说明：QML WebSocket-only reconnect smoke 已加入，但本机因缺 QtWebSockets 只验证到 skip/build 层。改完后会跑 parity docs 和 i18n status 测试。
+```
+
+### Codex Response 36 / commentary
+`2026-05-12 08:53:50 +0800`
+
+```
+报告主体、图和 docs 已更新。现在需要同步 session book 的 `src/` 包装页，然后用 i18n 工具把中文 overlay 标记为当前，最后开始构建报告和 docs_html。
+```
+
+### Codex Response 37 / commentary
+`2026-05-12 08:54:24 +0800`
+
+```
+i18n manifest 已标记两份中文 overlay 为 current。注意刚才的 diff stat 不展示 untracked 的新 report 目录，我接下来会检查 report 子模块完整状态，并修正聚合 session 页里的默认 focus。
+```
+
+### Codex Response 38 / commentary
+`2026-05-12 08:54:42 +0800`
+
+```
+报告和文档内容已到位。接下来按构建链路跑：先构建当天 session report，再构建聚合 reports 和最终 docs_html；如果 mdBook/bookshelf 出错，会按实际错误处理。
+```
+
+### Codex Response 39 / commentary
+`2026-05-12 08:55:02 +0800`
+
+```
+当天 report book 和聚合 reports 都构建成功。现在构建最终 docs_html portal，它会把英文、中文和 reports 聚合到最终输出里。
+```
+
+### Codex Response 40 / commentary
+`2026-05-12 08:55:32 +0800`
+
+```
+最终 docs_html 已生成，包含 `reports/2026-05-12-codex-session/index.html`。现在跑文档、i18n、QML 相关回归，之后提交 reports 子模块和主仓库。
+```
+
+### Codex Response 41 / commentary
+`2026-05-12 08:56:32 +0800`
+
+```
+验证通过：docs/parity/i18n/portal 14 个测试通过；QML strict reconnect 2 个测试通过，其中 WS-only 在本机按缺 QtWebSockets skip。现在看一下最终 diff 和报告子模块状态，再提交。
+```
+
+### Codex Response 42 / commentary
+`2026-05-12 08:56:49 +0800`
+
+```
+准备提交了：先提交并推送 reports 子模块，再提交主仓库。主仓库提交会包含 QML smoke、snapshot、英文/中文文档、i18n 状态和 reports 子模块指针。
+```
+
+### Codex Response 43 / commentary
+`2026-05-12 08:57:29 +0800`
+
+```
+Reports 子模块内容已 staging，包含当天完整 Codex conversation 导出和 session book 源。现在提交并推送 reports。
+```
+
+### Codex Response 44 / commentary
+`2026-05-12 08:57:56 +0800`
+
+```
+Reports 已提交并推送到 `b4ac67f`。现在提交主仓库，包括 QML smoke、文档和 reports 子模块指针。
+```
+
+### Codex Response 45 / commentary
+`2026-05-12 08:58:39 +0800`
+
+```
+主仓库已提交并推送到 `63a97a2`。现在按既定过滤规则同步到 MetaNC 的 `nrt/hmi`，再在 MetaNC 里跑对应测试并提交。
+```
+
+### Codex Response 46 / commentary
+`2026-05-12 08:58:56 +0800`
+
+```
+MetaNC 同步完成，过滤规则保留了 `docs_i18n`、reports、generated 等 source-local 内容不进入下游。现在检查 MetaNC diff，确认只落到 `nrt/hmi` 的必要文件。
+```
+
+### Codex Response 47 / commentary
+`2026-05-12 08:59:21 +0800`
+
+```
+MetaNC 这次只有 `nrt/hmi` 范围内的必要源文件和测试变化；source-local 的中文 overlay 和 report 子模块没有被复制过去。现在在 MetaNC 的 `nrt/hmi` 里跑相同的 QML/文档回归。
+```
+
+### Codex Response 48 / commentary
+`2026-05-12 08:59:32 +0800`
+
+```
+MetaNC 的 parity docs 测试已经通过（下游没有 `docs_i18n`，相关检查按预期 skip）。QML strict reconnect 测试还在构建临时 QML binary，我等它结束后再提交。
+```
+
+### Codex Response 49 / commentary
+`2026-05-12 09:00:16 +0800`
+
+```
+MetaNC 验证通过。现在提交并推送 MetaNC `feat/hmi`，提交信息会明确说明是 QML WS reconnect smoke 同步，不用泛泛写 sync。
+```
+
+### Codex Response 50 / commentary
+`2026-05-12 09:01:11 +0800`
+
+```
+MetaNC 已提交并推送到 `396a224`。最后做一遍三处工作树状态确认，并整理下一步计划。
+```
+
+### Codex Response 51 / final_answer
+`2026-05-12 09:01:30 +0800`
+
+```
+已按计划完成并推送。
+
+结果：
+- `metanc_hmi_dsl_reports`: `b4ac67f docs: add 2026-05-12 QML websocket reconnect report`
+- `metanc_hmi_dsl`: `63a97a2 test: add QML websocket reconnect smoke`
+- `MetaNC feat/hmi`: `396a224 test(hmi): add QML websocket reconnect smoke`
+- 三个工作树都已 clean。
+
+本轮新增：
+- QML `smokeTransportState()`，可检查 WebSocket 创建、open 状态、subscription 状态、polling fallback 是否运行。
+- 新 smoke：`runtime_strict_websocket_reconnect.js`
+- Python runner 从外部 REST `/api/runtime/commands` 发 `cnc.commands.set_mode`，验证 QML 通过 WS 接收模式变化。
+- 本机没有 QtWebSockets module，所以 WS-only smoke 是环境 skip；既有 strict restart reconnect 正常通过。
+
+验证过：
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_qml_smoke`
+- `python3 -m unittest tests.test_pipeline tests.test_generator_refactor`
+- `python3 -m unittest tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status tests.test_docs_portal`
+- `mdbook build` reports
+- `./tools/build_docs_html.sh`
+- MetaNC 下游对应 QML/doc 测试
+
+下一步建议：继续补 Web/QML command-domain parity，优先从软面板 `Cycle Start / Feed Hold / Reset` 或 PROG DIR `Rename/Delete/Refresh` 这类还偏 manual/partial 的行开始。
+<oai-mem-citation>
+<citation_entries>
+MEMORY.md:332-421|note=[reports submodule and MetaNC sync workflow]
+MEMORY.md:555-565|note=[generated artifact workflow]
+</citation_entries>
+<rollout_ids>
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+</rollout_ids>
+</oai-mem-citation>
+```
+
+<a id="turn-3"></a>
+## Turn 3
+
+### User
+`2026-05-12 09:04:14 +0800`
+
+```
+给一下下一步计划
+```
+
+### Codex Response 1 / final_answer
+`2026-05-12 09:04:42 +0800`
+
+```
+下一步我建议先做 **QML WebSocket smoke 实跑闭环**，然后再扩展 command-domain parity。
+
+**目标**
+让刚加的 WS-only reconnect smoke 不只是 skip，而是在可控环境里真实跑起来，证明 QML 端确实通过 WebSocket 收到 server 推送。
+
+**计划**
+
+1. **确认 QtWebSockets 依赖接入方式**
+   - 检查当前 CI / 本地 / Docker 构建环境。
+   - 明确需要的包：`qml6-module-qtwebsockets`、`libqt6websockets6`，可能还需要 `qt6-websockets-dev`。
+   - 决定是只改 CI image，还是也更新本地安装说明。
+
+2. **让 WS-only smoke 在 CI 中实跑**
+   - 更新 GitHub Actions 或构建脚本依赖安装。
+   - 保留本地无 QtWebSockets 时 skip 的逻辑。
+   - 在 CI 有 QtWebSockets 时，要求 `test_runtime_strict_websocket_reconnect` 必须执行而不是 skip。
+
+3. **补一层测试结果判定**
+   - 当前 smoke 已检查 WebSocket open/disconnect/reconnect 和 polling fallback inactive。
+   - 下一步可以让 Python runner 记录是否 skip，如果 CI 环境声明支持 QtWebSockets 但仍 skip，则 fail。
+   - 避免以后 CI 退化成“看起来通过，其实没跑”。
+
+4. **更新文档**
+   - `docs/server/docker_deployment.md` / build docs 里补 QtWebSockets 可选依赖说明。
+   - parity/status matrix 里把 “QML WebSocket subscription partial” 的验证边界写得更精确：无依赖 fallback，有依赖实跑 smoke。
+
+5. **再进入 command-domain parity**
+   - 第一批建议做软面板 `Cycle Start / Feed Hold / Reset` 的 QML strict-server smoke。
+   - 原因：这是用户最常用的真实操作链路，也比 PROG DIR Rename/Delete 风险小。
+   - 覆盖目标：外部 server state、QML command invocation、execution state、footer/operator notice 是否一致。
+
+我建议下一步先做 **1-4**，把 QtWebSockets 实跑环境闭环补上；否则新增的 WS smoke 在当前机器和可能的 CI 上仍可能长期只是 skip。
+```
+
+<a id="turn-4"></a>
+## Turn 4
+
+### User
+`2026-05-12 09:08:39 +0800`
+
+```
+可以 按照你的计划继续、
+```
+
+### Codex Response 1 / commentary
+`2026-05-12 09:08:56 +0800`
+
+```
+我会按刚才的计划先把 QtWebSockets 实跑条件收拢清楚：检查 CI、Docker/本地构建说明和现有 QML 测试入口，然后实现“环境声明支持时不能 skip”的保护，再更新文档并验证。
+```
+
+### Codex Response 2 / commentary
+`2026-05-12 09:09:21 +0800`
+
+```
+我刚才的搜索被 generated 目录噪声淹了一些；现在收窄到 `.github`、测试和 build 文档，先确认 CI 当前怎么安装 Qt/QML 依赖，再动手改。
+```
+
+### Codex Response 3 / commentary
+`2026-05-12 09:09:44 +0800`
+
+```
+我看到当前默认 CI 只跑 `tests.test_pipeline`，并没有跑 QML smoke；QML 视觉手动 workflow 安装了 Qt 但没装 QtWebSockets。下一步我会加一个独立的 QML runtime smoke CI job，并给测试加“声明必须有 QtWebSockets 时不能 skip”的环境开关。
+```
+
+### Codex Response 4 / commentary
+`2026-05-12 09:10:47 +0800`
+
+```
+我现在确认到一个关键点：干净 CI 里 `generated/server-build/server` 是 ignored 产物，不会随仓库存在；所以仅安装 QtWebSockets 还不够，WS-only smoke 还需要先生成 native server 和 contract bundle。我会把 CI job 设计成显式生成产物，再要求 WS smoke 不能 skip。
+```
+
+### Codex Response 5 / commentary
+`2026-05-12 09:11:02 +0800`
+
+```
+我会把 CI 变更做得保守：新增单独 job，安装 QtWebSockets 和 vcpkg/Drogon 所需环境，跑 `generate_targets.sh` 后只执行 QML strict transport smoke；默认 pipeline 不被重型 QML 全量 smoke 拖慢。
+```
+
+### Codex Response 6 / commentary
+`2026-05-12 09:11:36 +0800`
+
+```
+本地网络无法解析 GitHub，所以我不会用 live clone 来判断 vcpkg 分支；CI 里我会用官方 `run-vcpkg` action 或保守的 vcpkg bootstrap 路径。先用本机 apt cache 确认 Ubuntu 包名，避免文档和 workflow 写错。
+```
+
+### Codex Response 7 / commentary
+`2026-05-12 09:12:52 +0800`
+
+```
+我将先改测试开关和 CI：`HMI_REQUIRE_QTWEBSOCKETS=1` 时如果 QtWebSockets 不存在就 fail；普通本地环境仍 skip。随后把默认 CI 增加一个 QML Runtime Smoke job，并给手动 QML visual workflow 也补上 WebSocket 包。
+```
+
+### Codex Response 8 / commentary
+`2026-05-12 09:13:46 +0800`
+
+```
+CI 和测试开关已改好。现在补文档：本地构建说明会列出 QtWebSockets 作为可选但用于 WS smoke 的依赖；CI 文档说明该 job 会强制要求 QtWebSockets，防止测试静默 skip。
+```
+
+### Codex Response 9 / commentary
+`2026-05-12 09:15:25 +0800`
+
+```
+我还会更新 status matrix 和 CHANGELOG，把“WS smoke 已有但本机 skip”升级为“CI 有专门 job 会强制实跑”；同时更新中文 overlay/状态，保持 docs 同步。
+```
+
+### Codex Response 10 / commentary
+`2026-05-12 09:16:20 +0800`
+
+```
+CI、测试和英文/中文文档都已更新。现在用 i18n 工具标记相关中文页为 current，然后跑 YAML、docs parity、i18n、QML 开关验证。
+```
+
+### Codex Response 11 / commentary
+`2026-05-12 09:16:56 +0800`
+
+```
+两个 QML 单测都在临时构建 QML。这里我特意同时跑 required 和非 required：required 应该在本机失败并指出缺 QtWebSockets；非 required 应该 skip，验证本地体验不变。
+```
+
+### Codex Response 12 / commentary
+`2026-05-12 09:18:16 +0800`
+
+```
+本地验证结果符合预期：`HMI_REQUIRE_QTWEBSOCKETS=1` 在当前机器上会失败并明确报缺 QtWebSockets；不设置时仍是 skip。接着我会补 README/agent handoff 中的 CI 说明，再跑最终文档检查。
+```
+
+### Codex Response 13 / commentary
+`2026-05-12 09:20:16 +0800`
+
+```
+我补了 README、tooling 和 handoff 文档。现在标记新增的中文 handoff 为 current，并跑文档/CI YAML/关键 QML 测试；这轮不需要重新生成 app 产物，因为没有改生成器输出。
+```
+
+### Codex Response 14 / commentary
+`2026-05-12 09:21:26 +0800`
+
+```
+本地 smoke 仍按预期 skip，required 模式也已验证会失败。现在我需要更新今天 report，重新构建 docs_html，然后提交并同步 MetaNC。先生成当天 report 增量。
+```
+
 
 ## ls
 
@@ -319,8 +640,8 @@ MetaNC 侧验证通过了。刚才失败的原因确认是下游 ignored generat
 - Started: `2026-05-12 08:02:08 +0800`
 - CWD: `/home/iaar/workspace/lup/luqtcellar`
 - Source file: `/home/iaar/.codex/sessions/2026/05/12/rollout-2026-05-12T08-02-08-019e197d-b123-7063-a690-37452c5c88da.jsonl`
-- Messages: `67`
-- User prompts: `3`
+- Messages: `101`
+- User prompts: `5`
 - Synthetic events: `1`
 
 <a id="turn-1"></a>
@@ -828,6 +1149,266 @@ MEMORY.md:70-83|note=[luqtcellar workspace context]
 019e0131-0102-7503-b71b-0b243a5fc831
 </rollout_ids>
 </oai-mem-citation>
+```
+
+<a id="turn-4"></a>
+## Turn 4
+
+### User
+`2026-05-12 08:56:03 +0800`
+
+```
+最终产物生成的里面感觉字符有很多问题
+```
+
+### Codex Response 1 / commentary
+`2026-05-12 08:56:27 +0800`
+
+```
+我先检查最终输出里具体是哪类字符坏掉：CAD 原生文字 JSON、SVG `<text>`、DXF 里的原始编码，以及当前解析器对 DXF codepage 的处理。然后直接修转换器并重新生成。
+```
+
+### Codex Response 2 / commentary
+`2026-05-12 08:56:57 +0800`
+
+```
+我看到中文本身大多是正常的，主要问题是 CAD/MTEXT 格式控制串被原样输出了，比如 `\\A1;`、`\\H0.7x;`、`\\S...;`、`%%C`、`{\\fSimSun...;上侧板}`。我会把解析器补成“显示文本”清洗：去掉 AutoCAD 格式控制，转换直径/角度/正负号等符号，然后重新生成产物。
+```
+
+### Codex Response 3 / commentary
+`2026-05-12 08:57:43 +0800`
+
+```
+我会直接改 `decode_mtext` 这一层，而不是后处理输出文件；这样 JSON、SVG、PNG 后续都会一致变干净。主要规则是解析 AutoCAD MTEXT 控制串，保留真正显示的文字。
+```
+
+### Codex Response 4 / commentary
+`2026-05-12 08:58:13 +0800`
+
+```
+已补了解码逻辑。现在我重新编译、跑测试、用同一个 DXF 重新生成 `outputs/60R16-final`，然后重新导出 PNG。
+```
+
+### Codex Response 5 / commentary
+`2026-05-12 08:59:02 +0800`
+
+```
+已重新生成。现在我检查残留控制串数量和典型文本样本，确保 `\\A1;`、字体包裹、`%%C/%%D` 这些问题已经消掉。
+```
+
+### Codex Response 6 / commentary
+`2026-05-12 08:59:19 +0800`
+
+```
+控制串残留已经清掉：`\\A1;`、`\\S`、字体块 `\\f...;`、`%%C/%%D` 在 JSON/SVG 里都不再出现。还有少量显示语义可以优化，比如叠字公差里的空格，我再做一小步清洗，避免出现 `+0.05/ 0` 这种间隔。
+```
+
+### Codex Response 7 / commentary
+`2026-05-12 08:59:32 +0800`
+
+```
+最后这个小修只影响堆叠文字里的 `/ 0` 空格。我重新编译并再生成一次输出，随后做最终检查。
+```
+
+### Codex Response 8 / final_answer
+`2026-05-12 09:00:22 +0800`
+
+```
+你判断得对，问题主要不是中文编码，而是 CAD/MTEXT 控制串被原样带进了输出，例如 `\A1;`、`\H0.7x;`、`\S...;`、字体块 `{\\fSimSun...;文本}`、`%%C/%%D`。
+
+我已经修了 [src/main.cpp](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/src/main.cpp)，在解析阶段清洗这些 CAD 文本格式控制，并重新生成了最终产物：
+
+- [text_entities.json](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/ocr/text_entities.json)
+- [direct.svg](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/2d/direct.svg)
+- [direct.png](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/2d/direct.png)
+
+现在检查结果里这些控制串已经消失，典型文本变成了：
+
+- `⌀589.78+0.05/0`
+- `25+0.03/-0.05`
+- `上侧板`
+- `技术要求：...`
+- `10°`
+
+验证也跑过了：`ctest --test-dir build-native --output-on-failure` 通过。
+```
+
+<a id="turn-5"></a>
+## Turn 5
+
+### User
+`2026-05-12 09:08:34 +0800`
+
+```
+还有问题，就是轮胎模具上的那些字符，还是不对
+```
+
+### Codex Response 1 / commentary
+`2026-05-12 09:09:02 +0800`
+
+```
+我继续查具体“轮胎模具字符”这部分。先把最终 JSON/SVG 里跟轮胎侧面文字相关的实体抽出来，再回看 DXF 原文，判断是解析清洗规则错了，还是这些字其实是 CAD 字体/块/几何轮廓而不是普通 TEXT。
+```
+
+### Codex Response 2 / commentary
+`2026-05-12 09:09:38 +0800`
+
+```
+我看到这些轮胎相关文本现在主要有 `LENSTON`、`BEAR L800`、`M+S`、`205/60R16 HZKM+S` 等。下一步要定位“不对”是内容被拼错、位置/方向不对，还是轮胎侧面字符本来是轮廓几何而不是普通 TEXT；我先回到 DXF 原文查这些实体的完整组码。
+```
+
+### Codex Response 3 / commentary
+`2026-05-12 09:09:57 +0800`
+
+```
+这里有一个明确 bug：`\\A0;` 是段落/对齐控制，之前我直接吞掉了，导致 `205/60R16 HZK` 和后面的 `M+S/SB/...` 被粘成 `HZKM+S`。我会把这类控制转换成空格/分隔，而不是删除；同时检查 `\\P` 多行和 `@extfont` 字符串。
+```
+
+### Codex Response 4 / commentary
+`2026-05-12 09:10:09 +0800`
+
+```
+除了 `\\A0` 粘连，另一个问题是 `MTEXT` 的 code 3/1 多行内容被直接拼接，DXF 里 `技术要求` 后续行在 code 3 后面没有被收进去。我要改两个点：`\\A...;` 转成空格分隔；TEXT 只读 code 1，MTEXT 同时拼 code 1/3。
+```
+
+### Codex Response 5 / commentary
+`2026-05-12 09:11:40 +0800`
+
+```
+我先把字符解析链路重新看一遍，重点查 MTEXT 的格式控制符和长文本换行，因为这类 CAD 轮胎侧壁文字最容易在这两处丢字或黏连。
+```
+
+### Codex Response 6 / commentary
+`2026-05-12 09:11:58 +0800`
+
+```
+确认到一个实质问题：LibreDWG 导出的 DXF 里有 MTEXT 的值被硬换成了下一行，第二行不是正常 group code/value 对。当前读取器会把这类行误当成新的 DXF 记录，后半段轮胎文字就会丢掉。
+```
+
+### Codex Response 7 / commentary
+`2026-05-12 09:12:25 +0800`
+
+```
+我会把修复压在解析层：先让 DXF 读取器能吞掉这种非标准折行，再让 MTEXT 的对齐控制符保留必要空格，避免把 `HZK` 和 `M+S` 拼成一个词。
+```
+
+### Codex Response 8 / commentary
+`2026-05-12 09:13:54 +0800`
+
+```
+代码层面的两个修正已经落下去了。接下来我会重建转换器，再用同一份 LibreDWG DXF 重新生成 final 输出，并针对轮胎侧壁典型字符串做 grep 校验。
+```
+
+### Codex Response 9 / commentary
+`2026-05-12 09:14:14 +0800`
+
+```
+转换器已经编译通过。现在开始重新生成产物，这一步会覆盖 `outputs/60R16-final` 下的 JSON/SVG/点云文件，但保留前面已经转换出来的 staging DXF。
+```
+
+### Codex Response 10 / commentary
+`2026-05-12 09:14:30 +0800`
+
+```
+重新生成后文本实体数量从之前的不完整状态提升到了 550 个，说明那些被断行吞掉的 MTEXT 已经回来了。我继续把 SVG 转成 PNG，并跑测试和关键字校验。
+```
+
+### Codex Response 11 / commentary
+`2026-05-12 09:14:48 +0800`
+
+```
+PNG 已经刷新，单元测试也过了。现在检查输出里是否还残留格式控制符、`HZKM+S` 这类黏连，以及侧壁上常见的 `LENSTON / 205/60R16 / M+S / OUTSIDE / DOT` 等文字。
+```
+
+### Codex Response 12 / commentary
+`2026-05-12 09:15:20 +0800`
+
+```
+关键字检查现在已经能看到 `205/60R16 HZK M+S`、`SP1612-01/02`、`LENSTON`、`BEAR L800` 等从输出里恢复出来。还有一处我继续看：SVG 里多行文字是否按行输出，而不是只把换行塞进一个 `<text>` 节点里。
+```
+
+### Codex Response 13 / commentary
+`2026-05-12 09:15:53 +0800`
+
+```
+我看到 `direct.svg` 还有一个显示层问题：多行 MTEXT 在 SVG 里被写成了字面量 `\\n`，PNG 渲染时也会把它当字符显示。这个会让技术要求、外模号这类轮胎模具文字看起来仍然不对，我把 SVG 输出也一起修掉。
+```
+
+### Codex Response 14 / commentary
+`2026-05-12 09:16:13 +0800`
+
+```
+显示层修复也已经落进源码：SVG 现在用 XML 转义，并把多行 CAD 文本拆成 `<tspan>`，PNG 不会再渲出字面量 `\\n`。我重新编译并刷新一次产物。
+```
+
+### Codex Response 15 / commentary
+`2026-05-12 09:17:02 +0800`
+
+```
+产物再次刷新完成。现在做最后一轮内容检查：既查 JSON，也查 SVG 是否还有控制符残留或字面 `\\n`。
+```
+
+### Codex Response 16 / commentary
+`2026-05-12 09:17:35 +0800`
+
+```
+还有一个残留我刚才注意到了：某条说明文字里出现了 `\\C256;`，这也是 CAD MTEXT 的颜色控制符，应该被清掉。它是因为原始 DXF 在反斜杠后面断行，读取器把控制符拆开了；我继续把这个边界处理掉。
+```
+
+### Codex Response 17 / commentary
+`2026-05-12 09:17:51 +0800`
+
+```
+最后这处残留来自 DXF 折行把 `\C256;` 拆成了两行。我要先看原始上下文，再决定是在读取阶段拼回控制符，还是在 MTEXT 解码阶段兜底清理。
+```
+
+### Codex Response 18 / commentary
+`2026-05-12 09:18:05 +0800`
+
+```
+这处可以在读取器里修：如果上一段 DXF 值以反斜杠结尾，下一行不是 group code，就直接拼接，不插入换行。这样 `\C256;` 会恢复成完整 MTEXT 控制符，再由解码器清掉。
+```
+
+### Codex Response 19 / commentary
+`2026-05-12 09:18:14 +0800`
+
+```
+边界拼接规则已经加上。再跑一轮编译、转换、PNG 和检查，确认没有反斜杠控制符漏到最终产物里。
+```
+
+### Codex Response 20 / commentary
+`2026-05-12 09:19:21 +0800`
+
+```
+这轮检查里 JSON 的 `\\n` 是 JSON 自身转义，不是 CAD 控制符残留；`C256;` 和 `HZKM` 已经没有了。我再用解析后的文本流做一次更干净的检查，避免把 JSON 转义误判进去。
+```
+
+### Codex Response 21 / commentary
+`2026-05-12 09:19:44 +0800`
+
+```
+JSON 结构实际是 `text_entities`，不是 `texts`，刚才那条 jq 写错了。我会用正确字段再查一次，并顺手看下项目测试入口，能补一个小的 MTEXT 回归测试就补上。
+```
+
+### Codex Response 22 / commentary
+`2026-05-12 09:20:31 +0800`
+
+```
+现在我补一个小回归测试，模拟轮胎侧壁文字里的三种坑：`\A0;` 黏连、MTEXT 被 DXF 折行、以及折行后的 `\C256;` 控制符。这样以后改解析器时不会把这块再弄坏。
+```
+
+### Codex Response 23 / commentary
+`2026-05-12 09:20:52 +0800`
+
+```
+回归测试文件已经加上。我需要重新配置 CMake，让新的测试进入 `ctest`，然后跑完整测试集。
+```
+
+### Codex Response 24 / commentary
+`2026-05-12 09:21:14 +0800`
+
+```
+新增的轮胎文字回归测试也过了。我最后再看一下工作区变更和最终输出文件清单，准备给你明确路径。
 ```
 
 ## Session Events

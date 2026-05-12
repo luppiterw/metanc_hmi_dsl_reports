@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>35</code></div>
-<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Messages</b>: <code>71</code></div>
+<div><b>User prompts</b>: <code>4</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -324,6 +324,255 @@ pre {
 <h3>Codex Response 32 / commentary</h3>
 <div class="time">2026-05-12 08:47:46 +0800</div>
 <pre>我接下来会让 report 工具先创建/刷新 2026-05-12 的 user history 和完整 Codex conversation 导出，然后再补人工 project/conversation/diagram 内容。这样 report 网页里会同时有用户历史和 Codex 对话详情。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-12 08:48:26 +0800</div>
+<pre>2026-05-12 的 report 骨架和完整对话导出已生成，包含 3 个 Codex sessions。现在我会补当天项目报告内容，并更新 parity/status/CHANGELOG 这些关联文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-12 08:48:53 +0800</div>
+<pre>报告工具已经把聚合 SUMMARY 和 timeline 加了 2026-05-12，但 focus 还是默认占位。我现在会把 focus、README、project/conversation report、workflow/architecture 图，以及英文/中文 parity/status 文档改成真实内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-12 08:49:45 +0800</div>
+<pre>我要批量更新多份 Markdown/YAML 文档，内容都是当前同一变更的说明：QML WebSocket-only reconnect smoke 已加入，但本机因缺 QtWebSockets 只验证到 skip/build 层。改完后会跑 parity docs 和 i18n status 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-12 08:53:50 +0800</div>
+<pre>报告主体、图和 docs 已更新。现在需要同步 session book 的 `src/` 包装页，然后用 i18n 工具把中文 overlay 标记为当前，最后开始构建报告和 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-12 08:54:24 +0800</div>
+<pre>i18n manifest 已标记两份中文 overlay 为 current。注意刚才的 diff stat 不展示 untracked 的新 report 目录，我接下来会检查 report 子模块完整状态，并修正聚合 session 页里的默认 focus。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-05-12 08:54:42 +0800</div>
+<pre>报告和文档内容已到位。接下来按构建链路跑：先构建当天 session report，再构建聚合 reports 和最终 docs_html；如果 mdBook/bookshelf 出错，会按实际错误处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-12 08:55:02 +0800</div>
+<pre>当天 report book 和聚合 reports 都构建成功。现在构建最终 docs_html portal，它会把英文、中文和 reports 聚合到最终输出里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-05-12 08:55:32 +0800</div>
+<pre>最终 docs_html 已生成，包含 `reports/2026-05-12-codex-session/index.html`。现在跑文档、i18n、QML 相关回归，之后提交 reports 子模块和主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-05-12 08:56:32 +0800</div>
+<pre>验证通过：docs/parity/i18n/portal 14 个测试通过；QML strict reconnect 2 个测试通过，其中 WS-only 在本机按缺 QtWebSockets skip。现在看一下最终 diff 和报告子模块状态，再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-05-12 08:56:49 +0800</div>
+<pre>准备提交了：先提交并推送 reports 子模块，再提交主仓库。主仓库提交会包含 QML smoke、snapshot、英文/中文文档、i18n 状态和 reports 子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-05-12 08:57:29 +0800</div>
+<pre>Reports 子模块内容已 staging，包含当天完整 Codex conversation 导出和 session book 源。现在提交并推送 reports。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / commentary</h3>
+<div class="time">2026-05-12 08:57:56 +0800</div>
+<pre>Reports 已提交并推送到 `b4ac67f`。现在提交主仓库，包括 QML smoke、文档和 reports 子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 45 / commentary</h3>
+<div class="time">2026-05-12 08:58:39 +0800</div>
+<pre>主仓库已提交并推送到 `63a97a2`。现在按既定过滤规则同步到 MetaNC 的 `nrt/hmi`，再在 MetaNC 里跑对应测试并提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 46 / commentary</h3>
+<div class="time">2026-05-12 08:58:56 +0800</div>
+<pre>MetaNC 同步完成，过滤规则保留了 `docs_i18n`、reports、generated 等 source-local 内容不进入下游。现在检查 MetaNC diff，确认只落到 `nrt/hmi` 的必要文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 47 / commentary</h3>
+<div class="time">2026-05-12 08:59:21 +0800</div>
+<pre>MetaNC 这次只有 `nrt/hmi` 范围内的必要源文件和测试变化；source-local 的中文 overlay 和 report 子模块没有被复制过去。现在在 MetaNC 的 `nrt/hmi` 里跑相同的 QML/文档回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 48 / commentary</h3>
+<div class="time">2026-05-12 08:59:32 +0800</div>
+<pre>MetaNC 的 parity docs 测试已经通过（下游没有 `docs_i18n`，相关检查按预期 skip）。QML strict reconnect 测试还在构建临时 QML binary，我等它结束后再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 49 / commentary</h3>
+<div class="time">2026-05-12 09:00:16 +0800</div>
+<pre>MetaNC 验证通过。现在提交并推送 MetaNC `feat/hmi`，提交信息会明确说明是 QML WS reconnect smoke 同步，不用泛泛写 sync。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 50 / commentary</h3>
+<div class="time">2026-05-12 09:01:11 +0800</div>
+<pre>MetaNC 已提交并推送到 `396a224`。最后做一遍三处工作树状态确认，并整理下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 51 / final_answer</h3>
+<div class="time">2026-05-12 09:01:30 +0800</div>
+<pre>已按计划完成并推送。
+
+结果：
+- `metanc_hmi_dsl_reports`: `b4ac67f docs: add 2026-05-12 QML websocket reconnect report`
+- `metanc_hmi_dsl`: `63a97a2 test: add QML websocket reconnect smoke`
+- `MetaNC feat/hmi`: `396a224 test(hmi): add QML websocket reconnect smoke`
+- 三个工作树都已 clean。
+
+本轮新增：
+- QML `smokeTransportState()`，可检查 WebSocket 创建、open 状态、subscription 状态、polling fallback 是否运行。
+- 新 smoke：`runtime_strict_websocket_reconnect.js`
+- Python runner 从外部 REST `/api/runtime/commands` 发 `cnc.commands.set_mode`，验证 QML 通过 WS 接收模式变化。
+- 本机没有 QtWebSockets module，所以 WS-only smoke 是环境 skip；既有 strict restart reconnect 正常通过。
+
+验证过：
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_qml_smoke`
+- `python3 -m unittest tests.test_pipeline tests.test_generator_refactor`
+- `python3 -m unittest tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status tests.test_docs_portal`
+- `mdbook build` reports
+- `./tools/build_docs_html.sh`
+- MetaNC 下游对应 QML/doc 测试
+
+下一步建议：继续补 Web/QML command-domain parity，优先从软面板 `Cycle Start / Feed Hold / Reset` 或 PROG DIR `Rename/Delete/Refresh` 这类还偏 manual/partial 的行开始。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:332-421|note=[reports submodule and MetaNC sync workflow]
+MEMORY.md:555-565|note=[generated artifact workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 09:04:14 +0800</div>
+<pre>给一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-12 09:04:42 +0800</div>
+<pre>下一步我建议先做 **QML WebSocket smoke 实跑闭环**，然后再扩展 command-domain parity。
+
+**目标**
+让刚加的 WS-only reconnect smoke 不只是 skip，而是在可控环境里真实跑起来，证明 QML 端确实通过 WebSocket 收到 server 推送。
+
+**计划**
+
+1. **确认 QtWebSockets 依赖接入方式**
+   - 检查当前 CI / 本地 / Docker 构建环境。
+   - 明确需要的包：`qml6-module-qtwebsockets`、`libqt6websockets6`，可能还需要 `qt6-websockets-dev`。
+   - 决定是只改 CI image，还是也更新本地安装说明。
+
+2. **让 WS-only smoke 在 CI 中实跑**
+   - 更新 GitHub Actions 或构建脚本依赖安装。
+   - 保留本地无 QtWebSockets 时 skip 的逻辑。
+   - 在 CI 有 QtWebSockets 时，要求 `test_runtime_strict_websocket_reconnect` 必须执行而不是 skip。
+
+3. **补一层测试结果判定**
+   - 当前 smoke 已检查 WebSocket open/disconnect/reconnect 和 polling fallback inactive。
+   - 下一步可以让 Python runner 记录是否 skip，如果 CI 环境声明支持 QtWebSockets 但仍 skip，则 fail。
+   - 避免以后 CI 退化成“看起来通过，其实没跑”。
+
+4. **更新文档**
+   - `docs/server/docker_deployment.md` / build docs 里补 QtWebSockets 可选依赖说明。
+   - parity/status matrix 里把 “QML WebSocket subscription partial” 的验证边界写得更精确：无依赖 fallback，有依赖实跑 smoke。
+
+5. **再进入 command-domain parity**
+   - 第一批建议做软面板 `Cycle Start / Feed Hold / Reset` 的 QML strict-server smoke。
+   - 原因：这是用户最常用的真实操作链路，也比 PROG DIR Rename/Delete 风险小。
+   - 覆盖目标：外部 server state、QML command invocation、execution state、footer/operator notice 是否一致。
+
+我建议下一步先做 **1-4**，把 QtWebSockets 实跑环境闭环补上；否则新增的 WS smoke 在当前机器和可能的 CI 上仍可能长期只是 skip。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 09:08:39 +0800</div>
+<pre>可以 按照你的计划继续、</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-12 09:08:56 +0800</div>
+<pre>我会按刚才的计划先把 QtWebSockets 实跑条件收拢清楚：检查 CI、Docker/本地构建说明和现有 QML 测试入口，然后实现“环境声明支持时不能 skip”的保护，再更新文档并验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-12 09:09:21 +0800</div>
+<pre>我刚才的搜索被 generated 目录噪声淹了一些；现在收窄到 `.github`、测试和 build 文档，先确认 CI 当前怎么安装 Qt/QML 依赖，再动手改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-12 09:09:44 +0800</div>
+<pre>我看到当前默认 CI 只跑 `tests.test_pipeline`，并没有跑 QML smoke；QML 视觉手动 workflow 安装了 Qt 但没装 QtWebSockets。下一步我会加一个独立的 QML runtime smoke CI job，并给测试加“声明必须有 QtWebSockets 时不能 skip”的环境开关。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-12 09:10:47 +0800</div>
+<pre>我现在确认到一个关键点：干净 CI 里 `generated/server-build/server` 是 ignored 产物，不会随仓库存在；所以仅安装 QtWebSockets 还不够，WS-only smoke 还需要先生成 native server 和 contract bundle。我会把 CI job 设计成显式生成产物，再要求 WS smoke 不能 skip。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-12 09:11:02 +0800</div>
+<pre>我会把 CI 变更做得保守：新增单独 job，安装 QtWebSockets 和 vcpkg/Drogon 所需环境，跑 `generate_targets.sh` 后只执行 QML strict transport smoke；默认 pipeline 不被重型 QML 全量 smoke 拖慢。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-12 09:11:36 +0800</div>
+<pre>本地网络无法解析 GitHub，所以我不会用 live clone 来判断 vcpkg 分支；CI 里我会用官方 `run-vcpkg` action 或保守的 vcpkg bootstrap 路径。先用本机 apt cache 确认 Ubuntu 包名，避免文档和 workflow 写错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-12 09:12:52 +0800</div>
+<pre>我将先改测试开关和 CI：`HMI_REQUIRE_QTWEBSOCKETS=1` 时如果 QtWebSockets 不存在就 fail；普通本地环境仍 skip。随后把默认 CI 增加一个 QML Runtime Smoke job，并给手动 QML visual workflow 也补上 WebSocket 包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-12 09:13:46 +0800</div>
+<pre>CI 和测试开关已改好。现在补文档：本地构建说明会列出 QtWebSockets 作为可选但用于 WS smoke 的依赖；CI 文档说明该 job 会强制要求 QtWebSockets，防止测试静默 skip。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-12 09:15:25 +0800</div>
+<pre>我还会更新 status matrix 和 CHANGELOG，把“WS smoke 已有但本机 skip”升级为“CI 有专门 job 会强制实跑”；同时更新中文 overlay/状态，保持 docs 同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-12 09:16:20 +0800</div>
+<pre>CI、测试和英文/中文文档都已更新。现在用 i18n 工具标记相关中文页为 current，然后跑 YAML、docs parity、i18n、QML 开关验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-12 09:16:56 +0800</div>
+<pre>两个 QML 单测都在临时构建 QML。这里我特意同时跑 required 和非 required：required 应该在本机失败并指出缺 QtWebSockets；非 required 应该 skip，验证本地体验不变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-12 09:18:16 +0800</div>
+<pre>本地验证结果符合预期：`HMI_REQUIRE_QTWEBSOCKETS=1` 在当前机器上会失败并明确报缺 QtWebSockets；不设置时仍是 skip。接着我会补 README/agent handoff 中的 CI 说明，再跑最终文档检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-12 09:20:16 +0800</div>
+<pre>我补了 README、tooling 和 handoff 文档。现在标记新增的中文 handoff 为 current，并跑文档/CI YAML/关键 QML 测试；这轮不需要重新生成 app 产物，因为没有改生成器输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-12 09:21:26 +0800</div>
+<pre>本地 smoke 仍按预期 skip，required 模式也已验证会失败。现在我需要更新今天 report，重新构建 docs_html，然后提交并同步 MetaNC。先生成当天 report 增量。</pre>
 </article>
 </section>
 </main>

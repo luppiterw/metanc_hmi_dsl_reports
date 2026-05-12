@@ -3,10 +3,11 @@
 ## Scope
 
 本轮继续推进 Web/QML runtime parity 的可执行验证，重点补齐 QML strict
-server 模式下 WebSocket-only reconnect 的 smoke coverage。此前 QML 已有
-bootstrap/command forwarding、late-server reconnect 和 true server-restart
-reconnect 覆盖，但这些测试无法直接证明 Qt WebSocket subscription 路径本身
-在重连后仍能推送外部 server state changes。
+server 模式下 WebSocket-only reconnect 的 smoke coverage，并把这条覆盖接入
+远端 CI 的强制 gate。此前 QML 已有 bootstrap/command forwarding、
+late-server reconnect 和 true server-restart reconnect 覆盖，但这些测试无法
+直接证明 Qt WebSocket subscription 路径本身在重连后仍能推送外部 server
+state changes。
 
 本轮新增一个 QtWebSockets-gated smoke：只有宿主机安装 QtWebSockets QML
 module 时才执行完整断线/重连链路；模块不可用时明确 skip，避免把 fallback
@@ -18,6 +19,10 @@ source 仍会因为 `import QtWebSockets 1.15` 与当前 Qt6 包实际导出的
 QML 使用无版本 `QtWebSockets` import，并由 runtime store 显式连接 socket
 status/message signals，WebSocket-only reconnect smoke 已在 QtWebSockets-enabled
 host 上通过。
+
+随后检查远端 GitHub Actions，当前 main 最新 run 已通过，之前的红色记录是
+旧提交保留的历史失败。本轮报告刷新还补齐了完整 Codex conversation export，
+避免 report 页面只能看到 user history、看不到具体对话详情。
 
 ## Completed Work
 
@@ -71,6 +76,11 @@ host 上通过。
     `cnc.commands.set_mode` 状态到达 QML。
   - smoke timeout 诊断现在会输出完整 `smokeTransportState()`，后续 CI 失败时
     可以直接区分 socket create、open、subscription、fallback 状态。
+- 确认最新 GitHub Actions run 已通过，CI 问题当前收口在 main 最新提交上。
+- 刷新 2026-05-12 report 的 user history 与完整 Codex conversation export，
+  并补齐近期 append-only 历史会话索引。
+- 明确下一步执行顺序：先完成 report/docs + MetaNC 同步提交，再进入
+  Web/QML parity 的 server-backed AUTO/JOG scenario 自动化切片。
 
 ## Validation
 
@@ -100,9 +110,15 @@ reconnect smoke now passes on a QtWebSockets-enabled host. CI installs
 QtWebSockets and sets `HMI_REQUIRE_QTWEBSOCKETS=1`, so the same smoke will fail
 in CI if the WebSocket-only case would skip or fall back to polling.
 
+The latest remote GitHub Actions run for main also passed after the CI dependency
+fixes, so the repository is ready for the next parity-automation slice.
+
 ## Notes
 
 - 本机安装 `qt6-websockets-dev` 和 `qml6-module-qtwebsockets` 后，新增 smoke
   已执行完整 WebSocket open/disconnect/reconnect 和外部 command push 验证。
 - `qmlimportscanner` 仍会打印 `QtQml` qmldir warning，但 QML build 和
   WebSocket smoke 均通过；该 warning 与本次 WebSocket 失败根因无关。
+- 下一步优先落一个共享 parity scenario 层，覆盖 strict server 下 AUTO
+  `cycle_start/feed_hold/reset` 和 JOG `move_axis` 的结果断言，减少 Web/QML
+  手工检查漂移。

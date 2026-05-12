@@ -43,6 +43,9 @@ open，但订阅回调需要从 runtime store 显式绑定。最终保留显式 
 - CI 中的 gated smoke 会把 QtWebSockets 缺失或测试被 skip 当成失败。
 - report 刷新必须包含完整 `codex-conversations/` 导出，避免只看到 user
   history、看不到 Codex 对话详情。
+- 最新远端 CI 已在 main 当前提交上通过，旧红色 run 是历史失败记录。
+- 下一步优先进入 server-backed parity scenario，把 AUTO/JOG 的关键命令结果
+  变成 Web/QML 都可复用的稳定回归用例。
 
 ## Outcome
 
@@ -55,3 +58,5 @@ open，但订阅回调需要从 runtime store 显式绑定。最终保留显式 
 - CI workflow、visual snapshot workflow 和 build/test 文档已更新，记录
   QtWebSockets 依赖与 `HMI_REQUIRE_QTWEBSOCKETS` 语义。
 - 2026-05-12 report 已包含 user history 和完整 Codex conversation export。
+- report/docs + MetaNC sync 收口后，将开始实现首个 shared parity scenario
+  切片。

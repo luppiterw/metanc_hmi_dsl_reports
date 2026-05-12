@@ -2,15 +2,20 @@
 
 这个目录整理了 2026-05-12 这轮项目推进的结构化阅读材料。
 本轮主线是把 QML strict-server runtime smoke 从“HTTP bootstrap/command +
-普通 server restart reconnect”继续推进到 WebSocket-only reconnect 覆盖。
+普通 server restart reconnect”推进到 WebSocket-only reconnect 覆盖，并把该
+覆盖接入 GitHub Actions 的强制 QML runtime smoke gate。
+
 新增 smoke 会在 QtWebSockets module 可用时观察 WebSocket open、server stop
 后的 disconnect、server restart 后的 reconnect，并通过外部 REST
 `cnc.commands.set_mode` 命令验证 `mode.current` 是由 WebSocket subscription
-推送到 QML runtime，而不是依赖 HTTP polling fallback。
+推送到 QML runtime，而不是依赖 HTTP polling fallback。后续安装
+QtWebSockets 后，本机已复跑强制 smoke 并修复动态 `QtWebSockets` import 与
+callback binding 问题；远端最新 CI run 已在该提交上通过。
 
-本机当前没有安装 `qml6-module-qtwebsockets` / `libqt6websockets6`，因此新增
-WebSocket-only smoke 在本机按环境 skip；QML 构建、严格模式既有 reconnect
-测试、生成器/快照测试、parity docs 测试和最终产物生成均已验证。
+本轮收尾还刷新了完整 Codex conversation export，确保 report 页面既能看到
+user history，也能进入 Codex 对话详情。下一步工作转入 Web/QML parity 的
+server-backed scenario automation，把 AUTO/JOG 的关键命令结果做成更稳定的
+共享回归切片。
 
 目录：
 
@@ -26,14 +31,14 @@ WebSocket-only smoke 在本机按环境 skip；QML 构建、严格模式既有 r
 ## Complete Codex Conversation Export
 
 - Scope: `2026-05-12`
-- Sessions: `6`
-- Primary sessions: `3`
+- Sessions: `8`
+- Primary sessions: `5`
 - Side sessions: `3`
-- User prompts: `44`
+- User prompts: `77`
 - Synthetic events: `1`
-- Messages: `338`
-- User messages: `45`
-- Codex messages: `293`
+- Messages: `599`
+- User messages: `78`
+- Codex messages: `521`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

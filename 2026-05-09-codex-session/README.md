@@ -57,11 +57,11 @@ log buffer 放在 transport 片段两侧；本轮保持 `RuntimeStore.qml`、Web
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `146`
+- User prompts: `147`
 - Synthetic events: `3`
-- Messages: `1379`
-- User messages: `149`
-- Codex messages: `1230`
+- Messages: `1423`
+- User messages: `150`
+- Codex messages: `1273`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

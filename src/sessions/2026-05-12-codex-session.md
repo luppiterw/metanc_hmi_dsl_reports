@@ -3,7 +3,9 @@
 Focus:
 
 - QML WebSocket-only reconnect smoke coverage
+- QtWebSockets-required CI gate repair
 - Web/QML parity and status docs refresh
+- Full Codex conversation export refresh
 - Final artifact validation and MetaNC sync preparation
 
 Session assets:

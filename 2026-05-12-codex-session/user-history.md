@@ -23,3 +23,25 @@ Date: 2026-05-12
 - 你看看还有需求讨论吗，我关于页面部分
 - 可以 给个计划，然后补一下
 - generate/update report &amp; docs + sync MetaNC + commit + push；然后看一下下一步计划
+- 看一下60R16 最新.dwg是2D还是3D图纸
+- 给一下下一步计划
+- 给一个计划
+- 可以 按照你的计划继续、
+- ok 看一下现在还有什么要做的
+- 详细设计一下
+- 可以 做一下
+- dwd为什么没办法直接被freecad打开，freecad还要借助libreDWG这种，但是我那个60R16还是打不开、说dxf加载失败（freecad用libredwg先转成dxf再打开的应该）
+- 看一下现在什么情况，还有下一步计划吗
+- 那你是用什么打开的呢
+- 可以 按照你的计划继续、
+- ok 看一下现在还有什么要做的
+- 你自己搜一下，就在当前目录某个子目录
+- 检查一下远程github action为什么ci失败了，修复一下metanc_hmi_dsl ci问题
+- 可以 做一下
+- 远端好像还是ci报错，看看原因
+- 详细设计一下
+- ok
+- 继续规划一下
+- 所以有什么推荐的windows方案吗
+- generate/update report &amp; docs + sync MetaNC + commit + push；然后按照你的计划开始走
+- 可以 做一下

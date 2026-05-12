@@ -60,3 +60,12 @@ open，但订阅回调需要从 runtime store 显式绑定。最终保留显式 
 - 2026-05-12 report 已包含 user history 和完整 Codex conversation export。
 - report/docs + MetaNC sync 收口后，将开始实现首个 shared parity scenario
   切片。
+- shared parity 的 S2 MDI execution scenario 已经落地，并提交为
+  `test: add shared PROG and MDI parity scenarios`。
+- 修复 QML strict server 模式下 PROG SELECT 后不返回 Program editor 的问题：
+  文件内容仍由 server command/WS state 返回，QML client 只补本地页面导航与
+  editor focus 副作用，保持和 Web 的 `progdir.commands.activate` 文件激活行为
+  对齐。
+- 新增 `runtime_strict_prog_select_navigation` QML smoke，覆盖从
+  `page_program_browser` 选择 `SHAFT_A.MPF` 后回到 `page_program` 并显示
+  server-returned program document。

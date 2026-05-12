@@ -7,6 +7,8 @@ Focus:
 - Web/QML parity and status docs refresh
 - Full Codex conversation export refresh
 - Final artifact validation and MetaNC sync preparation
+- Shared MDI execution scenario completion
+- QML strict PROG SELECT editor navigation fix
 
 Session assets:
 

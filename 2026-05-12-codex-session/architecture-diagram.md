@@ -53,9 +53,25 @@ flowchart LR
         REPORT[2026-05-12 session report]
     end
 
+    subgraph ProgramSelect
+        PDIR[PROG DIR file row]
+        PACT[progdir.commands.activate]
+        PNAV[QML local page_program navigation]
+        PDOC[server-returned program.document.content]
+        PSMOKE[runtime_strict_prog_select_navigation.js]
+    end
+
     SCRIPT --> PARITY
     PARITY --> ZHPARITY
     SCRIPT --> STATUS
     REQUIRE --> CI
     STATUS --> REPORT
+    PDIR --> PACT
+    PACT --> REST
+    REST --> PDOC
+    PACT --> PNAV
+    PDOC --> PSMOKE
+    PNAV --> PSMOKE
+    PSMOKE --> PARITY
+    PSMOKE --> STATUS
 ```

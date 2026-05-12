@@ -26,6 +26,24 @@ host 上通过。
 
 ## Completed Work
 
+- 已提交 shared parity S2：
+  - 新增 `mdi_execution_result` shared scenario，覆盖 MDI input execution 和
+    execution-source/runtime-state 结果。
+  - 增加 browser-backed Web Runtime Smoke 与 QML strict smoke 对该 scenario 的
+    消费路径。
+  - 修复 server adapter 对 `mdi.content` 的 property write-through，避免 MDI
+    Cycle Start 使用旧 buffer。
+- 修复 QML strict server 模式下的 PROG SELECT 导航回归：
+  - QML `progdir.commands.activate` 文件条目激活后，现在与 Web 一样切回
+    `page_program` 并聚焦 active Program editor。
+  - 目录条目仍保留在 PROG DIR 浏览器内进入下一级，不改变文件夹导航语义。
+  - `prog.commands.load` 也补齐相同的 Program editor 导航副作用。
+- 新增 QML strict smoke：
+  - `tests/qml_smoke/runtime_strict_prog_select_navigation.js`
+  - `tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_prog_select_navigation`
+  - 覆盖从 `page_program_browser` 打开 `SHAFT_A.MPF` 后，client 回到
+    `page_program`、当前程序路径/名称正确、`program.document.content` 含
+    server-returned 程序内容。
 - 扩展 QML smoke helper：
   - `smokeTransportState()` 导出 strict/server/base URL、连接状态、
     `runtimeWebSocket` 是否创建、WebSocket status、subscription key、
@@ -100,15 +118,22 @@ host 上通过。
     open/disconnect/reconnect and external `cnc.commands.set_mode` delivery
     without HTTP polling fallback.
 - `python3 -m unittest tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status`
+- `python3 -m unittest tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_prog_select_navigation`
+- `python3 -m unittest tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_program_lifecycle`
+- `python3 -m unittest tests.test_parity_scenarios tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status`
+- `python3 -m unittest tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots`
 - workflow YAML parse check for `.github/workflows/ci.yml` and
   `.github/workflows/visual-snapshots.yml`
 - `git diff --check`
 
 Validation result: generated Web/QML/server/distribution artifacts were refreshed,
 existing QML strict-server reconnect behavior still passes, and the WebSocket-only
-reconnect smoke now passes on a QtWebSockets-enabled host. CI installs
-QtWebSockets and sets `HMI_REQUIRE_QTWEBSOCKETS=1`, so the same smoke will fail
-in CI if the WebSocket-only case would skip or fall back to polling.
+reconnect smoke now passes on a QtWebSockets-enabled host. The new QML strict
+PROG SELECT navigation smoke also passes on this host, proving that the server
+updates the active program document while the QML client performs the matching
+editor-page transition. CI installs QtWebSockets and sets
+`HMI_REQUIRE_QTWEBSOCKETS=1`, so the WebSocket-only case will fail in CI if it
+would skip or fall back to polling.
 
 The latest remote GitHub Actions run for main also passed after the CI dependency
 fixes, so the repository is ready for the next parity-automation slice.
@@ -121,4 +146,4 @@ fixes, so the repository is ready for the next parity-automation slice.
   WebSocket smoke 均通过；该 warning 与本次 WebSocket 失败根因无关。
 - 下一步优先落一个共享 parity scenario 层，覆盖 strict server 下 AUTO
   `cycle_start/feed_hold/reset` 和 JOG `move_axis` 的结果断言，减少 Web/QML
-  手工检查漂移。
+  手工检查漂移；S0/S1/S2 已经作为当前 shared acceptance ring 的收敛基线。

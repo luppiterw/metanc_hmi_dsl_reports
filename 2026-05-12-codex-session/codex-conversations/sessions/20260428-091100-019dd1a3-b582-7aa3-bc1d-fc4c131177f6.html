@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>71</code></div>
-<div><b>User prompts</b>: <code>4</code></div>
+<div><b>Messages</b>: <code>123</code></div>
+<div><b>User prompts</b>: <code>7</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -573,6 +573,356 @@ MEMORY.md:555-565|note=[generated artifact workflow]
 <h3>Codex Response 14 / commentary</h3>
 <div class="time">2026-05-12 09:21:26 +0800</div>
 <pre>本地 smoke 仍按预期 skip，required 模式也已验证会失败。现在我需要更新今天 report，重新构建 docs_html，然后提交并同步 MetaNC。先生成当天 report 增量。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-12 09:21:47 +0800</div>
+<pre>完整对话导出已刷新，消息数增加到 192。现在补 report 内容，把 CI QtWebSockets 实跑闭环写进去，再构建报告和 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-12 09:23:04 +0800</div>
+<pre>报告内容已补上 CI 闭环。现在重新构建当天 report、聚合 report 和 docs_html，再做最后测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-12 09:26:00 +0800</div>
+<pre>我继续把这轮收口：先确认后台测试结果，然后补齐中文 i18n 文档同步，再提交、推送并同步到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-12 09:26:26 +0800</div>
+<pre>测试已经收口：文档门户相关 14 个测试通过；本机没有 QtWebSockets，所以非强制 QML WS smoke 是按预期跳过。接下来我补齐中文镜像文档，避免英文新增 CI 约束后 i18n 侧落后。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-12 09:26:58 +0800</div>
+<pre>我会只补这次新增的 QtWebSockets/CI gate 内容，不把中文页整页重写，避免把无关历史翻译差异一起引入本轮。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-12 09:27:54 +0800</div>
+<pre>中文 overlay 已补上；我现在刷新 i18n 状态和文档输出，再跑一次关键测试，确认这些文档变更没有破坏 portal/状态校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-12 09:28:18 +0800</div>
+<pre>文档构建已经开始通过新的中文页数量（英文 89 页）跑；我等 portal build 和 docs tests 完成后再提交，避免提交一个构建/测试状态不明确的版本。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-12 09:29:00 +0800</div>
+<pre>关键检查通过：docs portal build、report book build、14 个 docs/i18n 测试、`git diff --check` 都是绿色。现在我会先提交 report 子模块，再提交主仓库，保持父仓库记录的是已推送的 report 指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-12 09:29:18 +0800</div>
+<pre>我又检查了一下 CI 片段，vcpkg cache 恢复时如果目录半残留，当前 clone 逻辑可能失败；我会顺手把 bootstrap 写得更稳一点，然后再做最终 YAML 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-12 09:30:12 +0800</div>
+<pre>所有本地验证已完成。我现在提交并推送 reports 子模块，然后主仓库提交推送；如果远端有更新会先看具体情况，不做覆盖式处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-12 09:30:51 +0800</div>
+<pre>reports 子模块已经推送到 `5283f8d`。接下来提交主仓库的 CI、测试、文档和子模块指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-12 09:40:19 +0800</div>
+<pre>`metanc_hmi_dsl` 已提交并推送到 `b96905b`。下一步我把必要内容同步到 `/home/iaar/workspace/ccmix-wp/MetaNC`，再在 MetaNC 里验证、提交、推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-12 09:40:39 +0800</div>
+<pre>MetaNC 同步后只有 `nrt/hmi` 下的 8 个文件变化，符合预期；基础 parity docs 测试已过，QML smoke 正在构建后会在本机按无 QtWebSockets 跳过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-12 09:41:10 +0800</div>
+<pre>MetaNC 侧验证完成：`test_web_qml_parity_docs` 通过，QML WS smoke 在当前 host 无 QtWebSockets 时按预期 skip。现在提交并推送 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-12 09:42:01 +0800</div>
+<pre>MetaNC 已推送到 `253c938`。我最后做一下两边状态确认，确保没有遗留未提交内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / final_answer</h3>
+<div class="time">2026-05-12 09:42:25 +0800</div>
+<pre>继续完成了这一轮：
+
+- `metanc_hmi_dsl` 已提交并 push：`b96905b ci: require QML websocket smoke coverage`
+- reports 子模块已提交并 push：`5283f8d docs: update QML websocket CI report`
+- 已同步到 `MetaNC/nrt/hmi`
+- `MetaNC feat/hmi` 已提交并 push：`253c938 test(hmi): require QML websocket smoke when enabled`
+- 两边工作区最后都是 clean
+
+本轮主要落地的是 QML WebSocket smoke 的 CI 强制覆盖：CI 会安装 `qt6-websockets-dev` / `qml6-module-qtwebsockets`，设置 `HMI_REQUIRE_QTWEBSOCKETS=1`，重新生成 runtime artifacts，然后跑 strict WebSocket reconnect smoke，避免缺 QtWebSockets 时静默 skip。
+
+验证过：
+
+- `./tools/build_docs_html.sh`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-12-codex-session`
+- `python3 -m unittest tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status tests.test_docs_portal`
+- workflow YAML parse check
+- `git diff --check`
+- 本机无 QtWebSockets 时，非强制 QML WS smoke 按预期 `OK (skipped=1)`；强制模式会失败并提示缺模块，这正是 CI gate 要锁住的行为。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:332-421|note=[reports submodule and MetaNC sync workflow]
+MEMORY.md:555-565|note=[generated artifact workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dbeb7-4158-7c23-baaa-ffca19c25d3b
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 09:44:24 +0800</div>
+<pre>QTWEBSOCKETS是要安装的吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-12 09:44:45 +0800</div>
+<pre>是的，如果你要让 **QML 版本走 WebSocket 通信路径**，建议安装 QtWebSockets。
+
+在我们现在这套里：
+
+- Web 版本不需要 QtWebSockets，浏览器自己支持 WebSocket。
+- Server 端也不靠 QtWebSockets，server 用 Drogon 提供 `/api/runtime/ws`。
+- QML/Qt 客户端如果没有 QtWebSockets，会 fallback 到 HTTP polling，基本能跑，但不是完整 WS 模式。
+- CI 里现在会强制安装并设置 `HMI_REQUIRE_QTWEBSOCKETS=1`，避免 QML WS 测试被静默 skip。
+
+Ubuntu/WSL 下建议装：
+
+```bash
+sudo apt-get install -y qt6-websockets-dev qml6-module-qtwebsockets
+```
+
+如果你的 Qt 基础包还没装完整，也一起装：
+
+```bash
+sudo apt-get install -y \
+  qt6-base-dev \
+  qt6-base-dev-tools \
+  qt6-declarative-dev \
+  qt6-declarative-dev-tools \
+  qt6-websockets-dev \
+  qml6-module-qtwebsockets
+```
+
+装完后可以跑这个验证 QML WS path：
+
+```bash
+HMI_REQUIRE_QTWEBSOCKETS=1 python3 -m unittest -v \
+  tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_websocket_reconnect
+```
+
+结论：**本地只看界面可以暂时不装；要验证/使用 QML 的 WebSocket 模式，就应该装。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 09:45:07 +0800</div>
+<pre>装好了，你在试试</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-12 09:45:24 +0800</div>
+<pre>我在 `metanc_hmi_dsl` 里直接跑强制 QML WebSocket smoke，也就是之前会因为缺 QtWebSockets 失败的那条路径。若这次能进入真实 WS reconnect 测试，就说明安装生效了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-12 09:45:45 +0800</div>
+<pre>现在已经通过“是否存在 QtWebSockets”的检查了，没有再直接报缺模块；测试正在编译并启动真实 QML smoke。接下来主要看运行阶段是否能完成 WS open/reconnect。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-12 09:46:36 +0800</div>
+<pre>第一次已经确认 QtWebSockets 检测通过了，失败点不是模块缺失，而是当前工具沙箱不允许 Python 创建本地 socket。我已按需要切到非沙箱再跑同一组强制 WS 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-12 09:47:34 +0800</div>
+<pre>这次结果更具体：QtWebSockets 已经不是问题，`server_restart_reconnect` 通过了；失败的是另一条 `websocket_reconnect`，QML 进程启动后没有在超时时间内上报初始 WS open。我继续看测试参数和 QML 输出，判断是测试条件太严还是实际 WS 入口没有稳定打开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-12 09:47:52 +0800</div>
+<pre>我现在看具体 smoke 脚本和 generated runtime 的 WS 状态字段。因为 `server_restart_reconnect` 已通过，说明 strict server 启停恢复链路可用；失败更像是“WS-only smoke 的等待条件或 QML WS 状态更新”这一层的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-12 09:48:37 +0800</div>
+<pre>这里已经暴露出一个真实问题：安装后测试不再 skip，但 QML WS-only 用例没有打开初始 WebSocket。现在我继续查 QtWebSockets import 和 generated QML 的动态 socket 创建，先确认是测试等待条件、QML import 版本，还是 runtime 启动顺序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-12 09:49:20 +0800</div>
+<pre>我先做一个很小的 QML 动态 WebSocket 创建探针，目标不是改业务代码，而是确认失败点是不是 `import QtWebSockets 1.15` 这句在当前 Qt6 包下不兼容。这个检查能把“模块有但动态创建失败”和“socket 网络连接失败”区分开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-12 09:49:35 +0800</div>
+<pre>我会再加 `HMI_QML_DEBUG=1` 跑失败的单个用例，这样 Qt/QML warning 会直接打印出来。现在需要确认 WebSocket 对象是创建失败、状态没变，还是连接到了 server 但没有 subscription ack。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-12 09:50:59 +0800</div>
+<pre>Debug 输出没有给 Qt warning，说明错误被我们自己的动态创建分支吞掉了，或者 socket 状态只是停在非 open。我先加一个诊断小改动到 smoke 脚本，把超时时的 transport state 打出来；这个改动本身也有价值，后续 CI 失败时能直接看到 WS 创建/active/status。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-12 09:52:21 +0800</div>
+<pre>诊断输出已经定位到核心：`connected=true`、`polling_fallback_active=true`，但 `websocket_created=false`。也就是说 server 和 HTTP fallback 都通了，QtWebSockets 包也能被文件检测到，但 QML 动态创建 WebSocket 对象失败了。下一步我验证 import 语句版本兼容性，优先修 generator 里的动态 QML source。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-12 09:52:41 +0800</div>
+<pre>QtWebSockets 插件实际只导出 `WebSocket 1.0/1.1`，我们动态 source 用的是 `import QtWebSockets 1.15`。这在当前 Qt6 包下会导致 `Qt.createQmlObject` 创建失败，然后 runtime 静默退回 HTTP polling。我先把动态 import 改成 Qt6 更稳的无版本 import，并保留 smoke 失败时的 transport state 输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-12 09:52:48 +0800</div>
+<pre>修复点很小：只改了 QML 动态 WebSocket source 的 import。现在重新跑强制 WS smoke；这个测试会重新生成临时 QML，所以能直接验证 generator 源头修复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-12 09:54:03 +0800</div>
+<pre>修复 import 后状态变了：现在 `websocket_created=true`、`websocket_status=open`，说明 QtWebSockets 已经能创建并打开连接；剩下的问题是 `subscription_connected=false`，也就是 WS 打开后订阅没有建立/被清掉。我继续查订阅消息处理这一层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-12 09:54:26 +0800</div>
+<pre>现在剩下的是订阅状态没有建立。我会检查 `RuntimeStore` 里 WebSocket 事件 handler 的上下文和 server 订阅 ready/ack 处理，重点看为什么 socket 已 open 但 `serverSubscriptionConnected` 又是 false。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-12 09:55:30 +0800</div>
+<pre>我会把动态 WebSocket 的事件绑定从 QML source 字符串里拿出来，改为 `Qt.createQmlObject` 后在 runtime 侧显式 connect。这样不依赖动态对象里能否解析外层 `runtime` id，WS open 后能稳定触发订阅发送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-12 09:55:54 +0800</div>
+<pre>我把事件绑定改成运行时显式连接了，这更符合动态对象的作用域边界。现在再跑强制 QML WS 两个 reconnect 用例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-12 09:57:06 +0800</div>
+<pre>测试现在已经通过了，但 QML 里还有两条 `runtimeStatusName` 的 TypeError warning。我会把事件 handler 改成捕获创建出来的 socket 对象，而不是从可变的 `runtimeWebSocket` 属性再读一遍，避免后续启动时留下噪声。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-12 09:57:17 +0800</div>
+<pre>我修掉了 warning 的根因，再复测一次强制 WS 用例，确认结果既通过也没有 TypeError 输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-12 09:58:26 +0800</div>
+<pre>现在功能已经过了，但 QML warning 还没干净。我继续把 signal callback 绑定到 `RuntimeStore` 自身，避免 Qt 在回调里把 `this` 解析成空对象。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-12 09:58:43 +0800</div>
+<pre>我把回调里的 `this`/作用域问题也收敛了：现在事件回调显式调用 `store.handleRuntimeSocketStatus()` / `store.handleSubscriptionMessage()`。再跑一遍，看是否既通过又没有 QML TypeError。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-12 09:59:55 +0800</div>
+<pre>功能已经过了，但还有 `TypeError` warning，说明回调还不是完全干净。我继续把这块修到无 warning，再给你结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-12 10:00:29 +0800</div>
+<pre>我把 warning 的处理方式换成更稳的动态对象自带 `runtimeStore` 回调属性，避免 JS closure 在 socket 关闭/析构时引用到失效对象。这个比继续用外层闭包更适合 Qt 动态 QML 对象。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-12 10:02:26 +0800</div>
+<pre>我定位到 `runtimeStore` 属性回调这条路不会触发订阅，退回到动态对象的 callback 属性方案：socket 自己发状态/消息 callback，RuntimeStore 只在创建后注入函数。这样既不依赖外层 id 解析，也不靠 signal closure 的析构时机。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-12 10:04:25 +0800</div>
+<pre>我现在回到“显式 signal connect”方案，但加上 guard/try-catch 避免关闭时的 TypeError。前一轮证明这个方案能真正建立订阅；现在目标是把功能通过和 warning 清理同时做到。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-12 10:06:01 +0800</div>
+<pre>现在强制 QML WebSocket 两个用例都通过，并且没有 TypeError warning。我要再跑一组基础测试和 diff 检查，确认这次小修没有影响其它生成/文档校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-12 10:06:23 +0800</div>
+<pre>基础检查通过，当前只留下 3 个源文件改动。为了你本地直接运行 `generated/distribution` 看到修复后的 QML，我再刷新一次最终产物；否则 generator 修了，但旧的 ignored `generated/` 目录还可能仍是旧代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-12 10:07:49 +0800</div>
+<pre>最终产物已经刷新完了。我再做一个收尾状态检查和 generated QML 片段确认，确保当前 `generated/qml/RuntimeStore.qml` 里已经是修复后的 WebSocket import/订阅路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / final_answer</h3>
+<div class="time">2026-05-12 10:08:01 +0800</div>
+<pre>装好后我试了，确实暴露出一个真实问题，并已修掉。
+
+结论：
+
+- QtWebSockets 现在能被检测到了，不再是“缺模块”。
+- 原来 QML 动态创建 WS 用的是 `import QtWebSockets 1.15`，你当前 Qt6 包实际只导出 `WebSocket 1.0/1.1`，导致动态 WebSocket 创建失败并回退 HTTP polling。
+- 我已改成无版本 `import QtWebSockets`。
+- 另外把动态 WebSocket 的 `statusChanged/textMessageReceived` 显式绑定到 runtime 侧，WS open 后能稳定发送 `runtime.subscribe`。
+
+验证结果：
+
+```bash
+HMI_REQUIRE_QTWEBSOCKETS=1 python3 -m unittest -v \
+  tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_websocket_reconnect \
+  tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_server_restart_reconnect
+```
+
+结果：`OK`，两个强制 QML WebSocket reconnect 用例都通过。
+
+我也重新跑了 `./tools/generate_targets.sh`，所以本地 `generated/distribution` 已经是修复后的 QML 产物。当前改动还没提交，涉及 3 个文件。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 10:13:25 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC + commit + push；然后看一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-12 10:13:56 +0800</div>
+<pre>我按这个收口路径做：先把这次 QML WebSocket 修复写进 changelog/status/report，再重建 docs/report HTML，跑关键测试，然后按 reports 子模块、主仓库、MetaNC 的顺序提交和推送。最后我会给出下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-12 10:14:18 +0800</div>
+<pre>我已经确认当前只剩 QML WebSocket 修复的 3 个源文件改动，reports 子模块和 MetaNC 当前都是干净状态。接下来我补文档状态页和今天 report，再按既定顺序提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-12 10:14:43 +0800</div>
+<pre>我开始写入这轮结论：这次不是“装包后测试通过”这么简单，而是装包后暴露了 QML 动态 WebSocket source 的两个实际问题，我会把“无版本 QtWebSockets import + 显式 signal 订阅回调”记录到状态和 report 里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-12 10:16:42 +0800</div>
+<pre>文档状态页已更新到“QtWebSockets 安装后真实通过”。下一步刷新 i18n 状态和今天 report 的 user history/full conversation，然后重建 report/docs。</pre>
 </article>
 </section>
 </main>

@@ -5,6 +5,7 @@ flowchart LR
     subgraph QML Client
         MAIN[generated/qml/Main.qml]
         SMOKE[smoke_testing.py helpers]
+        SOURCE[dynamic QtWebSockets source]
         WS[RuntimeStore runtimeWebSocket]
         FALLBACK[serverPollTimer HTTP fallback]
         SCRIPT[runtime_strict_websocket_reconnect.js]
@@ -35,8 +36,11 @@ flowchart LR
     REST --> ADAPTER
     ADAPTER --> STATE
     STATE --> WSE
+    DETECT --> SOURCE
+    SOURCE -->|versionless import| WS
     WSE --> WS
     WS --> MAIN
+    WS -->|status/message callbacks| SMOKE
     MAIN --> SMOKE
     SMOKE --> SCRIPT
     SCRIPT -. asserts fallback inactive .-> FALLBACK

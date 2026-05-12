@@ -26,14 +26,14 @@ WebSocket-only smoke 在本机按环境 skip；QML 构建、严格模式既有 r
 ## Complete Codex Conversation Export
 
 - Scope: `2026-05-12`
-- Sessions: `3`
-- Primary sessions: `2`
-- Side sessions: `1`
-- User prompts: `19`
+- Sessions: `6`
+- Primary sessions: `3`
+- Side sessions: `3`
+- User prompts: `44`
 - Synthetic events: `1`
-- Messages: `192`
-- User messages: `20`
-- Codex messages: `172`
+- Messages: `338`
+- User messages: `45`
+- Codex messages: `293`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

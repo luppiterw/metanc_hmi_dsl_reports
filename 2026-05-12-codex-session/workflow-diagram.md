@@ -9,7 +9,9 @@ flowchart TD
     E --> F{QtWebSockets available?}
     F -->|yes| G[Run full WS open/disconnect/reconnect smoke]
     F -->|no| H[Skip WS-only smoke with explicit reason]
-    G --> I[Run existing strict bootstrap/restart tests]
+    G --> G1[Fix dynamic QtWebSockets import and callback binding]
+    G1 --> G2[Re-run forced WS reconnect smoke on installed host]
+    G2 --> I[Run existing strict bootstrap/restart tests]
     H --> I
     I --> J[Regenerate Web/QML/server/distribution]
     J --> K[Refresh QML snapshot]

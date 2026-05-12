@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-05-12 08:02:08 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/lup/luqtcellar</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/12/rollout-2026-05-12T08-02-08-019e197d-b123-7063-a690-37452c5c88da.jsonl</code></div>
-<div><b>Messages</b>: <code>101</code></div>
-<div><b>User prompts</b>: <code>5</code></div>
+<div><b>Messages</b>: <code>110</code></div>
+<div><b>User prompts</b>: <code>7</code></div>
 <div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -661,6 +661,86 @@ MEMORY.md:70-83|note=[luqtcellar workspace context]
 <h3>Codex Response 24 / commentary</h3>
 <div class="time">2026-05-12 09:21:14 +0800</div>
 <pre>新增的轮胎文字回归测试也过了。我最后再看一下工作区变更和最终输出文件清单，准备给你明确路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / final_answer</h3>
+<div class="time">2026-05-12 09:21:40 +0800</div>
+<pre>修好了轮胎模具文字那块的解析问题，并重新生成了最终产物。
+
+主要修正：
+- DXF 里 MTEXT 被异常折行时，现在不会吞掉后半段文字。
+- 清理了 `\A / \F / \W / \C / %%D` 等 CAD 格式控制符。
+- 修掉了 `205/60R16 HZKM+S` 这种黏连，现在输出为 `205/60R16 HZK M+S`。
+- 多行文字在 SVG 里改成 `&lt;tspan&gt;`，PNG 不会再显示字面量 `\n`。
+- 加了轮胎文字回归测试。
+
+已重新生成：
+- 2D 图：[direct.png](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/2d/direct.png)
+- 点云重建图：[from_pointcloud.png](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/2d/from_pointcloud.png)
+- 点云：[points.csv](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/pointcloud/points.csv)、[points.xyz](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/pointcloud/points.xyz)、[points.ply](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/pointcloud/points.ply)
+- 文字结果：[text_entities.json](/home/iaar/workspace/lup/luqtcellar/CppOnes/lab_cad_pointcloud_ocr/outputs/60R16-final/ocr/text_entities.json)
+
+验证过：`ctest --test-dir build-native --output-on-failure`，2 个测试全部通过。输出里已能查到 `LENSTON`、`BEAR L800`、`205/60R16 HZK M+S`、`OUTSIDE`、`RIM 6J`、`DOT XUBL 00A`、`SP1612-01 活字块名称` 等关键轮胎模具字符。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:70-83|note=[luqtcellar workspace context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 09:25:00 +0800</div>
+<pre>你先提交吧 感觉还有很大问题，先不管了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-12 09:25:18 +0800</div>
+<pre>我先只提交这次解析器和回归测试的代码改动，生成产物如果在仓库里是 ignored/untracked 就不硬塞进提交。先看一下完整工作区状态，避免把不相关文件带进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-12 09:25:50 +0800</div>
+<pre>当前只有 `lab_cad_pointcloud_ocr` 这 4 个代码/测试文件有变更，没有看到生成产物进入 git 状态。我先跑 `diff --check`，然后暂存并提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-12 09:26:35 +0800</div>
+<pre>暂存区确认只包含这次 CAD 文本解析相关的 4 个文件。我现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-12 09:27:10 +0800</div>
+<pre>已提交。
+
+Commit: `522fb66 Improve CAD MTEXT parsing`
+
+提交内容只包含 `CppOnes/lab_cad_pointcloud_ocr` 的解析器和回归测试改动。提交后工作区是干净的。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-12 09:27:25 +0800</div>
+<pre>push一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-12 09:27:47 +0800</div>
+<pre>我先确认当前分支和远端，再直接 push 当前提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-12 09:28:08 +0800</div>
+<pre>已 push 到 `origin/master`。
+
+提交：`522fb66 Improve CAD MTEXT parsing`</pre>
 </article>
 </section>
 <section>

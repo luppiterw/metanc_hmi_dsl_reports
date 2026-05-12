@@ -145,6 +145,18 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
     后续本地模拟测试。
   - `prog_clipboard_paste_key_event` 捕获 QML stderr，明确断言旧
     `Binding loop detected for property "runtimeCursorLine"` 不再出现。
+- 扩展 QML soft-panel hold/release 覆盖：
+  - `soft_panel_jog_hold_release.js` 从单一 `X +` 场景扩展为 `X +`、`X -`
+    和 `C rapid +` 三个场景，验证 selected axis、JOG/RAPID mode、运动方向、
+    revision 增长和 release 后 repeat timer 停止。
+  - generated QML repeat-while-pressed buttons 暴露 `smokeRepeatRunning()`，
+    smoke helper 增加 `smokeJogRepeatRunning(nodeId)`，release 判定改为检查
+    repeat timer 是否停止，而不是要求 rapid 模式下坐标在后续 tick 中绝对不变。
+  - QML smoke input driver 改用非 deprecated `QMouseEvent` constructor，
+    后续 Qt 6 构建不再打印旧构造函数弃用警告。
+  - 更新 Web/QML parity matrix、中文 overlay、status matrix、CHANGELOG 和
+    QML `Main.qml` snapshot，把 `+` / `-` / C-axis rapid hold-release 作为
+    当前已验证能力，剩余 follow-up 收敛为剩余轴与 stop/release 边界情况。
 
 ## Validation
 
@@ -173,6 +185,10 @@ local state、search matching engine 三块；动作层仍留在兼容 assembler
 - `python3 -m unittest tests.test_qml_smoke.QmlSmokeTests.test_runtime_strict_server_restart_reconnect tests.test_qml_smoke.QmlSmokeTests.test_soft_panel_jog_hold_release_key_event`
 - `python3 -m unittest tests.test_pipeline`
 - `python3 -m unittest tests.test_generator_refactor tests.test_web_qml_parity_docs tests.test_docs_portal docs_i18n.tests.test_i18n_status`
+- `python3 -m unittest tests.test_qml_smoke.QmlSmokeTests.test_soft_panel_jog_hold_release_key_event`
+- `python3 -m unittest tests.test_qml_smoke`
+- `./tools/generate_targets.sh`
+- `python3 -m unittest tests.test_pipeline`
 
 Validation result: tests passed, final artifacts regenerated, tracked generated
 outputs remained unchanged for the structural split, and the Logs refresh probe
@@ -181,30 +197,33 @@ and docs portal test passed. The QML smoke harness built and ran offscreen,
 covering MAIN mode switching, DEBUG axis queries, PROG file-switch freshness,
 PROG Save persistence, PROG natural-line Goto, and PROG Search/Replace
 current/no-match behavior, PROG clipboard Paste/Cut/Copy, Logs filter/empty/
-metadata-anchor and real `ListView` viewport refresh, soft-panel JOG hold/release,
+metadata-anchor and real `ListView` viewport refresh, soft-panel JOG `+` / `-` /
+C-axis rapid hold-release with repeat-stop validation,
 strict bootstrap/command forwarding, late-server reconnect, and true server-restart
 reconnect. The final artifact refresh also completed without creating unrelated
 source changes.
 
 ## Current File Sizes
 
-- `client/qml_client/generator.py`: 375 lines
+- `client/qml_client/generator.py`: 379 lines
 - `client/qml_client/main_qml_parts/header_body.py`: 210 lines
 - `client/qml_client/main_qml_parts/stage_body.py`: 117 lines
 - `client/qml_client/main_qml_parts/program_search.py`: 391 lines
-- `client/qml_client/main_qml_parts/program_navigation.py`: 65 lines
+- `client/qml_client/main_qml_parts/program_navigation.py`: 68 lines
 - `client/qml_client/main_qml_parts/program_search_state.py`: 41 lines
 - `client/qml_client/main_qml_parts/program_search_engine.py`: 71 lines
-- `client/qml_client/main_qml_parts/smoke_testing.py`: 132 lines
-- `tests/test_qml_smoke.py`: 431 lines
-- `tests/qml_smoke/prog_goto_natural_line.js`: 39 lines
-- `tests/qml_smoke/prog_save_persistence.js`: 79 lines
-- `tests/qml_smoke/prog_file_switch_freshness.js`: 37 lines
-- `tests/qml_smoke/prog_search_replace_current.js`: 70 lines
-- `tests/qml_smoke/prog_search_no_match.js`: 48 lines
-- `tests/qml_smoke/prog_clipboard_cut_copy_key_event.js`: 78 lines
+- `client/qml_client/main_qml_parts/smoke_testing.py`: 691 lines
+- `client/qml_client/widget_fragments/buttons.py`: 340 lines
+- `client/qml_client/support_files.py`: 465 lines
+- `tests/test_qml_smoke.py`: 501 lines
+- `tests/qml_smoke/prog_goto_natural_line.js`: 34 lines
+- `tests/qml_smoke/prog_save_persistence.js`: 73 lines
+- `tests/qml_smoke/prog_file_switch_freshness.js`: 35 lines
+- `tests/qml_smoke/prog_search_replace_current.js`: 63 lines
+- `tests/qml_smoke/prog_search_no_match.js`: 42 lines
+- `tests/qml_smoke/prog_clipboard_cut_copy_key_event.js`: 85 lines
 - `tests/qml_smoke/logs_real_scroll_refresh_viewport.js`: 74 lines
-- `tests/qml_smoke/soft_panel_jog_hold_release.js`: 60 lines
+- `tests/qml_smoke/soft_panel_jog_hold_release.js`: 121 lines
 
 ## Follow-Up Plan
 
@@ -212,8 +231,8 @@ The next QML source-level split can resume after the new interaction smoke gate
 stays stable. Better next candidates:
 
 1. Add WebSocket-only QML reconnect smoke when QtWebSockets is available in CI.
-2. Extend soft-panel hold/release coverage to minus-axis, rapid/continuous jog,
-   and stop/release edge cases.
+2. Extend soft-panel hold/release coverage to the remaining axes and explicit
+   stop/release edge cases.
 3. Add wheel/pointer-scroll coverage for Logs once the UI driver supports wheel
    events, keeping the current real `ListView` anchor smoke as the baseline.
 4. Split the remaining Program search/editor action assembler into search-actions

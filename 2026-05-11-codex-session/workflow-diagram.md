@@ -12,7 +12,8 @@ flowchart TD
     H --> I[Add QML smoke hook and first smoke scripts]
     I --> I2[Extend QML PROG Save and Goto smoke]
     I2 --> I3[Extend QML PROG file-switch and Search/Replace smoke]
-    I3 --> J[Run compileall, generator, pipeline, docs, and QML smoke tests]
+    I3 --> I4[Extend soft-panel plus/minus/rapid hold-release smoke]
+    I4 --> J[Run compileall, generator, pipeline, docs, and QML smoke tests]
     J --> K[Run Logs viewport browser probe]
     K --> L[Regenerate final targets]
     L --> M{Generated artifact diff?}

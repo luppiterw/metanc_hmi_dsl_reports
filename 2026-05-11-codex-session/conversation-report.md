@@ -47,6 +47,11 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   本轮新增 file-switch freshness、Search/Replace current 和 no-match 三个
   QML smoke 场景。新增 helper 直接调用 Search/Replace 状态和匹配引擎，
   不依赖 offscreen 环境下不稳定的真实键盘/focus。
+- 随后继续扩展 soft-panel JOG QML smoke：从原来的单一 `X +` hold/release
+  扩展到 `X +`、`X -`、`C rapid +`，并把 release 判定从“坐标后续完全不变”
+  调整为“repeat timer 已停止”，避免 rapid 模式下 runtime tick 造成误判。
+- QML smoke C++ input driver 同步切换到非 deprecated `QMouseEvent`
+  constructor，验证构建不再出现旧构造函数 warning。
 - 今天的 report session 通过 Codex history export 自动创建，并补全项目报告、
   会话摘要、工作流图和架构图。
 
@@ -59,5 +64,5 @@ commit 和 push。本轮先确认 `metanc_hmi_dsl`、reports submodule 与 MetaN
   只靠 snapshot 或静态 DOM 断言。
 - Web/QML parity matrix 的 follow-up 行应逐步转化为 durable interaction
   automation，避免只在 Web probe 中验证主流程。
-- 下一轮更适合把 Logs viewport preservation 和 strict-server reconnect 接入
-  QML smoke，再考虑继续拆 Program action/search assembler。
+- 下一轮更适合在当前 smoke 基础上做 Qt WebSockets 可用时的 WebSocket-only
+  reconnect，或继续把 remaining-axis/stop-release 边界纳入 soft-panel smoke。

@@ -10,6 +10,7 @@ Focus:
 - QML offscreen smoke harness for MAIN mode and DEBUG query parity
 - QML PROG smoke coverage for Save persistence and natural-line Goto
 - QML PROG smoke coverage for file-switch freshness and Search/Replace
+- QML soft-panel JOG smoke coverage for plus, minus, C-axis rapid, and repeat-stop release behavior
 - Report/docs refresh and MetaNC sync preparation
 
 Session assets:

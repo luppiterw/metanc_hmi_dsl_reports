@@ -123,6 +123,18 @@ workspace 留出实现位置。
     真实落盘。
   - 覆盖 `../ESCAPE.MPF` 非法路径拒绝，以及非空目录 delete 拒绝。
   - 该测试已纳入 `python3 -m unittest discover -s tests -p 'test_*.py'` 回归。
+- 扩展 packaged filesystem workspace 场景测试，并修复目录刷新语义：
+  - `progdir.commands.refresh` 现在只刷新 `program.browser.*` 目录资源，不会重载
+    `program.document.content`，避免覆盖未保存的编辑器草稿。
+  - 重新打开程序条目仍会从 filesystem workspace 读取最新磁盘内容。
+  - packaged test 继续通过真实 `generated/distribution/run_server_native.sh` 和 HTTP
+    API 验证，而不是绕过最终分发路径。
+  - 新增外部文件 create/delete/rename 后 refresh 可见性的测试。
+  - 新增“本地草稿 + 外部磁盘修改 + refresh 不覆盖 + reopen 读取最新磁盘内容”的测试。
+  - 新增进入子目录后 New File/New Folder 写入当前目录、`..`/up 返回 root、root
+    再 up 被拒绝的测试。
+  - 新增 duplicate file/folder、missing file activate、当前目录被外部移走后 refresh
+    回落 root、非法 rename、target exists 等错误/边界结果测试。
 
 ## Validation
 
@@ -165,6 +177,11 @@ fresh generated Web/QML/server/distribution output.
 The packaged distribution smoke now proves the same filesystem backend also
 works through the final `generated/distribution/run_server_native.sh` startup
 path, with real HTTP commands and disk assertions.
+The expanded packaged scenarios now also lock refresh/document separation:
+directory refresh can discover external filesystem changes without overwriting
+the active editor draft, while explicit reopen remains the disk-content reload
+boundary. Python unittest discovery now covers 144 tests with one environment
+skip.
 
 ## Next Recommendation
 

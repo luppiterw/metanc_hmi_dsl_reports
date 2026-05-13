@@ -78,3 +78,27 @@ Date: 2026-05-13
 - 可以，按你的规划详细设计实施，TDD驱动
 - 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
 - generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划
+- 我感觉你说的这些很多都是虚的东西
+- 现在这部分，我感觉还是缺少一些实际的内容计划
+- 我感觉可以多补一些测试用例和场景
+- 你的测试代码现在不是在一个大文件里的吧
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
+- 你现在这些推荐大概详细说明一下
+- 看一下plc部分
+- 只许碰rt/plc内部，不要碰外部
+- git status
+- ok commit + push
+- 你觉得下一步做什么比较合适
+- ok
+- ok 按你的计划做一下我看看，没问题generate/update report &amp; docs + sync MetaNC + commit + push
+- 所以你是要进入实施阶段吗
+- 那关于编译运行环境呢，是用docker还是原生环境呢，这一块你怎么考虑的
+- 现在有关于plc里面osal抽象层的考量吗
+- 你的建议还是落代码是吗
+- 你的代码结构大概会怎么咯呢
+- 你在设计的时候，会把每个最小元素都考虑进去吗，不会落久了变成一个超大选项把
+- 是的，但是正因为要拆的很细，你现在的计划里面的文档足够细吗
+- 计划一下
+- 制作阶段1补文档，不要写代码
+- 计划一下
+- 先commit + push，然后我们继续讨论文档，我始终觉得现在文档细节不够

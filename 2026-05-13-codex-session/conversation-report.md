@@ -116,3 +116,21 @@ HTTP 调用 `/api/runtime/bootstrap` 和 `/api/runtime/commands`。
 distribution helper 已正确透传 env，打包 native server 也包含 filesystem backend。
 随后完整 `ctest` 和 Python unittest discovery 通过，Python 回归数从 139 增至
 140。
+
+## Expanded Filesystem Workspace Scenarios
+
+用户随后认为这部分需要更多实际测试场景，而不是只停留在策略描述。本轮继续扩展
+packaged distribution 测试：外部文件创建、删除、重命名后，`progdir.commands.refresh`
+能够更新目录列表；进入子目录后，New File 和 New Folder 必须写入当前目录；重复
+创建、缺失文件打开、非法 rename、target exists、root up 和当前目录被外部移走后
+refresh 回落 root 都被纳入回归。
+
+测试同时暴露了一个真实行为问题：server 之前把目录 refresh 和文档资源 refresh
+绑在一起，导致 `program.document.content` 会被磁盘内容覆盖。修复后 server 通过
+独立的 document-resource dirty flag 区分两类更新：Refresh 只发布
+`program.browser.*`，不会覆盖未保存草稿；重新打开程序条目才会重新读取磁盘内容。
+
+验证结果为：`tests.test_filesystem_program_workspace_distribution` 5 个场景通过，
+`ctest --test-dir generated/server-build --output-on-failure` 6 个 server 测试通过，
+`python3 -m unittest discover -s tests -p 'test_*.py'` 144 个 Python 测试通过，1 个
+环境相关测试跳过。

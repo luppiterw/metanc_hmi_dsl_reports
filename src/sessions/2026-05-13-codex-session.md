@@ -8,6 +8,7 @@ Focus:
 - Docs/report refresh and MetaNC sync
 - Docs portal `mdbook-bookshelf 0.2.x` compatibility repair
 - PROG DIR Refresh/Rename/Delete TDD completion across Web, QML, mock runtime, and C++ simulator server
+- ProgramWorkspaceAdapter TDD boundary extraction behind simulator program files
 
 Session assets:
 

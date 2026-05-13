@@ -64,3 +64,20 @@ MetaNC 同步和推送流程。
 交互和真实程序文件 adapter 留到后续真实后端边界设计中处理。当前交付目标是让
 PROG DIR 的基础文件管理命令不再只是 UI 占位，而是在 Web/QML/server 上具有一致
 行为和测试覆盖。
+
+## Program Workspace Adapter Boundary
+
+用户随后要求按规划详细设计实施，并强调 TDD 驱动。实现路径先新增
+`program_workspace_adapter_test`，用测试锁定 program workspace 的 list/read/write、
+create folder、rename、delete 和路径边界行为；随后新增
+`ProgramWorkspaceAdapter` interface 和 `SimulatorProgramWorkspaceAdapter`。
+
+这轮重构把 `SimulatorAdapter` 里原本直接维护的 program file map/set、目录树
+rename/delete 和路径校验逻辑迁到 adapter 后端中。对 Web/QML 和 REST/WS client
+来说，`progdir.commands.*`、`program.browser.*`、当前程序资源读取/保存语义保持
+不变；变化集中在 server 内部边界，为后续 filesystem-backed 或真实 controller
+program workspace adapter 留出替换点。
+
+验证收口包括 dedicated adapter test、native REST smoke、完整 C++ server tests、
+完整 Python unittest discovery、最终 Web/QML/server/distribution 生成，以及
+docs/report HTML 重建。

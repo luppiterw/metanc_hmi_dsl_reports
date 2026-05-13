@@ -8,6 +8,11 @@
 兼容性和 PROG DIR 文件管理补齐，重点是把原先 partial 的 Rename/Delete/Refresh
 做成 Web/QML/server 一致的可测试闭环。
 
+最后继续抽出 server-side `ProgramWorkspaceAdapter` 边界：现有 Web/QML
+northbound contract 不变，program file/directory 行为先从 `SimulatorAdapter`
+内部状态迁到可替换 adapter 后端，为后续 filesystem/controller-backed program
+workspace 留出实现位置。
+
 ## Completed Work
 
 - 统计 `client/web_client` 和 `client/qml_client` 下的 Python 源文件体量：
@@ -72,6 +77,19 @@
   - 删除当前打开程序时清空当前程序，避免自动回根目录或加载别的程序。
   - 中英文 interface integration、program story、Web/QML parity 和 data
     dictionary 已同步更新。
+- 完成 Program workspace adapter 边界抽取：
+  - 先新增 `server/tests/program_workspace_adapter_test.cpp`，用测试锁定
+    list/read/write、create folder、rename、delete 和路径边界行为。
+  - 新增 `ProgramWorkspaceAdapter` server-side interface。
+  - 新增 `SimulatorProgramWorkspaceAdapter`，承接当前 in-memory simulator
+    program workspace 行为。
+  - `SimulatorAdapter` 改为委托 adapter，移除内部 program file map/set、目录
+    子树 rename/delete 和路径策略实现。
+  - 现有 `progdir.commands.*`、`program.browser.*` 和 program-file resource
+    行为保持稳定。
+  - `server/CMakeLists.txt` 纳入新 source 和 adapter-level test。
+  - server README、interface integration 和 server target skeleton 文档已同步
+    记录新边界。
 
 ## Validation
 
@@ -84,6 +102,9 @@
 - `python3 -m unittest tests.test_mock_runtime_server tests.test_pipeline tests.test_generator_refactor tests.test_parity_scenarios`
 - `ctest --test-dir generated/server-build --output-on-failure -R "runtime_rest_api_test|server_smoke_test"`
 - `python3 -m unittest tests.test_web_qml_parity_docs tests.test_server_api_docs docs_i18n.tests.test_i18n_status`
+- `ctest --test-dir generated/server-build --output-on-failure -R "program_workspace_adapter_test|runtime_rest_api_test|server_smoke_test"`
+- `ctest --test-dir generated/server-build --output-on-failure`
+- `python3 -m unittest discover -s tests -p 'test_*.py'`
 - `git diff --check`
 
 Validation result: generated Web/QML/server/distribution artifacts were refreshed
@@ -94,13 +115,17 @@ zh-CN docs navigation. The rebuilt docs portal now succeeds with
 report books under `docs_html/`. The PROG DIR slice was completed with unit
 coverage for mock runtime behavior, native REST coverage for the C++ simulator
 adapter, regenerated Web/QML snapshots, and a clean whitespace check.
+The ProgramWorkspaceAdapter extraction was validated with the dedicated adapter
+test, native REST/smoke coverage, full C++ server tests, full Python unittest
+discovery, and regenerated generated artifacts.
 
 ## Next Recommendation
 
 Pause decomposition-only work unless the next product change touches a P1 file.
 For product-facing work, the next durable branch should move from generated UI
-polish back toward runtime semantics: PROG DIR recursive delete/permission policy
-should remain explicit and deferred until the real program-file adapter boundary
-is designed; runtime adapter boundaries, production command schema, persistence
-state stores, and the planned Logs shared scenario remain the next larger product
-directions.
+polish back toward runtime semantics. The immediate server-side option is a small
+`FilesystemProgramWorkspaceAdapter` spike behind the new boundary, but recursive
+delete, permission policy, conflict handling, and real controller semantics
+should stay explicit until their product rules are documented. Logs shared
+scenario coverage, production command schema, persistence state stores, and real
+CNC/PLC adapters remain larger follow-up directions.

@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>225</code></div>
-<div><b>User prompts</b>: <code>26</code></div>
+<div><b>Messages</b>: <code>279</code></div>
+<div><b>User prompts</b>: <code>29</code></div>
 <div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -2131,6 +2131,556 @@ git diff --check
 <h3>Codex Response 5 / commentary</h3>
 <div class="time">2026-05-13 11:57:27 +0800</div>
 <pre>我会同时刷新 user-history 和完整 conversation export。之后再手动补 report 的项目总结，因为这类“本轮完成了什么”的文字目前不是自动从代码生成的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-13 11:57:51 +0800</div>
+<pre>完整会话导出在跑，它会刷新今天的 `codex-conversations` 目录和 README 里的统计。报告正文我会随后补上本次 PROG DIR 的完成内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-13 11:58:13 +0800</div>
+<pre>会话导出完成，今天报告里的统计已从 368 messages 更新到 479 messages。现在我把项目报告和 timeline 补到 PROG DIR 这次完成的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-13 11:58:58 +0800</div>
+<pre>我会把 2026-05-13 的报告从“generator 拆分/文档修复”扩展成今天完整记录，新增 PROG DIR 文件管理闭环、TDD 验证和最终产物刷新结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-13 12:00:17 +0800</div>
+<pre>报告正文和总 timeline 已补齐。现在重建报告书、docs_html 和最终产物，并跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-13 12:00:44 +0800</div>
+<pre>`generate_targets.sh` 正在重新生成 Web/QML/server/distribution。报告书已经 rebuild 成功。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-13 12:03:02 +0800</div>
+<pre>最终产物已重新生成。接下来同步快照并跑完整测试集，包括 mock/server/docs/i18n/snapshot 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-13 12:03:24 +0800</div>
+<pre>C++ server 测试已经通过，两个 Python 测试批次还在跑，其中 docs portal 测试已经进入 bookshelf 构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-13 12:03:45 +0800</div>
+<pre>文档、i18n 和 docs portal 测试通过。主测试还在跑 QML 构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-13 12:04:12 +0800</div>
+<pre>完整测试通过。现在做最终 `diff --check` 和状态检查，然后开始按顺序提交报告 submodule 与主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-13 12:04:29 +0800</div>
+<pre>`diff --check` 干净，测试通过。报告 submodule 这次主要是完整 conversation export 追加导致 diff 很大，这是预期的；我先再跑一次主 docs_html 构建，确保报告入口能从项目门户看到。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-13 12:04:38 +0800</div>
+<pre>项目 docs_html 正在构建 39 本书，包括今天的 session report。等它结束后我就提交报告 submodule。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-13 12:04:58 +0800</div>
+<pre>docs_html 构建完成，今天报告在 `docs_html/reports/2026-05-13-codex-session/index.html`。现在提交并 push reports submodule。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-13 12:05:25 +0800</div>
+<pre>reports submodule 里有一个导出文件末尾多空行，我会修掉导出结果本身，再重跑 submodule 的 whitespace check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-13 12:05:49 +0800</div>
+<pre>这是文件末尾确实多了一行空白。我会用一个小脚本只去掉末尾多余空白行，不改内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-13 12:06:04 +0800</div>
+<pre>空白检查通过了。现在开始提交 reports submodule，然后推送，再提交主仓库的 PROG DIR 代码和文档指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-13 12:06:38 +0800</div>
+<pre>reports submodule 已提交，正在 push。下一步会提交 `metanc_hmi_dsl` 主仓库，commit message 会明确 PROG DIR runtime/file-management scope。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-13 12:07:51 +0800</div>
+<pre>`metanc_hmi_dsl` 主提交已生成，正在 push 到 main。push 完后我会同步到 `MetaNC`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-13 12:08:13 +0800</div>
+<pre>`metanc_hmi_dsl` 已 push 且工作树干净。现在用同步脚本导出到 `MetaNC`，然后检查 diff、提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-13 12:08:50 +0800</div>
+<pre>`MetaNC` 当前在 `feat/hmi`，同步 diff 只落在 `nrt/hmi`，`git diff --check` 也通过了。我准备提交并 push `MetaNC` 的同步结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-13 12:09:38 +0800</div>
+<pre>`MetaNC` 已提交，正在 push `feat/hmi`。push 完我会检查两边最终状态，并给下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-13 12:10:13 +0800</div>
+<pre>两边远端都对齐且工作树干净。最后我梳理一下当前功能下一步计划，按收敛优先级给你。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-13 12:10:44 +0800</div>
+<pre>我在最终答复前补一下引用用的本地流程记忆行号，确保这次 report/submodule 流程来源可追溯。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / final_answer</h3>
+<div class="time">2026-05-13 12:11:15 +0800</div>
+<pre>已完成。
+
+`metanc_hmi_dsl`：
+- reports submodule: `984bb83 reports: refresh 2026-05-13 hmi session`
+- main repo: `81f7ea4 feat: complete progdir file commands`
+- 已 push 到 `origin/main`
+- 工作树干净
+
+`MetaNC`：
+- branch: `feat/hmi`
+- commit: `154e825 feat(hmi): sync progdir file command support`
+- 已 push 到 `origin/feat/hmi`
+- 工作树干净
+
+验证跑过：
+- `./tools/generate_targets.sh`
+- `mdbook build submodules/metanc_hmi_dsl_reports`
+- `mdbook build submodules/metanc_hmi_dsl_reports/2026-05-13-codex-session`
+- `./tools/build_docs_html.sh`
+- `python3 -m unittest tests.test_mock_runtime_server tests.test_pipeline tests.test_generator_refactor tests.test_parity_scenarios`
+- `ctest --test-dir generated/server-build --output-on-failure -R &quot;runtime_rest_api_test|server_smoke_test&quot;`
+- `python3 -m unittest tests.test_web_qml_parity_docs tests.test_server_api_docs tests.test_docs_portal docs_i18n.tests.test_i18n_status`
+- `git diff --check`
+
+现在的下一步建议：
+
+1. **先收口 PROG DIR 的真实 adapter 边界**
+   当前基础文件管理已经可用。下一步不要马上做递归删除，而是先定义真实程序文件 adapter 的路径根、权限、重名、删除确认、跨 client 冲突策略。
+
+2. **做 Logs S3 最小共享场景**
+   现在 Web/QML parity 里 S3 还是 planned：`logs_query_export_minimum`。可以把“查询、等级过滤、JSONL export 可用”做成 shared scenario，避免后续日志 UI 两端继续漂移。
+
+3. **补 real runtime adapter 设计**
+   server README 当前也明确剩余重点是 CNC/PLC/program/tooling/diagnostics adapters、production command schema 和 persistence state stores。这个是架构层下一块大头。
+
+4. **暂停纯拆分工作**
+   generator 拆分目前已经够用。后续只有在真实功能触达大文件时顺手拆，不建议继续为了拆而拆。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+skills/metanc-hmi-reports-submodule/SKILL.md:18-24|note=[report submodule and publish workflow]
+skills/metanc-hmi-reports-submodule/SKILL.md:49-67|note=[report export rebuild and push order]
+skills/metanc-hmi-reports-submodule/SKILL.md:107-115|note=[report verification checklist]
+MEMORY.md:364-367|note=[metanc_hmi_dsl reports and MetaNC sync scope]
+MEMORY.md:587-597|note=[generate targets and docs_html artifact workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-27">
+<h2>Turn 27</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 12:24:30 +0800</div>
+<pre>详细设计一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 12:24:53 +0800</div>
+<pre>我先按上一条里的优先级 1 来设计：PROG DIR 的真实 program-file adapter 边界。先快速看当前 server adapter、接口文档和 parity 标注，确保设计不脱离现状。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-13 12:25:29 +0800</div>
+<pre>可以。这里先详细设计 **PROG DIR 真实 program-file adapter 边界**，目标是把现在 simulator 里的内存文件管理，逐步替换成可接真实 NC 程序目录的后端边界。
+
+**目标**
+第一阶段不要扩大 UI 功能，而是把后端边界收敛清楚：
+
+- Web/QML 仍然只调用现有 `progdir.commands.*` 和 program resources。
+- server 增加 `ProgramWorkspaceAdapter` 抽象。
+- 当前 simulator 行为迁移到一个 adapter 实现里。
+- 后续真实文件系统、NC 控制器、远程程序库都挂在同一层。
+- 递归删除、权限、多 client 冲突先有明确策略，不直接混进 UI。
+
+**一、边界分层**
+建议在 server 里拆出独立 program workspace 层：
+
+```text
+server/
+  include/hmi/adapters/
+    machine_adapter.h
+    program_workspace_adapter.h
+    simulator_program_workspace_adapter.h
+    filesystem_program_workspace_adapter.h   # later
+  src/adapters/
+    simulator_program_workspace_adapter.cpp
+    filesystem_program_workspace_adapter.cpp # later
+```
+
+`MachineAdapter` 继续负责 CNC 状态、JOG、AUTO、MDI、axis、spindle 等机器运行语义。
+
+`ProgramWorkspaceAdapter` 只负责程序文件域：
+
+- list directory
+- read file
+- write/save file
+- create file
+- create directory
+- rename file/directory
+- delete file/empty directory
+- validate path
+- expose display root/storage metadata
+
+这样以后真实 CNC adapter 不必塞进 `SimulatorAdapter`，也不会让 program 文件逻辑污染 machine motion 逻辑。
+
+**二、核心接口**
+建议接口先保持小而硬：
+
+```cpp
+struct ProgramEntry {
+  std::string name;
+  std::string path;
+  std::string kind;     // &quot;file&quot; | &quot;dir&quot;
+  std::string size;
+  std::string modified;
+  std::string storage;
+};
+
+struct ProgramOpResult {
+  bool accepted;
+  std::string code;     // ok | program.not_found | program.target_exists ...
+  std::string message;
+};
+
+class ProgramWorkspaceAdapter {
+ public:
+  virtual ~ProgramWorkspaceAdapter() = default;
+
+  virtual std::string root_display_path() const = 0;
+  virtual std::string storage_name() const = 0;
+
+  virtual std::vector&lt;ProgramEntry&gt; list(std::string_view directory) = 0;
+  virtual std::optional&lt;std::string&gt; read_file(std::string_view path) = 0;
+
+  virtual ProgramOpResult write_file(std::string_view path, std::string_view content) = 0;
+  virtual ProgramOpResult create_file(std::string_view path, std::string_view content) = 0;
+  virtual ProgramOpResult create_directory(std::string_view path) = 0;
+  virtual ProgramOpResult rename_entry(std::string_view path, std::string_view new_name) = 0;
+  virtual ProgramOpResult delete_entry(std::string_view path) = 0;
+  virtual ProgramOpResult refresh(std::string_view directory) = 0;
+};
+```
+
+注意 `rename_entry(path, new_name)` 继续只收 basename，不收新路径。跨目录 move 以后单独设计，不偷渡进 rename。
+
+**三、路径规则**
+路径策略必须 server 统一做，不能散在 Web/QML：
+
+- 所有入参先 normalize：`\` 转 `/`，去掉空 segment 和 `.`
+- 拒绝 `..`
+- 拒绝绝对路径
+- 拒绝空路径，除非操作明确允许 root directory
+- rename 的 `new_name` 必须是 basename，不能含 `/` 或 `\`
+- root 目录不可 rename/delete
+- list root 用 `&quot;.&quot;`
+- UI synthetic `..` row 不进入 resource entries
+
+错误码固定：
+
+```text
+program.path_invalid
+program.name_empty
+program.name_invalid
+program.not_found
+program.target_exists
+program.directory_not_empty
+program.permission_denied
+program.conflict
+program.io_error
+```
+
+**四、删除策略**
+当前第一版保持：
+
+- file 可以删除
+- empty directory 可以删除
+- non-empty directory 必须拒绝：`program.directory_not_empty`
+- recursive delete 不做隐式行为
+
+后续如果要做递归删除，必须是新参数或新命令，例如：
+
+```json
+{
+  &quot;path&quot;: &quot;SUBDIR&quot;,
+  &quot;recursive&quot;: true,
+  &quot;confirm_token&quot;: &quot;...&quot;
+}
+```
+
+不建议现在加，因为真实机床程序目录删除风险高。
+
+**五、多 client 冲突策略**
+第一阶段先做最小一致性：
+
+- 每个 file entry 后续增加 `revision` 或 `mtime`
+- save/rename/delete 可选携带 `expected_revision`
+- 不带 revision 时按当前兼容模式执行
+- revision 不匹配返回 `program.conflict`
+
+UI 暂时可以不强制做冲突弹窗，但 server contract 先预留。
+
+**六、权限策略**
+不要现在做复杂权限系统，但 adapter 返回要能表达：
+
+- readonly workspace：禁止 write/create/rename/delete
+- protected path：禁止 delete/rename
+- external adapter unavailable：`program.io_error` 或更具体后续码
+
+可以先加能力标记：
+
+```cpp
+struct ProgramWorkspaceCapabilities {
+  bool can_write = true;
+  bool can_create_directory = true;
+  bool can_rename = true;
+  bool can_delete = true;
+  bool can_recursive_delete = false;
+};
+```
+
+然后资源里未来可把 capabilities 给 UI，用于按钮 enable/disable。
+
+**七、实施切片**
+建议分 4 个 commit/阶段做。
+
+1. **Adapter interface only**
+   - 新增 `ProgramWorkspaceAdapter`
+   - 新增 path policy helper
+   - 不改行为
+   - 测试 path normalize / reject 规则
+
+2. **Extract simulator program workspace**
+   - 从 `SimulatorAdapter` 拆出 program_files/program_directories 逻辑
+   - `SimulatorAdapter` 委托给 `ProgramWorkspaceAdapter`
+   - 保证现有 mock/native REST tests 全过
+
+3. **Contract/error cleanup**
+   - 统一 `progdir.commands.*` 的错误码
+   - 文档补完整 command args/result
+   - tests 补 reject policy
+
+4. **Filesystem adapter spike**
+   - 新增受 sandbox root 限制的 `FilesystemProgramWorkspaceAdapter`
+   - 只支持指定 root 下 `.MPF/.SPF` 等文件
+   - 用 env/config 开关启用
+   - 暂不接真实 CNC，只验证本地目录真实读写
+
+**八、验收标准**
+第一阶段完成时应该满足：
+
+- Web/QML 无需改调用方式
+- `progdir.commands.refresh/rename/delete` 行为不退化
+- simulator 测试全过
+- native REST tests 覆盖 path policy 和 empty/non-empty dir delete
+- 新 adapter interface 有单元测试
+- docs 明确真实 adapter 还没接 CNC，只完成 server-side boundary
+
+**我建议下一步先做阶段 1 + 阶段 2。**
+也就是先把 `ProgramWorkspaceAdapter` 抽出来，不急着做 filesystem adapter。这样收益最大：代码结构先干净，后面接真实目录不会继续扩 `SimulatorAdapter`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-28">
+<h2>Turn 28</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 12:26:02 +0800</div>
+<pre>可以，按你的规划详细设计实施，TDD驱动</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 12:26:16 +0800</div>
+<pre>我开始按 TDD 做阶段 1/2：先加 adapter contract 的单元测试和 simulator 行为回归测试，让它们先描述目标边界，然后再抽实现。重点是不改 Web/QML 调用语义，只把 server 内部 program workspace 从 `SimulatorAdapter` 里分离出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 12:26:53 +0800</div>
+<pre>我已经确认当前程序目录逻辑仍集中在 `SimulatorAdapter`，REST 测试已经覆盖了很多外部行为。现在补一个更底层的 adapter 单测，先锁住路径策略、目录子树 rename、空目录 delete 这些真实边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 12:27:35 +0800</div>
+<pre>我会先落一个新的 `program_workspace_adapter_test.cpp`，让测试直接约束 adapter 的路径策略和基础文件操作。这个测试第一次编译会失败，因为接口还不存在，这是预期的 TDD 起点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-13 12:28:18 +0800</div>
+<pre>TDD 测试已写好，接下来跑目标 CMake 构建确认它确实因为新接口缺失而失败，然后开始补接口和实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-13 12:28:39 +0800</div>
+<pre>构建目录还没重新配置，所以新 test target 还不存在。我先重新 configure server build，让 TDD 失败点落到“接口缺失/未实现”上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-13 12:29:41 +0800</div>
+<pre>TDD 失败点已经确认：新测试找不到 `simulator_program_workspace_adapter.h`。现在补 adapter 接口和 simulator-backed 实现，然后再把 `SimulatorAdapter` 的程序目录逻辑改成委托给这个 adapter。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-13 12:32:30 +0800</div>
+<pre>接口和独立 adapter 实现已经补上。现在把它加入 CMake，先让新单测跑绿，再开始改 `SimulatorAdapter` 委托。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-13 12:33:34 +0800</div>
+<pre>新 adapter 单测已经跑绿。现在开始把 `SimulatorAdapter` 内部的 program file map/set 迁移为委托，保持 REST/API 外部行为不变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-13 12:33:57 +0800</div>
+<pre>我会保留 `SimulatorAdapter` 对外 command/resource 行为，把它内部读写文件的地方切到 `SimulatorProgramWorkspaceAdapter`。这一步会比新增接口更容易出回归，所以我会分小块改并立刻编译。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-13 12:37:26 +0800</div>
+<pre>委托改动已经推进了一半，我先编译看当前错误面，再集中处理剩余引用，避免手改漂移太大。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-13 12:37:38 +0800</div>
+<pre>剩余错误都在旧 helper 引用上。下一步删除旧的 rename/delete helper 实现，改为直接转调新 adapter，并替换 `parent_path` / `normalize_path` 引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-13 12:39:06 +0800</div>
+<pre>旧 program map/set 和路径 helper 引用已经清掉。现在重新编译 server_core 和新单测，再跑 REST 测试确认外部行为没变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-13 12:39:49 +0800</div>
+<pre>C++ 单测和 REST 回归都过了，说明抽 adapter 没破坏当前 northbound 行为。现在补文档说明这个边界已经开始落地，然后跑生成和完整测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-13 12:41:10 +0800</div>
+<pre>文档已同步说明 adapter 边界。现在重新生成产物并跑测试；这次 server CMake 变化会让最终 server build 也带上新 test target。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-13 12:41:32 +0800</div>
+<pre>`generate_targets.sh` 正在重建 Web/QML/server/distribution，我等它结束后同步快照并跑验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-13 12:42:38 +0800</div>
+<pre>生成完成，native server build 已包含新的 `program_workspace_adapter_test`。现在同步快照并跑回归测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-13 12:43:07 +0800</div>
+<pre>C++ 三个目标测试已通过，Python 主测试和 docs portal 测试还在跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-13 12:43:36 +0800</div>
+<pre>docs/i18n/portal 测试已通过，主测试还在 QML 编译。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-13 12:43:52 +0800</div>
+<pre>所有测试批次都通过了。最后我做 `git diff --check`、状态和 diff 概览，确认没有遗漏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-13 12:44:16 +0800</div>
+<pre>实现和核心测试已经过了。我再补一轮完整 `ctest` 和 `tests/` 发现式 unittest，避免只跑目标子集造成遗漏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-13 12:44:47 +0800</div>
+<pre>完整 CTest 5 个全部通过，包括 HTTP/WebSocket blackbox。Python discover 还在跑，会覆盖更多生成器、docs、smoke 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-13 12:45:15 +0800</div>
+<pre>Python discover 已经跑过大部分测试，现在又进入 QML 构建段，继续等结束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-13 12:47:24 +0800</div>
+<pre>完整 unittest discover 也通过了。现在最后再做状态、空白检查和 diff 概览。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / final_answer</h3>
+<div class="time">2026-05-13 12:48:14 +0800</div>
+<pre>已按 TDD 做完，未提交。
+
+这次实现的是 **ProgramWorkspaceAdapter 边界抽取**，外部 Web/QML/server API 行为保持不变：
+
+- 新增 [program_workspace_adapter.h](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/server/include/hmi/adapters/program_workspace_adapter.h)
+- 新增 [simulator_program_workspace_adapter.h](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/server/include/hmi/adapters/simulator_program_workspace_adapter.h)
+- 新增对应实现 `.cpp`
+- 新增 [program_workspace_adapter_test.cpp](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/server/tests/program_workspace_adapter_test.cpp)
+- `SimulatorAdapter` 里原来的 program files/directories 内存逻辑已抽走，改为委托 `SimulatorProgramWorkspaceAdapter`
+- 保留现有 `progdir.commands.refresh/rename/delete` 行为和错误策略
+- 更新 server README、interface integration、server skeleton docs 和 zh-CN 文档
+
+TDD 路径也跑过了：先加测试，第一次构建失败在缺少 `simulator_program_workspace_adapter.h`，然后补接口/实现并接回 `SimulatorAdapter`，最后跑绿。
+
+验证结果：
+
+```bash
+./tools/generate_targets.sh
+ctest --test-dir generated/server-build --output-on-failure
+python3 -m unittest discover -s tests -p &#x27;test_*.py&#x27;
+git diff --check
+```
+
+结果：
+- CTest：`5/5 passed`
+- Python unittest discover：`139 tests OK, skipped=1`
+- `git diff --check` 干净
+
+当前工作树只剩这次实现和文档变更。下一步如果继续，就适合做 **FilesystemProgramWorkspaceAdapter spike**：在 server config/env 后面挂一个真实本地目录 adapter，但仍沿用这次抽出的同一套 northbound contract。</pre>
+</article>
+</section>
+<section class="turn" id="turn-29">
+<h2>Turn 29</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 12:48:34 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 12:49:06 +0800</div>
+<pre>我会按发布流程收口：先刷新今天的 report/user-history/conversation export，补项目报告里这次 ProgramWorkspaceAdapter 的 TDD 结果，再重建 docs/report HTML，最后提交 `metanc_hmi_dsl`、同步到 `MetaNC`、两边 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 12:49:57 +0800</div>
+<pre>仓库状态符合预期，报告 submodule 目前干净。我会先刷新今天的 user-history 和完整对话导出，然后把报告正文补上 ProgramWorkspaceAdapter TDD 抽取。</pre>
 </article>
 </section>
 <section>

@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-05-13` | Generator decomposition closure, docs portal bookshelf compatibility repair, PROG DIR Refresh/Rename/Delete TDD completion across Web/QML/mock/native server, final artifact refresh, and MetaNC sync |
+| `2026-05-13` | Generator decomposition closure, docs portal bookshelf compatibility repair, PROG DIR Refresh/Rename/Delete TDD completion, ProgramWorkspaceAdapter TDD boundary extraction, final artifact refresh, and MetaNC sync |
 | `2026-05-12` | QML WebSocket-only reconnect smoke coverage, QtWebSockets-required CI gate repair, parity/status docs refresh, full conversation report export, final artifact validation, and MetaNC sync |
 | `2026-05-11` | QML Main.qml header body source decomposition, QML Program search navigation/state/search-engine split, generated artifact stability validation, report/docs refresh, and MetaNC sync |
 | `2026-05-10` | Session bootstrap and Codex user-history export tooling |

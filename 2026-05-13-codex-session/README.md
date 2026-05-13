@@ -71,11 +71,11 @@ invalid/target-exists 等错误路径。对应 server 修复为：目录 Refresh
 - Sessions: `7`
 - Primary sessions: `5`
 - Side sessions: `2`
-- User prompts: `187`
-- Synthetic events: `5`
-- Messages: `995`
-- User messages: `192`
-- Codex messages: `803`
+- User prompts: `209`
+- Synthetic events: `7`
+- Messages: `1113`
+- User messages: `216`
+- Codex messages: `897`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

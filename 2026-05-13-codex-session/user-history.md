@@ -23,3 +23,28 @@ Date: 2026-05-13
 - ok 看一下现在有什么下一步计划
 - 收口一下当前拆分吧，我感觉目前差不多了
 - commit + push
+- 给一个详细计划
+- 做一下
+- ok 继续看一下规划
+- 你现在做的这个规划是什么
+- ok，现在是不是拆分可以结束了暂时
+- 可以 罗哥计划
+- 可以 落个计划
+- ok，MetaNC拉取一下main的更新，合并到当前feat/hmi分支，然后列一下变更给我看看
+- commit+push
+- https://github.com/OptimalCNC/MetaNC/pull/31#discussion_r3225645901 看一下这个
+- 生成最终产物和测试看了吗，
+- 所以现在没问题是吗
+- ok
+- commit + push
+- commit+push，然后记得update pull request https://github.com/OptimalCNC/MetaNC/pull/31，然后回复一下前面那个comment
+- ok 我们继续回到metanc_hmi_dsl上来
+- 生成一个现在的最终产物我看一下，包括docs
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下
+- 可以，尽量最小范围修复，然后回复一下，标记resolved，update pull request
+- 所以现在都ok了是吧
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved
+- 看看现在的功能内容还有什么要处理的
+- ok 先处理文档部分，你给个详细计划
+- ok  处理一下
+- generate/update report &amp; docs + sync MetaNC + commit + push

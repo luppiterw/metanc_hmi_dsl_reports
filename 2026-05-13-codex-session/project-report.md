@@ -44,6 +44,17 @@
     chips、Program editor focus preservation、auxiliary panel 和 shortcuts。
   - 拆分后 Web/QML generator Python 文件总数为 203，总行数为 28,913，已无超过
     1,000 行的文件。
+- 完成 docs portal 和 runtime status 文档修复：
+  - `bookshelf.toml` 从旧 `entry-page` 字段升级为 `mdbook-bookshelf 0.2.x`
+    兼容模型，显式声明 documentation index、book ids 和 categories。
+  - `tools/hmi_dsl/docs_portal.py` 生成新版 bookshelf config，English、zh-CN
+    和 dated report books 都从根 `docs_html/index.html` 入口索引。
+  - `tests/test_docs_portal.py` 更新为验证新版根入口，不再依赖旧
+    `en/bookshelf.html`。
+  - `server/README.md` 删除过期的 Web/QML subscription/strict-client Next Steps，
+    改为记录真实 southbound adapters、生产 command schema 和 persistence state
+    stores 这些仍待完成的 server 方向。
+  - README 与开发指南补充 `mdbook-bookshelf 0.2.x` docs portal 模型说明。
 
 ## Validation
 
@@ -51,15 +62,23 @@
 - `python3 -m unittest tests.test_generator_refactor`
 - `python3 -m unittest tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status`
 - `python3 docs_i18n/tools/i18n_status.py mark-current --lang zh-CN development_guidelines/generator_decomposition_inventory.md --write-report`
+- `python3 -m unittest tests.test_docs_portal`
+- `python3 -m unittest tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status`
 - `git diff --check`
 
 Validation result: generated Web/QML/server/distribution artifacts were refreshed
 without snapshot drift, the generator refactor tests still pass, and the
 inventory page now records the completed app-shell split in both English and
-zh-CN docs navigation.
+zh-CN docs navigation. The rebuilt docs portal now succeeds with
+`mdbook-bookshelf 0.2.x` and publishes the root documentation index plus dated
+report books under `docs_html/`.
 
 ## Next Recommendation
 
 Pause decomposition-only work unless the next product change touches a P1 file.
 The next split candidates remain Web Logs, command handlers, server bridge, and
 DEBUG query, but each should be paired with real feature or behavior work.
+
+For product-facing work, the next durable branch should move from generator
+housekeeping back toward real runtime adapter boundaries, persistence state
+stores, or the planned Logs S3 shared scenario.

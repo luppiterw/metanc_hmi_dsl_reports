@@ -22,6 +22,12 @@ flowchart LR
         REPORT[2026-05-13 report]
     end
 
+    subgraph DocsPortal[Docs Portal Closeout]
+        BOOKSHELF[bookshelf.toml 0.2.x model]
+        PORTAL[tools/hmi_dsl/docs_portal.py]
+        SERVERDOC[server/README.md status]
+    end
+
     subgraph AppShellSplit[Completed App-Shell Split]
         SHELL[client/web_client/app_shell.py]
         SETTINGS[app_shell_fragments/settings.py]
@@ -47,6 +53,9 @@ flowchart LR
     SHELL --> SELECTS
     SHELL --> TARGETS
     TARGETS --> REPORT
+    BOOKSHELF --> DOCS
+    PORTAL --> DOCS
+    SERVERDOC --> DOCS
     DOCS --> REPORT
     RANK --> SHELL
     RANK --> P1

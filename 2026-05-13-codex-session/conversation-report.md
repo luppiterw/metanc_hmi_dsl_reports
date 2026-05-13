@@ -32,5 +32,17 @@ Web/QML generator source 已无超过 1,000 行的 Python 文件。
 - 新增 generator decomposition inventory 文档。
 - 中英文 docs navigation 已挂载。
 - Web app-shell settings/selects fragments 已落地，生成产物保持 snapshot-stable。
+- docs portal 已升级到 `mdbook-bookshelf 0.2.x` 兼容配置，根入口改为
+  `docs_html/index.html` 的 documentation index。
+- server runtime README 已清理过期 Next Steps，当前剩余方向被重新表述为真实
+  adapter、生产 command schema 和 persistence state store。
 - 生成产物和 docs/report HTML 已刷新。
 - 下一轮建议暂停 decomposition-only 工作，除非新的功能改动触达 P1 文件。
+
+## Follow-up Closeout
+
+在用户确认“功能内容还有什么要处理”后，本轮先处理文档部分：修正
+`mdbook-bookshelf` 配置兼容性，更新 docs tooling 说明，清理 server README 中
+已经完成的 split-runtime 客户端接入事项，并重新生成 docs portal。该工作以
+`docs: align bookshelf portal and runtime status` 单独提交，随后进入 report、
+MetaNC 同步和推送流程。

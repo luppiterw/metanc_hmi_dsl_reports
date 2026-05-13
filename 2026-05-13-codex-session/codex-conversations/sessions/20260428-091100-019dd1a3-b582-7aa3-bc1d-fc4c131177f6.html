@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-04-28 09:11:00 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/04/28/rollout-2026-04-28T09-11-00-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.jsonl</code></div>
-<div><b>Messages</b>: <code>279</code></div>
-<div><b>User prompts</b>: <code>29</code></div>
+<div><b>Messages</b>: <code>334</code></div>
+<div><b>User prompts</b>: <code>32</code></div>
 <div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -2681,6 +2681,459 @@ git diff --check
 <h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-05-13 12:49:57 +0800</div>
 <pre>仓库状态符合预期，报告 submodule 目前干净。我会先刷新今天的 user-history 和完整对话导出，然后把报告正文补上 ProgramWorkspaceAdapter TDD 抽取。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 12:50:39 +0800</div>
+<pre>完整 conversation export 正在刷新，完成后 README 里的统计会同步更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-13 12:52:46 +0800</div>
+<pre>我继续把刚才的实现收口到 report/docs 和两个仓库的发布流程里。先确认当前工作区状态，再补齐今天 report 对 ProgramWorkspaceAdapter 这轮 TDD 抽取的记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-13 12:53:00 +0800</div>
+<pre>report 导出已经产生了会话文件变更；现在主要缺的是把这轮 server adapter 边界抽取写进人读的摘要页，而不是只保留原始对话导出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-13 12:53:17 +0800</div>
+<pre>我会直接修改报告摘要页，把“PROG DIR 命令补齐”和“ProgramWorkspaceAdapter 边界抽取”区分开；后者是这轮刚做的 server 内部边界，不改变 Web/QML 对外接口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-13 12:54:15 +0800</div>
+<pre>上一版 patch 因为 project-report 的段落已经是中文内容，匹配点不对，没有落入文件。我改用更小的锚点逐段补丁，避免影响原有导出内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-13 12:55:07 +0800</div>
+<pre>报告文字已补齐。接下来重建 report book 和主 docs_html，并跑文档相关测试和 whitespace 检查，确认今天新增的报告页能在最终文档里看到。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-13 12:55:32 +0800</div>
+<pre>主 docs_html 构建还在跑，当前已经开始按 bookshelf 的 39 本书重建。等它结束后我会继续做 docs test、提交 reports 子模块，再提交主仓库和同步 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-13 12:55:59 +0800</div>
+<pre>docs_html 已完成，今天 report 的最终入口在 `docs_html/reports/2026-05-13-codex-session/index.html`。现在跑文档测试和 diff check，然后开始提交子模块和主仓库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-13 12:56:10 +0800</div>
+<pre>文档测试还在跑；reports 子模块里原始完整对话导出的 `all.md` 末尾多了一个空行，`git diff --check` 抓到了。我先做一个机械性的 EOF 清理，然后重新检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-13 12:56:32 +0800</div>
+<pre>文档测试通过，reports 的 whitespace 也干净了。现在先提交并推送 reports 子模块，再让主仓库记录新的子模块指针和 server adapter 代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-13 12:57:22 +0800</div>
+<pre>reports 子模块已经提交，push 正在进行。之后主仓库会包含这次子模块指针和 server 代码变更，commit message 会明确写 ProgramWorkspaceAdapter，而不是泛泛写 sync。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-13 12:57:45 +0800</div>
+<pre>reports push 已完成，子模块干净。现在主仓库只剩 adapter 边界代码、相关文档和子模块指针，我会先做 staged diff check，再提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-13 12:58:27 +0800</div>
+<pre>metanc_hmi_dsl 主提交已经生成，push 正在跑。接下来同步到 MetaNC 的 `nrt/hmi`，并在 MetaNC 的 `feat/hmi` 上用清晰提交说明记录这次 server adapter 边界变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-13 12:58:56 +0800</div>
+<pre>MetaNC 同步脚本已把过滤后的快照写到 `nrt/hmi`。我先检查同步范围和 diff check，避免把 reports/generated 这类不该进 MetaNC 的内容带进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-13 12:59:07 +0800</div>
+<pre>MetaNC diff 只在 `nrt/hmi` 内，未带入 generated/docs_html/reports。stat 里没显示新增文件是因为还未 add；我现在 stage 后再看完整 staged 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-13 12:59:49 +0800</div>
+<pre>MetaNC 的同步提交已经生成，push 正在进行。推送完成后我会做两边 clean status 检查，然后给你现在的下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-13 13:00:14 +0800</div>
+<pre>两边仓库和 reports 子模块现在都是 clean，并且都已推送。最后我整理一下当前计划，把已完成的 ProgramWorkspaceAdapter 边界和下一步可选方向分清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / final_answer</h3>
+<div class="time">2026-05-13 13:01:04 +0800</div>
+<pre>已完成并推送。
+
+本轮提交：
+- reports submodule: `f23e585 reports: refresh 2026-05-13 adapter boundary session`
+- `metanc_hmi_dsl`: `f37ace7 refactor: extract program workspace adapter`
+- `MetaNC feat/hmi`: `afebb47 refactor(hmi): sync program workspace adapter boundary`
+
+已验证：
+- report 导出和 docs_html 已重建，今天报告入口：`docs_html/reports/2026-05-13-codex-session/index.html`
+- `python3 -m unittest tests.test_web_qml_parity_docs tests.test_server_api_docs tests.test_docs_portal docs_i18n.tests.test_i18n_status` 通过，19 tests OK
+- 此前这轮实现已跑过 `./tools/generate_targets.sh`、完整 C++ server `ctest`、完整 Python unittest discovery
+- `metanc_hmi_dsl`、reports 子模块、`MetaNC` 当前工作区都 clean，且已 push
+
+现在计划建议收敛为这几项：
+
+1. `FilesystemProgramWorkspaceAdapter` 最小 spike
+   基于刚抽出来的 `ProgramWorkspaceAdapter`，实现一个本地目录后端，只做安全 root、list/read/write/create folder/rename/delete-empty-dir，先不做递归删除。
+
+2. Program workspace 策略文档
+   在实现真实文件后端前，把 root 越界、权限、重名、rename 冲突、删除当前打开程序、多 client 并发这些规则写清楚。
+
+3. Logs shared scenario
+   继续补 Web/QML/server 的 Logs 一致性场景，尤其是连接重放、分页、筛选状态和实时追加时滚动位置策略。
+
+4. 更大的真实后端方向
+   CNC/PLC adapter、生产 command schema、persistence state stores 后续再分 slice 做，不建议和 program workspace 文件后端混在一轮里。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+skills/metanc-hmi-reports-submodule/SKILL.md:49-67|note=[report export build and publish sequencing]
+skills/metanc-hmi-reports-submodule/SKILL.md:107-115|note=[report verification checklist]
+MEMORY.md:364-367|note=[repo report submodule and MetaNC sync workflow]
+MEMORY.md:587-597|note=[final artifact and docs rebuild expectations]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-30">
+<h2>Turn 30</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 13:02:46 +0800</div>
+<pre>可以详细计划一下我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 13:03:18 +0800</div>
+<pre>可以，我建议下一步先做 **FilesystemProgramWorkspaceAdapter 最小闭环**，不要一上来扩展成完整文件管理器。
+
+**目标**
+让 server 端 PROG DIR / PROG / Save 这套程序文件能力可以接真实本地目录，而不是只存在 simulator 内存里。
+
+默认仍保持现在的 simulator 行为，只有显式配置后才启用 filesystem backend，避免影响现有 demo、测试和 Web/QML 运行方式。
+
+**第一版范围**
+新增一个 filesystem-backed adapter：
+
+- `listDirectory(path)`
+- `readProgram(path)`
+- `writeProgram(path, content)`
+- `createFile(path, content)`
+- `createDirectory(path)`
+- `rename(path, newName)`
+- `delete(path)`
+
+删除策略第一版只允许：
+
+- 删除普通文件
+- 删除空目录
+- 拒绝非空目录
+
+rename 第一版只允许：
+
+- 同目录 basename rename
+- 不允许跨目录移动
+- 不允许 `/`、`\`、`..`、空名字
+- 目标已存在则拒绝
+
+**不做的内容**
+这轮先不做：
+
+- 递归删除
+- 权限 UI
+- 多用户锁文件
+- 文件版本历史
+- 真实 CNC 控制器文件系统
+- Web/QML 新交互设计
+- Save As / Rename 复杂冲突弹窗
+
+这些后面需要产品规则，不能现在顺手猜。
+
+**配置设计**
+建议加两个环境变量：
+
+```bash
+HMI_PROGRAM_WORKSPACE_BACKEND=filesystem
+HMI_PROGRAM_WORKSPACE_ROOT=/path/to/programs
+```
+
+默认：
+
+```bash
+HMI_PROGRAM_WORKSPACE_BACKEND=simulator
+```
+
+这样现有启动方式不变。要测试真实目录时可以：
+
+```bash
+HMI_PROGRAM_WORKSPACE_BACKEND=filesystem \
+HMI_PROGRAM_WORKSPACE_ROOT=/tmp/metanc-programs \
+./generated/distribution/run_server_native.sh 8010
+```
+
+**实现计划**
+1. 先补测试
+   新增 `filesystem_program_workspace_adapter_test.cpp`，用临时目录验证 list/read/write/create/rename/delete 和越界拒绝。
+
+2. 新增 adapter 实现
+   添加：
+   - `server/include/hmi/adapters/filesystem_program_workspace_adapter.h`
+   - `server/src/adapters/filesystem_program_workspace_adapter.cpp`
+
+3. 抽 backend factory
+   在 server 初始化时根据 env 选择：
+   - `SimulatorProgramWorkspaceAdapter`
+   - `FilesystemProgramWorkspaceAdapter`
+
+4. 保持现有 API 不变
+   `progdir.commands.*`、`program.browser.*`、program save/read 仍走已有 REST/WS/resource 语义，不改 Web/QML contract。
+
+5. 增加最小文档
+   更新：
+   - `server/README.md`
+   - `docs/product/spec/interface_integration.md`
+   - `docs/project/server_target_skeleton.md`
+   - 中文 i18n 对应页
+
+6. 重新生成最终产物
+   跑 `./tools/generate_targets.sh`，确认 generated server/distribution 没问题。
+
+7. 验证
+   至少跑：
+   - 新 adapter test
+   - `runtime_rest_api_test`
+   - `server_smoke_test`
+   - full `ctest`
+   - full Python unittest discovery
+   - `git diff --check`
+
+**验收标准**
+这轮完成后应满足：
+
+- 默认启动仍是 simulator 行为，现有 Web/QML 不变。
+- 配置 filesystem backend 后，PROG DIR 新建文件/目录、rename、delete、Save 会真实落盘。
+- root 外路径访问被拒绝。
+- 非空目录删除被拒绝。
+- 测试覆盖 simulator adapter 和 filesystem adapter 的核心差异。
+- 文档明确说明 filesystem backend 还是本地开发/集成用，不等同真实 CNC controller 文件系统。
+
+**我建议的开发顺序**
+先做 TDD 的 adapter 单测和实现，再接 server backend 选择。这样风险最低，因为 Web/QML 不需要先动；只要 adapter 行为正确，现有 command/resource 层自然复用。</pre>
+</article>
+</section>
+<section class="turn" id="turn-31">
+<h2>Turn 31</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 13:07:55 +0800</div>
+<pre>可以，按你的规划详细设计实施，TDD驱动</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 13:08:08 +0800</div>
+<pre>我会按 TDD 走：先补 filesystem adapter 的失败测试，再实现 adapter、接入 server backend 选择，最后跑生成和测试确认默认 simulator 行为不被破坏。先读取当前 adapter 结构和 server 初始化路径，确定最小改动点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 13:09:16 +0800</div>
+<pre>当前接口已经覆盖读写、创建、rename/delete/refresh；缺口是 server 还把 workspace 写死成 simulator adapter，并且接口没有暴露 `used_bytes` 和排序文件列表这两个 runtime 需要的能力。我会先让测试表达 filesystem 后端的预期，再改接口和初始化路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 13:11:09 +0800</div>
+<pre>我准备先落测试和 CMake target。这个阶段故意会编译失败，因为 `FilesystemProgramWorkspaceAdapter` 还不存在，用这个失败来确认测试先行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-13 13:12:14 +0800</div>
+<pre>现有 build dir 还没重新 configure，所以新测试 target 尚未生成。这一步不是实现问题，我先重新跑 CMake configure，再编译新测试，预期会停在缺少 filesystem adapter 头/源码上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-13 13:13:01 +0800</div>
+<pre>TDD 失败点确认了：新测试 target 已进入编译，缺少 filesystem adapter 头。现在实现 adapter，同时把 `used_bytes/sorted_file_paths` 提升到接口，让 simulator 和 filesystem 都能给 runtime 同一组数据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-13 13:14:52 +0800</div>
+<pre>filesystem adapter 代码已经落下来了，下一步是把它编进 `server_core`，再把 `SimulatorAdapter` 的 program workspace 成员从具体 simulator 类型改成接口指针，这样 server 才能按配置替换后端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-13 13:15:46 +0800</div>
+<pre>编译失败是预期范围内的实现错误：我自定义的 `is_directory/is_regular_file` 名字和 `std::filesystem` 通过 ADL 撞名了。先修这个，再继续把 workspace 注入接到 server 配置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-13 13:16:39 +0800</div>
+<pre>filesystem adapter 的第一轮测试已经编译运行，失败在 `../ESCAPE.MPF` 被 normalize 成空路径后落到了 root 判断上。这个是测试抓到的真实边界问题，我会让 create/write 这类 mutation 对空 normalized path 直接返回 `program.path_invalid`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-13 13:17:51 +0800</div>
+<pre>filesystem adapter 的单测已通过。现在接入 server 选择：默认仍用 simulator-backed workspace，只有配置 `HMI_PROGRAM_WORKSPACE_BACKEND=filesystem` 和 root 时才切到真实目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-13 13:18:44 +0800</div>
+<pre>`SimulatorAdapter` 已经改成持有 `ProgramWorkspaceAdapter` 接口。现在检查是否还有漏改的 `.` 调用或类型依赖，然后处理编译问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-13 13:19:13 +0800</div>
+<pre>adapter 层测试通过，说明接口化没有破坏 simulator 行为。现在把 server config/env/CLI 接入：默认 simulator，显式 filesystem 后端时注入 filesystem workspace，并补一个 REST 级测试证明保存会落盘。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-13 13:20:01 +0800</div>
+<pre>server 已经能根据配置创建 filesystem workspace。为了防止只在 adapter 单测里成立，我会补 REST 测试：用临时目录启动 ServerApp，走 `prog.commands.new/save/progdir.commands.activate`，最后检查真实文件内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-13 13:20:18 +0800</div>
+<pre>runtime REST 测试文件头部和我预估不完全一致，我先读开头再按现状补。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-13 13:21:21 +0800</div>
+<pre>REST 层测试已补，覆盖真实目录创建、保存、rename、越界拒绝、非空目录拒绝。现在编译并跑 runtime REST 测试，预期会暴露 server 接入里的细节问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-13 13:21:49 +0800</div>
+<pre>测试文件没有通用 `expect(bool)` helper，只有 status/contains。这个属于测试写法问题，我补一个轻量 helper，继续跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-13 13:22:39 +0800</div>
+<pre>REST 测试抓到一个语义细节：filesystem 后端初始化时自动选中了第一个已有文件，如果目录里只有 `EXISTING/START.MPF`，当前 browser path 就在 `EXISTING` 里，所以 New File 会建到当前目录。这和前面确定的“当前目录新建”一致，测试 fixture 应该提供一个 root 文件让初始目录停在 root。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-13 13:23:14 +0800</div>
+<pre>`ROOT.MPF` 仍排在 `EXISTING/START.MPF` 后面，所以初始选中还是子目录里的文件。测试 fixture 改成 `000_ROOT.MPF`，让初始 program browser 明确停在 root，匹配 UI 当前目录新建语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-13 13:23:56 +0800</div>
+<pre>这个失败很有价值：REST 层在进入 adapter 前把 `../ESCAPE.MPF` normalize 成空，然后被上层当成“未提供名字”自动生成了 `NEW_PROG_001.MPF`。这不是 filesystem adapter 的问题，而是 command 层需要区分“空名字”和“非法路径”。我会收紧 `prog.commands.new/new_folder` 的参数处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-13 13:24:59 +0800</div>
+<pre>REST 级 filesystem 后端测试通过了，并且顺带修掉了 `../name` 被当成自动命名的边界问题。现在补文档和配置说明，然后运行生成脚本刷新最终产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-13 13:25:55 +0800</div>
+<pre>文档段落的换行和 wording 有些不同，我先精确读取相关段落，再分文件小 patch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-13 13:26:33 +0800</div>
+<pre>文档已更新：明确 filesystem backend 是本地集成后端，不等同真实控制器文件系统。现在跑生成脚本刷新最终 Web/QML/server/distribution/docs 产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-13 13:26:45 +0800</div>
+<pre>生成脚本已启动，输出还没回来。这个脚本会重新生成 Web/QML、server build、distribution 和 docs_html，我会等它完整结束再开始全量测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-13 13:28:07 +0800</div>
+<pre>最终产物已生成，server build 也包含新 filesystem adapter 和测试 target。现在跑完整 C++ 测试、Python 测试和 diff check；如果 snapshots 因生成产物更新有差异，我会再处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-13 13:28:16 +0800</div>
+<pre>C++ 全量测试 6/6 通过，包含新 filesystem adapter 和黑盒 HTTP/WS。Python 全量测试还在跑，等待完成后我会检查有没有生成 snapshot 差异。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-13 13:28:59 +0800</div>
+<pre>Python 全量测试在跑到 QML 临时构建阶段，暂时没有失败。当前工作区 diff check 是干净的；等 unittest 结束后我会看是否需要额外更新 snapshots。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-13 13:30:28 +0800</div>
+<pre>Python discover 还在跑，已经通过大部分测试并完成两轮临时 QML build。现在只剩尾部测试，继续等完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-13 13:31:22 +0800</div>
+<pre>完整 Python 测试通过，139 tests OK、1 skipped。现在做最后的 status/diff 复核，并看生成脚本有没有导致快照或分发文件需要纳入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-13 13:31:52 +0800</div>
+<pre>验证已经通过，但我再收紧一个边界：filesystem 后端不应该允许对 workspace root 本身执行 delete。即使当前多数场景会因为非空目录拒绝，我会把它明确成 `program.path_invalid`，避免空 root 时被误删。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-13 13:32:37 +0800</div>
+<pre>新增 root delete 边界测试通过。我改动了 server_core，所以再跑一次全量 C++ 测试和 diff check；Python 全量刚通过，除非 C++ 暴露问题无需重复全跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-13 13:32:55 +0800</div>
+<pre>C++ 全量 6/6 仍通过，diff check 干净。最后我会做一次关键 diff 复核，确认没有误改 Web/QML 生成代码；这轮主要是 server 和文档，不自动提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / final_answer</h3>
+<div class="time">2026-05-13 13:33:30 +0800</div>
+<pre>已按 TDD 做完一版，未提交。
+
+实现内容：
+- 新增 `FilesystemProgramWorkspaceAdapter`，支持真实本地目录的 list/read/write/create/rename/delete/refresh。
+- 默认仍是 `simulator`，只有显式配置才启用 filesystem：
+  ```bash
+  HMI_PROGRAM_WORKSPACE_BACKEND=filesystem
+  HMI_PROGRAM_WORKSPACE_ROOT=/tmp/metanc-programs
+  ```
+- `SimulatorAdapter` 改为持有 `ProgramWorkspaceAdapter` 接口，server 初始化时按配置注入 simulator 或 filesystem workspace。
+- 补了 filesystem adapter 单测和 REST 级测试，验证 New/Save/Rename/Delete 会真实落盘。
+- 顺手修了一个边界：`../ESCAPE.MPF` 这类非法路径不再被当作“空名称”自动生成新程序。
+- 文档已更新 `server/README.md`、中英文 interface integration、server target skeleton。
+- `./tools/generate_targets.sh` 已完成，最终 Web/QML/server/distribution 产物已刷新。
+
+验证结果：
+- `ctest --test-dir generated/server-build --output-on-failure`：6/6 通过
+- `python3 -m unittest discover -s tests -p &#x27;test_*.py&#x27;`：139 tests 通过，1 skipped
+- `git diff --check`：通过
+
+当前改动集中在 server 和文档，没有 Web/QML UI 行为变更。下一步如果你看着没问题，可以走 report/docs 更新、sync MetaNC、commit + push。</pre>
+</article>
+</section>
+<section class="turn" id="turn-32">
+<h2>Turn 32</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 13:34:39 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 13:34:59 +0800</div>
+<pre>我开始收口这轮 filesystem program workspace 后端：先刷新今天 report 和 Codex 会话导出，再重建 report/docs HTML，之后按子模块、`metanc_hmi_dsl`、`MetaNC` 的顺序提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 13:35:26 +0800</div>
+<pre>我会按 reports 子模块的既有流程处理：先导出今天会话，再更新可读报告页和索引，最后先提交 reports 子模块，再提交主仓库并同步 MetaNC。</pre>
 </article>
 </section>
 <section>

@@ -90,6 +90,24 @@ workspace 留出实现位置。
   - `server/CMakeLists.txt` 纳入新 source 和 adapter-level test。
   - server README、interface integration 和 server target skeleton 文档已同步
     记录新边界。
+- 完成 Filesystem program workspace 最小闭环：
+  - 新增 `FilesystemProgramWorkspaceAdapter`，以本地目录作为 program workspace
+    后端。
+  - 默认仍使用 simulator backend；只有显式配置
+    `HMI_PROGRAM_WORKSPACE_BACKEND=filesystem` 时才启用 filesystem backend。
+  - 新增 `HMI_PROGRAM_WORKSPACE_ROOT` / `--program-workspace-root` 配置，未设置时
+    fallback 到 `runtime-data/programs`。
+  - `SimulatorAdapter` 持有 `ProgramWorkspaceAdapter` interface，并由
+    `ServerApp` 在初始化时注入 simulator 或 filesystem workspace。
+  - Filesystem backend 支持 list/read/write/create file/create directory/rename/
+    delete/refresh；rename 保持 basename-only，delete 仅支持文件和空目录。
+  - root escape、空 root delete、非法路径、重名 target 和非空目录 delete 均有
+    拒绝策略。
+  - 修复 `prog.commands.new` / `progdir.commands.new_folder` 中 `../name` 被当成
+    空名称并自动生成新条目的边界问题。
+  - 更新 server README、英文/中文 interface integration 和 server target
+    skeleton，明确 filesystem backend 是本地开发/集成后端，不等同真实 controller
+    文件系统。
 
 ## Validation
 
@@ -105,6 +123,10 @@ workspace 留出实现位置。
 - `ctest --test-dir generated/server-build --output-on-failure -R "program_workspace_adapter_test|runtime_rest_api_test|server_smoke_test"`
 - `ctest --test-dir generated/server-build --output-on-failure`
 - `python3 -m unittest discover -s tests -p 'test_*.py'`
+- `ctest --test-dir generated/server-build --output-on-failure -R "program_workspace_adapter_test|filesystem_program_workspace_adapter_test"`
+- `ctest --test-dir generated/server-build --output-on-failure -R runtime_rest_api_test`
+- `ctest --test-dir generated/server-build --output-on-failure`
+- `python3 -m unittest discover -s tests -p 'test_*.py'`
 - `git diff --check`
 
 Validation result: generated Web/QML/server/distribution artifacts were refreshed
@@ -118,14 +140,17 @@ adapter, regenerated Web/QML snapshots, and a clean whitespace check.
 The ProgramWorkspaceAdapter extraction was validated with the dedicated adapter
 test, native REST/smoke coverage, full C++ server tests, full Python unittest
 discovery, and regenerated generated artifacts.
+The FilesystemProgramWorkspaceAdapter slice was also validated by a dedicated
+filesystem adapter test, REST-level persistence coverage, full C++ server tests
+including HTTP/WebSocket blackbox coverage, full Python unittest discovery, and
+fresh generated Web/QML/server/distribution output.
 
 ## Next Recommendation
 
 Pause decomposition-only work unless the next product change touches a P1 file.
-For product-facing work, the next durable branch should move from generated UI
-polish back toward runtime semantics. The immediate server-side option is a small
-`FilesystemProgramWorkspaceAdapter` spike behind the new boundary, but recursive
-delete, permission policy, conflict handling, and real controller semantics
-should stay explicit until their product rules are documented. Logs shared
-scenario coverage, production command schema, persistence state stores, and real
-CNC/PLC adapters remain larger follow-up directions.
+The filesystem program workspace spike is complete enough for local integration.
+Next should be policy and product closure rather than more backend guessing:
+document recursive delete, permission, conflict, and multi-client rules before
+expanding filesystem behavior; then either add a small filesystem runtime smoke
+script for packaged split runtime, or move to Logs shared scenario coverage and
+production command schema/state-store planning.

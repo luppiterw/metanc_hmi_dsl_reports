@@ -68,3 +68,8 @@ Date: 2026-05-13
 - 你可以看一下github上面这个review策略吗，为什么你提交一下他就有新的问题，但是本地review没有发现
 - 可以，按照你的策略扫一下，然后也修一下这个，修好了update pull request + 回复comment+标记resolved
 - generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划
+- 可以详细计划一下我看看
+- 可以，按你的规划详细设计实施，TDD驱动
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
+- generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划

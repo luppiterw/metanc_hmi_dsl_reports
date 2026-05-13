@@ -33,6 +33,13 @@ interface、simulator-backed implementation 和 `program_workspace_adapter_test`
 contract 未变，现有 `progdir.commands.*` 和 `program.browser.*` 行为由 adapter
 后端承载，后续可接 filesystem/controller-backed adapter。
 
+本轮最后完成 `FilesystemProgramWorkspaceAdapter` 最小闭环：默认仍保留
+simulator workspace，显式设置 `HMI_PROGRAM_WORKSPACE_BACKEND=filesystem` 和
+`HMI_PROGRAM_WORKSPACE_ROOT` 后，server 会把 PROG DIR / PROG / Save 相关读写落到
+真实本地目录。新增 filesystem adapter 单测和 REST 级测试，覆盖真实落盘、root
+escape 拒绝、basename-only rename、空目录删除和非空目录拒绝；最终 C++ server
+tests、Python unittest discovery 和 generated distribution 均已验证通过。
+
 目录：
 
 - `project-report.md`: 项目进展总结
@@ -50,11 +57,11 @@ contract 未变，现有 `progdir.commands.*` 和 `program.browser.*` 行为由 
 - Sessions: `6`
 - Primary sessions: `4`
 - Side sessions: `2`
-- User prompts: `118`
+- User prompts: `136`
 - Synthetic events: `2`
-- Messages: `640`
-- User messages: `120`
-- Codex messages: `520`
+- Messages: `767`
+- User messages: `138`
+- Codex messages: `629`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

@@ -81,3 +81,23 @@ program workspace adapter 留出替换点。
 验证收口包括 dedicated adapter test、native REST smoke、完整 C++ server tests、
 完整 Python unittest discovery、最终 Web/QML/server/distribution 生成，以及
 docs/report HTML 重建。
+
+## Filesystem Program Workspace
+
+用户确认继续按 TDD 实施 filesystem-backed program workspace。实现时先新增
+`filesystem_program_workspace_adapter_test`，确认缺少 adapter header 的失败点；
+随后新增 `FilesystemProgramWorkspaceAdapter`，并把 `ProgramWorkspaceAdapter`
+interface 补齐 `sorted_file_paths` 和 `used_bytes`，使 simulator/filesystem 后端都能
+服务同一组 runtime 字段。
+
+server 初始化增加 backend selection：默认仍为 simulator；设置
+`HMI_PROGRAM_WORKSPACE_BACKEND=filesystem` 和 `HMI_PROGRAM_WORKSPACE_ROOT` 后，
+`ServerApp` 会向 `SimulatorAdapter` 注入 filesystem workspace。REST 层测试证明
+`prog.commands.new`、`prog.commands.save`、`progdir.commands.new_folder`、
+`progdir.commands.rename` 和 `progdir.commands.delete` 能真实落盘，并且 root
+escape、basename-only rename、空目录删除、非空目录拒绝等策略保持一致。
+
+测试过程中发现 `../ESCAPE.MPF` 这类非法路径会在 command 层被 normalize 成空名称
+并触发自动命名，随后修复为明确返回 `program.path_invalid`。当前 filesystem
+backend 被定义为本地开发/集成后端，不等同真实 CNC/controller 文件系统；递归删除、
+权限、冲突和多 client 策略仍需后续单独产品化。

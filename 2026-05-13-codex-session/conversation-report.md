@@ -101,3 +101,18 @@ escape、basename-only rename、空目录删除、非空目录拒绝等策略保
 并触发自动命名，随后修复为明确返回 `program.path_invalid`。当前 filesystem
 backend 被定义为本地开发/集成后端，不等同真实 CNC/controller 文件系统；递归删除、
 权限、冲突和多 client 策略仍需后续单独产品化。
+
+## Packaged Filesystem Workspace Smoke
+
+用户随后要求继续按 TDD 验证最终分发产物路径。新增测试
+`tests/test_filesystem_program_workspace_distribution.py`，它不再使用 C++ in-process
+server，而是带 `HMI_PROGRAM_WORKSPACE_BACKEND=filesystem` 和
+`HMI_PROGRAM_WORKSPACE_ROOT=<tempdir>` 启动
+`generated/distribution/run_server_native.sh`，等待 `/api/runtime/health` 后通过真实
+HTTP 调用 `/api/runtime/bootstrap` 和 `/api/runtime/commands`。
+
+该 smoke 覆盖 program new/save/new folder/rename/delete 的磁盘结果，并确认
+`../ESCAPE.MPF` 不会逃逸 root、非空目录 delete 会被拒绝。第一次运行即通过，说明
+distribution helper 已正确透传 env，打包 native server 也包含 filesystem backend。
+随后完整 `ctest` 和 Python unittest discovery 通过，Python 回归数从 139 增至
+140。

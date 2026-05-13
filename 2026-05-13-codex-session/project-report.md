@@ -108,6 +108,21 @@ workspace 留出实现位置。
   - 更新 server README、英文/中文 interface integration 和 server target
     skeleton，明确 filesystem backend 是本地开发/集成后端，不等同真实 controller
     文件系统。
+- 完成 packaged split runtime filesystem smoke：
+  - 新增 `tests/test_filesystem_program_workspace_distribution.py`。
+  - 测试通过真实 `generated/distribution/run_server_native.sh` 启动 packaged native
+    server，而不是 in-process C++ test。
+  - 通过 `HMI_PROGRAM_WORKSPACE_BACKEND=filesystem` 和
+    `HMI_PROGRAM_WORKSPACE_ROOT=<tempdir>` 启用 filesystem backend。
+  - 通过 HTTP 调用 `GET /health`、`GET /bootstrap` 和 `POST /commands` 验证
+    packaged server 可用。
+  - 覆盖 `prog.commands.new`、`prog.commands.save`、
+    `progdir.commands.new_folder`、`progdir.commands.rename`、
+    `progdir.commands.delete`。
+  - 每个关键命令后直接检查临时目录磁盘状态，确认创建、保存、rename 和 delete
+    真实落盘。
+  - 覆盖 `../ESCAPE.MPF` 非法路径拒绝，以及非空目录 delete 拒绝。
+  - 该测试已纳入 `python3 -m unittest discover -s tests -p 'test_*.py'` 回归。
 
 ## Validation
 
@@ -127,6 +142,9 @@ workspace 留出实现位置。
 - `ctest --test-dir generated/server-build --output-on-failure -R runtime_rest_api_test`
 - `ctest --test-dir generated/server-build --output-on-failure`
 - `python3 -m unittest discover -s tests -p 'test_*.py'`
+- `python3 -m unittest tests.test_filesystem_program_workspace_distribution`
+- `ctest --test-dir generated/server-build --output-on-failure`
+- `python3 -m unittest discover -s tests -p 'test_*.py'`
 - `git diff --check`
 
 Validation result: generated Web/QML/server/distribution artifacts were refreshed
@@ -144,13 +162,15 @@ The FilesystemProgramWorkspaceAdapter slice was also validated by a dedicated
 filesystem adapter test, REST-level persistence coverage, full C++ server tests
 including HTTP/WebSocket blackbox coverage, full Python unittest discovery, and
 fresh generated Web/QML/server/distribution output.
+The packaged distribution smoke now proves the same filesystem backend also
+works through the final `generated/distribution/run_server_native.sh` startup
+path, with real HTTP commands and disk assertions.
 
 ## Next Recommendation
 
 Pause decomposition-only work unless the next product change touches a P1 file.
 The filesystem program workspace spike is complete enough for local integration.
 Next should be policy and product closure rather than more backend guessing:
-document recursive delete, permission, conflict, and multi-client rules before
-expanding filesystem behavior; then either add a small filesystem runtime smoke
-script for packaged split runtime, or move to Logs shared scenario coverage and
-production command schema/state-store planning.
+document recursive delete, permission, conflict, external file-change, and
+multi-client rules before expanding filesystem behavior. After that, move to
+Logs shared scenario coverage and production command schema/state-store planning.

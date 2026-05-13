@@ -10,6 +10,7 @@ Focus:
 - PROG DIR Refresh/Rename/Delete TDD completion across Web, QML, mock runtime, and C++ simulator server
 - ProgramWorkspaceAdapter TDD boundary extraction behind simulator program files
 - FilesystemProgramWorkspaceAdapter TDD implementation and local persistence backend selection
+- Packaged split-runtime filesystem workspace smoke through `run_server_native.sh`
 
 Session assets:
 

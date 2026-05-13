@@ -73,3 +73,8 @@ Date: 2026-05-13
 - 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
 - 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
 - generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划
+- 可以，按你的规划详细设计实施，TDD驱动
+- 可以详细计划一下我看看
+- 可以，按你的规划详细设计实施，TDD驱动
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved;注意类似问题本地也都扫一遍，减少重复提交修复的问题
+- generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划

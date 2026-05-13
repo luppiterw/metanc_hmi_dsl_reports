@@ -22,8 +22,13 @@ flowchart LR
         REPORT[2026-05-13 report]
     end
 
-    subgraph Decision[Next Decision]
-        P0[Web app_shell.py split]
+    subgraph AppShellSplit[Completed App-Shell Split]
+        SHELL[client/web_client/app_shell.py]
+        SETTINGS[app_shell_fragments/settings.py]
+        SELECTS[app_shell_fragments/selects.py]
+    end
+
+    subgraph Decision[Remaining Decision]
         STOP[Stop conditions]
         P1[P1 files only when touched]
     end
@@ -37,10 +42,13 @@ flowchart LR
     ZH --> NAV
     ZH --> I18N
     NAV --> DOCS
-    EN --> TARGETS
+    EN --> SHELL
+    SHELL --> SETTINGS
+    SHELL --> SELECTS
+    SHELL --> TARGETS
     TARGETS --> REPORT
     DOCS --> REPORT
-    RANK --> P0
+    RANK --> SHELL
     RANK --> P1
     RANK --> STOP
 ```

@@ -4,6 +4,7 @@ Focus:
 
 - Generator decomposition inventory and candidate ranking
 - Web/QML generator source-size review
+- Web app-shell P0 split closure
 - Docs/report refresh and MetaNC sync
 
 Session assets:

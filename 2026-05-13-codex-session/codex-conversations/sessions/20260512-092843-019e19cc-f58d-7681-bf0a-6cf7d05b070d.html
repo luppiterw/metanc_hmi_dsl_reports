@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>给一下计划</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>给一下计划</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e19cc-f58d-7681-bf0a-6cf7d05b070d</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-12 09:28:43 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/lup/OminiForge</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/12/rollout-2026-05-12T09-28-43-019e19cc-f58d-7681-bf0a-6cf7d05b070d.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>4</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 08:04:01 +0800</div>
+<pre>给一下计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 08:04:35 +0800</div>
+<pre>建议下一步做 **S13 Runtime Script Execution Core**，目标是把“事件脚本执行”收敛成统一主干，而不是继续堆功能。
+
+**S13 目标**
+把现在分散的几条路径统一起来：
+
+```text
+control event
+-&gt; OminiScript parse/resolve
+-&gt; effect plan
+-&gt; runtime dispatcher
+-&gt; command log / diagnostics
+```
+
+**边界**
+本轮做：
+- 事件脚本正式执行管线
+- 顺序语句块
+- `if/else` statement
+- `setProperty`
+- `setData`
+- `openPage`
+- `setLocal`
+- runtime command/diagnostics 统一出口
+
+本轮不做：
+- loops
+- user functions
+- async/service calls
+- plugin callable API
+- visual script editor
+- native Qt/Android/iOS 实现
+
+**Story Slice**
+| Slice | 内容 | 验收 |
+| --- | --- | --- |
+| W84 Event Script Source Model | 明确事件脚本 source 存储模型，替代当前 `unsupportedScriptText` 临时语义 | export/import/source history 保持稳定 |
+| W85 Statement Parser Core | 支持 statement block、顺序执行、`if/else` statement | parser/AST tests 覆盖分号和嵌套 |
+| W86 Resolver And Effect Plan | 把 property/data/navigation/local 写入解析为 effect plan | resolver diagnostics 可定位对象/属性错误 |
+| W87 Runtime Dispatcher | 统一执行 `setProperty/setData/openPage/setLocal` | command log 和 runtime state 一致 |
+| W88 AppShell Integration | Preview/Run 点击事件走新执行管线 | 旧 registry fallback 可保留但降级 |
+| W89 Conformance And Closeout | 固化跨平台 conformance fixture | docs/status/session/validation 完成 |
+
+**执行顺序**
+1. 先落 S13 详细设计文档和 slice spec。
+2. 实现 W84：事件脚本 source model，不大改 UI。
+3. 实现 W85-W86：parser/resolver/effect plan。
+4. 实现 W87：runtime dispatcher 统一。
+5. 接 AppShell preview/run，并保留旧行为回归。
+6. 全量验证、docs、commit、push。
+
+**核心设计原则**
+事件脚本和绑定表达式要分开：
+
+```text
+Binding expression:
+  value = expression
+  no effects
+
+Event script:
+  statements -&gt; effects
+  may mutate runtime state / navigate
+```
+
+这样后续语义不会漂：按钮点击切页面是 event script；按钮文字动态显示是 binding expression。</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 08:05:36 +0800</div>
+<pre>意思是完善脚本执行器语法是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 08:05:59 +0800</div>
+<pre>是的，但更准确说不是只“加语法”，而是补完整的 **脚本执行主干**：
+
+```text
+语法 parser
+-&gt; AST
+-&gt; resolver / semantic check
+-&gt; effect plan
+-&gt; runtime dispatcher
+-&gt; diagnostics / command log
+```
+
+现在已有的是：
+- binding expression：能算值，不能有副作用。
+- `openPage(...)`：已经能通过脚本触发导航，但还是偏窄的路径。
+- 一些 runtime action / registry fallback：能跑 demo 行为，但不是完整脚本执行体系。
+
+S13 要做的是把 **事件脚本** 正式化，例如：
+
+```c
+if (data.plc.TEST_STATE) {
+  statusLabel.text = &quot;运行中&quot;;
+  openPage(&quot;main&quot;, &quot;detail&quot;);
+} else {
+  statusLabel.text = &quot;停机&quot;;
+}
+```
+
+这里需要支持：
+- statement 顺序执行
+- `if/else` statement
+- property assignment
+- data assignment
+- local/state assignment
+- navigation call
+- 统一诊断和 command log
+
+但我建议这一轮仍然收敛，不做：
+- `for/while`
+- 函数定义
+- async
+- plugin API
+- 类型系统大扩展
+
+所以结论是：**对，是完善脚本执行器语法和执行链路，但重点是事件脚本的 parser/resolver/executor/runtime dispatcher 成体系，而不是零散补几个语法。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 08:08:54 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 08:09:42 +0800</div>
+<pre>可以。S13 我建议定义为：
+
+**S13 Runtime Script Execution Core**
+
+核心目标：把“事件脚本”从现在的局部能力，收敛成正式的脚本执行主干。
+
+```text
+event source
+-&gt; parser
+-&gt; AST
+-&gt; resolver / semantic diagnostics
+-&gt; effect plan
+-&gt; runtime dispatcher
+-&gt; runtime state / command log / diagnostics
+```
+
+**一、S13 边界**
+做这些：
+- 事件脚本 source model
+- C-like statement block
+- 顺序语句执行
+- `if/else` statement
+- assignment statement
+- `openPage(...)` runtime call
+- `setData` / `setProperty` / `setLocal` effect
+- runtime dispatcher 统一出口
+- conformance fixture
+
+不做这些：
+- `while/for`
+- user-defined functions
+- async/await
+- plugin callable API
+- complex type inference
+- visual script editor
+- Qt/Android/iOS native 实现
+
+**二、目标语法 v1 子集**
+事件脚本示例：
+
+```c
+on btnStart.click {
+  state.localCount = state.localCount + 1;
+
+  if (data.plc.TEST_STATE) {
+    statusLabel.text = &quot;运行中&quot;;
+    openPage(&quot;main&quot;, &quot;detail&quot;);
+  } else {
+    statusLabel.text = &quot;停机&quot;;
+  }
+}
+```
+
+先支持：
+
+```text
+ScriptUnit
+  -&gt; HandlerDeclaration*
+
+HandlerDeclaration
+  -&gt; &quot;on&quot; EventTarget &quot;{&quot; Statement* &quot;}&quot;
+
+Statement
+  -&gt; AssignmentStatement &quot;;&quot;
+  -&gt; CallStatement &quot;;&quot;
+  -&gt; IfStatement
+
+IfStatement
+  -&gt; &quot;if&quot; &quot;(&quot; Expression &quot;)&quot; Block &quot;else&quot; Block
+
+AssignmentStatement
+  -&gt; MemberPath &quot;=&quot; Expression
+
+CallStatement
+  -&gt; CallExpression
+
+Block
+  -&gt; &quot;{&quot; Statement* &quot;}&quot;
+```
+
+表达式继续复用 S11/S12 已有能力：
+- literal
+- member path
+- unary/binary
+- grouping
+- value-returning `if` expression 继续只用于 expression context
+
+**三、Source Model 计划**
+当前兼容：
+- 继续读现有 `metadata.event`
+- 继续读现有 `metadata.unsupportedScriptText`
+
+新增正式模型建议先轻量放在 metadata：
+
+```json
+{
+  &quot;metadata&quot;: {
+    &quot;eventScript&quot;: &quot;on btnStart.click { statusLabel.text = \&quot;运行中\&quot;; }&quot;
+  }
+}
+```
+
+更完整的 central script registry 先不做，避免扩张。S13 只把单控件事件脚本跑通。
+
+**四、Slice 拆分**
+| Slice | 名称 | 内容 | 验收 |
+| --- | --- | --- | --- |
+| W84 | Event Script Source Model | 定义 `eventScript` source、兼容旧 metadata | source draft/export/history tests |
+| W85 | Statement Parser Core | parser 支持 block、assignment、call、if/else statement | parser AST tests |
+| W86 | Resolver And Diagnostics | 解析 control/data/state/navigation refs | missing/readonly/binding override diagnostics |
+| W87 | Effect Plan Builder | statement 转为 platform-neutral effects | effect plan tests |
+| W88 | Runtime Dispatcher | 统一执行 `setProperty/setData/setLocal/openPage` | runtime-session/AppShell tests |
+| W89 | Preview Integration | preview/run 点击事件走新管线，旧 fallback 保留 | AppShell interaction tests |
+| W90 | Conformance And Closeout | 固化 fixtures、docs/status/session | conformance + full validation |
+
+**五、实现顺序**
+1. 先落 S13 docs/spec：语法、source model、effect contract、测试矩阵。
+2. W84：加 `setControlEventScriptCommand`，不大改 UI。
+3. W85：补 parser statement AST，不碰 runtime。
+4. W86：resolver 产出结构化 target/effect diagnostics。
+5. W87：interpreter 不直接改 runtime，只产出 effects。
+6. W88：runtime dispatcher 统一处理 effects。
+7. W89：AppShell preview/run 接新执行链。
+8. W90：conformance/docs/full validation/commit push。
+
+**六、关键设计规则**
+绑定表达式和事件脚本严格分开：
+
+```text
+Binding expression:
+  expression -&gt; value
+  no effects
+
+Event script:
+  statements -&gt; effects
+  can mutate runtime / navigate
+```
+
+这样后续不会混乱：
+按钮文字动态显示走 binding expression；按钮点击切页面、写变量、触发动作走 event script。
+
+**七、完成标准**
+S13 完成后，至少能稳定支持：
+
+```c
+on btnStart.click {
+  data.plc.TEST_TEXT = &quot;已启动&quot;;
+
+  if (data.plc.TEST_STATE) {
+    statusLabel.text = &quot;运行中&quot;;
+    openPage(&quot;main&quot;, &quot;detail&quot;);
+  } else {
+    statusLabel.text = &quot;停机&quot;;
+  }
+}
+```
+
+并且：
+- source export 不带 runtime-only 状态
+- command log 能看到每个 effect
+- diagnostics 能定位 parser/resolver/runtime 错误
+- conformance fixture 能作为未来 Qt/Android/iOS 重实现基准
+
+我建议下一步先落 **S13 详细设计文档 + W84-W90 story slices**，然后从 W84 开始实现。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 08:13:00 +0800</div>
+<pre>可以 按照这个讨论落一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 08:13:21 +0800</div>
+<pre>我会把刚才讨论的 S13 先落成设计资产和 story slices，不直接开始代码实现。先确认当前仓库状态和现有 story 结构，然后补 docs/status/session，最后跑文档校验和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 08:14:01 +0800</div>
+<pre>我会把 S13 作为“计划已落地但未实现”的故事来写清楚：状态用 Draft/Planned，明确边界、语法子集、effect dispatcher、切片和验证矩阵，避免文档看起来像已经完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 08:14:43 +0800</div>
+<pre>目录已建好。接下来我会一次性新增 S13 的 README、执行计划、验证矩阵、4 个 spec、7 个 slice 和 session report，全部用 Planned/Draft 表示“计划落地”。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

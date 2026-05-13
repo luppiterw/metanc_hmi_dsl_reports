@@ -92,9 +92,9 @@ pre {
 <div><b>Started</b>: <code>2026-05-12 16:11:10 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/lup/luqtcellar/Labs/MetaNCGCodeParser</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/12/rollout-2026-05-12T16-11-10-019e1b3d-6ba4-7762-b0c5-2eab04405387.jsonl</code></div>
-<div><b>Messages</b>: <code>10</code></div>
-<div><b>User prompts</b>: <code>3</code></div>
-<div><b>Synthetic events</b>: <code>0</code></div>
+<div><b>Messages</b>: <code>48</code></div>
+<div><b>User prompts</b>: <code>11</code></div>
+<div><b>Synthetic events</b>: <code>1</code></div>
 </section>
 <section class="turn" id="turn-1">
 <h2>Turn 1</h2>
@@ -323,9 +323,586 @@ MEMORY.md:122-126|note=[used validation and docs publication workflow]
 <pre>我看到你里面写第一阶段不做完整的CAM，这一块是个什么考量，我好像没有提CAM之前，你怎么会怎么描述，再就是，如果做CAM，前列的CAD CAE这些有必要一起考虑吗</pre>
 </article>
 <article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 08:15:58 +0800</div>
+<pre>我写“第一阶段不做完整 CAM”是一个**边界声明**，不是因为你已经提了 CAM。
+
+原因是：一旦说“自然语言生成 G/M 代码”，很容易被理解成“我说加工这个零件，它自动出完整刀路”。这其实已经越过了编辑器辅助，进入 CAM 范围了。所以我在计划里提前划边界：第一阶段只做 **G-code 编程辅助**，不是 **几何到刀路的 CAM 系统**。
+
+更准确地说可以改成：
+
+&gt; 第一阶段不做“从 CAD 几何自动生成完整加工刀路”的 CAM 能力。
+
+这样更清楚，也不会显得像突然引入了一个你没提的方向。
+
+**这几层要分开看**
+
+1. **G-code 编辑辅助**
+   - 输入：用户正在写的 G/M 代码
+   - 能力：补全、hover、诊断、snippet、解释
+   - 依赖：G/M 手册 catalog + `gcode_parser`
+   - 不需要 CAD/CAM
+
+2. **自然语言辅助写 G-code**
+   - 输入：“换 12 号刀，走 50x50 矩形，进给 120”
+   - 输出：受控模板化 G-code
+   - 依赖：catalog + 场景模板 + parser 校验
+   - 仍然不等于 CAM
+
+3. **CAM**
+   - 输入：CAD 几何、毛坯、刀具、工艺、机床、夹具
+   - 输出：刀路 + 后处理 G-code
+   - 依赖：几何内核、特征识别、刀路算法、碰撞检查、仿真、postprocessor
+   - 这是另一条更大的产品线
+
+**如果做 CAM，要不要一起考虑 CAD/CAE？**
+
+要考虑，但不用一开始都做。
+
+我的建议：
+
+- **CAD 必须早考虑接口边界**，因为 CAM 的输入就是几何。即使第一版不做 CAD 编辑，也要想清楚未来吃什么格式：DXF、STEP、STL、内部草图、特征参数等。
+- **CAE 不必第一阶段深做**。CAE 更偏强度、热、振动、变形等工程分析。对 CAM 早期最重要的不是 CAE，而是加工仿真：刀路预览、干涉/碰撞、余量、行程、限位。
+- **CAPP/工艺规划反而比 CAE 更近**。也就是：选刀、选工序、切削参数、粗精加工策略、坐标系、装夹方案。这些会直接影响 G-code 生成。
+
+所以如果未来扩展，建议路线是：
+
+```text
+G-code Assistant
+  -&gt; conversational G-code templates
+  -&gt; 2D/2.5D feature-based CAM
+  -&gt; CAD geometry import
+  -&gt; toolpath generation
+  -&gt; simulation / verification
+  -&gt; postprocessor / machine profile
+  -&gt; deeper CAE integration
+```
+
+当前这份计划的定位应该还是第一、第二层。CAM 可以作为“未来边界”，但不应该混进第一阶段目标里。我建议把文档里的那句改得更精确，避免误导成已经在规划完整 CAM。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:11:02 +0800</div>
+<pre>你的建议是什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 09:11:32 +0800</div>
+<pre>我的建议是：**现在不要把 CAM 拉进第一阶段，但要从架构上预留 CAM 的入口。**
+
+也就是文档里不要写成“我们要做 CAM”，而是明确三层边界：
+
+1. **当前主线：G-code 编程辅助**
+   - catalog
+   - 补全 / hover / 诊断
+   - snippet
+   - 自然语言生成受控 G/M 代码
+   - 全部经过 `gcode_parser` 校验
+
+2. **下一层：工艺意图辅助**
+   - 换刀、起刀、安全高度、矩形轮廓、圆弧、dwell、子程序
+   - 后续可以扩到“钻孔、轮廓、槽、面铣”这种 operation 模板
+   - 这一步已经接近 CAM，但还不依赖 CAD 几何内核
+
+3. **未来单独模块：CAM**
+   - CAD 几何导入
+   - 特征识别
+   - 刀路生成
+   - 碰撞/干涉检查
+   - 后处理
+   - 机床 profile
+
+所以我会把计划里的措辞改成：
+
+&gt; 第一阶段不做“从 CAD 几何自动生成完整加工刀路”的 CAM 能力；但在数据模型上预留 operation intent、machine profile、tool library 和 postprocessor 的扩展边界。
+
+关于 CAD / CAE，我建议这样处理：
+
+- **CAD：需要提前考虑接口，不要第一阶段做完整 CAD。**
+  你至少要预留后续吃 `DXF/STEP/STL/内部草图` 的位置，否则后面 CAM 会很难接。但现在不必做建模器。
+
+- **CAE：暂时不要放进主线。**
+  CAE 离当前 G-code 辅助比较远。比 CAE 更早需要的是加工验证：刀路回放、行程检查、碰撞/干涉、余量、机床限制。
+
+- **比 CAE 更应该提前考虑的是 CAPP/工艺规划。**
+  也就是刀具、材料、切削参数、工序、装夹、坐标系、粗精加工策略。这些会直接影响自然语言生成 G-code。
+
+我建议现在的产品路线写成：
+
+```text
+G-code Assistant
+  -&gt; G/M catalog + parser-aware editor
+  -&gt; 自然语言生成受控 G-code
+  -&gt; operation intent 模板
+  -&gt; tool / material / machine profile
+  -&gt; 2D/2.5D CAM 原型
+  -&gt; CAD geometry import
+  -&gt; toolpath simulation / verification
+  -&gt; postprocessor
+  -&gt; deeper CAE integration
+```
+
+最关键的设计点是：**现在就定义一个中间层 IR，但不要让它一开始变成完整 CAM IR。**
+
+第一版 IR 可以很轻：
+
+```text
+ToolChange
+MoveLinear
+MoveRapid
+MoveArc
+Dwell
+SetPlane
+SubprogramCall
+Return
+```
+
+后面再扩展：
+
+```text
+Contour2D
+Pocket2D
+DrillPattern
+Facing
+Slotting
+```
+
+这样现在能服务自然语言生成，未来也能接 CAM，不会一开始就背上 CAD/CAM/CAE 的复杂度。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:20:11 +0800</div>
+<pre>我现在不是要做IR或者CAM或者什么，我只是希望把一些可能的关联点和结构都记录一下，你这个方向我觉得没问题，可以扩展一下文档</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 09:20:33 +0800</div>
+<pre>我理解，这次不是要把 IR/CAM 立刻立项，而是把后续可能关联到的结构边界先记清楚。我要在现有计划页里补一节“关联结构与扩展边界”，把 G-code 辅助、工艺意图、CAM、CAD、CAE、仿真、后处理之间的关系记录下来，但保持它们都是后续扩展点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 09:20:53 +0800</div>
+<pre>我会把计划页里的边界表述改准确：不再笼统说“不做完整 CAM”，而是明确“第一阶段不做从 CAD 几何自动生成完整加工刀路”。同时新增一节专门记录 CAD/CAM/CAE/CAPP/仿真/后处理这些关联点，只作为未来结构边界，不变成当前实施项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 09:21:39 +0800</div>
+<pre>扩展边界已经补进计划页了，并且 roadmap 也加了指向，明确这些只是结构关联点。现在我会重建 mdBook、跑测试和链接检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-13 09:22:27 +0800</div>
+<pre>已扩展文档，重点补在：
+
+[Programming-Assistant-Plan.md](/home/iaar/workspace/lup/luqtcellar/Labs/MetaNCGCodeParser/docs/wiki/Programming-Assistant-Plan.md)
+
+主要改动：
+
+- 把“第一阶段不做完整 CAM”改成更准确的边界：
+  `第一阶段不做“从 CAD 几何自动生成完整加工刀路”的 CAM 能力。`
+- 新增“关联结构与扩展边界”章节，记录了：
+  - G-code 编程辅助
+  - 自然语言辅助写 G-code
+  - operation intent
+  - CAPP / 工艺规划
+  - CAM
+  - CAD
+  - CAE
+  - 仿真 / 验证
+  - postprocessor
+  - machine profile
+  - tool / material library
+- 明确这些只是后续结构关联点，不进入当前第一阶段实施范围。
+- 在 [Roadmap-Coverage.md](/home/iaar/workspace/lup/luqtcellar/Labs/MetaNCGCodeParser/docs/wiki/Roadmap-Coverage.md) 里也加了对应说明和链接。
+
+验证已通过：
+
+- `mdbook build`
+- `mdbook test`
+- HTML 链接检查：`html links ok`
+- `git diff --check`
+- `docs_html/` 仍被 `.gitignore` 过滤
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:87-90|note=[used luqtcellar docs workflow scope]
+MEMORY.md:96-100|note=[used luqtcellar mdBook and docs output convention]
+MEMORY.md:122-126|note=[used validation and docs publication workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e0131-0102-7503-b71b-0b243a5fc831
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:30:29 +0800</div>
+<pre>commit + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 09:30:58 +0800</div>
+<pre>我会先确认当前 Git 根目录、分支、远端和变更范围；因为现在这个目录在 `luqtcellar` 的 `Labs/MetaNCGCodeParser` 下，之前 `git status` 显示整个子目录还是未跟踪状态，提交前要确保只加入这部分文档和忽略规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 09:31:32 +0800</div>
+<pre>当前 repo 根是 `/home/iaar/workspace/lup/luqtcellar`，分支是 `master`，远端是 Gitee。现在我会列出 `Labs/MetaNCGCodeParser` 下实际会被纳入提交的文件，特别确认 `docs_html/`、`.codex/`、`.agents/` 这些本地/生成目录不会进提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 09:32:02 +0800</div>
+<pre>`docs_html/` 已确认被忽略，不会提交。现在还有一个 `Labs/MetaNCGCodeParser/index.html` 是未跟踪文件，我会先看它是不是手写入口还是生成物；如果是无关生成物，就不纳入提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-13 09:32:31 +0800</div>
+<pre>`index.html` 是 mdBook 生成页，不是源文档入口，而且根目录下缺少配套的 css/js 资源，提交它没有价值。我会把这个根部生成页也加入该子目录的 `.gitignore`，只提交源 Markdown、book 配置和过滤规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-13 09:33:05 +0800</div>
+<pre>我加了 `index.html` 过滤，避免把半截 mdBook 生成页误提交。提交前再跑一次文档构建/测试、链接检查和 diff 检查，然后只 add 这个子目录的源文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-13 09:34:13 +0800</div>
+<pre>验证通过。现在我会执行 `git add` 只加入 `Labs/MetaNCGCodeParser` 这批源文件，然后检查 staged diff，再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-13 09:35:03 +0800</div>
+<pre>Staged 内容只包含 `Labs/MetaNCGCodeParser` 的源文档和 `.gitignore`，没有生成 HTML。现在提交，之后推到 `origin/master`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-13 09:35:23 +0800</div>
+<pre>提交已生成：`ebc18e5`。我会先看提交后的状态，再执行 push；如果网络或权限需要提权，会按当前环境要求请求执行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-13 09:36:27 +0800</div>
+<pre>Push 成功。我会做最后一次状态确认，确保工作区干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-05-13 09:36:48 +0800</div>
+<pre>已提交并 push 到 `origin/master`。
+
+提交：
+
+```text
+ebc18e5 docs: add MetaNC gcode parser handbook
+```
+
+推送结果：
+
+```text
+522fb66..ebc18e5  master -&gt; master
+```
+
+提交内容只包含 `Labs/MetaNCGCodeParser` 下的源文档、mdBook 配置和 `.gitignore`；`docs_html/` 和生成的根部 `index.html` 已过滤。当前工作区干净。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:47:35 +0800</div>
+<pre>ok 继续看一下规划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 09:48:09 +0800</div>
+<pre>我先把当前计划页和 roadmap 再过一遍，重点看它现在是不是“可推进”的规划：阶段顺序、边界、交付物、验收标准有没有缺口，尤其是 catalog、编辑器能力和自然语言生成之间的衔接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-13 09:49:02 +0800</div>
+<pre>我看完现在的规划了，方向是对的，但还需要再收敛一下：现在它是“总纲型规划”，覆盖面完整，但真正开始推进时，第一步还可以切得更小。
+
+我的判断：
+
+1. **主线应该继续保持 catalog-first**
+   手册、wiki、补全、hover、自然语言生成都应该围绕 `gcode_catalog.yml`。这个判断是对的。否则后面 Markdown、UI、生成器会各写一套 G/M 知识，必然漂移。
+
+2. **M1 现在有点大**
+   现在 M1 包含 catalog、schema、validation、覆盖所有重点 G/M code。建议拆成：
+   - M1a：先做 catalog seed，只覆盖 `G0/G1/G2/G3/G4/M6/M17/M98/unknown M`
+   - M1b：加 schema 和校验脚本
+   - M1c：补齐完整 G/M code 覆盖
+   - M1d：做 catalog 与 Markdown 的一致性检查
+
+3. **应该提前做 parser 集成 spike**
+   在做 UI 前，先确认 `gcode_parser` 当前最适合怎么被调用：
+   - CLI JSON 是否够用
+   - diagnostics 是否有稳定 line/column
+   - lower/AIL 输出是否适合 UI 展示
+   - ISO mode、unknown M policy、tool mode 能不能通过 options 传入
+
+   这个 spike 应该排在正式 Language Service 前面。
+
+4. **自然语言生成不要太早**
+   NL 生成应该等这三个东西稳定后再做：
+   - catalog
+   - parser validation adapter
+   - scenario/snippet 模板
+
+   否则模型会先跑起来，但约束层不够，容易生成当前 parser 不支持的代码。
+
+5. **CAD/CAM/CAE 现在记录边界就够了**
+   文档里新增的关联结构是有价值的，但它们不应该进入近期 milestone。近期只需要保留字段和概念位置，比如 `geometry_reference`、`process_context`、`postprocess_profile`，不要实现。
+
+我建议把下一步规划收敛成这条线：
+
+```text
+M1a catalog seed
+  -&gt; M1b schema + validator
+  -&gt; M1c parser validation adapter
+  -&gt; M2 completion / hover prototype
+  -&gt; M3 diagnostics integration
+  -&gt; M4 snippets / scenarios
+  -&gt; M5 natural-language controlled generation
+```
+
+近期最该落的是 **M1a + M1b**。也就是先建：
+
+```text
+data/gcode_catalog.yml
+schemas/gcode_catalog.schema.json
+tools/validate_gcode_catalog.py
+```
+
+第一批只覆盖最有价值、实现边界最清楚的代码：
+
+```text
+G0, G1, G2, G3, G4
+G17, G18, G19
+G40, G41, G42
+M6, M17, M98
+unknown M policy
+```
+
+这样规划就从“完整愿景”变成“可执行的第一步”。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:87-90|note=[used luqtcellar docs workflow scope]
+MEMORY.md:96-100|note=[used luqtcellar mdBook and docs output convention]
+MEMORY.md:122-126|note=[used validation and docs publication workflow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e0131-0102-7503-b71b-0b243a5fc831
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:51:12 +0800</div>
+<pre>你现在做的这个规划是什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-13 09:51:39 +0800</div>
+<pre>现在这份规划的定位是：
+
+**把 G/M 代码手册升级成“编程辅助系统”的路线图。**
+
+不是 CAM 规划，也不是 CAD/CAE 平台规划。它的核心目标是：用户在界面里写 G-code 时，系统能像 VSCode 一样提供补全、解释、诊断、代码片段，后续再支持受控的自然语言生成 G/M 代码。
+
+具体说，它规划的是这条链路：
+
+```text
+G/M 手册
+  -&gt; 机器可读 catalog
+  -&gt; 编辑器补全 / hover / 诊断
+  -&gt; snippet / 场景模板
+  -&gt; 自然语言生成 G-code
+  -&gt; gcode_parser 校验
+```
+
+它解决的问题是：
+
+- 怎么把现在这些 Markdown 手册变成界面可用的数据。
+- 怎么让编辑器知道 `G1` 后面能提示 `X/Y/Z/F`。
+- 怎么让用户 hover `M6` 时看到换刀语义。
+- 怎么写错 `G4 F3 X10` 时能提示错误。
+- 怎么让自然语言生成的代码不乱用当前 parser 不支持的 `G54/G90/M8/M99`。
+- 怎么把生成出来的代码交给 `gcode_parser` 校验后再插入。
+
+我后来加的 CAD/CAM/CAE/CAPP 那一节只是**扩展边界记录**，不是当前要做的规划主体。它的作用是说明：
+
+- 如果未来从“写 G-code”扩展到“根据工艺/几何生成刀路”，会碰到哪些结构。
+- CAD、CAM、CAE、仿真、后处理分别在哪一层。
+- 当前阶段只预留概念位置，不实现这些东西。
+
+所以这份规划可以命名得更准确一点：
+
+&gt; **G-code 编程辅助与受控自然语言生成路线图**
+
+如果你觉得现在文档名字容易让人误会，我建议改成：
+
+```text
+G-code Authoring Assistant Roadmap
+```
+
+中文可以叫：
+
+```text
+G-code 编程辅助路线图
+```
+
+这样比“自然语言生成计划”更稳，也不会让人以为我们已经开始做 CAM 或完整 AI 编程平台。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:52:07 +0800</div>
+<pre>可以 罗哥计划</pre>
+</article>
+<article class="msg assistant">
 <h3>Codex</h3>
 <div class="time">No Codex response captured for this turn.</div>
 </article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:52:11 +0800</div>
+<pre>可以 落个计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 09:52:48 +0800</div>
+<pre>我会把这份规划收敛成“G-code 编程辅助路线图”，避免看起来像 CAM/CAD/CAE 大规划。具体会改文档标题、导航名称，并补一段更清晰的近期执行切分：先 catalog seed，再 schema/validator，再 parser adapter，再编辑器能力。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 09:53:30 +0800</div>
+<pre>我会直接改这份计划文档：标题改成“G-code 编程辅助路线图”，新增“近期执行切分”章节，把 M1/M2/M3 拆成更小可落地的步骤，同时保留 CAD/CAM/CAE 只是扩展边界的说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 09:54:43 +0800</div>
+<pre>计划已收敛为“G-code 编程辅助路线图”，并加了近期可执行切分。现在我会构建 mdBook、跑测试和链接检查，确认导航名改动没有断链。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-13 09:56:46 +0800</div>
+<pre>已落成更明确的“G-code 编程辅助路线图”。
+
+主要改动：
+
+- 标题从“编程辅助与自然语言生成计划”改为：
+  [G-code 编程辅助路线图](/home/iaar/workspace/lup/luqtcellar/Labs/MetaNCGCodeParser/docs/wiki/Programming-Assistant-Plan.md)
+- 新增“定位”章节，明确这不是 CAM/CAD/CAE 规划，而是 G-code authoring assistant 路线图。
+- 新增“近期执行切分”，把下一步拆成：
+  - M1a catalog seed
+  - M1b schema + validator
+  - M1c parser validation adapter spike
+  - M1d catalog/docs consistency check
+  - M2 completion / hover prototype
+  - M3 diagnostics integration
+  - M4 snippets / scenarios
+  - M5 controlled natural-language generation
+- 更新了 mdBook 导航、首页、wiki 首页、sidebar 和 Roadmap Coverage 的叫法。
+
+验证已通过：
+
+- `mdbook build`
+- `mdbook test`
+- HTML 链接检查：`html links ok`
+- `git diff --check`
+
+当前修改还没 commit。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-13 09:57:00 +0800</div>
+<pre>commit+push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-13 09:57:31 +0800</div>
+<pre>我会先确认当前变更范围，只提交这次路线图相关的文档改动，然后 push 到当前 `master` 分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-13 09:58:06 +0800</div>
+<pre>变更范围只包含路线图和导航文档。提交前我再跑一次 mdBook 构建/测试和链接检查，确认生成结果没问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-13 09:59:20 +0800</div>
+<pre>验证通过。现在 stage 这 6 个文档文件、提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-13 09:59:48 +0800</div>
+<pre>提交已生成：`71d10df`。现在推送到 `origin/master`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-13 10:00:15 +0800</div>
+<pre>Push 成功。我会最后确认分支和工作区状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-13 10:00:24 +0800</div>
+<pre>已提交并 push 到 `origin/master`。
+
+提交：
+
+```text
+71d10df docs: refine gcode assistant roadmap
+```
+
+推送结果：
+
+```text
+ebc18e5..71d10df  master -&gt; master
+```
+
+验证已跑过：
+
+- `mdbook build`
+- `mdbook test`
+- HTML 链接检查：`html links ok`
+- `git diff --check`
+
+当前工作区干净。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-13 09:52:08 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
 </section>
 </main>
 </body>

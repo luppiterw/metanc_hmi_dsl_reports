@@ -48,3 +48,15 @@ Date: 2026-05-13
 - ok 先处理文档部分，你给个详细计划
 - ok  处理一下
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- 看看现在的功能内容还有什么要处理的
+- 4. PROG DIR 继续补齐
+       Rename/Delete/Refresh 还是 partial，后面还要明确路径边界、权限、递归删除策略、重名策略。这块和真实程序文件 adapter 强相关。
+- 4. PROG DIR 继续补齐
+       Rename/Delete/Refresh 还是 partial，后面还要明确路径边界、权限、递归删除策略、重名策略。这块和真实程序文件 adapter 强相关。
+  这个还是partial是什么意思
+- ok 我觉得这个可以，你详细计划一下
+- 可以 做一下，要保证测试完整，最好能TDD
+- 你这次提交之后，ai review给了几个comment，你看一下有没有问题，分析一下，然后修改后update pull request，然后回复comment，然后mark resolved,注意commit的格式docs: 这种开头
+-  4. PROG DIR 继续补齐
+       Rename/Delete/Refresh 还是 partial，后面还要明确路径边界、权限、递归删除策略、重名策略。这块和真实程序文件 adapter 强相关。
+- generate/update report &amp; docs + sync MetaNC + commit + push; 然后看一下现在计划

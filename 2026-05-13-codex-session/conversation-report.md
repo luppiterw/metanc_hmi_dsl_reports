@@ -46,3 +46,21 @@ Web/QML generator source 已无超过 1,000 行的 Python 文件。
 已经完成的 split-runtime 客户端接入事项，并重新生成 docs portal。该工作以
 `docs: align bookshelf portal and runtime status` 单独提交，随后进入 report、
 MetaNC 同步和推送流程。
+
+## PROG DIR Completion
+
+用户随后追问 PROG DIR 中 Rename/Delete/Refresh 仍为 partial 的含义，并确认
+可以按“当前目录边界、basename-only rename、空目录 delete、非空目录拒绝”的
+策略补齐。实现过程中按 TDD 路径推进：
+
+- 先在 `tests/test_mock_runtime_server.py` 增加 refresh、rename file、rename
+  non-empty directory subtree、delete file、delete empty directory、reject
+  non-empty directory、reject duplicate/unsafe path 等用例。
+- 再在 `server/tests/runtime_rest_api_test.cpp` 增加 native REST 层覆盖，确保
+  C++ simulator adapter 与 mock runtime 行为一致。
+- 最后接入 Web/QML command guard 和 local runtime，并刷新 generated snapshots。
+
+本轮决策是继续拒绝隐式递归删除和跨目录 rename，把权限、递归删除、重名冲突
+交互和真实程序文件 adapter 留到后续真实后端边界设计中处理。当前交付目标是让
+PROG DIR 的基础文件管理命令不再只是 UI 占位，而是在 Web/QML/server 上具有一致
+行为和测试覆盖。

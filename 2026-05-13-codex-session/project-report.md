@@ -2,10 +2,11 @@
 
 ## Scope
 
-本轮按用户要求回到“生成器源码拆解优化”的方向，没有继续推进新的 Web/QML
-功能验收场景。先完成当前 Web/QML generator 源码体量盘点，把后续是否还值得拆、
-该拆哪里、什么时候停止拆写成可引用的文档；随后按该结论完成 Web app-shell P0
-最小拆分并收口。
+本轮先按用户要求回到“生成器源码拆解优化”的方向，完成当前 Web/QML generator
+源码体量盘点，把后续是否还值得拆、该拆哪里、什么时候停止拆写成可引用的文档；
+随后按该结论完成 Web app-shell P0 最小拆分并收口。后续又处理了 docs portal
+兼容性和 PROG DIR 文件管理补齐，重点是把原先 partial 的 Rename/Delete/Refresh
+做成 Web/QML/server 一致的可测试闭环。
 
 ## Completed Work
 
@@ -55,6 +56,22 @@
     改为记录真实 southbound adapters、生产 command schema 和 persistence state
     stores 这些仍待完成的 server 方向。
   - README 与开发指南补充 `mdbook-bookshelf 0.2.x` docs portal 模型说明。
+- 完成 PROG DIR 文件管理补齐：
+  - 新增 DSL 命令 `progdir.commands.refresh`、`progdir.commands.rename`、
+    `progdir.commands.delete`。
+  - Web 和 QML footer command guard 已切到 `progdir.commands.*`，旧
+    `prog.commands.rename/delete` 保留兼容。
+  - Web local runtime、QML local runtime、fixture mock runtime 和 C++ simulator
+    adapter 均实现同一套路径策略。
+  - `Refresh` 仅刷新当前目录，不改变目录路径。
+  - `Rename` 支持文件和目录；目录 rename 会移动子树，并保留当前打开程序路径。
+  - `Delete` 支持文件和空目录；非空目录删除返回
+    `program.directory_not_empty`，避免隐式递归删除。
+  - 路径边界收敛为 basename-only rename，拒绝空名称、路径分隔符、越界路径、
+    重名 target 和不存在 entry。
+  - 删除当前打开程序时清空当前程序，避免自动回根目录或加载别的程序。
+  - 中英文 interface integration、program story、Web/QML parity 和 data
+    dictionary 已同步更新。
 
 ## Validation
 
@@ -64,6 +81,9 @@
 - `python3 docs_i18n/tools/i18n_status.py mark-current --lang zh-CN development_guidelines/generator_decomposition_inventory.md --write-report`
 - `python3 -m unittest tests.test_docs_portal`
 - `python3 -m unittest tests.test_web_qml_parity_docs docs_i18n.tests.test_i18n_status`
+- `python3 -m unittest tests.test_mock_runtime_server tests.test_pipeline tests.test_generator_refactor tests.test_parity_scenarios`
+- `ctest --test-dir generated/server-build --output-on-failure -R "runtime_rest_api_test|server_smoke_test"`
+- `python3 -m unittest tests.test_web_qml_parity_docs tests.test_server_api_docs docs_i18n.tests.test_i18n_status`
 - `git diff --check`
 
 Validation result: generated Web/QML/server/distribution artifacts were refreshed
@@ -71,14 +91,16 @@ without snapshot drift, the generator refactor tests still pass, and the
 inventory page now records the completed app-shell split in both English and
 zh-CN docs navigation. The rebuilt docs portal now succeeds with
 `mdbook-bookshelf 0.2.x` and publishes the root documentation index plus dated
-report books under `docs_html/`.
+report books under `docs_html/`. The PROG DIR slice was completed with unit
+coverage for mock runtime behavior, native REST coverage for the C++ simulator
+adapter, regenerated Web/QML snapshots, and a clean whitespace check.
 
 ## Next Recommendation
 
 Pause decomposition-only work unless the next product change touches a P1 file.
-The next split candidates remain Web Logs, command handlers, server bridge, and
-DEBUG query, but each should be paired with real feature or behavior work.
-
-For product-facing work, the next durable branch should move from generator
-housekeeping back toward real runtime adapter boundaries, persistence state
-stores, or the planned Logs S3 shared scenario.
+For product-facing work, the next durable branch should move from generated UI
+polish back toward runtime semantics: PROG DIR recursive delete/permission policy
+should remain explicit and deferred until the real program-file adapter boundary
+is designed; runtime adapter boundaries, production command schema, persistence
+state stores, and the planned Logs shared scenario remain the next larger product
+directions.

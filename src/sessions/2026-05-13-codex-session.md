@@ -6,6 +6,8 @@ Focus:
 - Web/QML generator source-size review
 - Web app-shell P0 split closure
 - Docs/report refresh and MetaNC sync
+- Docs portal `mdbook-bookshelf 0.2.x` compatibility repair
+- PROG DIR Refresh/Rename/Delete TDD completion across Web, QML, mock runtime, and C++ simulator server
 
 Session assets:
 

@@ -58,3 +58,31 @@ Date: 2026-05-14
 - ok那先commit + push，之后再检查
 - 我觉得现在可以收一下，我想做一次review
 - generate/update report &amp; docs + sync MetaNC + commit + push;然后继续review
+- 具体怎么修复呢
+- ok 修一下
+- 这几个review的问题详细分析一下
+- ok 详细计划一下处理
+- ok 处理一下
+- commit + push
+- 继续review
+- 处理一下
+- ok 详细计划一下处理
+- 给一个review的详细计划
+- ok 做一下
+- commit + push
+- 继续review
+- ok 做一下
+- 处理一下，然后commit + push
+- 看看现在的计划未完成有哪些
+- SOTRY1现在没问题了吗
+- 测试也没问题吗 story 01
+- ok 开始考虑STORY-02，详细拆分一下实现计划
+- ok 做一下
+- 你觉得当前版本可以pull request到main了吗
+- 先将main的变更合并到feat/hmi我看一下
+- 现在MetaNC和metanc_hmi_dsl是一致了基本上是吧，主体内容
+- ok 这些没问题
+- 可以，你现在帮我创建一个PR，描述要清楚
+- 通俗描述一下问题原因
+- ok 尝试处理一下
+- 看一下这个pr，里面有ai review comment了，你看看什么问题，分析一下，最小范围修改，没问题后generate/update report &amp; docs + sync MetaNC + commit + push；然后update pr，然后回复这个comment，然后mark resolved

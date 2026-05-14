@@ -2,8 +2,8 @@
 
 Focus:
 
-- Report and docs refresh, Codex user-history and full conversation export,
-  MetaNC sync, and publication
+- Program check orchestration, active slot / transfer contract, reused-check
+  idle gate fix, docs/report refresh, MetaNC sync, and publication
 
 Session assets:
 

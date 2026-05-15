@@ -1,3 +1,59 @@
 # Codex User History
 
 Date: 2026-05-15
+
+- metanc_hmi_dsl和MetaNC都拉取一下远程更新
+- 看一下MetaNC中现在hmi tooling_management 会如何组织
+- 现在因为接入了新的内容，但是metanc_hmi_dsl里又没有这些内容，我如何保证metanc_hmi_dsl和MetaNC的核心同步，然后又能保证metanc_hmi_dsl单独能跑呢，你给一些详细的建议方案
+- 我的意思是，hmi后续马上就要接入一些其他模块功能了，比如这里的tooling_management什么的，我如果继续在metanc_hmi_dsl里加这些功能，就会发现可能没法单独跑了测试，而MetaNC这个mono repo大包里才有那些完整依赖项，你觉得我应该怎么弄，然后metanc_hmi_dsl不能成为MetaNC的submodule（会污染MetaNC）
+- 但是你这一套东西，回头维护感觉会吃力，以后hmi部分势必会加入很多和底层相关的内容
+- 是不是现在metanc_hmi_dsl要考虑放弃维护了
+- 这个维护感觉成本会比较高
+- 拉取一下MetaNC的远程更新，然后把main合并到feat/hmi我看一下
+- commit+push一下，然后生成一下最终文档和产物
+- 看一下现在的计划
+- 给一个详细计划
+- 什么问题，主要和什么有关
+- ok 回到我们之前的MetaNC组织的问题上来，metanc_hmi_dsl维护问题，你觉得怎么设计更合适，我还是想有一些独立的测试能力，比如起码可以关闭server连接的实际功能、只做client/server收敛的测试
+- 还有涉及一个组织/协议的问题，现在你看一下，MetaNC的框架和协议组织走的是什么，我记得是orocos
+- 这个项目里面ros2 orocos这些的关系如何
+- hmi server后续应该是和tool parser 这些类似的分布关系吧
+- 我的意思是，我的hmi-server，本质上不就是ros的一个节点了
+- n你觉得这样是合适的吗
+- 现在gcode_server和tooling_management有ros这层包装吗
+- orocos在我们这里的作用本质上是什么，你结合架构和实际内容看一下，可能还有CNC实时部分、不知道是哪个分支，你结合看一下
+- 所以这一整套的编译、执行、实时、非实时等，你组织一下，从工具链到模块
+- 看起来合理，那么回到我最初的问题上来，metanc_hmi_dsl还有必要保留吗
+- 这样会导致后续MetaNC和metanc_hmi_dsl的部分偏移越来越严重吗
+- 我感觉可以fork MetaNC，里面结合metanc_hmi_dsl出一个新的，然后以后在这里处理，同步也是，内部要收敛、然后过滤的那些也要有
+- 是的，fork之后要考虑原来一些过滤的同步怎么处理更合适，我的想法是把原来有些东西全部提出来，放到submodule里面，这样保持洁净，你觉得呢
+- fix
+- 为什么contract fixture 这些要放submodule，MetaNC里不是也需要吗
+- 所以其实最终还是现在这样，一个report是submodule+原来的一些过滤信息要不要做成submodule
+- fix
+- 看一下现在的计划 未完成的
+- 看一下现在哪些文件是过滤的
+- 详细计划一下
+- commit + push一下，然后列一下现在所有story slice spec状态，那些没做的标记一下
+- 我现在有个想法，就是基于MetaNC和现在metanc_hmi_dsl，在metanc_hmi_dsl中拉一个分支用来按照MetaNC结构存放，然后以后同步也方便一些，然后这个分支就叫MetaNC，然后submodule还是原来的report，你觉得可行吗
+- ok 做一个详细计划我们讨论一下
+- metanc-layout可以，准备开始弄一下我看看
+- 可以传一下先，然后把远程的默认分支也改成metanc-layout
+- diff 看看MetaNC和metanc_hmi_dsl的差异
+- 在metanc_hmi_dsl里生成最终产物我看看
+- 在metanc_hmi_dsl里生成最终产物+文档我看看
+- web 和qml分别怎么执行来着
+- run_split_web.sh怎么跑，run_split_qml.sh怎么跑
+- 有一键启用吗，我记得之前可以
+- 我试了一下又执行没反应了，什么情况，循环启动界面没变化
+- Prepare the active program before AUTO cycle start 报这个错误，可是我界面有程序啊
+- 我按照这个流程走还是不行
+- ➜  metanc_hmi_dsl git:(metanc-layout) ./nrt/hmi/generated/distribution/run_split_web_native.sh 8010 8000 我是这样执行的，难道还要切到子目录去吗
+- ok 但是如果现在有选择的程序，不应该要求每次进去都重新选择一遍，然后现在qml一键脚本是怎么跑来着
+- ok 是不是要修复一下，给个计划
+- ok
+- 给个下一步的推荐计划和详细设计
+- generate/update report &amp; docs + sync MetaNC + commit + push
+- generate/update report &amp; docs + sync MetaNC + commit + push，记得同步前后都要检查最终产物有没有问题；等结束了我们讨论一下UI自动化测试的事情，我感觉有必要来这个
+- 现在report里面的user history看着是空的，可能是什么原因
+- 你看看怎么改

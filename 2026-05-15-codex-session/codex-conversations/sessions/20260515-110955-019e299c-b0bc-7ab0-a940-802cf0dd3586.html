@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-05-15 11:09:55 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/15/rollout-2026-05-15T11-09-55-019e299c-b0bc-7ab0-a940-802cf0dd3586.jsonl</code></div>
-<div><b>Messages</b>: <code>111</code></div>
-<div><b>User prompts</b>: <code>10</code></div>
+<div><b>Messages</b>: <code>292</code></div>
+<div><b>User prompts</b>: <code>20</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -1384,6 +1384,2031 @@ MEMORY.md:1-4|note=[used repository workflow preferences]
 <h3>Codex Response 13 / commentary</h3>
 <div class="time">2026-05-15 14:52:55 +0800</div>
 <pre>我会从当前未提交的 STORY-07 severity tiers 开始收口，先确认工作区状态和已改内容，再补测试、同步 docs、跑验证并提交。后续继续按既定顺序推进 STORY-08 和 STORY-14，最后统一全量验证和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 14:53:10 +0800</div>
+<pre>当前状态确认：分支 `feat/plc` 已经领先远端 2 个提交，工作区只有 STORY-07 severity 相关的未提交改动。接下来我先把 severity 的测试和文档状态补齐，再单独提交这一片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 14:53:26 +0800</div>
+<pre>文档部分我会按 `write-docs` 的规则处理：只改对应 story/slice/spec/invariant 状态和必要 API 名称，不改导航结构。代码侧先让测试覆盖四档 severity 的诊断映射和枚举顺序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 14:54:40 +0800</div>
+<pre>我发现 STORY-07 的总 story 表还停在 designing，即使 SLICE-01 已实现也没有反映到汇总页。这会一并修正，避免实现状态和索引互相打架。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 14:56:37 +0800</div>
+<pre>severity 的代码和 docs 现在都已补齐。我先跑这一片的构建、相关 CTest、docs lint 和 diff check，确认没有把前面的 fault-flow 语义打坏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 14:56:53 +0800</div>
+<pre>构建还在跑，前半段已经过了核心库和一批测试目标；docs lint 和 whitespace check 已通过。等构建完成后我马上跑 `story07|story03|story05` 相关测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 14:57:26 +0800</div>
+<pre>局部验证通过：构建成功，`story03/story05/story07` 相关测试全绿，docs policy lint 和 `git diff --check` 也通过。现在把 STORY-07 severity tiers 做成一个小提交，然后进入 STORY-08 的异常隔离实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-15 14:58:00 +0800</div>
+<pre>STORY-07 severity tiers 已提交为 `b3c72391`。现在进入 STORY-08，我会先读 dispatch/lifecycle 两个 slice 的规格，确认异常应该转成哪些诊断码和哪些行为必须继续执行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-15 14:58:30 +0800</div>
+<pre>STORY-08 SLICE-01 的关键合同很明确：`cycle` 和 `on_fault` 的异常都不能中断同一轮剩余 Behavior 的调用，并且要转成 Error severity 的 self-report fault，下一周期再广播。我会补一个专门的 hardening 测试目标，覆盖 cycle 抛错继续 dispatch，以及 on_fault 抛错继续 broadcast。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-15 15:00:51 +0800</div>
+<pre>实现已落到调度边界：每个 `cycle()` 和 `on_fault()` 都单独 try/catch，异常会记录诊断并入 pending fault 队列，不会直接递归广播。这样 `on_fault` 抛错时，原始 fault 广播仍继续，异常自身的 self-report fault 留到下一周期处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-15 15:01:56 +0800</div>
+<pre>SLICE-01 的构建和相关测试已经通过。下一步只同步 STORY-08 的 SLICE-01 规格状态和 validated-by，保持 SLICE-02 仍为 designing，然后提交这一片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-15 15:02:13 +0800</div>
+<pre>测试目标已经接入 CMake 并通过，代码 diff 也集中在 `Framework` 的调度边界和新测试。现在我会把 SLICE-01 的 `FaultInfo::Severity::Error` 旧 API 写法顺手改成当前的 `FaultSeverity::kError`，再更新 implemented 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-15 15:03:00 +0800</div>
+<pre>SLICE-01 文档和测试都已复核通过。我准备提交 `feat: harden PLC behavior dispatch`，提交前会确认新增测试 fixture 已纳入 staged。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-15 15:03:45 +0800</div>
+<pre>STORY-08 dispatch resilience 已提交为 `96fb0878`。继续做 SLICE-02：我会在同一个 hardening 测试目标里补 stop/reset 抛错用例，然后把生命周期边界改成 catch-log-continue。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-15 15:04:20 +0800</div>
+<pre>SLICE-02 的设计不要求 self-report fault，因为 shutdown/reset 没有“下一周期广播”的可靠路径；这里我会复用同一套异常日志格式，但把生命周期异常限制为记录诊断并继续，不入 pending fault 队列。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-15 15:05:09 +0800</div>
+<pre>lifecycle 代码现在和 dispatch 共用日志生成逻辑，但只有 dispatch 路径会再排 self-report fault。测试里 stop 使用反向顺序 fixture，reset 使用注册顺序 fixture，分别验证抛错后后续 Behavior 仍被调用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-15 15:05:54 +0800</div>
+<pre>生命周期边界的实现验证通过，相关 story02/03/05/07/08 测试都绿。现在我把 SLICE-02 的 spec/invariant 状态切到 implemented，并在 story/index 上把 STORY-08 收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-15 15:06:34 +0800</div>
+<pre>SLICE-02 的 docs 状态也已经对齐，局部验证继续通过。我会提交 `feat: harden PLC lifecycle callbacks`，然后进入 STORY-14 的 CPU budget hint。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-15 15:07:15 +0800</div>
+<pre>STORY-08 lifecycle resilience 已提交为 `cd544c84`。现在进入 STORY-14 SLICE-02，我会先读 CPU hint 的规格，避免把预算口径或诊断码猜错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-15 15:07:48 +0800</div>
+<pre>STORY-14 的 doc 写的是“static constexpr 或替代形式”，当前 registry 只实例化对象、没有类型元数据表。这里更小的实现是给 `Behavior` 增加可 override 的 `cycle_budget_hint()`，默认 100us；作者实现里通常返回类常量，框架在 boot 后累加实例的返回值。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-15 15:08:14 +0800</div>
+<pre>我继续推进 STORY-14 SLICE-02。这里我会把 hint 做成 `Behavior::cycle_budget_hint()` 的虚函数：默认 100us，具体 Behavior 可用类级常量返回它；框架 boot 后累加实例 hint，超过 `scan_period_ms` 的 80% 预算就发 `warn/budget-exceeded`，并把 hint 暴露到 snapshot。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-15 15:09:42 +0800</div>
+<pre>CPU hint 的首版实现已经落下：boot 阶段评估、snapshot 字段、默认 hint、超预算和非超预算测试都已补。现在跑构建，预期 CMake 会重新生成并编译新增 story14 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-15 15:11:11 +0800</div>
+<pre>STORY-14 的局部测试已经过了。我注意到预算检查现在放在 logger init 之前，真实 logger 可能还没准备好；我会把预算诊断移动到 `logger.init()` 之后，同时 snapshot 用配置里的 scan period 计算预算，避免未 boot 的 snapshot 因没有 backend 而抛错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-15 15:11:35 +0800</div>
+<pre>预算诊断现在发生在 `logger.init()` 之后、backend init 之前，仍属于 boot/init 流程但不会依赖未初始化 logger；snapshot 预算上限改用已加载配置值。接下来我更新 STORY-14 的 docs API 说明和状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-15 15:13:25 +0800</div>
+<pre>STORY-14 的实现和 docs 已经对齐，局部验证全绿。我会先提交这一片，然后跑全量验证和最终状态审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-05-15 15:14:15 +0800</div>
+<pre>STORY-14 behavior CPU hints 已提交为 `99c1b30a`。现在进入最后阶段：全量构建、全量 CTest、docs build、docs lint、diff check，再做 story/slice/spec 状态审计并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-15 15:14:36 +0800</div>
+<pre>实现提交已经完成，当前分支领先远端 6 个提交且工作区干净。现在我跑最终全量验证：全量 CTest、mdBook build、docs policy lint、diff check，以及 docs 状态审计，之后 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-05-15 15:14:53 +0800</div>
+<pre>全量 CTest 已通过 21/21，docs build 正在收尾，输出显示 PLC book 已被纳入 6 个 book 的构建。等 `book build` 退出后我做最后的状态审计并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-05-15 15:15:45 +0800</div>
+<pre>最终验证已经完成：构建、21 个 CTest、`book build`、docs lint、diff check 都通过；目标 story 的 docs 状态审计没有残留 `designing/unimplemented/[]`。现在 push 分支，然后我生成一份当前 story/slice/spec 状态清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-05-15 15:16:36 +0800</div>
+<pre>Push 已完成，远端 `feat/plc` 更新到 `99c1b30a`。我现在做最后一轮状态汇总：把 story、slice、spec/invariant 的当前状态按已完成和未完成分开，避免只凭记忆列清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-05-15 15:16:59 +0800</div>
+<pre>前面 spec/invariant 状态查询有一个 shell glob 写法不兼容，我改用 `rg` 直接扫目录。工作区仍然干净，push 已完成；现在只是在整理最终清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / final_answer</h3>
+<div class="time">2026-05-15 15:18:25 +0800</div>
+<pre>已完成并 push 到远端 `feat/plc`，当前 HEAD 是 `99c1b30a`.
+
+这次推了 6 个提交：
+- `e5099bc3` docs: sync PLC story index status
+- `2db3a250` feat: add PLC behavior fault reporting
+- `b3c72391` feat: add PLC fault severity tiers
+- `96fb0878` feat: harden PLC behavior dispatch
+- `cd544c84` feat: harden PLC lifecycle callbacks
+- `99c1b30a` feat: add PLC behavior CPU budget hints
+
+验证结果：
+- `cmake --build /tmp/metanc_plc_build` 通过
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：21/21 通过
+- `book build` 通过，PLC book 已纳入 bookshelf 6 个 book 构建
+- `python3 .mdbook/lint_docs_policy.py` 通过
+- `git diff --check` 通过
+- 工作区干净，已 push：`eeb6850a..99c1b30a feat/plc -&gt; feat/plc`
+- Goal 用时：2370 seconds
+
+**Story 状态**
+Implemented: STORY-01, STORY-02, STORY-03, STORY-05, STORY-06, STORY-07, STORY-08, STORY-14
+
+未完成 / Active: STORY-04, STORY-09, STORY-10, STORY-11, STORY-12, STORY-13, STORY-15, STORY-16
+
+**Slice 状态**
+Implemented:
+- STORY-01: SLICE-01, 02, 03, 04, 05
+- STORY-02: SLICE-01, 02, 03
+- STORY-03: SLICE-01, 02, 03, 04
+- STORY-05: SLICE-01, 02
+- STORY-06: SLICE-01, 02
+- STORY-07: SLICE-01, 02
+- STORY-08: SLICE-01, 02
+- STORY-14: SLICE-01, 02
+
+未完成 / Designing:
+- STORY-04: SLICE-01-linear-step-and-wait, SLICE-02-timer-and-delay, SLICE-03-branching-and-repeat
+- STORY-09: SLICE-01-invoke-action-routing, SLICE-02-pause-and-resume
+- STORY-10: SLICE-01-axis-handle, SLICE-02-axis-group, SLICE-03-axis-ownership
+- STORY-11: SLICE-01-io-channel-inventory, SLICE-02-axis-inventory, SLICE-03-machine-parameters
+- STORY-12: SLICE-01-transactional-swap, SLICE-02-state-transfer
+- STORY-13: SLICE-01-twincat-backend-group, SLICE-02-migration-tool
+- STORY-15: SLICE-01-dependency-declaration, SLICE-02-topological-scheduling
+- STORY-16: SLICE-01-subsequence-and-if-then-else, SLICE-02-parallel-branches
+
+**Spec / Invariant 状态**
+Implemented:
+- STORY-01: SPEC-001..010, SPEC-060, INV-001..006
+- STORY-02: SPEC-011..013, INV-007..010
+- STORY-03: SPEC-014..019, SPEC-058, SPEC-059, INV-011..013, INV-041
+- STORY-05: SPEC-025, SPEC-026, INV-016, INV-017
+- STORY-06: SPEC-027, SPEC-028, INV-018, INV-019
+- STORY-07: SPEC-029, SPEC-030, INV-020, INV-021
+- STORY-08: SPEC-031..034, INV-022, INV-023
+- STORY-14: SPEC-050, SPEC-051, INV-036, INV-037
+
+未完成 / Unimplemented:
+- STORY-04: SPEC-020..024, INV-014, INV-015
+- STORY-09: SPEC-035, SPEC-036, INV-024, INV-025
+- STORY-10: SPEC-037..041, INV-026..028
+- STORY-11: SPEC-042..044, INV-029..031
+- STORY-12: SPEC-045..047, INV-032, INV-033
+- STORY-13: SPEC-048, SPEC-049, INV-034, INV-035
+- STORY-15: SPEC-052..054, INV-038, INV-039
+- STORY-16: SPEC-055..057, INV-040
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:47-49|note=[used PLC workflow and validation context]
+MEMORY.md:1-4|note=[used repository workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 15:19:17 +0800</div>
+<pre>你建议一下下面做什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-15 15:19:41 +0800</div>
+<pre>我建议下一步做 **STORY-09 NRT operator control 的 SLICE-01：`clear_faults` action routing**。
+
+理由很直接：我们刚完成了 fault reporting、fault severity、异常隔离、CPU budget。现在 fault 能被产生、传播、观察，也能通过 `Framework::clear_faults()` 本地恢复，但 NRT/操作员侧还不能通过桥接协议触发恢复。把 `clear_faults` 从 NRT 打通，是最自然的“功能闭环收口”。
+
+**推荐顺序**
+1. **STORY-09 SLICE-01: invoke-action-routing**
+   - 支持 NRT incoming command，比如 `clear_faults`
+   - 框架收到后调用 `Framework::clear_faults()`
+   - 记录成功/失败 diagnostic
+   - 测试覆盖：有 fault 后通过 NRT 清除、非 RUNNING 状态拒绝或记录错误、未知 action 不影响 scan loop
+
+2. **STORY-09 SLICE-02: pause/resume**
+   - 等 SLICE-01 路由骨架稳定后再做
+   - 因为 pause/resume 会影响 lifecycle/run-loop 状态，比 clear_faults 风险更高
+
+3. 暂缓 **STORY-04 Sequence DSL**
+   - 它很重要，但会引入新的 author-facing DSL 和执行模型
+   - 现在先把 operator control 闭环打通，更利于后面验证 sequence/fault/runtime 行为
+
+4. 暂缓 **STORY-10 Motion / STORY-13 TwinCAT**
+   - 这两个依赖外部接口决策更多，容易扩大范围
+   - 目前不适合作为刚完成 PLC 内核稳定性后的下一步
+
+**我建议的下一轮具体设计**
+- 先读 `STORY-09/SLICE-01` 规格和当前 `NrtBridge` incoming message 结构
+- 明确 command descriptor 形态是否复用现有 `nrt_bridge.incoming`
+- 最小实现只支持一个 action：`clear_faults`
+- 加 `story09_operator_control_tests.cpp`
+- 更新 `STORY-09` SLICE-01 docs 状态
+- 单独 commit + push
+
+如果你同意，我下一步就按这个方向先做详细设计，再落代码。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 15:19:52 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 15:20:22 +0800</div>
+<pre>我先看一下 STORY-09 现有规格和当前 NRT inbound 实现，计划会按实际文档和代码边界来写，不靠猜接口形状。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-15 15:21:39 +0800</div>
+<pre>下面我建议把下一轮命名为：
+
+**STORY-09 SLICE-01: NRT Invoke Action Routing**
+
+目标是让 `machine.yaml` 支持：
+
+```yaml
+nrt_bridge:
+  incoming:
+    - message: ClearFaults
+      action: { invoke: clear_faults }
+```
+
+并在收到 `ClearFaults` 时，在 Behavior `cycle()` 前调用框架动作。
+
+**边界**
+本轮只做 SLICE-01，不做 pause/resume 状态机。
+
+包含：
+- `invoke: clear_faults`
+- `invoke: request_stop`
+- inline 和 block 两种 action 解析
+- descriptor 校验：同一 message 只能映射一个 action
+- runtime 调度：NRT poll 后、Behavior cycle 前执行 invoke
+- docs 状态更新、测试、commit、push
+
+不包含：
+- `pause` / `resume`
+- 自定义 action 注册给应用层
+- invoke 参数
+- NRT reply/ack
+- rtcomm/interface 最终协议对齐
+
+**详细实施计划**
+1. **Descriptor 数据结构**
+   - 给 `NrtInboundActionDescriptor` 增加 action kind：
+     - `set`
+     - `invoke`
+   - 保留现有字段：
+     - `signal_name`
+     - `value`
+   - 新增：
+     - `invoke_name`
+   - 这样现有 set 行为不破坏，invoke 有明确类型分支。
+
+2. **YAML Parser**
+   - 扩展 `action` 解析：
+     - block:
+       ```yaml
+       action:
+         invoke: clear_faults
+       ```
+     - inline:
+       ```yaml
+       action: { invoke: clear_faults }
+       ```
+   - set action 仍要求 `set + value`
+   - invoke action 只允许 `invoke`
+   - 拒绝混合：
+     - `set + value + invoke`
+     - `invoke + value`
+     - 空 invoke
+   - 继续复用现有 `parse_inline_nrt_inbound_action` / `parse_nrt_inbound_action`，只把校验逻辑扩成两种合法形态。
+
+3. **Descriptor Validation**
+   - `validate_nrt_inbound_mappings()` 扩展为同时支持 set/invoke。
+   - duplicate message 逻辑保持，正好满足 `INV-024`。
+   - set action：
+     - 继续要求 set target 非空
+     - 继续加入 inbound producer signal set
+   - invoke action：
+     - 要求 action name 是内置允许值：
+       - `clear_faults`
+       - `request_stop`
+     - 不加入 inbound producer signal set
+   - 这点很重要：invoke 不生产 virtual signal，不应参与“virtual signal producer”冲突判断。
+
+4. **Runtime 调度**
+   - 改 `Framework::apply_inbound_messages()`。
+   - 匹配 mapping 后：
+     - set：照旧写 virtual signal，返回是否 changed
+     - invoke：调用内部 action dispatcher
+   - 执行位置保持当前顺序：
+     - `poll_incoming`
+     - `apply_inbound_messages`
+     - `update_nrt_watchdog`
+     - `drain_pending_behavior_faults`
+     - hooks
+     - behavior cycle
+   - 这样 invoke 符合 SPEC-035：在 Behavior cycle 前执行。
+
+5. **Action Dispatcher**
+   - 增加私有 helper，例如：
+     - `invoke_nrt_action(std::string_view action_name)`
+   - 行为：
+     - `clear_faults` -&gt; `clear_faults()`
+     - `request_stop` -&gt; `request_stop()`
+   - 由于 `clear_faults()` 要求 RUNNING，而 `apply_inbound_messages()` 只在 `run_cycle_once()` RUNNING 路径内执行，正常不会触发状态错误。
+   - 仍建议 catch `std::exception`，发 `error/invoke-action-failed`，避免 operator command 把 scan loop 打断。这个是防御性，不改变正常合同。
+   - 成功可以不发 diagnostic，因为 SPEC-035 diagnostics 是 `[]`，状态变化可通过 snapshot 观察。
+
+6. **测试**
+   - 新增或扩展测试目标，建议新建：
+     - `story09_operator_control_tests.cpp`
+   - 测试用例：
+     - `invoke_clear_faults_clears_faulted_behaviors_before_cycle`
+       - 先 inject fault
+       - push `ClearFaults`
+       - run tick
+       - assert reset/clear 在 cycle 前发生
+       - assert `info/faults-cleared`
+     - `invoke_request_stop_sets_stop_requested_before_cycle`
+       - push `RequestStop`
+       - run tick
+       - assert `run_cycle_once()` 后 `stop_requested == true`
+       - 注意当前实现可能已经进入 cycle 前后边界，要按实际语义确认是否本 tick 还会 cycle；如果 `request_stop()` 在 apply 阶段发生，后续最好不再 cycle，这可能需要在 invoke 后短路。
+     - `multiple_invoke_messages_execute_in_arrival_order`
+       - 同一 poll 返回多个 command，验证调用次数/顺序。
+     - descriptor parse:
+       - inline invoke parses
+       - block invoke parses
+       - duplicate message across set/invoke rejected
+       - unsupported invoke rejected
+       - mixed set/invoke rejected
+
+7. **一个需要提前定的语义**
+   `request_stop` 到达后，本 tick 是否继续 Behavior cycle？
+
+   我建议：**不继续 cycle**。原因是 operator 已请求停机，继续跑一轮 Behavior 没必要，还可能让“停止命令”的时序不直观。
+
+   实现方式：
+   - `apply_inbound_messages()` 执行 invoke `request_stop`
+   - `run_cycle_once()` 在 `apply_inbound_messages()` 后再次检查 `stop_requested_`
+   - 如果 true，完成必要 heartbeat/observable 处理后返回 false 或直接停止本 tick
+
+   这块要小心不要破坏 heartbeat entry/completion。我建议最小做法是：
+   - 在 `apply_inbound_messages()` 后、Behavior cycle 前：
+     ```cpp
+     if (stop_requested_) {
+       plc_scan_.mark_completion(tick, false);
+       mark_observable_change();
+       return false;
+     }
+     ```
+   - 测试覆盖这一点。
+
+8. **Docs 更新**
+   - `STORY-09/SLICE-01` status -&gt; implemented
+   - `SPEC-035` implementation-status -&gt; implemented, validated-by -&gt; `[story09_operator_control_tests, mvp1_descriptor_tests]`
+   - `INV-024` implementation-status -&gt; implemented, validated-by -&gt; `[mvp1_descriptor_tests]`
+   - STORY-09 仍保持 active，因为 SLICE-02 pause/resume 未做。
+   - `INDEX.md` STORY-09 仍 active。
+
+9. **验证**
+   - `cmake --build /tmp/metanc_plc_build`
+   - `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story09|mvp1_descriptor|mvp1_nrt_inbound|story03|story08&quot;`
+   - `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`
+   - `book build`
+   - `python3 .mdbook/lint_docs_policy.py`
+   - `git diff --check`
+
+10. **提交**
+   - 一个 commit：
+     - `feat: add PLC NRT invoke action routing`
+   - push `feat/plc`
+
+我建议先实现 `clear_faults` 和 `request_stop` 两个 built-in。`clear_faults` 是主闭环，`request_stop` 是同一 slice 文档已经承诺的动作，顺手完成能避免 STORY-09 SLICE-01 半实现。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 15:24:47 +0800</div>
+<pre>可以，有未提交先提交一下，然后按照讨论的计划做</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 15:25:11 +0800</div>
+<pre>我先检查工作区有没有未提交内容；如果有会先单独提交，干净后再开始 STORY-09 SLICE-01。后续会按讨论计划做代码、测试、docs、验证和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 15:25:24 +0800</div>
+<pre>当前工作区是干净的，没有未提交内容需要先处理。我已经完成了 repo/module 方向确认，接下来直接按计划改 descriptor、framework 调度和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 15:25:55 +0800</div>
+<pre>我会使用 `write-docs` 规则来做后续 docs 状态更新：只改 STORY-09 SLICE-01 对应页面和必要导航状态，不顺手重构其它文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 15:26:39 +0800</div>
+<pre>我现在开始改 descriptor 层：先把 inbound action 从“只能 set/value”扩成明确的 `set` / `invoke` 两种 kind，同时保持现有 set fixture 和测试兼容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 15:27:38 +0800</div>
+<pre>descriptor 结构和校验已经支持 invoke，并且 invoke 不再参与 virtual signal producer 计算。下一步改 framework 调度：匹配到 invoke 时调用内置 action，`request_stop` 会让本 tick 在 Behavior cycle 前短路。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 15:27:58 +0800</div>
+<pre>框架调度已接入 invoke：`clear_faults` 复用已有恢复路径，`request_stop` 会设置 stop_requested 并在本 tick 跳过 Behavior cycle。现在补 descriptor 和 runtime 回归测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 15:28:50 +0800</div>
+<pre>descriptor 测试已补上 inline/block invoke、混合 action 拒绝、未知 invoke 拒绝、set/invoke 重复 message 拒绝。现在新增 STORY-09 runtime 测试，验证 clear_faults 和 request_stop 的周期语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 15:29:43 +0800</div>
+<pre>runtime 测试已添加并接入 CMake。现在先跑构建和相关测试，预期如果 request_stop 的 heartbeat 或 descriptor 校验有边界问题，会在这里暴露。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 15:31:05 +0800</div>
+<pre>第一次测试暴露的是 fixture 写法问题，不是 invoke 逻辑本身：现有 descriptor parser 要求 binding list item 是 block 结构，我写成了 inline `- handle: ...`。我会把新增 fixtures 改成项目已有格式后重跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 15:31:52 +0800</div>
+<pre>相关测试已经通过。接下来我更新 STORY-09 SLICE-01 文档状态和 validated-by，STORY-09 本身保持 active，因为 pause/resume 还没做。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 15:32:20 +0800</div>
+<pre>docs 状态已同步：SLICE-01 implemented，STORY-09 仍 active。现在跑完整验证，包括构建、全量 CTest、book build、docs lint 和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 15:34:05 +0800</div>
+<pre>我会先接上刚才的验证尾巴，确认 `book build` 是否已经结束，然后看一下当前 diff/status，再提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 15:34:16 +0800</div>
+<pre>`book build` 已经正常完成，PLC 文档也进入了 bookshelf 站点构建。接下来我做最后一次状态和差异核对，避免把无关文件带进提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 15:34:30 +0800</div>
+<pre>差异只落在 `rt/plc` 内，符合这次范围。因为准备提交，我再跑一组快速收口检查：未跟踪文件列表、空白检查、文档策略 lint 和 PLC 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 15:34:46 +0800</div>
+<pre>快速检查都通过了，未跟踪文件也都是这次新增的 STORY-09 测试/fixture。现在我会把这些 `rt/plc` 改动一起入提交，然后推到当前分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 15:35:02 +0800</div>
+<pre>暂存区只包含这次计划内的 PLC 文件。接下来提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 15:35:13 +0800</div>
+<pre>提交已经生成：`b16f618e feat: add PLC NRT invoke action routing`。`git push` 还在运行，我等它返回后再做最终状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 15:35:18 +0800</div>
+<pre>push 已完成。我最后确认一下分支和工作区，确保本地已经干净并且和远端对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-05-15 15:35:30 +0800</div>
+<pre>已完成并 push。
+
+当前提交：`b16f618e feat: add PLC NRT invoke action routing`
+分支：`feat/plc`，已推送到 `origin/feat/plc`，工作区干净。
+
+这次做了：
+- 实现 STORY-09 SLICE-01 的 NRT `invoke` action routing。
+- descriptor 支持 inline/block 两种 `invoke` 描述，并校验 `set`/`invoke` 混用、重复 message、unsupported invoke。
+- runtime 支持 `clear_faults` 和 `request_stop`；`request_stop` 会在 inbound 阶段后短路本周期 behavior。
+- 补了 descriptor fixtures 和 `story09_operator_control_tests`。
+- 更新 STORY-09 SLICE-01 / SPEC-035 / INV-024 状态为 implemented；STORY-09 本身仍是 active，因为 SLICE-02 pause/resume 还没做。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，22/22 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and direct implementation context]
+MEMORY.md:47-49|note=[used PLC validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 15:41:25 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 15:41:48 +0800</div>
+<pre>我先快速看一下当前 STORY-09 和 PLC spec 索引的落点，确保计划按已提交状态往下接，而不是凭印象列。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 15:42:04 +0800</div>
+<pre>刚才我用了旧目录名查 SLICE-02，实际目录是 `SLICE-02-pause-and-resume`。我现在读正确的 SLICE/SPEC/INV，然后给你按实现顺序拆计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 15:42:26 +0800</div>
+<pre>我已经确认当前最自然的下一步是 STORY-09 SLICE-02：`pause` / `resume`。我再补看一下 framework 的周期结构和 snapshot 字段，计划里会把代码落点、测试用例、状态更新都拆清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-15 15:43:07 +0800</div>
+<pre>建议下一步做 **STORY-09 SLICE-02: pause-and-resume**，把 operator control 从“单次动作 invoke”补齐到“可暂停/恢复 PLC 行为调度”。
+
+**目标**
+实现 `action: { invoke: pause }` 和 `action: { invoke: resume }`：
+
+- `pause`：框架仍保持 `RUNNING`，但后续 tick 不再调用 `Behavior::cycle()`。
+- `resume`：清除 paused 标志，下一个 tick 正常恢复 behavior cycle。
+- 暂停期间 NRT inbound 仍继续 poll，所以 `resume` 能从同一个 NRT bridge 收到。
+- IO/backend 周期仍继续执行，避免暂停后整个控制通道失联。
+
+**代码设计**
+主要落点：
+
+- [framework.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/framework.hpp)
+  - 增加 `pause()`, `resume()`, `is_paused() const`。
+  - `FrameworkSnapshot` 增加 `bool paused = false;`。
+  - 增加 `std::atomic_bool paused_{false};`。
+- [framework.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/framework.cpp)
+  - `pause()`：仅在 `RUNNING` 时生效；已 paused 时 no-op。
+  - `resume()`：已 running 且非 paused 时 no-op。
+  - `request_stop()` / `shutdown()` / `boot()` 边界要清理 `paused_`，避免重启后继承旧暂停态。
+  - `run_cycle_once()` 在 inbound invoke 和 watchdog/fault drain 之后判断 `is_paused()`：
+    - paused 时跳过 behavior `cycle()`。
+    - 仍执行 outbound evaluation、IO write、heartbeat completion、overrun 统计。
+    - 注意：如果 paused 期间 behavior 不写输出，那么输出保持上一轮 buffer 状态。
+  - `invoke_nrt_action()` 增加 `pause` / `resume` 分支。
+- [descriptors.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/descriptors.cpp)
+  - `validate_nrt_inbound_mappings()` 允许 invoke action 名称扩展为：
+    - `clear_faults`
+    - `request_stop`
+    - `pause`
+    - `resume`
+
+**行为顺序**
+建议固定为这个周期顺序：
+
+1. wait tick
+2. mark heartbeat entry
+3. `io.read_inputs()`
+4. `nrt.poll_incoming()`
+5. apply inbound messages，包括 `pause` / `resume`
+6. 如果 `request_stop`，按现有 SLICE-01 逻辑短路
+7. update NRT watchdog
+8. drain pending behavior faults
+9. after poll hook
+10. 如果 paused：跳过 behavior cycle
+11. 如果非 paused：执行 behavior cycle
+12. evaluate outbound mappings
+13. `io.write_outputs()`
+14. heartbeat completion + observable change
+
+这个顺序的关键点是：`resume` 在第 5 步执行，所以同一个 tick 可以恢复并继续执行 behavior cycle；`pause` 在第 5 步执行，所以同一个 tick 就开始跳过 behavior cycle。
+
+**测试计划**
+新增或扩展 [story09_operator_control_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story09_operator_control_tests.cpp)：
+
+1. `invoke_pause_skips_behavior_cycle_but_completes_tick`
+   - inbound 推入 `operator.pause`
+   - `run_cycle_once()` 返回 true
+   - `framework.is_paused() == true`
+   - behavior cycle 未执行
+   - heartbeat completed_cycles +1
+
+2. `paused_cycle_still_polls_nrt_and_resume_restores_behavior_cycle`
+   - 先 pause
+   - paused 状态下推入 `operator.resume`
+   - 同一 tick 收到 resume 后 behavior cycle 恢复执行
+   - `is_paused() == false`
+
+3. `pause_and_resume_are_idempotent`
+   - 连续 pause 两次，无额外状态副作用
+   - 连续 resume 两次，无额外状态副作用
+   - lifecycle 始终保持 `RUNNING`
+
+4. `paused_cycle_keeps_backend_io_path_alive`
+   - paused tick 仍完成 read/write 路径
+   - 如果现有 Sim backend 不方便观测 read/write 次数，可以先用输出/heartbeat/NRT resume 证明通道未断，再考虑补轻量测试 backend。
+
+5. descriptor tests 扩展：
+   - `action: { invoke: pause }` 可解析和 validate
+   - `action: { invoke: resume }` 可解析和 validate
+   - unsupported invoke 仍被拒绝
+
+6. snapshot tests 扩展：
+   - boot 后 `snapshot.paused == false`
+   - pause 后 `snapshot.paused == true`
+   - resume 后 `snapshot.paused == false`
+   - shutdown 后 paused 清零
+
+**文档更新**
+更新这些文件：
+
+- [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-09-nrt-operator-control/SLICE-02-pause-and-resume/SLICE.md)
+  - 状态从 `designing` 改到 `implemented`。
+  - `SPEC-036` / `INV-025` 的 implementation 和 validated-by 补测试名。
+- [SPEC-036.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-09-nrt-operator-control/SLICE-02-pause-and-resume/SPEC-036.md)
+  - implementation-status 改 `implemented`。
+- [INV-025.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-09-nrt-operator-control/SLICE-02-pause-and-resume/INV-025.md)
+  - implementation-status 改 `implemented`。
+- [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-09-nrt-operator-control/STORY.md)
+  - SLICE-02 改 `implemented`。
+  - 如果 STORY-09 只剩这两个 slice，则 STORY-09 状态可以从 `active` 改 `implemented`。
+
+**验收标准**
+完成后应该满足：
+
+- `pause` / `resume` 可以通过 `nrt_bridge.incoming` invoke mapping 配置。
+- paused 不改变 `FrameworkState::kRunning`。
+- paused tick 不调用 behavior cycle。
+- paused tick 仍能 poll NRT，并能接收 resume。
+- `pause()` / `resume()` 幂等。
+- snapshot 能观察 paused 状态。
+- STORY-09 文档状态和测试证据一致。
+
+**验证命令**
+实现后跑：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story09|story05|mvp1_descriptor|mvp1_nrt_inbound&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+book build
+git diff --check
+```
+
+我建议按这个计划直接做 SLICE-02。这个 slice 和刚提交的 SLICE-01 紧密相连，风险可控，做完后 STORY-09 就能收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 15:43:53 +0800</div>
+<pre>我会按刚才的 SLICE-02 计划直接实现：先确认当前工作区和相关约定没有漂移，然后改框架、descriptor、测试和状态文档，最后跑完整验证并提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 15:44:20 +0800</div>
+<pre>`write-docs` 规则也确认过了；这次仍只改 `rt/plc` 内部。现在我开始落代码：先读 descriptor/runtime/test 的当前实现，确定补丁点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 15:45:03 +0800</div>
+<pre>我已经定位到最小补丁点：descriptor 只需要放开 `pause/resume` action；framework 增加 paused flag/API，并在周期中只跳过 behavior cycle；测试复用现有 STORY-09 target 补暂停/恢复场景。现在开始改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 15:47:53 +0800</div>
+<pre>核心实现已经落下去了。下一步补 fixture 和测试，先让 descriptor 覆盖 `pause/resume`，再让 runtime 覆盖暂停周期、恢复周期、幂等和 snapshot。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 15:49:04 +0800</div>
+<pre>我发现 HandleBinder 没有 optional DO 绑定接口，刚才测试里用了不存在的 API。这里改为给 STORY-09 的 observer 固定绑定第三个虚拟 DO，并同步补所有相关 fixture 的 `request_virtual` 绑定，保持实现简单明确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 15:49:38 +0800</div>
+<pre>我会把测试结构再收紧一下：普通 STORY-09 observer 继续只绑定物理 DI/DO；只有验证 outbound 路径的 fixture 使用带虚拟输出的专用 observer，避免影响前面已稳定的 invoke 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 15:50:46 +0800</div>
+<pre>测试覆盖已经补上。现在我先跑目标测试，预期可能会暴露 descriptor 对 combined inbound/outbound 的验证路径或测试 fixture 类型问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 15:50:55 +0800</div>
+<pre>构建还在跑。我先等构建结果；如果编译暴露接口或测试问题，就按失败点收敛，不扩大范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 15:51:30 +0800</div>
+<pre>构建通过。现在跑针对 STORY-09、snapshot 和 descriptor 的回归，先确认新增行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 15:51:40 +0800</div>
+<pre>目标测试暴露了一个预期内的 fixture 漂移：原来的“unsupported invoke” fixture 用的 action 现在已经变成合法的 `pause/resume` 之一。我要把它改成真正未支持的名字，再重跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 15:52:19 +0800</div>
+<pre>目标回归已经绿了。接下来补 SLICE-02 的文档状态：把 SPEC/INV/SLICE/STORY/INDEX 的状态和 validated-by 同步到实际测试证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 15:53:23 +0800</div>
+<pre>文档状态已经同步到 implemented。现在我跑全量 PLC 测试和 docs lint/book build，同时做 diff 检查；如果全绿，再做完成审计、提交和推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 15:53:30 +0800</div>
+<pre>全量 PLC 测试、文档策略和空白检查已经通过；`book build` 还在生成搜索索引，我等它完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 15:53:53 +0800</div>
+<pre>验证全绿。现在我做一次完成审计：逐项对照计划和实际文件/测试结果，再检查 diff 和状态，确认没有漏项或无关改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 15:54:23 +0800</div>
+<pre>审计里有一个覆盖点我想加强：当前测试能证明 paused 期间 NRT poll/outbound 和 heartbeat 继续，但没有直接观测 `SimIoHalBackend::read_inputs/write_outputs` 被调用。我会给 sim backend 加最小计数器，并让 STORY-09 测试直接断言 paused tick 仍跑 IO read/write。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-15 15:55:17 +0800</div>
+<pre>我补了 `SimIoHalBackend` 的 read/write 计数器，让 paused tick 的 backend IO 路径有直接证据。现在重建并重新跑全套验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-15 15:56:30 +0800</div>
+<pre>验证通过后我又看了一遍行为语义，发现文档里“resume 的下一次 tick 恢复”容易被理解成要等再下一拍；实现和测试是“收到 resume 的这一拍，在 inbound 阶段清除 paused 后就恢复 dispatch”。我先把 SLICE/SPEC 文档补一句，避免实现和文字不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-15 15:57:22 +0800</div>
+<pre>文档语义已和测试对齐。因为只改了文档文字，我重新跑 docs lint、book build、diff check；测试结果仍由刚才全量 ctest 覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-15 15:58:10 +0800</div>
+<pre>实现、测试和文档都已完成，验证也通过。现在我提交这些 `rt/plc` 改动并推送到当前分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-15 15:59:03 +0800</div>
+<pre>提交已生成：`9d15ca6c feat: add PLC pause resume control`。push 正在进行，我等远端确认后做最终状态审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-15 15:59:10 +0800</div>
+<pre>push 完成。我最后确认工作区、最新提交和目标验收项，之后给你收口说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / final_answer</h3>
+<div class="time">2026-05-15 16:00:06 +0800</div>
+<pre>已做完并推送。
+
+提交：`9d15ca6c feat: add PLC pause resume control`
+分支：`feat/plc -&gt; origin/feat/plc`
+工作区：干净
+
+完成内容：
+- 实现 `Framework::pause()` / `resume()` / `is_paused()`。
+- `FrameworkSnapshot` 增加 `paused`。
+- NRT invoke 支持 `pause` / `resume`，和已有 `clear_faults` / `request_stop` 共用同一路径。
+- paused tick 跳过 `Behavior::cycle()`，但继续跑 `read_inputs`、NRT poll、outbound、`write_outputs`、heartbeat。
+- `resume` 在收到消息的同一个 tick 恢复 behavior dispatch。
+- 补了 descriptor、runtime、snapshot 测试和两个 STORY-09 fixtures。
+- STORY-09 SLICE-02、SPEC-036、INV-025、STORY/INDEX 状态更新为 `implemented`。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，22/22 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+完成审计结论：计划里的 pause/resume 行为、descriptor 支持、snapshot 可观测性、backend/NRT 持续运行、文档状态和测试证据都已落到实际文件并验证通过。目标耗时：1006 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 16:00:53 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 16:01:41 +0800</div>
+<pre>我先确认当前 PLC story 状态和未实现 slice，避免把刚完成的 STORY-09 再纳入计划。然后我会给一个推荐的下一步详细实施计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 16:02:07 +0800</div>
+<pre>我会把计划落在 **STORY-11 SLICE-01: io-channel-inventory** 上。这个 slice 是后续 axis inventory、motion backend、hot reload 的共同前置，比直接跳 motion/sequence 更稳。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-15 16:02:44 +0800</div>
+<pre>建议下一步做 **STORY-11 SLICE-01: io-channel-inventory**。理由很直接：它是 descriptor 层的基础能力，后面的 axis inventory、motion backend、hot reload 都会依赖“机器描述是自包含、可验证”的前提。比直接做 motion/sequence DSL 风险小，也能继续沿用现有 descriptor + boot validation 测试结构。
+
+**目标**
+把 `machine.yaml` 从现在的：
+
+```yaml
+io:
+  digital_inputs:
+    - name: coolant_request
+  digital_outputs:
+    - name: coolant_valve
+```
+
+扩展为支持：
+
+```yaml
+io_channels:
+  - name: coolant_request
+    kind: di
+    address: { sim: coolant_request }
+  - name: coolant_valve
+    kind: do
+    address: { sim: coolant_valve }
+```
+
+并要求所有 `source: io` binding 的 `channel:` 必须出现在 `io_channels` 里。旧的 `io.digital_inputs/digital_outputs` 先保留兼容，不立刻删除。
+
+**实施阶段**
+1. **Descriptor 数据结构**
+   - 在 [descriptors.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/descriptors.hpp) 增加：
+     - `enum class IoChannelKind { kDigitalInput, kDigitalOutput, kAnalogInput, kAnalogOutput };`
+     - `struct IoChannelDescriptor { name, kind, address_fields }`
+   - `MachineDescriptor` 增加 `std::vector&lt;IoChannelDescriptor&gt; io_channels`。
+   - `address` 先作为 opaque key/value map 保存；sim backend 不解释。
+
+2. **Parser**
+   - 在 [descriptors.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/descriptors.cpp) 增加 `parse_io_channels_section()`。
+   - 支持 `kind: di/do/ai/ao`。
+   - `address:` 允许 inline map，暂不做 backend-specific 语义校验。
+   - 顶层 parser 接受 `io_channels:`。
+   - 旧 `io:` 继续解析，避免打断所有现有 fixtures。
+
+3. **Validation**
+   - 新增 inventory name set。
+   - 如果声明了 `io_channels:`：
+     - 所有 `source: io` binding 必须命中 inventory。
+     - `di` binding 只能引用 `kind: di`。
+     - `do` binding 只能引用 `kind: do`。
+     - `ai/ao` 先只解析，不允许当前 DI/DO binding 误用。
+   - 如果没有声明 `io_channels:`：
+     - 继续走旧 `io.digital_inputs/digital_outputs` 校验，保持兼容。
+   - 重复 channel name 拒绝。
+
+4. **Framework Binding**
+   - `configure_behavior()` 仍用 binding 的 `channel` 绑定 SimIoHalBackend。
+   - sim 不需要读 `address`。
+   - 这一步主要保证新 descriptor 通过 boot 并能跑现有 IO roundtrip。
+
+5. **测试**
+   - `mvp1_descriptor_tests.cpp`
+     - 新 fixture：完整 `io_channels` 可解析。
+     - binding 引用未知 inventory name 被拒绝。
+     - binding kind 和 inventory kind 不匹配被拒绝。
+     - duplicate `io_channels.name` 被拒绝。
+     - 旧 `io:` fixtures 仍通过。
+   - 新 runtime/boot 测试可以放在现有 `mvp1_io_roundtrip_tests.cpp` 或单独 story11 测试：
+     - 用 `io_channels:` boot 到 `RUNNING`。
+     - DI -&gt; Behavior -&gt; DO roundtrip 正常。
+   - 如果当前 CMake test target 太拥挤，建议新增 `metanc_plc_story11_descriptor_tests`。
+
+6. **文档**
+   - 更新：
+     - `STORY-11/.../SLICE-01-io-channel-inventory/SLICE.md`
+     - `SPEC-042.md`
+     - `INV-029.md`
+     - `STORY-11/STORY.md`
+   - 状态从 `designing/unimplemented` 改为 `implemented`。
+   - 暂不把整个 STORY-11 标成 implemented，因为 SLICE-02 axis inventory 和 SLICE-03 parameters 还没做。
+
+**验收标准**
+- 新旧两种 IO 描述都能被 parser 接受。
+- 新 `io_channels` 模式下，binding 只能引用 inventory 中存在且 kind 匹配的 channel。
+- 旧 fixtures 不需要批量迁移。
+- 至少一个使用 `io_channels` 的机器能 boot 并完成 DI/DO roundtrip。
+- docs 状态和测试证据一致。
+
+**验证命令**
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story11|mvp1_descriptor|mvp1_io_roundtrip&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+book build
+git diff --check
+```
+
+我建议这个 slice 做成小提交：只引入 `io_channels` inventory 和校验，不碰 axis/motion/parameters。这样可以快速把 descriptor 基础打牢。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 16:03:36 +0800</div>
+<pre>我会按刚才定的 STORY-11 SLICE-01 直接落实现：保持旧 `io:` 兼容，只新增 `io_channels` inventory/parser/validation/runtime fixture 和状态文档。先确认工作区干净并读写文档规则入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 16:03:48 +0800</div>
+<pre>工作区干净。我现在读 descriptor/parser/fixtures 的具体结构，然后落 `IoChannelDescriptor` 和 parser 校验补丁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 16:04:18 +0800</div>
+<pre>我先看 parser 的基础工具和现有 descriptor 测试风格，避免手写一个和本地 YAML 子集不一致的解析路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 16:04:53 +0800</div>
+<pre>实现点清楚了：我会把 `io_channels` 作为严格 inventory 模式，只有声明该段时启用新校验；未声明时继续沿用旧 `io` 列表。现在开始改 descriptor 结构和 parser。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 16:05:31 +0800</div>
+<pre>补丁上下文有一处长行换行不同，我重新按实际文件位置分段应用，避免误改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 16:07:00 +0800</div>
+<pre>我发现 `- name: X` 这种 list item 已经先读了 name，后续 item parser 需要把它当作已见字段处理；同时 `address` 应该作为完整 inventory 的必填 opaque 字段。现在修这个细节并接入顶层 parser。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 16:07:28 +0800</div>
+<pre>Parser 接入好了。接下来改 validation：`io_channels` 存在时构建严格 inventory，binding 必须命中且 kind 匹配；不存在时保留旧 `io.digital_inputs/digital_outputs` 模式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 16:07:58 +0800</div>
+<pre>严格 inventory validation 已接上。现在补 fixtures 和测试：descriptor 层覆盖 parse/未知 channel/kind mismatch/重复 name，runtime 层证明新 `io_channels` 机器能 boot 并完成 DI/DO roundtrip。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 16:10:12 +0800</div>
+<pre>测试和 fixtures 已加好。现在先构建并跑目标测试，预计如果 parser 对 list item 的缩进结束条件有问题，会在 descriptor test 里直接暴露。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 16:10:25 +0800</div>
+<pre>构建在跑。我同时注意到 parse helper 只支持 `address: { ... }`，这正好符合当前 slice 的最小范围；如果未来要 block address 可以后续扩展。等构建结果后跑目标测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 16:11:19 +0800</div>
+<pre>目标测试通过。现在我补状态文档，把 STORY-11 SLICE-01、SPEC-042、INV-029 标为 implemented，并记录验证用例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 16:12:54 +0800</div>
+<pre>文档状态已同步。现在我跑完整验证：全量 PLC 测试、docs policy、book build 和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 16:13:07 +0800</div>
+<pre>全量测试、lint 和空白检查通过；`book build` 正在生成搜索索引，我等它完成后做完成审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 16:13:28 +0800</div>
+<pre>现在做完成审计：逐项对照刚才计划里的 artifact、测试和文档状态，确认没有漏掉旧兼容和新 inventory 模式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 16:13:50 +0800</div>
+<pre>审计发现一个文档精度点：实现会按现有 boot 失败路径发 `error/boot-config-invalid`，具体原因在 message 里是 `error/io-channel-not-in-inventory`，不是单独的诊断 code。我会把 SPEC 文字改准确，然后重新跑文档检查再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 16:14:25 +0800</div>
+<pre>文档检查也通过了。现在提交并推送这一轮 STORY-11 SLICE-01。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-15 16:15:31 +0800</div>
+<pre>提交已生成：`8f09ff74 feat: add PLC IO channel inventory`。push 正在进行，我等远端确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-15 16:15:44 +0800</div>
+<pre>push 完成。我最后确认工作区和提交，然后结束目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / final_answer</h3>
+<div class="time">2026-05-15 16:16:10 +0800</div>
+<pre>已完成并 push。
+
+提交：`8f09ff74 feat: add PLC IO channel inventory`
+分支：`feat/plc -&gt; origin/feat/plc`
+工作区：干净
+
+完成内容：
+- 新增 `IoChannelKind` / `IoChannelDescriptor` 和 `MachineDescriptor::io_channels`。
+- parser 支持顶层 `io_channels:`，支持 `di/do/ai/ao` 和 opaque inline `address` map。
+- validation 支持严格 inventory 模式：
+  - 声明 `io_channels:` 后，所有 `source: io` binding 必须命中 inventory。
+  - DI binding 必须指向 `kind: di`，DO binding 必须指向 `kind: do`。
+  - duplicate `io_channels.name` 拒绝。
+- 旧 `io.digital_inputs/digital_outputs` 路径保留兼容。
+- 补了 STORY-11 fixtures、descriptor tests、IO roundtrip runtime test。
+- STORY-11 SLICE-01 / SPEC-042 / INV-029 状态更新为 `implemented`，STORY-11 仍保持 `active`，因为 axis inventory 和 parameters 还没做。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，22/22 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+完成审计结论：计划里的新 schema、严格校验、旧兼容、runtime boot/roundtrip、文档状态和验证证据都已落到实际文件并通过验证。目标耗时：814 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 16:17:49 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 16:18:12 +0800</div>
+<pre>我先看一下 STORY-11 剩余两个 slice 的当前契约，以及 descriptor 里已经有哪些结构可以复用。这样计划会按刚提交后的真实状态往下接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 16:18:42 +0800</div>
+<pre>我建议下一步继续做 **STORY-11 SLICE-02: axis-inventory**，但要收窄成“descriptor inventory + validation”第一步，不急着实现 motion runtime。原因是 STORY-10 motion backend 还标着 pending external alignment，先把 machine schema 的 axis inventory 打牢，后续 motion handle 才有稳定输入。
+
+**目标**
+让 `machine.yaml` 支持：
+
+```yaml
+axes:
+  - name: x
+    kind: linear
+    unit: mm
+    max_velocity: 200
+  - name: c
+    kind: rotary
+    unit: degree
+    max_velocity: 90
+```
+
+并准备支持：
+
+```yaml
+axis_groups:
+  - name: gantry
+    axes: [x, y]
+```
+
+本 slice 的重点是 parse + validate，不引入 `MotionBackend`、`AxisHandle` 或真实运动调用。
+
+**实施边界**
+做：
+- `axes:` parser 和 descriptor。
+- `axis_groups:` parser 和 descriptor，先只校验引用关系。
+- duplicate axis/group name 校验。
+- `axis_groups[].axes` 引用必须命中 `axes`。
+- `kind` 只允许 `linear/rotary`。
+- `unit` 非空。
+- `max_velocity` 必须是正数，先按字符串/数值 parse 成 `double`。
+- 更新 STORY-11 SLICE-02 文档状态。
+
+不做：
+- 不新增 `source: motion` binding runtime 行为。
+- 不新增 `AxisHandle`。
+- 不新增 MotionBackend。
+- 不做 target range / acceleration / jerk / kinematics。
+- 不把 STORY-11 整体标 implemented，因为 SLICE-03 parameters 还未做。
+
+**代码设计**
+1. [descriptors.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/descriptors.hpp)
+   - 增加：
+     - `enum class AxisKind { kLinear, kRotary };`
+     - `struct AxisDescriptor { name, kind, unit, max_velocity; }`
+     - `struct AxisGroupDescriptor { name, std::vector&lt;std::string&gt; axes; }`
+   - `MachineDescriptor` 增加：
+     - `std::vector&lt;AxisDescriptor&gt; axes;`
+     - `std::vector&lt;AxisGroupDescriptor&gt; axis_groups;`
+
+2. [descriptors.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/descriptors.cpp)
+   - 增加 parser helpers：
+     - `parse_axis_kind()`
+     - `parse_positive_double()`
+     - `parse_inline_string_list()` 用于 `axes: [x, y]`
+   - 顶层 parser 支持：
+     - `axes:`
+     - `axis_groups:`
+   - validation 加在 `validate_machine_identity_and_io()` 或改名为更通用的 `validate_machine_identity_and_inventory()`：
+     - `axis.name` 非空且唯一。
+     - `axis.unit` 非空。
+     - `axis.max_velocity &gt; 0`。
+     - `axis_groups.name` 非空且唯一。
+     - `axis_groups.axes` 非空。
+     - group 内重复 axis 拒绝。
+     - group 引用不存在 axis 拒绝。
+   - 注意保留旧 IO 校验行为，不牵连 SLICE-01。
+
+3. tests
+   - 继续扩展 [mvp1_descriptor_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/mvp1_descriptor_tests.cpp)，不必新 target。
+   - 新 fixtures：
+     - `story11_axis_inventory_machine.yaml`
+     - `story11_duplicate_axis_inventory_machine.yaml`
+     - `story11_axis_group_unknown_axis_machine.yaml`
+     - `story11_axis_group_duplicate_axis_machine.yaml`
+     - `story11_axis_invalid_velocity_machine.yaml`
+   - 测试项：
+     - valid axis inventory parses and validates.
+     - valid axis group parses and validates.
+     - duplicate axis rejected.
+     - group referencing unknown axis rejected.
+     - duplicate axis in one group rejected.
+     - invalid max_velocity rejected.
+
+**文档更新**
+- `STORY-11-machine-descriptor-extensions/STORY.md`
+  - SLICE-02 status: `implemented`
+  - STORY-11 remains `active`
+- `SLICE-02-axis-inventory/SLICE.md`
+  - status: `implemented`
+  - SPEC-043 / INV-030 rows update validated-by
+- `SPEC-043.md`
+  - implementation-status: `implemented`
+  - validated-by: `[mvp1_descriptor_tests]`
+- `INV-030.md`
+  - implementation-status: `implemented`
+  - validated-by: `[mvp1_descriptor_tests]`
+
+**验收标准**
+- `axes:` 可解析。
+- `axis_groups:` 可解析。
+- inventory 校验能拒绝 duplicate/missing/bad velocity。
+- 旧 fixtures 和现有 PLC tests 不受影响。
+- 文档状态和测试证据一致。
+
+**验证命令**
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;mvp1_descriptor&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+book build
+git diff --check
+```
+
+我建议做这个 slice。它和刚做完的 `io_channels` 是同一类 descriptor 基础设施，改动面可控，做完 STORY-11 只剩 parameters。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 16:18:59 +0800</div>
+<pre>我会按刚才的 SLICE-02 计划继续落实现：只做 `axes` / `axis_groups` 的 descriptor inventory 和 validation，不碰 MotionBackend/AxisHandle runtime。先确认当前基线，再改结构、parser、测试和状态文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 16:19:11 +0800</div>
+<pre>当前基线干净。我会复用刚做 `io_channels` 的 parser/validation 风格，新增 axes 和 axis_groups 的 descriptor 数据结构、解析和全局校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 16:20:22 +0800</div>
+<pre>结构和基础 parser helper 已加。现在补 `axes:` / `axis_groups:` section parser，并挂到顶层 `parse_machine_descriptor`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 16:21:43 +0800</div>
+<pre>`axes` 和 `axis_groups` parser 已接上。接下来把 inventory 校验放到现有机器身份/IO 校验入口里，这样所有 slice 的 validate 都能覆盖 axis inventory 引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 16:22:02 +0800</div>
+<pre>校验已接入。现在补 fixtures 和 descriptor tests，覆盖合法 axes/group、重复 axis、未知 group axis、group 内重复 axis、无效 velocity。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 16:25:16 +0800</div>
+<pre>测试已补。现在先构建和跑 descriptor 目标测试，确认 parser/validation 细节没有漏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 16:25:28 +0800</div>
+<pre>构建还在跑。diff 看起来符合范围，但我会等测试结果；如果 `strtod` 或 inline list 处理需要收紧，再按失败点调整。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 16:26:28 +0800</div>
+<pre>目标 descriptor 测试通过。现在更新 STORY-11 SLICE-02 文档状态和 SPEC/INV 验证证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 16:27:57 +0800</div>
+<pre>文档状态已更新。现在跑全量验证，包括全套 PLC tests、docs lint、book build 和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 16:28:08 +0800</div>
+<pre>测试、lint 和空白检查通过；`book build` 等搜索索引结束后我做最终审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 16:28:28 +0800</div>
+<pre>现在做完成审计：检查所有新增 fixture、parser/validation 落点、文档状态和 git 范围，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 16:28:46 +0800</div>
+<pre>审计显示实现、测试和文档都覆盖了计划项。现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 16:29:56 +0800</div>
+<pre>提交已生成：`62528ec2 feat: add PLC axis inventory`。push 还在运行，我等远端确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 16:30:11 +0800</div>
+<pre>push 完成。我最后确认工作区和目标状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-05-15 16:30:40 +0800</div>
+<pre>已完成并 push。
+
+提交：`62528ec2 feat: add PLC axis inventory`
+分支：`feat/plc -&gt; origin/feat/plc`
+工作区：干净
+
+完成内容：
+- 新增 `AxisKind` / `AxisDescriptor` / `AxisGroupDescriptor`。
+- `machine.yaml` parser 支持顶层 `axes:` 和 `axis_groups:`。
+- validation 覆盖：
+  - duplicate axis name
+  - axis `unit` 非空
+  - `max_velocity &gt; 0`
+  - duplicate axis group name
+  - axis group 非空
+  - group 内重复 axis 拒绝
+  - group 引用未知 axis 拒绝
+- 补了 STORY-11 axis inventory fixtures 和 `mvp1_descriptor_tests` 回归。
+- STORY-11 SLICE-02 / SPEC-043 / INV-030 状态更新为 `implemented`。
+- STORY-11 仍保持 `active`，因为 SLICE-03 machine parameters 还没做。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，22/22 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+这次只做 descriptor inventory + validation，没有碰 MotionBackend / AxisHandle runtime。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 16:33:09 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-15&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 16:33:09 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 16:33:26 +0800</div>
+<pre>我先按仓库要求快速确认当前模块上下文和未完成状态，再给一个可讨论的细化计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 16:33:43 +0800</div>
+<pre>当前工作树显示 `feat/plc` 跟远端同步且干净；我再读一下 `rt/plc` 的本地说明和 STORY-11 状态，避免计划基于过期印象。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 16:33:57 +0800</div>
+<pre>`rt/plc` 没有自己的 `AGENTS.md`，所以以根目录规范和模块 README 为准。接下来我只抓 STORY-11 的未完成片段和现有代码接口，计划会围绕这个最小闭环展开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 16:34:14 +0800</div>
+<pre>我已经确认了当前接口的关键约束：Behavior 现在只拿到 `Context&amp;`，没有 `framework()` 句柄；所以这一步的计划重点不是单纯加 YAML 字段，而是把“参数读取 API”接到现有生命周期里，避免文档和实现继续分叉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-15 16:35:15 +0800</div>
+<pre>建议下一步做 **STORY-11 SLICE-03 machine parameters**，把 STORY-11 收口。当前 `feat/plc` 工作树干净；STORY-11 的 I/O channel inventory 和 axis inventory 已经实现，唯一剩下的是 `parameters:`。
+
+**目标**
+实现 `machine.yaml` 顶层：
+
+```yaml
+parameters:
+  magazine_slot_count: 24
+  coolant_max_pressure_kpa: 4500
+  jog_default_speed_mmps: 50.0
+  auto_enable: true
+  machine_label: demo
+```
+
+Behavior 在 `init(Context&amp;)` 阶段读取参数，缺必填或类型不匹配时走现有 boot rollback。
+
+**关键设计**
+现有 Behavior API 只有 `init(Context&amp;)` / `cycle(Context&amp;)`，没有 `framework()` 句柄，所以我建议：
+
+- 新增 `Context::param&lt;T&gt;(key)` 和 `Context::param&lt;T&gt;(key, default_value)`，这是 Behavior 作者真正能用的入口。
+- 同时可给 `Framework` 增加只读转发 `param&lt;T&gt;()`，让文档里已有的 `Framework::param&lt;T&gt;` 不完全失效，也方便测试。
+- 文档里把 “Behavior 通过 `framework().param&lt;T&gt;`” 修正为 “Behavior 通过 `Context::param&lt;T&gt;`；Framework 也暴露同等只读 accessor”。
+
+**实现步骤**
+1. 数据模型
+   在 [descriptors.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/descriptors.hpp) 增加参数值结构，例如：
+   - `MachineParameterKind { kBool, kInteger, kFloat, kString }`
+   - `MachineParameterValue`
+   - `MachineDescriptor::parameters`
+
+2. YAML 解析
+   在 [descriptors.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/descriptors.cpp) 支持顶层 `parameters:` 平铺 map：
+   - bool: `true/false`
+   - integer: `24`
+   - float: `50.0`
+   - string: 其他标量
+   - 拒绝空 key、空 value、重复 key、复杂嵌套值
+
+3. 只读参数访问
+   在 [behavior.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/behavior.hpp) 扩展 `Context`：
+   - `param&lt;bool&gt;`
+   - `param&lt;int&gt;` / `param&lt;std::int64_t&gt;`
+   - `param&lt;double&gt;`
+   - `param&lt;std::string&gt;`
+   - 缺必填抛异常；带默认值缺失时返回默认值；类型不匹配抛异常。
+   - 不提供任何 mutator，满足 INV-031。
+
+4. Framework 生命周期接线
+   在 [framework.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/framework.cpp) boot 解析 `machine_` 后，把 `machine_.parameters` 绑定到 `context_`，再执行 `initialize_behaviors()`。
+   这样 Behavior 的 `init(Context&amp;)` 可以读参数；如果抛异常，复用现有 STORY-02 初始化失败回滚路径。
+
+5. 测试
+   新增或扩展测试：
+   - descriptor 测试：参数能 parse 出 bool/int/float/string。
+   - descriptor 负例：重复参数、空值、复杂嵌套 rejected。
+   - runtime 测试：Behavior 在 `init()` 读取参数并缓存。
+   - missing required：boot 失败并回到 `STOPPED`。
+   - default value：缺 key 但带 default 时 boot 成功。
+   - type mismatch：boot 失败。
+   - repeated read：同 key 多次读取值一致，覆盖只读 invariant。
+
+6. 文档状态更新
+   更新：
+   - `STORY-11/.../SLICE-03-machine-parameters/SLICE.md`
+   - `SPEC-044.md`
+   - `INV-031.md`
+   - `STORY-11/STORY.md`
+   - `STORIES/INDEX.md` 如有总状态表
+   SLICE-03 完成后，STORY-11 可以从 `active` 标为 `implemented`。
+
+7. 验证与提交
+   跑：
+   - `cmake --build /tmp/metanc_plc_build`
+   - `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`
+   - `python3 .mdbook/lint_docs_policy.py`
+   - `book build`
+   - `git diff --check`
+
+   通过后提交并 push，提交名建议：
+   `feat: add PLC machine parameters`
+
+**我建议就按这个做。** 这一步价值最高：范围小、能闭合 STORY-11，而且参数读取会成为后面 tool changer、coolant、interlock 这类 Behavior 的基础能力。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 16:37:53 +0800</div>
+<pre>我开始按刚才的 STORY-11 SLICE-03 计划落代码和文档。先确认当前没有新改动，然后会改参数数据模型、解析器、Context 读取 API、运行时测试和状态文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 16:38:01 +0800</div>
+<pre>我会按 `write-docs` 技能的校验要求处理文档同步：实现代码后同步 slice/spec/invariant 状态，并跑 `book build` 和 docs lint。现在先把任务拆成可追踪的实现清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 16:38:45 +0800</div>
+<pre>实现上我会新增一个小的 `parameters.hpp`，让 descriptor、Context、Framework 共用同一套参数值类型和模板读取逻辑；这样不会把读取规则散落在 parser 或 framework 里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 16:41:32 +0800</div>
+<pre>我会让参数测试尽量不依赖 I/O 绑定，使用一个只在 `init()` 读取参数的测试 Behavior；这样能直接覆盖 boot 初始化路径，而不会把 I/O 细节混进这个 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 16:45:41 +0800</div>
+<pre>下一步开始实际改文件：先加参数类型/读取 API，再接入 descriptor 和 framework。改动会保持在 `rt/plc` 内部。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 16:46:32 +0800</div>
+<pre>参数 API 已经有了；现在把 `parameters:` 顶层块接进当前自定义 YAML 解析器，并补最小校验：空值、重复 key、复杂嵌套都会拒绝。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 16:47:17 +0800</div>
+<pre>parser 部分已经接上；接下来把参数 store 绑定到 `Context` 生命周期，并补一个小的重置逻辑，确保 boot 失败或重新 boot 时不会留下旧指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 16:47:52 +0800</div>
+<pre>核心接线已经完成。现在补 fixture 和测试，覆盖 descriptor 解析、Context 默认值/缺 key/类型错、以及 init 阶段失败回滚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 16:48:54 +0800</div>
+<pre>descriptor 负例和正例已补。接下来新增一个 STORY-11 参数运行时测试文件，并把它挂进 CMake 默认测试集。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 16:49:59 +0800</div>
+<pre>运行时测试已经挂进默认 CTest。现在我先跑一次构建/测试，尽早发现模板或解析器边界问题，再改文档状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 16:50:27 +0800</div>
+<pre>构建已经过了 core 和前半部分测试目标，新增参数测试目标还在编译队列里。我等它完成后马上跑 CTest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 16:51:35 +0800</div>
+<pre>CTest 抓到两个真实问题：float 标量解析过严，以及一个错误用例没有按预期走 init-failed 诊断。我先修解析细节，再重新跑目标测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 16:51:59 +0800</div>
+<pre>根因找到了：我用 “包含 e/E” 判断 float，导致 `demo`/`label` 这种普通字符串被误判成科学计数法。现在改成“必须像数字开头且含小数点或指数标记”才尝试 float 解析。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 16:54:44 +0800</div>
+<pre>目标测试现在都通过了，说明参数解析和 init 读取路径可用。接下来更新 STORY-11 的文档状态，把 `Context::param&lt;T&gt;` 的实际 Author API 写清楚，并把 validated-by 绑定到新增测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-15 16:56:46 +0800</div>
+<pre>文档补丁因为 predicate 文件局部格式不完全匹配没有套上，我先分小块应用，避免一次性补丁被一个上下文差异挡住。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-15 16:58:35 +0800</div>
+<pre>文档状态也同步完了。现在跑全量验证，包括 PLC 构建/CTest、docs lint、bookshelf build 和 diff check；如果都绿，再提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-15 16:59:56 +0800</div>
+<pre>全量 CTest 23/23 通过，docs lint 和 book build 也过了。现在我做一次差异审阅，重点看公共 API、解析边界和文档状态是否漏项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-15 17:00:28 +0800</div>
+<pre>差异审阅发现实现主线没有阻塞问题；不过 `git diff --stat` 默认不显示新增未跟踪文件，我会先把新增文件纳入 staging 视野前再做一次完整状态核对，避免漏提交 fixture 或测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-15 17:01:04 +0800</div>
+<pre>审阅里有一个小细节：完整状态查询确认新增 header、fixture、测试文件都还未跟踪。接下来我会把整个 `rt/plc` 相关变更加入提交，再做 staged diff/stat 核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-15 17:01:47 +0800</div>
+<pre>staged 状态确认了：新增参数 header、7 个 fixture、1 个运行时测试都已经纳入提交范围，且没有空白错误。接下来提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-15 17:02:40 +0800</div>
+<pre>提交已经生成 `b1f18576`，push 正在进行。我等远端确认后做完成审计，不会只凭提交成功就结束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-15 17:03:05 +0800</div>
+<pre>push 已确认到远端。现在做完成审计：按目标把实现、测试、文档、提交和远端状态逐项核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-15 17:03:40 +0800</div>
+<pre>审计证据里已经有 clean worktree、HEAD 提交、远端 push、CTest 23/23。为了把文档侧也放进最终审计证据，我再复跑一次 docs lint 和 book build，确认提交后状态仍然通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-15 17:04:20 +0800</div>
+<pre>最终验证也完成：构建、CTest、docs lint、book build 都通过，且 `HEAD` 与 `origin/feat/plc` 是同一个提交。现在我会标记目标完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / final_answer</h3>
+<div class="time">2026-05-15 17:04:41 +0800</div>
+<pre>已完成并推送。
+
+实现内容：
+- 新增 `machine.yaml` 顶层 `parameters:` 解析。
+- 新增 `Context::param&lt;T&gt;()` / `Context::param&lt;T&gt;(default)`，并提供 `Framework::param&lt;T&gt;()` 只读转发。
+- 支持 bool / integer / float / string 标量参数。
+- 缺必填参数、类型不匹配会在 Behavior `init()` 阶段触发 boot rollback。
+- 更新 STORY-11 SLICE-03、SPEC-044、INV-031 和总状态，STORY-11 已标为 `implemented`。
+- 新增 descriptor 和 runtime 测试及 fixtures。
+
+提交并推送：
+- `b1f18576 feat: add PLC machine parameters`
+- `HEAD` 和 `origin/feat/plc` 已确认一致。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：23/23 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+工作树当前干净。目标完成用时：1707 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 17:04:45 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 17:05:08 +0800</div>
+<pre>我先快速确认当前分支状态和 PLC story 状态，再给下一步的详细计划。重点会选一个能继续闭环、风险不跳太大的 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 17:05:29 +0800</div>
+<pre>当前 `feat/plc` 干净且已同步远端。STORY-11 已闭合，剩下 active 里我会优先比较 STORY-04、10、12、15、16 的依赖和风险，再给一个推荐计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-15 17:06:01 +0800</div>
+<pre>我建议下一步做 **STORY-04 SLICE-01：linear step and wait**。
+
+理由：STORY-11 已经把 `machine.yaml` 能力补齐；现在最自然的下一层是让 Behavior 作者能写“步骤式逻辑”。STORY-10 还依赖 `motion_execution` 接口对齐，STORY-12 hot reload 风险和改动面更大，STORY-15/16 都依赖更清晰的 Behavior/sequence 基础。因此先落 STORY-04 的最小 Sequence DSL 更稳。
+
+**目标**
+实现一个最小可用的 `plc::Sequence`：
+- Behavior 在 `cycle()` 里按线性顺序写步骤。
+- 每个 scan cycle 最多推进一个步骤。
+- 支持 one-shot step。
+- 支持 wait predicate，条件不满足时停在当前步骤。
+- 可查询当前步骤/是否完成，方便测试和未来 observability。
+
+**建议设计**
+新增 author API，大致形态：
+
+```cpp
+plc::Sequence seq_;
+
+void cycle(plc::Context&amp;) override {
+  seq_.begin();
+  seq_.step(&quot;open_clamp&quot;, [&amp;] { clamp_.write(true); });
+  seq_.wait(&quot;clamp_open&quot;, [&amp;] { return clamp_open_.read(); });
+  seq_.step(&quot;ready&quot;, [&amp;] { ready_.write(true); });
+  seq_.end();
+}
+```
+
+语义：
+- `begin()` 开始一次 cycle 的 sequence 描述。
+- `step(label, fn)`：如果当前 label 命中并且本 cycle 还没推进，执行一次 `fn`，然后推进到下一项。
+- `wait(label, predicate)`：如果当前 label 命中，predicate true 才推进；false 则保持。
+- `end()`：当前步骤越过最后一项后标记 complete。
+- 同一 cycle 最多推进一次，避免一个 scan 内连续跑完多个动作。
+
+**实现范围**
+1. 新增 `rt/plc/include/metanc/plc/sequence.hpp` 和 `src/sequence.cpp`。
+2. `CMakeLists.txt` 把 sequence 加进 `metanc_plc_core`。
+3. 新增 `tests/story04_sequence_tests.cpp`：
+   - step 每 cycle 只执行一次。
+   - wait false 时不推进。
+   - wait true 后下一 cycle 才继续。
+   - label 顺序稳定。
+   - complete 状态正确。
+4. 可选接一个小 framework 集成测试：
+   - 一个 test Behavior 用 `Sequence` 驱动 DI/DO。
+   - 验证多 cycle 下输出按预期变化。
+5. 更新 STORY-04 SLICE-01 / SPEC-020 / SPEC-021 / INV-014 状态和 validated-by。
+6. 验证：
+   - `cmake --build /tmp/metanc_plc_build`
+   - `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`
+   - `python3 .mdbook/lint_docs_policy.py`
+   - `book build`
+   - `git diff --check`
+
+**边界**
+这一步不做 timer/delay、不做 branching/repeat、不做 subsequence、不接 motion，只把“线性步骤 + wait”打稳。完成后 STORY-04 SLICE-02 的 timer/delay 会很顺。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and plan-first context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 17:06:53 +0800</div>
+<pre>我会按刚才确定的 STORY-04 SLICE-01 直接落实现。先确认当前工作树、读取 slice/spec 的精确定义，然后改 Sequence API、测试和文档状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 17:07:06 +0800</div>
+<pre>计划和文档定义一致：slice 要的是 `Sequence::run(builder)` 风格，而不是 begin/end。接下来我按这个合同实现，不引入 timer/branch/motion。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 17:07:46 +0800</div>
+<pre>我要新增 `sequence.hpp/.cpp`，测试会同时覆盖纯 API 和 Framework 调度里的多 cycle 行为；为保持 slice 小，sequence 不接诊断、不接 timer。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 17:08:22 +0800</div>
+<pre>Sequence 核心已加进 build。现在补 STORY-04 测试：先是纯 sequence 语义，再是一个 Behavior 通过 Framework 多 tick 驱动输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 17:09:32 +0800</div>
+<pre>测试已补完。我先构建新目标并运行它，尽早验证 step/wait “下一 cycle 再继续” 的语义是否准确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 17:09:50 +0800</div>
+<pre>CMake 还没重新配置，所以新目标暂时不存在；我会先跑一次 `cmake --build` 让现有构建目录重新生成，然后再跑目标测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 17:10:43 +0800</div>
+<pre>新增目标测试通过。现在更新 STORY-04 SLICE-01 的实现状态和 validated-by，并在模块模型里补一句 Sequence DSL 已有的最小 API。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 17:11:43 +0800</div>
+<pre>实现和文档状态已同步。现在跑完整验证：PLC 构建、CTest、docs lint、book build 和 diff check；通过后提交 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 17:12:47 +0800</div>
+<pre>验证已通过，不过我在复核 Sequence 语义时发现一个边界：最后一个 `step` 执行后应该在同一个 cycle 进入 terminal，而当前实现要等下一次 `run()` 才标记 done。这个和 SLICE 表格不一致，我先收紧实现和测试再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 17:13:00 +0800</div>
+<pre>边界已修正：最后一个 item 运行完会在同一轮 `run()` 结束时标记 terminal。现在重新跑新测试和全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 17:13:55 +0800</div>
+<pre>测试语义修正后依然全绿。现在再跑 docs lint 和 book build，随后 staging、提交、push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 17:14:31 +0800</div>
+<pre>全量验证通过。现在把 `rt/plc` 变更全部 stage，核对 staged 文件清单和 stat 后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 17:15:30 +0800</div>
+<pre>staged 范围确认只在 `rt/plc`，包含 Sequence API、测试 fixture、测试和文档状态。现在提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 17:16:13 +0800</div>
+<pre>提交已生成 `a2261b26`，push 正在等远端确认。接下来我会做完成审计，确认远端、验证和文档状态都覆盖目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 17:16:34 +0800</div>
+<pre>push 已完成。现在进入完成审计：目标是“按计划做 STORY-04 SLICE-01”，我会逐项核对实现文件、测试、文档、验证命令、提交和远端一致性。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 17:16:54 +0800</div>
+<pre>审计已确认实现、文档状态、测试覆盖和远端一致性。最后我复跑 docs/build 命令作为审计证据，然后标记目标完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / final_answer</h3>
+<div class="time">2026-05-15 17:18:54 +0800</div>
+<pre>已完成并推送。
+
+实现内容：
+- 新增 `plc::Sequence`，支持 `run(builder)`、`step(label, action)`、`wait(label, predicate)`、`reset()`、`done()`、`position()`、`current_label()`。
+- 每个 cycle 最多执行/推进一个 sequence item。
+- `wait` false 会保持并每 cycle 重新评估；true 后下一 cycle 才进入后续 step。
+- terminal 后后续 cycle 不再执行 sequence item。
+- 新增 `story04_sequence_tests`，覆盖纯 Sequence 语义和 Framework 内 Behavior 多 tick 集成。
+- 更新 STORY-04 SLICE-01 / SPEC-020 / SPEC-021 / INV-014 为 implemented。
+
+提交并推送：
+- `a2261b26 feat: add PLC linear sequence DSL`
+- `HEAD` 和 `origin/feat/plc` 已确认一致。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：24/24 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+工作树当前干净。目标完成用时：774 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 17:19:05 +0800</div>
+<pre>ok 给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 17:19:31 +0800</div>
+<pre>我先确认最新分支状态和 STORY-04 剩余 slice 的合同，再给一个可直接执行的详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-15 17:20:02 +0800</div>
+<pre>建议下一步做 **STORY-04 SLICE-02：timer-and-delay**。当前 `feat/plc` 干净且同步远端，STORY-04 SLICE-01 已实现，SLICE-02 是最自然的继续，不需要碰 motion 或 hot reload。
+
+**目标**
+在现有 `plc::Sequence` 基础上加入：
+- `plc::Timer`
+- `Sequence::delay(label, cycle_count)`
+- `Sequence::delay_ms(label, milliseconds)`
+- cycle-based 时间语义
+- 测试和文档状态同步
+
+**关键设计建议**
+不要让 `Timer` 直接读 `TimeBackend`。当前 Behavior API 只拿 `Context&amp;`，Sequence 是 Behavior 成员；最小稳定方案是让 `Context` 持有当前 `scan_period_ms` 和 cycle tick，再由 Behavior 每 cycle 把 `Context` 传给 Sequence/Timer。
+
+建议 API 形态：
+
+```cpp
+plc::Timer timer_;
+
+void cycle(plc::Context&amp; ctx) override {
+  if (!timer_.armed()) {
+    timer_.start_cycles(3);
+  }
+  timer_.tick(ctx);
+  if (timer_.expired()) {
+    // do work
+  }
+}
+```
+
+Sequence 形态：
+
+```cpp
+seq_.run(ctx, [&amp;] {
+  seq_.step(&quot;start&quot;, [&amp;] { out_.write(true); });
+  seq_.delay(&quot;settle&quot;, 3);
+  seq_.step(&quot;ready&quot;, [&amp;] { ready_.write(true); });
+});
+```
+
+为了兼容 SLICE-01，可以保留现有 `run(builder)`，新增重载 `run(Context&amp;, builder)`。`delay_ms` 只在带 `Context&amp;` 的 run 里允许使用，否则抛出逻辑错误。
+
+**实现步骤**
+1. 新增/扩展 Timer API
+   建议放在现有 `sequence.hpp/.cpp` 或单独 `timer.hpp/.cpp`。我倾向单独 `timer.hpp/.cpp`，后续 debounce/timeout 也会复用。
+   - `start_cycles(std::uint32_t n)`
+   - `start_ms(std::uint32_t ms, std::uint32_t scan_period_ms)`
+   - `tick()`
+   - `expired() const`
+   - `armed() const`
+   - `elapsed_cycles() const`
+   - fresh timer `expired() == true`
+
+2. 扩展 Context
+   Framework 每 cycle 已经知道 tick 和 scan period：
+   - `Context::scan_period_ms()`
+   - 可选 `Context::cycle_tick()`
+   - 在 `Framework::run_cycle_once()` 调 Behavior 前更新 Context。
+
+3. 扩展 Sequence
+   - 内部为每个 delay item 维护独立小状态：当前 delay label/index、elapsed、armed。
+   - `delay(label, cycles)`：第一次到达时 arm，随后每 cycle tick 一次；未到期保持，超过后推进。
+   - `delay_ms(label, ms)`：用 `ceil(ms / ctx.scan_period_ms())` 转 cycle。
+   - 保持 INV-014：delay 也算当前唯一 item，同一 cycle 不继续跑后续 step。
+
+4. 测试
+   新增/扩展 `story04_sequence_tests.cpp`：
+   - fresh `Timer` 默认 expired。
+   - `start_cycles(3)` 后前 3 个 tick false，第 4 次观察 true。
+   - elapsed counter 单调增长。
+   - rearm 会清零。
+   - `seq.delay(&quot;settle&quot;, 2)` 持有准确 cycle 数。
+   - `delay` 释放后后续 step 在下一 cycle 执行。
+   - `delay_ms` 按 scan period 向上取整。
+   - Framework 集成：Behavior `step -&gt; delay -&gt; step` 多 tick 输出按预期变化。
+
+5. 文档更新
+   更新：
+   - `STORY-04/STORY.md`：SLICE-02 标为 implemented。
+   - `SLICE-02/SLICE.md`
+   - `SPEC-022.md`
+   - `INV-015.md`
+   - `MODULE-MODEL.md` 的 sequence/time 描述可补一句。
+
+6. 验证与提交
+   - `cmake --build /tmp/metanc_plc_build`
+   - `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`
+   - `python3 .mdbook/lint_docs_policy.py`
+   - `book build`
+   - `git diff --check`
+   - commit: `feat: add PLC sequence timers`
+   - push
+
+**边界**
+这一步不做 `if_then`、`repeat`、subsequence、parallel，也不接 motion。完成后 STORY-04 只剩 SLICE-03 branching/repeat。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and plan-first context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 17:20:44 +0800</div>
+<pre>我开始落 STORY-04 SLICE-02。先确认当前目标状态和 Sequence/Context/Framework 的现有实现，然后按计划加 `Timer`、`delay`、测试和文档状态。</pre>
 </article>
 </section>
 </main>

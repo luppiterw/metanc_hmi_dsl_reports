@@ -92,7 +92,7 @@ pre {
 <div><b>Started</b>: <code>2026-05-15 11:09:55 +0800</code></div>
 <div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/15/rollout-2026-05-15T11-09-55-019e299c-b0bc-7ab0-a940-802cf0dd3586.jsonl</code></div>
-<div><b>Messages</b>: <code>292</code></div>
+<div><b>Messages</b>: <code>315</code></div>
 <div><b>User prompts</b>: <code>20</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
@@ -3409,6 +3409,150 @@ MEMORY.md:47-49|note=[used PLC build and validation workflow context]
 <h3>Codex Response 3 / commentary</h3>
 <div class="time">2026-05-15 17:20:44 +0800</div>
 <pre>我开始落 STORY-04 SLICE-02。先确认当前目标状态和 Sequence/Context/Framework 的现有实现，然后按计划加 `Timer`、`delay`、测试和文档状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 17:23:02 +0800</div>
+<pre>我会按已经确认的 STORY-04 SLICE-02 方案直接落实现：先确认当前树和相关文件状态，然后补 `Timer`、`Sequence::delay/delay_ms`、Context 的扫描周期入口，再补测试和文档状态，最后跑验证、提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 17:23:15 +0800</div>
+<pre>当前分支是干净的，和远端同步。刚才文档技能路径按系统技能位置读错了，我会读仓库内的 `write-docs` 技能，然后继续改 `rt/plc` 内部文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 17:24:05 +0800</div>
+<pre>我现在确认到 `Context` 还没有暴露 scan tick/周期，`Sequence` 也还只是 step/wait。下一步会做一个很窄的补丁：新增 `timer.hpp/cpp`，只在 Framework 每个 PLC 周期开始时把 tick 和 scan period 注入 `Context`，避免把时间后端泄露给作者 API。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 17:25:45 +0800</div>
+<pre>准备开始改文件：新增 `plc::Timer`，把 `Sequence` 扩成支持 `delay/delay_ms`，并在 `Framework::run_cycle_once()` 里给 `Context` 设置当前 tick 与 scan period。范围仍然只在 `rt/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 17:26:36 +0800</div>
+<pre>核心代码已经补上。接下来我会补测试，覆盖 `Timer` 的 fresh/arming/tick/round-up，以及 `Sequence::delay` 的“到达后按周期 hold、释放后下一周期执行后续 step”和 `delay_ms` 需要 Context 的行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 17:27:22 +0800</div>
+<pre>测试补丁已经写好，新增了一个 delay fixture。现在我会先跑一次目标测试编译/执行，尽早发现 API 或语义偏差，再做文档状态更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 17:27:54 +0800</div>
+<pre>目标测试已经通过。接下来更新 SLICE-02 相关文档，把状态从 designing/unimplemented 改成 implemented，并把 API 说明对齐到当前实现：`Timer::start_ms(ms, scan_period_ms)`，`Sequence::delay_ms` 通过 `run(Context&amp;, ...)` 拿扫描周期。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 17:28:29 +0800</div>
+<pre>文档状态已更新，不过我需要快速检查 frontmatter，避免重复字段或格式问题影响 mdBook/lint。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 17:28:37 +0800</div>
+<pre>发现 SLICE frontmatter 里有重复 `status`，我会修正，同时把后端说明里的旧 `TimeBackend.cycle_count()` 词改成现有 `current_tick()`，避免文档和代码不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 17:29:05 +0800</div>
+<pre>实现、测试和文档状态都已落到文件。现在进入完整验证：先跑全量 PLC 构建和 CTest，再跑文档 lint、bookshelf build、diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 17:29:52 +0800</div>
+<pre>PLC 全量构建和 24 个 CTest 都通过。继续跑文档策略检查和 bookshelf 构建，然后做格式/空白检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 17:30:31 +0800</div>
+<pre>全部验证命令目前都通过了。我会检查 diff 和状态，确认只动了计划内的 `rt/plc` 文件，再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 17:30:59 +0800</div>
+<pre>检查 diff 时看到一个文档/API 对齐点：`Timer` 现在是显式 `tick()` 驱动，`Sequence::delay` 会代为 tick；如果作者直接用 `Timer`，需要在 `cycle()` 中每周期调用一次 `tick()`。我会把这个补进 SLICE/INV，避免文档暗示 Timer 会自动被框架推进。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 17:31:26 +0800</div>
+<pre>我会再读一遍关键源码 diff，重点看生命周期边界和 delay 计数是否真的符合 SPEC-022；然后重新跑文档校验并进入提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 17:31:59 +0800</div>
+<pre>源码复读没有发现范围外改动；我注意到 `Timer::reset()` 作为公开方法超出了这片的作者 API 约定，会把它收回，`Sequence::reset()` 内部直接重置成员状态，这样公开面保持在 `start_cycles/start_ms/tick/expired` 这组最小接口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 17:32:12 +0800</div>
+<pre>公开 API 已经收窄回文档约定。现在重新跑受影响测试和验证命令，确认这个微调没有破坏构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-15 17:32:46 +0800</div>
+<pre>受影响测试和文档/空白检查通过。因为刚才改了源码，我会再跑一次完整 `cmake --build` 与 `ctest`，然后构建 bookshelf。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-15 17:33:31 +0800</div>
+<pre>完整构建、CTest 和 bookshelf 都通过。接下来会暂存 `rt/plc` 这批文件，提交为一个小提交，然后 push 到当前分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-15 17:33:40 +0800</div>
+<pre>`git diff --stat` 没把未跟踪的三个新增文件计入统计，我会先 `git add rt/plc`，然后看暂存区统计和文件列表再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-15 17:33:58 +0800</div>
+<pre>暂存区只包含 `rt/plc` 下 14 个计划内文件，检查通过。现在提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-15 17:34:36 +0800</div>
+<pre>提交 `d57c416b` 已经 push 到 `feat/plc`。我会做最后的完成审计：确认本地/远端一致、工作树干净，并抽查提交内容和验证结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-15 17:34:48 +0800</div>
+<pre>完成审计结果正常：工作树干净，`HEAD` 和 `origin/feat/plc` 都在 `d57c416b`。我会再用 `rg` 抽查 SLICE-02 已从未实现状态移除，然后结束目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / final_answer</h3>
+<div class="time">2026-05-15 17:35:26 +0800</div>
+<pre>已完成并 push。
+
+提交：`d57c416b feat: add PLC sequence timers`
+分支：`feat/plc` 已同步到 `origin/feat/plc`，工作树干净。
+
+做了这些：
+- 新增 `plc::Timer`：`start_cycles`、`start_ms`、`tick`、`expired` 等周期计时 API。
+- `Sequence` 增加 `delay` / `delay_ms`，并保留原 `run(builder)`，新增 `run(Context&amp;, builder)` 给 `delay_ms` 使用扫描周期。
+- `Framework` 每个 PLC cycle 注入 `Context` 的 `cycle_tick` / `scan_period_ms`。
+- 补了 STORY-04 timer/delay 单元测试和 framework roundtrip fixture。
+- 更新 SLICE-02、SPEC-022、INV-015 和模块模型文档状态为 implemented。
+
+验证通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：24/24 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+Goal 用时：952 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-43|note=[used PLC workflow preference and implementation-after-plan context]
+MEMORY.md:47-49|note=[used PLC build and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
 </article>
 </section>
 </main>

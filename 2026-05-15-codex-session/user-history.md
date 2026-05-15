@@ -82,3 +82,4 @@ Date: 2026-05-15
 - ok 给一个详细计划
 - 先generate/update report &amp; docs + sync MetaNC + commit + push 然后给一个qml版本的设计
 - ok 给一个详细计划
+- 做一下，然后generate/update report &amp; docs + sync MetaNC + commit + push，然后解决一下远程的ci问题，然后在generate/update report &amp; docs + sync MetaNC + commit + push

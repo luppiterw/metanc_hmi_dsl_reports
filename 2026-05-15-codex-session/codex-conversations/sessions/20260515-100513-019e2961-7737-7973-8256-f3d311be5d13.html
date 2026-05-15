@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下现在的计划</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下现在的计划</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e2961-7737-7973-8256-f3d311be5d13</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-15 10:05:13 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/15/rollout-2026-05-15T10-05-13-019e2961-7737-7973-8256-f3d311be5d13.jsonl</code></div>
+<div><b>Messages</b>: <code>90</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 10:05:22 +0800</div>
+<pre>看一下现在的计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-15 10:05:36 +0800</div>
+<pre>我先快速看一下当前工作区和已有记忆里的项目上下文，确认“现在的计划”指的是哪个计划文档或当前交付节奏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 10:05:52 +0800</div>
+<pre>这里的工作区实际落在 `MetaNC`，而记忆里最近的活跃上下文也是 `rt/plc` 这条线。我继续核对当前分支、工作树和计划文档，避免只按旧记忆回答。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 10:06:12 +0800</div>
+<pre>当前本地分支是 `feat/plc`，和 `origin/feat/plc` 对齐，工作树干净；最近两个提交已经把 `STORY-02` 实现和 review gap 修复合进去了。现在我再看几处计划源文档，确认下一步不被旧的 readiness 文案误导。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 10:06:35 +0800</div>
+<pre>我看到一个文档滞后点：`IMPLEMENTATION-READINESS.md` 还写着“Start with MVP-0”，但代码历史和 story 状态显示 MVP-0/MVP-1 以及 STORY-02 都已经落过了。因此当前计划要按“已完成的事实”往后推，而不是照那段旧的 Next Coding Start 走。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-15 10:07:01 +0800</div>
+<pre>我看了当前仓库状态和计划文档：现在有效计划应该从 `rt/plc` 的 `STORY-03` 开始，而不是再回到旧文档里的 MVP-0/MVP-1。
+
+当前状态：
+- 分支：`feat/plc`，与 `origin/feat/plc` 对齐，工作树干净。
+- 已完成：`STORY-01` 五个 slice 全部 implemented。
+- 已完成：`STORY-02` 三个 slice 全部 implemented，最近提交是 `Fix PLC STORY-02 review gaps`。
+- 文档滞后点：[IMPLEMENTATION-READINESS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/IMPLEMENTATION-READINESS.md:196) 仍写着 “Start with MVP-0”，但这已经不是当前实际起点。
+
+我建议当前下一步计划是：
+
+1. 先做一个小的文档收口
+   把 `STORY-02` 顶层状态从 `active` 对齐为已完成状态，并更新 readiness 里的 “Next Coding Start”，避免后续继续误导。
+
+2. 进入 `STORY-03 SLICE-01 fault-broadcast`
+   最小实现 `FaultInfo`、`Behavior::on_fault()`、`Behavior::is_faulted()` 和测试用 `Framework::inject_system_fault()`，验证故障广播后 `cycle()` 仍继续执行。
+
+3. 再做 `STORY-03 SLICE-02 nrt-watchdog`
+   加 `nrt_bridge.watchdog.cycle_threshold` 配置，连续空 `poll_incoming()` 达阈值后只触发一次 `Watchdog` system fault。
+
+4. 然后做 `STORY-03 SLICE-03 clear_faults`
+   加 `Behavior::reset()` 和 `Framework::clear_faults()`，用于显式清故障并重新 arm watchdog。
+
+5. 最后做 `STORY-03 SLICE-04 task-heartbeat-watchdog`
+   基于已有 `TaskHeartbeat` 补 `WatchdogMonitor` / latch 逻辑，覆盖 runtime timeout 和 omitted-cycle timeout。
+
+我的判断：下一步最好先落第 1 步文档收口，然后直接进入第 2 步的 `fault-broadcast` 小实现。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-3|note=[identified active MetaNC rt/plc context]
+MEMORY.md:16-30|note=[used recent STORY-02 implementation and review-fix state]
+MEMORY.md:36-58|note=[used PLC workflow preferences and validated implementation facts]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-15 10:12:14 +0800</div>
+<pre>给一个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-15 10:13:03 +0800</div>
+<pre>下面按“最小可审查 patch”来排。默认范围仍然只在 `rt/plc` 内，除非验证命令需要从仓库根目录读取 mdBook/lint 配置。
+
+**目标**
+把 PLC 当前路线从已完成的 `STORY-01/02` 推进到 `STORY-03 fault-flow-and-recovery`，先闭合系统级故障广播，再接 NRT watchdog、清故障、任务心跳 watchdog。
+
+**Patch 0：计划文档对齐**
+目的：先把文档状态和真实代码状态对齐，避免后续继续按旧的 “Start with MVP-0” 走。
+
+改动范围：
+- `rt/plc/docs/spec/STORIES/STORY-02-operator-trust/STORY.md`
+- `rt/plc/docs/spec/STORIES/INDEX.md`
+- `rt/plc/docs/spec/IMPLEMENTATION-READINESS.md`
+
+具体内容：
+- 将 `STORY-02` 顶层状态改为 `implemented`。
+- `STORIES/INDEX.md` 中同步 `STORY-02` 状态。
+- `IMPLEMENTATION-READINESS.md` 的 “Next Coding Start” 改成当前事实：`STORY-01`、`STORY-02` 已落地，下一编码入口是 `STORY-03 SLICE-01 fault-broadcast`。
+- 保留 MVP 路线作为历史路线，不改成大重构文档。
+
+验证：
+```bash
+python3 .mdbook/lint_docs_policy.py
+book build
+git diff --check -- rt/plc
+```
+
+**Patch 1：STORY-03 SLICE-01 fault-broadcast**
+目的：先建立所有故障源共用的系统级广播路径。
+
+改动范围：
+- `rt/plc/include/metanc/plc/behavior.hpp`
+- `rt/plc/src/behavior.cpp`
+- `rt/plc/include/metanc/plc/framework.hpp`
+- `rt/plc/src/framework.cpp`
+- 新增或扩展测试：`rt/plc/tests/story03_fault_flow_tests.cpp`
+- `rt/plc/CMakeLists.txt`
+
+实现内容：
+- 增加 `plc::FaultInfo`，最小字段：
+  - `kind`：`Test`、`Watchdog`、`Backend`、`Application`
+  - `message`
+- 增加 `Behavior::on_fault(const FaultInfo&amp;)` 默认实现。
+- 增加 `Behavior::is_faulted() const`。
+- 默认 `on_fault()` 只设置 faulted 状态，不停止 `cycle()`。
+- 增加测试用 `Framework::inject_system_fault(FaultInfo)`，只用于驱动广播路径。
+- 框架在 `RUNNING` 状态下把同一个 `FaultInfo` 广播给所有 Behavior。
+- 发出一条最小诊断，例如 `warn/system-fault`，不要在这个 patch 里设计完整诊断体系。
+
+测试点：
+- 两个 Behavior 都收到同一个故障。
+- 默认 `on_fault()` 后 `is_faulted() == true`。
+- 注入故障后后续 tick 仍调用 `cycle()`。
+- 非 `RUNNING` 状态下注入故障的行为要明确：建议先拒绝或无效化，不扩展复杂状态机。
+
+验证：
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+git diff --check -- rt/plc
+```
+
+**Patch 2：STORY-03 SLICE-02 nrt-watchdog**
+目的：把第一个真实故障源接到 Patch 1 的广播路径。
+
+改动范围：
+- `rt/plc/include/metanc/plc/descriptors.hpp`
+- `rt/plc/src/descriptors.cpp`
+- `rt/plc/src/framework.cpp`
+- 相关 fixtures
+- `rt/plc/tests/story03_fault_flow_tests.cpp` 或单独 `story03_nrt_watchdog_tests.cpp`
+
+实现内容：
+- `machine.yaml` 的 `nrt_bridge` 增加：
+```yaml
+nrt_bridge:
+  watchdog:
+    cycle_threshold: 100
+```
+- parser 支持可选 `watchdog.cycle_threshold`。
+- `cycle_threshold &lt;= 0` 走现有 boot config validation 路径拒绝启动。
+- framework 每 tick 观察 `NrtBridge.poll_incoming()` 返回结果。
+- 连续空 poll 达阈值时触发一次 `FaultInfo::Kind::Watchdog`。
+- watchdog fired 后不重复触发，直到 Patch 3 的 `clear_faults()` 重新 arm。
+
+测试点：
+- 缺省无 watchdog 时不触发。
+- threshold 为 N 时，第 N 次连续空 poll 触发一次。
+- 有消息到达会重置 stale streak。
+- fired 后继续空 poll 不重复广播。
+- 非法 threshold 启动失败。
+
+**Patch 3：STORY-03 SLICE-03 clear_faults**
+目的：补上操作员显式恢复路径。
+
+改动范围：
+- `behavior.hpp/.cpp`
+- `framework.hpp/.cpp`
+- `story03_*` 测试
+
+实现内容：
+- 增加 `Behavior::reset()` 默认实现。
+- 默认 `reset()` 清除 faulted 状态。
+- 增加 `Framework::clear_faults()`。
+- `clear_faults()` 仅在 `RUNNING` 有意义。
+- 调用顺序：按注册顺序调用所有 Behavior 的 `reset()`。
+- 重新 arm NRT watchdog。
+- 发出 `info/faults-cleared` 诊断。
+
+测试点：
+- fault 后 `clear_faults()` 调用所有 `reset()`。
+- 默认 Behavior 从 faulted 变为非 faulted。
+- watchdog 可在 clear 后再次触发。
+- 无故障时调用 clear 是幂等的。
+
+**Patch 4：STORY-03 SLICE-04 task-heartbeat-watchdog**
+目的：补任务级监督，但保持纯逻辑，不引入平台实时依赖。
+
+改动范围：
+- `framework.hpp/.cpp`
+- 可能新增 `rt/plc/include/metanc/plc/supervision.hpp`
+- 可能新增 `rt/plc/src/supervision.cpp`
+- `rt/plc/tests/story03_task_watchdog_tests.cpp`
+- runtime config parser，如已有合适位置则最小扩展
+
+实现内容：
+- 基于已有 `TaskHeartbeat` 增加：
+  - `WatchdogMonitor`
+  - `FaultLatch`
+  - `WatchdogTimeoutSource`
+  - `SafetyAction`
+- 支持 runtime 配置：
+```yaml
+task_watchdogs:
+  plc_scan:
+    max_runtime_ticks: 1
+    max_gap_ticks: 2
+    action: safe_output
+```
+- runtime timeout：进入 scan 但未退出，超过阈值后 latch。
+- omitted-cycle timeout：长时间没有完成 scan，超过阈值后 latch。
+- latch 只保留第一个 fault，直到显式 clear/reset。
+- monitor 逻辑保持纯函数/轻量对象，不遍历 Behavior，不做 I/O，不做日志扩展。
+
+测试点：
+- 手动 tick 构造 runtime timeout。
+- 手动 tick 构造 omitted-cycle timeout。
+- 第二个 timeout 不覆盖第一个 latch。
+- clear 后 latch 可重新触发。
+
+**最终收口**
+完成 Patch 1-4 后：
+- 将 `STORY-03` 四个 slice 状态改为 `implemented`。
+- 更新对应 `SPEC/INV` 的 `implementation-status` 和 `validated-by`。
+- 更新 `STORIES/INDEX.md`。
+- 跑完整验证：
+
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+book build
+git diff --check -- rt/plc
+```
+
+建议实际执行顺序：先做 `Patch 0 + Patch 1`，验证通过后 commit/push；再继续 `Patch 2`。这样每步都小，review 风险最低。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:36-58|note=[used PLC workflow preferences and validated implementation facts]
+MEMORY.md:47-57|note=[used rt/plc validation commands and prior STORY-02 state]
+MEMORY.md:59-67|note=[used prior PLC failure patterns to keep plan patch-oriented]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-15 10:15:56 +0800</div>
+<pre>我会按 `STORY-03` 的 spec/invariant 逐项做小提交。先从 `SLICE-01` 开始，读现有 framework/behavior 的实现和测试形态，然后先落 `SPEC-014` 的最小故障广播路径并验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-15 10:16:55 +0800</div>
+<pre>我先整理出可执行顺序：`SPEC-014` 建广播 API，`SPEC-015` 补默认 faulted 状态，`INV-011` 验证故障后仍 dispatch；每个点验证后单独提交。随后再进入 watchdog 和 clear/reset。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-15 10:17:22 +0800</div>
+<pre>先把 `STORY-03` 的各个 spec/invariant 当成独立交付单元处理。我已经确认当前树是干净的；下一步先读取 `sim_backends` 和各 spec 文档，确保实现点和测试命名精确对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-15 10:18:06 +0800</div>
+<pre>我开始写 `SPEC-014`：只引入 `FaultInfo`、`Behavior::on_fault` 覆盖点和 `Framework::inject_system_fault`，测试用两个 Behavior 记录收到的故障；默认 faulted 状态先留给 `SPEC-015`，避免第一个提交变大。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-15 10:18:34 +0800</div>
+<pre>`SPEC-014` 的测试会复用现有两 Behavior fixture 模式，但我会新建 `story03_fault_flow_tests.cpp`，避免把故障流测试塞进 STORY-02 或 MVP-1 用例。现在开始改公共 API 和 framework。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-15 10:19:11 +0800</div>
+<pre>核心 API 已经加上。接下来创建 `SPEC-014` 的专用测试和 CMake 目标，只断言广播次数、payload 和诊断，不把 `is_faulted()` 混进这个提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-15 10:20:08 +0800</div>
+<pre>`SPEC-014` 的代码和测试目标已经就位。现在跑 PLC 构建和测试，先验证这个小单元没有破坏已有 14 个测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-15 10:21:01 +0800</div>
+<pre>`SPEC-014` 的 15 个测试全部通过。现在做提交前检查 diff 和 whitespace，然后按一个 spec 一个提交的粒度提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-15 10:21:21 +0800</div>
+<pre>提交前我发现新测试文件和 fixture 还没出现在 `git diff` 统计里，因为它们是新文件。这个提交也应该同步 `SPEC-014` 的 implementation-status/validated-by，才能做到“每个 spec 一个闭环”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-15 10:21:41 +0800</div>
+<pre>`SPEC-014` 文档状态也同步了。因为动了 docs，现在补跑文档 lint/build，再提交这一小块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-15 10:22:11 +0800</div>
+<pre>`SPEC-014` 验证通过：`ctest` 现在是 15/15，通过了新增 `metanc_plc_story03_fault_flow_tests`，docs lint 和 `book build` 也通过。现在按这个 spec 单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-15 10:22:38 +0800</div>
+<pre>进入 `SPEC-015`。这一步只补默认 `on_fault` 设置 Behavior 自身 faulted 标志和 `is_faulted()` 观察方法，并加一个默认 Behavior 的测试；不碰 watchdog 或 clear。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-15 10:22:56 +0800</div>
+<pre>当前工作树干净且本地领先 1 个 `SPEC-014` 提交。我继续 `SPEC-015`，会在同一个 story03 测试文件里追加一个默认 `on_fault` 的用例，然后单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-15 10:24:13 +0800</div>
+<pre>`SPEC-015` 的实现已经只集中在默认 faulted 状态和一个新 fixture。现在跑增量构建、完整 PLC 测试和文档校验，通过后立即单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-15 10:25:20 +0800</div>
+<pre>`SPEC-015` 验证通过：PLC 15/15，docs lint/build 通过。提交前确认新 fixture 会一起纳入，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-15 10:25:44 +0800</div>
+<pre>接下来做 `INV-011`，只加测试证明故障状态不影响后续 `cycle()` 调度。这里应该不需要改框架逻辑，因为当前广播没有改变 dispatch 路径；如果测试暴露问题再补最小实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-15 10:26:24 +0800</div>
+<pre>`INV-011` 是测试和状态同步，没有核心代码改动。现在跑目标测试加完整套件和文档门禁，再提交这个 invariant。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-15 10:26:29 +0800</div>
+<pre>刚才直接跑的是旧二进制，新增 `INV-011` 测试还没重新编译。现在重新 build 后再跑，确保不是误用旧结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-15 10:27:34 +0800</div>
+<pre>`INV-011` 现在有重新编译后的测试覆盖，完整 PLC 测试和文档构建都通过。提交这个 invariant 后再进入 NRT watchdog。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-15 10:28:03 +0800</div>
+<pre>现在进入 `SPEC-016`，也就是 `nrt_bridge.watchdog.cycle_threshold` 达到连续空 poll 阈值时广播 `Watchdog` fault。这个提交会包含 descriptor 解析/校验、framework 计数和一个阈值触发测试；不处理 no-refire，那是下一个 spec。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-15 10:28:19 +0800</div>
+<pre>我继续 `SPEC-016`。先把 `nrt_bridge.watchdog` 做成 descriptor 的可选字段，framework 只在配置存在时计连续空 poll；后续 `SPEC-017/INV-012` 再补 one-shot 语义和更强测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-15 10:28:44 +0800</div>
+<pre>`SPEC-016` 会引入一点持久状态：`nrt_empty_streak` 和 watchdog 配置。为了让后续 `SPEC-017/INV-012` 小提交成立，我会先把 fired 标志放进去但本提交只验证“达到阈值会触发一次 Watchdog fault”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-15 10:29:35 +0800</div>
+<pre>descriptor 解析已经加了 `watchdog.cycle_threshold`，接下来把 framework 的运行态计数接到 `poll_incoming()` 结果之后，并新增一个只触发阈值的 fixture/test。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-15 10:30:17 +0800</div>
+<pre>我注意到 `SPEC-016` 里刚才顺手放了 no-refire 标志，这会把 `SPEC-017` 的实现提前混进来。为了保持提交边界清楚，我会把 one-shot 标志挪到下一步，只让本提交负责“达到阈值触发 Watchdog fault”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-15 10:30:38 +0800</div>
+<pre>现在这个 patch 只会在每次达到/超过阈值时触发，后续再加 fired gate。继续补测试 fixture 和 SPEC-016 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-15 10:31:27 +0800</div>
+<pre>我发现 descriptor 测试里不应该用 `validate_machine_descriptor_for_slice04` 去校验纯 watchdog fixture，因为它没有 inbound mapping。这个 fixture 的目的只是证明 watchdog block 能解析，运行时阈值由 story03 测试覆盖；我会改成 slice02 级基础 descriptor 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-15 10:32:09 +0800</div>
+<pre>`SPEC-016` 代码和测试已写好。这里还不更新 `SPEC-017/INV-012`，所以如果后续空 poll 重复触发，当前阶段是预期未收口。现在构建并跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-15 10:33:15 +0800</div>
+<pre>`SPEC-016` 通过完整验证。提交前我再做一次局部 diff 检查，确认没有把 `SPEC-017` 文档状态误改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-15 10:33:23 +0800</div>
+<pre>`SPEC-016` 状态是干净的：`SPEC-017/INV-012` 仍是 unimplemented。现在按 spec 单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-15 10:33:48 +0800</div>
+<pre>进入 `SPEC-017`，只补 watchdog fired 后不再重复广播的 gate 和测试。这个会在 framework 里加 `nrt_watchdog_fired_`，但不会实现 clear/re-arm，那留给 `INV-013`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-15 10:34:16 +0800</div>
+<pre>one-shot gate 已经加上。为了测试不只看 faulted bool，我会用 `VectorLogger::diagnostics()` 统计 `warn/watchdog-fired` 次数，确认连续多 tick 仍只有一次。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-15 10:34:52 +0800</div>
+<pre>`SPEC-017` 已补好实现和测试。现在构建、完整测试、文档门禁，再单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-15 10:35:59 +0800</div>
+<pre>`SPEC-017` 完整验证通过：连续空 poll 只产生一次 `warn/watchdog-fired`。现在提交这个 spec。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-15 10:36:23 +0800</div>
+<pre>`INV-012` 是对 `SPEC-017` 的跨周期 invariant，当前实现已经满足；我会补一个更直接的“一个 arming window 内 watchdog fault 计数最多 1”的测试，并只更新 invariant 文档状态后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-15 10:36:41 +0800</div>
+<pre>`INV-012` 不需要新 runtime 能力，只需要把 one-shot 语义作为 invariant 明确验证。下一步我会统计 watchdog-kind fault 的派发次数，而不是只看诊断，避免只验证到日志层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-15 10:37:22 +0800</div>
+<pre>我给 `INV-012` 加了一个双接收者 fixture，这样可以验证“一个 arming window 里只有一次 watchdog fault 广播”，同时仍能看到广播到两个 Behavior。现在同步 invariant 文档状态并验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-05-15 10:38:44 +0800</div>
+<pre>`INV-012` 验证通过，变更只包含 invariant 测试、fixture 和文档状态。现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-15 10:39:23 +0800</div>
+<pre>进入 `SLICE-03` 的 `SPEC-018`：只加 `Behavior::reset()` 覆盖点和 `Framework::clear_faults()` 按注册顺序调用 reset。默认 reset 清 faulted 是 `SPEC-019`，watchdog re-arm 是 `INV-013`，这一步不混进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-05-15 10:39:31 +0800</div>
+<pre>我会先实现 `clear_faults()` 只做 reset 调度和诊断。因为默认 reset 清 faulted 还没做，`SPEC-018` 测试会用两个覆盖了 reset 的 Behavior 记录顺序，不依赖默认 faulted 行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-05-15 10:40:19 +0800</div>
+<pre>`clear_faults()` 和 `reset()` API 已加。接下来补两个专用 reset receiver 行为和 fixture，用于验证 registration order 以及 `info/faults-cleared`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-05-15 10:41:06 +0800</div>
+<pre>`SPEC-018` 实现和测试已完成。现在构建、测试和文档检查；这一步默认 reset 仍是 no-op，所以 `SPEC-019` 仍未实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-05-15 10:42:26 +0800</div>
+<pre>`SPEC-018` 验证通过，且 `SPEC-019/INV-013` 仍保持 unimplemented。提交这一个 spec。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / commentary</h3>
+<div class="time">2026-05-15 10:43:00 +0800</div>
+<pre>现在做 `SPEC-019`：默认 `Behavior::reset()` 清除 faulted 标志，并加测试证明 fault 后 `clear_faults()` 会让默认 Behavior 回到非 faulted。单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 45 / commentary</h3>
+<div class="time">2026-05-15 10:43:52 +0800</div>
+<pre>`SPEC-019` 很小：默认 reset 改为清标志，新增测试和文档状态。现在跑验证并提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 46 / commentary</h3>
+<div class="time">2026-05-15 10:44:50 +0800</div>
+<pre>`SPEC-019` 完整验证通过，变更范围符合预期。提交这个 spec。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 47 / commentary</h3>
+<div class="time">2026-05-15 10:45:23 +0800</div>
+<pre>接下来 `INV-013`：`clear_faults()` 需要重新 arm NRT watchdog。这个提交会让 clear 重置 `nrt_empty_streak_` 和 `nrt_watchdog_fired_`，并验证 clear 后 watchdog 可再次触发且仍每个窗口只触发一次。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 48 / commentary</h3>
+<div class="time">2026-05-15 10:46:32 +0800</div>
+<pre>`INV-013` 已补实现和测试。现在跑完整验证；如果通过，这会作为 `SLICE-03` 最后一个小提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 49 / commentary</h3>
+<div class="time">2026-05-15 10:47:40 +0800</div>
+<pre>`INV-013` 验证通过，变更很小。提交后进入 `SLICE-04` task heartbeat watchdog。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 50 / commentary</h3>
+<div class="time">2026-05-15 10:48:29 +0800</div>
+<pre>`SLICE-04` 进入任务心跳 watchdog。这里我会按三个合同拆：先做 `SPEC-058` runtime timeout，再做 `SPEC-059` omitted-cycle timeout，最后做 `INV-041` first-fault latch preservation；每个都单独验证和提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 51 / commentary</h3>
+<div class="time">2026-05-15 10:48:50 +0800</div>
+<pre>我会把 SLICE-04 做成一组纯逻辑类型，先不把 monitor 接进 `run_cycle_once()`，因为文档明确第一版可以由 manual-tick 测试直接驱动。这样不会把 supervisor 放进 scan loop，也不会引入平台依赖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 52 / commentary</h3>
+<div class="time">2026-05-15 10:49:31 +0800</div>
+<pre>我现在把 `SLICE-04` 的实现边界收窄为纯 runtime-supervision 类型：`TaskHeartbeat` 已存在，新增 monitor/latch/action/source，不把它接进真实 scan loop。这样符合文档里的“manual-tick tests drive the monitor directly”，也保持 RT 路径不被扩大。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 53 / commentary</h3>
+<div class="time">2026-05-15 10:50:08 +0800</div>
+<pre>`SPEC-058` 会新增一个 `story03_task_watchdog_tests` 目标和 `story03_task_watchdog_runtime.yaml` fixture；测试会同时覆盖 runtime.yaml 的 `task_watchdogs.plc_scan` 解析和 `plc_scan_runtime` latch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 54 / commentary</h3>
+<div class="time">2026-05-15 10:50:22 +0800</div>
+<pre>我刚才补 descriptor 字段时上下文不匹配，先重新看当前 header 片段再精确打补丁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 55 / commentary</h3>
+<div class="time">2026-05-15 10:50:40 +0800</div>
+<pre>我引入了 `std::string_view` 返回函数，需要 header include。现在补 include，并新增 supervision runtime 类型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 56 / commentary</h3>
+<div class="time">2026-05-15 10:51:04 +0800</div>
+<pre>我把 `WatchdogMonitor` 放在 framework API 边界里，复用已有 `TaskHeartbeatSnapshot` 和 `TaskWatchdogDescriptor`。接下来先实现 `SafetyAction` 和 `SPEC-058` 的 runtime timeout 逻辑，omitted-cycle 分支暂不启用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 57 / commentary</h3>
+<div class="time">2026-05-15 10:51:40 +0800</div>
+<pre>`SPEC-058` 的 parser 补丁落了一半；我先检查插入位置，确认匿名 namespace 和公开函数边界没有被打乱，然后继续把 runtime.yaml 的 `task_watchdogs` 接进 `parse_runtime_descriptor()`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 58 / commentary</h3>
+<div class="time">2026-05-15 10:51:59 +0800</div>
+<pre>我发现 runtime parser 的 helper 插入位置有点粗糙：`to_string(SafetyAction)` 是公开函数，但 task_watchdog 的 YAML helper 不应该暴露在匿名 namespace 外。现在我会先把 parser 结构整理干净，再接入 `parse_runtime_descriptor()`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 59 / commentary</h3>
+<div class="time">2026-05-15 10:52:25 +0800</div>
+<pre>我继续 `SPEC-058`。刚才 runtime parser helper 已经补上，但我需要先修正 `parse_runtime_descriptor()` 的循环形态，因为它原来是 range-for，不能直接跳过 `task_watchdogs` 子块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 60 / commentary</h3>
+<div class="time">2026-05-15 10:52:35 +0800</div>
+<pre>确实需要把 range-for 改成 index cursor 循环，否则子块无法跳过。修正这个点后我会实现 monitor 的 runtime timeout 分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 61 / commentary</h3>
+<div class="time">2026-05-15 10:53:08 +0800</div>
+<pre>`SPEC-058` 的纯逻辑已经实现：只在 entered-not-exited 且超过 runtime tick 时 latch。现在加专用测试文件、CMake 目标和 runtime fixture。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 62 / commentary</h3>
+<div class="time">2026-05-15 10:54:48 +0800</div>
+<pre>`SPEC-058` 的代码、parser、测试和 docs 已就位。现在跑构建，我预期这次会暴露 parser 或 include 级别的小问题，直接修到通过后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 63 / commentary</h3>
+<div class="time">2026-05-15 10:55:50 +0800</div>
+<pre>`SPEC-058` 的构建过了，但完整测试暴露 runtime parser 兼容性问题：我把原来“忽略 `runtime:` 子字段”的行为改得太严格，导致所有带 `runtime.id` 的 fixture 都失败。现在先修 parser 兼容，再重跑全套。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 64 / commentary</h3>
+<div class="time">2026-05-15 10:55:59 +0800</div>
+<pre>Parser 兼容性已恢复为跳过不关心的 nested 行。现在重跑 build 和 tests。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 65 / commentary</h3>
+<div class="time">2026-05-15 10:56:31 +0800</div>
+<pre>`SPEC-058` 的 16 个 PLC 测试已全部通过。现在跑文档 lint/build 和 diff 检查，然后提交这一条 spec。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 66 / commentary</h3>
+<div class="time">2026-05-15 10:57:12 +0800</div>
+<pre>`SPEC-058` 验证通过且 `SPEC-059/INV-041` 仍未标记完成。提交这个 runtime-timeout slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 67 / commentary</h3>
+<div class="time">2026-05-15 10:57:44 +0800</div>
+<pre>进入 `SPEC-059`：补 omitted-cycle timeout 分支和测试，复用刚建的 monitor/latch，不改 runtime scan loop。完成后单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 68 / commentary</h3>
+<div class="time">2026-05-15 10:58:42 +0800</div>
+<pre>`SPEC-059` 已补上 omitted-cycle 分支。现在跑构建测试和文档门禁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 69 / commentary</h3>
+<div class="time">2026-05-15 10:59:53 +0800</div>
+<pre>`SPEC-059` 验证通过。提交这个 omitted-cycle timeout。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 70 / commentary</h3>
+<div class="time">2026-05-15 11:00:12 +0800</div>
+<pre>进入 `INV-041`：已有 `FaultLatch::latch_watchdog_timeout()` 已经保留第一故障，补一个测试明确先触发 runtime，再尝试 omitted-cycle，断言 source/action/tick 都不被覆盖；然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 71 / commentary</h3>
+<div class="time">2026-05-15 11:01:35 +0800</div>
+<pre>`INV-041` 只补了测试和文档状态。现在跑最后这个 invariant 的验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 72 / commentary</h3>
+<div class="time">2026-05-15 11:02:56 +0800</div>
+<pre>`INV-041` 验证通过，变更只包含测试和文档状态。提交后我会做一次 STORY-03 总收口状态和完成审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 73 / commentary</h3>
+<div class="time">2026-05-15 11:03:58 +0800</div>
+<pre>`STORY-03` 的所有 spec/invariant 已按小提交落完。现在做收口审计：核对顶层 story/slice 状态、每个合同的 `implemented/validated-by`、测试覆盖和工作树状态；如果只剩状态文档滞后，我会单独做一个很小的 closeout 提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 74 / commentary</h3>
+<div class="time">2026-05-15 11:05:08 +0800</div>
+<pre>我先把当前 STORY-03 的状态收口检查一下：重点看故事/切片状态文档是否还停在 designing/active，以及刚才已做的 12 个小提交是否都在当前分支上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 75 / commentary</h3>
+<div class="time">2026-05-15 11:05:33 +0800</div>
+<pre>确认了：代码与测试侧已经是 12 个按 SPEC/INV 拆开的提交，当前只剩故事级状态文档还没有从 `active/designing` 收口到已实现。我接下来只改 `rt/plc` 内的 STORY-03 状态文档，然后再跑文档和测试验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 76 / commentary</h3>
+<div class="time">2026-05-15 11:05:40 +0800</div>
+<pre>状态收口会是一个单独提交，不混进前面任何 SPEC/INV 提交。这样分支历史仍然能清楚看到每个合约各自落地，最后一笔只是把故事索引和切片状态对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 77 / commentary</h3>
+<div class="time">2026-05-15 11:06:11 +0800</div>
+<pre>文档状态已经改完；现在先看差异是否只包含 STORY-03 状态同步，再检查有没有残留 `active/designing`。之后我会跑文档 lint、book build、diff check 和 CTest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 78 / commentary</h3>
+<div class="time">2026-05-15 11:06:24 +0800</div>
+<pre>差异确认是纯状态同步，且没有残留 `active/designing` 命中。现在开始验证：文档策略、mdBook 构建、空白检查和 PLC 测试一起跑，看看有没有收口后引入的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 79 / commentary</h3>
+<div class="time">2026-05-15 11:06:31 +0800</div>
+<pre>PLC CTest 和文档策略都已经过了，`book build` 还在收尾。我等它结束后提交这笔 STORY-03 状态收口提交，再做最终审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 80 / commentary</h3>
+<div class="time">2026-05-15 11:06:41 +0800</div>
+<pre>验证全部通过。现在把这笔状态收口作为独立提交提交掉，然后我会用 `git status/log` 和文档查询做最后完成审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 81 / commentary</h3>
+<div class="time">2026-05-15 11:07:07 +0800</div>
+<pre>收口提交完成。最后我会做一次按需求映射的审计：提交拆分、STORY-03 合约状态、测试和工作区状态都要对上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 82 / commentary</h3>
+<div class="time">2026-05-15 11:07:17 +0800</div>
+<pre>完成审计对上了：STORY-03 下 4 个 slice、12 个 SPEC/INV 都是 `implemented` 并带验证目标；分支历史是 12 个合约提交加 1 个状态收口提交，工作区干净。现在我标记这个目标完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 83 / final_answer</h3>
+<div class="time">2026-05-15 11:07:40 +0800</div>
+<pre>STORY-03 已完成并按你的要求拆提交了：12 个 SPEC/INV 各自独立提交，最后追加 1 个状态收口提交 `1b9566b9 Close PLC STORY-03 status docs`。当前 `feat/plc` 比 `origin/feat/plc` ahead 13，工作区干净，未 push。
+
+验证结果：
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：16/16 passed
+- `python3 .mdbook/lint_docs_policy.py`：passed
+- `book build`：passed
+- `git diff --check -- rt/plc`：passed
+- STORY-03 的 4 个 slice 和 12 个 SPEC/INV 都已标为 `implemented`，并记录到对应测试目标
+
+目标已标记完成，用时 3280 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-3|note=[identified active MetaNC rt/plc context]
+MEMORY.md:16-30|note=[used recent STORY-02 implementation and review-fix state]
+MEMORY.md:36-58|note=[used PLC workflow preferences and validation flow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

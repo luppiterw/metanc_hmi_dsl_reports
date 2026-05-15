@@ -5,9 +5,9 @@
 - Side sessions: `2`
 - User prompts: `209`
 - Synthetic events: `7`
-- Messages: `1113`
+- Messages: `1121`
 - User messages: `216`
-- Codex messages: `897`
+- Codex messages: `905`
 
 ## Sessions By Date
 
@@ -65,7 +65,7 @@
 | 2026-05-13 16:25:56 +0800 | 019dd1a3 | 44 | 现在看看clean程度，是不是目前比较理想 | 2 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-44) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-44) |
 | 2026-05-13 16:28:49 +0800 | 019dd1a3 | 45 | 下一步你觉得什么比较合适 | 1 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-45) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-45) |
 | 2026-05-13 16:33:45 +0800 | 019dd1a3 | 46 | 可以 你详细规划一下 | 1 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-46) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-46) |
-| 2026-05-13 16:37:41 +0800 | 019dd1a3 | 47 | ok do；然后generate/update report & docs + sync MetaNC + commit + push | 19 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-47) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-47) |
+| 2026-05-13 16:37:41 +0800 | 019dd1a3 | 47 | ok do；然后generate/update report & docs + sync MetaNC + commit + push | 27 | [md](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.md#turn-47) | [html](sessions/20260428-091100-019dd1a3-b582-7aa3-bc1d-fc4c131177f6.html#turn-47) |
 | 2026-05-13 08:04:01 +0800 | 019e19cc | 1 | 给一下计划 | 1 | [md](sessions/20260512-092843-019e19cc-f58d-7681-bf0a-6cf7d05b070d.md#turn-1) | [html](sessions/20260512-092843-019e19cc-f58d-7681-bf0a-6cf7d05b070d.html#turn-1) |
 | 2026-05-13 08:05:36 +0800 | 019e19cc | 2 | 意思是完善脚本执行器语法是吗 | 1 | [md](sessions/20260512-092843-019e19cc-f58d-7681-bf0a-6cf7d05b070d.md#turn-2) | [html](sessions/20260512-092843-019e19cc-f58d-7681-bf0a-6cf7d05b070d.html#turn-2) |
 | 2026-05-13 08:08:54 +0800 | 019e19cc | 3 | ok 给一个详细计划 | 1 | [md](sessions/20260512-092843-019e19cc-f58d-7681-bf0a-6cf7d05b070d.md#turn-3) | [html](sessions/20260512-092843-019e19cc-f58d-7681-bf0a-6cf7d05b070d.html#turn-3) |

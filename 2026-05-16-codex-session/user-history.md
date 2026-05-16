@@ -9,3 +9,5 @@ Date: 2026-05-16
 - 详细计划一下
 - do
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- review一下
+- generate/update report &amp; docs + sync MetaNC + commit + push

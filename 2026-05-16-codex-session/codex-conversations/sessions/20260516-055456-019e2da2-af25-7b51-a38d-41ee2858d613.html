@@ -92,7 +92,7 @@ pre {
 <div><b>Started</b>: <code>2026-05-16 05:54:56 +0800</code></div>
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/16/rollout-2026-05-16T05-54-56-019e2da2-af25-7b51-a38d-41ee2858d613.jsonl</code></div>
-<div><b>Messages</b>: <code>151</code></div>
+<div><b>Messages</b>: <code>175</code></div>
 <div><b>User prompts</b>: <code>9</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
@@ -1151,6 +1151,126 @@ MEMORY.md:484-486|note=[review considered final artifact generation expectations
 <h3>Codex Response 2 / commentary</h3>
 <div class="time">2026-05-16 10:37:54 +0800</div>
 <pre>三边当前都是 clean。现在刷新今天报告导出，然后重建 reports mdBook 和 source `docs_html`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-16 10:38:56 +0800</div>
+<pre>source report/docs 已刷新，今天报告统计更新到 51 条 user prompt、235 条消息。接下来重新 export 到 MetaNC，并检查下游发布边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-16 10:40:33 +0800</div>
+<pre>MetaNC 下游 docs 边界干净，并且这轮同步后 MetaNC 仍无 tracked diff。现在跑提交前 targeted tests 和两边最终产物生成；这轮代码没变，但验证最终产物链路仍然按要求执行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-16 10:41:33 +0800</div>
+<pre>targeted 测试和 CTest 都通过。现在跑 source 与 MetaNC 的最终 `generate_targets.sh`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-16 10:42:30 +0800</div>
+<pre>source 最终产物生成完成。现在跑 MetaNC 最终产物生成，确保 sync 后的下游也能完整打包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-16 10:43:42 +0800</div>
+<pre>验证和最终产物生成完成。现在 fetch 确认远端没推进，然后按 reports 子模块 → source 父仓库指针顺序提交；MetaNC 仍无 diff 就不提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-16 10:45:45 +0800</div>
+<pre>远端没有推进，可以提交。reports 子模块有本轮导出的增量；MetaNC 仍然无 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-16 10:48:16 +0800</div>
+<pre>提交完成，只有 source 父仓库 ahead 1，MetaNC 无变更。现在 push reports 子模块和 source pointer。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-16 10:49:39 +0800</div>
+<pre>push 完成。现在确认最新 source CI 触发状态和三边最终 clean。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-16 10:50:25 +0800</div>
+<pre>本地三边 clean，最新 CI `25950842825` 已触发并在跑；我继续等到最终结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-16 10:52:43 +0800</div>
+<pre>最新 CI 已通过 Pipeline 和 Collaboration，Report Book Build 基本完成到 artifact upload；Web/QML smoke 还在生成 artifacts。继续等最终结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-16 10:57:48 +0800</div>
+<pre>Report Book Build 已通过，剩 Web/QML runtime smoke 还在 artifact generation，和前两轮一样需要等 runner 完成。继续等最终状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-16 11:03:30 +0800</div>
+<pre>最新 source CI 出了一个失败，但不是 report build：`Web Runtime Smoke` 的 `Run Web strict parity smoke` 失败，其他 Pipeline/QML/Report 都通过。因为这轮代码没变、只更新 report pointer，我先拉失败日志判断是 flaky 还是需要补修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-16 11:05:06 +0800</div>
+<pre>远程 CI 这次失败不是 report/docs，而是 Web strict parity 的 `mdi_execution_result` 进度断言：命令已 accepted，UI 也进入 MDI Running，但断言要求 `axis_x`、`mdi_line` 或 `revision` 之一立刻前进，远端 snapshot 当时还没推进。我会按 CI 问题处理，先复现/读场景和 runner 逻辑，再补稳定化修复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-16 11:07:03 +0800</div>
+<pre>我继续接上前面的状态：本地报告/文档/产物和 push 已经做过一轮，但最新远程 CI 卡在 Web Runtime Smoke 的 MDI 进度断言上。现在先把这个 CI 失败修掉，再重新同步 MetaNC、生成最终产物、提交推送并复查远程 CI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-16 11:07:27 +0800</div>
+<pre>定位到失败点后，问题不像是服务端拒绝命令，而是 Web smoke 对“进度”的判断太窄：CI 快照里 MDI 已经从 `N10` 走到 `N20`，但断言只认轴位置、行号或 revision。我要把“执行块从写入后的首行推进到 N20”也作为合法进度信号，并让 Web/QML 两边保持同一个判断口径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-16 11:10:51 +0800</div>
+<pre>我还检查了 Web runtime 的 revision 来源：Web 侧 `runtime.readProperty(&quot;__revision&quot;)` 目前并不会从服务端 revision 自动更新，所以这条 progress fallback 在 Web smoke 里基本无效。补丁会同时修正断言规则，并把服务端 revision 暴露给 Web smoke，避免下一次又靠偶然的行号变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-16 11:12:55 +0800</div>
+<pre>准备改 5 个点：Web parity runner 支持 `not_equal_state` 进度断言、MDI 场景把执行块推进列入进度、Python 共享断言同步支持、QML strict MDI smoke 使用同一进度口径、Web runtime 把服务端 revision 暴露为 `__revision` 供 smoke 使用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-16 11:14:26 +0800</div>
+<pre>共享 parity 单测先过了。接下来需要刷新 Web runtime 文本快照，因为我改的是生成器片段，`tests/snapshots/web/runtime.js.snap` 必须和新生成的 Web runtime 保持一致，否则 Pipeline Tests 会失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-16 11:16:02 +0800</div>
+<pre>第一次快照测试失败不是逻辑错误，是 `index.html` 的 cache-busting hash 跟着 runtime 变化了。我会把对应的 Web index 文本快照一起刷新，然后重新跑同一组校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-16 11:17:27 +0800</div>
+<pre>QML strict MDI 单测在这台机子上因为缺 QtWebSockets 被 skip，这和之前本地环境一致；场景共享断言和生成输出快照已经过了。下一步我会重新生成最终 distribution，再直接跑 Web parity MDI smoke，复现远程 CI 那条链路。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-16 11:20:50 +0800</div>
+<pre>本地 Web parity MDI smoke 已经复现 CI 路径并通过，关键快照里 revision 也从 7 到 13，执行块是 `N20`。我现在扩展跑源仓的目标测试和 CTest，然后重新导出到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-16 11:22:05 +0800</div>
+<pre>源仓目标测试和 CTest 都过了。为了对齐远程 Web Runtime Smoke，我再把另外两个 Web parity 场景也本地跑一遍；随后导出到 MetaNC 并在 MetaNC 重跑同一批验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-16 11:25:27 +0800</div>
+<pre>MetaNC 已同步出实际变更。现在在 MetaNC 里生成 docs_html、跑目标测试、生成最终 distribution，并确认 downstream docs 仍然没有 reports 入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-16 11:28:13 +0800</div>
+<pre>MetaNC 的 docs_html、目标测试、CTest、最终 distribution 都过了，且 `docs_html` 根目录没有 reports。接下来回到 source 重新导出本轮 report/docs_html，把今天的实际修复和验证写进报告，然后统一提交并 push。</pre>
 </article>
 </section>
 </main>

@@ -2,7 +2,7 @@
 
 Focus:
 
-- Session bootstrap and Codex user-history export tooling
+- Web/QML S3 logs query/export parity scenario, QML strict smoke kickoff, final artifact validation, MetaNC sync, and report/docs refresh
 
 Session assets:
 

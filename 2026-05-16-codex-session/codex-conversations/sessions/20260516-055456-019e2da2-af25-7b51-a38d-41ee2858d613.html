@@ -92,8 +92,8 @@ pre {
 <div><b>Started</b>: <code>2026-05-16 05:54:56 +0800</code></div>
 <div><b>CWD</b>: <code>/home/i5/workspace/ccmix-wp</code></div>
 <div><b>Source</b>: <code>~/.codex/sessions/2026/05/16/rollout-2026-05-16T05-54-56-019e2da2-af25-7b51-a38d-41ee2858d613.jsonl</code></div>
-<div><b>Messages</b>: <code>175</code></div>
-<div><b>User prompts</b>: <code>9</code></div>
+<div><b>Messages</b>: <code>257</code></div>
+<div><b>User prompts</b>: <code>13</code></div>
 <div><b>Synthetic events</b>: <code>0</code></div>
 </section>
 <section class="turn" id="turn-1">
@@ -1271,6 +1271,612 @@ MEMORY.md:484-486|note=[review considered final artifact generation expectations
 <h3>Codex Response 26 / commentary</h3>
 <div class="time">2026-05-16 11:28:13 +0800</div>
 <pre>MetaNC 的 docs_html、目标测试、CTest、最终 distribution 都过了，且 `docs_html` 根目录没有 reports。接下来回到 source 重新导出本轮 report/docs_html，把今天的实际修复和验证写进报告，然后统一提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-16 11:31:57 +0800</div>
+<pre>报告和 source docs_html 已经重新生成，最新 `docs_html/reports/2026-05-16-codex-session/index.html` 也在输出里。现在进入提交阶段：先提交 reports 子模块，再提交 source 的 CI 修复和 report pointer，再提交 MetaNC 同步变更，最后依次 push 并看远程 CI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-16 11:34:21 +0800</div>
+<pre>提交前我又做了三仓 fetch；source 和 MetaNC fetch 正常，reports 子模块第一次被沙箱网络限制挡住，已用授权路径重跑成功。现在检查 ahead/behind 和 diff 质量，再开始分仓提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-16 11:37:03 +0800</div>
+<pre>三边提交都完成了：reports 是 `a50ac62`，source 是 `3ce9ac4`，MetaNC 是 `b53b1743`。我现在做提交后的干净状态检查，然后推送 reports、source、MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-16 11:38:46 +0800</div>
+<pre>三仓都已经 push 成功。现在我会查 GitHub Actions 最新 run，重点确认 source 的 Web Runtime Smoke 是否通过，同时看 MetaNC 分支有没有对应 CI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-16 11:39:49 +0800</div>
+<pre>最新 source CI 仍然失败，而且这次 15 秒就结束，明显不是刚才的 Web smoke 运行时失败。我要看这次 run 的 job/step 日志，先判断是 workflow/checkout/submodule 还是文件规则问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-16 11:40:47 +0800</div>
+<pre>这次失败原因不是测试，是 checkout 阶段拉不到 reports 子模块新指针 `a50ac62`：source push 触发 CI 时，reports push 很可能还没在 GitHub 子模块仓库可见。我要先确认 reports 远端 main 是否已经指向这个 commit；如果是，就 rerun 这次 workflow。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-16 11:42:32 +0800</div>
+<pre>远端 refs 已确认：reports/main 是 `a50ac62`，source/metanc-layout 是 `3ce9ac4`，MetaNC/feat/hmi 是 `b53b1743`。我已经 rerun 刚才那个 source workflow，现在等它跑完并看结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-16 11:43:58 +0800</div>
+<pre>rerun 已经过了 checkout，Pipeline Tests 和 Collaboration Files 已通过；Web/QML smoke 还在构建运行，Report Book Build 也在跑。继续等最终状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-16 11:44:42 +0800</div>
+<pre>CI 还在跑长任务，当前没有新的失败；Web/QML smoke 处在生成或 smoke 阶段，Report Book Build 也还没结束。我继续等，不会停在半截。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-16 11:46:18 +0800</div>
+<pre>Web/QML smoke 还在同一阶段，通常是 native/QML/server 构建比较久；没有 checkout 或 pipeline 失败迹象。我继续等最终状态，如果再失败会直接拉对应 job log。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-16 11:46:57 +0800</div>
+<pre>Report Book Build 已通过。现在只剩 Web Runtime Smoke 和 QML Runtime Smoke，仍在构建/运行中；之前本地 Web 三个 parity 场景都已经通过，所以重点等远程实际结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-05-16 11:47:37 +0800</div>
+<pre>CI 剩下两个 runtime smoke 已跑 5 分钟，还没有失败。因为它们都在重建 Qt/Drogon 产物，继续等待是合理的；我会继续盯到结束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-16 11:50:04 +0800</div>
+<pre>CI 的两个 runtime smoke 仍在跑，状态没有变成失败；这类 job 会在生成 QML/Web/server 产物时长时间停在同一个 step 名称下。继续等最终结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-05-16 11:51:20 +0800</div>
+<pre>远程 CI 目前通过了 Report Book、Pipeline、Collaboration，剩 Web/QML runtime smoke 两个长任务。它们还没给出失败日志，继续等待最终状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-05-16 11:53:29 +0800</div>
+<pre>Web job 已经完成 “Generate Web runtime smoke artifacts”，进入实际 Web strict parity smoke；QML 也进入 strict transport smoke。现在是在跑真正的烟测阶段，继续等最终结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-05-16 11:54:13 +0800</div>
+<pre>远程 source CI rerun 已全部通过，包括 Web Runtime Smoke 和 QML Runtime Smoke。最后我做一次本地三仓状态收口检查，然后给你结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / final_answer</h3>
+<div class="time">2026-05-16 11:55:20 +0800</div>
+<pre>已完成。
+
+修复点：远程 CI 的 Web Runtime Smoke 卡在 MDI 进度判断，我把 `mdi_executing_block` 从写入后的 `N10` 推进到执行中的 `N20` 纳入进度断言，并把 Web runtime 的服务端 revision 暴露给 smoke 使用。source 本地 Web 三个 parity 场景都通过，远程 source CI rerun 也通过了：`25951794573`，head `3ce9ac417fa18ecf2f50c05824c7c89a02976510`。
+
+已生成/验证：
+- 更新 2026-05-16 report，并重建 reports mdBook 和 source `docs_html`
+- 同步到 `MetaNC/nrt/hmi`，重建 MetaNC `docs_html`，确认 downstream 仍无 reports 入口
+- source 和 MetaNC 都跑了目标 Python 测试、CTest、`./tools/generate_targets.sh`
+- source 额外跑了 Web parity smoke：`auto_jog_command_results`、`prog_file_lifecycle`、`mdi_execution_result`
+- MetaNC 额外跑了 Web parity MDI smoke
+
+已提交并 push：
+- reports: `a50ac62 docs: update 2026-05-16 session report`
+- source: `3ce9ac4 fix: stabilize web mdi parity smoke`
+- MetaNC: `b53b1743 fix: sync web mdi parity smoke`
+
+当前本地三仓状态干净：
+- `metanc_hmi_dsl`: clean on `metanc-layout`
+- reports submodule: clean
+- `MetaNC`: clean on `feat/hmi`
+
+MetaNC push 后未看到本次 `feat/hmi` push 触发新的 GitHub Actions run；source 这边远程 CI 已确认全绿。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:345-351|note=[end-to-end report docs MetaNC sync workflow and report pointer boundary]
+MEMORY.md:484-486|note=[final artifact generation commands for source and MetaNC]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-16 13:25:35 +0800</div>
+<pre>看一下现在的问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-16 13:26:07 +0800</div>
+<pre>我先看本地三仓状态和最新远程 CI/Actions 状态，区分是代码问题、推送状态问题，还是 GitHub Actions 的提示/告警。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-16 13:28:06 +0800</div>
+<pre>目前 source 远端最新 run 是绿色；我再补看 commit checks 和 Actions annotation，确认有没有“红叉以外”的遗留问题，比如 MetaNC 没触发 CI 或 Actions 版本告警。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-16 13:28:44 +0800</div>
+<pre>现在看下来，真正的问题基本已经收口：
+
+1. `metanc_hmi_dsl` 最新远程 CI 已通过
+   最新 run：`25951794573`
+   commit：`3ce9ac4 fix: stabilize web mdi parity smoke`
+   5 个 job 全绿：`Pipeline Tests`、`Report Book Build`、`Collaboration Files`、`QML Runtime Smoke`、`Web Runtime Smoke`。
+
+2. 之前那个失败 run 还在历史里
+   `25950842825` 是旧提交 `0229863` 的失败记录，不是当前 head 的问题。
+
+3. MetaNC 最新提交已推到远端，但没有触发新的 checks
+   远端 `feat/hmi` 指向 `b53b1743`，但 GitHub check-runs 是 `0`。也就是说不是失败，是该 commit 没有 CI/check 绑定或没触发。
+
+4. 本地三仓都是干净状态
+   `metanc_hmi_dsl`、reports submodule、`MetaNC` 都 clean，且都对齐远端。
+
+唯一还需要注意的是 GitHub Actions 有一个 warning：`actions/cache@v4` 当前跑在 Node.js 20，GitHub 提示 2026-06-02 起默认切到 Node 24，2026-09-16 移除 Node 20。这个是未来兼容性告警，不影响当前 CI 通过。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-16 17:30:01 +0800</div>
+<pre>你现在有下一步的计划吗，目前web部分好像做什么测试差不多了，qml还没开始？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-16 17:30:28 +0800</div>
+<pre>我先快速对一下现有 Web/QML 测试面，不只凭印象回答。重点看现在 QML 已有哪些 smoke/parity 覆盖，以及和 Web 差在哪。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-16 17:31:45 +0800</div>
+<pre>有。先纠正一下：QML 不是没开始。最新远程 CI 里 `QML Runtime Smoke` 已经在跑并且通过；本地 `tests/qml_smoke/` 也已经有一批 strict/runtime/UI smoke。现在真正的差距是：Web 的 shared parity 场景更规整，QML 这边覆盖不少，但还比较分散，缺少一张清晰的“QML 覆盖到哪、下一步补哪”的收口表。
+
+我建议下一步按这个顺序做：
+
+1. **先收口现状**
+   - 固化当前 S0/S1/S2：`auto_jog_command_results`、`prog_file_lifecycle`、`mdi_execution_result`。
+   - 把 Web/QML/server 三端哪些测试在 CI 跑、哪些只本地跑，整理进 `docs/client/web_qml_parity.md`。
+   - 明确本地 QML 依赖问题：本机 QtWebSockets 缺失时会 skip，但远程 CI 是强制跑的。
+
+2. **补 QML 可见性**
+   - 给 `tests/qml_smoke/*.js` 做一张 inventory：每个 smoke 对应哪个功能行、是否 CI gate、是否和 Web shared scenario 对齐。
+   - 把“QML 已覆盖”和“QML 还没覆盖”从感觉变成文档和测试清单。
+
+3. **做下一个共享验收场景 S3**
+   - `logs_query_export_minimum` 是当前文档里已经列出的 planned 场景。
+   - 做法是先写 shared parity scenario，再让 Web smoke、QML strict smoke、server contract 都消费同一个场景。
+   - 这个比直接做视觉像素 parity 更稳，收益也更高。
+
+4. **再挑一个 QML UI 产品面补齐**
+   - 推荐优先 `PROG EDIT` 的焦点/光标/保存反馈，或者 settings/tool/parameter 的基础编辑流程。
+   - 不建议现在直接铺开 full visual parity、大文件性能、多客户端冲突，这些 blast radius 大，应该放后面。
+
+所以我的下一步计划是：先做 **QML/Web coverage inventory + parity 文档收口**，然后实现 **S3 logs query/export shared scenario**，最后跑本地最终产物生成，再同步 MetaNC、更新 report/docs、commit + push。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:581-590|note=[combined run helper and HMI docs workflow context]
+MEMORY.md:487-490|note=[generated distribution helper and Qt QML runtime context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-16 17:33:17 +0800</div>
+<pre>详细计划一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-16 17:33:53 +0800</div>
+<pre>有，详细版我会按“先收口、再补 QML、再扩共享场景、最后同步发布”来做。
+
+**目标**
+把当前 Web 已经比较稳定的验收链，扩展成 Web/QML/server 都能复用的共享验收体系。不是单独给 QML 补一堆零散 smoke，而是让每个关键产品能力都有明确的 shared scenario、Web 覆盖、QML 覆盖、CI 状态和文档记录。
+
+**阶段 1：现状收口**
+先不急着写新功能，先把当前测试面整理清楚。
+
+产物：
+- 更新 `docs/client/web_qml_parity.md`
+- 新增或补充 QML/Web coverage inventory
+- 明确每个场景的状态：`done / partial / planned / blocked`
+
+重点确认：
+- Web 已有共享场景：`auto_jog_command_results`、`prog_file_lifecycle`、`mdi_execution_result`
+- QML 已有 runtime strict、WebSocket、program lifecycle、MDI、UI automation 等 smoke
+- 本地 QML 依赖差异：本机 QtWebSockets 缺失会 skip，但远程 CI 是强制门禁
+
+验收标准：
+- 文档能直接回答“Web 覆盖了什么、QML 覆盖了什么、还缺什么”
+- 不再靠口头判断“QML 有没有开始”
+
+**阶段 2：补齐 QML 测试组织**
+把 `tests/qml_smoke/*.js` 映射到产品能力，而不是只作为技术 smoke 存在。
+
+计划动作：
+- 给每个 QML smoke 标注对应功能域：MAIN、MDI、PROG、LOGS、runtime transport、settings 等
+- 区分三类测试：
+  - shared parity scenario：Web/QML/server 都应跑
+  - QML-specific smoke：只验证 QML 壳、QtWebSockets、焦点/控件行为
+  - platform probe：只验证底层 runtime 或连接稳定性
+- 把当前 QML coverage gaps 写进 parity 文档
+
+验收标准：
+- QML 测试清单能和 Web 对齐
+- 哪些是 CI gate、哪些是本地辅助测试，一眼能看出来
+
+**阶段 3：实现下一个共享场景 S3**
+优先做 `logs_query_export_minimum`，因为它已经在现有 parity 文档里标成 planned，而且属于产品上很关键的诊断能力。
+
+实现顺序：
+1. 先定义 shared scenario JSON
+2. 补 server/mock 断言
+3. 补 Web parity runner 支持
+4. 补 QML strict smoke，消费同一个场景
+5. 更新 snapshots
+6. 更新 parity docs
+
+验收标准：
+- `logs_query_export_minimum` 在 Web/QML/server 三端都能跑
+- CI 里不只是 Web 过，QML 也有对应 gate
+- 文档里从 `planned` 改成 `done`
+
+**阶段 4：补一个 QML UI 产品切片**
+S3 完成后，再选一个真正用户可感知的 QML UI 切片。优先级我建议：
+
+第一优先：`PROG EDIT` 基础编辑闭环
+覆盖打开、编辑、保存、焦点、状态反馈。
+
+第二优先：settings/tool/parameter 基础编辑
+覆盖字段输入、保存、刷新后保持一致。
+
+第三优先：logs 面板 UI 行为
+覆盖查询、过滤、导出入口和空状态。
+
+验收标准：
+- 不是只测 runtime API，要覆盖 QML UI 操作路径
+- 对应 Web 行为有可比对点
+- 失败时能定位是 shared contract、Web、QML 还是 runtime 问题
+
+**阶段 5：本地最终验证**
+每个实现阶段结束后跑一轮本地验证，提交前必须生成最终产物。
+
+建议验证链：
+```bash
+python3 -m unittest -v tests.test_parity_scenarios tests.test_qml_smoke tests.test_ui_automation tests.test_docs_portal
+ctest --test-dir generated/server-build --output-on-failure
+env VCPKG_ROOT=/home/i5/workspace/github/vcpkg HMI_SERVER_NATIVE_BUILD_MODE=host PKG_CONFIG=/usr/bin/pkgconf ./tools/generate_targets.sh
+```
+
+如果本机 QML 因 QtWebSockets 缺失 skip，要在报告里明确写清楚，并依赖远程 CI 的强制 QML gate 做最终确认。
+
+**阶段 6：同步 MetaNC + report/docs + commit/push**
+实现和验证完成后再走完整发布链：
+
+1. 更新 source repo report/docs
+2. 同步允许的 HMI slice 到 `MetaNC`
+3. 确认 `MetaNC` 里不引入 reports/submodule 内容
+4. 在 `MetaNC` 跑同等测试和生成
+5. 提交 reports submodule
+6. 提交 `metanc_hmi_dsl`
+7. 提交 `MetaNC`
+8. push 三边
+9. 看远程 CI，确认当前 head 通过
+
+**不建议现在做的**
+暂时不做 full visual pixel parity、大文件编辑性能、多客户端冲突、完整 WebSocket replay/audit。这些都值得做，但现在会把范围拉大。当前最合理的下一步是把 QML 覆盖体系收口，然后补 `logs_query_export_minimum` 这个共享场景。
+
+我建议实际执行顺序就是：**coverage inventory -&gt; S3 logs shared scenario -&gt; QML UI 产品切片 -&gt; 生成最终产物 -&gt; sync MetaNC -&gt; report/docs -&gt; commit/push -&gt; 看 CI**。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:581-590|note=[combined run helper and HMI docs workflow context]
+MEMORY.md:487-490|note=[generated distribution helper and Qt QML runtime context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-16 17:37:31 +0800</div>
+<pre>ok</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-16 17:37:45 +0800</div>
+<pre>我按刚才的计划往前做：先确认当前仓库状态和测试/文档结构，然后先落 coverage inventory，再进入 S3 logs shared scenario。提交前会先跑本地生成和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-16 17:38:16 +0800</div>
+<pre>当前 source 和 MetaNC 工作树是干净的，reports 子模块路径不是旧的顶层 `submodules/...`，我先按当前分支布局重新定位它，避免误操作旧路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-16 17:38:30 +0800</div>
+<pre>我已经确认当前 reports 子模块在 `nrt/hmi/submodules/metanc_hmi_dsl_reports`，旧路径不存在。现在开始读 shared parity 格式、Web runner、QML strict smoke 和日志接口，接下来会按现有风格补 S3。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-16 17:39:29 +0800</div>
+<pre>我已经读到当前 shared scenario 只支持命令、资源写入、属性写入和状态快照；S3 日志场景需要扩展一类“HTTP 查询/导出”步骤。下一步我会先看现有 mock server 的日志 API 和 QML smoke 工具，按最小扩展接入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-16 17:39:46 +0800</div>
+<pre>我现在把范围从“计划”切到实现细节：先定位正式 server/mock server 里 `/logs` 和 `/logs/export` 的响应形状，再决定 shared scenario 里该断言哪些字段。这样 S3 不会变成只测 UI 的孤立用例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-16 17:40:04 +0800</div>
+<pre>我继续往下做。刚才 `rg` 命中了 reports 子模块和快照导致输出很大，下面我会只读正式代码路径，先把 `/api/runtime/logs` 的 schema 和测试入口收窄。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-16 17:40:25 +0800</div>
+<pre>我已经确认正式 server 的日志查询响应是 `{ok,count,next_after_id,next_cursor,entries}`，导出是 NDJSON。现在会按这个形状加 shared scenario，并让 Python/mock、Web runner、QML strict smoke 三边都断言同一件事。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-16 17:40:45 +0800</div>
+<pre>我继续从 S3 实现推进。现在重点是把日志查询/导出做成 shared scenario，而不是只补一条 QML 本地 UI smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-16 17:41:21 +0800</div>
+<pre>我继续执行。下一步先补 mock server 的日志查询/导出能力和 shared scenario 断言，再接 Web/QML runner；这些会是提交前本地验证的核心。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-16 17:41:54 +0800</div>
+<pre>我已经把正式日志模型、命令日志写入点和 mock server 能力读完了。现在开始改文件：新增 S3 场景、补 mock 日志 API、扩展 shared 断言，再接 Web/QML 两个 runner。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-16 17:42:52 +0800</div>
+<pre>我继续从实现处接上：S3 不需要改产品功能本体，主要是把现有日志 API 纳入 shared parity 验收。现在会做一组小而集中的改动，避免把日志 UI 的大范围行为拉进这个场景。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-16 17:43:38 +0800</div>
+<pre>我现在会落第一组代码改动：新增 `logs_query_export_minimum` 场景，并把 shared assertion 支持从“状态快照”扩到“日志查询/导出结果”。这一步只围绕验收框架，不改业务行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-16 17:43:57 +0800</div>
+<pre>我继续执行，先检查一下刚才还没落盘的改动状态，然后直接开始补 S3 的场景和断言代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-16 17:44:13 +0800</div>
+<pre>S3 的实现现在会按“命令产生日志 -&gt; 按 correlation_id/level 查询 -&gt; 同条件导出 JSONL”来做。这样场景既验证日志 API，又能保持 deterministic，不依赖后台自然日志数量。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-16 17:46:26 +0800</div>
+<pre>我需要把刚新增的 S3 场景命名再收紧一下：它实际过滤的是 `info` command 日志，不是 warn。接下来会一起修正命名和断言，避免后面测试读起来含糊。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-16 17:46:56 +0800</div>
+<pre>我看到正式 simulator 的 `set_mode` 日志 message 是 `simulator selected JOG mode`，不是 mock 里的 `set_mode`。我会把 S3 断言收紧到稳定字段：`level/category/correlation_id` 和 event name 里的 `command`，避免测试绑死在实现文案上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-16 17:48:43 +0800</div>
+<pre>我会把 S3 的 Web smoke 接在 `window.RUNTIME.queryLogs/exportLogs` 上，而不是直接用 Node 去打 server；这样能证明 Web client runtime 也走了同一条日志查询/导出路径。QML 也会用 `XMLHttpRequest` 从 generated client 里发起同样请求。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-16 17:49:23 +0800</div>
+<pre>现在要补 mock server 的日志存储/query/export。这个 fixture 以前没有日志 API，所以 S3 的 server-side parity 需要在这里加一份和正式 server 形状一致的最小实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-16 17:50:25 +0800</div>
+<pre>mock server 这边已经加上 `/logs` 和 `/logs/export`，并且 command 会写入最小 LogEvent。接下来改 Web parity runner，让它认识 `query_logs` / `export_logs` 两种 shared scenario step。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-16 17:51:01 +0800</div>
+<pre>Web runner 已经接入 S3 的两种日志步骤。下一步补 QML strict smoke，目标是和 Web 一样：启动 strict server、seed 一个 command log，然后从 QML client 里 query/export 并返回 shared assertion 能吃的结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-05-16 17:51:33 +0800</div>
+<pre>QML S3 smoke 已经加上。接下来把 Python QML test 接入这个脚本，并更新 shared acceptance 文档和 coverage inventory，让“QML 做到哪”可以直接从文档读出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-05-16 17:51:53 +0800</div>
+<pre>我需要把 Web runner 的 S3 结果也真正喂进 shared assertion。现在 runner 会执行步骤，但自身还没用 `assert_command_results` 的 Python 断言；Web CI 是靠内部断言和失败退出。接下来会加专门的 Python/Node 覆盖入口和文档引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-05-16 17:52:12 +0800</div>
+<pre>我发现 Web Runtime Smoke 的文档/CI 入口还只列 S0-S2，所以 S3 加完代码后也要把命令清单和状态矩阵更新到 S3。现在会同步英文和中文 parity 文档，保持 docs test 不漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-05-16 17:52:30 +0800</div>
+<pre>我已经定位到 CI 配置确实只跑 S0-S2。现在会把 S3 加进 QML Runtime Smoke 和 Web Runtime Smoke，之后本地跑对应目标测试，避免只改文档不改门禁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-05-16 17:52:54 +0800</div>
+<pre>我接着从 CI 和文档收口处继续。S3 的代码入口已经基本落下来了，现在先把远程门禁配置、英文/中文文档同步到新的 shared scenario，再跑针对性测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-05-16 17:53:18 +0800</div>
+<pre>CI 已经把 S3 加进 QML 和 Web runtime smoke。接下来更新文档矩阵：把 S3 从 planned 改 implemented，并加一段覆盖 inventory，明确 QML 不是空白而是已有 shared/strict/UI 三类覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-05-16 17:54:13 +0800</div>
+<pre>Parity 文档现在有了 coverage inventory，S3 状态也改成 implemented。接下来我会把 status matrix 和本地开发命令补上 S3，确保 report/docs 生成后对外说明一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-05-16 17:55:47 +0800</div>
+<pre>S3 的代码、CI、英中 docs 都已接上。现在开始跑针对性测试，先验证 JSON 场景/mock server/docs 这些不依赖最终产物的部分。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-05-16 17:56:18 +0800</div>
+<pre>第一轮 targeted 测试已经过了一半，S3 的 mock-server shape/match 都已经通过。现在等 docs 测试收尾，然后跑生成和 Web/QML runtime smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-05-16 17:56:31 +0800</div>
+<pre>Targeted Python/doc 测试通过。现在跑生成最终产物前的 pipeline 子集，确认改动没有破坏快照和生成器；之后会执行 `generate_targets.sh`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-05-16 17:56:52 +0800</div>
+<pre>Pipeline 子集还在跑，我同时会补一处 Web runner 的严格性：S3 的日志 query/export 结果也要按 scenario 里的 `logs` 断言校验，不能只靠“非空”通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-05-16 17:57:22 +0800</div>
+<pre>Web runner 现在会按 shared scenario 的 `logs` 断言严格校验。等 pipeline 子集完成后，我会重新跑 S3 的 JS 语法/单元目标，再生成最终产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-05-16 17:57:34 +0800</div>
+<pre>Pipeline/docs/UI 子集通过。现在执行最终产物生成 `generate_targets.sh`，这是提交前的关键门槛；完成后会跑 S3 Web smoke 和 QML targeted smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-05-16 17:57:48 +0800</div>
+<pre>最终产物生成正在编译 QML/server 部分，前面的 Web/QML/contract 文件已经刷新。等生成结束后，我会立刻跑新增 S3 的 Web parity smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-05-16 17:58:21 +0800</div>
+<pre>生成进入 native server 编译阶段，目前 vcpkg 依赖恢复正常，没有卡在网络下载。等编译结束后我会继续跑 CTest 和新增 smoke。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-05-16 17:58:40 +0800</div>
+<pre>最终产物已生成完成。现在跑 native server CTest、S3 Web parity smoke，以及 QML targeted smoke；QML 本机如果缺 QtWebSockets 会按现有规则 skip，但 CI 会强制。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-05-16 17:59:00 +0800</div>
+<pre>S3 Web smoke 在 sandbox 里监听 `127.0.0.1` 被拦了，这是本地浏览器 smoke 常见的 sandbox 限制；我按规则用提权重跑同一条命令。并行的 CTest/QML/Python 测试还在收尾，我会继续轮询结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-05-16 17:59:44 +0800</div>
+<pre>CTest 和 parity/docs 测试都通过。现在等提权后的 Web S3 smoke 和 QML targeted smoke；QML 现在在临时目录重建小项目。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-05-16 17:59:55 +0800</div>
+<pre>Web S3 smoke 已通过，浏览器走的是 CDP fallback。现在只剩 QML targeted smoke 收尾；之后我会看 diff，必要时更新生成快照/产物文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-05-16 18:00:12 +0800</div>
+<pre>QML targeted smoke 本机按预期因为 QtWebSockets 缺失 skip；CI 里 `HMI_REQUIRE_QTWEBSOCKETS=1` 会强制跑。接下来检查 diff 和生成物变化，确认没有意外产物或旧路径污染。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-05-16 18:00:32 +0800</div>
+<pre>当前 diff 看起来集中在 S3 和文档/CI。还有一处 status matrix 的旧描述仍写着 “planned S3”，我会先修掉，然后跑完整 S0-S3 Web parity，确认 runner 改动没有影响旧场景。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-05-16 18:01:20 +0800</div>
+<pre>我会跑完整 S0-S3 Web parity smokes。因为它们需要本地监听端口，继续用刚才获批的 `node tools/web_parity_scenario_smoke.js` 提权规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-05-16 18:03:06 +0800</div>
+<pre>S0-S2 旧 Web parity 都通过，S3 前面也通过。现在跑一次 CI workflow YAML/关键字符串检查，再准备同步 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / commentary</h3>
+<div class="time">2026-05-16 18:03:29 +0800</div>
+<pre>Source 侧实现和验证完成了。下一步同步受控 HMI slice 到 MetaNC，并确认不会把 reports 子模块/报告内容带到 MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 45 / commentary</h3>
+<div class="time">2026-05-16 18:04:07 +0800</div>
+<pre>我已经找到同步脚本：source 侧有 `tools/export_to_metanc.sh` 包装到 `tools/repo_sync/export_to_metanc.sh`。接下来先运行导出到 `/home/i5/workspace/ccmix-wp/MetaNC`，再在 MetaNC 里跑同等测试/生成，确认 downstream 没混入 reports。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 46 / commentary</h3>
+<div class="time">2026-05-16 18:04:31 +0800</div>
+<pre>导出到 MetaNC 时被 sandbox 挡成只读文件系统了，目标路径本身在工作区内但 rsync 需要写 sibling repo。我按规则提权重跑同一条导出命令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 47 / commentary</h3>
+<div class="time">2026-05-16 18:04:57 +0800</div>
+<pre>MetaNC 同步完成，脚本也确认排除了 reports/docs_i18n/source-only 内容。现在检查 MetaNC diff，并跑 downstream 侧测试/生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 48 / commentary</h3>
+<div class="time">2026-05-16 18:05:20 +0800</div>
+<pre>MetaNC diff 只包含受控 HMI 源码和英文 docs，没有 `docs_i18n`、reports 子模块或本次新报告文件被导出。`rg` 看到的是 MetaNC 里既有的 legacy report 文档引用，不是这次同步新增的 diff；我会先继续跑 downstream 验证，之后再决定是否单独清理 legacy 边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 49 / commentary</h3>
+<div class="time">2026-05-16 18:05:59 +0800</div>
+<pre>MetaNC 的 targeted 测试也通过了。现在在 MetaNC 里生成最终产物和跑 CTest/Web S3 smoke，确认下游 packaged 输出可用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 50 / commentary</h3>
+<div class="time">2026-05-16 18:06:14 +0800</div>
+<pre>MetaNC 最终产物生成已进入 QML/server 编译，和 source 侧同一路径。等生成结束后跑 CTest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 51 / commentary</h3>
+<div class="time">2026-05-16 18:07:12 +0800</div>
+<pre>MetaNC 最终产物生成完成。现在跑 MetaNC CTest 和 Web S3 smoke，确认下游运行路径也通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 52 / commentary</h3>
+<div class="time">2026-05-16 18:07:53 +0800</div>
+<pre>MetaNC 下游 CTest 和 Web S3 smoke 都通过。现在进入 report/docs 更新阶段：先生成本轮 2026-05-16 report，再重建 docs portal，之后分别提交 reports 子模块、source、MetaNC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 53 / commentary</h3>
+<div class="time">2026-05-16 18:09:44 +0800</div>
+<pre>我继续从报告/文档发布这一步接上。前面的代码、Web/QML 场景、本地生成产物和 MetaNC 同步测试都已经做完，现在重点是把报告和最终 docs_html 更新出来，然后分别提交、推送、看远程 CI。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 54 / commentary</h3>
+<div class="time">2026-05-16 18:09:55 +0800</div>
+<pre>当前 reports 子模块是干净的 detached HEAD，今天的 `2026-05-16-codex-session` 包已经存在。我先看一下现有脚本约定，避免手工改出和发布站点不一致的结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 55 / commentary</h3>
+<div class="time">2026-05-16 18:10:23 +0800</div>
+<pre>报告工具里 `history` 模式会按日期补齐完整会话导出，今天的 `project-report.md` 和 `conversation-report.md` 还是占位。接下来我会先运行导出脚本刷新用户历史/完整会话，再把今天这次 S3 parity 的项目总结补进去，最后重建 docs_html。</pre>
 </article>
 </section>
 </main>

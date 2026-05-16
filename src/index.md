@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-05-16` | Session bootstrap and Codex user-history export tooling |
+| `2026-05-16` | Web/QML S3 logs query/export parity scenario, QML strict smoke kickoff, final artifact validation, MetaNC sync, and report/docs refresh |
 | `2026-05-15` | AUTO START auto-prepare fix, final artifact validation, report/docs refresh, MetaNC sync, and publication |
 | `2026-05-14` | Report and docs refresh, Codex user-history and full conversation export, MetaNC sync, and publication |
 | `2026-05-13` | Generator decomposition closure, docs portal bookshelf compatibility repair, PROG DIR Refresh/Rename/Delete TDD completion, ProgramWorkspaceAdapter and FilesystemProgramWorkspaceAdapter TDD delivery, packaged filesystem smoke expansion, refresh/editor-draft separation, final artifact refresh, and MetaNC sync |

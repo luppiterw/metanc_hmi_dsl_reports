@@ -11,3 +11,7 @@ Date: 2026-05-16
 - generate/update report &amp; docs + sync MetaNC + commit + push
 - review一下
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- 看一下现在的问题
+- 你现在有下一步的计划吗，目前web部分好像做什么测试差不多了，qml还没开始？
+- 详细计划一下
+- ok

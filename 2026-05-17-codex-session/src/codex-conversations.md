@@ -6,11 +6,11 @@
 - Sessions: `2`
 - Primary sessions: `1`
 - Side sessions: `1`
-- User prompts: `9`
+- User prompts: `34`
 - Synthetic events: `0`
-- Messages: `48`
-- User messages: `9`
-- Codex messages: `39`
+- Messages: `194`
+- User messages: `34`
+- Codex messages: `160`
 - HTML index: [Open](../codex-conversations/index.html)
 - Single-page HTML: [Open](../codex-conversations/all.html)
 - Single-page Markdown: <a href="../codex-conversations/all%2Emd">Open</a>

@@ -65,3 +65,74 @@ MetaNC 同步边界仍保持 report-free：本轮同步只导出了 HMI slice，
 - 观察本轮 push 后的远程 CI，确认 QML Runtime Smoke 中 S3 targeted smoke 和其他 WebSocket-specific smokes 同时通过。
 - 继续把后续 P0 parity 场景分清 transport 要求：REST-backed scenario 不强绑 WebSocket，WebSocket replay/command delivery 类 scenario 继续强制 `requires_websocket: true`。
 - 若继续扩展 logs 测试，优先覆盖 file-save/export UI 或 retention/clear policy，而不是重复 direct REST endpoint smoke。
+
+## Follow-up Slice: S4 Rejected Command Notice Parity
+
+本轮继续从 Web/QML parity 的验收环往前推进，新增 S4
+`rejected_command_notice` shared scenario。场景选择 `prog.commands.new`
+创建已有的 `INDEX_TABLE.MPF`，这是一个稳定 rejected command，且不会依赖
+runtime state mutation 作为 fallback。验收重点是：HTTP command response
+返回 `accepted: false` 后，generated Web/QML client 仍能通过 WebSocket
+`runtime.command.completed` / `runtime.operator_notice` 更新 footer notice。
+
+### Scope
+
+- 新增 `tests/parity_scenarios/rejected_command_notice.json`。
+- 扩展 shared assertion，允许 scenario 对 command result 明确声明
+  `accepted: false`。
+- 扩展 `tools/web_parity_scenario_smoke.js`：
+  - browser snapshot 增加 `runtime_state.last_notice`。
+  - browser predicate 支持 `contains` / `not_contains`。
+  - command post helper 支持 expected rejected response。
+- 新增 QML strict smoke
+  `tests/qml_smoke/runtime_strict_rejected_command_notice.js`，并在
+  `tests.test_qml_smoke` 与 CI QML Runtime Smoke 中挂入。
+- Web Runtime Smoke CI 增加 S4 scenario。
+- 更新 Web/QML parity matrix、status matrix、build/test docs、tooling docs 和
+  changelog，shared acceptance ring 从 S0-S3 扩展到 S0-S4。
+
+### Validation Evidence
+
+Source repo:
+
+- `python3 -m unittest -v tests.test_parity_scenarios tests.test_ci_workflows tests.test_web_qml_parity_docs`
+- `HMI_SKIP_HEAVY_SNAPSHOT_TESTS=1 HMI_ENABLE_QML_VISUAL_SNAPSHOT=0 HMI_ENABLE_WEB_VISUAL_SNAPSHOT=0 python3 -m unittest -v tests.test_pipeline tests.test_parity_scenarios tests.test_sync_scripts tests.test_ui_automation tests.test_ci_workflows`
+- `env VCPKG_ROOT=/home/i5/workspace/github/vcpkg HMI_SERVER_NATIVE_BUILD_MODE=host PKG_CONFIG=/usr/bin/pkgconf ./tools/generate_targets.sh`
+- `ctest --test-dir generated/server-build --output-on-failure`
+- `node tools/web_parity_scenario_smoke.js --scenario tests/parity_scenarios/rejected_command_notice.json --debug`
+- `./tools/build_docs_html.sh`
+
+QML S4 targeted smoke was compiled and invoked locally, but skipped because this
+host does not have `qml6-module-qtwebsockets` installed. Attempting to install it
+with `sudo apt-get install -y qml6-module-qtwebsockets` was blocked by sudo
+password prompting in the non-interactive environment. This is an environment
+limitation, not a source failure; the GitHub QML Runtime Smoke job installs the
+QtWebSockets package and runs with `HMI_REQUIRE_QTWEBSOCKETS=1`, so remote CI is
+the authoritative S4 QML WebSocket verification.
+
+MetaNC downstream:
+
+- `./tools/export_to_metanc.sh /home/i5/workspace/ccmix-wp/MetaNC`
+- `python3 -m unittest -v tests.test_parity_scenarios tests.test_ci_workflows tests.test_web_qml_parity_docs`
+- `env VCPKG_ROOT=/home/i5/workspace/github/vcpkg HMI_SERVER_NATIVE_BUILD_MODE=host PKG_CONFIG=/usr/bin/pkgconf ./tools/generate_targets.sh`
+- `ctest --test-dir generated/server-build --output-on-failure`
+- `node tools/web_parity_scenario_smoke.js --scenario tests/parity_scenarios/rejected_command_notice.json --debug`
+
+The downstream export remained report-free. The sync excluded `.github`,
+submodules, `docs_html`, `docs_i18n`, source-only report tooling, and reports
+content; `find MetaNC/nrt/hmi -maxdepth 4 -type d -path '*reports*'` returned
+no report directories.
+
+### Current State After S4
+
+The shared acceptance ring now covers:
+
+- S0 AUTO/JOG command result delivery.
+- S1 PROG file lifecycle.
+- S2 MDI execution result.
+- S3 REST-backed logs query/export.
+- S4 WebSocket-only rejected-command notice delivery.
+
+The next external checkpoint is source remote CI after push, especially the QML
+Runtime Smoke job because it is the first environment in this workflow that can
+actually run the new QtWebSockets-gated QML S4 scenario.

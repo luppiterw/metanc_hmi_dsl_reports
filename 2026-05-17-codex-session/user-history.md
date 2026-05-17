@@ -8,3 +8,7 @@ Date: 2026-05-17
 - 下一步计划
 - 给个详细计划
 - do
+- 同步了吗，generate report了吗
+- 生成一下最终文档和产物
+- 之前说UI自动化测试这块，还有印象吗
+- generate/update report &amp; docs + sync MetaNC + commit + push

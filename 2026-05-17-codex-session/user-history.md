@@ -12,3 +12,5 @@ Date: 2026-05-17
 - 生成一下最终文档和产物
 - 之前说UI自动化测试这块，还有印象吗
 - generate/update report &amp; docs + sync MetaNC + commit + push
+- 讨论一下自动化测试，回头开始弄
+- generate/update report &amp; docs + sync MetaNC + commit + push

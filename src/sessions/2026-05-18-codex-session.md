@@ -2,8 +2,9 @@
 
 Focus:
 
-- Current HMI plan review, Program Execution adapter-boundary discussion,
-  implementation pause, report/docs refresh, and MetaNC publication sync
+- Current HMI plan review, adapter-boundary discussion, tooling runtime
+  extension implementation, optional MetaNC `tooling_management` backend
+  validation, report/docs refresh, and MetaNC publication sync
 
 Session assets:
 

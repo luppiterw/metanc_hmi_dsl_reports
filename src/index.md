@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-05-18` | Current HMI plan review, Program Execution adapter-boundary discussion, implementation pause, report/docs refresh, and MetaNC publication sync |
 | `2026-05-17` | QML S3 logs query/export smoke semantic hardening, REST-backed transport assertion cleanup, generated QML runtime log helper coverage, final artifact validation, and report refresh |
 | `2026-05-16` | Web/QML S3 logs query/export parity scenario, QML strict smoke kickoff, final artifact validation, MetaNC sync, and report/docs refresh |
 | `2026-05-15` | AUTO START auto-prepare fix, final artifact validation, report/docs refresh, MetaNC sync, and publication |

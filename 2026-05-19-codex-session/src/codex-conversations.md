@@ -2,15 +2,15 @@
 
 ## Complete Codex Conversation Export
 
-- Scope: `2026-05-18`
-- Sessions: `5`
-- Primary sessions: `3`
-- Side sessions: `2`
-- User prompts: `177`
-- Synthetic events: `9`
-- Messages: `1177`
-- User messages: `186`
-- Codex messages: `991`
+- Scope: `2026-05-19`
+- Sessions: `3`
+- Primary sessions: `2`
+- Side sessions: `1`
+- User prompts: `42`
+- Synthetic events: `5`
+- Messages: `266`
+- User messages: `47`
+- Codex messages: `219`
 - HTML index: [Open](../codex-conversations/index.html)
 - Single-page HTML: [Open](../codex-conversations/all.html)
 - Single-page Markdown: <a href="../codex-conversations/all%2Emd">Open</a>

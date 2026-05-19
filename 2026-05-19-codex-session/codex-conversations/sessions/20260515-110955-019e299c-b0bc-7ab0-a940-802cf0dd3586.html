@@ -1,0 +1,1901 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>compac</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>compac</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e299c-b0bc-7ab0-a940-802cf0dd3586</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-15 11:09:55 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/15/rollout-2026-05-15T11-09-55-019e299c-b0bc-7ab0-a940-802cf0dd3586.jsonl</code></div>
+<div><b>Messages</b>: <code>174</code></div>
+<div><b>User prompts</b>: <code>24</code></div>
+<div><b>Synthetic events</b>: <code>4</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 08:19:46 +0800</div>
+<pre>compac</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 08:21:26 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-19&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 08:21:26 +0800</div>
+<pre>现在需要做个调整说明，twincat不是未来必选项了，计划需要调整</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 08:21:48 +0800</div>
+<pre>我会把这个当成 PLC 文档/计划调整来处理，范围先限制在 `rt/plc`。我先做一次轻量上下文核对，再把 TwinCAT 从“未来必选方向”改成“可选后端/迁移目标之一”，避免后续计划被单一厂商路线绑死。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 08:22:10 +0800</div>
+<pre>使用 `write-docs` 技能来改 PLC 文档；刚才技能路径我按旧位置读了一次失败，现在切到仓库内的技能说明。接下来我会先定位所有把 TwinCAT 写成主线/必选方向的位置，再做一版收敛的文档调整。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 08:22:33 +0800</div>
+<pre>我已经确认 `IMPLEMENTATION-READINESS.md` 和 `MODULE-MODEL.md` 里有一部分已经写成“TwinCAT optional”，但 Story-13 及它的实施计划仍然把 TwinCAT 当成下一步主线。我要把这块改成“后端可移植性优先，TwinCAT 只是候选 profile”，并保留已经讨论过的 TwinCAT 资料作为可选路径而不是当前承诺。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 08:23:26 +0800</div>
+<pre>这里不只是改一句标题：如果继续保留 “Story-13 = 下一步实现 TwinCAT skeleton”，后面的执行队列还是会偏掉。我准备按三层改：模块模型确认“后端可移植性是主线”，Story-13 降级为“可选 TwinCAT profile/迁移资料”，Implementation Plan 改成“先做 vendor-neutral backend profile contract，再决定是否落 TwinCAT”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 08:23:41 +0800</div>
+<pre>我会做成一次文档调整，不碰代码：保留已有 TwinCAT 资料，改掉“下一步必须做 TwinCAT”的计划语气；新增一个决策记录说明为什么从单一 TwinCAT 路线切换到 vendor-neutral backend portability。这样后续讨论还能引用旧资料，但不会被它绑住。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 08:24:38 +0800</div>
+<pre>我现在会直接编辑文档，先不新增正式 decision record，避免把“调整说明”扩大成新的治理流程。重点放在现有 Story-13 和实施计划：状态从 active 主线改为 deferred optional，下一步建议转成通用 backend portability，而不是 TwinCAT skeleton。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 08:26:26 +0800</div>
+<pre>第一轮文档已经改完：Story-13 现在是 deferred，且新增了调整说明页。接下来我会检查还有没有“TwinCAT 是必选/主线”的残留措辞，尤其是旧设计讨论和谓词字典里可能有历史语气，需要判断是保留归档还是改当前规范。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 08:26:41 +0800</div>
+<pre>残留检查显示当前规范入口已经转为 optional/deferred；旧 decision 记录里还有历史语气，我先不硬改决策记录，避免把这次“调整说明”变成未经确认的新 ADR。现在跑 `docs_policy` 和 bookshelf 构建，确认新页面和状态值没有破坏文档构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 08:27:53 +0800</div>
+<pre>校验已经过了；我会再看一次最终 diff，确认没有越出 `rt/plc`，然后给你一个精简汇报。当前没有提交，除非你要我继续 commit/push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-05-19 08:28:45 +0800</div>
+<pre>已按 PLC 范围做了文档调整，未提交。
+
+主要变化：
+- 新增调整说明：[ADJUSTMENT-NOTE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-13-twincat-backend-and-migration/ADJUSTMENT-NOTE.md)
+- [STORY-13](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-13-twincat-backend-and-migration/STORY.md) 从 `active` 改为 `deferred`，明确 TwinCAT 只是可选 vendor profile，不是 PLC 的未来必选项。
+- [IMPLEMENTATION-PLAN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-13-twincat-backend-and-migration/SLICE-01-twincat-backend-group/IMPLEMENTATION-PLAN.md) 改成推荐先做 vendor-neutral backend portability，不再推荐下一步直接落 `twincat_*` skeleton。
+- Slice/spec/invariant 状态改为 `deferred`，索引和 SUMMARY 同步更新。
+- 旧 decision/design 历史资料没有硬改，当前规范入口已经表达新的方向。
+
+校验通过：
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前 worktree 还有这些未提交的 PLC docs 变更。下一步如果要落版，建议 commit：`docs(plc): defer twincat as optional backend profile`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-52|note=[used PLC scope and small committed implementation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 08:38:16 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC + commit + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 08:38:40 +0800</div>
+<pre>我先把这个当成“把当前 PLC 文档调整落版并发布”来处理；会先确认当前分支、未提交范围和仓库里是否有现成 report/docs 生成脚本。由于你之前强调 PLC 不越界，我会优先限制在当前 MetaNC checkout 和 `rt/plc` 相关文档，除非脚本本身是仓库级文档构建入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 08:38:59 +0800</div>
+<pre>我看到当前仓库没有明显的通用 “report generator” 顶层脚本，只有 bookshelf 文档构建和 HMI 子模块的报告入口。下一步我会查清楚是否有 reports 子模块或 Codex 会话报告约定；如果没有，就按当前 PLC 变更生成/更新一份 PLC 侧 report 页面，并完成 docs build、commit、push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 08:39:36 +0800</div>
+<pre>查完了：这个 MetaNC checkout 没有独立的通用 report 子模块，也没有顶层 report 生成脚本；HMI 报告流程是 HMI 专用的。为了不把 PLC 任务越界到 HMI，我会把这次“report”落成 PLC 文档内的调整报告页，并通过 bookshelf 构建验证，然后提交推送当前 `feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 08:40:02 +0800</div>
+<pre>我会补一个 PLC 侧报告页并挂到 PLC book 导航里，这样“report &amp; docs”有一个可审阅的源码产物；HTML 站点仍按 bookshelf 生成，不提交 `.mdbook/site`。然后我会 fetch 检查远端状态，完成校验、commit 和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 08:40:24 +0800</div>
+<pre>报告页已经补上，并且只在 `rt/plc/docs` 内。现在我会拉取远端引用确认 `origin/feat/plc` 没有新提交，再重新跑文档校验和构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 08:40:51 +0800</div>
+<pre>远端 `feat/plc` 和本地当前提交没有分叉，fetch 只更新了别的分支引用。bookshelf 构建还在跑；等它结束后我会检查新增 report 是否被纳入 PLC book，再提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 08:41:25 +0800</div>
+<pre>我注意到刚才用的 HTML 检查路径猜错了，bookshelf 的输出路径不一定是 `/plc/...`。我会先找实际生成位置，同时把新增 report 和调整说明纳入 git 暂存，确保提交包含它们。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 08:41:41 +0800</div>
+<pre>生成站点里已经确认了 report 和 adjustment note 页面。现在我会看暂存 diff 摘要，然后提交；提交前再确认没有把 `.mdbook/site` 这类生成 HTML 加进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 08:41:56 +0800</div>
+<pre>提交已完成。现在我会推送 `feat/plc`，然后做一次最终状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-05-19 08:42:24 +0800</div>
+<pre>已完成并推送。
+
+提交：
+`b109aa55 docs(plc): defer twincat as optional profile`
+
+做了这些：
+- 更新 PLC Story-13，把 TwinCAT 从必选未来项改为可选 vendor profile。
+- 新增调整说明：`rt/plc/docs/spec/STORIES/STORY-13-twincat-backend-and-migration/ADJUSTMENT-NOTE.md`
+- 新增 PLC 报告页：`rt/plc/docs/reports/2026-05-19-twincat-optionality.md`
+- 更新 PLC docs 导航和 Story 索引。
+- 运行并通过：
+  - `git diff --check -- rt/plc`
+  - `python3 .mdbook/lint_docs_policy.py`
+  - `book build`
+
+已同步到 `origin/feat/plc`，当前本地和远端一致，worktree clean。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-60|note=[used PLC scope and docs validation workflow preferences]
+MEMORY.md:943-980|note=[checked report generation expectations and avoided applying HMI-specific report workflow to PLC]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 08:48:32 +0800</div>
+<pre>写个详细计划我看看，落一下文档</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 08:48:35 +0800</div>
+<pre>下一步计划是？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 08:48:57 +0800</div>
+<pre>我先把当前 PLC 分支状态和刚落下的 TwinCAT 调整点快速核对一下，然后给你下一步计划，不直接动代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-19 08:49:46 +0800</div>
+<pre>下一步我建议做 **vendor-neutral backend portability**，不要再沿 TwinCAT skeleton 走。
+
+具体切片可以这样定：
+
+1. **新增一个通用非 sim backend profile**
+   - 不叫 `twincat_*`，避免暗示厂商路线。
+   - 名字可以先用 `portable_io_hal` / `portable_nrt_bridge` / `portable_task_time` / `portable_log`，或更测试导向的 `conformance_*`。
+   - 目标是证明：PLC L2/L3 只依赖 L1 合同，不依赖 `SimIoHalBackend` 具体类型。
+
+2. **补 backend conformance 测试**
+   - `runtime.yaml` 能选择这组通用 backend。
+   - physical I/O binding 不经过 sim 专用 cast。
+   - 同一份 physical I/O machine 可以 boot。
+   - 一个周期内 DI -&gt; Behavior -&gt; DO roundtrip 成立。
+   - Noop backend 缺少 digital binding hook 时继续明确报 capability error。
+
+3. **把 Story-13 后续实施计划拆出去**
+   - Story-13 现在已经 deferred，不应该承载下一步实现。
+   - 新增一个更准确的 story/slice，比如：
+     - `STORY-17-backend-portability`
+     - `SLICE-01-l1-backend-conformance-profile`
+   - 这页只讲 PLC 内部 portability，不讲 TwinCAT、ADS、XAE、迁移工具。
+
+4. **小提交节奏**
+   - 第一个提交：落 Story-17/Slice-01 详细设计文档。
+   - 第二个提交：实现 generic backend profile + tests。
+   - 第三个提交：状态 closeout，更新报告页。
+   - 每步跑 `ctest` + docs lint/build，避免堆成大包。
+
+优先推荐先落文档页，也就是把 `STORY-17-backend-portability` 和 `SLICE-01-l1-backend-conformance-profile` 写出来。这样我们不会把刚刚从 TwinCAT 解耦出来的计划又写回 Story-13 里。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-60|note=[used PLC scope and docs-first planning workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:05:36 +0800</div>
+<pre>do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:05:59 +0800</div>
+<pre>我按刚才定的第一步做：只落 PLC 文档，不写实现代码。目标是新增 `STORY-17-backend-portability` 和 `SLICE-01-l1-backend-conformance-profile`，把下一步从 Story-13 里拆出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:06:23 +0800</div>
+<pre>我已经确认分支干净，当前只做 PLC 文档。接下来会按现有 spec-driven 结构补 Story/Slice/Spec/Invariant，并把导航、索引和谓词字典一起更新，避免只写一个散页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:07:04 +0800</div>
+<pre>我会把新 story 编号为 `STORY-17-backend-portability`，SPEC 从 `SPEC-061` 起，INV 从 `INV-042` 起。文档会明确只做 vendor-neutral conformance profile，不包含 TwinCAT、ADS、XAE、外部 HAL 或真实 motion_execution 集成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:07:10 +0800</div>
+<pre>我会开始落文件：Story 页面、Slice 页面、两个 SPEC、一个 INV、以及 SUMMARY/INDEX/PREDICATES 导航。这个提交是设计文档，不会动 `src` 或测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:08:28 +0800</div>
+<pre>Story-17 结构已经落下。现在我会检查链接、行数和措辞，再跑文档 lint/build；如果都通过，我会按你的工作习惯做一个 docs-only commit 并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 09:08:44 +0800</div>
+<pre>基础检查通过了。diff 输出因为长度截断只显示了索引部分；我会再单独看新增 Story-17 文件内容，然后跑完整 `book build`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 09:09:15 +0800</div>
+<pre>`book build` 也通过了，PLC book 现在是 207 页，说明新 Story-17 已经进导航。接下来我会把这次 docs-only 变更提交并推送到 `feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 09:09:24 +0800</div>
+<pre>`git diff` 默认不显示未跟踪的新 Story-17 文件，我会把整个 `rt/plc/docs` 暂存后再看 staged diff，确保新增页面都进提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 09:10:07 +0800</div>
+<pre>提交好了。我会推送到 `origin/feat/plc`，然后确认本地和远端一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-05-19 09:10:45 +0800</div>
+<pre>已落文档并推送。
+
+新增：
+- `STORY-17-backend-portability`
+- `SLICE-01-l1-backend-conformance-profile`
+- `SPEC-061`, `SPEC-062`, `INV-042`
+- 更新了 `SUMMARY.md`、`STORIES/INDEX.md`、`PREDICATES.md`
+
+核心方向：下一步做 vendor-neutral backend conformance profile，不再把 Story-13/TwinCAT 当实现主线。
+
+验证通过：
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+提交并推送：
+`eec4a30b docs(plc): plan backend portability story`
+
+当前 `feat/plc` 本地和远端一致，worktree clean。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-60|note=[used PLC scope and docs-first planning workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:11:20 +0800</div>
+<pre>下一步计划是？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-19 09:12:00 +0800</div>
+<pre>下一步建议直接做 **STORY-17 SLICE-01 实现**：vendor-neutral backend conformance profile。
+
+目标很明确：证明 PLC framework 的物理 I/O 绑定和运行周期只依赖 L1 backend 合同，不依赖 `SimIoHalBackend`，也不绑定 TwinCAT/Orocos 等具体路线。
+
+计划：
+
+1. **Patch 1：实现通用 backend profile**
+   - 新增类似 `portable_backends.hpp/.cpp`
+   - 注册：
+     - `portable_io_hal`
+     - `portable_nrt_bridge`
+     - `portable_task_time`
+     - `portable_log`
+   - `motion` 暂时继续用 `sim_motion`
+
+2. **Patch 2：补 fixture + 测试**
+   - 新增 `story17_portable_runtime.yaml`
+   - 新增 `story17_backend_portability_tests.cpp`
+   - 覆盖：
+     - runtime 解析保留 portable backend 名称
+     - backend registry 能构造全部角色
+     - physical I/O machine 能用 portable profile boot
+     - DI -&gt; Behavior -&gt; DO 一周期 roundtrip 成立
+     - `noop_io_hal` 仍然对 physical binding 报 capability error
+
+3. **Patch 3：状态 closeout**
+   - `SPEC-061/SPEC-062/INV-042` 标记 implemented
+   - `SLICE-01` 和 `STORY-17` 视实现范围更新状态
+   - 更新 report，说明 TwinCAT 之后的实际替代路线已经落到 backend portability
+
+4. **验证**
+   - `cmake --build /tmp/metanc_plc_build`
+   - `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story17|mvp1_io_roundtrip|story06&quot;`
+   - full `ctest`
+   - `git diff --check -- rt/plc`
+   - `python3 .mdbook/lint_docs_policy.py`
+   - `book build`
+
+5. **提交节奏**
+   - 实现 + 测试一个 commit
+   - docs/status closeout 一个 commit
+   - push `feat/plc`
+
+我建议现在就做 Patch 1+2；这个是 PLC 内部闭环，不越界，也能把刚调整后的方向真正落到代码上。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-60|note=[used PLC scope and small implementation cadence preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:13:45 +0800</div>
+<pre>详细设计一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:14:06 +0800</div>
+<pre>我先对当前 backend registry、sim backend、physical I/O 绑定和测试形状做一次快速核对，避免设计和现有实现脱节。然后给你按文件、类、测试、提交拆分的详细设计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-19 09:14:45 +0800</div>
+<pre>详细设计如下，下一步实现只碰 `/rt/plc`。
+
+**目标**
+实现 `STORY-17 SLICE-01`：新增一组 vendor-neutral backend profile，用来证明 framework 只依赖 L1 backend contract，不依赖 `SimIoHalBackend` 或 TwinCAT/Orocos 具体路线。
+
+**文件设计**
+新增：
+- `rt/plc/include/metanc/plc/portable_backends.hpp`
+- `rt/plc/src/portable_backends.cpp`
+- `rt/plc/tests/story17_backend_portability_tests.cpp`
+- `rt/plc/tests/fixtures/story17_portable_runtime.yaml`
+
+修改：
+- `rt/plc/CMakeLists.txt`
+- `rt/plc/src/config.cpp`
+- Story-17 docs 状态页，作为第二个 docs closeout commit
+
+**Backend 设计**
+注册名建议按已落文档走：
+
+```text
+portable_io_hal
+portable_nrt_bridge
+portable_task_time
+portable_log
+motion: sim_motion
+```
+
+类结构：
+
+```cpp
+PortableIoHalBackend final : IoHalBackend
+PortableNrtBridge final : NrtBridge
+PortableTaskTimeBackend final : TimeBackend
+PortableLogger final : Logger
+void ensure_portable_backends_linked();
+```
+
+`PortableIoHalBackend`：
+- 内部保持四个 image：
+  - `physical_inputs_`
+  - `scan_inputs_`
+  - `pending_outputs_`
+  - `flushed_outputs_`
+- `bind_digital_input(channel)` 返回 `scan_inputs_[channel]` 稳定地址。
+- `bind_digital_output(channel)` 返回 `pending_outputs_[channel]` 稳定地址。
+- `read_inputs()` copy physical -&gt; scan。
+- `write_outputs()` copy pending -&gt; flushed。
+- 测试 helper：
+  - `set_input(name, bool)`
+  - `get_output(name)`
+  - `read_count()`
+  - `write_count()`
+
+`PortableTaskTimeBackend`：
+- 基本行为可和 `ManualTickTimeBackend` 一致。
+- `backend_id()` 返回 `portable_task_time`。
+- 测试 helper：
+  - `advance_one()`
+  - `advance_many(n)`
+
+`PortableNrtBridge`：
+- `poll_incoming()` 默认返回空。
+- `send_outgoing()` 记录 outgoing。
+- `drain()` 只计数或清空，保持确定性。
+- 测试 helper：
+  - `poll_count()`
+  - `drain_count()`
+  - `drain_outgoing()`
+
+`PortableLogger`：
+- 记录 `Diagnostic` vector。
+- helper：
+  - `diagnostics()`
+  - `contains_code(code)`
+
+**config 链接设计**
+`config.cpp` 现在只调用 `ensure_sim_backends_linked()`，所以新增 `ensure_portable_backends_linked()` 后也要在：
+- `load_config_from_files`
+- `create_backends_from_config`
+
+里调用，确保静态注册对象被链接进来。
+
+`backend_group` 暂时不改策略。`story17_portable_runtime.yaml` 里不声明 `backend_group`，只声明显式 `backends:`，避免这次切片变成 runtime policy 设计。
+
+**fixture 设计**
+`story17_portable_runtime.yaml`：
+
+```yaml
+scan_period_ms: 1
+
+backends:
+  io_hal: portable_io_hal
+  nrt_bridge: portable_nrt_bridge
+  time: portable_task_time
+  logger: portable_log
+  motion: sim_motion
+```
+
+machine fixture 复用：
+- `mvp1_physical_io_machine.yaml`
+
+**测试设计**
+新增 `story17_backend_portability_tests.cpp`，覆盖 5 个点：
+
+1. runtime descriptor 保留 portable backend 名称。
+2. `create_backends_from_config()` 能构造全部 backend。
+3. physical I/O machine 使用 portable profile 可以 boot 到 `RUNNING`。
+4. 一周期 roundtrip：
+   - `set_input(&quot;coolant_request&quot;, true)`
+   - `advance_one()`
+   - `framework.run_cycle_once()`
+   - `get_output(&quot;coolant_valve&quot;) == true`
+5. `noop_io_hal` 继续拒绝 physical binding，错误里包含：
+   - `physical digital input binding requires IoHalBackend support`
+
+**提交拆分**
+1. `feat(plc): add portable backend conformance profile`
+   - backend 类、fixture、测试、CMake/config wiring
+   - 跑 targeted + full ctest
+2. `docs(plc): close backend portability slice`
+   - `SPEC-061/SPEC-062/INV-042` -&gt; implemented
+   - `SLICE-01` / `STORY-17` 状态更新
+   - report 更新
+
+**验证命令**
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story17|mvp1_io_roundtrip|story06&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+git diff --check -- rt/plc
+python3 .mdbook/lint_docs_policy.py
+book build
+```
+
+我建议实现时先不抽公共基类，直接写 `Portable*`，保持切片独立可审；如果后续第三组 backend 出现，再抽 process-image helper。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-60|note=[used PLC scope and small implementation cadence preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:17:35 +0800</div>
+<pre>下一步计划是？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-19 09:17:55 +0800</div>
+<pre>下一步就是进入 **STORY-17 SLICE-01 实现**。
+
+我建议按这个顺序做：
+
+1. **实现 portable backend profile**
+   - 加 `portable_backends.hpp/.cpp`
+   - 注册 `portable_io_hal`、`portable_nrt_bridge`、`portable_task_time`、`portable_log`
+   - `motion` 继续用 `sim_motion`
+
+2. **加测试和 fixture**
+   - 新增 `story17_portable_runtime.yaml`
+   - 新增 `story17_backend_portability_tests.cpp`
+   - 覆盖 runtime 选择、backend 构造、physical I/O boot、DI-&gt;DO 一周期 roundtrip、noop capability error
+
+3. **跑验证**
+   - targeted ctest：`story17|mvp1_io_roundtrip|story06`
+   - full PLC ctest
+   - docs lint/build
+
+4. **提交实现**
+   - `feat(plc): add portable backend conformance profile`
+
+5. **再做 docs closeout**
+   - `SPEC-061/SPEC-062/INV-042` 标记 implemented
+   - `SLICE-01` / `STORY-17` 状态更新
+   - 更新 report
+   - 提交：`docs(plc): close backend portability slice`
+
+这个切片是纯 PLC 内部闭环，不碰 TwinCAT、不碰外部 HAL、不碰 motion_execution 真实集成。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:18:32 +0800</div>
+<pre>do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:18:47 +0800</div>
+<pre>我开始做 STORY-17 SLICE-01，实现 portable backend conformance profile，然后补测试、跑验证、分两个提交并 push。范围只在 `rt/plc` 内。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:19:15 +0800</div>
+<pre>现有代码已经有 L1 绑定 hook，Story-17 的实现可以很窄：新增 portable backends，不改 framework 绑定逻辑。一个细节是 `load_config_from_files` 仍限制 `backend_group == sim`，所以 fixture 会不写 `backend_group`，只用显式 `backends:`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:19:44 +0800</div>
+<pre>我会用 `apply_patch` 增加代码和测试，尽量复用 sim backend 的确定性模型，但保持独立类名和注册名。之后先构建，编译错误再局部修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:21:16 +0800</div>
+<pre>实现补丁已落下。我现在会先构建 `metanc_plc_core`/测试目标，通常这里能暴露 include 或注册问题；通过后再跑 targeted ctest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:21:37 +0800</div>
+<pre>构建通过。接下来跑 Story-17 相关 targeted tests，再跑 full PLC ctest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 09:22:08 +0800</div>
+<pre>代码测试全过了，当前 PLC suite 是 36/36。现在跑 `git diff --check -- rt/plc`，然后提交实现 commit。Docs closeout 会作为下一步单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 09:22:21 +0800</div>
+<pre>`git diff` 只显示已跟踪文件，新增 backend/test/fixture 还未跟踪。我会确认 untracked 列表后暂存本次实现相关文件，再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 09:22:53 +0800</div>
+<pre>实现 commit 已完成。现在我进入 docs closeout：把 Story-17/Slice/SPEC/INV 标记 implemented，更新 report 记录验证结果，然后跑 docs 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 09:24:30 +0800</div>
+<pre>我会接着做 PLC 这条线的收尾：先确认当前工作树和文档状态，然后把 STORY-17 / SLICE-01 的实现状态、证据和报告补齐，最后跑验证、提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-19 09:24:51 +0800</div>
+<pre>当前状态是 `feat/plc` 比远端 ahead 1，工作树没有未提交文件。接下来只改 `rt/plc` 文档状态和报告，不碰外部模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-19 09:25:07 +0800</div>
+<pre>文档结构已经确认，PLC book 里 STORY-17 已经挂到 SUMMARY。现在我会把“已实现”的状态落到 story/slice/spec/report 上，并保留验证命令作为证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-19 09:26:08 +0800</div>
+<pre>文档状态已经落下来了：STORY-17 / SLICE-01 / SPEC-061 / SPEC-062 / INV-042 都从设计或未实现切到已实现，并把 portable backend 的证据补进报告。下一步跑文档和 diff 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-19 09:26:24 +0800</div>
+<pre>`git diff --check` 和 docs policy lint 都过了。为了这版 push 前状态更稳，我会再跑一次 bookshelf build 和 PLC build，然后用当前构建目录跑 CTest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-19 09:26:41 +0800</div>
+<pre>bookshelf build 和 PLC build 都过了。现在我会跑 targeted CTest 与全量 PLC CTest，确认实现提交和文档收尾处在同一个可发布状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-19 09:26:52 +0800</div>
+<pre>targeted 和全量 PLC CTest 都通过了。现在我会看一下 diff，确认只包含这次文档收尾，然后提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-19 09:27:03 +0800</div>
+<pre>diff 只包含 `rt/plc/docs` 的状态收尾，没有越界。现在提交这组文档变更，然后把实现提交和文档提交一起 push 到 `origin/feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-19 09:27:26 +0800</div>
+<pre>本地现在 ahead 2：一个实现提交，一个文档 closeout 提交。下一步直接 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-19 09:27:41 +0800</div>
+<pre>push 已完成。最后我会确认远端同步和工作树干净，再给你一个简短收尾和下一步建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-05-19 09:27:54 +0800</div>
+<pre>已完成并 push 到 `origin/feat/plc`，当前工作树干净。
+
+本次新增两笔提交：
+
+- `256d9ef6 feat(plc): add portable backend conformance profile`
+- `27a446bb docs(plc): close backend portability slice`
+
+完成内容：
+
+- 实现 STORY-17 SLICE-01：新增 vendor-neutral `portable_*` backend profile。
+- 覆盖 `portable_io_hal` / `portable_nrt_bridge` / `portable_task_time` / `portable_log`。
+- 加了 runtime fixture 和 `metanc_plc_story17_backend_portability_tests`。
+- 文档已把 STORY-17 / SLICE-01 / SPEC-061 / SPEC-062 / INV-042 标记为 implemented。
+- TwinCAT optionality report 已补上后续实现证据。
+
+验证已过：
+
+- `cmake --build /tmp/metanc_plc_build`
+- targeted CTest：3/3 passed
+- full PLC CTest：36/36 passed
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+下一步建议：继续沿着“backend-neutral portability”往下做，不要马上回 TwinCAT。比较合适的下一片是做 **portable backend profile 的可观测/诊断收敛**：把 backend capability、绑定失败、role selection、scan I/O roundtrip 的诊断契约整理成一个小 slice，这样后面无论接 Orocos、EtherCAT、TwinCAT 还是别的 runtime，都有统一错误面。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-60|note=[used PLC scope and small implementation cadence preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:28:45 +0800</div>
+<pre>do design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:29:07 +0800</div>
+<pre>我会把刚才建议的下一片先做成 PLC 内部设计，不进代码实现：确认现有 story/spec 结构后，在 `rt/plc/docs` 里落一个小而可执行的诊断/可观测 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:29:48 +0800</div>
+<pre>我会用 `write-docs` 规则来落这个设计；先补一遍 docs policy/SUMMARY 和相关实现点，避免设计的诊断契约跟现有错误码脱节。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:30:17 +0800</div>
+<pre>这里我建议开新 STORY-18，而不是重新打开刚刚关闭的 STORY-17。原因是 STORY-17 已经证明“能跑通 portable backend”；下一步是把 backend 相关的失败、诊断、观测点收敛成契约，作为后续接真实运行时的前置条件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:30:39 +0800</div>
+<pre>这个设计会有一个明确取舍：把 backend 诊断收敛成 PLC 本地契约，而不是现在就引入外部运行时或统一全项目诊断模型。我会按 docs skill 的结构落文档，同时用 decision-record 记录这个边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:31:13 +0800</div>
+<pre>我会先不创建单独的 decision sidecar，因为这个设计还在讨论阶段；把关键取舍直接写进新 slice 的 Scope/Non-goals/Implementation Plan，等你确认后再决定是否单独记录 decision。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 09:31:37 +0800</div>
+<pre>我会把这个设计保持为“实现前设计”：状态用 `active/designing`，SPEC/INV 标记 `unimplemented`，这样后面你说 `do` 时可以直接按这个 slice 实现，不会混淆为已经完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 09:32:11 +0800</div>
+<pre>我会把设计拆成 1 个新 story、1 个 slice、3 个 SPEC/INV：先收敛 backend 选择诊断，再收敛 L1 capability 失败，再规定哪些信息可进入观测面，且默认不在每个 scan 周期打日志。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 09:33:21 +0800</div>
+<pre>现在文件设计会这样落：`STORY-18-backend-diagnostics-and-observability`，里面只有一个 `SLICE-01-backend-diagnostic-contract`，并在 SUMMARY/故事索引里登记。接下来创建目录和 Markdown 文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 09:36:08 +0800</div>
+<pre>设计文档已经落到 `rt/plc/docs`：新 STORY-18，含一个 backend diagnostic contract slice 和 3 个 SPEC + 1 个 INV。现在我会跑文档校验并看一下 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-19 09:36:28 +0800</div>
+<pre>`git diff --stat` 只显示了已跟踪文件，新的 STORY-18 目录还是 untracked。我会继续跑 `book build`，再用 `git status` 和文件清单确认所有新文档都在预期路径里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-19 09:37:01 +0800</div>
+<pre>bookshelf build 也过了，PLC book 从 207 页变成 213 页，说明新 story/slice/spec 已纳入导航。接下来我会检查完整 diff，确认内容没有偏离 PLC 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-19 09:37:43 +0800</div>
+<pre>设计内容已经经过 docs lint 和 bookshelf build。最后我会再确认 untracked 新文件没有明显格式问题，并汇总哪些文件已落地。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-19 09:38:00 +0800</div>
+<pre>已按 PLC 范围落了下一步设计，未提交。
+
+新增设计：
+
+- [STORY-18 - Backend diagnostics and observability](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/STORY.md)
+- [SLICE-01 - Backend diagnostic contract](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/SLICE.md)
+- `SPEC-063`：runtime backend selection 失败的稳定错误码和 role/backend detail
+- `SPEC-064`：L1 capability 失败统一为 `error/backend-capability-unsupported`
+- `SPEC-065`：`Framework::snapshot()` 暴露 active backend role names
+- `INV-043`：backend diagnostics 只能是低频 lifecycle/configuration 信号，不做 per-scan tracing，不把具体 backend 泄漏给 Behavior API
+
+同时更新了：
+
+- [SUMMARY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/SUMMARY.md)
+- [STORIES/INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/INDEX.md)
+
+验证已过：
+
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作树只包含这些 PLC docs 变更。下一步如果你认可这个设计，可以先 commit 设计；之后实现建议按 `SPEC-063 -&gt; SPEC-064 -&gt; SPEC-065 -&gt; INV-043/status closeout` 分小提交做。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:38:36 +0800</div>
+<pre>do design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:39:07 +0800</div>
+<pre>我会继续把 STORY-18 设计推进到“可直接实现”的粒度：补足实现切分、测试矩阵和预期代码触点，仍然只碰 `rt/plc` 文档，不进入代码实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:39:41 +0800</div>
+<pre>我看到现有 STORY-18 已经是 active/designing 且未提交；这次会在同一 slice 下补实现计划页和 readiness review 页，不改已定义的 SPEC/INV 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:39:58 +0800</div>
+<pre>我会补两个文档页：`IMPLEMENTATION-PLAN.md` 负责 patch 顺序和代码触点，`READINESS-REVIEW.md` 负责进入实现前的风险/验证清单。这样下一轮 `do` 可以直接按 patch 执行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:40:10 +0800</div>
+<pre>代码触点确认完了：实现会主要碰 `framework.hpp/.cpp`、`config.cpp`、`story06/story17/story05` 相关测试，可能新增一个 `story18_backend_diagnostics_tests.cpp`。我会把这些写进计划页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:41:25 +0800</div>
+<pre>补充设计已经落好：patch 顺序、代码触点、测试布局、fixture 策略、风险和验收标准都写进文档了。现在我会跑 docs 校验和 build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 09:41:56 +0800</div>
+<pre>文档校验和 bookshelf build 都通过了，PLC book 现在 215 页。最后我会看一下 diff 统计，确认这次只补 STORY-18 设计细节。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-19 09:42:17 +0800</div>
+<pre>已继续把 STORY-18 设计细化到可实现粒度，仍然只改了 `rt/plc` 文档，没有进代码实现，也还没提交。
+
+新增/补强的设计页：
+
+- [IMPLEMENTATION-PLAN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/IMPLEMENTATION-PLAN.md)
+- [READINESS-REVIEW.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/READINESS-REVIEW.md)
+
+这次补了：
+
+- patch 顺序：`SPEC-063 -&gt; SPEC-064 -&gt; SPEC-065 -&gt; INV-043/status closeout`
+- 预期代码触点：`framework.hpp/.cpp`、`config.cpp`、story06/story17/story05 测试、可能新增 story18 test
+- 测试矩阵：runtime selection detail、capability failure detail、snapshot backend selection、无 per-cycle backend trace
+- fixture 策略：尽量复用现有 fixture，DO-only failure 可能用小型 test stub
+- readiness review：风险、缓解方式、验收标准、建议 commit split
+
+验证已过：
+
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作树仍是未提交 docs 变更。下一步建议先 commit 这组设计，然后进入 `SPEC-063` 实现。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-60|note=[used PLC scope and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:42:57 +0800</div>
+<pre>commit + push + design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:43:21 +0800</div>
+<pre>我先把当前 STORY-18 设计提交并推送；推完后我会给出下一步实现前的设计建议，不会先改代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:43:40 +0800</div>
+<pre>当前变更只在 `rt/plc` 文档里，符合 PLC 范围。提交前我再跑一次 docs 校验和 bookshelf build，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:44:05 +0800</div>
+<pre>校验通过，PLC book 构建正常。现在我会把 STORY-18 设计文档全部 stage，提交并推送到 `feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:44:52 +0800</div>
+<pre>设计提交已推送。接下来我会确认工作树干净，然后给出下一步更具体的实现设计建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-19 09:45:13 +0800</div>
+<pre>已完成 `commit + push`。
+
+提交：
+
+- `bfdb9efc docs(plc): design backend diagnostics story`
+
+已推送到：
+
+- `origin/feat/plc`
+
+验证已过：
+
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作树干净。
+
+下一步实现设计建议：
+
+1. 先做 `SPEC-063`
+   稳住 runtime backend selection 的错误细节，不改已有 root code，只补 role/backend detail 和测试。
+
+2. 再做 `SPEC-064`
+   把 physical DI/DO binding 失败统一成 `error/backend-capability-unsupported`，关键改 `add_physical_binding_slot()` 让它拿到 behavior/handle 上下文。
+
+3. 再做 `SPEC-065`
+   给 `FrameworkSnapshot` 加 `backend_selection`，并把 legacy default backend names 规范化进 `FrameworkConfig`。
+
+4. 最后做 `INV-043 + closeout`
+   确认没有引入 per-cycle backend trace diagnostics，然后更新 STORY-18 状态和验证证据。
+
+建议下一轮直接从 `SPEC-063` 开始，小提交推进。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-60|note=[used PLC scope and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:45:45 +0800</div>
+<pre>do design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:46:12 +0800</div>
+<pre>我会继续做 PLC 文档设计，不写实现代码：这次把 STORY-18 的第一步 `SPEC-063` 拆成更具体的 patch 设计，目标是下一轮可以直接按测试和代码触点实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:46:32 +0800</div>
+<pre>工作树干净，上一版设计已经推送。现在我会只在 `rt/plc/docs` 下新增 `SPEC-063` 的实现细化页，并把它挂到 PLC SUMMARY。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:46:41 +0800</div>
+<pre>`SPEC-063` 的关键取舍是：先保持现有 root code，不引入异常类型；只把 detail 格式规范化。这样改动小，后面 `SPEC-064` 再引入新的 capability root code。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:47:22 +0800</div>
+<pre>`SPEC-063` 的实现设计页已经落地，并挂进 SUMMARY。现在我会跑 docs 校验和 build，确认新增页面结构没问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:47:57 +0800</div>
+<pre>bookshelf build 也通过了，PLC book 现在 216 页。最后我会检查新增页行数和当前 diff，方便你判断是否要提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-19 09:48:11 +0800</div>
+<pre>已继续做设计，没有提交。
+
+这次新增：
+
+- [SPEC-063-IMPLEMENTATION-DESIGN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/SPEC-063-IMPLEMENTATION-DESIGN.md)
+
+并挂到：
+
+- [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/SLICE.md)
+- [SUMMARY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/SUMMARY.md)
+
+设计内容聚焦 `SPEC-063`：
+
+- 保留现有 root code：
+  - `error/runtime-missing-role`
+  - `error/runtime-duplicate-role`
+  - `error/runtime-backend-not-registered`
+- 统一 detail 形状：
+  - `role=&lt;role&gt;`
+  - `role=&lt;role&gt; backend=&lt;name&gt;`
+  - `section=backends`
+- 明确代码触点：
+  - `rt/plc/src/descriptors.cpp`
+  - `rt/plc/src/config.cpp`
+  - `rt/plc/tests/story06_backend_lookup_tests.cpp`
+- 明确测试更新和可选 duplicate-section fixture
+- 明确不引入 logger 依赖、不引入异常层级、不改 root code
+
+验证已过：
+
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作树有未提交 docs 变更。下一步建议：commit + push 这个 SPEC-063 设计页，然后开始实现 `SPEC-063`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:49:02 +0800</div>
+<pre>commit + push + design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:49:12 +0800</div>
+<pre>commit + push + design + realize</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:49:37 +0800</div>
+<pre>我会按两段做：先把当前 `SPEC-063` 设计页提交并推送；然后实现 `SPEC-063`，跑测试，更新对应状态文档，再提交推送。范围继续限制在 `rt/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:49:57 +0800</div>
+<pre>先处理已落的 `SPEC-063` 设计提交，然后我会在同一分支继续实现 `SPEC-063`。实现只改 `rt/plc` 下的 parser/config/test/docs 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:50:51 +0800</div>
+<pre>设计提交已推送。现在开始实现 `SPEC-063`：我会先按设计改测试和错误消息格式，再跑 `story06` 相关测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:50:59 +0800</div>
+<pre>实现会按设计保持很小：只规范化 `descriptors.cpp` 和 `config.cpp` 的错误 detail，并加强 `story06_backend_lookup_tests.cpp` 的断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:51:38 +0800</div>
+<pre>`SPEC-063` 代码和测试断言已改好。接下来先跑 targeted build/test，确认这个小补丁没有破坏 backend lookup。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 09:52:00 +0800</div>
+<pre>build 通过。现在跑 `story06` targeted CTest，再跑 STORY-18 计划要求的相关 targeted 集合。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 09:52:26 +0800</div>
+<pre>`SPEC-063` 的 targeted 测试已经通过。接下来我会把 SPEC-063 的文档状态标成 implemented，并保留 STORY-18/SLICE-01 其余项未实现，然后跑全量 PLC 测试和 docs 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 09:52:38 +0800</div>
+<pre>我会只把 SPEC-063 行标成 implemented，slice/story 仍保持 designing/active，因为 SPEC-064、SPEC-065、INV-043 还没做。然后跑全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 09:52:58 +0800</div>
+<pre>状态文档已同步到 SPEC-063 implemented。现在跑 full PLC CTest、diff check、docs lint 和 bookshelf build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-19 09:53:35 +0800</div>
+<pre>全量 PLC 测试和文档构建都通过。现在我会检查 diff，然后提交实现和 SPEC-063 状态更新并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-19 09:53:41 +0800</div>
+<pre>diff 已确认只包含 SPEC-063 的实现和状态更新。现在提交并推送这一版。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-19 09:54:22 +0800</div>
+<pre>实现提交已推送。我会做最后状态确认，然后给出下一步设计建议，也就是 SPEC-064 的落点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-19 09:54:38 +0800</div>
+<pre>已完成 `commit + push + design + realize`，当前工作树干净。
+
+提交并推送了两版：
+
+- `9651051a docs(plc): detail backend selection diagnostics design`
+- `cbdfb85c feat(plc): detail backend selection diagnostics`
+
+实现内容：
+
+- `SPEC-063` 已实现并标记为 implemented。
+- 保留现有 root code：
+  - `error/runtime-missing-role`
+  - `error/runtime-duplicate-role`
+  - `error/runtime-backend-not-registered`
+- 统一 backend selection detail：
+  - `role=&lt;role&gt;`
+  - `role=&lt;role&gt; backend=&lt;name&gt;`
+  - `section=backends`
+- 加强 `metanc_plc_story06_backend_lookup_tests` 断言。
+
+验证已过：
+
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story06&quot;`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story18|story06&quot;`
+- full PLC CTest：36/36 passed
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+下一步建议做 `SPEC-064`：把 physical DI/DO binding unsupported 统一成 `error/backend-capability-unsupported`，关键是让 `add_physical_binding_slot()` 拿到 behavior id 和 handle 上下文。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-60|note=[used PLC scope and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:56:31 +0800</div>
+<pre>commit + push + design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 09:56:35 +0800</div>
+<pre>do design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 09:56:57 +0800</div>
+<pre>我会继续做下一步设计，按当前 STORY-18 顺序推进到 `SPEC-064`：只落 PLC 文档设计，不写实现代码，也不提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 09:57:19 +0800</div>
+<pre>工作树干净，当前在 `feat/plc`。我会读取 SPEC-064、现有 framework 绑定路径和相关测试，再落一个 `SPEC-064-IMPLEMENTATION-DESIGN.md`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 09:57:32 +0800</div>
+<pre>`SPEC-064` 的设计核心会更细：改 `add_physical_binding_slot` 签名拿到 Behavior 上下文；DI 失败用现有 noop 路径覆盖，DO 失败建议用 test-only IoHal stub 精准触发，避免造过多 YAML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 09:59:26 +0800</div>
+<pre>我继续把 SPEC-064 的设计稿收尾，只做 `rt/plc` 文档侧验证，不进入实现代码。现在先看工作区和文档校验结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 09:59:38 +0800</div>
+<pre>基础检查干净：只有 SPEC-064 设计页和导航变更，空白检查与 docs policy lint 都过了。我再跑一次 bookshelf 构建，确认新页面能进入文档站点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 09:59:52 +0800</div>
+<pre>`book build` 还在跑，前半段已经看到 PLC book 被纳入总构建。我等它结束后再给你设计结果摘要。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-19 10:00:25 +0800</div>
+<pre>已完成 SPEC-064 详细设计，范围只在 `rt/plc` 文档内，没有进入代码实现。
+
+落地内容：
+- 新增 [SPEC-064-IMPLEMENTATION-DESIGN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/SPEC-064-IMPLEMENTATION-DESIGN.md)
+- 更新 STORY-18 slice 导航：[SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/SLICE.md)
+- 更新 PLC book 导航：[SUMMARY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/SUMMARY.md)
+
+设计核心是把物理 DI/DO 绑定失败统一成：
+`error/backend-capability-unsupported: role=io_hal capability=... channel=... behavior=... handle=...`
+
+验证已过：
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前这些设计变更还未提交。下一步建议确认后实现 SPEC-064：改 `framework.cpp` 的绑定失败诊断、补 DI/DO 断言和 story18 测试，然后跑 targeted/full CTest，最后 commit + push。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-60|note=[used PLC scope and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 10:00:58 +0800</div>
+<pre>commit + push + design</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 10:01:19 +0800</div>
+<pre>我会先把刚才的 SPEC-064 设计变更提交并推到 `feat/plc`，然后继续在 PLC scope 内做下一份设计。先快速复核当前 diff，避免把非 PLC 内容带进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 10:01:41 +0800</div>
+<pre>我会用 `write-docs` 的校验规则继续处理：先提交推送已完成的 SPEC-064 设计，再按 STORY-18 当前 slice 的顺序补下一份详细设计。接下来先看新设计页内容和相关规格，确定下一份设计目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 10:01:51 +0800</div>
+<pre>当前未提交内容只包含 SPEC-064 设计页和 PLC 文档导航。我先提交推送这部分，然后继续补 SPEC-065 的实现设计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 10:02:19 +0800</div>
+<pre>提交已经生成，push 还在进行中。我不等空转，先并行读 SPEC-065 相关现有快照代码，确认设计不会偏离当前实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 10:02:45 +0800</div>
+<pre>SPEC-065 的目标是快照里暴露“已归一化的后端选择名称”。我已经看到 `FrameworkSnapshot` 现在还没有这个字段，接下来会把设计写成一个窄接口变更：新增快照值对象、从 `FrameworkConfig` 填充，不碰 backend 生命周期。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 10:03:13 +0800</div>
+<pre>push 已完成，`feat/plc` 现在包含 SPEC-064 设计提交 `0b5533c2`。我继续落 SPEC-065 的详细设计页，重点放在快照字段的数据结构、归一化来源和测试落点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 10:03:34 +0800</div>
+<pre>一个小发现：PLC tests 没有单独的 `rt/plc/tests/CMakeLists.txt`，测试目标是在 PLC 顶层构建文件里注册。设计里会按现有 target 布局写清楚，不假设不存在的文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 10:03:52 +0800</div>
+<pre>我准备写 SPEC-065 设计页，并把它挂进 STORY-18 的 slice 和 PLC book 导航。这个设计会明确一个关键点：快照显示的是配置选择名，不是通过运行时对象反查 class 或 `backend_id()`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 10:05:35 +0800</div>
+<pre>这里有一个设计细节需要钉住：手工注入 backend 的测试 harness 里，snapshot 仍应报告 runtime 配置归一化后的名字，而不是 C++ 对象实际类型。这样和 SPEC-065 的“配置可观测性，不暴露对象身份”一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-19 10:05:57 +0800</div>
+<pre>根目录 README、架构 codemap、PLC README 已复核；`rt/plc/AGENTS.md` 不存在，所以按模块 README 和 PLC docs 规则执行。接下来我只新增 SPEC-065 设计文档和导航，不改实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-19 10:06:16 +0800</div>
+<pre>工作区现在干净，`0b5533c2` 已推到远端。下一步我会创建 SPEC-065 设计页并验证，再把这份新设计也单独 commit + push，保持一个设计点一个提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-19 10:07:51 +0800</div>
+<pre>SPEC-065 设计页已经落下来了。现在做文档结构和构建验证，确认新增导航可渲染。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-19 10:08:05 +0800</div>
+<pre>基础检查已过，不过 `git diff --stat` 不显示未跟踪的新文件；我会用 `git status` 复核实际文件集，再跑 `book build`。如果构建通过，我会把 SPEC-065 设计也提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-19 10:08:17 +0800</div>
+<pre>`book build` 正在跑，前几个 book 已经通过。等构建结束后我会提交 SPEC-065 设计页并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-19 10:08:23 +0800</div>
+<pre>文档构建通过，PLC book 页数从 217 到 218，说明新设计页已进入站点。现在提交并推送这份 SPEC-065 设计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-19 10:08:51 +0800</div>
+<pre>SPEC-065 设计提交已经生成，push 还在进行。我等远端确认后做一次最终状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-05-19 10:09:25 +0800</div>
+<pre>已完成 `commit + push + design`，范围只在 `rt/plc`。
+
+已推送到 `origin/feat/plc`：
+- `0b5533c2 docs(plc): design backend capability diagnostics`
+  - 落地 SPEC-064 详细设计：后端能力不支持时的 DI/DO 绑定诊断。
+- `1014a2c5 docs(plc): design backend selection snapshot`
+  - 新增 [SPEC-065 Implementation Design](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-18-backend-diagnostics-and-observability/SLICE-01-backend-diagnostic-contract/SPEC-065-IMPLEMENTATION-DESIGN.md)
+  - 设计 `Framework::snapshot()` 增加 backend selection 快照字段，报告归一化配置名，不暴露 C++ 后端对象/class。
+
+验证已过：
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作区干净：`feat/plc...origin/feat/plc`。
+
+下一步建议：先实现 SPEC-064，再实现 SPEC-065，最后用 INV-043 做一次“无 per-cycle 诊断、无 backend class 泄露”的架构收口检查。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-60|note=[used PLC scope and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 10:17:18 +0800</div>
+<pre>详细设计讨论一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-19 10:17:53 +0800</div>
+<pre>我建议下一步讨论并确认的是 STORY-18 的实现顺序：先 SPEC-064，再 SPEC-065，最后用 INV-043 收口。
+
+**推荐顺序**
+
+1. 先做 SPEC-064：后端能力失败诊断。
+   这是更“故障路径”的问题，当前错误还偏 prose，而且会影响物理 DI/DO 绑定失败时的可定位性。先把错误码稳定下来，后续真实 backend 接入时更容易排查。
+
+2. 再做 SPEC-065：snapshot 暴露 backend selection。
+   这是“观测路径”，风险低，但会改 `FrameworkSnapshot` 结构。放在 SPEC-064 后面做更清晰。
+
+3. 最后做 INV-043：架构收口。
+   检查没有把 backend class、对象指针、registry、per-cycle logging 泄露到 Behavior 或高频循环里。
+
+**SPEC-064 设计重点**
+
+核心目标不是新增能力，而是把现有物理绑定失败改成稳定诊断：
+
+```text
+error/backend-capability-unsupported: role=io_hal capability=digital_input_binding channel=coolant_request behavior=CoolantControl handle=request
+```
+
+实现上建议只改：
+- `rt/plc/src/framework.cpp`
+- `rt/plc/include/metanc/plc/framework.hpp`
+- 相关 tests
+
+关键设计点：
+- `add_physical_binding_slot()` 需要拿到 `BehaviorDescriptor`，否则无法报告 `behavior=...`。
+- DI 失败用 `capability=digital_input_binding`。
+- DO 失败用 `capability=digital_output_binding`。
+- `behavior` 优先用 `instance_id`，没有则用 `type`。
+- 不能再出现 `SimIoHalBackend` 这种具体实现类要求。
+
+测试要补两个方向：
+- 现有 noop backend 的 DI 失败断言。
+- 新增 test-only `InputOnlyIoHalBackend`，让 DI 成功、DO 失败，证明 DO 诊断也完整。
+
+**SPEC-065 设计重点**
+
+核心目标是让 `Framework::snapshot()` 显示当前运行配置选择的 backend 名称：
+
+```cpp
+snapshot.backend_selection.io_hal
+snapshot.backend_selection.nrt_bridge
+snapshot.backend_selection.time
+snapshot.backend_selection.logger
+snapshot.backend_selection.motion
+```
+
+我建议设计保持“配置观测”，不要变成“运行对象识别”：
+- 来源是 `FrameworkConfig` 的归一化 backend selection。
+- 不从 C++ backend 对象反查类型。
+- 不用 `typeid`。
+- 不暴露对象地址。
+- 不查 registry 内部。
+
+实现上应抽一个共享 helper：
+
+```cpp
+RuntimeBackendSelection normalized_backend_selection(
+    const FrameworkConfig&amp; config);
+```
+
+这样 `create_backends_from_config()` 和 `snapshot()` 共用同一套默认值，避免以后默认 backend 改了但 snapshot 忘记同步。
+
+**需要确认的设计选择**
+
+我建议这样定：
+
+- `STOPPED` snapshot：`backend_selection` 保持空字符串。
+- `RUNNING` snapshot：填归一化配置名。
+- failed boot 后：回到 `STOPPED`，不保留失败配置，失败原因走 exception/logger 诊断。
+- 手工注入 `BackendGroup` 的测试 harness：snapshot 仍报告 runtime config 选择名，不报告实际 C++ 对象名。
+
+这个选择比较干净：snapshot 回答“配置选择了什么”，不是“当前引用指向哪个对象”。
+
+**实现切片建议**
+
+下一步如果进入实现，我建议一次只做 SPEC-064：
+
+- 改物理绑定失败消息。
+- 更新 DI 负例断言。
+- 加 DO-only 负例测试。
+- 跑 `story18|story17|mvp1_io_roundtrip` 和全量 PLC CTest。
+- 更新 SPEC-064 状态和 slice 表。
+- commit + push。
+
+然后再单独做 SPEC-065。这样 review 面比较小，失败诊断和 snapshot 结构变更不会混在一起。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:48-60|note=[used PLC scope and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 10:29:15 +0800</div>
+<pre>di do 绑定失败</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-05-19 10:29:42 +0800</div>
+<pre>对，这里说的 **DI/DO 绑定失败** 是 SPEC-064 的核心。
+
+具体场景是：`machine.yaml` 里 Behavior 声明了物理 I/O 绑定，但当前 `io_hal` backend 不支持这个 channel 或不支持这种绑定能力。
+
+比如：
+
+```yaml
+bindings:
+  request:
+    kind: digital_input
+    source: io
+    channel: coolant_request
+  valve:
+    kind: digital_output
+    source: io
+    channel: coolant_valve
+```
+
+框架 boot 时会做：
+
+```cpp
+bind_digital_input(&quot;coolant_request&quot;)
+bind_digital_output(&quot;coolant_valve&quot;)
+```
+
+如果 backend 返回 `nullptr`，就说明绑定失败。
+
+**建议的错误形状**
+
+DI 失败：
+
+```text
+error/backend-capability-unsupported: role=io_hal capability=digital_input_binding channel=coolant_request behavior=CoolantControl handle=request
+```
+
+DO 失败：
+
+```text
+error/backend-capability-unsupported: role=io_hal capability=digital_output_binding channel=coolant_valve behavior=CoolantControl handle=valve
+```
+
+这里几个字段很关键：
+
+- `role=io_hal`：失败的是 I/O HAL 角色。
+- `capability=digital_input_binding` / `digital_output_binding`：区分 DI 还是 DO。
+- `channel=...`：哪个物理通道失败。
+- `behavior=...`：哪个 Behavior 的绑定点失败。
+- `handle=...`：Behavior 内部哪个 handle 失败。
+
+**为什么要这样设计**
+
+现在如果只报 “需要 SimIoHalBackend 支持” 或 “channel 不支持”，问题不够清楚，而且把具体 sim backend 泄露出来了。未来 backend 不一定是 TwinCAT，也不一定是 sim，所以错误应该只说 L1 能力缺失，而不是要求某个具体 backend class。
+
+**实现上怎么做**
+
+需要让 `add_physical_binding_slot()` 拿到 `BehaviorDescriptor`，否则它只有 binding，没有办法知道 `behavior=...`。
+
+大概改成：
+
+```cpp
+void add_physical_binding_slot(
+    const SignalBinding&amp; binding,
+    const BehaviorDescriptor&amp; behavior_descriptor,
+    HandleBinder::TestSlots&amp; slots);
+```
+
+然后：
+
+```cpp
+if (binding.kind == SignalBindingKind::kDigitalInput) {
+  const bool* slot = backends().io.bind_digital_input(binding.channel);
+  if (slot == nullptr) {
+    throw std::runtime_error(
+      backend_capability_unsupported_message(
+        &quot;digital_input_binding&quot;, binding, behavior_descriptor));
+  }
+}
+```
+
+DO 同理，用 `digital_output_binding`。
+
+**测试要分两类**
+
+1. DI 失败
+   用现有 `noop_io_hal` 就够，因为它 DI/DO 都不支持，会在第一个 DI 绑定处失败。
+
+2. DO 失败
+   需要一个 test-only backend：DI 返回有效 slot，DO 返回 `nullptr`。这样才能证明 DO 失败路径也能打出完整诊断。
+
+我建议下一步实现就只做这个，不碰 SPEC-065。先把 DI/DO 绑定失败诊断稳定下来。</pre>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 10:30:51 +0800</div>
+<pre>ok do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-19 10:31:07 +0800</div>
+<pre>我按刚才确认的 SPEC-064 做：只改 `rt/plc`，把物理 DI/DO 绑定失败改成稳定诊断，补 DI 和 DO 覆盖，验证后提交推送。先复核当前工作区和相关代码位置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-19 10:31:43 +0800</div>
+<pre>我已经定位到旧错误文本和两个现有负例测试。接下来改实现前还要看 `add_physical_binding_slot()` 的调用点，避免漏掉 legacy 路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-19 10:31:57 +0800</div>
+<pre>实现面很窄：调用点有两处，一处是新的 runtime assembly 路径，一处是 legacy `configure_behavior()` 路径。我会同时传入 `BehaviorDescriptor`，然后新增 story18 专用测试 target 覆盖 DO-only 失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-19 10:32:23 +0800</div>
+<pre>生产代码已改成统一 `error/backend-capability-unsupported` 格式。现在更新现有 DI 断言，并添加一个 `story18_backend_diagnostics_tests`，专门让 DI 成功、DO 失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-19 10:33:12 +0800</div>
+<pre>代码和测试已补齐。我现在更新 SPEC-064 和 slice 状态，把实现状态、验证目标和计划记录同步到文档里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-19 10:33:41 +0800</div>
+<pre>文档状态我会同步到 SPEC-064 与 slice 表：标记已实现，并注明由现有 mvp1/story17 负例加新的 story18 DO-only 测试验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-19 10:33:59 +0800</div>
+<pre>SPEC-064 的代码、测试、文档状态已同步。现在先跑配置/构建和 targeted tests，看看有没有编译或断言问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-19 10:34:16 +0800</div>
+<pre>构建正在跑，CMake 已重新生成，说明新测试 target 被拾取了。我等编译结束后跑 `story18|story17|mvp1_io_roundtrip`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-19 10:34:26 +0800</div>
+<pre>全量构建还在继续，改动影响核心库所以多数测试会重链。现在没有错误，继续等结束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-19 10:35:09 +0800</div>
+<pre>构建通过，新 `metanc_plc_story18_backend_diagnostics_tests` 已编译。现在跑 targeted CTest；如果过，再跑全量和文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-19 10:35:26 +0800</div>
+<pre>targeted 测试失败点很明确：错误里确实有新 root code 等字段，但 `behavior` 期望值和 fixture 实际 descriptor 不一致。我现在看机器 fixture，按“有 instance_id 用 instance_id，没有才用 type”的设计修正断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-19 10:35:35 +0800</div>
+<pre>fixture 里 behavior id 是 `coolant_control`，按设计应优先报 id，所以测试应断言 `behavior=coolant_control`。我修正三个断言后重跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-19 10:36:09 +0800</div>
+<pre>刚才 targeted CTest 还是旧二进制，因为只改了测试源码还没重新 build。先同步设计示例里的 behavior id 表述，再重新构建测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-19 10:36:17 +0800</div>
+<pre>设计文档里的示例还写的是 type；实际 fixture 有 `id: coolant_control`，所以实现应报 id。我要把示例和测试策略改成 `coolant_control`，避免文档和测试不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-19 10:36:30 +0800</div>
+<pre>文档示例已和 fixture 对齐。现在重新构建并跑 targeted tests。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-19 10:36:56 +0800</div>
+<pre>targeted tests 已过。现在跑全量 PLC CTest、diff whitespace、docs lint 和 bookshelf 构建，确认没有回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-19 10:37:01 +0800</div>
+<pre>全量 37 个 PLC 测试都通过，docs lint 和空白检查也通过。最后跑 `book build`，然后看 diff 准备提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-05-19 10:37:20 +0800</div>
+<pre>验证全部通过。现在我会检查变更清单，确认只有 SPEC-064 相关文件，然后 commit + push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-05-19 10:37:36 +0800</div>
+<pre>变更清单只包含 `rt/plc`，生产代码和测试 diff 都符合 SPEC-064。现在我会 stage 全部相关文件，提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-05-19 10:38:26 +0800</div>
+<pre>提交已生成，push 正在进行。等远端确认后我做最后状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / final_answer</h3>
+<div class="time">2026-05-19 10:38:54 +0800</div>
+<pre>已完成并推送。
+
+本次提交：
+- `8aa7dcfb feat(plc): report backend capability binding failures`
+
+做了什么：
+- DI/DO 物理绑定失败统一为：
+  `error/backend-capability-unsupported: role=io_hal capability=... channel=... behavior=... handle=...`
+- `behavior` 按设计优先使用 descriptor `id`，所以当前 fixture 报 `behavior=coolant_control`。
+- 不再要求或泄露 `SimIoHalBackend`。
+- 新增 `metanc_plc_story18_backend_diagnostics_tests` 覆盖 DO-only 失败路径。
+- 更新 SPEC-064 和 STORY-18 slice 文档状态为 implemented。
+
+验证已过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story18|story17|mvp1_io_roundtrip&quot;`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，37/37 passed
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作区干净，`feat/plc` 已同步到 `origin/feat/plc`。下一步建议做 SPEC-065：`Framework::snapshot()` 暴露归一化 backend selection。</pre>
+</article>
+</section>
+<section class="turn" id="turn-24">
+<h2>Turn 24</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-19 10:40:11 +0800</div>
+<pre>详细设计讨论一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-19 08:19:47 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-19 08:48:33 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-19 09:49:08 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-05-19 09:56:33 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

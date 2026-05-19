@@ -1,21 +1,21 @@
 # Conversation Report
 
-本轮会话先回到 PARAM 菜单设计分歧：刀偏表有多组子功能，继续让 `PARAM`
-直接显示刀偏表会让底部菜单和页面主体的层级语义冲突。讨论后确认采用
-PARAM Home 作为稳定入口。
+本轮会话先收敛 PARAM 与 Tool Offset 的菜单层级，再集中处理刀偏表操作体验。
+讨论确认 Tool Offset 不应该把结构性 Add/Delete 和 Available/Disabled 状态命令
+直接塞进当前 footer；第一版底部菜单保留 Standard、Extend、Detail、Search、
+Refresh、Return，表格主体负责当前视图内容。
 
-关键结论：
+随后用户指出表格弹窗编辑体验差、缺少单元格焦点和键盘操作。实现阶段改为
+Web/QML inline editing，并补齐单元格级选择、上下左右移动、Enter/F2 编辑、
+Tab/Shift+Tab 跨可编辑单元格、Esc 取消等行为。后续又修正了两个视觉问题：
+可编辑单元格悬浮不再显示 `EDIT` 提示，编辑态不再出现焦点框和输入框双层边框。
 
-- `PARAM` 是参数区入口，不是 Tool Offset 的别名。
-- PARAM Home 是真实页面，不能只是空路由占位。
-- 子功能页的 `Return` 回 PARAM Home，PARAM Home 的 `Return` 回 Overview。
-- 当前先落 Home 和子页 footer 分层；刀偏表 CRUD 操作按钮暂留主体，后续再做
-  footer 化迁移。
-- `metanc_hmi_dsl` 保持源头实现，`MetaNC/feat/hmi` 通过 sync 接收同一套 HMI
-  源码和生成逻辑。
+数据来源讨论中确认：当前界面只显示两条刀偏数据，是 native server 默认
+`MockToolingBackend` 的内存种子，不是 UI 写死。重启后会恢复默认种子。进一步
+讨论后确认 `tooling_management` 已经有 SQLite persistence，但 HMI 当前真实
+backend 还没有接 store-backed runtime。下一步设计将复用 `tooling_management`
+已有 `PersistenceStore` / `SQLitePersistenceStore` / `StoreBackedToolingRuntime`
+能力，不在 HMI 内新增刀具数据库 schema。
 
-实现阶段采用 TDD 方式补了 pipeline regression，随后刷新 Web/QML snapshots、
-生成最终产物，并确认 MetaNC distribution 中已经带有 PARAM Home。
-
-本轮报告同时刷新了 2026-05-19 的 user-history、完整 Codex conversation export
-和 aggregate reports timeline。
+本轮报告刷新了 2026-05-19 的 user-history、完整 Codex conversation export、
+项目报告和 docs portal，并同步到 MetaNC。

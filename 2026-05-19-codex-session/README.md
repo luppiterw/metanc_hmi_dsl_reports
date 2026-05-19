@@ -2,7 +2,8 @@
 
 这个目录整理了 2026-05-19 这轮项目推进的结构化阅读材料。
 当前结构由 Codex user-history export 工具自动初始化，并已补充本轮
-PARAM Home 导航设计落地、Web/QML 生成物验证、MetaNC 同步和发布摘要。
+Tool Offset 菜单收敛、表格 inline editing、Web/QML 生成物验证、
+tooling persistence 边界讨论、MetaNC 同步和发布摘要。
 
 目录：
 
@@ -21,11 +22,11 @@ PARAM Home 导航设计落地、Web/QML 生成物验证、MetaNC 同步和发布
 - Sessions: `3`
 - Primary sessions: `2`
 - Side sessions: `1`
-- User prompts: `42`
-- Synthetic events: `5`
-- Messages: `266`
-- User messages: `47`
-- Codex messages: `219`
+- User prompts: `121`
+- Synthetic events: `7`
+- Messages: `833`
+- User messages: `128`
+- Codex messages: `705`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

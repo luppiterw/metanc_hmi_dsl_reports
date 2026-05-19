@@ -8,7 +8,7 @@ Date: 2026-05-19
 刀偏表本体：底部菜单先稳定为 Standard、Extend、Detail、Search、Refresh、
 Return；表格编辑从弹窗改为直接单元格编辑；Web/QML 都补了键盘焦点和编辑态
 行为；随后确认了真实 `tooling_management` 与 SQLite persistence 的后续接入
-边界。
+边界，并完成第一版 store-backed SQLite 接入。
 
 当前实现已落在 `metanc_hmi_dsl`，并同步到 `MetaNC/feat/hmi`。Web/QML 生成物、
 distribution 产物和测试快照均已刷新。
@@ -41,6 +41,25 @@ distribution 产物和测试快照均已刷新。
   - 新增 `docs/project/tooling_backend_persistence_plan.md`，记录 mock、
     in-memory tooling_management、store-backed sqlite 属于同一 HMI backend adapter 层。
   - 更新 server architecture/build docs，明确 HMI 不新增刀具 SQLite schema。
+- 接入真实 tooling_management SQLite store-backed runtime：
+  - 新增 `StoreBackedToolingManagementBackend`，复用
+    `tooling_management` 的 `PersistenceStore`、`SQLitePersistenceStore`、
+    `StoreBackedToolingRuntime`。
+  - `HMI_TOOLING_STORE_KIND=memory|sqlite` 在同一真实 tooling backend 下切换
+    进程内核心或 SQLite 持久化，不改变 HMI contract。
+  - `HMI_TOOLING_STORE_PATH` 默认落在 `runtime-data/tooling.sqlite`，并支持
+    `HMI_TOOLING_SEED_MODE=preserve` 防止误创建空快照。
+  - `run_server_tooling_management.sh` 自动带
+    `-DTOOLING_MANAGEMENT_ENABLE_SQLITE=ON`，split Web/QML tooling launchers
+    在 SQLite 模式下默认不 seed demo 数据。
+- 清理启动说明和 generated 分发说明：
+  - 新增 `docs/server/startup_modes.md` 作为 Web/QML/server/fixture/native/
+    real tooling 的统一启动入口。
+  - 更新 `generated/distribution/README.md` 模板，明确当前 12 个 launcher
+    是有效集合，禁止手动添加临时 alias。
+  - 修正文档里把未来 HMI `hmi_state.sqlite`、HMI-owned tool store 写成当前
+    能力的旧说法，改为 HMI logs 已实现、settings/parameter state planned、
+    real tooling durability 属于 tooling_management store。
 
 ## Validation Evidence
 
@@ -48,6 +67,7 @@ distribution 产物和测试快照均已刷新。
 
 - `metanc_hmi_dsl/nrt/hmi`
   - `./tools/generate_targets.sh`
+  - `python3 -m tools.hmi_dsl generate-story-docs definition/story.catalog.yaml --output docs/acceptance_reference/story_pack`
   - `python3 -m unittest tests.test_pipeline -v`
   - `./tools/build_docs_html.sh`
 - `MetaNC/nrt/hmi`
@@ -67,14 +87,16 @@ PARAM -> PARAM Home -> Tool Offset -> Standard / Extend / Detail
 ```
 
 表格现在是单元格焦点模型，数值字段可以直接编辑。Mock 后端仍用于独立运行和
-DSL 同步验证，真实 `tooling_management` 后端保持为可选 MetaNC 集成路径。
+DSL 同步验证。真实 `tooling_management` 后端现在支持 memory 和 SQLite
+store-backed 两种运行模式，SQLite 模式可用于重启后保留刀偏表修改。
 
 ## Next Slice
 
-建议下一轮只做 tooling store-backed SQLite 接入设计和实现准备：
+建议下一轮聚焦真实接入测试和操作面收敛：
 
-- 保持 `MockToolingBackend`、`ToolingManagementBackend(in-memory)`、
-  `ToolingManagementBackend(store-backed sqlite)` 在同一 backend adapter 层。
-- 不改 `nrt/tooling_management`，优先复用已有 public API。
-- 在 HMI server 增加 tooling store 配置、load/save 生命周期和 restart survival 测试。
-- 明确缺省 seed 策略：empty、demo、preserve 三者择一作为第一版默认。
+- 用 `run_split_web_tooling_management.sh` 和
+  `run_split_qml_tooling_management.sh` 做真实 SQLite store-backed 人工验证。
+- 继续观察刀偏表 inline editing、Standard/Extend/Detail 视图和真实后端
+  projection 的字段覆盖是否足够。
+- 后续如果需要 multi-process 或 ROS/service-backed 生命周期，再进入
+  tooling_management/HMI 边界设计，不在当前 HMI adapter 内提前耦合。

@@ -118,3 +118,16 @@ Date: 2026-05-19
 - 这套新增的和之前说的MockToolingBackend模拟的两个数据这一层，属于同一层对吧
 - ok，先generate/update report &amp; docs + sync MetaNC + commit + push，然后开始详细计划
 - 详细设计一下
+- ok 做一下
+- 这些都只是在nrt/hmi内部做的是吗
+- ok 详细设计一下
+- ok 按照讨论的计划先落一版我看看
+- metanc_hmi_dsl的ci出错了，下次提交之后要检查
+- next plan
+- ok 做一下
+- 现在怎么启动接入这个真实的sqlite
+- generate/update report &amp; docs + sync MetaNC + commit + push
+- 你这些启动说明有没有个更新文档啊，以前很多旧的是不是就没用了，记得扫一下，然后generate/update report &amp; docs + sync MetaNC + commit + push，然后generated里面一些无用或者失效脚本和内容也记得清理一下，不要干扰了
+- next plan
+- next plan
+- ok 做一下

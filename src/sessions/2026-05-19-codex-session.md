@@ -2,9 +2,10 @@
 
 Focus:
 
-- PARAM Home navigation implementation
-- Web/QML conditional footer refresh and snapshot updates
-- Generated artifact validation, MetaNC sync, and report/docs publication
+- PARAM Home navigation implementation and Tool Offset UI refinement
+- Web/QML inline table editing and generated artifact validation
+- Real tooling_management SQLite store-backed backend and startup-doc cleanup
+- MetaNC sync and report/docs publication
 
 Session assets:
 

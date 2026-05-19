@@ -17,5 +17,18 @@ backend 还没有接 store-backed runtime。下一步设计将复用 `tooling_ma
 已有 `PersistenceStore` / `SQLitePersistenceStore` / `StoreBackedToolingRuntime`
 能力，不在 HMI 内新增刀具数据库 schema。
 
+随后实现了第一版真实 tooling store-backed SQLite 接入：HMI server 增加
+`StoreBackedToolingManagementBackend`，真实 tooling backend 可通过
+`HMI_TOOLING_STORE_KIND=memory|sqlite` 切换进程内核心或
+tooling_management SQLite store-backed runtime。生成脚本同步更新，
+`run_server_tooling_management.sh` 会构建 SQLite-enabled tooling target，
+split Web/QML tooling launchers 在 SQLite 模式下默认不 seed demo 数据，避免
+重启验证时覆盖已有快照。
+
+本轮最后集中清理启动说明和 generated 分发说明：新增
+`docs/server/startup_modes.md` 作为统一启动入口；更新 generated README 模板；
+扫描当前 12 个 generated launcher，确认没有需要删除的失效脚本；并修正旧文档
+中把 HMI `hmi_state.sqlite` / HMI-owned tool store 写成当前能力的表述。
+
 本轮报告刷新了 2026-05-19 的 user-history、完整 Codex conversation export、
 项目报告和 docs portal，并同步到 MetaNC。

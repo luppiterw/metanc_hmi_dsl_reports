@@ -11,3 +11,58 @@ Date: 2026-05-21
 - ok 按你的建议给个详细计划
 - 看起来正常了，generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push
 - ok，看了没问题，做一下
+- 下一步计划呢
+- ok
+- 详细计划做一下
+- ok 回到我们刀偏表的功能上来
+- 下一步详细计划做一下
+- ok 根据建议详细设计一下
+- ok
+- do
+- 这部分知识文档工作吗目前
+- 继续下一步设计
+- ok 下一步是开始phase2 落代码是吗
+- 继续落代码
+- web 和qml版本都做了吗
+- 都测试ok吗
+- 下一步详细设计一下
+- 下一步详细计划做一下
+- ok，做一下
+- ok
+- 现在做的主要是PLC runtime的逻辑骨架是吗
+- 这块我希望未来在runtime simulator之类上也能够便宜体现，你觉得可能吗
+- ok 我认可这个结构，下一步详细计划出一下
+- ok 按照建议设计
+- 这块主要变更是什么
+- ok
+- ok 我认可这个结构，下一步详细计划出一下
+- ok 按照建议设计
+- 选图V原本
+- 下一步计划看一下
+- ok do
+- 继续下一步计划
+- 给一个详细计划
+- ok do
+- ok
+- ok 下一步的计划有了吗
+- ok 给个详细计划
+- ok do
+- ok 给个详细计划
+- ok do
+- ok 给个详细计划
+- ok 下一步详细计划给一个，讨论一下
+- 这种其实是会影响上下文的逻辑是不
+- 给个详细设计
+- 意思是拆分了上下权限是吗
+- ok 按你的计划执行
+- 下一步的计划还有吗
+- 给一个详细计划看看
+- 我觉得ok，给个计划
+- 意思是这一次是web qml同时做这个smoke测试
+- 你的smoke测试详细步骤是什么
+- 详细设计有吗
+- ok do
+- 具体有什么问题
+- 可以处理吗
+- 下一阶段计划看一下
+- 今天的版本先generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push

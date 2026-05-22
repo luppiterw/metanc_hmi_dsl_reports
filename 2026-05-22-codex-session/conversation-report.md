@@ -1,3 +1,27 @@
 # Conversation Report
 
-待补充 2026-05-22 的会话摘要。
+Date: 2026-05-22
+
+## Summary
+
+本轮会话围绕 HMI 刀偏表、工件零偏表和命名一致性展开。前半段确认刀具测量/工件测量暂不做，因为它不是纯 HMI 需求，会牵涉后台测量流程、变量参数存放、tooling_management 接口以及后续零偏/工件测量统一边界。后半段集中收敛当前已经进入 HMI 的刀偏表和 work offset 表资源、文档、代码与生成物。
+
+## Decisions
+
+- `wcs.offset.table` 暂定为 work offset 表 canonical resource。
+- `tooling.wcs.table` 保留为 legacy alias，不再作为普通 active resource 或 story interface ref 使用。
+- 中文语义采用“工件零偏/零偏”解释 work offset，但代码与文档主语义使用 `Work Offset`，避免 `Zero Offset` 误解。
+- 刀具测量、工件测量和测量流程后续需要后台数据模型与接口支持，本轮不作为 HMI 单独功能实现。
+- `metanc_hmi_dsl` 同步脚本继续保留；它负责源码导入/导出，最终产物必须在目标仓库重新生成。
+
+## Implementation Notes
+
+- Web/QML runtime fragment、mock runtime、native server 和 runtime seed 都保持 `wcs.offset.table` 与 `tooling.wcs.table` 值同步。
+- Native server 现在在合并 adapter overlay 前做 resource alias canonicalization，覆盖 legacy-only backend 上报场景。
+- Story pack、data dictionary、runtime resources 和 product specs 已按 canonical/legacy 边界刷新。
+- 两个仓库的 generated distribution 与 docs_html 都已重新生成。
+
+## Follow-Up
+
+- 刀具测量/工件测量进入设计前，需要先定义后台测量数据、变量存放、流程状态、写表策略和错误边界。
+- 如果后续决定替换 `wcs.offset.table` 命名，需要以兼容 alias 迁移方式处理，不能直接破坏已生成客户端和脚本。

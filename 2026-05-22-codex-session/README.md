@@ -1,7 +1,8 @@
 # 2026-05-22 Codex Session Report
 
 这个目录整理了 2026-05-22 这轮项目推进的结构化阅读材料。
-当前结构由 Codex user-history export 工具自动初始化，可在后续工作中补全更详细的报告内容。
+当天工作先收敛 HMI 刀偏/工件零偏命名与跨仓库产物同步，随后把
+Tool Offset / Work Offset UI 自动化收口成可重复执行的 Web/QML 门禁。
 
 目录：
 
@@ -12,6 +13,22 @@
 - `workflow-diagram.md`: 工作流图占位页
 - `architecture-diagram.md`: 架构图占位页
 - `build_html/index.html`: 使用 `mdBook` 构建的可浏览 HTML 入口
+
+## Session Focus
+
+- 将 work offset 表收敛到 canonical `wcs.offset.table`，并保留
+  `tooling.wcs.table` 作为 legacy alias。
+- 明确刀具测量/工件测量暂不作为 HMI-only 功能推进，后续需要后台
+  测量数据、变量存放和写表策略一起设计。
+- 新增 Tool Offset / Work Offset Web UI scenarios 和 QML strict smoke。
+- 增加 `tools/run_ui_automation_smoke.sh` 作为显式重门禁，覆盖
+  AUTO Cycle Start、Tool Offset basic workflow、Work Offset binding。
+- 将本轮共享 HMI package 从 MetaNC `feat/hmi` 回灌到
+  `metanc_hmi_dsl` `metanc-layout`，并完成 docs/report/产物重建和
+  MetaNC 导出复核。
+
+下面的完整会话导出块是本日既有历史导出清单。本轮只更新结构化报告；
+没有重新导出原始 Codex 会话内容。
 
 <!-- codex-full-export:start -->
 ## Complete Codex Conversation Export

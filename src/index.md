@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-05-22` | Session bootstrap and Codex user-history export tooling |
+| `2026-05-22` | HMI Tool Offset / Work Offset naming convergence, WCS offset alias cleanup, generated artifact refresh, MetaNC sync, and Web/QML UI automation gate for AUTO Cycle Start, Tool Offset, and Work Offset |
 | `2026-05-21` | Session bootstrap and Codex user-history export tooling |
 | `2026-05-20` | Tool Offset UI detailed design, row-key selection model, internal tooling identity clarification, Phase 1/2/3 implementation boundary, report/docs refresh, and MetaNC sync |
 | `2026-05-19` | PARAM Home and Tool Offset UI refinement, inline table editing, real tooling_management SQLite store-backed backend, startup-doc cleanup, generated artifact validation, MetaNC sync, and report/docs publication |

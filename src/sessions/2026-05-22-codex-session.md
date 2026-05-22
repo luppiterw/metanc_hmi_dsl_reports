@@ -2,7 +2,10 @@
 
 Focus:
 
-- Session bootstrap and Codex user-history export tooling
+- HMI Tool Offset / Work Offset naming convergence
+- WCS offset canonical resource and legacy alias cleanup
+- Generated artifact refresh and MetaNC sync
+- Web/QML UI automation gate for AUTO Cycle Start, Tool Offset, and Work Offset
 
 Session assets:
 

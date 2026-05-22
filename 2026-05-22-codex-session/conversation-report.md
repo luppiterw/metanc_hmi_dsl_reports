@@ -17,6 +17,11 @@ Date: 2026-05-22
   依赖已有 packaged distribution、native server 和 QML/browser 环境。
 - Work Offset 当前只做 UI binding smoke，不替代后续完整
   command/resource contract。
+- Tool Offset 设计文档需要拆成目录化短页。`tool_offset_table_ui_design.md`
+  同时承载 UI 设计、操作流程、facade contract、交付阶段和验证记录，
+  已经不适合作为单页维护。
+- `docs_i18n` 本轮先同步导航和状态，不批量翻译新增 Tool Offset 子页；
+  新子页进入 missing 清单，留作后续翻译同步。
 
 ## Implementation Notes
 
@@ -28,6 +33,12 @@ Date: 2026-05-22
   command payload expectation 和 resource alias equality。
 - 新增统一入口 `tools/run_ui_automation_smoke.sh`，覆盖三条 Web UI
   scenario 和三条 QML UI smoke。
+- 新增 `docs/project/tool_offset/` 分类目录，并把 UI design、workflow、
+  create/edit、contract、delivery、smoke report 和 persistence plan 拆分归档。
+- `tools/hmi_dsl/docs_portal.py` 改为从 `project/...` 生成项目索引相对路径，
+  修复嵌套 project 页面在 `print.html` 中的本地断链。
+- 相关 tests、story catalog、story pack、parity docs、status matrix 和
+  zh-CN summary/navigation 已随目录调整。
 
 ## Follow-Up
 
@@ -36,3 +47,4 @@ Date: 2026-05-22
 - 将 UI automation gate 继续保持在显式重门禁，不放入普通轻量单测路径。
 - 后续为 Work Offset 增加完整 parity/contract 时，应独立于
   `tooling_management` 边界推进。
+- 后续如需刷新本日 raw Codex history，需要单独确认数据导出授权。

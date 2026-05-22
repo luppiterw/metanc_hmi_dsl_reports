@@ -32,6 +32,16 @@ Date: 2026-05-22
 - 新增 `tools/run_ui_automation_smoke.sh`，作为不重建产物的显式重门禁。
   它要求 packaged Web client、native server 和 runtime contract bundle 已存在，
   然后连续运行 scenario shape check、三条 Web UI scenario 和三条 QML UI smoke。
+- 将 `docs/project/tool_offset_table_ui_design.md` 从 1000 行级别的混合
+  设计页拆成 `docs/project/tool_offset/` 下的入口页和 focused child pages。
+- 将 Tool Offset smoke report 和 tooling backend persistence plan 归入
+  同一个 `docs/project/tool_offset/` 分类目录。
+- 更新 `docs/SUMMARY.md`、`docs/project/index.md`、story catalog、story pack、
+  parity/status docs 和相关文档测试，去掉旧的平铺文件引用。
+- 修正 docs portal 对 project index 链接的生成逻辑，保留相对 `project/`
+  的嵌套路径，避免 `print.html` 出现 `project/ui_design.html` 一类断链。
+- 刷新 zh-CN navigation 和 i18n status，将新增 Tool Offset 子页显式标记为
+  missing 翻译债务，而不是让中文目录静默 drift。
 
 ## Sync Notes
 
@@ -48,8 +58,14 @@ Date: 2026-05-22
   import and in `metanc_hmi_dsl` after import/regeneration, covering Web/QML
   AUTO Cycle Start, Tool Offset, and Work Offset UI flows against the
   packaged/native-server path.
+- `python3 -m unittest -v tests.test_docs_portal tests.test_tooling_contract_docs
+  tests.test_web_qml_parity_docs tests.test_story_docs` passed after the
+  Tool Offset docs split.
 - `git diff --check` passed.
 - Cross-repo source diff only showed expected local-only differences: MetaNC `docs/src`, `metanc_hmi_dsl` `.codex` and `docs/superpowers`.
+- `docs_i18n/tools/i18n_status.py check --lang zh-CN --strict` still reports
+  expected outstanding translation debt: 33 stale, 16 missing, 57 current,
+  and 2 generated entries.
 
 ## Remaining Boundary
 
@@ -59,3 +75,7 @@ Work Offset 目前只有 UI binding smoke：它验证 generated clients、
 native server、`wcs.offset.table`、legacy `tooling.wcs.table` 和
 `wcs.commands.activate` 的轻量闭环。完整 work-offset command/resource
 contract 仍需要后续单独设计。
+
+The raw Codex history export was intentionally not refreshed in this pass after
+the local approval gate classified it as a data-disclosure step. The structured
+report, report books, docs portal, and downstream source sync remain updated.

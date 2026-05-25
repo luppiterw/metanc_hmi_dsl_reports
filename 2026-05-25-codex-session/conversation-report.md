@@ -4,29 +4,29 @@ Date: 2026-05-25
 
 ## Summary
 
-本轮会话从“不能让 `metanc_hmi_dsl` 中仅有的内容污染 MetaNC”这一约束出发，
-先确认 source repo 和 downstream package 的边界，再把前面多轮积累的文档系统改动收束成
-可验证、可同步、可提交的状态。核心产物不是新的 HMI 页面功能，而是更可靠的文档/报告/同步链。
+本轮会话先暂停 tooling 的继续扩展，转向回零/回参考点功能规划。参考 SINUMERIK 操作模型后，结论是 `REF POINT` 应作为 `JOG` 下的子模式，而不是新增一个和 `JOG`、`MDA`、`AUTO` 并列的顶层模式。随后按 Story Slice Spec 方式落下 REF POINT 设计文档，并把前面 MetaNC 中积累的 tooling/tool offset 和 UI 自动化改动同步回 standalone `metanc_hmi_dsl`。
+
+同步发布阶段重点确认了 source repo 与 MetaNC downstream package 的边界，避免 `metanc_hmi_dsl` 中才有的 `docs_i18n`、reports 子模块、repo sync/report 工具污染 MetaNC。
 
 ## Decisions
 
-- MetaNC 下游包只保留 HMI package 的集成面，不接收 source-only 的 reports、i18n overlay、repo sync/report 工具。
-- standalone `metanc_hmi_dsl` 的 README/AGENTS 继续描述完整 source repo 工作面；MetaNC 下游 README/AGENTS 由 export 后处理生成。
-- `docs/project/reports.md` 是 source repo report portal 页面，downstream MetaNC 不生成也不保留该页面。
-- 已删除英文源和 overlay 的 i18n manifest 项应自动移除，不应继续占用 stale/orphan 状态。
-- Tool Offset 文档目录保留 focused pages；无内容的 workflow/create-edit stub 直接删除。
-- 原始 Codex history/full conversation export 本轮不刷新；报告只写结构化总结和验证证据。
+- `REF POINT` 是 JOG submode；契约命名优先使用 `reference_return`，避免和 `zero_offset`、`work_offset`、`wcs` 混用。
+- 第一版回参考点只做 HMI client/server/simulator 交互设计，不实现真实 PLC/servo homing。
+- 测量流程、参数/变量存放、G 代码联动、工件测量和真实机床边界暂不做；后续应作为后台数据模型和底层接口设计处理。
+- 刀具表/刀偏表、零偏/工件偏置表这类相对独立的数据表可以先继续收口。
+- `docs_i18n` 本轮只刷新状态，不批量机器翻译；stale/missing 应真实暴露。
+- Raw Codex history/full conversation export 不在本轮自动刷新；报告只写结构化总结和验证证据。
 
 ## Implementation Notes
 
-- `materialize_downstream_docs()` 作为 export 后处理入口，集中执行 downstream docs 重写与 source-only 内容剥离。
-- `DOWNSTREAM_SOURCE_ONLY_TEXT_MARKERS` 和 `SOURCE_ONLY_CODEBASE_PATHS` 显式列出不能进入下游文档面的词和路径。
-- docs portal 的 development guide/project index 列表随文档拆分同步更新，避免生成页面继续指向已删除文件。
-- sync-script 测试现在同时覆盖 export 与 import，防止后续迭代把入口文件方向改回混合状态。
-- zh-CN status 工具增加 regression，锁住“英文源和 overlay 都消失时移除 manifest entry”的行为。
+- `import_from_metanc.sh` 成功把 MetaNC `nrt/hmi` 当前共享包改动导入 `metanc_hmi_dsl/nrt/hmi`，并保留 source-only report/i18n/sync 面。
+- `generate-story-docs` 重新生成了 story pack，`manual_reference_return_story_breakdown.md` 进入 requirements navigation。
+- `docs_i18n/tools/i18n_status.py` 更新了 manifest/report，当前状态为 34 stale、15 missing、56 current、2 generated。
+- import/export sync 脚本切换到 checksum 比较，避免 source/downstream 文档内容漂移被 rsync 快速检查漏掉。
+- 2026-05-25 report book 继续保留 raw history 不刷新的说明；安全审查拒绝了完整 raw Codex history 导出，因此未尝试绕过。
 
 ## Follow-Up
 
-- 后续可以单独处理 zh-CN stale/missing 翻译，但不应在 MetaNC 下游创建 `docs_i18n/`。
-- 若要继续收口 Tool Offset/Work Offset，优先做 backend contract、resource 命名和 UI automation 之间的一致性检查。
-- 测量流程、变量/参数存放、写表策略仍应作为后台数据模型问题单独规划。
+- 下一步若继续 REF POINT，应从 Slice 1 `jog_submode` retained/runtime state 开始，并配套 Web/QML parity snapshot。
+- 若继续 Tool Offset，应优先检查 backend contract、resource path、revision 语义和 UI automation 覆盖是否已经一致。
+- 若开始 measurement，应先设计后台参数/变量系统、测量数据集边界和 tooling_management/offset table 写入策略。

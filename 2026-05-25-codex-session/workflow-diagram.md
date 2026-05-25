@@ -2,15 +2,17 @@
 
 ```mermaid
 flowchart TD
-  start[Review source and downstream docs state]
-  boundary[Classify source-only vs downstream package surfaces]
-  report[Add 2026-05-25 structured report]
-  sourceDocs[Regenerate source docs and report books]
-  tests[Run source tests and i18n status check]
-  export[Export filtered HMI package to MetaNC feat/hmi]
-  downstream[Materialize downstream docs without reports/i18n/tooling leaks]
-  downstreamTests[Run MetaNC HMI docs/tests and boundary probes]
+  start[MetaNC feat/hmi has tooling and REF POINT doc changes]
+  import[Import shared HMI package into metanc_hmi_dsl]
+  story[Regenerate story pack]
+  i18n[Refresh docs_i18n status without marking stale translations current]
+  report[Update structured 2026-05-25 report]
+  sourceDocs[Build source docs portal and reports]
+  sourceTests[Run source HMI tests]
+  export[Export filtered package back to MetaNC feat/hmi]
+  downstream[Materialize downstream docs without source-only surfaces]
+  downstreamTests[Run MetaNC docs/tests and boundary probes]
   publish[Commit and push reports, source repo, and MetaNC]
 
-  start --> boundary --> report --> sourceDocs --> tests --> export --> downstream --> downstreamTests --> publish
+  start --> import --> story --> i18n --> report --> sourceDocs --> sourceTests --> export --> downstream --> downstreamTests --> publish
 ```

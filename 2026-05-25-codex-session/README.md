@@ -1,9 +1,11 @@
 # 2026-05-25 Codex Session Report
 
-这个目录整理了 2026-05-25 这轮 HMI 文档系统、报告系统和 MetaNC 下游同步的结构化阅读材料。
-本轮重点是收紧 standalone `metanc_hmi_dsl` 与 `MetaNC/nrt/hmi` 的边界：
-source-only 的 `docs_i18n`、reports 子模块和 repo sync/report 工具继续留在 source repo，
-MetaNC 只接收过滤后的 HMI package 文档、测试和运行时代码。
+这个目录整理了 2026-05-25 这轮 HMI tooling、manual reference return、文档系统、报告系统和 MetaNC 下游同步的结构化阅读材料。
+
+本轮重点有两条线：
+
+- 继续把 MetaNC `feat/hmi` 中已经完成的 tooling_management、Tool Offset UI 自动化和文档改动回填到 standalone `metanc_hmi_dsl`。
+- 在暂停测量流程后，新增 SINUMERIK 风格 `REF POINT` / 回参考点的 Story Slice Spec 设计，并保持它只作为 HMI client/server 第一版规划，不提前承诺 PLC/伺服 homing 或参数/变量系统。
 
 目录：
 
@@ -17,13 +19,12 @@ MetaNC 只接收过滤后的 HMI package 文档、测试和运行时代码。
 
 ## Session Focus
 
-- 审查并收敛 HMI docs 系统，避免过长文档和无效 stub 页面继续扩散。
-- 硬化 `metanc_hmi_dsl` -> `MetaNC/nrt/hmi` 导出边界，确保 source-only 内容不会污染 MetaNC。
-- 更新 export/import sync 脚本和测试，明确 source repo 与 downstream package 的入口文件职责。
-- 清理 Tool Offset project 文档中已经失效的 `create_and_edit.md` 与 `workflows.md` stub。
-- 修复 docs portal、code map、project index、story pack 和 downstream materialization 的一致性。
-- 刷新 zh-CN i18n status，移除已删除英文源对应的 orphan manifest 项。
-- 重新生成 docs/report 产物，导出到 MetaNC `feat/hmi`，并完成提交与推送。
+- 将 MetaNC 中的 tooling/tool offset 后端刷新一致性、store-backed offset reload、UI automation 场景和文档更新同步回 `metanc_hmi_dsl` 源仓。
+- 增加 `manual_reference_return_story_breakdown.md`，明确 REF POINT 是 JOG 子模式，不是 JOG/MDA/AUTO 之外的第四个顶层模式。
+- 保持测量流程、变量/参数存放、工件测量和真实回零/homing 底层接口为后续后台数据模型问题，不在这轮 HMI-only slice 中实现。
+- 刷新 story pack、docs_i18n 状态、docs portal 和 reports book。
+- 通过 import/export sync 保证 `docs_i18n/`、reports 子模块、repo sync/report 工具继续只存在于 standalone source repo，不进入 `MetaNC/nrt/hmi`。
+- 将 import/export sync 脚本改成 checksum 比较，避免已经实现的 Tool Offset Refresh 文档语义被旧 source 内容反向覆盖。
 
 Raw Codex history export was intentionally not refreshed in this publication pass.
 The report records structured project results and validation evidence only.

@@ -5,8 +5,9 @@ Focus:
 - HMI REF POINT / manual reference return V1 implementation
 - Web/QML/mock/native simulator command linkage
 - Runtime subscription fix for `axis.*.reference_state`
-- Story docs, generated targets, and snapshot refresh
-- Structured report/docs rebuild and MetaNC `feat/hmi` sync
+- Tool Offset Detail hierarchy, layout, and dirty-state enablement cleanup
+- Split Web/QML tooling-management startup hardening for backend port reuse
+- Story docs, generated targets, report/docs rebuild, and MetaNC `feat/hmi` sync
 
 Session assets:
 

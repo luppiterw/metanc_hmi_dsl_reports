@@ -41,3 +41,53 @@ Date: 2026-05-26
 - do
 - 看一下下一步的详细计划
 - 现在看着可以了，generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push
+- 是不是现在没有要做的Story了
+- ok 那先按照你的收口计划给个详细设计
+- ok 可以做一下
+- Param-Tool Offset-Detail里面能不能不要横向滚动条，Add Edge那个按钮是干啥的、都超出可视区了
+- 可是你这个显示横向太长了啊
+- ok 现在大概能执行什么sim的东西
+- ok 可以做一下
+- Tool Detail 里的Add Edge所在的那个区域边框没有和Runtime Context边框右侧对齐，处理一下
+- 还有现在我看revert和save菜单按钮是灰显的，是什么情况，现在没相关功能吗
+- 建议下面干嘛
+- 现在的使用逻辑是什么，我看着怪怪的，tool offset整体功能，按照菜单和页面功能给我理一个流程图或者泳道图之类的
+- ok
+- ok
+- 你觉得有哪些要调整的吗，我希望层级和逻辑性易于理解
+- ok 调整一版我看看
+- 现在Tool里面的Add Edge之后在哪里能看到更新
+- 可是我发现Details里面只有Add Edge亮显，Revert和Save都没亮
+- 可是我发现Details里面只有Add Edge亮显，Revert和Save都没亮，或者说这俩什么情况能亮？
+- Details里直接修改吗，我改了一下之Details里的那些编辑框里的数据，Revert和Save也没亮呀
+- ➜  MetaNC git:(feat/hmi) ✗ ./nrt/hmi/generated/distribution/run_split_web_tooling_management.sh
+  09:07:48.195 INFO server lifecycle server.initialized - server initialized
+  server adapter=simulator+tooling:tooling-management revision=4 live_values=66 resources=15 fingerprint=c0aee36ab4f0 bundle=/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/distribution/contract/runtime_contract_bundle.json, host=127.0.0.1, port=8010, http=on, log_console=on, persistence=memory, program_workspace=simulator, log_max_rows=10000, log_query_limit_max=1000, log_export_limit_max=50000
+  [server/http] listening 127.0.0.1:8010 bundle=/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/distribution/contract/runtime_contract_bundle.json fingerprint=c0aee36ab4f0 transport=drogon-rest-ws
+  20260526 09:07:48.196635 UTC 88050 FATAL Address already in use (errno=98) , Bind address failed at 127.0.0.1:8010 - Socket.cc:67
+  Stopping previous managed Web server on port 8000: 85819
+  Serving Web prototype on http://127.0.0.1:8000/
+  127.0.0.1 - - [26/May/2026 17:07:48] "HEAD / HTTP/1.1" 200 -
+  Open: http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /?server=http://127.0.0.1:8010/api/runtime HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /styles.css?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /config.js?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /runtime.js?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /assets/web-client.bundle.js?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /app.js?v=4baf78251f70 HTTP/1.1" 200 -现在有时候启动会报错这个，什么情况
+- ➜  MetaNC git:(feat/hmi) ✗ ./nrt/hmi/generated/distribution/run_split_web_tooling_management.sh
+  09:07:48.195 INFO server lifecycle server.initialized - server initialized
+  server adapter=simulator+tooling:tooling-management revision=4 live_values=66 resources=15 fingerprint=c0aee36ab4f0 bundle=/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/distribution/contract/runtime_contract_bundle.json, host=127.0.0.1, port=8010, http=on, log_console=on, persistence=memory, program_workspace=simulator, log_max_rows=10000, log_query_limit_max=1000, log_export_limit_max=50000
+  [server/http] listening 127.0.0.1:8010 bundle=/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/distribution/contract/runtime_contract_bundle.json fingerprint=c0aee36ab4f0 transport=drogon-rest-ws
+  20260526 09:07:48.196635 UTC 88050 FATAL Address already in use (errno=98) , Bind address failed at 127.0.0.1:8010 - Socket.cc:67
+  Stopping previous managed Web server on port 8000: 85819
+  Serving Web prototype on http://127.0.0.1:8000/
+  127.0.0.1 - - [26/May/2026 17:07:48] "HEAD / HTTP/1.1" 200 -
+  Open: http://127.0.0.1:8000/?server=http://127.0.0.1:8010/api/runtime
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /?server=http://127.0.0.1:8010/api/runtime HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /styles.css?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /config.js?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /runtime.js?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /assets/web-client.bundle.js?v=4baf78251f70 HTTP/1.1" 200 -
+  127.0.0.1 - - [26/May/2026 17:07:52] "GET /app.js?v=4baf78251f70 HTTP/1.1" 200 -现在有时候启动会报错这个，什么情况，这样之后发现就没有server数据，连接失败
+- generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push

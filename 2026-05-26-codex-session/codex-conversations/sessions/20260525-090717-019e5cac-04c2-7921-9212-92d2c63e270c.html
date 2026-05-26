@@ -1,0 +1,2475 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>可以</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>可以</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e5cac-04c2-7921-9212-92d2c63e270c</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-25 09:07:17 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/25/rollout-2026-05-25T09-07-17-019e5cac-04c2-7921-9212-92d2c63e270c.jsonl</code></div>
+<div><b>Messages</b>: <code>193</code></div>
+<div><b>User prompts</b>: <code>20</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 08:06:23 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 08:07:06 +0800</div>
+<pre>我按刚才的 4A/4B/4C 执行：先 push 当前 3 个 Story-39 进度提交，再做 Slice 04 的 lowering facts、framework 等价证明和 docs closeout。范围仍只在 `rt/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 08:07:58 +0800</div>
+<pre>push 完成，远端已经有 Story-39 parser progress。接下来我读 CMake 和现有 Story-39/38 代码接入点，开始新增 lowering facts model。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 08:09:05 +0800</div>
+<pre>Lowering facts 会作为 `minimal_source_lowering` 独立层：从 parser model 产出可比较事实，不生成 C++，不执行 source。现在先加模型和 equivalence tests。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 08:11:54 +0800</div>
+<pre>我继续从已接受的 Story-39 Slice 04 做下去：先把当前新增 lowering proof 接进 CMake，跑到能编译测试，再补 framework 级等价执行证明和文档收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 08:12:06 +0800</div>
+<pre>当前工作区只有 Slice 04 的三个新增文件，还没接入构建系统。我先补 CMake 和一个缺失的标准头，避免先写更多代码再把编译错误堆起来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 08:12:50 +0800</div>
+<pre>CMake 已接入新的 lowering facts 测试目标。现在先跑一次独立 PLC 构建和这个新目标，确认 4A 的最小证明是干净的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 08:13:15 +0800</div>
+<pre>4A 的事实级证明已经通过：minimal source 能降成 Story-38 同形的 handles、Word16 bit write、TON/R_TRIG/CTU facts，并且明确不要求 runtime interpreter。接下来我把这一步单独提交，再做 framework 执行级证明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 08:14:41 +0800</div>
+<pre>事实级提交已落为 `73c154f7`。现在我扩展同一个 Story-39 测试目标：加一个由 parsed/lowered contract 对应的 generated behavior，让它在现有 PLC Framework + sim backend 下跑扫描序列。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 08:15:36 +0800</div>
+<pre>framework 级 fixture 和 behavior 已经加上，目标仍然复用 `metanc_plc_story39_lowering_equivalence_tests`，这样 Slice 04 的事实证明和执行证明在一个测试入口里闭合。现在编译运行这个目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 08:15:57 +0800</div>
+<pre>执行级证明也通过了：同一个 minimal source 对应的 generated behavior 能在 Framework/sim backend 跑出预期 TON、R_TRIG、CTU 时序。接下来把 4B 单独提交，然后做文档 closeout。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 08:16:35 +0800</div>
+<pre>代码侧 Slice 04 已经拆成两个提交。接下来进入文档收口：把 Story-39 从 planned/in progress 改成 implemented，并把 Slice 04 的 SPEC/INV 验证入口指向新的测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-26 08:18:43 +0800</div>
+<pre>文档主线已经更新到 Story-39 implemented，并把 roadmap/readiness/current capabilities 的基线同步到了 Story-39。现在我做一次文档内搜索，清掉剩余明显过期的 Story-39 planned/contract-review 说法。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-26 08:19:00 +0800</div>
+<pre>过期的 `story39-contract-review`、`planned` 状态和 “Slice 04 remains planned” 搜索已经清空。接下来我跑文档策略检查和 diff whitespace，再把 closeout 单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-26 08:19:15 +0800</div>
+<pre>文档 lint 和 whitespace 检查通过了。我现在把 Story-39 closeout 文档提交掉，然后跑整套 PLC + docs 验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-26 08:20:04 +0800</div>
+<pre>Story-39 closeout 文档已提交为 `51d6aac4`。现在开始最终验证：重新配置、完整构建、重点 story38/story39/lowering 测试、全量 PLC 测试、docs lint、diff check、book build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-26 08:20:24 +0800</div>
+<pre>完整 PLC build 已通过。继续跑重点回归和全量测试，重点先覆盖 story38/story39/lowering，确认这次 parser entry 没破坏已有 lowering prototype。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-05-26 08:20:41 +0800</div>
+<pre>全量 PLC 测试 76/76 通过。最后跑 docs lint、`git diff --check -- rt/plc` 和 `book build`，再看最终状态和本地/远程差异。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-05-26 08:21:24 +0800</div>
+<pre>已完成 Story-39 Slice 04，并收口为 3 个本地提交：
+
+- `73c154f7 test(plc): add story39 lowering facts proof`
+- `66a105b6 test(plc): prove story39 framework lowering equivalence`
+- `51d6aac4 docs(plc): close story39 lowering equivalence`
+
+现在后端这块的状态是：Story-39 已从 tiny source parser entry 走到 execution-free lowering facts，再到 generated-style Behavior，通过现有 Framework + sim backend 跑通等价执行证明。也就是说它没有引入第二套 runtime/interpreter，而是证明前端 source-like 语法可以降到现有后端执行路径。
+
+验证已通过：
+
+- `cmake -S rt/plc -B /tmp/metanc_plc_build`
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story38|story39|lowering&quot;`：5/5 通过
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：76/76 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+当前分支 `feat/plc` 相对 `origin/feat/plc` 是 `[ahead 3]`，这 3 个提交还没 push。</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 08:51:36 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 08:51:53 +0800</div>
+<pre>我先按当前仓库状态和 PLC 文档基线看下一步，而不是凭上一轮记忆直接给计划。重点会看 `rt/plc` 的 roadmap/readiness、Story-39 closeout 后的空档，以及当前分支状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 08:52:10 +0800</div>
+<pre>我确认到当前 `feat/plc` 本地还有 Story-39 的 3 个提交未推送。下一步计划里我会把“先 push 当前已验证基线”作为 Patch 0，否则后续 story 会叠在未发布状态上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 08:52:40 +0800</div>
+<pre>我还要补看一下当前 `minimal_source` 已经表达到什么程度，避免把下一步计划设计成重复 Story-39 的东西。重点看 parser model 里有没有 IF/ELSE 结构、目前 lowering 只消费了哪些 statement kind。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-26 08:53:18 +0800</div>
+<pre>我建议下一步做 **STORY-40：PLC Minimal Source Conditional Lowering**，目标是把 Story-39 已经能解析的 `IF / ELSE / END_IF` 从“语法模型里存在”推进到“能 lower 到 generated-style Behavior 并通过 Framework 执行证明”。
+
+当前状态里有个明显缺口：`minimal_source` 已经有 `kIfThen / kElse / kEndIf`，parser tests 也证明能 parse IF/ELSE；但 `minimal_source_lowering.cpp` 现在只消费 `BitAssignment` 和 `FunctionBlockCall`，控制流 statement 还没有参与 lowering。所以这一步很自然。
+
+**Patch 0：发布当前基线**
+
+- 先 push 当前 `feat/plc` 本地 3 个已验证提交。
+- 原因：现在分支是 `ahead 3`，不先推送的话，Story-40 会叠在未发布 Story-39 closeout 上。
+
+命令：
+
+```bash
+git push origin feat/plc
+```
+
+**Patch 1：Story-40 文档设计**
+
+新增 story：
+
+```text
+rt/plc/docs/spec/STORIES/STORY-40-plc-minimal-source-conditional-lowering/
+```
+
+建议切 4 个 slice：
+
+| Slice | 目标 |
+|---|---|
+| 01 Source Conditional Contract | 定义 Story-40 只支持一层、布尔条件、无嵌套/循环的 IF/ELSE |
+| 02 Conditional Lowering Facts | 在 lowering facts 中表达 conditional block，不执行 source |
+| 03 Generated Behavior Equivalence | 证明 conditional facts 能生成等价 Behavior 逻辑 |
+| 04 Diagnostics And Closeout | unsupported nested IF、非 BOOL 条件、缺失 ELSE/END_IF 等边界 |
+
+边界明确写死：
+
+- 不做完整 ST。
+- 不做 AST/IR 框架。
+- 不做 runtime interpreter。
+- 不做 nested IF、ELSIF、CASE、FOR、WHILE。
+- 不做 source map、optimizer、online edit。
+
+**Patch 2：加 IF/ELSE fixture 和 parser 回归**
+
+新增 fixture，例如：
+
+```text
+INPUT enable_request : BOOL;
+INPUT part_detected : BOOL;
+
+OUTPUT gated_part : BOOL;
+OUTPUT fault_gate : BOOL;
+
+IF enable_request THEN
+  gated_part := part_detected;
+ELSE
+  gated_part := FALSE;
+END_IF;
+```
+
+同时补 invalid fixtures：
+
+- `IF flags THEN`：非 BOOL 条件，应报 type mismatch。
+- nested `IF`：unsupported construct。
+- `ELSIF`：unsupported construct。
+- missing `END_IF`：沿用或强化现有诊断。
+
+这一步尽量只加 parser/model fixture，不改执行。
+
+**Patch 3：扩展 lowering facts 模型**
+
+在 `minimal_source_lowering.hpp` 里加最小 conditional 表达，不上大 IR：
+
+```cpp
+struct MinimalLoweringConditional {
+  std::string condition;
+  std::vector&lt;MinimalLoweringPrimitive&gt; then_primitives;
+  std::vector&lt;MinimalLoweringPrimitive&gt; else_primitives;
+};
+```
+
+或者如果想避免 primitive 嵌套，可以先记录 statement range：
+
+```cpp
+struct MinimalLoweringConditionalBlock {
+  std::string condition;
+  std::size_t then_begin;
+  std::size_t then_end;
+  std::size_t else_begin;
+  std::size_t else_end;
+};
+```
+
+我更倾向第一种，直接表达 lowering 后的行为，不保留 source 执行语义。
+
+**Patch 4：生成式 Behavior 等价证明**
+
+新增测试目标：
+
+```text
+metanc_plc_story40_conditional_lowering_tests
+```
+
+测试做两层证明：
+
+1. facts proof：parsed IF/ELSE source lower 出 condition、then assignments、else assignments。
+2. framework proof：手写一个 `Story40ConditionalLoweringBehavior`，形状等价于生成代码：
+
+```cpp
+if (enable_.read()) {
+  gated_part_.write(part_.read());
+} else {
+  gated_part_.write(false);
+}
+```
+
+用现有 `Framework + SimIoHalBackend + ManualTickTimeBackend` 跑 scan：
+
+- enable=false, part=true -&gt; gated_part=false
+- enable=true, part=false -&gt; gated_part=false
+- enable=true, part=true -&gt; gated_part=true
+- enable=false again -&gt; gated_part=false
+
+**Patch 5：文档 closeout**
+
+更新：
+
+- Story-40 status -&gt; implemented
+- Slice 01-04 -&gt; implemented
+- `STORIES/INDEX.md`
+- `NEXT-ROADMAP.md`
+- `IMPLEMENTATION-READINESS.md`
+- `CURRENT-CAPABILITIES.md`
+
+把能力表述更新成：
+
+&gt; backend now covers minimal source parsing, straight-line primitive lowering, and first bounded IF/ELSE conditional lowering into generated-style Behavior without adding a runtime interpreter.
+
+**验证路径**
+
+每个实现 patch 后跑 targeted：
+
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build --target metanc_plc_story40_conditional_lowering_tests
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story39|story40|lowering&quot;
+```
+
+最终跑全量：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+我建议先落 Patch 0 + Patch 1，也就是先 push 当前 Story-39，再把 Story-40 文档和 slice spec 建起来；你确认后再进代码实现。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC scope and validation workflow preferences]
+MEMORY.md:93-99|note=[used rt/plc planning workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 08:53:37 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 08:53:59 +0800</div>
+<pre>可以。我按刚才的边界执行：先把已验证的 Story-39 3 个提交 push 到远程，然后只落 Story-40 的文档和 slice spec，不碰代码实现。由于这是文档结构变更，我会按 `write-docs` 流程走。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 08:54:30 +0800</div>
+<pre>Story-39 基线已经推到远程。接下来我新增 Story-40 文档树、4 个 slice 和 SPEC/INV 页面，同时更新 PLC docs 的 SUMMARY、Stories index、roadmap/readiness。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 08:54:57 +0800</div>
+<pre>我会把 Story-40 设计得比“完整 IF 语法”窄：只证明一层 `IF/ELSE/END_IF` 的布尔条件和布尔 assignment 能进入 lowering facts，再证明它对应 generated-style Behavior。这样不会把 Story-40 扩成 AST/IR 或解释器项目。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 08:56:05 +0800</div>
+<pre>目录已建好。现在我用项目现有 story/spec 结构补齐 Story-40 的页面，SPEC 从 `SPEC-119`、INV 从 `INV-086` 往后延续，并把验证先标成 `story40-contract-review`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 08:58:16 +0800</div>
+<pre>Story-40 文档主体已落下。现在我更新导航和现有 planning 页面，让 Story-40 出现在 Stories index、PLC book SUMMARY、roadmap/readiness/current capabilities 的下一步里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 08:59:00 +0800</div>
+<pre>导航和 roadmap 已同步。下一步先做一次本地检查，重点是 SUMMARY 行数、链接、docs lint 和 book build，发现格式问题再修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 08:59:06 +0800</div>
+<pre>docs lint 和 whitespace 检查都通过，SUMMARY 仍在限制内。现在跑完整 `book build`，再看 diff 质量和提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 08:59:46 +0800</div>
+<pre>我看到 `git diff --stat` 还没包含未跟踪的新 Story-40 页面，所以提交前我会先 stage 全部 docs，再用 staged diff 做一次 whitespace/规模检查，避免漏掉新文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 09:00:06 +0800</div>
+<pre>staged diff 只包含 Story-40 文档和导航，检查通过。现在提交 docs 计划，然后如果提交后工作区干净，我会按这个阶段的节奏 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 09:00:24 +0800</div>
+<pre>Story-40 文档计划已提交为 `7fdae57f`，本地只领先这个提交。现在推送到 `origin/feat/plc`，让下一步实现从干净远程基线开始。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-26 09:00:51 +0800</div>
+<pre>已完成并推送：
+
+- 先推送了 Story-39 已验证基线：`51d6aac4`
+- 新增 Story-40 文档计划并推送：`7fdae57f docs(plc): plan story40 conditional lowering`
+
+Story-40 现在定义为一个很窄的下一步：只做一层 `IF / ELSE / END_IF` 的 BOOL assignment lowering，输出 execution-free conditional facts，并证明它能进入 generated-style Behavior + 现有 Framework/sim backend，不做完整前端、不做解释器、不做嵌套控制流。
+
+验证已跑：
+
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc/docs`
+- `book build`
+
+当前工作区干净，`feat/plc` 已和 `origin/feat/plc` 对齐。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:03:25 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:03:42 +0800</div>
+<pre>我先核对当前 `feat/plc` 基线和 Story-40 已落的计划页，再把下一步拆成可以直接执行的 patch 顺序。重点会放在实现路径、测试目标、提交粒度和风险边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:03:54 +0800</div>
+<pre>当前分支干净且已对齐远程。Story-40 的文档已经给出实现约束；我再快速看 parser 的 IF 处理和 CMake 里 story39 目标位置，确保计划里的 patch 能直接落地。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-26 09:04:27 +0800</div>
+<pre>下一步就是开始实现 Story-40。当前基线干净，`feat/plc` 已对齐 `origin/feat/plc`，可以直接开工。
+
+**总体目标**
+
+把 Story-39 已经能 parse 的 `IF / ELSE / END_IF` 从“模型里有 statement”推进到“lowering facts 可表达，并能证明 generated-style Behavior 执行等价”。
+
+边界保持很窄：
+
+- 只支持一层 `IF &lt;BOOL&gt; THEN / ELSE / END_IF`
+- branch body 只支持 BOOL assignment
+- 首版要求 then/else 写同一个 BOOL output target
+- 不做 nested IF、ELSIF、CASE、循环
+- 不做函数块调用进分支
+- 不做 AST/IR 框架、解释器、runtime 状态
+
+**Patch 1：Story-40 fixtures + parser contract tests**
+
+新增 fixtures：
+
+```text
+rt/plc/tests/fixtures/story40_conditional_source.plc
+rt/plc/tests/fixtures/story40_invalid_nested_if.plc
+rt/plc/tests/fixtures/story40_invalid_missing_else.plc
+rt/plc/tests/fixtures/story40_invalid_branch_fb_call.plc
+```
+
+新增测试目标：
+
+```text
+rt/plc/tests/story40_conditional_source_tests.cpp
+metanc_plc_story40_conditional_source_tests
+```
+
+验证重点：
+
+- valid fixture parse 出 5 个 statements：`IfThen / Assignment / Else / Assignment / EndIf`
+- condition 是 `enable_request`，类型 `BOOL`
+- then arm assignment：`gated_part := part_detected`
+- else arm assignment：`gated_part := FALSE`
+- invalid nested IF / missing ELSE / branch FB call 暂时可以先作为 “fixture boundary” 测试，真正诊断分类在 Patch 2/3 强化
+
+提交建议：
+
+```bash
+git commit -m &quot;test(plc): add story40 conditional source fixtures&quot;
+```
+
+**Patch 2：强化 parser 边界诊断**
+
+当前 parser 已能报 missing `END_IF` 和 non-BOOL condition，但不区分 nested IF、missing ELSE、branch side effect。这个 patch 做最小 parser state：
+
+- `if_stack` 继续保留
+- 增加当前 IF block 的状态：
+  - 是否已经见到 `ELSE`
+  - 是否在 IF 内
+  - 是否出现 nested IF
+  - branch 内是否出现 function block call
+- missing `ELSE` 在 `END_IF` 或 parse 完后报 diagnostic
+- nested IF 报 `kUnsupportedConstruct`
+- branch function block call 报 `kUnsupportedConstruct`
+
+不新增完整 block AST，只保证 diagnostics 和 statement stream 仍然简单。
+
+提交建议：
+
+```bash
+git commit -m &quot;test(plc): enforce story40 conditional parser boundaries&quot;
+```
+
+**Patch 3：conditional lowering facts**
+
+扩展 `minimal_source_lowering.hpp`：
+
+```cpp
+struct MinimalLoweringAssignment {
+  std::string target;
+  std::string expression;
+};
+
+struct MinimalLoweringConditional {
+  std::string condition;
+  std::vector&lt;MinimalLoweringAssignment&gt; then_assignments;
+  std::vector&lt;MinimalLoweringAssignment&gt; else_assignments;
+};
+```
+
+然后在 `MinimalLoweringFacts` 里加：
+
+```cpp
+std::vector&lt;MinimalLoweringConditional&gt; conditionals;
+```
+
+`lower_minimal_source_model()` 增加一个 narrow parser：
+
+- 识别 `IfThen -&gt; Assignment+ -&gt; Else -&gt; Assignment+ -&gt; EndIf`
+- 要求 then/else assignment targets 相同
+- 只接收 BOOL assignment
+- unsupported shape 进入 `MinimalLoweringDiagnostic`
+- `runtime_interpreter` 继续为 `false`
+
+新增测试：
+
+```text
+rt/plc/tests/story40_conditional_lowering_tests.cpp
+```
+
+先做 facts proof，不接 framework：
+
+- condition = `enable_request`
+- then assignment = `gated_part &lt;- part_detected`
+- else assignment = `gated_part &lt;- FALSE`
+- `facts.conditionals.size() == 1`
+- `facts.runtime_interpreter == false`
+
+提交建议：
+
+```bash
+git commit -m &quot;test(plc): add story40 conditional lowering facts&quot;
+```
+
+**Patch 4：framework generated-style equivalence proof**
+
+在同一个 `story40_conditional_lowering_tests.cpp` 或新测试文件里加 generated-style Behavior：
+
+```cpp
+class Story40ConditionalLoweringBehavior final : public Behavior {
+  void cycle(Context&amp;) override {
+    if (enable_.read()) {
+      gated_part_.write(part_.read());
+    } else {
+      gated_part_.write(false);
+    }
+  }
+};
+```
+
+新增 machine fixture：
+
+```text
+rt/plc/tests/fixtures/story40_conditional_lowering_machine.yaml
+```
+
+测试 scan 序列：
+
+- enable=false, part=true -&gt; gated_part=false
+- enable=true, part=false -&gt; gated_part=false
+- enable=true, part=true -&gt; gated_part=true
+- enable=false, part=true -&gt; gated_part=false
+
+这一步证明不是 source interpreter，而是 generated-style Behavior 跑在现有 framework/sim backend。
+
+提交建议：
+
+```bash
+git commit -m &quot;test(plc): prove story40 conditional framework equivalence&quot;
+```
+
+**Patch 5：Story-40 closeout docs**
+
+更新：
+
+- `STORY.md` -&gt; `implemented`
+- 四个 slice -&gt; `implemented`
+- `SPEC-119..122` / `INV-086..089` implementation-status -&gt; `implemented`
+- `STORIES/INDEX.md`
+- `NEXT-ROADMAP.md`
+- `IMPLEMENTATION-READINESS.md`
+- `CURRENT-CAPABILITIES.md`
+
+提交建议：
+
+```bash
+git commit -m &quot;docs(plc): close story40 conditional lowering&quot;
+```
+
+**验证路径**
+
+每个实现 patch 后先跑 targeted：
+
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story39|story40|lowering&quot;
+```
+
+最终收口跑：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+我建议下一步先做 Patch 1 和 Patch 2：把 fixture、parser contract、diagnostic 边界站稳，再进 lowering facts。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:05:04 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:05:22 +0800</div>
+<pre>我开始执行刚才确认的 Patch 1 和 Patch 2：先加 Story-40 条件语法 fixtures + parser contract 测试，再把 parser 的条件边界诊断补上。范围只碰 `rt/plc`，不会进入 lowering facts 或 framework proof，除非这两步验证干净后还有明显同一 patch 内必须补的地方。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:06:17 +0800</div>
+<pre>我会先落 Patch 1，并保持它不依赖 parser 新诊断：新增 Story-40 fixture、presence/parse-shape 测试和 CMake 目标，验证当前 parser 已能表达这个条件语句流。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 09:07:10 +0800</div>
+<pre>Patch 1 的 fixtures、测试和 CMake 目标已加上。我现在先只构建并跑 `story40_conditional_source_tests`，确认当前 parser 对 valid 条件语句流的基础表达没问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 09:07:38 +0800</div>
+<pre>Patch 1 目标通过了。我会先提交这个干净增量，然后做 Patch 2 的 parser 边界诊断增强，避免把 fixture/shape 和诊断实现混在一个提交里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 09:07:58 +0800</div>
+<pre>Patch 1 已提交为 `6e8a5826`。现在做 Patch 2：在 parser 里加一个轻量 IF block state，只用于 Story-40 边界诊断，不引入 AST 或执行逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 09:08:36 +0800</div>
+<pre>补丁上下文和当前文件开头有点偏差，我先重新读 `minimal_source.cpp` 的实际结构，然后按实际上下文打小补丁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 09:09:17 +0800</div>
+<pre>Parser 现在有轻量 IF block state，可以报 nested IF、missing ELSE 和 branch FB call。接下来跑 Story-40 + Story-39 parser 相关测试，确认新增诊断没有破坏已有 parser entry。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 09:09:44 +0800</div>
+<pre>Patch 2 targeted 测试通过。现在我检查 diff，然后提交 parser 边界诊断这个单独增量。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 09:10:10 +0800</div>
+<pre>Patch 2 已提交为 `a1a69d63`。我继续跑计划里的 targeted `story39|story40|lowering`，再看是否需要在文档状态里记录 Slice 01 的实现进展。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 09:10:27 +0800</div>
+<pre>targeted 回归通过。因为这轮实际完成了 Story-40 的 source contract 和 parser boundary，我会补一个小文档进度提交，把 Slice 01 标成 implemented，Slice 04 的诊断边界先记录为 parser-level evidence，lowering facts 仍保持 planned。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 09:11:23 +0800</div>
+<pre>文档进度已同步到 Slice 01 implemented，Story-40 整体仍保持 planned，因为 lowering facts 和 framework equivalence 还没做。现在跑 docs lint/diff check，再提交这个进度记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-26 09:11:53 +0800</div>
+<pre>Story-40 parser 进度文档已提交。最后我跑一次全量 PLC 测试和 book build，确认这轮 parser/文档增量整体稳定，再给你下一步建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-26 09:13:03 +0800</div>
+<pre>已完成 Story-40 的 Patch 1 和 Patch 2，并做了进度文档记录，当前本地领先远程 3 个提交：
+
+- `6e8a5826 test(plc): add story40 conditional source fixtures`
+- `a1a69d63 test(plc): enforce story40 conditional parser boundaries`
+- `47d73520 docs(plc): record story40 parser progress`
+
+本轮完成的内容：
+
+- 新增 valid conditional source fixture：一层 `IF / ELSE / END_IF`
+- 新增 invalid fixtures：nested IF、missing ELSE、branch FB call、non-BOOL condition
+- 新增 `metanc_plc_story40_conditional_source_tests`
+- parser 增加轻量 IF block state，只用于边界诊断
+- Story-40 Slice 01 标记为 implemented；Story-40 整体仍是 planned，因为 lowering facts 和 framework equivalence 还没做
+
+验证已通过：
+
+- `ctest -R &quot;story39|story40|lowering&quot;`：6/6 通过
+- full PLC `ctest`：77/77 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+下一步建议：先 push 这 3 个提交，然后做 Patch 3：给 `minimal_source_lowering` 加 `conditionals` facts 和 `metanc_plc_story40_conditional_lowering_tests` 的 facts-level proof。</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:13:35 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:13:52 +0800</div>
+<pre>我按刚才的顺序继续：先把当前 3 个 Story-40 parser 进度提交推到远程，然后实现 Patch 3，只做 conditional lowering facts 和 facts-level proof，不进 framework equivalence。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:14:18 +0800</div>
+<pre>Story-40 parser 进度已推送。现在我会读一下当前 lowering 实现和 Story-40 doc 的 Slice 02 约束，然后加 facts 结构和测试目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 09:14:27 +0800</div>
+<pre>我会给 lowering facts 加一个很小的 `MinimalLoweringAssignment` / `MinimalLoweringConditional` 结构，并写一个新测试目标只验证 facts，不执行 framework。实现上只识别 Story-40 的严格 5 statement 模式，其他形状先报 lowering diagnostic。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 09:15:21 +0800</div>
+<pre>Conditional facts 和 facts-level 测试已加上。我注意到 lowering 源里有一段为避免旧 range-for 的临时空循环，可以更直接地删掉；我先整理这个小点，再构建测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 09:15:31 +0800</div>
+<pre>实现整理好了。现在重新配置、构建新的 `metanc_plc_story40_conditional_lowering_tests`，再跑 `story39|story40|lowering` 回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 09:15:57 +0800</div>
+<pre>构建过了但有一个 `[[nodiscard]]` 警告，属于我刚加的 helper 返回值未消费。我会马上修掉，保持全量 build 不带这个警告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 09:16:29 +0800</div>
+<pre>Patch 3 的 targeted 回归通过了。现在我检查 diff，确认 API 形状和测试都只在 facts 层，然后提交这个实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 09:16:53 +0800</div>
+<pre>Patch 3 代码提交完成。现在我更新 Story-40 Slice 02 的文档状态为 implemented，记录 facts-level proof；Story-40 整体仍不关闭，因为 framework equivalence 还没做。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 09:17:23 +0800</div>
+<pre>文档已记录 Slice 02 implemented。我注意到 IMPLEMENTATION-PLAN 里最后一条现在同时说同一个测试证明 facts 和 framework，会把它拆清楚，避免误导。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 09:17:43 +0800</div>
+<pre>文档措辞已修正为 facts proof 和后续 framework proof 分开。现在跑 docs lint、diff check 和 targeted 回归，再提交文档进度。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 09:18:27 +0800</div>
+<pre>Slice 02 文档进度也提交了。最后跑一次当前状态检查和 log；如果干净，我会总结并说明本地还领先远程几个提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-05-26 09:18:40 +0800</div>
+<pre>已完成并推送前置 parser 进度，然后实现了 Story-40 Patch 3：conditional lowering facts。
+
+新增本地提交：
+
+- `3ec0d5fe test(plc): add story40 conditional lowering facts`
+- `d2e9e849 docs(plc): record story40 lowering facts progress`
+
+这轮做了：
+
+- 在 `MinimalLoweringFacts` 增加 `conditionals`
+- 新增 `MinimalLoweringAssignment` / `MinimalLoweringConditional`
+- `lower_minimal_source_model()` 识别严格的 `IF assignment ELSE assignment END_IF`
+- 要求条件为 BOOL、then/else 都是 BOOL assignment、且写同一个 target
+- 新增 `metanc_plc_story40_conditional_lowering_tests`
+- 文档把 Story-40 Slice 02 标为 implemented；Story-40 整体仍 planned，因为 framework equivalence 还没做
+
+验证已通过：
+
+- `cmake -S rt/plc -B /tmp/metanc_plc_build`
+- `cmake --build /tmp/metanc_plc_build --target metanc_plc_story40_conditional_lowering_tests`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story39|story40|lowering&quot;`：7/7 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+
+当前 `feat/plc` 本地领先远程 2 个提交，还没 push。下一步建议：先 push 这 2 个提交，然后做 Patch 4：`Story40ConditionalLoweringBehavior` + machine fixture + framework scan equivalence proof。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:23:28 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:23:42 +0800</div>
+<pre>我继续：先把本地 Story-40 facts 进度推到远程，然后实现 Patch 4 的 framework 等价证明。范围仍只在 `rt/plc`，这一步会证明 conditional facts 对应的 generated-style Behavior 能在现有 Framework + sim backend 跑通。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:24:13 +0800</div>
+<pre>facts 进度已推送。现在我参考 Story-39 framework proof 的写法，给 Story-40 增加 generated-style Behavior、machine fixture 和 scan 断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 09:24:20 +0800</div>
+<pre>我会复用同一个 Story-40 lowering test 目标，把 facts proof 和 framework proof 放在一起。这样 Slice 03 的验证入口和 Slice 02 保持一致，但新增的测试用例只验证 generated Behavior 执行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 09:24:53 +0800</div>
+<pre>Framework proof 已加入同一个 Story-40 lowering 测试目标，并新增了 machine fixture。现在构建并跑目标，确认 generated behavior 能 boot 和跑扫描序列。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 09:25:23 +0800</div>
+<pre>Story-40 framework proof 目标通过。现在跑 `story39|story40|lowering` 回归，确认新增 framework fixture 没影响已有 Story-39 证明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 09:25:35 +0800</div>
+<pre>Patch 4 targeted 回归通过。我现在检查 diff，然后把 framework equivalence proof 单独提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 09:26:08 +0800</div>
+<pre>Patch 4 代码提交已完成。现在我更新 Story-40 Slice 03 文档状态为 implemented，并把 readiness 里的 equivalence gate 标成 pass；Story-40 closeout 还会留给最后一个提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 09:26:47 +0800</div>
+<pre>Slice 03 文档状态已同步。现在跑 docs lint、diff check 和 targeted 回归，再提交 Slice 03 文档进度。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 09:27:37 +0800</div>
+<pre>Patch 4 和文档进度都已提交。由于 Story-40 只剩 closeout，我会按原计划直接做 Patch 5：把 Story-40 整体收口到 implemented，并跑全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 09:29:09 +0800</div>
+<pre>Story-40 closeout 文档已更新到 implemented，并同步了 index、roadmap、readiness 和 capabilities。现在跑全文档检查和全量 PLC 验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 09:30:43 +0800</div>
+<pre>我继续把 Story-40 的 closeout 文档收尾：先复查工作树和文档技能要求，再跑剩下的 book build/状态检查，最后提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-26 09:30:54 +0800</div>
+<pre>使用 `write-docs` 技能来处理这次文档 closeout。当前工作树只剩 Story-40 closeout 文档改动，过期的 planned/status 关键词没有命中，我现在跑 bookshelf 构建确认导航和链接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-26 09:31:23 +0800</div>
+<pre>Bookshelf 构建通过了。提交前我快速看一下 diff 范围，确认 closeout 只改状态、能力矩阵和 roadmap 文案。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-26 09:31:39 +0800</div>
+<pre>Closeout diff 看起来是预期范围，没有碰实现代码。为了让这次状态提交本身也有证据，我再跑一次文档 policy 和 whitespace 检查，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-05-26 09:32:06 +0800</div>
+<pre>Story-40 closeout 文档已提交。本地现在应该有 3 个未推送提交：框架等价测试、框架等价状态文档、Story-40 closeout；我先确认日志和工作树，然后推到远程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-05-26 09:32:30 +0800</div>
+<pre>远程已更新到 `ac1bc0e5`。我最后做一次工作树确认，并整理 Story-40 已完成范围和下一步计划入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-05-26 09:32:52 +0800</div>
+<pre>已完成并推送到远程 `origin/feat/plc`，当前 HEAD 是 `ac1bc0e5 docs(plc): close story40 conditional lowering`，工作树干净。
+
+本轮落下的 3 个提交：
+
+- `a4e8c9d5 test(plc): prove story40 conditional framework equivalence`
+- `7e493b9c docs(plc): record story40 framework equivalence`
+- `ac1bc0e5 docs(plc): close story40 conditional lowering`
+
+Story-40 现在状态是 `implemented`：一个 flat `IF / ELSE / END_IF` 后端 lowering 闭环已经完成，覆盖 source fixture、parser 边界诊断、execution-free conditional facts、generated-style Behavior、framework/sim backend scan path。仍然明确不包含 full PLC frontend、nested control flow、frontend interpreter 或 broad AST/IR。
+
+验证已过：
+
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：`78/78`
+- `book build`
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+
+下一步建议开新的 bounded story，不直接做“完整前端”。优先候选可以是 Story-41：把 timer/edge/counter 或 bit/word expression 中的一小块 source lowering 接到 Story-36 已有后端语义上。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC scope and validation workflow preferences]
+MEMORY.md:93-99|note=[used rt/plc planning workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:44:13 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:44:34 +0800</div>
+<pre>我先复核当前 `feat/plc` 的 Story-40 收尾状态和 roadmap/readiness 文档，再给出下一步可执行的详细 slice 计划；这次先不落文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:45:00 +0800</div>
+<pre>Roadmap 现在把下一步明确成 “Next frontend expansion gate”，不是直接开完整语法。为了把计划落到可执行粒度，我再看一下 Story-36 的 primitives 和 Story-39/40 的 parser/lowering接口，避免计划和现有后端能力脱节。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 09:45:17 +0800</div>
+<pre>现有 parser 其实已经识别了 `TON/R_TRIG/CTU` 的函数块声明和调用，Story-39 也有相关 fixture；所以下一步更适合做“把标准 primitives 的 source lowering 证明补齐/收紧”，而不是从零加 timer 语法。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 09:45:32 +0800</div>
+<pre>我看到一个测试文件名猜错了，继续用 `rg --files` 对实际 Story-39/40 测试和 fixture 名称做一次对齐；计划里会按现有文件结构拆 patch，避免空泛。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-26 09:47:00 +0800</div>
+<pre>我建议下一步先做 **STORY-41: PLC Minimal Source Standard Primitive Binding**。
+
+原因很具体：Story-36 后端 primitives 已经有 bit/word、TON/TOF/TP、R_TRIG/F_TRIG、CTU/CTD/CTUD；Story-39/40 已证明 minimal source 可以 parse/lower/跑 simulator。但当前 `minimal_source_lowering.cpp` 里 TON/R_TRIG/CTU 的输出绑定还是偏 Story-39 fixture 的固定名字，比如 `delayed_enable`、`one_shot_pulse`、`count_done`。这对真实前端不够通用。下一步应该先把“任意变量名的 primitive source lowering”打牢，再扩 TOF/TP/CTD/CTUD 等更多语法面。
+
+**STORY-41 目标**
+让 minimal source 支持通用的标准 primitive 绑定：
+
+```iecst
+FB warmup : TON;
+warmup(IN := machine_flags.5, PT := CYCLES#3);
+warmup_done := warmup.Q;
+```
+
+lowering 结果不再依赖 `delayed_enable` 这种固定名字，而是从 `warmup.Q` 的 assignment 自动绑定到 `warmup_done`。同样适用于 `R_TRIG`、`CTU`，并保留 bit-write/word facts。
+
+**Slice 01: Contract Docs**
+新增 Story-41 文档页，先定义边界：
+
+- accepted: `WORD flags := WORD#0`
+- accepted: `flags.N := BOOL_EXPR`
+- accepted: `FB name : TON | R_TRIG | CTU`
+- accepted: `instance(args...)`
+- accepted: `output := instance.Q`
+- forbidden: runtime interpreter
+- forbidden: branch 内 FB call
+- forbidden: nested control flow
+- forbidden: full AST/IR
+- forbidden: vendor-specific PLC syntax
+
+重点 invariant：lowering 不允许依赖固定 fixture 名称，只能依赖 parser model 里的 declaration、call、assignment facts。
+
+**Slice 02: Fixtures And Parser Boundary**
+新增 Story-41 fixture，用完全不同于 Story-39 的名字证明泛化：
+
+```iecst
+INPUT cycle_enable : BOOL;
+INPUT sensor_seen : BOOL;
+
+OUTPUT warmup_done : BOOL;
+OUTPUT sensor_rise : BOOL;
+OUTPUT batch_ready : BOOL;
+
+WORD machine_flags := WORD#0;
+FB warmup : TON;
+FB sensor_edge : R_TRIG;
+FB batch_counter : CTU;
+
+machine_flags.5 := cycle_enable;
+warmup(IN := machine_flags.5, PT := CYCLES#3);
+warmup_done := warmup.Q;
+sensor_edge(CLK := machine_flags.5 AND sensor_seen);
+sensor_rise := sensor_edge.Q;
+batch_counter(CU := sensor_edge.Q, R := NOT machine_flags.5, PV := 2);
+batch_ready := batch_counter.Q;
+```
+
+测试重点：parser 已有能力不应退化；invalid fixture 覆盖 missing `.Q` assignment、duplicate `.Q` binding、wrong `.Q` owner。
+
+**Slice 03: Generic Lowering Facts**
+改 `minimal_source_lowering.cpp`：
+
+- 删除 `find_assignment(model, &quot;delayed_enable&quot;)` 这类固定名字逻辑。
+- 新增按 instance 查找 `target := instance.Q` 的 helper。
+- TON facts:
+  - `instance = warmup`
+  - `input = machine_flags.5`
+  - `preset = 3`
+  - `output = warmup_done`
+- R_TRIG facts:
+  - `instance = sensor_edge`
+  - `input = machine_flags.5 AND sensor_seen`
+  - `output = sensor_rise`
+- CTU facts:
+  - `instance = batch_counter`
+  - `input = sensor_edge.Q`
+  - `reset = NOT machine_flags.5`
+  - `preset = 2`
+  - `output = batch_ready`
+
+这里的验收标准是：Story-39 原测试继续过，Story-41 新 fixture 用任意名字也能 lower 出同样结构的 facts。
+
+**Slice 04: Framework/Simulator Equivalence**
+新增 Story-41 generated-style Behavior 测试和 machine fixture，通过现有 framework + sim backend 跑 scan：
+
+- disabled scan: 全输出 false
+- enable 后 3 个 scan: `warmup_done` 变 true
+- `sensor_seen` rising edge: `sensor_rise` 只打一拍
+- 第二次 rising edge 后：`batch_ready` 变 true
+- disable 后：timer/counter reset 语义保持
+
+这一步证明：后端 facts 仍然可以映射成 generated-style Behavior，并通过 simulator 跑通。
+
+**Slice 05: Closeout**
+更新：
+
+- `STORIES/INDEX.md`
+- `NEXT-ROADMAP.md`
+- `IMPLEMENTATION-READINESS.md`
+- `CURRENT-CAPABILITIES.md`
+- Story-41 slices/specs 状态
+
+closeout 后，下一步再开 Story-42 做“剩余 standard primitives source surface”，比如 `TOF`、`TP`、`F_TRIG`、`CTD`、`CTUD`、更完整 word operation 表达式。
+
+**验证命令**
+实现 slice 要跑：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+建议执行节奏：先落 Story-41 文档计划并 push，然后按 Slice 02/03/04/05 分小提交推进。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:47:47 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:48:12 +0800</div>
+<pre>我按刚才的节奏先落 Story-41 的文档计划，不直接改实现代码。范围会控制在 `rt/plc/docs`，目标是把 story/slice/spec/roadmap 先建清楚，然后验证、提交、推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:48:34 +0800</div>
+<pre>我还需要按 `write-docs` 要求补读 docs policy，然后开始新增 Story-41 文档树和导航。Story-41 会先是 `planned` 状态，不改当前能力声明为已实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 09:48:53 +0800</div>
+<pre>我会按 Story-40 的结构复制一套 Story-41 文档骨架，但内容会收紧到“通用 primitive `.Q` 输出绑定”，避免把 TOF/TP/CTD/CTUD 一起塞进这个 story。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 09:48:59 +0800</div>
+<pre>现在开始写文件：新增 Story-41 的 story、implementation plan、readiness review、4 个 slice 和 SPEC/INV，并更新 stories index、summary、roadmap/readiness 的“下一步候选”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 09:52:03 +0800</div>
+<pre>Story-41 文档主体已经加好。接下来更新导航和全局路线图，让读者能从 Summary/Index/Readiness 找到这条新 story。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 09:52:58 +0800</div>
+<pre>文档树和导航已更新。现在我检查新页面的链接/状态词，再跑 docs lint 和 bookshelf 构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 09:53:04 +0800</div>
+<pre>Docs policy lint 已过。我发现 `SUMMARY.md` 接近 linter 上限但仍通过；继续跑 `book build`，如果链接没有问题就提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 09:53:26 +0800</div>
+<pre>Bookshelf 构建通过。提交前我再做 diff check 和文档 diff 概览，确认只是在 `rt/plc/docs` 下新增计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 09:53:32 +0800</div>
+<pre>Diff 概览只显示已跟踪文件，新增 Story-41 文档目录还未纳入 stat；我会把整个 Story-41 文档树一起 stage，再提交为一个 docs planning commit。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 09:53:56 +0800</div>
+<pre>Story-41 文档计划已提交。本地比远程领先 1 个提交，我先确认状态和日志，然后推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 09:54:17 +0800</div>
+<pre>远程已更新。我最后确认工作树干净，并把下一步实现切入点整理给你。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-05-26 09:54:26 +0800</div>
+<pre>已落 Story-41 文档计划并推送到 `origin/feat/plc`。
+
+提交：
+
+- `c9a6c261 docs(plc): plan story41 primitive binding`
+
+这次只改了 `rt/plc/docs`，新增了 Story-41 的 story、implementation plan、readiness review、4 个 slice、`SPEC-123` 到 `SPEC-126`、`INV-090` 到 `INV-093`，并更新了 `SUMMARY.md`、`STORIES/INDEX.md`、`NEXT-ROADMAP.md`、`IMPLEMENTATION-READINESS.md`。
+
+验证已过：
+
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check -- rt/plc/docs`
+
+当前工作树干净，远程已同步。下一步可以按 Story-41 Patch 2 开始做 renamed fixture 和 parser/boundary tests。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 09:54:51 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 09:55:12 +0800</div>
+<pre>我先按当前 Story-41 文档和现有 `minimal_source`/lowering 代码复核一下实现入口，然后给你一版可直接执行的下一步计划；这次只看和规划，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 09:55:27 +0800</div>
+<pre>Story-41 文档已在远程，工作树干净。现在我看具体测试注册和现有 Story-39/40 测试结构，计划会细到每个 patch 改哪些文件、跑哪些测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 09:55:35 +0800</div>
+<pre>实现入口很明确：先写一个新的 Story-41 测试文件和 renamed fixtures，把当前 hard-code 问题用失败测试钉住；然后再改 lowerer。下面我会给出按提交拆分的详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-26 09:55:57 +0800</div>
+<pre>下一步建议直接进入 **Story-41 Patch 2 + Patch 3**，先用测试钉住问题，再改 lowerer。
+
+**Patch 2: Renamed Fixtures + Failing Tests**
+目标：证明当前 lowerer 还依赖 Story-39 固定输出名。
+
+改动文件：
+
+- 新增 `rt/plc/tests/fixtures/story41_standard_primitive_binding.plc`
+- 新增 invalid fixtures：
+  - `story41_invalid_missing_q_binding.plc`
+  - `story41_invalid_duplicate_q_binding.plc`
+  - `story41_invalid_q_owner.plc`
+- 新增 `rt/plc/tests/story41_standard_primitive_binding_tests.cpp`
+- 更新 `rt/plc/CMakeLists.txt` 注册 `metanc_plc_story41_standard_primitive_binding_tests`
+
+测试内容：
+
+- renamed fixture 能 parse：
+  - `cycle_enable`
+  - `sensor_seen`
+  - `warmup_done`
+  - `sensor_rise`
+  - `batch_ready`
+  - `machine_flags.5`
+  - `warmup : TON`
+  - `sensor_edge : R_TRIG`
+  - `batch_counter : CTU`
+- lowering facts 预期：
+  - `TON warmup -&gt; warmup_done`
+  - `R_TRIG sensor_edge -&gt; sensor_rise`
+  - `CTU batch_counter -&gt; batch_ready`
+- 当前这里应失败，因为 lowerer 还在找 `delayed_enable` / `one_shot_pulse` / `count_done`。
+
+验证：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41|story39|story40&quot;
+```
+
+Patch 2 可以提交为：
+
+```text
+test(plc): add story41 primitive binding fixtures
+```
+
+**Patch 3: Generic `instance.Q` Binding**
+目标：把 `minimal_source_lowering.cpp` 里固定名字 lookup 改成通用关系 lookup。
+
+核心改法：
+
+- 新增 helper：找所有 `statement.kind == kAssignment &amp;&amp; statement.expression == instance + &quot;.Q&quot;`
+- 每个 primitive call 必须 exactly one binding：
+  - 0 个：diagnostic `missing Q output binding`
+  - 多个：diagnostic `duplicate Q output binding`
+- 绑定 target 必须来自 BOOL assignment，parser 已做类型校验，lowerer 再保持结构检查。
+- 删除这些固定逻辑：
+  - `find_assignment(model, &quot;delayed_enable&quot;)`
+  - `find_assignment(model, &quot;one_shot_pulse&quot;)`
+  - `find_assignment(model, &quot;count_done&quot;)`
+
+保持不变：
+
+- `runtime_interpreter = false`
+- Story-39 fixture 仍然 lower 成原 facts
+- Story-40 conditional facts 不受影响
+- 不加 `TOF/TP/F_TRIG/CTD/CTUD`
+
+验证：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story39|story40|story41|lowering&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+git diff --check -- rt/plc
+```
+
+Patch 3 提交：
+
+```text
+fix(plc): bind primitive outputs by q assignments
+```
+
+**Patch 4: Framework Equivalence**
+目标：证明 renamed facts 对应的 generated-style Behavior 仍能通过 simulator/framework 跑通。
+
+新增：
+
+- `rt/plc/tests/fixtures/story41_standard_primitive_binding_machine.yaml`
+- 在 `story41_standard_primitive_binding_tests.cpp` 里加 `Story41StandardPrimitiveBindingBehavior`
+
+扫描序列：
+
+- disabled：三个输出全 false
+- enable 连续 3 scan：`warmup_done == true`
+- `sensor_seen` rising edge：`sensor_rise` 只打一拍
+- 第二次 rising edge：`batch_ready == true`
+- disable：timer/counter state reset
+
+验证：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+```
+
+提交：
+
+```text
+test(plc): prove story41 primitive binding equivalence
+```
+
+**Patch 5: Docs Closeout**
+目标：把 Story-41 从 planned 推到 implemented。
+
+更新：
+
+- `STORY.md`
+- 4 个 `SLICE.md`
+- `SPEC-123..126`
+- `INV-090..093`
+- `STORIES/INDEX.md`
+- `NEXT-ROADMAP.md`
+- `IMPLEMENTATION-READINESS.md`
+- `CURRENT-CAPABILITIES.md`
+
+验证：
+
+```bash
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+```
+
+提交：
+
+```text
+docs(plc): close story41 primitive binding
+```
+
+我建议现在先执行 **Patch 2**，因为它能最小化风险：只加 fixture/test/CMake，不动 lowerer，先把当前问题暴露清楚。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 10:11:38 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 10:11:59 +0800</div>
+<pre>我按你确认的方向开始做 Story-41 实现。为了不把远程留在失败状态，我会先加 fixture/test 复现 hard-code 问题，再改 lowerer 让测试过，最后按可验证的小提交提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 10:12:23 +0800</div>
+<pre>我先补看 Story-39/36 的 machine fixture 和 descriptor naming，Story-41 的 framework equivalence 要复用同一种 sim backend 路径，避免 YAML 名字和 Behavior 绑定不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 10:13:08 +0800</div>
+<pre>我会把 Story-41 的测试文件做成一个目标，先覆盖 renamed fixture、generic facts、binding diagnostics 和 framework equivalence。lowerer 同步改成 `instance.Q` 查找，并且要求 exactly one BOOL output binding。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 10:13:31 +0800</div>
+<pre>我开始落 Patch 2/3/4 的代码：新增 Story-41 fixture、test target 和 framework machine fixture，然后替换 lowerer 的固定输出名查找。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 10:15:31 +0800</div>
+<pre>代码和测试已写入。我先构建并跑 Story-39/40/41 相关测试，看看是否有 parser 边界或 framework fixture 细节需要修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 10:16:15 +0800</div>
+<pre>Story-39/40/41 targeted tests 已过。接下来跑全量 PLC 测试和 diff 检查，再更新 Story-41 文档状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 10:16:36 +0800</div>
+<pre>全量 PLC 测试已经过了 `79/79`。我现在补 Story-41 closeout 文档，把 planned 状态更新到 implemented，再跑 docs lint/book build，然后拆成实现提交和文档提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 10:17:03 +0800</div>
+<pre>我现在用 `write-docs` 规则做 Story-41 closeout 文档更新：只改 `rt/plc/docs` 的状态/roadmap/能力矩阵，不再扩大实现范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 10:19:28 +0800</div>
+<pre>有一个能力矩阵里的旧边界句还只提 Story-40，我先把它补成 Story-41 的边界，然后跑最终文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 10:20:01 +0800</div>
+<pre>Docs lint 和 diff check 通过，Story-41 没有遗留 planned 状态。现在跑 `book build`，随后我会把实现和 closeout docs 分两个提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 10:20:23 +0800</div>
+<pre>Book build 也通过。现在我按提交边界先提交代码和测试，再提交文档 closeout。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-26 10:21:05 +0800</div>
+<pre>实现测试已提交。现在 stage Story-41 closeout docs，再提交第二个文档提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-05-26 10:21:44 +0800</div>
+<pre>两个提交都完成了。我最后确认工作树和日志，然后推送到远程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-05-26 10:22:12 +0800</div>
+<pre>远程已经同步到 `2590b37c`。我做最后一次状态确认，整理 Story-41 完成范围和下一步候选。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / final_answer</h3>
+<div class="time">2026-05-26 10:22:29 +0800</div>
+<pre>Story-41 已完成并推送到 `origin/feat/plc`，当前 HEAD 是 `2590b37c docs(plc): close story41 primitive binding`，工作树干净。
+
+本轮新增两个提交：
+
+- `904228e8 test(plc): prove story41 primitive binding`
+- `2590b37c docs(plc): close story41 primitive binding`
+
+完成内容：
+
+- `minimal_source_lowering` 不再硬编码 `delayed_enable` / `one_shot_pulse` / `count_done`
+- `TON` / `R_TRIG` / `CTU` 输出现在通过 exactly one `output := instance.Q` 绑定
+- 新增 Story-41 renamed fixture、missing/duplicate/invalid `.Q` 边界 fixture
+- 新增 Story-41 framework equivalence 测试，走现有 `Framework` + sim backend
+- Story-41 文档状态更新为 `implemented`，能力矩阵/roadmap/readiness 已同步
+
+验证已过：
+
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story39|story40|story41|lowering&quot;`：8/8
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：79/79
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+下一步建议开 Story-42：选一个 bounded primitive source expansion。优先候选是 `TOF/TP` 或 `F_TRIG`，不要一次把 `CTD/CTUD` 和完整 word expression 都塞进去。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 10:32:33 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 10:32:57 +0800</div>
+<pre>我先复核当前 `feat/plc`、Story-41 closeout 后的 roadmap/readiness，以及 Story-36 已有 primitive 能力，再给你下一步的具体 story/slice 计划；这次只做计划，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 10:33:25 +0800</div>
+<pre>当前 roadmap 已把下一步定义成 “primitive source expansion gate”。我再看一下 Story-36 的 timer/edge/counter primitives 和当前 parser 支持列表，决定 Story-42 应该切哪一块最小。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 10:33:41 +0800</div>
+<pre>Story-36 已有 `TOF/TP/F_TRIG/CTD/CTUD` 后端，但 source/parser 目前只开放了 `TON/R_TRIG/CTU`。我倾向 Story-42 先做 timer family 的 `TOF/TP`，因为它们和现有 `TON` 参数形状一致，能最小化 parser 扩展风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-05-26 10:34:29 +0800</div>
+<pre>建议下一步做 **STORY-42: PLC Minimal Source Timer Family Expansion**，先扩 `TOF/TP`，不要同时做 `F_TRIG/CTD/CTUD` 或 word expression。
+
+理由：Story-36 后端已经有 `TOF`/`TP`，参数形状和 `TON` 一样都是 `IN` + `PT`，Story-41 又刚把 `instance.Q` 输出绑定做通了，所以这是最小、风险最低的 primitive family expansion。
+
+**Story-42 目标**
+
+让 minimal source 支持：
+
+```iecst
+FB off_delay : TOF;
+FB pulse_timer : TP;
+
+off_delay(IN := enable_request, PT := CYCLES#2);
+hold_after_disable := off_delay.Q;
+
+pulse_timer(IN := pulse_request, PT := CYCLES#3);
+pulse_active := pulse_timer.Q;
+```
+
+lowering 仍然只产出 facts，不执行 source；执行仍然走 generated-style Behavior + Framework + sim backend。
+
+**Slice 01: Timer Source Contract**
+
+文档先定义边界：
+
+- in scope:
+  - `FB name : TOF`
+  - `FB name : TP`
+  - `instance(IN := BOOL_EXPR, PT := CYCLES#N)`
+  - `output := instance.Q`
+- out of scope:
+  - `TONR` / retentive timers
+  - wall-clock `TIME#...`
+  - `.ET` / elapsed-time field
+  - timer arrays/structs/vendor-specific fields
+  - branch 内 FB call
+  - frontend interpreter
+
+提交：`docs(plc): plan story42 timer source expansion`
+
+**Slice 02: Parser Support**
+
+代码入口：
+
+- `rt/plc/include/metanc/plc/minimal_source.hpp`
+  - `MinimalSourceValueType` 增加 `kTof`, `kTp`
+- `rt/plc/src/minimal_source.cpp`
+  - `function_block_type_for()` 支持 `TOF`, `TP`
+  - `is_function_block_type()` 加上 `kTof`, `kTp`
+  - `expected_arg_type()` 对 `TOF/TP` 接受 `IN: BOOL`, `PT: CyclePreset`
+  - `to_string()` 加 `tof`, `tp`
+
+新增 fixtures/tests：
+
+- `story42_timer_source_expansion.plc`
+- invalid:
+  - `story42_invalid_timer_time_literal.plc`
+  - `story42_invalid_timer_elapsed_field.plc`
+  - `story42_invalid_timer_arg_name.plc`
+
+提交：`test(plc): add story42 timer source parser coverage`
+
+**Slice 03: Lowering Facts**
+
+代码入口：
+
+- `rt/plc/include/metanc/plc/minimal_source_lowering.hpp`
+  - `MinimalLoweringPrimitiveKind` 增加 `kTof`, `kTp`
+- `rt/plc/src/minimal_source_lowering.cpp`
+  - `primitive_kind_for()` 支持 `kTof`, `kTp`
+  - `to_string()` 支持 `tof`, `tp`
+  - 抽一个 timer lowering helper，`TON/TOF/TP` 共用：
+    - 找 `IN`
+    - 找 `PT`
+    - parse `CYCLES#N`
+    - 用 Story-41 的 generic `instance.Q` binding 找 output
+
+预期 facts：
+
+- `TOF off_delay`
+  - input: `enable_request`
+  - preset: `2`
+  - output: `hold_after_disable`
+- `TP pulse_timer`
+  - input: `pulse_request`
+  - preset: `3`
+  - output: `pulse_active`
+- `runtime_interpreter: false`
+
+提交：`feat(plc): lower minimal source tof tp timers`
+
+**Slice 04: Framework Equivalence**
+
+新增：
+
+- `story42_timer_source_expansion_machine.yaml`
+- `story42_timer_source_expansion_tests.cpp`
+- CMake target: `metanc_plc_story42_timer_source_expansion_tests`
+
+扫描证明：
+
+- `TOF`
+  - false 初始: output false
+  - true: output true
+  - false 后第 1 scan: 仍 true
+  - false 后第 2 scan: false
+- `TP`
+  - rising edge 后 pulse true
+  - preset 周期内保持 true
+  - hold true 不重复触发
+  - input false 后重新 arm
+- reset/disable 后状态可预测
+
+提交：`test(plc): prove story42 timer framework equivalence`
+
+**Slice 05: Closeout**
+
+更新：
+
+- Story-42 docs 状态到 `implemented`
+- `STORIES/INDEX.md`
+- `NEXT-ROADMAP.md`
+- `IMPLEMENTATION-READINESS.md`
+- `CURRENT-CAPABILITIES.md`
+
+验证：
+
+```bash
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41|story42|timer|lowering&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+提交：`docs(plc): close story42 timer source expansion`
+
+我建议先落 Story-42 文档计划并 push，然后实现 parser/lowering/framework 三个小提交。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 10:35:46 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 10:36:09 +0800</div>
+<pre>我按确认开始先落 Story-42 的 docs-first 计划：新增 story/slice/spec/invariant 文档并更新 PLC roadmap/readiness/nav；本轮先不改 parser/lowering 实现代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 10:36:23 +0800</div>
+<pre>`write-docs` 技能已应用，工作树干净。我接下来按 Story-41 的文档结构新增 Story-42：timer source contract、parser boundary、lowering facts、framework equivalence/closeout 四个 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 10:36:32 +0800</div>
+<pre>我现在创建 Story-42 文档目录和页面，并把它接进 `SUMMARY.md`、`STORIES/INDEX.md`、`NEXT-ROADMAP.md`、`IMPLEMENTATION-READINESS.md`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 10:39:12 +0800</div>
+<pre>Story-42 主文档已经写好。现在更新索引、Summary、roadmap/readiness，让它成为明确的下一步 planned story。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 10:40:42 +0800</div>
+<pre>我继续把 Story-42 的文档 slice 收口：先确认当前 diff 和导航链接，再跑文档校验，最后提交并推到 `feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 10:40:55 +0800</div>
+<pre>导航里 Story-42 已经挂上了，状态也保持为 `planned`，这一步目前只是在落设计和 slice spec。接下来跑文档策略、diff whitespace 和 mdBook 构建，确认这批文档能进主书。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 10:41:13 +0800</div>
+<pre>文档校验和整站构建都过了。现在我看一下最终 diff 的范围，然后只把 `rt/plc/docs` 这批 Story-42 规划文档提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 10:41:23 +0800</div>
+<pre>diff 范围是预期的：Story-42 新目录和三处规划索引更新，没有碰代码。现在 staging 后再做一次 cached diff check，避免提交前漏掉未跟踪文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 10:41:36 +0800</div>
+<pre>staging 内容完整，cached whitespace 检查通过。现在提交这批 Story-42 规划文档，然后推送远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 10:41:56 +0800</div>
+<pre>Story-42 文档规划已经推上去了。最后我再确认本地/远端状态和最近提交，确保工作区干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-26 10:42:06 +0800</div>
+<pre>已完成并推送。
+
+Story-42 的详细规划文档已落到 `rt/plc/docs/spec/STORIES/STORY-42-plc-minimal-source-timer-family-expansion/`，包括 4 个 slice、SPEC-127 到 SPEC-130、INV-094 到 INV-097，并更新了 `SUMMARY.md`、Story index、roadmap 和 readiness 页。
+
+提交：`9ffbb0da docs(plc): plan story42 timer source expansion`
+远端：`origin/feat/plc` 已同步，工作区干净。
+
+验证已过：
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc/docs`
+- `book build`
+
+下一步可以按 Story-42 的 Slice 02 开始实现 parser 边界和 fixtures/tests。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 13:12:54 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 13:13:12 +0800</div>
+<pre>我先刷新一下当前分支和 Story-42 文档里的实施约束，再给你一个可以直接执行的下一步计划。重点会放在下一步代码 slice，而不是泛泛讲路线图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 13:13:48 +0800</div>
+<pre>我还要看一下 `minimal_source` 和 lowering 的实际结构，避免计划只停留在文档层。这样能把下一步拆成具体到函数、测试和提交粒度。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-05-26 13:14:20 +0800</div>
+<pre>下一步建议直接进 **Story-42 Patch 2：Parser Boundaries**，先不碰 lowering 和 framework equivalence。
+
+**目标**
+让 minimal source parser 接受 `TOF` / `TP` 的最小形态，并把不支持的 timer 语法挡住：
+
+```text
+FB off_delay : TOF;
+FB pulse_timer : TP;
+
+off_delay(IN := enable_request, PT := CYCLES#2);
+hold_after_disable := off_delay.Q;
+
+pulse_timer(IN := pulse_request, PT := CYCLES#3);
+pulse_active := pulse_timer.Q;
+```
+
+**具体 patch**
+1. 扩展类型枚举
+   在 `rt/plc/include/metanc/plc/minimal_source.hpp` 增加：
+   - `MinimalSourceValueType::kTof`
+   - `MinimalSourceValueType::kTp`
+
+2. 扩展 parser 识别
+   在 `rt/plc/src/minimal_source.cpp`：
+   - `function_block_type_for()` 接受 `TOF` / `TP`
+   - `is_function_block_type()` 包含 `kTof` / `kTp`
+   - `expected_arg_type()` 让 `TOF` / `TP` 与 `TON` 一样只接受 `IN: BOOL` 和 `PT: CYCLES#N`
+   - `to_string()` 增加 `tof` / `tp`
+   - 不接受 `TIME#...`，它会自然落到 unknown expression 或 type mismatch
+   - `.ET` 不新增支持，继续诊断为 invalid dotted/bit selector 类错误即可
+
+3. 加 fixtures
+   新增：
+   - `rt/plc/tests/fixtures/story42_timer_source_expansion.plc`
+   - `story42_invalid_time_literal.plc`
+   - `story42_invalid_elapsed_field.plc`
+   - `story42_invalid_timer_arg_name.plc`
+
+4. 加测试目标
+   新增 `rt/plc/tests/story42_timer_source_expansion_tests.cpp`，第一批只测 parser：
+   - valid fixture parse ok
+   - declarations 中有 `off_delay:kTof`、`pulse_timer:kTp`
+   - calls 中有 `IN` / `PT` 参数，`PT` 类型是 `kCyclePreset`
+   - `off_delay.Q` / `pulse_timer.Q` assignment 是 `BOOL`
+   - invalid fixtures 分别失败并包含预期 diagnostic category
+   - Story-41 fixture 仍 parse ok，保证兼容
+
+5. 更新 CMake
+   在 `rt/plc/CMakeLists.txt` 加：
+   - executable `metanc_plc_story42_timer_source_expansion_tests`
+   - link `metanc_plc_core`
+   - compile definition `METANC_PLC_SOURCE_DIR`
+   - ctest label `plc_minimal_source_timer_family_expansion`
+
+**验证**
+先跑定向验证：
+
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41|story42&quot;
+```
+
+再跑全量 PLC 和文档：
+
+```bash
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+**提交粒度**
+这一步可以单独一个提交：
+
+```text
+test(plc): add story42 timer parser boundary
+```
+
+完成后再进入 Patch 3：lowering facts，把 `TOF` / `TP` 接到 `MinimalLoweringPrimitiveKind` 和 Story-41 的 `instance.Q` 绑定规则上。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 13:17:51 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 13:18:12 +0800</div>
+<pre>我按刚才的 Patch 2 直接做：只实现 Story-42 的 parser boundary 和测试，不提前接 lowering/framework。先确认工作区和当前源码基线，然后开始改 `rt/plc` 内部文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 13:18:49 +0800</div>
+<pre>我会补两个 value type、三处 parser 分支、四个 fixture 和一个独立 Story-42 parser 测试目标。这里暂时不改 lowering 的 primitive kind，也不把 `TOF/TP` 运行语义接进 framework，保持 slice 边界干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 13:19:16 +0800</div>
+<pre>现在开始编辑：parser 类型枚举和识别分支会保持最小增量；测试会专门证明 `TOF/TP` 只打开 `IN/PT/CYCLES#N/.Q` 这条窄路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 13:19:47 +0800</div>
+<pre>基础 parser 改完了，fixtures 也补齐。接下来加 Story-42 独立测试，重点看 semantic model，而不是运行行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 13:20:36 +0800</div>
+<pre>测试文件已加。现在把它接进 CMake，然后先做一次快速编译/定向测试，预计如果 enum switch 或 diagnostic 类别有偏差会在这一步暴露。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 13:20:54 +0800</div>
+<pre>CMake 配置通过，parser diff 也符合预期。现在编译并跑 `story41|story42` 定向测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 13:21:24 +0800</div>
+<pre>定向编译和 `story41|story42` 都过了。现在我补一个小的文档状态更新，把 Slice-02/SPEC-128/INV-095 从 planned 标到 implemented，然后跑全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 13:21:43 +0800</div>
+<pre>Slice-02 状态已同步到文档。接下来跑完整 PLC ctest、docs lint、diff check 和 book build，确认这一步可以提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 13:22:08 +0800</div>
+<pre>全量 PLC 和文档构建都通过了。现在我检查最终 diff，然后按这个 slice 单独提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 13:22:22 +0800</div>
+<pre>最终 diff 范围正常，不过 untracked fixtures/test 需要先 stage 后做 cached check，才能把新增文件的 whitespace 也纳入提交前检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-26 13:22:43 +0800</div>
+<pre>cached 内容检查通过。现在提交并推送这个 parser boundary slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-26 13:23:03 +0800</div>
+<pre>提交已经推到远端。最后确认分支干净和最新提交，确保没有遗留文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-26 13:23:16 +0800</div>
+<pre>已完成并推送 Story-42 Patch 2。
+
+这一步只打开 parser boundary：
+- `minimal_source` 现在识别 `TOF` / `TP`
+- `TOF` / `TP` 只接受 `IN := BOOL` 和 `PT := CYCLES#N`
+- `.Q` 仍作为唯一支持的 timer 输出字段
+- `TIME#...`、`.ET`、错误参数名都有 invalid fixture 覆盖
+- Story-41 fixture 仍保持 parser 兼容
+- Slice-02 / SPEC-128 / INV-095 已标为 `implemented`
+
+提交：`7afb6ae4 test(plc): add story42 timer parser boundary`
+远端：`origin/feat/plc` 已同步，工作区干净。
+
+验证已过：
+- `cmake -S rt/plc -B /tmp/metanc_plc_build`
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41|story42&quot;`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，80/80 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+下一步是 Story-42 Patch 3：把 `TOF` / `TP` 接进 `MinimalLoweringPrimitiveKind` 和 `minimal_source_lowering`，继续复用 Story-41 的 `instance.Q` 输出绑定规则。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 14:02:16 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 14:02:34 +0800</div>
+<pre>我先刷新一下当前分支、Story-42 Slice-03 文档和 lowering 代码现状，再把下一步拆成可执行 patch 计划。这个计划会聚焦 `TOF/TP` lowering facts，不扩到 framework 运行证明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-26 14:03:36 +0800</div>
+<pre>下一步是 **Story-42 Patch 3：Timer Lowering Facts**。目标很明确：parser 已经能读 `TOF/TP`，现在让 lowerer 把它们变成 execution-free facts，但仍然不运行 timer。
+
+**目标**
+让这个 fixture：
+
+```text
+off_delay(IN := enable_request, PT := CYCLES#2);
+hold_after_disable := off_delay.Q;
+pulse_timer(IN := pulse_request, PT := CYCLES#3);
+pulse_active := pulse_timer.Q;
+```
+
+lower 成：
+
+```yaml
+tof:
+  instance: off_delay
+  input: enable_request
+  preset: 2
+  output: hold_after_disable
+tp:
+  instance: pulse_timer
+  input: pulse_request
+  preset: 3
+  output: pulse_active
+runtime_interpreter: false
+```
+
+**具体 patch**
+1. 扩展 lowering primitive kind
+   在 `minimal_source_lowering.hpp` 增加：
+   - `kTof`
+   - `kTp`
+
+2. 扩展 kind 映射和字符串
+   在 `minimal_source_lowering.cpp`：
+   - `primitive_kind_for(kTof) -&gt; kTof`
+   - `primitive_kind_for(kTp) -&gt; kTp`
+   - `to_string(kTof) -&gt; &quot;tof&quot;`
+   - `to_string(kTp) -&gt; &quot;tp&quot;`
+
+3. 抽出共享 timer lowering
+   把现在 `TON` 专用的 `IN/PT/output` 逻辑抽成一个 helper，例如：
+   - 输入：`timer_name` / `statement` / `model`
+   - 输出：`primitive.input`、`primitive.preset`、`primitive.output`
+   - 同时复用 `find_q_output_binding()`
+   - 错误信息按 primitive 名称区分：`TON/TOF/TP lowering is missing IN/PT/output facts`
+
+4. 接入 `TOF/TP`
+   `lower_function_block_call()` 中让 `kTon/kTof/kTp` 共用这条路径。
+   不新增 reset、elapsed、timer state、`.ET` facts。
+
+5. 增强 Story-42 测试
+   在 `story42_timer_source_expansion_tests.cpp` 引入 `minimal_source_lowering.hpp`，新增测试：
+   - valid fixture lower ok
+   - `facts.runtime_interpreter == false`
+   - primitive count 是 2
+   - `off_delay` 是 `kTof`，input/preset/output 正确
+   - `pulse_timer` 是 `kTp`，input/preset/output 正确
+   - `to_string(kTof/kTp)` 正确
+   - Story-41 lowering 测试仍保留在 targeted validation，证明兼容
+
+6. 更新 Slice-03 文档状态
+   通过测试后把：
+   - `SLICE-03.../SLICE.md` 标为 `implemented`
+   - `SPEC-129.md` implementation-status 标为 `implemented`
+   - `INV-096.md` implementation-status 标为 `implemented`
+
+**验证**
+定向：
+
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41|story42|lowering&quot;
+```
+
+全量：
+
+```bash
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+**提交**
+建议单独提交：
+
+```text
+test(plc): add story42 timer lowering facts
+```
+
+这个 patch 做完后，后端就能从最小源代码生成 `TOF/TP` 的 backend facts；再下一步才是 Patch 4，用 generated-style Behavior 证明这些 facts 对应的 `TOF` off-delay 和 `TP` pulse 语义能在 framework scan path 里跑通。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 14:03:52 +0800</div>
+<pre>do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 14:04:11 +0800</div>
+<pre>我开始做 Story-42 Patch 3：只接 `TOF/TP` 的 lowering facts，并把 Slice-03 文档状态同步；不进入 framework 运行证明。会先做一次轻量定位，然后直接改代码和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 14:04:24 +0800</div>
+<pre>已确认工作区干净，且这一步仍只在 `/rt/plc` 内。现在编辑 lowering enum、shared timer helper 和 Story-42 测试，然后跑定向测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 14:04:43 +0800</div>
+<pre>我会按 `write-docs` 规则只改已有 Slice-03 状态页，不新增导航页面；代码侧把 `TON/TOF/TP` 的 lowering 抽成同一条 facts 路径，避免后续 timer 家族继续复制分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 14:05:18 +0800</div>
+<pre>lowering 分支已经接上。现在增强 Story-42 测试：同一测试目标里同时证明 parser facts 和 lowering facts，并确认 `runtime_interpreter` 仍然是 false。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 14:05:49 +0800</div>
+<pre>测试里已经加了 lowering facts 断言。现在先编译跑 `story41|story42|lowering`，如果这层过，再同步 Slice-03 文档状态并做全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 14:06:46 +0800</div>
+<pre>编译正在全量重建 `/tmp/metanc_plc_build`，目前 core 和前半部分测试目标已经过链接。等它结束后我会先跑定向 ctest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 14:08:43 +0800</div>
+<pre>定向 lowering 测试过了。现在把 Slice-03、SPEC-129、INV-096 状态标成 implemented，然后跑全量 PLC 与文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 14:09:28 +0800</div>
+<pre>全量测试和文档构建都过了。现在检查最终 diff，确认只包含 Slice-03 lowering scope，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 14:09:52 +0800</div>
+<pre>diff 范围符合预期：lowering enum/helper、Story-42 测试和 Slice-03 状态。现在 stage、做 cached diff check、提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 14:11:02 +0800</div>
+<pre>Patch 3 已提交并推送。最后确认分支干净和最新提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-26 14:11:17 +0800</div>
+<pre>已完成并推送 Story-42 Patch 3。
+
+这一步做了：
+- `MinimalLoweringPrimitiveKind` 增加 `kTof` / `kTp`
+- `minimal_source_lowering` 支持 `TOF` / `TP` lowering facts
+- `TON/TOF/TP` 共用 `IN/PT/output` timer lowering 路径
+- 继续复用 Story-41 的 `instance.Q` 输出绑定
+- `story42_timer_source_expansion_tests` 增加 lowering facts 断言
+- Slice-03 / SPEC-129 / INV-096 已标为 `implemented`
+
+提交：`4f64887e test(plc): add story42 timer lowering facts`
+远端：`origin/feat/plc` 已同步，工作区干净。
+
+验证已过：
+- `cmake -S rt/plc -B /tmp/metanc_plc_build`
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story41|story42|lowering&quot;`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，80/80 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+下一步是 Story-42 Patch 4：用 generated-style Behavior 证明 `TOF` off-delay 和 `TP` pulse 语义能通过现有 framework scan path 跑通。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 14:12:03 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 14:12:20 +0800</div>
+<pre>我先确认当前分支状态和 Story-42 Slice-04 的文档/现有 timer 行为测试，再把下一步拆成具体实现计划。重点会放在 framework equivalence，不扩成真正代码生成器。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-26 14:13:15 +0800</div>
+<pre>下一步是 **Story-42 Patch 4：Framework Equivalence And Closeout**。
+
+**目标**
+证明 Patch 2/3 得到的 `TOF/TP` source facts，可以映射成 generated-style `Behavior`，并通过现有 `Framework + SimIoHalBackend + ManualTickTimeBackend` scan path 跑通。还是不做真正代码生成器，也不加 runtime interpreter。
+
+**具体实现**
+1. 在 `story42_timer_source_expansion_tests.cpp` 里加入 framework harness：
+   - include `behavior.hpp`、`framework.hpp`、`registry.hpp`、`sim_backends.hpp`、`standard_primitives.hpp`
+   - 新增 `Story42TimerSourceExpansionBehavior`
+   - 绑定：
+     - DI: `enable_request`, `pulse_request`
+     - DO: `hold_after_disable`, `pulse_active`
+   - 内部用 `stdp::TOF off_delay_` 和 `stdp::TP pulse_timer_`
+   - `cycle()` 中按 lowering facts 执行：
+     - `off_delay_.update(enable_request_.read(), 2)`
+     - `hold_after_disable_.write(off_delay_.q())`
+     - `pulse_timer_.update(pulse_request_.read(), 3)`
+     - `pulse_active_.write(pulse_timer_.q())`
+   - `reset()` 清 timer 状态
+
+2. 新增 fixture：
+   - `rt/plc/tests/fixtures/story42_timer_source_expansion_machine.yaml`
+   - 配置 DI/DO 和 behavior bindings
+   - runtime 继续复用 `rt/plc/tests/fixtures/mvp1_manual_runtime.yaml`
+
+3. 新增 framework equivalence 测试：
+   - boot framework，确认进入 `kRunning`
+   - scan 序列覆盖 `TOF`：
+     - 初始 false -&gt; output false
+     - true input -&gt; output true
+     - false 第 1 scan -&gt; 仍 true
+     - false 第 2 scan -&gt; false
+   - scan 序列覆盖 `TP`：
+     - rising edge -&gt; true
+     - preset window 内保持 true
+     - held input 后 pulse 结束 -&gt; false
+     - false 后再次 rising edge -&gt; true
+   - 断言 generated behavior cycle count，确认确实通过 framework scan path 执行
+
+4. 更新 Slice-04 文档状态：
+   - `SLICE-04.../SLICE.md` 标 `implemented`
+   - `SPEC-130.md` implementation-status 标 `implemented`
+   - `INV-097.md` implementation-status 标 `implemented`
+
+5. Story closeout 是否同一提交：
+   - 建议 **先只做 Patch 4 一个提交**：`test(plc): prove story42 timer framework equivalence`
+   - 如果验证全过，再单独做 closeout 提交，把 `STORY.md`、`STORIES/INDEX.md`、必要 roadmap/readiness 状态标成 implemented。这样 Story 完成状态和行为证明分开，比较好 review。
+
+**验证**
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_build
+cmake --build /tmp/metanc_plc_build
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story42|timer|lowering&quot;
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc
+book build
+```
+
+完成 Patch 4 后，Story-42 的代码侧就基本闭环了：parser -&gt; lowering facts -&gt; generated-style framework execution。剩下就是 Story-42 最终 closeout。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 14:14:30 +0800</div>
+<pre>do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 14:14:57 +0800</div>
+<pre>我开始落 Patch 4：在 Story-42 测试目标里补 generated-style Behavior 和 machine fixture，证明 `TOF/TP` facts 走现有 framework scan path。范围仍然只在 `/rt/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-26 14:15:10 +0800</div>
+<pre>我会复用 Story-41 的 harness 模式，但放在 Story-42 测试目标里；新增的 YAML 只描述这个 generated-style behavior 的 DI/DO binding。接下来先读一下 descriptor binding 格式和 docs policy，再编辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-26 14:15:28 +0800</div>
+<pre>这里同时会改测试和已有 Slice-04 文档状态页；文档部分我按 `write-docs` 的规则只做状态同步，不新增页面或改导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-26 14:16:50 +0800</div>
+<pre>Behavior 和 machine fixture 已补上。现在先编译跑 Story-42 目标，确认 scan 序列和 descriptor binding 都正常。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-26 14:17:38 +0800</div>
+<pre>Story-42 目标已经通过。现在同步 Slice-04 的 implemented 状态，然后跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-26 14:18:31 +0800</div>
+<pre>构建和文档检查都通过了。现在跑定向和全量 ctest，确认 behavior equivalence 没有影响其他 PLC 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-26 14:18:53 +0800</div>
+<pre>全量验证通过。现在检查最终 diff，确认只包含 Patch 4 的测试 fixture 和 Slice-04 状态，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-26 14:19:04 +0800</div>
+<pre>diff 范围正常。注意 `git diff --stat` 不显示未跟踪 fixture，提交前我会 stage 后再做 cached check，避免漏掉新 YAML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-26 14:19:32 +0800</div>
+<pre>cached check 通过。现在提交 Patch 4 并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-26 14:19:58 +0800</div>
+<pre>Patch 4 已推送。最后确认工作区干净和最新提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-26 14:20:11 +0800</div>
+<pre>已完成并推送 Story-42 Patch 4。
+
+这一步做了：
+- 在 `story42_timer_source_expansion_tests.cpp` 增加 generated-style `Story42TimerSourceExpansionBehavior`
+- 新增 `story42_timer_source_expansion_machine.yaml`
+- 用现有 `Framework + SimIoHalBackend + ManualTickTimeBackend` 跑通 `TOF` off-delay 和 `TP` pulse scan 序列
+- Slice-04 / SPEC-130 / INV-097 已标为 `implemented`
+
+提交：`09a0fdb9 test(plc): prove story42 timer framework equivalence`
+远端：`origin/feat/plc` 已同步，工作区干净。
+
+验证已过：
+- `cmake -S rt/plc -B /tmp/metanc_plc_build`
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure -R &quot;story42|timer|lowering&quot;`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，80/80 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+下一步是 Story-42 closeout：把 `STORY.md`、`STORIES/INDEX.md` 和相关 roadmap/readiness 状态从 planned 调整到 implemented，并做最后一轮验证提交。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-26 14:20:46 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-26 14:21:03 +0800</div>
+<pre>我先确认 Story-42 当前状态和 closeout 相关文档入口，再给你一个可以直接执行的收口计划。这个计划会只覆盖状态收口和验证，不再加新 runtime 能力。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-26 14:21:49 +0800</div>
+<pre>下一步是 **Story-42 Closeout**，只做文档状态收口，不再改代码能力。
+
+**目标**
+把 Story-42 从“已完成四个 slice，但 story 仍 planned”收口到正式 implemented，并把 roadmap/readiness 的“下一步候选”改成后续方向。
+
+**具体 patch**
+1. 更新 `STORY.md`
+   - front matter: `status: implemented`
+   - slices 表：
+     - Slice 01: `implemented`
+     - Slice 02: `implemented`
+     - Slice 03: `implemented`
+     - Slice 04: `implemented`
+   - Gate Conditions 改成 closeout wording：
+     - Story-42 已完成 `TOF/TP` parser boundary
+     - 已完成 execution-free lowering facts
+     - 已完成 generated-style framework equivalence
+     - 明确仍未打开 `TIME#...`、`.ET`、retained timers、`F_TRIG/CTD/CTUD`、full frontend
+
+2. 更新 `STORIES/INDEX.md`
+   - Story-42 状态从 `planned` 改 `implemented`
+
+3. 更新 `NEXT-ROADMAP.md`
+   - Baseline 改为 `STORY-01 through STORY-12 and STORY-14 through STORY-42 are implemented`
+   - Immediate Track 第一项从 Story-42 改为下一个候选：
+     - 建议写成 “Next bounded minimal-source expansion selection”
+     - 目标：在 `F_TRIG`、`CTD/CTUD`、word-expression expansion 等候选里先选一个并设计 fixtures/diagnostics/lowering facts
+   - Deferred Tracks 保留：Story-42 之外的 `F_TRIG/CTD/CTUD` 仍 deferred，直到新 story 选择
+
+4. 更新 `IMPLEMENTATION-READINESS.md`
+   - Story coverage 改到 Story-42
+   - Work Classes 增加/改一行：
+     - `PLC minimal source timer family expansion | Implemented parser/lowering entry`
+   - Next Candidates 改成：
+     - 最新已实现候选是 Story-42
+     - 下一个 PLC-local frontend 候选还未选定
+     - 候选集合：`F_TRIG`、`CTD/CTUD`、narrow word expressions、possibly one more tiny syntax form
+     - 仍要求先设计 story slice spec，不直接写代码
+
+5. 可选检查 `CURRENT-CAPABILITIES.md`
+   - 如果已有 minimal source capability 段落，再补一句 `TOF/TP` 已支持
+   - 如果没有对应段落，这一步可以不碰，避免扩文档面
+
+**验证**
+这次是 docs-only closeout，建议跑：
+
+```bash
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt/plc/docs
+book build
+```
+
+为了保险，也可以再跑一次 PLC 全量：
+
+```bash
+ctest --test-dir /tmp/metanc_plc_build --output-on-failure
+```
+
+**提交**
+建议单独提交：
+
+```text
+docs(plc): close story42 timer source expansion
+```
+
+这个提交之后 Story-42 就正式闭环：`parser -&gt; lowering facts -&gt; generated-style framework execution -&gt; docs status` 全部一致。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:160-178|note=[used PLC planning and validation workflow preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

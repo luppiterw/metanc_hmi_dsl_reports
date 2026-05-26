@@ -16,3 +16,5 @@ Session assets:
   - `2026-05-26-codex-session/README.md`
   - `2026-05-26-codex-session/project-report.md`
   - `2026-05-26-codex-session/conversation-report.md`
+  - `2026-05-26-codex-session/user-history.md`
+  - `2026-05-26-codex-session/codex-conversations/index.html`

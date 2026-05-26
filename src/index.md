@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-05-26` | HMI REF POINT / manual reference return V1, UI-to-mock runtime linkage, generated artifact refresh, structured report/docs rebuild, and MetaNC sync |
 | `2026-05-25` | HMI docs-system/source-boundary hardening, Tool Offset docs cleanup, i18n manifest orphan removal, report/docs rebuild, MetaNC sync, and downstream source-only decontamination |
 | `2026-05-22` | HMI Tool Offset / Work Offset naming convergence, WCS offset alias cleanup, Tool Offset docs directory split, generated artifact refresh, MetaNC sync, and Web/QML UI automation gate for AUTO Cycle Start, Tool Offset, and Work Offset |
 | `2026-05-21` | Session bootstrap and Codex user-history export tooling |

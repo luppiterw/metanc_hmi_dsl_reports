@@ -1,0 +1,1 @@
+{{#include ../architecture-diagram.md}}

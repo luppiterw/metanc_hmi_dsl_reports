@@ -20,6 +20,12 @@ The publication request then required report/docs regeneration, source repo
 synchronization, downstream MetaNC export, commit, and push. The full Codex
 conversation export was refreshed for the session.
 
+After publication, remote CI failed because one QML generator test still
+looked for the old one-level `parameter_view=tool_offset` footer model key.
+The generated UI now intentionally keys Tool List, Tool Wear, and Detail by
+both `parameter_view` and `tool_offset_view`, so the test was updated to assert
+the new composite keys and the CI-equivalent unittest suite was rerun locally.
+
 ## Decisions
 
 - `Tool Mgmt` opens `Tool List` directly.
@@ -48,6 +54,9 @@ conversation export was refreshed for the session.
   default Tool Management subview.
 - The live split Web preview was started on separate ports to avoid older
   preview instances and to verify the updated generated package.
+- The remote CI fix is test-only: it aligns
+  `test_qml_footer_model_keeps_parameter_submenus_separate` with the already
+  generated composite footer-model lookup used by the QML shell.
 
 ## Follow-Up
 

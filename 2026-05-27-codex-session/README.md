@@ -19,6 +19,8 @@ export.
   the default Tool List footer until a dedicated `More` / modules submenu is
   designed.
 - Regenerate Web/QML outputs and snapshots after the hierarchy change.
+- Fix the remote CI regression caused by a stale QML footer-model assertion
+  that still expected the old one-level Tool Offset footer key.
 - Refresh reports and docs portal.
 - Sync the filtered HMI package back into MetaNC `feat/hmi`.
 
@@ -40,11 +42,11 @@ export.
 - Sessions: `4`
 - Primary sessions: `3`
 - Side sessions: `1`
-- User prompts: `31`
+- User prompts: `32`
 - Synthetic events: `1`
-- Messages: `229`
-- User messages: `32`
-- Codex messages: `197`
+- Messages: `263`
+- User messages: `33`
+- Codex messages: `230`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

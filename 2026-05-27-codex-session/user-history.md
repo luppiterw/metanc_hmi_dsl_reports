@@ -26,3 +26,4 @@ Date: 2026-05-27
 - Tool List和Tool Wear似乎没有做子菜单吗，怎么那些功能还是在页面上，
 - 按照你现在的设计，Tool Management是不是进来直接就是Tool List,放个overview好奇怪
 - generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push
+- fix一下metanc_hmi_dsl远端的ci问题，然后再generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push

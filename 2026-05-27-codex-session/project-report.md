@@ -43,6 +43,10 @@ softkey slots for row operations.
   - `parameter_tool_offset_footer_bar`
   - `parameter_tool_list_footer_overview`
   - `parameter_tool_wear_footer_overview`
+- Fixed the remote CI failure from GitHub run `26489282969` by updating the
+  QML footer-model test to assert the new composite Tool Management keys:
+  `parameter_view=tool_offset::tool_offset_view=tool_list`,
+  `tool_wear`, and `detail`.
 - Updated Tool Offset docs and data dictionary to describe Tool Management as
   `Tool Mgmt -> Tool List` by default.
 - Regenerated source outputs and synchronized the filtered HMI package into
@@ -58,6 +62,7 @@ Source HMI validation:
 - `python3 -m unittest -v tests.test_pipeline.PipelineTests.test_parameter_home_is_default_and_subviews_return_home tests.test_pipeline.PipelineTests.test_tool_management_footer_shows_current_and_planned_sections tests.test_pipeline.PipelineTests.test_tool_offset_footer_does_not_expose_structural_tool_edge_commands tests.test_pipeline.PipelineTests.test_tool_offset_standard_extend_detail_share_workspace_footer tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_generator_refactor.GeneratorRefactorTests.test_parameter_footer_groups_follow_visible_state`
 - `python3 -m unittest -v tests.test_ui_automation tests.test_tooling_contract_docs tests.test_web_qml_parity_docs`
 - `python3 -m unittest -v tests.test_qml_smoke.QmlSmokeTests.test_ui_tool_offset_basic_workflow tests.test_qml_smoke.QmlSmokeTests.test_parameter_footer_navigation_round_trip`
+- `python3 -m unittest -v tests.test_pipeline tests.test_parity_scenarios tests.test_sync_scripts tests.test_ui_automation tests.test_ci_workflows`
 - `git diff --check`
 
 MetaNC-side validation:

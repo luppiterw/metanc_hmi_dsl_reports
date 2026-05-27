@@ -4,65 +4,52 @@ Date: 2026-05-27
 
 ## Summary
 
-The session focused on the operator logic of the PARAM Tool Management area.
-After the previous pass introduced true footer submenus for Tool List, Tool
-Wear, and Detail, the user questioned whether Tool Management should open into
-an overview page at all. The conclusion was that the overview created an empty
-extra layer: operators entering Tool Management expect to see the daily Tool
-List immediately.
+The session focused on making PARAM Tool Management easier to understand at the
+operator level. The user first rejected the intermediate Tool Management
+overview as an empty layer, then pushed on the Tool List / Tool Wear / Detail
+layout because the page still felt too wide and the grey `Revert` / `Save`
+buttons made Detail look partially disabled.
 
-The implementation removed that empty layer and made `Tool List` the Tool
-Management default. The resulting hierarchy keeps the frequently used Tool
-List operations on the visible footer while preserving clear navigation to Tool
-Wear and Detail.
-
-The publication request then required report/docs regeneration, source repo
-synchronization, downstream MetaNC export, commit, and push. The full Codex
-conversation export was refreshed for the session.
-
-After publication, remote CI failed because one QML generator test still
-looked for the old one-level `parameter_view=tool_offset` footer model key.
-The generated UI now intentionally keys Tool List, Tool Wear, and Detail by
-both `parameter_view` and `tool_offset_view`, so the test was updated to assert
-the new composite keys and the CI-equivalent unittest suite was rerun locally.
+The resulting design keeps Tool Management direct: `Tool Mgmt` opens Tool List.
+Tool List and Tool Wear now have narrower, clearer tables, and Detail no longer
+looks like an always-editable form. It opens read-only, enters mutation only
+through `Edit` or `Add Edge`, and shows write actions only while a draft is
+active.
 
 ## Decisions
 
 - `Tool Mgmt` opens `Tool List` directly.
-- The intermediate Tool Management overview page is removed for now.
-- Tool List's first footer key is a selected `Tool List` context key, not
-  `Overview`.
-- Tool Wear's first two footer keys are `Tool List` and selected `Tool Wear`.
-- Detail remains a selected-row work page reached from Tool List or Tool Wear.
-- `Add Edge`, `Revert`, and `Save` stay in the Detail footer and are enabled
-  by selected-row and dirty/saveable state.
-- Later module placeholders are not forced into the default Tool List footer;
-  a future module selector or More key should carry Magazine, Monitoring,
-  Sister Tools, and OEM Data.
+- Tool List shows identity and geometry context, not wear values.
+- Tool Wear shows edge wear values, not full geometry.
+- Detail opens in read-only `view`.
+- `Edit` is the selected-row mutation entry point.
+- `Revert` and `Save` appear only in `edit`, `create_tool`, or `create_edge`.
+- `Add Edge` starts a Detail `create_edge` draft instead of opening the old
+  edge form dialog.
+- Saving a new edge selects the returned edge row and switches to Tool Wear so
+  the operator can immediately see the updated wear table.
+- Leaving Detail while an edit/create draft is active cancels or reverts the
+  draft before navigating away.
 
 ## Implementation Notes
 
-- The UI definition change removed the overview visible-state branch and the
-  footer group keyed by `tool_offset_view=overview`.
-- Generator tests were updated to assert that the overview group is absent
-  from the footer model map.
-- Web UI scenario setup now expects `runtime_state.tool_offset_view=tool_list`
-  immediately after pressing `Tool Mgmt`.
-- QML smoke scripts no longer perform an extra footer click before interacting
-  with Tool List actions.
-- The generated runtime seed and data dictionary now use `tool_list` as the
-  default Tool Management subview.
-- The live split Web preview was started on separate ports to avoid older
-  preview instances and to verify the updated generated package.
-- The remote CI fix is test-only: it aligns
-  `test_qml_footer_model_keeps_parameter_submenus_separate` with the already
-  generated composite footer-model lookup used by the QML shell.
+- The retained UI definition now gives Detail state-specific footer candidates
+  for slots 3, 4, and 5.
+- Web and QML command guards share the same state transitions for
+  `view -> edit`, `view -> create_edge`, accepted Save, Revert, and Return.
+- The generated Detail form treats parent tool fields as read-only in
+  `create_edge`, while D number, edge number, length, radius, wear length, and
+  wear radius stay editable.
+- Strict Tool Offset smoke scripts now exercise Add Edge through Detail Save
+  and expect the successful path to land on Tool Wear with the new row selected.
+- Pipeline assertions now lock the absence of read-only-mode `Revert` / `Save`
+  actions as visible controls.
 
 ## Follow-Up
 
-- Keep Tool Management docs and UI wording aligned as the module selector is
-  designed.
-- Avoid grey disabled placeholders for functions that have no page yet unless
-  they are grouped in a clearly labeled future-module area.
+- Re-run strict Web/QML Tool Offset smoke from MetaNC after export because the
+  standalone source checkout intentionally lacks `../tooling_management`.
+- Keep future Tool Management modules behind a dedicated module selector or
+  More flow instead of loading the daily Tool List footer with TODO entries.
 - Continue treating `metanc_hmi_dsl` as the source history owner and MetaNC
   `feat/hmi` as the downstream integration surface.

@@ -4,99 +4,71 @@ Date: 2026-05-27
 
 ## Scope
 
-This pass refines the PARAM Tool Management hierarchy and publication surface
-after the first two-level footer-menu implementation. The user rejected the
-intermediate Tool Management overview because it created an empty navigation
-hop before the operator reached the daily `Tool List` work surface.
+This pass refines PARAM Tool Management after operator review of the first
+two-level footer implementation. The goals were to make the Tool List / Tool
+Wear / Detail hierarchy easier to understand, remove the empty overview hop,
+avoid wide tables, and make Detail editing state obvious.
 
-The final design treats `Tool Mgmt` as the Tool List entry point. Tool List,
-Tool Wear, and Detail each own their own footer submenu. Planned modules remain
-documented as later Tool Management scope, but they are not shown in the
-default Tool List footer because the active workflow needs the available
-softkey slots for row operations.
+The final model treats `Tool Mgmt` as the direct Tool List entry point. Tool
+List owns daily identity plus geometry inspection, Tool Wear owns edge-wear
+editing, and Detail owns less frequent selected-row edits plus Add Edge drafts.
 
 ## Delivered
 
-- Changed the default `runtime_state.tool_offset_view` from the previous
-  intermediate view to `tool_list`.
-- Updated PARAM `Tool Mgmt` entry actions so the first operator-visible Tool
-  Management page is `Tool List`.
-- Removed the Tool Management overview page and its overview footer group.
-- Replaced the Tool List footer's `Overview` softkey with a selected `Tool
-  List` key.
-- Replaced the Tool Wear footer's `Overview` key with `Tool List` and a
-  selected `Tool Wear` key.
-- Preserved Detail footer behavior:
-  - `Tool List`
-  - `Tool Wear`
-  - `Add Edge`
-  - `Revert`
-  - `Save`
-  - `Return`
-- Updated QML footer-model fallback logic so `page_parameters` defaults to the
-  `tool_list` footer group.
-- Updated Web/QML smoke scripts and Web UI scenario JSON so they no longer
-  click through an overview before reaching Tool List.
-- Updated generated snapshots and tests to assert that old overview nodes are
-  absent:
-  - `parameter_tool_management_overview`
-  - `parameter_tool_offset_footer_bar`
-  - `parameter_tool_list_footer_overview`
-  - `parameter_tool_wear_footer_overview`
-- Fixed the remote CI failure from GitHub run `26489282969` by updating the
-  QML footer-model test to assert the new composite Tool Management keys:
-  `parameter_view=tool_offset::tool_offset_view=tool_list`,
-  `tool_wear`, and `detail`.
-- Updated Tool Offset docs and data dictionary to describe Tool Management as
-  `Tool Mgmt -> Tool List` by default.
-- Regenerated source outputs and synchronized the filtered HMI package into
-  MetaNC `feat/hmi`.
-- Started a fresh split Web tooling preview on `8050/8051` and verified the
-  runtime seed and front-end bundle.
+- Kept `Tool Mgmt` landing directly on `Tool List` instead of an intermediate
+  overview page.
+- Split the active table columns:
+  - Tool List: `T`, `D`, `Tool Name`, `Type`, `Edge`, `Status`, `Length`,
+    `Radius`
+  - Tool Wear: `T`, `D`, `Tool Name`, `Edge`, `Wear L`, `Wear R`, `Status`
+- Changed Detail into an explicit state machine:
+  - `view`: read-only selected-row context with `Add Edge` and `Edit`
+  - `edit`: editable selected-row draft with `Revert` and `Save`
+  - `create_edge`: frozen parent tool context plus editable new edge fields
+- Hid `Revert` and `Save` in read-only Detail view so grey inactive write
+  controls do not imply a missing backend function.
+- Moved Add Edge from the old edge-dialog path into the Detail `create_edge`
+  draft path. Accepted Save now refreshes the table, selects the returned edge
+  row, and switches the operator to Tool Wear.
+- Made Detail navigation cancel or revert active edit/create drafts before
+  returning to Tool List or Tool Wear.
+- Updated Web and QML command guards, generated snapshots, strict smoke scripts,
+  and pipeline assertions for the new Detail-state behavior.
+- Updated Tool Offset project docs, status matrix, changelog, and this report
+  to match the implementation.
 
 ## Validation
 
-Source HMI validation:
+Source HMI validation before downstream sync:
 
-- `./tools/generate_targets.sh`
-- `python3 -m unittest -v tests.test_pipeline.PipelineTests.test_parameter_home_is_default_and_subviews_return_home tests.test_pipeline.PipelineTests.test_tool_management_footer_shows_current_and_planned_sections tests.test_pipeline.PipelineTests.test_tool_offset_footer_does_not_expose_structural_tool_edge_commands tests.test_pipeline.PipelineTests.test_tool_offset_standard_extend_detail_share_workspace_footer tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_generator_refactor.GeneratorRefactorTests.test_parameter_footer_groups_follow_visible_state`
-- `python3 -m unittest -v tests.test_ui_automation tests.test_tooling_contract_docs tests.test_web_qml_parity_docs`
-- `python3 -m unittest -v tests.test_qml_smoke.QmlSmokeTests.test_ui_tool_offset_basic_workflow tests.test_qml_smoke.QmlSmokeTests.test_parameter_footer_navigation_round_trip`
-- `python3 -m unittest -v tests.test_pipeline tests.test_parity_scenarios tests.test_sync_scripts tests.test_ui_automation tests.test_ci_workflows`
+- `env HMI_SERVER_NATIVE_BUILD_MODE=host ./tools/generate_targets.sh`
+- `python3 -m unittest -v tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_pipeline.PipelineTests.test_tool_management_footer_shows_current_and_planned_sections tests.test_pipeline.PipelineTests.test_tool_offset_standard_extend_detail_share_workspace_footer`
+- `python3 -m unittest -v tests.test_tooling_contract_docs.ToolingContractDocsTests.test_phase6_smoke_scripts_are_repository_owned`
+- `node --check tools/tool_offset_web_strict_smoke.js`
+- `node --check tests/qml_smoke/tool_offset_strict_runtime.js`
+- `env HMI_SKIP_HEAVY_SNAPSHOT_TESTS=1 HMI_ENABLE_QML_VISUAL_SNAPSHOT=0 HMI_ENABLE_WEB_VISUAL_SNAPSHOT=0 python3 -m unittest -v tests.test_pipeline tests.test_parity_scenarios tests.test_sync_scripts tests.test_ui_automation tests.test_ci_workflows`
 - `git diff --check`
 
-MetaNC-side validation:
-
-- `./tools/generate_targets.sh`
-- `python3 -m unittest -v tests.test_pipeline.PipelineTests.test_parameter_home_is_default_and_subviews_return_home tests.test_pipeline.PipelineTests.test_tool_management_footer_shows_current_and_planned_sections tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots tests.test_generator_refactor.GeneratorRefactorTests.test_parameter_footer_groups_follow_visible_state tests.test_ui_automation tests.test_tooling_contract_docs tests.test_web_qml_parity_docs`
-- `python3 -m unittest -v tests.test_qml_smoke.QmlSmokeTests.test_ui_tool_offset_basic_workflow tests.test_qml_smoke.QmlSmokeTests.test_parameter_footer_navigation_round_trip`
-- `git diff --check -- nrt/hmi`
-- `GET /api/runtime/health` returned OK on `8051`
-- `GET /api/runtime/state` showed `runtime_state.tool_offset_view` as
-  `tool_list`
-- the fetched Web bundle contained the new Tool List / Tool Wear footer node
-  ids and did not contain the removed overview node ids
+The standalone strict Web smoke was intentionally deferred until MetaNC sync
+because the standalone source checkout does not contain
+`../tooling_management`.
 
 ## Boundary Notes
 
-This is a UI hierarchy and generated-client change. It does not alter
-`tooling_management` data ownership, persistence, command contracts, or the
-native tooling backend.
+This is an HMI workflow and generated-client change. It does not alter the
+`tooling_management` persistence model, internal `tool_id` / `edge_id`
+authority, or the native backend command contracts.
 
-The planned Magazine, Monitoring, Sister Tools, and OEM Data modules are still
-recognized as Tool Management scope. They should be surfaced through a later
-modules/more submenu rather than competing with Tool List row operations in the
-default footer.
-
-The QML smoke logs still report the known Repeater binding-loop warning during
-test startup. The smoke tests complete successfully and the warning is not new
-to this hierarchy pass.
+Planned Magazine, Monitoring, Sister Tools, and OEM Data modules remain Tool
+Management scope, but they are still future module entries rather than active
+default Tool List footer actions.
 
 ## Remaining Work
 
-- Design the later Tool Management modules/more submenu for Magazine,
-  Monitoring, Sister Tools, and OEM Data.
-- Decide whether module placeholders should be visible only in docs, in a
-  future disabled module selector, or behind a More softkey.
-- Continue refining Tool Detail validation and command feedback as backend
-  identity-edit semantics mature.
+- Run the MetaNC-side strict Tool Offset smoke after export, where the real
+  `tooling_management` source is available.
+- Decide how a later Tool Management module selector should expose Magazine,
+  Monitoring, Sister Tools, and OEM Data without displacing daily Tool List
+  operations.
+- Continue refining Detail validation copy and backend conflict diagnostics as
+  product semantics mature.

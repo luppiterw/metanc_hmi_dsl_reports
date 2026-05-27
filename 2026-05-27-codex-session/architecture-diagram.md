@@ -5,20 +5,25 @@ flowchart LR
   Param[PARAM Home] --> ToolMgmt[Tool Mgmt]
   ToolMgmt --> ToolList[Tool List default view]
 
-  ToolList --> ListFooter[Tool List footer]
+  ToolList --> ListTable[Identity + geometry table]
+  ListTable --> ListFooter[Tool List footer]
   ListFooter --> Wear[Tool Wear]
-  ListFooter --> Detail[Detail]
-  ListFooter --> ListOps[Add Tool / Add Edge / Refresh / Enable / Disable / Remove]
+  ListFooter --> DetailView[Detail view]
+  ListFooter --> AddTool[Add Tool dialog]
+  ListFooter --> ListOps[Refresh / Enable / Disable / Remove]
 
-  Wear --> WearFooter[Tool Wear footer]
+  Wear --> WearTable[Edge wear table]
+  WearTable --> WearFooter[Tool Wear footer]
   WearFooter --> ToolList
-  WearFooter --> Detail
-  WearFooter --> WearOps[Refresh / Enable / Disable]
+  WearFooter --> DetailView
 
-  Detail --> DetailFooter[Detail footer]
-  DetailFooter --> ToolList
-  DetailFooter --> Wear
-  DetailFooter --> DetailOps[Add Edge / Revert / Save]
+  DetailView --> ViewFooter[view footer: Add Edge / Edit]
+  ViewFooter --> EditDraft[Detail edit draft]
+  ViewFooter --> EdgeDraft[Detail create_edge draft]
+  EditDraft --> EditFooter[edit footer: Revert / Save]
+  EdgeDraft --> EdgeFooter[create_edge footer: Revert / Save]
+  EdgeFooter --> SavedEdge[Accepted Save selects new edge]
+  SavedEdge --> Wear
 
   Future[Future module selector] -. later .-> Magazine[Magazine]
   Future -. later .-> Monitoring[Monitoring]
@@ -27,6 +32,5 @@ flowchart LR
 ```
 
 The default Tool Management path is deliberately short: PARAM opens Tool
-Management and the operator lands on Tool List. Future modules should be added
-through a dedicated selector so the Tool List footer remains focused on daily
-row operations.
+Management and the operator lands on Tool List. Detail write actions are
+state-specific so read-only review does not look like a disabled editing mode.

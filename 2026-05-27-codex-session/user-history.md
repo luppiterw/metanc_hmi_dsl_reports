@@ -27,3 +27,10 @@ Date: 2026-05-27
 - 按照你现在的设计，Tool Management是不是进来直接就是Tool List,放个overview好奇怪
 - generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push
 - fix一下metanc_hmi_dsl远端的ci问题，然后再generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push
+- 看一下现在刀具管理这块的情况
+- 你觉得现在合理吗
+- 你觉得怎么调整合适
+- 可以 按照你的建议改一下
+- generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push
+- 注意要先测试无误再sync+commit+push
+- 也要确保remote ci无误

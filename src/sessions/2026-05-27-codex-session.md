@@ -2,8 +2,9 @@
 
 Focus:
 
-- HMI Tool Management hierarchy cleanup, Tool List default entry, generated
-  artifact refresh, docs/report rebuild, and MetaNC sync
+- HMI Tool Management Detail-state cleanup, Tool List/Tool Wear responsibility
+  split, Add Edge Detail draft flow, generated artifact refresh, docs/report
+  rebuild, MetaNC sync, and remote CI follow-through
 
 Session assets:
 

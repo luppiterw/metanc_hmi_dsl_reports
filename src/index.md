@@ -35,7 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
-| `2026-05-27` | HMI Tool Management hierarchy cleanup, Tool List default entry, generated artifact refresh, docs/report rebuild, and MetaNC sync |
+| `2026-05-27` | HMI Tool Management Detail-state cleanup, Tool List/Tool Wear responsibility split, Add Edge Detail draft flow, generated artifact refresh, docs/report rebuild, MetaNC sync, and remote CI follow-through |
 | `2026-05-26` | HMI REF POINT / manual reference return V1, Tool Offset Detail hierarchy/layout/dirty-state refinement, split Web tooling startup hardening for backend port reuse, generated artifact refresh, structured report/docs rebuild, and MetaNC sync |
 | `2026-05-25` | HMI docs-system/source-boundary hardening, Tool Offset docs cleanup, i18n manifest orphan removal, report/docs rebuild, MetaNC sync, and downstream source-only decontamination |
 | `2026-05-22` | HMI Tool Offset / Work Offset naming convergence, WCS offset alias cleanup, Tool Offset docs directory split, generated artifact refresh, MetaNC sync, and Web/QML UI automation gate for AUTO Cycle Start, Tool Offset, and Work Offset |

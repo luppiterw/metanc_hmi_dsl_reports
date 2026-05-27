@@ -1,7 +1,7 @@
 # 2026-05-27 Codex Session Report
 
 This directory records the structured project report for the 2026-05-27 HMI
-Tool Management hierarchy and publication pass.
+Tool Management Detail-state, table-responsibility, and publication pass.
 
 The session includes the implementation summary, decision notes, validation
 evidence, synchronization notes, prompt history, and a full Codex conversation
@@ -11,10 +11,14 @@ export.
 
 - Rework PARAM Tool Management so `Tool Mgmt` opens directly into `Tool List`
   instead of an empty overview layer.
-- Replace page-local Tool List / Tool Wear / Detail action rows with true
-  second-level footer softkey menus.
-- Keep Detail actions scoped to selected-row editing: `Add Edge`, `Revert`,
-  and `Save`.
+- Separate Tool List and Tool Wear responsibilities: Tool List shows identity
+  plus geometry, while Tool Wear focuses edge wear values.
+- Make Detail an explicit state machine: read-only `view`, selected-row `edit`,
+  and `create_edge` for adding another cutting edge to the selected tool.
+- Keep Detail actions scoped to selected-row/draft editing: `Add Edge` in
+  read-only view, `Edit` for selected-row mutation, and `Revert`/`Save` only
+  while an edit or create draft is active.
+- Route accepted Add Edge saves to Tool Wear with the new edge row selected.
 - Keep later Magazine, Monitoring, Sister Tools, and OEM Data modules out of
   the default Tool List footer until a dedicated `More` / modules submenu is
   designed.
@@ -42,11 +46,11 @@ export.
 - Sessions: `4`
 - Primary sessions: `3`
 - Side sessions: `1`
-- User prompts: `32`
+- User prompts: `45`
 - Synthetic events: `1`
-- Messages: `263`
-- User messages: `33`
-- Codex messages: `230`
+- Messages: `366`
+- User messages: `46`
+- Codex messages: `320`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

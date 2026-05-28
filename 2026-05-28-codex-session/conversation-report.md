@@ -14,11 +14,12 @@ in `create_tool`, the operator edits the same detail fields used by other draft
 states, and `Save` calls the existing create command. This removes the old
 separate dialog mental model.
 
-The second thread was Magazine. Instead of treating Magazine as a TODO-only
-entry, the pass added a first useful read-only page: pocket occupancy, assigned
-tool context, and Detail navigation for occupied pockets. Backend support was
-added to both mock and real `tooling_management`, with strict Web/QML smoke
-run from the MetaNC checkout where the real backend source is present.
+The second thread was Magazine. Instead of leaving it as a TODO-only entry or an
+early limited projection, the pass promoted it to a V2 operator workflow: find an
+empty pocket, create a tool at a pocket through Detail, assign an existing tool,
+move an occupied pocket to an enabled empty target, and unload a pocket. Backend
+support was added to both mock and real `tooling_management` HMI paths, with
+contract parity for the new move command.
 
 ## Decisions
 
@@ -28,11 +29,12 @@ run from the MetaNC checkout where the real backend source is present.
 - Route `Add Tool` to Detail `create_tool`.
 - Keep `Add Edge` in Detail `create_edge`.
 - Show `Revert` and `Save` only while a Detail draft is active.
-- Introduce Magazine as a Tool Management module now, but only as read-only V1.
+- Introduce Magazine as a Tool Management module now, with V2
+  create/assign/move/unload workflows.
 - Use `tooling.magazine.table` as the read model for Magazine.
 - Let Magazine open the assigned tool in Detail when the pocket has a tool.
-- Keep magazine mutation commands out of scope until load/unload/move semantics
-  are designed.
+- Keep loading-station, measurement, oversize adjacency, and replacement policy
+  out of scope until those product semantics are designed.
 
 ## Implementation Notes
 
@@ -46,13 +48,18 @@ run from the MetaNC checkout where the real backend source is present.
   `tool.commands.create_offset_entry`.
 - The real backend maps Magazine pockets through the `tooling_management` core
   and enriches rows with tool identity and edge counts.
+- `tool.commands.move_tool_magazine_pocket` validates the occupied source,
+  enabled empty target, stale magazine revision, and real backend relocate
+  intent before updating the tool location.
+- QML footer model selection now matches generated conditional footer groups by
+  evaluating all `page::state=value` segments, so the Magazine move footer is
+  selected at runtime.
 - The docs portal generator now includes the Magazine page in downstream
   materialization so MetaNC does not lose the new navigation entry.
 
 ## Follow-Up
 
-- Convert Magazine actions from read-only navigation to true magazine workflows
-  after product semantics are agreed.
+- Add loading-station and measurement flows after product semantics are agreed.
 - Keep future Tool Monitoring, Sister Tools, and OEM Data as sibling Tool
   Management modules, not as extra Tool List columns.
 - Continue publishing detailed HMI history in `metanc_hmi_dsl` while exporting

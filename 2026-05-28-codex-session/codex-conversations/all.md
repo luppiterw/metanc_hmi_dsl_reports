@@ -3205,4 +3205,3 @@ Planned action JSON:
 ```
 {"outcome":"allow","rationale":"Running the local offscreen QML smoke against the real tooling-management backend is a reversible localhost-only validation step for the user-requested HMI changes.","risk_level":"low","user_authorization":"high"}
 ```
-

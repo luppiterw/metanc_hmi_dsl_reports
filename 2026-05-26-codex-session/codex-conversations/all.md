@@ -58637,4 +58637,3 @@ Planned action JSON:
 ```
 {"outcome":"allow","rationale":"Low-risk read-only localhost HEAD request to verify the running frontend is responding; no meaningful side effects.","risk_level":"low","user_authorization":"high"}
 ```
-

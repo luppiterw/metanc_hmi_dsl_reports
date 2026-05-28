@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4eea-1061-7151-936c-389847210f40</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-22 17:00:23 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/22/rollout-2026-05-22T17-00-23-019e4eea-1061-7151-936c-389847210f40.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-22 17:00:23 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-22&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-22 17:00:23 +0800</div>
+<pre>请只做只读审查，不要修改文件。工作区重点：/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi 和 /home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi。审查主题 A：当前 HMI docs 系统的信息架构和目录组织，尤其是 docs/project/tool_offset 拆分后是否仍有过长文档、重复入口、旧命名/旧路径残留、SUMMARY/project index/测试引用不一致。请输出：1) findings 按严重程度排序，带文件路径/行号；2) 没问题也明确说；3) 建议的后续收口项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-22 17:00:33 +0800</div>
+<pre>我会按只读审查处理，不改文件。先读取项目根说明、架构索引和适用的文档审查技能，再定位两个 HMI 文档树的入口、索引和测试引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-22 17:00:46 +0800</div>
+<pre>技能路径在这个仓库里，不在全局目录；我会从仓库本地 skill 继续。内存里确认了这类 HMI 文档同步通常需要同时看源仓和 MetaNC 下游镜像，所以接下来会并行检查两个 `nrt/hmi` 树的 README、AGENTS、SUMMARY、project/tool_offset 和测试引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-22 17:01:00 +0800</div>
+<pre>当前文件清单显示两边文档树基本镜像，但 MetaNC 额外有 `docs/src/`，源仓有 reports/docs_i18n/tools 相关内容。下面重点看导航文件、project index、tool_offset 拆分页长度和旧路径引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-22 17:01:29 +0800</div>
+<pre>`README.md` 自身已经变得很长，且把许多实现拆分历史塞在入口页；我会先把这作为候选问题验证，再看是否与 docs 内部入口重复或冲突。接着用行号读取 `project/index.md` 和 tool_offset 子页，并扫旧路径/旧命名引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-22 17:01:49 +0800</div>
+<pre>初扫里有几个明显候选：`create_and_edit.md` / `workflows.md` 可能只是跳转页，`project/index.md` 和 `SUMMARY.md` 都完整展开同一棵 tool_offset 子目录，测试里还特别保护 `project/index.md` 的导入/导出策略。现在我会验证这些是否真会造成入口重复或同步不一致，并排除生成快照噪声。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-22 17:02:08 +0800</div>
+<pre>同步脚本显示 `docs/project/index.md` 和 `docs/project/reports.md` 是源仓本地保留面，不能简单从 MetaNC 回灌；这会放大项目索引与 SUMMARY 的一致性风险。还需要确认两边是否已经实际分叉，以及 `docs/src` 这类 bookshelf 入口有没有旧根残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-22 17:02:26 +0800</div>
+<pre>MetaNC 镜像里的 `README.md`/`AGENTS.md` 仍描述 `docs_i18n/` 和 reports submodule，但这些目录在 MetaNC `nrt/hmi` 不存在；这比单纯“旧命名”更像下游入口文档的误导。最后我会补一轮存在性和关键行号确认，然后整理 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-05-22 17:03:23 +0800</div>
+<pre>**Findings**
+
+1. **High: MetaNC 下游入口文档仍指向源仓专属目录/流程，读者会在 `MetaNC/nrt/hmi` 执行不存在的报告子模块流程。**
+   - [MetaNC/nrt/hmi/README.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/README.md:123) 仍列出 `docs_i18n/`；同页 [line 125](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/README.md:125)、[line 330](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/README.md:330)、[line 333](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/README.md:333) 仍要求/描述 `submodules/metanc_hmi_dsl_reports/`。
+   - [MetaNC/nrt/hmi/AGENTS.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/AGENTS.md:22) 也列出该 submodule，并在 [line 36](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/AGENTS.md:36) 把 `mdbook build submodules/metanc_hmi_dsl_reports` 放进最小 gate。
+   - 实际 `MetaNC/nrt/hmi` 下没有 `docs_i18n/` 或 `submodules/`，只有 `docs_html/`。这会让下游维护者按错误路径排查/验证。
+
+2. **High: PARAM/tool-offset 计划页保留旧状态描述，和当前 Phase 6 footer/tool-offset 文档及测试引用冲突。**
+   - [parameter_home_navigation_plan.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/parameter_home_navigation_plan.md:122) 说 `selected_tool_id` 是当前/legacy 状态且“next tool-offset slice”才替换为 row-key。
+   - 同页 [line 226](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/parameter_home_navigation_plan.md:226) 说 CRUD 控件仍在 page body。
+   - 但 [tool_offset/index.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/tool_offset/index.md:96) 已把 create/edit/add-edge/remove/refresh 等拆成当前阅读路径，[ui_design.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/tool_offset/ui_design.md:195) 描述 Phase 6 footer/detail-local Add Edge，测试也在 [tests/test_pipeline.py](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/tests/test_pipeline.py:168) 覆盖 footer-only 行为。读者会误判当前实现阶段。
+
+3. **Medium: Tool Offset 拆分后留下两个几乎空的二级入口，并且同时出现在 `SUMMARY.md` 和 `project/index.md`，导航重复。**
+   - [workflows.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/tool_offset/workflows.md:1) 只有 7 行，只是跳转到子页。
+   - [create_and_edit.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/tool_offset/create_and_edit.md:1) 也只有 7 行。
+   - 它们作为章节同时在 [docs/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/SUMMARY.md:93) 和 [project/index.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/index.md:14) 展开。结果是读者看到两层“入口页”，但真正内容在第三层。
+
+4. **Medium: 仍有过长项目文档，tool_offset 拆分没有解决 `project/` 整体可读性问题。**
+   - 当前较长文件包括 [server_migration_plan.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/server_migration_plan.md:1) 573 行、[server_doc_topology.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/server_doc_topology.md:1) 493 行、[runtime_split_execution_plan.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/docs/project/runtime_split_execution_plan.md:1) 399 行、[README.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/README.md:1) 437 行。
+   - 入口 README 尤其把 PROG/DEBUG/QML fragment 拆分历史放在 [README.md](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/README.md:20) 到 [line 80](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/nrt/hmi/README.md:80)，不再像入口页，而像变更日志。
+
+**没发现的问题**
+
+- `metanc_hmi_dsl` 与 `MetaNC` 两边的 `docs/SUMMARY.md`、`docs/project/index.md` 当前内容一致；我没有发现这两个文件之间已实际分叉。
+- `docs/src/` 在 MetaNC 侧只是 bookshelf 兼容入口，内容很短，未发现它和主 `docs/SUMMARY.md` 直接冲突。
+
+**建议收口项**
+
+1. 给 `MetaNC/nrt/hmi` 单独收敛入口文档：删除或改写 `docs_i18n/`、reports submodule、源仓 sync helper 等源仓专属说明，只保留 downstream 实际可执行 gate。
+2. 将 `parameter_home_navigation_plan.md` 标成历史页或更新为当前状态，尤其删除“next slice”和“CRUD controls still live in body”的旧描述。
+3. 合并或移除 `workflows.md` / `create_and_edit.md` 这种纯跳转页，让 `tool_offset/index.md` 直接承担阅读路径。
+4. 对 `project/` 下 300+ 行文档做归档/拆分：保留当前执行状态页，历史计划移到 appendix 或 dated archive，避免 `Project` 目录继续累积长计划文档。
+5. 加一个轻量文档一致性检查：验证 `SUMMARY.md` 与 `project/index.md` 的 tool_offset 子页列表一致，并验证 MetaNC 侧文档不引用被 export 排除的源仓专属目录。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:727-760|note=[confirmed this review spans metanc_hmi_dsl source and MetaNC downstream sync surfaces]
+MEMORY.md:853-863|note=[used prior HMI docs sync model and source-only downstream export rules]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019dcc96-763c-7e91-a12f-3a6fb04d3088
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

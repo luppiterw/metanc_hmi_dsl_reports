@@ -28,3 +28,21 @@
 
 Raw Codex history export was intentionally not refreshed in this publication pass.
 The report records structured project results and validation evidence only.
+- `codex-conversations/`: Codex 完整会话导出目录
+
+<!-- codex-full-export:start -->
+## Complete Codex Conversation Export
+
+- Scope: `2026-05-25`
+- Sessions: `9`
+- Primary sessions: `7`
+- Side sessions: `2`
+- User prompts: `143`
+- Synthetic events: `1`
+- Messages: `874`
+- User messages: `144`
+- Codex messages: `730`
+- HTML index: [Open](codex-conversations/index.html)
+- Single-page HTML: [Open](codex-conversations/all.html)
+- Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>
+<!-- codex-full-export:end -->

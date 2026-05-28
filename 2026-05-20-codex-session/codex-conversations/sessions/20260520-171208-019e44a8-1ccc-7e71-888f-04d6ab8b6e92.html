@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e44a8-1ccc-7e71-888f-04d6ab8b6e92</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 17:12:08 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/20/rollout-2026-05-20T17-12-08-019e44a8-1ccc-7e71-888f-04d6ab8b6e92.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 17:12:08 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 17:12:08 +0800</div>
+<pre>Single-agent re-review of the current revised PLC STORY-28 docs after latest fixes. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and entries in rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md. Do not edit files. Review all three angles: first-time reader comprehension, implementation-readiness, and documentation structure consistency. Specifically check the previous concerns: boolean parser/executor boundary, scenario-runner caller scope, RuntimeSignalCatalog source, Slice 03 observation code matrix, missing-name InvalidArgument, decision heading hierarchy/model-area links, and canonical line examples. Return only validated findings with file/line references and concrete fixes. If no blocking issues remain, say that clearly and list residual risks briefly.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 17:12:24 +0800</div>
+<pre>I’ll use the `review-docs-comprehension` skill for the documentation review, and I’ll keep this strictly read-only within the paths you listed. I’m starting with the required repo orientation, then I’ll validate the prior concern list against current line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 17:12:44 +0800</div>
+<pre>The root README points at the repo documentation and the local PLC scope is explicit in memory, so I’m narrowing the pass to `rt/plc` docs only. Next I’m reading the architecture codemap and the PLC-local contributor files before opening the STORY-28 material.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 17:12:57 +0800</div>
+<pre>The skill file confirms I should filter out weak or stylistic concerns. I’ve also confirmed the allowed file set, and there’s only an `rt/plc/README.md` contributor file in that module; I’m reading it with the codemap section that names the PLC boundary.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 17:13:17 +0800</div>
+<pre>I’ve finished the required orientation and am now reading the STORY-28 files in line-numbered form. I’m treating “implementation-readiness” as whether the docs give an implementer enough unambiguous contract detail inside the allowed doc scope, not as a code audit outside that scope.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 17:14:04 +0800</div>
+<pre>I have the full STORY-28 set and the three index files open with line numbers. I’m now validating each of the named prior concerns against the current text and discarding anything that is now clearly addressed or only stylistic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 17:14:30 +0800</div>
+<pre>Most of the named concerns are now textually addressed: the boolean normalization boundary, scenario-runner future scope, and signal catalog sources all have direct statements. I’m doing one targeted link/heading sanity check now so the decision-record navigation finding, if any, is based on the current anchors rather than guesswork.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-20 17:16:20 +0800</div>
+<pre>No blocking issues remain.
+
+**Finding: Slice 03 canonical line records are still underspecified.**
+[SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:11) says observation commands return canonical `lines`, and lines 27-34 make those records the reusable executor output. The matrix at lines 41-49 defines status/code behavior, but not the line schema for `inputs`, `outputs`, `do`, `virtual`, `behaviors`, `dispatch`, or `motion`. The only examples are Slice 01 examples like `state=RUNNING` and `completed_scans=3` in [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:96).
+
+Concrete fix: add a “Canonical Lines” table to Slice 03 with one required record shape per observation command, including the no-motion/not-configured case, and extend the validation plan to assert representative line records, not just status/code.
+
+Residual risk: the docs now resolve the prior boundary concerns I checked, but implementation may still choose incompatible line keys unless Slice 03 pins them down before coding.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-5|note=[confirmed this is the MetaNC rt/plc docs workflow scope]
+MEMORY.md:58-65|note=[kept review scope strictly inside rt/plc and read-only]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

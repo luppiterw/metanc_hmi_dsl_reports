@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e449c-4354-7812-ab31-0422a8dbbf77</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:59:12 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/20/rollout-2026-05-20T16-59-12-019e449c-4354-7812-ab31-0422a8dbbf77.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:12 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:12 +0800</div>
+<pre>Re-review the current revised PLC STORY-28 docs for documentation structure and consistency after latest fixes. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**. Do not edit files. Check mdBook navigation, relative links, front matter, status terminology, SPEC/INV numbering, decision-record placement, and consistency with nearby PLC story docs. Return only findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:59:41 +0800</div>
+<pre>I’ll keep this as a documentation review only. I’m going to read the required repo orientation first, then the PLC module guidance and the scoped STORY-28 files with line numbers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 17:00:48 +0800</div>
+<pre>The scope is PLC docs, so I’m also doing the lightweight project-memory pass and using the docs review skill. I’ll keep the review grounded in the current files, not memory.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 17:01:17 +0800</div>
+<pre>The PLC boundary is the `Machine Logic Layer` area in the architecture map. Next I’m reading the scoped files with line numbers and a small set of nearby story/decision docs for pattern comparison.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 17:03:08 +0800</div>
+<pre>I’ve finished the first pass through STORY-28 and the adjacent Story-25/26/27 patterns. I’m checking link/navigation mechanics and metadata consistency now so any findings are concrete rather than style preferences.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-20 17:07:28 +0800</div>
+<pre>Finding 1: Decision record heading hierarchy is inconsistent with the local decision-record template and nearby records. [0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:8) uses `## Context`, `## Decision`, `## Alternatives Considered`, and `## Consequences` at the same level as the record title on line 1. Nearby records use `## NNNN...` for the title, then `###` / `####` below it. Concrete fix: demote lines 8, 17, 23, 41, 54 from `##` to `###`, and lines 25, 33, 43, 48 from `###` to `####`.
+
+Finding 2: Slice 03 does not define `InvalidArgument` consistently for missing required observation names. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:38) only covers unused fields, while lines 45-46 require `name` for `GetDigitalOutput` and `GetVirtualSignal` but omit `error/invalid-argument`. Slice 01 includes invalid-argument for required-field validation in the comparable command matrix. Concrete fix: change line 38 to cover “missing required fields or unused fields”, and add `error/invalid-argument` to the Error codes cells on lines 45 and 46.
+
+Finding 3: Boolean parsing ownership is split between executor and terminal parser. [SLICE-01-command-model-and-executor/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:63) says boolean parsing accepts terminal spellings, while [SLICE-02-simulator-adapter-refactor/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:57) says invalid bool text is rejected by the parser. Concrete fix: choose one boundary. Either state that the terminal parser normalizes `true/1/on/false/0/off` into canonical command values and executor tests use canonical values, or state that the executor parses all boolean spellings and update Slice 02 line 57 to say the executor returns `InvalidArgument`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[PLC docs scope context]
+MEMORY.md:67-71|note=[PLC docs workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

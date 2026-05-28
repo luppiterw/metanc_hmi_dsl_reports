@@ -12529,6 +12529,1109 @@ Planned action JSON:
 </section>
 
 </section>
-</main>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4480-4f3d-7e41-8a3e-8400f641783c</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:28:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-28-40-019e4480-4f3d-7e41-8a3e-8400f641783c.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre>Review the newly added PLC STORY-28 docs for first-time reader comprehension. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/** plus its entries in rt/plc/docs/SUMMARY.md and rt/plc/docs/spec/STORIES/INDEX.md. Do not edit files. Focus on reading order, boundary clarity, terminology, redundancy, and whether a reviewer can tell this is runtime command primitives, not PLC language AST/DSL. Return findings only, prioritized, with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:28:58 +0800</div>
+<pre>I’ll use the docs-comprehension review skill for this, and I’ll keep this to inspection only. I’m starting with the required repo orientation plus a quick memory pass for PLC review context, then I’ll read only the scoped STORY-28 files and index entries.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:29:27 +0800</div>
+<pre>The initial skill path I tried was the global path, but this repo has its own copy under `.agents/skills`. I’ve got the repository-level orientation and PLC memory context; next I’m reading the module docs and the exact STORY-28 pages with line numbers so the review can stay within the requested scope.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:30:09 +0800</div>
+<pre>The docs tree shows STORY-28 is planned and linked from the story index. I’m now reading the story and slice pages in order, then I’ll validate any candidate comprehension issues against the nearby text before reporting only the ones that survive.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:33:08 +0800</div>
+<pre>I’ve finished the first pass and am validating a few candidate issues against the text so I don’t report normal story/spec repetition as a defect. The main checks now are naming consistency, in-scope adapter work, and whether the command/result contract gives one clear implementation target.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-20 16:35:23 +0800</div>
+<pre>1. **Command naming is not canonicalized.**
+   Location: [STORY.md:63](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:63) uses snake_case examples like `step_once` / `get_signal`; [SLICE.md:25](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:25) defines PascalCase enum names; [SLICE.md:33](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:33) maps terminal commands; [SPEC-071.md:20](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SPEC-071.md:20) uses enum-style observation names.
+   Reader effect: a reviewer cannot tell whether snake_case strings, terminal spellings, or enum values are the intended runtime-command contract. `get_signal` is especially ambiguous because later docs split it into `do &lt;name&gt;` / `virtual &lt;name&gt;` and `GetDigitalOutput` / `GetVirtualSignal`.
+   Fix: add a “Naming convention” paragraph before the category table, then make one table own the mapping: conceptual operation, canonical `RuntimeCommandKind`, and terminal adapter spelling.
+   Confidence: 4. Impact: 3.
+
+2. **Observation result structure is overstated.**
+   Location: [SLICE.md:11](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:11) says observation commands move behind “structured `CommandResult` data,” but [SLICE.md:65](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:65) only defines `status`, `code`, `message`, and terminal `lines`; [SLICE.md:27](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:27) defers typed value trees.
+   Reader effect: a reviewer may expect JSON-ready observation payloads in STORY-28, or may not know what “structured” means beyond status/code assertions.
+   Fix: state explicitly that STORY-28 observation payloads remain terminal `lines`; only status/code/message and command semantics are stable. Defer typed observation payloads by name.
+   Confidence: 4. Impact: 3.
+
+3. **Operator control is labeled as fault control.**
+   Location: [STORY.md:42](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:42) lists “lifecycle” and “fault-control primitives,” while [STORY.md:69](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:69) puts `pause`, `resume`, and `request_stop` under “Fault control”; [SPEC-068.md:17](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-068.md:17) calls the same area “operator control.”
+   Reader effect: pause/resume/request-stop can be mistaken as fault-only behavior instead of general runtime/operator commands.
+   Fix: rename the category to “Operator control / fault recovery,” or split `clear_faults` into “Fault recovery” and `pause` / `resume` / `request_stop` into “Operator control.”
+   Confidence: 3. Impact: 2.
+
+4. **Adapter/executor formatting ownership is blurred in one validation bullet.**
+   Location: [SLICE.md:28](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:28) says the terminal parser/formatter owns CLI spelling and output, but [SLICE.md:58](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:58) says unknown DI names are reported through “executor result formatting.”
+   Reader effect: implementers may put terminal formatting into `CommandExecutor`, weakening the adapter boundary.
+   Fix: rewrite the bullet to: “Unknown DI names produce an executor `UnknownSignal` / `error/unknown-signal` result, and the terminal adapter formats that result.”
+   Confidence: 3. Impact: 2.
+
+5. **The reentrancy invariant briefly broadens from scan commands to all active commands.**
+   Location: [INV-045.md:16](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/INV-045.md:16) starts with “another scan command,” but [INV-045.md:17](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/INV-045.md:17) says “during active command execution.”
+   Reader effect: a reviewer may think any command in progress blocks scan commands, rather than only nested `StepOnce` / `RunCycles` scan execution.
+   Fix: change the second sentence to “If a scan command is requested while the same executor is already executing a scan command...”
+   Confidence: 3. Impact: 2.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[confirmed rt/plc docs workflow scope]
+MEMORY.md:58-65|note=[confirmed strict PLC scope preference]
+MEMORY.md:69-71|note=[confirmed rt/plc docs structure context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4480-4f7c-7f42-a571-ada9c5130f15</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:28:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-28-40-019e4480-4f7c-7f42-a571-ada9c5130f15.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre>Review the newly added PLC STORY-28 docs for implementation-readiness. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/** plus relevant CMake/test naming conventions if needed. Do not edit files. Check whether Slice 01/02/03, SPEC-068..071, INV-045..047 give enough concrete implementation/test guidance, whether statuses/validation targets are coherent, and whether any planned contracts are underspecified or risky. Return prioritized findings with file/line references and concrete fixes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:28:53 +0800</div>
+<pre>I’ll do this as a docs/code-review pass: first satisfy the repo orientation requirements, then inspect only the STORY-28 docs and nearby naming conventions needed to validate implementation guidance.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:29:09 +0800</div>
+<pre>The root README points to the docs/architecture entry and the codemap confirms this is under the RT Development Stack / machine logic boundary. I’m now checking the module-local working rules and the exact STORY-28 file set before evaluating the slices/specs/invariants.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:30:01 +0800</div>
+<pre>STORY-28 is currently untracked, so I’m treating it as a newly added documentation set rather than comparing it to committed history. Next I’m reading each slice/spec/invariant with line numbers, then I’ll cross-check the promised test targets against existing PLC CMake/test naming patterns.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:30:57 +0800</div>
+<pre>The story’s validation names mostly follow the repository’s per-story test-target style, but I’m checking the actual CMake registrations so I can distinguish naming issues from contract/readiness issues.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:31:13 +0800</div>
+<pre>The existing `story27_interactive_sim_tests` already exercises `tick/di/nrt/state/snapshot/motion` through the REPL, which is useful context: STORY-28’s docs need to be precise about what moves into executor-level tests versus what remains pipe-level compatibility coverage.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 16:32:16 +0800</div>
+<pre>I’ve got the core review shape now. I’m doing one last pass for internal consistency around validation/status metadata so the findings don’t overstate anything that is simply an accepted “planned/draft” convention.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-20 16:32:25 +0800</div>
+<pre>I’m also checking the repo’s docs-review skill instructions now, because this is a documentation readiness review rather than a code change. I’ll keep the output in review format: findings first, then residual risks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-05-20 16:34:23 +0800</div>
+<pre>**Findings**
+
+1. **High: the command payload contract is not concrete enough to implement or test deterministically.**
+[SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:22) defines one loose struct with `name`, `value`, `count`, and `payload`, while [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:108) expects invalid counts and missing fields to be rejected. There is no per-kind matrix saying which fields are required, ignored, or invalid, nor accepted bool syntax, payload semantics, or success codes.
+**Fix:** add a table for every `RuntimeCommandKind`: required fields, forbidden/ignored fields, validation rules, side effect, success code, and error code.
+
+2. **High: fault/operator-control commands are listed but underspecified.**
+The story includes fault-control primitives in scope at [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:69), and Slice 01 includes `ClearFaults`, `Pause`, `Resume`, and `RequestStop` in the enum at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:32). But the validation plan only covers DI, scan, NRT, arguments, and reentry at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:106). It does not say whether these commands call `Framework` directly or enqueue existing operator NRT messages, which changes timing semantics.
+**Fix:** add SPEC coverage/tests for each operator command, including direct-vs-NRT execution, allowed runtime states, idempotency, scan timing, and result codes. If they are not Slice 01 work, remove them from the first enum.
+
+3. **High: `UnknownSignal` cannot be implemented consistently from the docs.**
+`UnknownSignal` is required by [SPEC-069.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-069.md:23), and tests are expected for unknown DI/DO/virtual names at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:108) and [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:43). But the executor construction list at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:97) does not define a signal catalog or descriptor source of truth.
+**Fix:** define where known DI/DO/virtual/motion names come from, preferably descriptor/snapshot-backed, and require tests with one known and one unknown name per namespace.
+
+4. **Medium: `CommandResult::lines` conflicts with adapter-owned formatting.**
+Slice 01 says `lines` preserves terminal-friendly output at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:73), while INV-047 says adapter-specific formatting belongs to the caller at [INV-047.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/INV-047.md:16). This invites either terminal formatting inside the executor or duplicated state collection in adapters.
+**Fix:** define `lines` as canonical plain result records, not terminal formatting, or add a typed payload now. Otherwise relax INV-047 to explicitly allow executor-generated terminal-compatible lines for this story.
+
+5. **Medium: INV-045’s reentry test seam is too vague.**
+The story says implementation remains synchronous at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:14), but INV-045 validation relies on “a test hook or controlled command path” at [INV-045.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/INV-045.md:34). That is not enough guidance for a minimal implementation.
+**Fix:** specify the exact hook or guard to test nested `StepOnce`/`RunCycles`, and require assertion that the nested call returns `error/executor-busy` without incrementing the cycle counter.
+
+6. **Low: Slice 02 validation summary is not fully aligned with SPEC-070.**
+The slice table lists only `metanc_plc_story28_sim_adapter_tests` at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:49), but SPEC-070 front matter and validation also require `metanc_plc_story27_interactive_sim_tests` at [SPEC-070.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SPEC-070.md:8).
+**Fix:** include both validation targets in the slice table so the implementation checklist cannot accidentally skip the existing compatibility suite.
+
+**Status Check**
+
+The planned/draft/planned statuses are coherent for a not-yet-implemented story, and the proposed `metanc_plc_story28_*_tests` names match the current CMake test naming style. I did not edit files or run tests; this was a read-only readiness review.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:56-71|note=[PLC scope and validation workflow preferences]
+MEMORY.md:87-89|note=[PLC story status and validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4480-4feb-7781-9588-aad09f4284d9</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:28:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-28-40-019e4480-4feb-7781-9588-aad09f4284d9.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre>Review the newly added PLC STORY-28 docs for documentation structure and consistency. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, and rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**. Do not edit files. Check mdBook navigation, relative links, front matter, status terminology, SPEC/INV numbering, decision-record placement, and consistency with nearby PLC story docs. Return findings only, prioritized, with file/line references and concrete fixes. If no issues, say so and mention any residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:29:27 +0800</div>
+<pre>I’ll use the docs review skill because this is a structure/consistency review, then I’ll inspect only the required orientation files and the requested PLC story scope. No file edits.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:29:56 +0800</div>
+<pre>The memory pass shows prior PLC docs expectations: keep scope inside `rt/plc`, use the story index as a status reference, and validate docs against the PLC book/navigation patterns. I’m reading the repo orientation files now, then I’ll compare STORY-28 against adjacent story docs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:30:39 +0800</div>
+<pre>I’ve confirmed `/rt/plc` is the in-scope module from the architecture map. Next I’m reading the target files with line numbers and sampling adjacent story patterns only as comparison evidence; any findings will point back to the requested scope.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:32:15 +0800</div>
+<pre>The target STORY-28 files have complete mdBook entries and basic front matter. I’m checking the remaining consistency details now: link targets, status vocabulary, SPEC/INV numbering continuity, and whether the new decision record matches the existing PLC decision navigation model.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:33:20 +0800</div>
+<pre>I’m at the findings-validation step. The main candidate that survived so far is the decision-record placement: STORY-28 adds a story-local decision page, while the existing PLC decision index explicitly says story/slice/spec/invariant files are not decision-record navigation targets.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 16:33:35 +0800</div>
+<pre>I’m doing one last orientation check from the root docs entry point referenced by `README.md`, then I’ll return only prioritized findings with concrete fixes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-20 16:34:05 +0800</div>
+<pre>**Findings**
+
+1. **Medium: STORY-28 adds a story-local decision record that conflicts with the PLC decision-record structure.**
+   [rt/plc/docs/SUMMARY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/SUMMARY.md:240) adds `Story Decisions` under STORY-28, and [STORY.decisions.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.decisions.md:1) introduces `# Decisions for STORY.md`. Existing PLC decision navigation says story/slice/spec/invariant files are not decision-record navigation targets: [rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md:3) and [rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md:5). This makes STORY-28 the only story with a parallel decision-record track, which will confuse where durable PLC rationale belongs.
+   **Concrete fix:** either move this record into `rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md`, add it to `MODULE-MODEL.decision/INDEX.md`, and remove the `Story Decisions` entry from `SUMMARY.md`; or, if story-local decision records are now intended, update `MODULE-MODEL.decision/INDEX.md` and the decision template language first so the navigation model explicitly allows that placement.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:69-71|note=[confirmed prior PLC docs structure and validation context]
+MEMORY.md:87-89|note=[confirmed PLC story index and docs build expectations]
+MEMORY.md:1-4|note=[confirmed MetaNC rt/plc memory scope]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4490-cb83-7f33-9231-83c04f720f8b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:46:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-46-40-019e4490-cb83-7f33-9231-83c04f720f8b.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre>Review the current revised PLC STORY-28 docs for first-time reader comprehension. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and their entries in rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md. Do not edit files. Focus on reading order, boundary clarity, terminology, redundancy, and whether a reviewer can tell this is runtime command primitives, not PLC language AST/DSL. Return only validated findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:46:57 +0800</div>
+<pre>I’ll use the `review-docs-comprehension` skill for the review lens, and I’ll keep the workspace scope read-only. I’m starting with the repo’s required orientation files before inspecting the STORY-28 docs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:47:22 +0800</div>
+<pre>The memory registry has relevant prior PLC workflow notes, mainly scope discipline and the expectation that `rt/plc` docs stay narrowly bounded. I also hit a missing path for the skill under the system directory, so I’m opening the repository-local skill now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:47:46 +0800</div>
+<pre>The architecture map identifies `rt/plc` under the RT development stack boundary, so I’m narrowing the rest of the review to the requested PLC docs and their index entries. I’ll read the story files top-to-bottom with line numbers so any findings are anchored to exact passages.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:48:13 +0800</div>
+<pre>I’ve finished the initial scope pass and now have the top-level story plus ADR. Next I’m reading each slice/spec/invariant and the three index/SUMMARY entries, then I’ll validate candidate comprehension issues against nearby clarifications before reporting anything.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:49:46 +0800</div>
+<pre>I’m at the validation pass now. The docs do a good job repeatedly stating “runtime command primitives, not PLC language,” so I’m filtering out concerns that are just intentional repetition and only keeping issues that would materially mislead first-time navigation or implementation reading.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-20 16:51:44 +0800</div>
+<pre>**Findings**
+
+1. Scenario-runner scope is ambiguous. [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:11) says terminal, scenario, and future adapters can share the surface, and the diagram includes `Scenario runner` at line 27, but the in-scope list and slice table only cover the executor, REPL refactor, and observation migration. A first-time reviewer may think Story-28 must also migrate the scenario runner. Fix: either add an explicit scenario-runner slice, or state after the diagram that scenario runner is only a future/eligible consumer and is not migrated in Story-28. Confidence 3, Impact 3.
+
+2. Slice 03 requires structured result codes but never defines the observation command codes. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:11) requires `CommandResult` status/code/message/lines, and line 52 says tests assert structured status and codes. [SPEC-069.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-069.md:28) only defines first-slice code families through `ok/get-snapshot`. Reviewers cannot tell whether Slice 03 should use `ok/list-inputs`, `ok/get-motion`, etc. Fix: add a Slice 03 command matrix with success/error codes for each observation command. Confidence 4, Impact 3.
+
+3. Slice 03 validation asks for DI unknown-name coverage even though no DI-by-name observation command exists. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:15) lists `inputs`, `outputs`, `do &lt;name&gt;`, and `virtual &lt;name&gt;`, while line 48 says to test “DI, DO, and virtual signal namespaces.” This can make a reviewer look for or add a `GetDigitalInput` command that the story does not define. Fix: change the validation bullet to “DO and virtual signal namespaces,” and say DI name validation remains in Slice 01 `SetDigitalInput`, unless `GetDigitalInput` is intended. Confidence 4, Impact 2.
+
+4. `RunCycles` blurs parser and executor responsibility. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:55) says count “parses as positive integer,” but the command struct has `std::size_t count` and line 66 says the terminal adapter controls text parsing. A reader may put CLI parsing into `CommandExecutor`, weakening the adapter boundary. Fix: change the matrix validation to `count &gt; 0`, and state that `run &lt;count&gt;` text parsing belongs to the terminal adapter. Confidence 3, Impact 2.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[confirmed this review is in the MetaNC rt/plc docs workflow]
+MEMORY.md:56-65|note=[confirmed strict plc scope preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4490-cbb8-78c3-bfd9-74e6182095c8</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:46:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-46-40-019e4490-cbb8-78c3-bfd9-74e6182095c8.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre>Review the current revised PLC STORY-28 docs for implementation-readiness. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/** and rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md. Do not edit files. Check whether Slice 01/02/03, SPEC-068..071, INV-045..047 now give enough concrete implementation/test guidance: command matrix, signal catalog source, result codes, operator command deferral, reentry seam, and validation target coherence. Return prioritized findings with file/line references and concrete fixes. If no blocking issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:46:53 +0800</div>
+<pre>I’ll review this as a docs/code-review pass, but without editing anything. I’m first loading the repo guidance and the relevant review skill, then I’ll inspect only the requested PLC docs plus the required orientation files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:47:11 +0800</div>
+<pre>The relevant memory says prior PLC work is strict `rt/plc` scope with per-spec readiness checks, so I’m treating this as an implementation-readiness review rather than a prose-only critique. Next I’m mapping the PLC module from the architecture codemap, then I’ll read the requested STORY-28 files with line numbers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:47:55 +0800</div>
+<pre>I’ve completed the required repo/module orientation: `/rt/plc` is the machine-logic/PLC boundary, with an independent CMake/test workflow. I’m now checking each Story-28 slice/spec/invariant line-by-line against the readiness questions you called out, especially whether the docs name exact contracts and tests rather than only intent.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:49:57 +0800</div>
+<pre>The revised docs do define the big boundary decisions clearly: direct operator commands are deferred to `SendNrtMessage`, the signal catalog has an owning source, and the reentry test seam is now called out. I’m doing one more consistency pass for places where the contracts still leave implementers or tests to infer exact behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-20 16:51:45 +0800</div>
+<pre>**Findings**
+1. **Blocking for Slice 03: observation command result codes are not specified.**
+   [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:87) lists Slice 03 command kinds, and [SLICE-03/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:15) scopes seven observation commands, but the only detailed command matrix/result-code table is Slice 01-only at [SLICE-01/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:52). [SPEC-069.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-069.md:28) also only names Slice 01 code families.
+   **Fix:** add a Slice 03 matrix with required fields, no-scan side effects, success codes such as `ok/list-inputs`, `ok/get-digital-output`, `ok/get-motion`, and error codes for unknown signal, invalid argument, execution failure, and optional/missing motion surface behavior.
+
+2. **Medium: `InvalidArgument` is globally required for unused fields, but several per-command rows omit its code.**
+   [SLICE-01/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:49) says unused fields are `InvalidArgument`, but `StepOnce`, `GetState`, and `GetSnapshot` rows at [line 54](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:54) and [line 58](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:58) omit `error/invalid-argument`.
+   **Fix:** either add `error/invalid-argument` to every row or add a clear table note: “All command kinds may additionally return `InvalidArgument` / `error/invalid-argument` when unused fields are populated.”
+
+3. **Medium: Slice 03 validation implies a DI name lookup command that is not in the command set.**
+   [SLICE-03/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:47) says to test known/unknown DI, DO, and virtual namespaces, but Slice 03 only has `inputs` for DI listing, not a named `GetDigitalInput` command.
+   **Fix:** move DI known/unknown lookup coverage to Slice 01 `SetDigitalInput`, and keep Slice 03 named unknown-signal tests to `GetDigitalOutput` and `GetVirtualSignal`; for `ListInputs`, assert known DI values appear without inventing a DI get command.
+
+**Readiness Summary**
+No blocker for Slice 01 or Slice 02. The command matrix, signal catalog source, operator command deferral, reentry seam, and validation target names are now mostly concrete enough to implement.
+
+Slice 03 still needs the result-code matrix before I’d call the whole STORY-28 doc implementation-ready. Residual risk after that fix is mainly test readability: `InvalidRuntimeState` vs `ExecutionFailed` trigger conditions are named, but still somewhat implementation-defined unless you add one short mapping note.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:67-73|note=[used plc workflow and readiness expectations]
+MEMORY.md:87-89|note=[used validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4490-cc63-7b21-baad-698846619063</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:46:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-46-40-019e4490-cc63-7b21-baad-698846619063.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre>Review the current revised PLC STORY-28 docs for documentation structure and consistency. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**. Do not edit files. Check mdBook navigation, relative links, front matter, status terminology, SPEC/INV numbering, decision-record placement, and consistency with nearby PLC story docs. Return only findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:47:00 +0800</div>
+<pre>I’ll use `review-docs-comprehension` for the structure/consistency review, and I’m doing the required MetaNC orientation pass before reading the PLC story files. I’ll keep this read-only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:47:30 +0800</div>
+<pre>The initial skill path was under the workspace, not the system skill directory, so I’m reopening the local skill file. I’ve also found prior PLC workflow memory that confirms this review should stay strictly inside `rt/plc` and compare against the PLC story/index conventions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:48:16 +0800</div>
+<pre>I’ve completed the root README/codemap orientation. Next I’m reading the PLC module README, the requested files, and a small set of adjacent story docs only as comparison material; findings will stay scoped to the requested paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:48:48 +0800</div>
+<pre>I have the requested navigation/index pages now. I’m checking STORY-28’s actual page metadata, relative links, and numbering against the adjacent implemented stories and decision records, then I’ll filter down to validated findings only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:49:55 +0800</div>
+<pre>The first pass shows STORY-28 is wired into `SUMMARY.md` and the story index. I’m checking whether the new decision record’s model-area label maps to the module-model page and whether the status/numbering conventions are internally consistent, because those are the places most likely to break navigation or review workflow.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 16:51:02 +0800</div>
+<pre>I’m doing one final consistency check on decision-record headings and any local mdBook/link conventions. I haven’t found broken STORY-28 navigation yet, but there are a couple of structure consistency candidates that need a false-positive pass.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-20 16:55:53 +0800</div>
+<pre>- [rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md:18) and [0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:5): `Runtime command surface` is not a link to a `MODULE-MODEL.md` section, unlike decisions 0001-0008. The decision index says rationale records explain the current model in `MODULE-MODEL.md`, so this leaves 0009 without a navigable model owner. Concrete fix: change both model-area cells to an existing linked owner such as `[Architecture](../MODULE-MODEL.md#architecture), [Backend model](../MODULE-MODEL.md#backend-model)` or add a dedicated `MODULE-MODEL.md` section before using `Runtime command surface`.
+
+- [rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:1): the decision record starts with `# 0009...`, while the nearby decision records and template use `## NNNN...`. This makes 0009 the only child page with a top-level heading under the decision section, which is inconsistent in mdBook navigation/heading hierarchy. Concrete fix: change line 1 to `## 0009: Runtime command primitives before PLC language AST`.
+
+- [rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:3): 0009 omits the `**Deciders**:` field used by the decision-record template and nearby records. That weakens decision-record consistency and makes the placement look less like a captured architecture rationale. Concrete fix: add `**Deciders**: design discussion, captured for STORY-28 runtime-command planning` between `Status` and `Model area`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:56-65|note=[PLC scope and review workflow preferences]
+MEMORY.md:67-89|note=[PLC docs structure and validation conventions]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e449c-420e-7421-9b22-2ff5ababb4f3</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:59:11 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-59-11-019e449c-420e-7421-9b22-2ff5ababb4f3.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:11 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:11 +0800</div>
+<pre>Re-review the current revised PLC STORY-28 docs for first-time reader comprehension after latest fixes. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and their entries in rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md. Do not edit files. Focus on reading order, boundary clarity, terminology, redundancy, and whether a reviewer can tell this is runtime command primitives, not PLC language AST/DSL. Return only validated findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:59:29 +0800</div>
+<pre>I’ll use the docs-comprehension review skill and do the repo-required orientation first. I’ll keep this read-only and scoped to the STORY-28 docs plus the specified index entries.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:59:52 +0800</div>
+<pre>The memory pass confirms this is the established PLC docs/review workflow, including strict `rt/plc` scope. The skill path in this checkout is repo-local, so I’m opening that now along with the architecture codemap and PLC module guidance.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 17:00:31 +0800</div>
+<pre>I’ve completed the required orientation: root README, architecture codemap, and the `/rt/plc` README. Next I’m reading the scoped STORY-28 materials in book order, then I’ll validate any candidate findings against the surrounding text before reporting.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 17:02:07 +0800</div>
+<pre>I’ve finished a first pass over the story, slices, specs, invariants, decision record, and the requested index entries. I’m now rechecking candidate issues against nearby clarifications so the final answer only includes problems that survive the false-positive pass.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-20 17:03:20 +0800</div>
+<pre>**Findings**
+
+1. `CommandResult::lines` example leaks terminal wording into the canonical result boundary.
+Location: [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:76) says terminal spelling is adapter syntax, but [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:94) uses `tick=3` as a canonical plain record.
+Reader effect: a first-time reader may infer terminal spelling is part of the executor/result contract, weakening the adapter-vs-runtime boundary.
+Fix: replace `tick=3` with a neutral runtime record such as `scan_cycle=3` or `completed_scans=3`, or explicitly define canonical line keys as separate from terminal command names.
+Confidence: 3. Impact: 2.
+
+2. Boolean parsing ownership is unclear between terminal parser and executor.
+Location: [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:58) says `SetDigitalInput` validates that `value` is a parsed boolean; [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:63) says boolean parsing accepts terminal spellings; but [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:57) says invalid bool text is rejected by the parser.
+Reader effect: a reviewer cannot tell whether `on/off/1/0` are executor input values or terminal-only syntax normalized before execution.
+Fix: choose one boundary: either make the adapter normalize to canonical `true`/`false` before constructing `RuntimeCommand`, or state that the executor parses the string field and update Slice 02 validation to say the executor returns `InvalidArgument`.
+Confidence: 4. Impact: 3.
+
+3. Slice 01 introduces snake_case command names that are not part of the stated naming convention.
+Location: [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:14) uses `step_once` and `run_cycles`, while [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:68) defines conceptual prose, canonical enum kinds, and terminal spelling as the three naming forms.
+Reader effect: readers may think `step_once`/`run_cycles` are a fourth API spelling or future syntax.
+Fix: replace them with `StepOnce` and `RunCycles`, or with “step once” and “run cycles” plus the canonical enum names in parentheses.
+Confidence: 3. Impact: 2.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[confirmed MetaNC rt/plc docs review workflow and strict module scope]
+MEMORY.md:58-59|note=[confirmed prior PLC scope and planning/review preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e449c-4318-7e21-961a-89c3dc3dcfa6</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:59:12 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-59-12-019e449c-4318-7e21-961a-89c3dc3dcfa6.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:12 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:12 +0800</div>
+<pre>Re-review the current revised PLC STORY-28 docs for implementation-readiness after latest fixes. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/** and rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md. Do not edit files. Check whether Slice 01/02/03, SPEC-068..071, INV-045..047 now give enough concrete implementation/test guidance: command matrix including observation codes, signal catalog source, result codes, operator command deferral, reentry seam, parser/executor boundary, scenario-runner scope, and validation target coherence. Return prioritized findings with file/line references and concrete fixes. If no blocking issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:59:26 +0800</div>
+<pre>I’ll treat this as a review-only pass and keep file scope strict. I’m also loading the repo guidance and the docs-review skill first so the findings are grounded in the project workflow.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 17:00:09 +0800</div>
+<pre>The first pass confirms the relevant ownership is the RT development stack’s machine-logic area, with `/rt/plc` as the local module I need to inspect. I found the docs-review skill path is repo-local, so I’m opening that along with the PLC module guidance and the scoped STORY-28 files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 17:00:46 +0800</div>
+<pre>I’m now reading the scoped STORY-28 pages with line numbers rather than relying on summaries. The review focus is implementation-readiness: whether a developer can go from these docs to code and tests without filling in hidden contracts.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 17:01:56 +0800</div>
+<pre>A possible gap is whether “virtual signal inventory” names a real descriptor section or an inferred set from bindings/NRT mappings. I’m checking the existing descriptor shape briefly so I don’t report a false positive against an implementation contract that already exists elsewhere.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 17:02:23 +0800</div>
+<pre>I’ve got the main docs read. I’m doing a short false-positive pass now: matching candidate issues against nearby lines and existing validation wording so the final list only includes issues that affect implementation or test work.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-20 17:04:43 +0800</div>
+<pre>Review-only pass; I did not edit files.
+
+**Findings**
+1. **High: scenario-runner scope is still contradictory.**
+   [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:37) says the scenario runner is only an eligible future consumer and is not migrated in this story, but [SPEC-068.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-068.md:21) includes scenario files/future transports, and its formal block lists `scenario-runner` as a caller at line 33.
+   Fix: split `implemented-callers: [direct-tests, terminal-adapter]` from `future-callers: [scenario-runner, future-transport-adapter]`, and state explicitly that no scenario-runner migration/tests are part of STORY-28.
+
+2. **High: parser vs executor error boundary is under-specified.**
+   [SLICE-01](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:58) says boolean value validation belongs to the command matrix, while lines 68-70 say terminal parsing owns text parsing. [SLICE-02](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:57) then says invalid bool text is rejected by the parser with `InvalidArgument`.
+   Fix: add a short adapter parse-result contract: terminal parser either produces canonical `RuntimeCommand` fields or returns/formats `CommandResult{InvalidArgument, error/invalid-argument}` without calling the executor. Also cover invalid `run &lt;count&gt;` and `di &lt;bool&gt;` examples.
+
+3. **High: signal catalog source is not concrete enough for implementation.**
+   [SLICE-01](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:100) says the catalog is derived from the loaded descriptor and current framework snapshot, but does not define precedence or the concrete source for virtual names. [SLICE-03](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:43) also depends on DI/DO catalogs for observation.
+   Fix: add a `RuntimeSignalCatalog` table: DI names from `MachineDescriptor.digital_inputs`, DO names from `MachineDescriptor.digital_outputs`, virtual names from the chosen descriptor-derived virtual set or `FrameworkSnapshot.virtual_signals` after boot, with deterministic ordering and value source for `ListInputs`.
+
+4. **Medium: result-code catalog is split across slice pages.**
+   [SPEC-069](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-069.md:28) lists only Slice 01 codes, while [SLICE-03](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:41) defines observation success codes. [SPEC-071](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SPEC-071.md:20) lists observation commands but not their required codes.
+   Fix: either extend SPEC-069 with the full STORY-28 code catalog or state that SPEC-069 owns the base model and SPEC-071 owns observation-code additions.
+
+**Ready Areas**
+Operator command deferral is now clear: direct `Pause`/`Resume`/`RequestStop`/`ClearFaults` are deferred and remain `SendNrtMessage`/`nrt operator.*` paths. The reentry seam is concrete enough for a first test seam. Validation target names are coherent across the slice/spec pages, with the residual risk that the implementation must remember to add those targets to `rt/plc/CMakeLists.txt`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:67-89|note=[PLC build and docs validation workflow context]
+MEMORY.md:56-65|note=[PLC scope and review workflow preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e449c-4354-7812-ab31-0422a8dbbf77</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:59:12 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T16-59-12-019e449c-4354-7812-ab31-0422a8dbbf77.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:12 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:59:12 +0800</div>
+<pre>Re-review the current revised PLC STORY-28 docs for documentation structure and consistency after latest fixes. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**. Do not edit files. Check mdBook navigation, relative links, front matter, status terminology, SPEC/INV numbering, decision-record placement, and consistency with nearby PLC story docs. Return only findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:59:41 +0800</div>
+<pre>I’ll keep this as a documentation review only. I’m going to read the required repo orientation first, then the PLC module guidance and the scoped STORY-28 files with line numbers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 17:00:48 +0800</div>
+<pre>The scope is PLC docs, so I’m also doing the lightweight project-memory pass and using the docs review skill. I’ll keep the review grounded in the current files, not memory.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 17:01:17 +0800</div>
+<pre>The PLC boundary is the `Machine Logic Layer` area in the architecture map. Next I’m reading the scoped files with line numbers and a small set of nearby story/decision docs for pattern comparison.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 17:03:08 +0800</div>
+<pre>I’ve finished the first pass through STORY-28 and the adjacent Story-25/26/27 patterns. I’m checking link/navigation mechanics and metadata consistency now so any findings are concrete rather than style preferences.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-05-20 17:07:28 +0800</div>
+<pre>Finding 1: Decision record heading hierarchy is inconsistent with the local decision-record template and nearby records. [0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:8) uses `## Context`, `## Decision`, `## Alternatives Considered`, and `## Consequences` at the same level as the record title on line 1. Nearby records use `## NNNN...` for the title, then `###` / `####` below it. Concrete fix: demote lines 8, 17, 23, 41, 54 from `##` to `###`, and lines 25, 33, 43, 48 from `###` to `####`.
+
+Finding 2: Slice 03 does not define `InvalidArgument` consistently for missing required observation names. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:38) only covers unused fields, while lines 45-46 require `name` for `GetDigitalOutput` and `GetVirtualSignal` but omit `error/invalid-argument`. Slice 01 includes invalid-argument for required-field validation in the comparable command matrix. Concrete fix: change line 38 to cover “missing required fields or unused fields”, and add `error/invalid-argument` to the Error codes cells on lines 45 and 46.
+
+Finding 3: Boolean parsing ownership is split between executor and terminal parser. [SLICE-01-command-model-and-executor/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:63) says boolean parsing accepts terminal spellings, while [SLICE-02-simulator-adapter-refactor/SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:57) says invalid bool text is rejected by the parser. Concrete fix: choose one boundary. Either state that the terminal parser normalizes `true/1/on/false/0/off` into canonical command values and executor tests use canonical values, or state that the executor parses all boolean spellings and update Slice 02 line 57 to say the executor returns `InvalidArgument`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[PLC docs scope context]
+MEMORY.md:67-71|note=[PLC docs workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section>
+<section class="session">
+
+<p><a href="index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e44a8-1ccc-7e71-888f-04d6ab8b6e92</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 17:12:08 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>/home/iaar/.codex/sessions/2026/05/20/rollout-2026-05-20T17-12-08-019e44a8-1ccc-7e71-888f-04d6ab8b6e92.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 17:12:08 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 17:12:08 +0800</div>
+<pre>Single-agent re-review of the current revised PLC STORY-28 docs after latest fixes. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and entries in rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md. Do not edit files. Review all three angles: first-time reader comprehension, implementation-readiness, and documentation structure consistency. Specifically check the previous concerns: boolean parser/executor boundary, scenario-runner caller scope, RuntimeSignalCatalog source, Slice 03 observation code matrix, missing-name InvalidArgument, decision heading hierarchy/model-area links, and canonical line examples. Return only validated findings with file/line references and concrete fixes. If no blocking issues remain, say that clearly and list residual risks briefly.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 17:12:24 +0800</div>
+<pre>I’ll use the `review-docs-comprehension` skill for the documentation review, and I’ll keep this strictly read-only within the paths you listed. I’m starting with the required repo orientation, then I’ll validate the prior concern list against current line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 17:12:44 +0800</div>
+<pre>The root README points at the repo documentation and the local PLC scope is explicit in memory, so I’m narrowing the pass to `rt/plc` docs only. Next I’m reading the architecture codemap and the PLC-local contributor files before opening the STORY-28 material.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 17:12:57 +0800</div>
+<pre>The skill file confirms I should filter out weak or stylistic concerns. I’ve also confirmed the allowed file set, and there’s only an `rt/plc/README.md` contributor file in that module; I’m reading it with the codemap section that names the PLC boundary.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 17:13:17 +0800</div>
+<pre>I’ve finished the required orientation and am now reading the STORY-28 files in line-numbered form. I’m treating “implementation-readiness” as whether the docs give an implementer enough unambiguous contract detail inside the allowed doc scope, not as a code audit outside that scope.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 17:14:04 +0800</div>
+<pre>I have the full STORY-28 set and the three index files open with line numbers. I’m now validating each of the named prior concerns against the current text and discarding anything that is now clearly addressed or only stylistic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 17:14:30 +0800</div>
+<pre>Most of the named concerns are now textually addressed: the boolean normalization boundary, scenario-runner future scope, and signal catalog sources all have direct statements. I’m doing one targeted link/heading sanity check now so the decision-record navigation finding, if any, is based on the current anchors rather than guesswork.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-20 17:16:20 +0800</div>
+<pre>No blocking issues remain.
+
+**Finding: Slice 03 canonical line records are still underspecified.**
+[SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:11) says observation commands return canonical `lines`, and lines 27-34 make those records the reusable executor output. The matrix at lines 41-49 defines status/code behavior, but not the line schema for `inputs`, `outputs`, `do`, `virtual`, `behaviors`, `dispatch`, or `motion`. The only examples are Slice 01 examples like `state=RUNNING` and `completed_scans=3` in [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:96).
+
+Concrete fix: add a “Canonical Lines” table to Slice 03 with one required record shape per observation command, including the no-motion/not-configured case, and extend the validation plan to assert representative line records, not just status/code.
+
+Residual risk: the docs now resolve the prior boundary concerns I checked, but implementation may still choose incompatible line keys unless Slice 03 pins them down before coding.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-5|note=[confirmed this is the MetaNC rt/plc docs workflow scope]
+MEMORY.md:58-65|note=[kept review scope strictly inside rt/plc and read-only]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+
+</section></main>
 </body>
 </html>

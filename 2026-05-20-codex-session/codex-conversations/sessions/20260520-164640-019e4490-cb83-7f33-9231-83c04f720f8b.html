@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4490-cb83-7f33-9231-83c04f720f8b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:46:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/20/rollout-2026-05-20T16-46-40-019e4490-cb83-7f33-9231-83c04f720f8b.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre>Review the current revised PLC STORY-28 docs for first-time reader comprehension. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and their entries in rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md. Do not edit files. Focus on reading order, boundary clarity, terminology, redundancy, and whether a reviewer can tell this is runtime command primitives, not PLC language AST/DSL. Return only validated findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:46:57 +0800</div>
+<pre>I’ll use the `review-docs-comprehension` skill for the review lens, and I’ll keep the workspace scope read-only. I’m starting with the repo’s required orientation files before inspecting the STORY-28 docs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:47:22 +0800</div>
+<pre>The memory registry has relevant prior PLC workflow notes, mainly scope discipline and the expectation that `rt/plc` docs stay narrowly bounded. I also hit a missing path for the skill under the system directory, so I’m opening the repository-local skill now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:47:46 +0800</div>
+<pre>The architecture map identifies `rt/plc` under the RT development stack boundary, so I’m narrowing the rest of the review to the requested PLC docs and their index entries. I’ll read the story files top-to-bottom with line numbers so any findings are anchored to exact passages.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:48:13 +0800</div>
+<pre>I’ve finished the initial scope pass and now have the top-level story plus ADR. Next I’m reading each slice/spec/invariant and the three index/SUMMARY entries, then I’ll validate candidate comprehension issues against nearby clarifications before reporting anything.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:49:46 +0800</div>
+<pre>I’m at the validation pass now. The docs do a good job repeatedly stating “runtime command primitives, not PLC language,” so I’m filtering out concerns that are just intentional repetition and only keeping issues that would materially mislead first-time navigation or implementation reading.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-05-20 16:51:44 +0800</div>
+<pre>**Findings**
+
+1. Scenario-runner scope is ambiguous. [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:11) says terminal, scenario, and future adapters can share the surface, and the diagram includes `Scenario runner` at line 27, but the in-scope list and slice table only cover the executor, REPL refactor, and observation migration. A first-time reviewer may think Story-28 must also migrate the scenario runner. Fix: either add an explicit scenario-runner slice, or state after the diagram that scenario runner is only a future/eligible consumer and is not migrated in Story-28. Confidence 3, Impact 3.
+
+2. Slice 03 requires structured result codes but never defines the observation command codes. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:11) requires `CommandResult` status/code/message/lines, and line 52 says tests assert structured status and codes. [SPEC-069.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-069.md:28) only defines first-slice code families through `ok/get-snapshot`. Reviewers cannot tell whether Slice 03 should use `ok/list-inputs`, `ok/get-motion`, etc. Fix: add a Slice 03 command matrix with success/error codes for each observation command. Confidence 4, Impact 3.
+
+3. Slice 03 validation asks for DI unknown-name coverage even though no DI-by-name observation command exists. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:15) lists `inputs`, `outputs`, `do &lt;name&gt;`, and `virtual &lt;name&gt;`, while line 48 says to test “DI, DO, and virtual signal namespaces.” This can make a reviewer look for or add a `GetDigitalInput` command that the story does not define. Fix: change the validation bullet to “DO and virtual signal namespaces,” and say DI name validation remains in Slice 01 `SetDigitalInput`, unless `GetDigitalInput` is intended. Confidence 4, Impact 2.
+
+4. `RunCycles` blurs parser and executor responsibility. [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:55) says count “parses as positive integer,” but the command struct has `std::size_t count` and line 66 says the terminal adapter controls text parsing. A reader may put CLI parsing into `CommandExecutor`, weakening the adapter boundary. Fix: change the matrix validation to `count &gt; 0`, and state that `run &lt;count&gt;` text parsing belongs to the terminal adapter. Confidence 3, Impact 2.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[confirmed this review is in the MetaNC rt/plc docs workflow]
+MEMORY.md:56-65|note=[confirmed strict plc scope preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

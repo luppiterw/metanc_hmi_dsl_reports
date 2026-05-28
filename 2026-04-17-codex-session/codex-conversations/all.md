@@ -1105,13 +1105,13 @@ The user interrupted the previous turn on purpose. Any running unified exec proc
 已经按统一方案把 superpowers 流程推进到可实施状态了。
 
 **已完成**
-- `superpowers spec` 已冻结目标方向  
+- `superpowers spec` 已冻结目标方向
   [spec](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/superpowers/specs/2026-04-17-qml-web-layout-overhaul.md)
-- `superpowers plan` 已完成 Task 1、Task 2、Task 3  
+- `superpowers plan` 已完成 Task 1、Task 2、Task 3
   [plan](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/superpowers/plans/2026-04-17-qml-web-layout-overhaul.md)
 - 已触发并使用相关 skill：`fireworks-tech-graph`
-- 已生成“当前布局 vs 目标布局”图，并通过 SVG 校验  
-  [SVG](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/superpowers/diagrams/2026-04-17-qml-web-layout-overhaul-current-vs-target.svg)  
+- 已生成“当前布局 vs 目标布局”图，并通过 SVG 校验
+  [SVG](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/superpowers/diagrams/2026-04-17-qml-web-layout-overhaul-current-vs-target.svg)
   [PNG](/home/iaar/workspace/ccmix-wp/metanc_hmi_dsl/docs/superpowers/diagrams/2026-04-17-qml-web-layout-overhaul-current-vs-target.png)
 
 **现在的统一改造策略**
@@ -1456,7 +1456,7 @@ QML 问题找到，是 `screen_workspace` 这类节点同时从默认逻辑和�
 如果你继续，我下一步就直接做：
 - 更新 `tests/snapshots/web/*`
 - 更新 `tests/snapshots/qml/*`
-- 再跑完整 pipeline 回归  
+- 再跑完整 pipeline 回归
 不再停下来问。
 ```
 
@@ -2807,7 +2807,7 @@ PR 已创建到 `main`：
 ```
 **Findings**
 
-- `docs/src/development/docs_policy.md` 的改动确实在当前 PR #7 里，但它不是误改，来源是历史提交 `a1ecada feat(hmi): migrate package under nrt`，不是我后来补的 `ARCHITECTURE.md`。  
+- `docs/src/development/docs_policy.md` 的改动确实在当前 PR #7 里，但它不是误改，来源是历史提交 `a1ecada feat(hmi): migrate package under nrt`，不是我后来补的 `ARCHITECTURE.md`。
 - 这处改动本身是有依据的，不建议因为它撤销 PR。改动后的策略把“单个 `gcode_parser` 示例”泛化成“包级 docs book 的通用规则”，并补充了两个和 `nrt/hmi` 现状一致的事实：
   - 包级文档发现规则依赖 `package.xml` 和 `docs/book.toml`，见 [docs/build_docs.sh](/home/iaar/workspace/ccmix-wp/MetaNC/docs/build_docs.sh#L19)。
   - `nrt/hmi` 目前没有 `package.xml`，而且它的 book 输出目录也不是固定的 `docs/book/`，而是 [nrt/hmi/docs/book.toml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/book.toml#L6) 里配置的 `../docs_html`。
@@ -2955,7 +2955,7 @@ CLI 能直接跑。我现在做两个临时包复现，不改仓库文件，只�
 
 **结论**
 
-从 GitHub 按钮角度，这个 PR 现在“能合”。  
+从 GitHub 按钮角度，这个 PR 现在“能合”。
 从代码质量角度，这个 PR 现在“不应该合”。
 
 另外，我在 timeline 里只看到 1 条自动 Codex review，但它包含 2 条 inline findings；没有看到第二个独立 AI review 结论。

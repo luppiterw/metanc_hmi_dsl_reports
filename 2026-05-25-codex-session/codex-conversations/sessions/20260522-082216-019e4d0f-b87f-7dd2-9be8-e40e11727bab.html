@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>详细计划</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>详细计划</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4d0f-b87f-7dd2-9be8-e40e11727bab</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-22 08:22:16 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/22/rollout-2026-05-22T08-22-16-019e4d0f-b87f-7dd2-9be8-e40e11727bab.jsonl</code></div>
+<div><b>Messages</b>: <code>16</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-25 07:58:27 +0800</div>
+<pre>详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-25 07:59:03 +0800</div>
+<pre>我先按仓库要求做一次轻量核对：读 root README、architecture codemap、`rt-sdk` README，并确认当前分支状态和最近的 RT SDK baseline 文档位置。然后给出可直接执行的详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-05-25 07:59:38 +0800</div>
+<pre>建议下一步做 **RT SDK simulation baseline closeout review**，这是一个收口审查切片，不新增 API。目标是把目前已经连续落地的 placeholder baseline 梳理清楚，避免后续继续补功能时边界漂移。
+
+**目标**
+形成一份明确的 RT SDK simulation baseline 状态页，回答三件事：
+
+- 当前已经实现了什么。
+- 哪些只是 placeholder，不代表真实 runtime 已接入。
+- 下一阶段应该走 `logs placeholder`，还是开始 `live simulation adapter` 设计。
+
+**实施范围**
+1. 新增或更新一页文档
+   建议新增：
+   `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+
+2. 更新导航
+   `rt-sdk/docs/src/SUMMARY.md` 增加 closeout 页面，放在 Simulation Backend Readiness 后面。
+
+3. 更新关联页
+   小幅更新：
+   - `simulation-backend-design.md`
+   - `simulation-backend-readiness.md`
+   - `rt-sdk/README.md`
+
+4. 不改代码
+   这一步只做审查和边界固化，不新增 public header，不改测试逻辑。
+
+**Closeout 页面结构**
+1. `Current Baseline`
+   - connection/config validation
+   - backend-private `profile:&lt;name&gt;`
+   - in-memory simulation channel placeholder
+   - `Machine::topology()`
+   - resource lookup
+   - resource `info()`
+   - placeholder `state()`
+   - placeholder `diagnostics()`
+   - machine parameters read-only placeholder
+   - resource parameter aliases
+   - axes-group wait helper placeholder
+
+2. `Placeholder Boundaries`
+   - 不 boot PLC/runtime
+   - 不加载 profile 文件
+   - 不接真实 HAL/simulation target
+   - 不轮询/订阅状态流
+   - 不实现 command-driven state transition
+   - 不提供 live logs/backend diagnostics
+   - 不定义稳定 public simulation endpoint grammar
+
+3. `Validated Contracts`
+   - public value type tests
+   - public header boundary test
+   - sim backend contract tests
+   - backend selection tests
+   - sim profile tests
+   - sim channel placeholder tests
+
+4. `Risk Review`
+   - 文档中 quick start/services 已经有 power/enable 未来用法，但当前 command API 还未实现
+   - wait helpers 当前是 single-snapshot placeholder
+   - parameters 当前为空 catalog
+   - diagnostics 当前只是 non-faulted empty snapshot
+   - topology invalidation 还没有 runtime revision source
+
+5. `Next Slice Decision`
+   推荐给出两个候选：
+
+   | Option | Meaning | Risk |
+   |---|---|---|
+   | logs placeholder | 继续补 read-only observation 面，风险低 | 仍是 placeholder，不接 runtime |
+   | live simulation adapter design | 开始设计真实 runtime bridge | 风险高，需要定义 session/channel/state ownership |
+
+   我的建议：先做 `logs placeholder`，因为它仍是 read-only observation 面，和当前 baseline 节奏一致。
+
+**验证计划**
+```bash
+git diff --check -- rt-sdk
+python3 .mdbook/lint_docs_policy.py
+book build
+```
+
+如果顺手要确认代码仍干净，可额外跑：
+
+```bash
+cmake -S rt-sdk -B /tmp/metanc_rt_sdk_build
+cmake --build /tmp/metanc_rt_sdk_build
+ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure
+```
+
+**建议提交信息**
+```bash
+docs(rt-sdk): close out simulation baseline
+```
+
+完成这一步后，下一步就可以很明确地进入 `logs placeholder` 详细设计。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:56-56|note=[confirmed PLC STORY-30 context]
+MEMORY.md:109-109|note=[validated docs workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e47de-63d6-7253-8e15-843faec297b6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-25 08:02:44 +0800</div>
+<pre>do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-25 08:04:04 +0800</div>
+<pre>我开始执行这个 closeout 文档切片。会保持 docs-only 范围：新增 closeout 页面、接入 SUMMARY、同步 README/readiness/design，然后跑 docs 校验并提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-25 08:04:45 +0800</div>
+<pre>当前分支干净。我会先读取 RT SDK 的 SUMMARY 和 simulation 相关页，按现有阅读顺序插入 closeout 页面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-25 08:04:53 +0800</div>
+<pre>我会新增 `simulation-baseline-closeout.md`，并在 concepts index、SUMMARY、design/readiness 的 Related 里接起来。内容保持为审查/决策页面，不引入新 API 承诺。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-25 08:05:32 +0800</div>
+<pre>closeout 页面已新增。接下来把它接入导航和相关页面，并把 README 指向这个收口状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-25 08:07:41 +0800</div>
+<pre>导航和相关页已接上。现在跑文档结构校验和 build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-25 08:08:41 +0800</div>
+<pre>diff check 和 docs policy 已通过，`book build` 还在跑。等它结束后我会检查 diff，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-25 08:09:08 +0800</div>
+<pre>文档 build 通过。现在我做提交前 diff 审查，确认只有 docs/README 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-25 08:10:06 +0800</div>
+<pre>`git diff --stat` 没把新文件计入，因为它还未 stage；我再直接检查新 closeout 页面内容，然后统一 stage 做 cached diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-25 08:10:16 +0800</div>
+<pre>页面内容符合计划。我现在 stage 全部 `rt-sdk` 文档变更并做 cached diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-25 08:10:46 +0800</div>
+<pre>cached diff 干净，范围是 docs-only。现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-25 08:12:04 +0800</div>
+<pre>`git push` 正在执行，完成后我会确认远端分支和工作区。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-05-25 08:13:02 +0800</div>
+<pre>已完成并推送。
+
+提交：`b76e2520 docs(rt-sdk): close out simulation baseline`
+分支：`feat/plc` 已同步到 `origin/feat/plc`，工作区干净。
+
+本次是 docs-only：
+- 新增 `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+- 接入 `SUMMARY.md` 和 concepts index
+- 在 simulation design/readiness/README 增加 closeout 链接
+- 页面明确了当前 baseline、placeholder 边界、已验证测试、风险项和下一步建议
+
+验证通过：
+- `git diff --check -- rt-sdk`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+下一步建议：做 `logs placeholder` 的详细设计。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

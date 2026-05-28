@@ -831,16 +831,16 @@ Verification: `cmake -S . -B build`, `cmake --build build`, and `ctest --test-di
 ```
 我已经确认这里是一个空白目录，所以会直接建立首版规范仓。接下来分四块落地：
 
-1. 定义 DSL 顶层模型  
+1. 定义 DSL 顶层模型
    重点拆成 `界面结构`、`风格属性`、`接口集成`、`设计输入/中间表示`、`生成目标` 五层，保证后续能生成 Web 和 Qt/QML。
 
-2. 约束可迭代性  
+2. 约束可迭代性
    补命名规则、版本兼容原则、正向/反向迭代留存原则，避免后面一旦接设计师产物或接口文档就失控。
 
-3. 提供可执行样例  
+3. 提供可执行样例
    给出一份数控 HMI 示例 DSL，覆盖页面、布局、控件、绑定、动作、接口、主题和状态，作为后续生成器的输入基线。
 
-4. 建立留存文档  
+4. 建立留存文档
    至少会补 `AGENT.md`、`CHANGELOG.md`、`README.md` 以及几份架构文档，明确“设计图 -> DSL -> 目标代码”的路径，并预留设计稿转换入口。
 ```
 
@@ -900,14 +900,14 @@ Verification: `cmake -S . -B build`, `cmake --build build`, and `ctest --test-di
 已完成首版 DSL 架构设计，并把留存文档和示例包落到了仓库里。核心方案是“多文档 DSL + 中间表示 IR”：用 [product.manifest.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/product.manifest.yaml) 串起 [ui.structure.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/ui.structure.yaml)、[style.theme.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/style.theme.yaml)、[interfaces.machine.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/interfaces.machine.yaml) 和 [design.import.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/design.import.yaml)，这样界面结构、风格属性、接口集成可以独立迭代，后续再统一生成 Web 或 Qt/QML。
 
 规范和约束在这些文件里：
-[README.md](/home/iaar/workspace/codex-wp/hmi_dsl/README.md) 给总览，  
-[AGENT.md](/home/iaar/workspace/codex-wp/hmi_dsl/AGENT.md) 记录后续协作规则，  
-[CHANGELOG.md](/home/iaar/workspace/codex-wp/hmi_dsl/CHANGELOG.md) 记录本次变更，  
-[docs/architecture.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/architecture.md) 定义整体分层，  
-[docs/dsl-spec.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/dsl-spec.md) 定义 DSL 结构，  
-[docs/interface-integration.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/interface-integration.md) 定义属性/命令/流接口模型，  
-[docs/design-import.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/design-import.md) 预留设计图到 DSL 的转换与回写，  
-[docs/intermediate-representation.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/intermediate-representation.md) 定义 `DSL -> IR -> Target` 的中间层，  
+[README.md](/home/iaar/workspace/codex-wp/hmi_dsl/README.md) 给总览，
+[AGENT.md](/home/iaar/workspace/codex-wp/hmi_dsl/AGENT.md) 记录后续协作规则，
+[CHANGELOG.md](/home/iaar/workspace/codex-wp/hmi_dsl/CHANGELOG.md) 记录本次变更，
+[docs/architecture.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/architecture.md) 定义整体分层，
+[docs/dsl-spec.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/dsl-spec.md) 定义 DSL 结构，
+[docs/interface-integration.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/interface-integration.md) 定义属性/命令/流接口模型，
+[docs/design-import.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/design-import.md) 预留设计图到 DSL 的转换与回写，
+[docs/intermediate-representation.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/intermediate-representation.md) 定义 `DSL -> IR -> Target` 的中间层，
 [docs/naming-conventions.md](/home/iaar/workspace/codex-wp/hmi_dsl/docs/naming-conventions.md) 约束命名和兼容策略。
 
 这次没有实现解析器或生成器，只做了文档化 DSL、示例和基础 schema，自检通过的是文档一致性与引用设计，不包含程序化校验。下一步如果你要继续，我建议直接做两件事之一：1. 先把 June Demo 的功能集固化成正式 catalog；2. 直接起 `validator + IR builder + web/qml generator skeleton`。
@@ -1367,13 +1367,13 @@ cmake --build /tmp/hmi_qml_build
 ```
 我已经拿到参考图的结构特征了。接下来这轮会同时改三层：
 
-1. `design-import` 工具化  
+1. `design-import` 工具化
    增加正式 CLI，把设计输入 practice 文件、区域框、OCR/人工校对结果合并进 `design.import.yaml`，并补 region/ocr/interface implication 的保留结构。
 
-2. `june-demo` 重构为 840D 风格  
+2. `june-demo` 重构为 840D 风格
    按截图把 `page_overview` 改成“屏幕区 + 软键区 + 底部软键 + 物理操作台”的大布局，不再是普通 dashboard。
 
-3. 生成器同步  
+3. 生成器同步
    Web/QML 生成器会补对这些新节点类型的渲染，不然 DSL 改了也看不出风格变化。
 ```
 
@@ -1568,9 +1568,9 @@ DSL 和 design import 现在已经自洽了。最后一轮我会把生成器重�
 原因很直接：现在生成器已经能跑，瓶颈不在“能不能出原型”，而在“设计输入怎么稳定进入 retained DSL”。如果没有真实的 design adapter，后面每次换截图、换机型、换设计稿，都还是人工改 [design.input.840d_01.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/design.input.840d_01.yaml) 和 [design.import.yaml](/home/iaar/workspace/codex-wp/hmi_dsl/examples/june-demo/design.import.yaml)，这会让整个 DSL 失去规模化价值。
 
 建议顺序：
-1. 先做 `design-import adapter`  
+1. 先做 `design-import adapter`
    目标：输入图片/OCR结果/分区结果，自动产出规范化 practice 数据，再落进 `design.import.yaml`。
-2. 再拆 `generator-web` / `generator-qml`  
+2. 再拆 `generator-web` / `generator-qml`
    目标：基于已经稳定的 IR 和 design evidence，把单文件原型拆成页面、组件、theme/runtime adapter 多文件输出。
 
 如果你要我直接继续做，我建议下一步落这几个具体模块：
@@ -3784,7 +3784,7 @@ CI 也做了进一步整理，在 [ci.yml](/home/iaar/workspace/codex-wp/hmi_dsl
 - `mdbook build reports/2026-04-08-codex-session`
 - GitHub workflow / issue template YAML 解析检查通过
 
-当前分支状态干净，`main` 已同步到 GitHub。  
+当前分支状态干净，`main` 已同步到 GitHub。
 如果你要继续，下一步比较值的是补 `SECURITY.md`、`CODE_OF_CONDUCT.md`，或者把 CI 再加上 PR 标题 / commit message 规范检查。
 ```
 
@@ -3876,7 +3876,7 @@ github的action好像失败了，你处理一下，以后每次提交都要保�
 - `mdbook build reports/2026-04-08-codex-session`
 - `.github` YAML 解析检查
 
-当前 `main` 已推到 GitHub，工作区干净。  
+当前 `main` 已推到 GitHub，工作区干净。
 后续我会按这个标准做：提交前先跑与 CI 对齐的本地检查，尽量不再把明显会打红的 workflow 直接推上去。
 ```
 
@@ -4312,7 +4312,7 @@ continue
 - `python3 -m unittest -v tests.test_pipeline`
 - `mdbook build reports/2026-04-08-codex-session`
 
-当前 `main` 已同步到 GitHub，工作区干净。  
+当前 `main` 已同步到 GitHub，工作区干净。
 如果继续，我建议下一步直接把 `june-demo` 进一步演化成：
 - `design.input.app.yaml`
 - `design.input.page-01.yaml`
@@ -4402,7 +4402,7 @@ QML 已经编译完并完成一次 5 秒离屏运行，`124` 是 `timeout` 结�
 `2026-04-08 16:56:02 +0800`
 
 ```
-已经按当前可直接落地的图片集跑出一套 Web 和 QML 实现，并完成执行验证。  
+已经按当前可直接落地的图片集跑出一套 Web 和 QML 实现，并完成执行验证。
 这次实际使用的是 `sinumerik-840d/style-01` 里的 [840d_01.png](/home/iaar/workspace/codex-wp/hmi_dsl/pics/sinumerik-840d/style-01/840d_01.png)，因为仓库里目前只有它配套了结构化 `regions/ocr` 输入；[840d_app.png](/home/iaar/workspace/codex-wp/hmi_dsl/pics/sinumerik-840d/style-01/840d_app.png) 和 [840d_02.png](/home/iaar/workspace/codex-wp/hmi_dsl/pics/sinumerik-840d/style-01/840d_02.png) 还没有对应适配输入，所以这轮没有把它们纳入自动导入。
 
 产物都在 `/tmp/hmi_style01_run`：
@@ -4840,7 +4840,7 @@ continue
 - [web.py](/home/iaar/workspace/codex-wp/hmi_dsl/tools/hmi_dsl/generators/web.py)
   Web 端同步了同样的轻量按键簇样式和尺寸策略。
 
-新的 QML 离屏结果在 [current.qml.fixed9.png](/tmp/hmi_style01_run/current.qml.fixed9.png)。这一版里右上 app/page 区、选择区、插入区已经更像 `840d_02.png`，不再是整块深色卡片。  
+新的 QML 离屏结果在 [current.qml.fixed9.png](/tmp/hmi_style01_run/current.qml.fixed9.png)。这一版里右上 app/page 区、选择区、插入区已经更像 `840d_02.png`，不再是整块深色卡片。
 我也把 snapshot 基线同步更新了，并重新跑了测试：
 
 - `python3 -m unittest -v tests.test_pipeline`

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4480-4f7c-7f42-a571-ada9c5130f15</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:28:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/20/rollout-2026-05-20T16-28-40-019e4480-4f7c-7f42-a571-ada9c5130f15.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:28:40 +0800</div>
+<pre>Review the newly added PLC STORY-28 docs for implementation-readiness. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/** plus relevant CMake/test naming conventions if needed. Do not edit files. Check whether Slice 01/02/03, SPEC-068..071, INV-045..047 give enough concrete implementation/test guidance, whether statuses/validation targets are coherent, and whether any planned contracts are underspecified or risky. Return prioritized findings with file/line references and concrete fixes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:28:53 +0800</div>
+<pre>I’ll do this as a docs/code-review pass: first satisfy the repo orientation requirements, then inspect only the STORY-28 docs and nearby naming conventions needed to validate implementation guidance.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:29:09 +0800</div>
+<pre>The root README points to the docs/architecture entry and the codemap confirms this is under the RT Development Stack / machine logic boundary. I’m now checking the module-local working rules and the exact STORY-28 file set before evaluating the slices/specs/invariants.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:30:01 +0800</div>
+<pre>STORY-28 is currently untracked, so I’m treating it as a newly added documentation set rather than comparing it to committed history. Next I’m reading each slice/spec/invariant with line numbers, then I’ll cross-check the promised test targets against existing PLC CMake/test naming patterns.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:30:57 +0800</div>
+<pre>The story’s validation names mostly follow the repository’s per-story test-target style, but I’m checking the actual CMake registrations so I can distinguish naming issues from contract/readiness issues.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:31:13 +0800</div>
+<pre>The existing `story27_interactive_sim_tests` already exercises `tick/di/nrt/state/snapshot/motion` through the REPL, which is useful context: STORY-28’s docs need to be precise about what moves into executor-level tests versus what remains pipe-level compatibility coverage.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 16:32:16 +0800</div>
+<pre>I’ve got the core review shape now. I’m doing one last pass for internal consistency around validation/status metadata so the findings don’t overstate anything that is simply an accepted “planned/draft” convention.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-20 16:32:25 +0800</div>
+<pre>I’m also checking the repo’s docs-review skill instructions now, because this is a documentation readiness review rather than a code change. I’ll keep the output in review format: findings first, then residual risks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-05-20 16:34:23 +0800</div>
+<pre>**Findings**
+
+1. **High: the command payload contract is not concrete enough to implement or test deterministically.**
+[SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:22) defines one loose struct with `name`, `value`, `count`, and `payload`, while [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:108) expects invalid counts and missing fields to be rejected. There is no per-kind matrix saying which fields are required, ignored, or invalid, nor accepted bool syntax, payload semantics, or success codes.
+**Fix:** add a table for every `RuntimeCommandKind`: required fields, forbidden/ignored fields, validation rules, side effect, success code, and error code.
+
+2. **High: fault/operator-control commands are listed but underspecified.**
+The story includes fault-control primitives in scope at [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:69), and Slice 01 includes `ClearFaults`, `Pause`, `Resume`, and `RequestStop` in the enum at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:32). But the validation plan only covers DI, scan, NRT, arguments, and reentry at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:106). It does not say whether these commands call `Framework` directly or enqueue existing operator NRT messages, which changes timing semantics.
+**Fix:** add SPEC coverage/tests for each operator command, including direct-vs-NRT execution, allowed runtime states, idempotency, scan timing, and result codes. If they are not Slice 01 work, remove them from the first enum.
+
+3. **High: `UnknownSignal` cannot be implemented consistently from the docs.**
+`UnknownSignal` is required by [SPEC-069.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SPEC-069.md:23), and tests are expected for unknown DI/DO/virtual names at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:108) and [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/SLICE.md:43). But the executor construction list at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:97) does not define a signal catalog or descriptor source of truth.
+**Fix:** define where known DI/DO/virtual/motion names come from, preferably descriptor/snapshot-backed, and require tests with one known and one unknown name per namespace.
+
+4. **Medium: `CommandResult::lines` conflicts with adapter-owned formatting.**
+Slice 01 says `lines` preserves terminal-friendly output at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:73), while INV-047 says adapter-specific formatting belongs to the caller at [INV-047.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-03-observation-command-migration/INV-047.md:16). This invites either terminal formatting inside the executor or duplicated state collection in adapters.
+**Fix:** define `lines` as canonical plain result records, not terminal formatting, or add a typed payload now. Otherwise relax INV-047 to explicitly allow executor-generated terminal-compatible lines for this story.
+
+5. **Medium: INV-045’s reentry test seam is too vague.**
+The story says implementation remains synchronous at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/SLICE.md:14), but INV-045 validation relies on “a test hook or controlled command path” at [INV-045.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-01-command-model-and-executor/INV-045.md:34). That is not enough guidance for a minimal implementation.
+**Fix:** specify the exact hook or guard to test nested `StepOnce`/`RunCycles`, and require assertion that the nested call returns `error/executor-busy` without incrementing the cycle counter.
+
+6. **Low: Slice 02 validation summary is not fully aligned with SPEC-070.**
+The slice table lists only `metanc_plc_story28_sim_adapter_tests` at [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SLICE.md:49), but SPEC-070 front matter and validation also require `metanc_plc_story27_interactive_sim_tests` at [SPEC-070.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/SLICE-02-simulator-adapter-refactor/SPEC-070.md:8).
+**Fix:** include both validation targets in the slice table so the implementation checklist cannot accidentally skip the existing compatibility suite.
+
+**Status Check**
+
+The planned/draft/planned statuses are coherent for a not-yet-implemented story, and the proposed `metanc_plc_story28_*_tests` names match the current CMake test naming style. I did not edit files or run tests; this was a read-only readiness review.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:56-71|note=[PLC scope and validation workflow preferences]
+MEMORY.md:87-89|note=[PLC story status and validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e202e-f135-7362-9ea9-5c26a31ba3aa
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

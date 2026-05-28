@@ -181,7 +181,7 @@ OPC UA / RTComm / PLC / Simulator / Vendor SDK
 不要让 Web/QML 直接各自实现一套运行时逻辑。现在你仓库里已经有这种趋势，前端和生成 runtime 里都有状态机逻辑，比如 [use-hmi-store.ts](/home/iaar/workspace/ccmix-wp/lab/codex-cnc-hmi/src/state/use-hmi-store.ts#L30) 和 [web_runtime_shell.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/hmi_dsl/generators/web_runtime_shell.py#L20)。这部分后面应该搬进这个 web backend。
 
 **一句话定性**
-你要的不是“前端配一个小桥接层”，而是一个真正的 `HMI web backend`。  
+你要的不是“前端配一个小桥接层”，而是一个真正的 `HMI web backend`。
 `Gateway` 只是我给它起的架构名，它完全可以就是你理解里的后端服务。
 
 如果你愿意，我下一步可以直接给你出一版更具体的：
@@ -863,9 +863,9 @@ trait MachineAdapter {
 Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接绑 C++ 类库”。对你这个架构，更合理的是让 Rust 保持编排层，C++ 保持设备适配层，中间用 `sidecar 协议` 或 `C ABI facade` 隔开。
 
 如果你要，我下一步可以直接给你写一版：
-1. `Rust backend + C++ adapter` 的目录结构  
-2. `C ABI facade` 示例接口  
-3. `sidecar gRPC` 版接口草案  
+1. `Rust backend + C++ adapter` 的目录结构
+2. `C ABI facade` 示例接口
+3. `sidecar gRPC` 版接口草案
 4. 哪种适合 CNC、哪种适合 PLC、哪种适合 simulator
 ````
 
@@ -890,7 +890,7 @@ Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接�
 - 命令路由
 - 前端订阅推送
 
-而真正的 CNC / PLC / 设备逻辑都还在下面的 C++ 模块里，那 `Rust 仍然适合`。  
+而真正的 CNC / PLC / 设备逻辑都还在下面的 C++ 模块里，那 `Rust 仍然适合`。
 因为这时 Rust 只是在做“编排层”和“边界层”，不是去重写 CNC/PLC 核心。
 
 但如果你的实际情况是下面这种：
@@ -901,7 +901,7 @@ Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接�
 - 回调、线程、生命周期、异常、共享内存都深度绑定
 - 你现在最优先的是“尽快接通现有系统”，不是长期重构
 
-那我会直接说：`用 C++ 做后端更务实`。  
+那我会直接说：`用 C++ 做后端更务实`。
 因为这时 Rust 不是不能做，而是你会把大量时间花在边界适配上，而不是业务本身。
 
 我建议你这样判断：
@@ -938,8 +938,8 @@ Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接�
 这个折中通常最稳。
 
 如果你要，我下一步可以直接给你出一版：
-1. `全 C++ 后端` 的架构方案  
-2. `C++ 后端 vs Rust 后端` 的对比表  
+1. `全 C++ 后端` 的架构方案
+2. `C++ 后端 vs Rust 后端` 的对比表
 3. 基于你现在 MetaNC/HMI 结构，哪种更适合当前阶段
 ```
 
@@ -1061,7 +1061,7 @@ Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接�
 - cutover 时的替换顺序
 - 一组明确的 `red flags`
 
-我没有处理文档位置，也没有提交。  
+我没有处理文档位置，也没有提交。
 如果你要继续，我下一步可以直接把这份清单再往前落成两样东西之一：
 
 - 把它变成 Rust backend 的代码约束和 TODO 分层
@@ -1081,7 +1081,7 @@ Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接�
 ````
 对，核心就是这个意思。
 
-你现在这一步最重要的不是先定 `Rust` 还是 `C++`，而是先把“剥离设计”定下来。  
+你现在这一步最重要的不是先定 `Rust` 还是 `C++`，而是先把“剥离设计”定下来。
 因为你原来的 DSL 本来就是语言无关的，它描述的是：
 
 - UI 结构
@@ -1285,7 +1285,7 @@ Rust 后端完全能快速集成 C++ 模块，但我不会默认“Rust 直接�
 
 **一句话总结**
 
-是的，你现在主要做“剥离设计”就对了。  
+是的，你现在主要做“剥离设计”就对了。
 backend 只是这套设计的一个实现结果，不是这次剥离本身。
 
 如果你要，我下一步可以直接按这个思路给你整理成一份非常具体的“剥离交付清单”，按：
@@ -2755,7 +2755,7 @@ QML 和 validate 都已经通过，还是只剩文本 snapshot 差异。我先�
 - `diagnostics.*_rows`
 
 如果你要继续，我建议下一步直接做一件最值当的事：
-把 `tool.table / wcs.table / param.table` 这三类大表也一起切成 `resources`。  
+把 `tool.table / wcs.table / param.table` 这三类大表也一起切成 `resources`。
 这样 HMI 这边的“大对象资源 contract”就会基本成型。
 ```
 
@@ -3419,10 +3419,10 @@ cd /home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi
 
 **一句话总结**
 
-现在这版不是“彻底切割完成”，而是“分离方案已经成立，Web split 运行链已经可用，下一步可以直接接真实 backend”。  
+现在这版不是“彻底切割完成”，而是“分离方案已经成立，Web split 运行链已经可用，下一步可以直接接真实 backend”。
 真正的最后一步，不是再改 DSL，而是把 `web_runtime_shell.py` 里剩下的本地 runtime ownership 继续剥掉，让 backend 变成唯一权威源。
 
-如果你要，我下一步可以直接给你一份更硬的东西：  
+如果你要，我下一步可以直接给你一份更硬的东西：
 `按真实 backend 落地的接口清单 + 前端还要删掉哪些本地逻辑 + 哪些路径先接 CNC/PLC 最合适`。
 ```
 
@@ -4075,12 +4075,12 @@ backend bridge 现在只做：
 
 **一句话定性**
 
-你现在指出的问题是正确的。  
+你现在指出的问题是正确的。
 这版目前是“contract split + package split + runnable mock split”，不是“真正 backend authoritative 的最终前后端分离”。
 
 如果你要，我下一步不再解释，直接继续把它往“真分离”推，先做这两件事：
 
-1. 让 Web 前端在没有 backend 时不再继续本地模拟整套 machine runtime  
+1. 让 Web 前端在没有 backend 时不再继续本地模拟整套 machine runtime
 2. 把 `backend fixture` 的职责再往外推，整理成未来 `hmi_backend` 的真正接口骨架
 
 这一步做完，你再关 backend，前端行为就会明显不同，才算开始接近你要的结果。
@@ -4394,7 +4394,7 @@ http://127.0.0.1:8000/?backend=http://127.0.0.1:8010/api/runtime
 ```
 我再补两层稳态处理，不靠你手工凑时序：
 
-1. strict 模式下自动重连 backend  
+1. strict 模式下自动重连 backend
 2. `run_frontend_web.sh` 传 backend 地址时，直接把前端配置写进去，这样打开 `/` 就连，不再依赖 query 参数
 
 这样你就不用卡在“要不要先起哪个、要不要刷新页面”上。
@@ -4461,7 +4461,7 @@ http://127.0.0.1:8000/
 - backend 现在会返回正确的 CORS 头
 - 相关生成测试和 snapshot 已更新通过
 
-如果你现在还看不到数据，下一步最值当的是你把浏览器里这个页面强刷一次，再试一遍上面的两条命令。  
+如果你现在还看不到数据，下一步最值当的是你把浏览器里这个页面强刷一次，再试一遍上面的两条命令。
 如果还不行，我下一步就不再口头分析，直接把浏览器控制台错误抓出来给你看。
 ````
 
@@ -4497,7 +4497,7 @@ http://127.0.0.1:8000/
 `2026-04-23 15:03:14 +0800`
 
 ```
-我已经查到刚才我自己那次浏览器复现为什么拿到 `ERR_CONNECTION_REFUSED` 了：不是页面又坏了，而是我把 `run_frontend_web.sh` 放到一个瞬时后台 shell 里起，shell 退出时把前端进程一起清掉了。这个和你正常开两个终端跑不是一回事。  
+我已经查到刚才我自己那次浏览器复现为什么拿到 `ERR_CONNECTION_REFUSED` 了：不是页面又坏了，而是我把 `run_frontend_web.sh` 放到一个瞬时后台 shell 里起，shell 退出时把前端进程一起清掉了。这个和你正常开两个终端跑不是一回事。
 我现在改成在同一个长命令里把前后端都撑住，再抓一次真实页面状态。
 ```
 
@@ -4519,7 +4519,7 @@ http://127.0.0.1:8000/
 `2026-04-23 15:06:26 +0800`
 
 ```
-现在问题已经很具体了：你当前看到的“没数据”，是因为 `8000` 前端在跑，但 `8010` 后端根本没连上。  
+现在问题已经很具体了：你当前看到的“没数据”，是因为 `8000` 前端在跑，但 `8010` 后端根本没连上。
 我这边同样复现到了这个状态：前端 `config.js` 正常，但 `curl 127.0.0.1:8010/api/runtime/health` 直接连不上。
 
 我先把 backend 也起成持久会话，再做一次真实联调确认。
@@ -4564,7 +4564,7 @@ http://127.0.0.1:8000/
 `2026-04-23 15:11:12 +0800`
 
 ```
-现在关键点出来了：页面里 `window.HMI_RUNTIME_CONFIG` 有值，但 `window.RUNTIME_CONFIG` 是 `null`。这说明 `config.js` 执行了，但 `runtime.js` 没正常跑完。  
+现在关键点出来了：页面里 `window.HMI_RUNTIME_CONFIG` 有值，但 `window.RUNTIME_CONFIG` 是 `null`。这说明 `config.js` 执行了，但 `runtime.js` 没正常跑完。
 这就解释了为什么：
 
 - 页面框架能出来
@@ -4601,7 +4601,7 @@ http://127.0.0.1:8000/
 `2026-04-23 15:12:47 +0800`
 
 ```
-根因确认了：`resolveRuntimeConfig()` 被生成到了 `createRuntime()` 的内部作用域里，但初始化时是在最外层先调用它，所以浏览器一加载 `runtime.js` 就直接 `ReferenceError`。  
+根因确认了：`resolveRuntimeConfig()` 被生成到了 `createRuntime()` 的内部作用域里，但初始化时是在最外层先调用它，所以浏览器一加载 `runtime.js` 就直接 `ReferenceError`。
 我现在把这两个配置解析函数提到顶层，然后重新打包。
 ```
 
@@ -4630,7 +4630,7 @@ http://127.0.0.1:8000/
 `2026-04-23 15:14:28 +0800`
 
 ```
-根因已经完全对上了：`generated/web/runtime.js` 是新的，但 `generated/distribution/frontend/web/runtime.js` 还是旧的。  
+根因已经完全对上了：`generated/web/runtime.js` 是新的，但 `generated/distribution/frontend/web/runtime.js` 还是旧的。
 也就是说你实际打开的仍然是旧前端包，不是我刚修好的那版。这个我现在直接同步并重启前端。
 ```
 
@@ -5096,7 +5096,7 @@ cd /home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/distribution
 http://127.0.0.1:8000/
 ```
 
-如果浏览器之前开着老页面，强刷一次。  
+如果浏览器之前开着老页面，强刷一次。
 这次 `AUTO` 再点 `cycle start`，不应该再是纯静态无反应了。
 
 这轮没有提交。
@@ -5127,8 +5127,8 @@ http://127.0.0.1:8000/
 `2026-04-23 16:04:00 +0800`
 
 ```
-我把修复方向收窄成两刀，不会再乱加行为了：  
-1. backend 只同步少数“确实属于运行态”的 local state，不再覆盖 `active_page / program_browser_selection` 这些纯 UI 状态。  
+我把修复方向收窄成两刀，不会再乱加行为了：
+1. backend 只同步少数“确实属于运行态”的 local state，不再覆盖 `active_page / program_browser_selection` 这些纯 UI 状态。
 2. 轮询只在 revision 变化时触发重渲染，避免每次都全量 apply 造成卡顿。
 ```
 
@@ -5225,7 +5225,7 @@ Traceback (most recent call last):
 `2026-04-23 16:10:37 +0800`
 
 ```
-定位到了，不是 `8000` 被占，而是脚本在绑定 `0.0.0.0`。这个环境里前端脚本跑在受限沙箱下，`0.0.0.0` 会直接被拒绝；backend 用的是 `127.0.0.1`，所以它能起来。  
+定位到了，不是 `8000` 被占，而是脚本在绑定 `0.0.0.0`。这个环境里前端脚本跑在受限沙箱下，`0.0.0.0` 会直接被拒绝；backend 用的是 `127.0.0.1`，所以它能起来。
 我把前端脚本改成只绑本地回环地址，这样就和 backend 一致了。
 ```
 
@@ -5247,7 +5247,7 @@ Traceback (most recent call last):
 `2026-04-23 16:11:33 +0800`
 
 ```
-现在是真正的原因了：`8000` 上已经有旧前端在监听。刚才你看到的那版 traceback，因为终端环境和权限混在一起，表象不稳定。  
+现在是真正的原因了：`8000` 上已经有旧前端在监听。刚才你看到的那版 traceback，因为终端环境和权限混在一起，表象不稳定。
 我先把 `8000` 上的旧监听找出来。
 ```
 
@@ -5262,7 +5262,7 @@ Traceback (most recent call last):
 `2026-04-23 16:12:21 +0800`
 
 ```
-`ss` 已经确认了，`8000` 上确实有一个旧监听，而且还是之前那版绑在 `0.0.0.0:8000` 的。  
+`ss` 已经确认了，`8000` 上确实有一个旧监听，而且还是之前那版绑在 `0.0.0.0:8000` 的。
 我继续把这个旧监听的 PID 找出来。
 ```
 
@@ -5270,7 +5270,7 @@ Traceback (most recent call last):
 `2026-04-23 16:12:44 +0800`
 
 ```
-`8000` 这个旧监听我在当前环境里拿不到 PID，但已经能确认它还在。先不和它纠缠，你直接换一个前端端口就能继续看结果。  
+`8000` 这个旧监听我在当前环境里拿不到 PID，但已经能确认它还在。先不和它纠缠，你直接换一个前端端口就能继续看结果。
 我先帮你确认 `8001` 这条链是通的。
 ```
 
@@ -5278,7 +5278,7 @@ Traceback (most recent call last):
 `2026-04-23 16:13:04 +0800`
 
 ```
-`8001` 这边脚本已经能正常起了，所以现在不是前端脚本还坏着，而是你本机的 `8000` 端口有个旧 listener 卡在那里。  
+`8001` 这边脚本已经能正常起了，所以现在不是前端脚本还坏着，而是你本机的 `8000` 端口有个旧 listener 卡在那里。
 我把我这边起的 `8001` 也先停掉，避免再占端口。
 ```
 
@@ -5776,7 +5776,7 @@ backend -> import hmi generator helper
 
 **一句话总结**
 
-当前是“同包分层”，目标应该是“同仓双模块”。  
+当前是“同包分层”，目标应该是“同仓双模块”。
 `nrt/hmi` 做定义和生成，`nrt/hmi_backend` 做运行和集成。
 
 如果你要，我下一步可以继续直接给你一版更落地的东西：
@@ -6580,15 +6580,15 @@ QML 构建段比较慢，等它收完我就直接提交。
 - 构建文件：[CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/CMakeLists.txt)
 
 这版骨架已经按独立后端模块切开了层次：
-- `contract`：读取 `hmi` 导出的 contract bundle  
+- `contract`：读取 `hmi` 导出的 contract bundle
   入口：[contract_loader.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/include/hmi_backend/contract/contract_loader.h)
-- `domain`：维护 revisioned runtime state  
+- `domain`：维护 revisioned runtime state
   入口：[runtime_state_store.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/include/hmi_backend/domain/runtime_state_store.h)
-- `application`：bootstrap、resource、command 编排  
+- `application`：bootstrap、resource、command 编排
   入口：[backend_app.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/include/hmi_backend/application/backend_app.h)
-- `adapters`：southbound 抽象和首个 simulator adapter  
+- `adapters`：southbound 抽象和首个 simulator adapter
   入口：[machine_adapter.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/include/hmi_backend/adapters/machine_adapter.h)、[simulator_adapter.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/include/hmi_backend/adapters/simulator_adapter.h)
-- `transport/http`：先放 northbound HTTP 边界骨架  
+- `transport/http`：先放 northbound HTTP 边界骨架
   入口：[http_server.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi_backend/include/hmi_backend/transport/http/http_server.h)
 
 首批实现文件已经落下来了：
@@ -7262,7 +7262,7 @@ native backend 已经进入最终产物链，打包入口在：
 当前状态：
 - `metanc_hmi_dsl` 工作树干净，已推送
 - report 子模块工作树干净，已推送
-- `MetaNC` 按你的要求没有提交/推送，这边仍然保留未提交改动  
+- `MetaNC` 按你的要求没有提交/推送，这边仍然保留未提交改动
   当前未提交入口主要是：
   - [backend](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/backend)
   - [docs/backend](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/backend)
@@ -7636,7 +7636,7 @@ QML 和 native hmi_server 还在构建，前面这段是正常的。等 build �
   - `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_pipeline tests.test_generator_refactor tests.test_mock_runtime_server tests.test_docs_portal`
   - `./tools/generate_targets.sh`
 
-现在两边最终产物目录都已经是 `hmi_client / hmi_server / contract` 结构了。  
+现在两边最终产物目录都已经是 `hmi_client / hmi_server / contract` 结构了。
 这轮我没有提交任何仓库；`MetaNC` 和 `metanc_hmi_dsl` 当前都还是未提交改动状态。
 ```
 
@@ -8244,7 +8244,7 @@ nrt/hmi/
 - `contract/`
 - `fixture/`
 
-但这只是次优方案。  
+但这只是次优方案。
 因为现在你的“共享”不是一个稳定单一概念，而是两种职责已经很不同的内容。
 
 **我的明确建议**
@@ -8504,7 +8504,7 @@ nrt/hmi/
 - `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_docs_portal tests.test_generator_refactor tests.test_mock_runtime_server tests.test_pipeline`
 - `ctest --test-dir generated/hmi_server-build --output-on-failure`
 
-当前 `MetaNC` 还是未提交状态。  
+当前 `MetaNC` 还是未提交状态。
 如果你同意这版，我下一步就把这轮结构同步到 `metanc_hmi_dsl`。
 ```
 
@@ -9114,7 +9114,7 @@ snapshot 已经同步到这轮生成结果。我现在只重跑测试，确认�
 - `server/` 内部的 C++ namespace / include 路径 / 可执行名 `hmi_server`
 - 兼容脚本别名，比如 `run_hmi_server_*`
 
-`MetaNC` 目前仍然没有提交。  
+`MetaNC` 目前仍然没有提交。
 如果你看这版方向对，我下一步就把这轮再同步到 `metanc_hmi_dsl`。
 ```
 
@@ -9192,7 +9192,7 @@ push 已经发出，我等它返回后给你最终状态。
 - `mdbook build docs`
 - `ctest --test-dir generated/server-build --output-on-failure`
 
-当前 `metanc_hmi_dsl` 是干净的，远端也已更新。  
+当前 `metanc_hmi_dsl` 是干净的，远端也已更新。
 `MetaNC` 仍然没有提交和推送，保持你要求的状态。
 ```
 
@@ -9265,7 +9265,7 @@ nrt/hmi/
 - `program-root/`
 - reference images
 
-这些内容已经不只是“DSL 本体”，而是完整的 retained definition layer。  
+这些内容已经不只是“DSL 本体”，而是完整的 retained definition layer。
 所以我不建议改成单纯的 `dsl/`，我更建议改成 `definition/`。
 
 我对几个候选名的判断是：
@@ -9443,7 +9443,7 @@ QML 那段已经过了，剩下是测试尾巴。等它收尾后，我再补一�
 - `src/hmi_dsl` 确实已经不搭了
 - 现在已经改成更一致的 `definition/client/server/contract/fixture`
 
-`MetaNC` 还是未提交状态。  
+`MetaNC` 还是未提交状态。
 如果你要，我下一步就把这一轮 `definition/` 结构同步到 `metanc_hmi_dsl`。
 ```
 
@@ -9728,7 +9728,7 @@ push 已经发出，我等它返回后把这轮最终清理结果一起告诉你
 - `run_split_web.sh`
 - `run_split_web_native.sh`
 
-`MetaNC` 这边我也已经把本地过时生成目录清掉并重建验证了，但仍然没有提交、没有推送，保持你的要求。  
+`MetaNC` 这边我也已经把本地过时生成目录清掉并重建验证了，但仍然没有提交、没有推送，保持你的要求。
 如果你要，我下一步可以继续收最后一批历史痕迹，比如内部的 `hmi_server` namespace / 可执行名 / 测试名。
 ```
 
@@ -10061,7 +10061,7 @@ ok,现在结构调整应该都收尾了把，按你说的做一版“当前最�
 - `metanc_hmi_dsl` 已同步、已推送、工作树干净
 - `MetaNC` 本地也已经清理并验证，但仍然没有提交和推送
 
-现在这套基本可以认为结构收口完成了。  
+现在这套基本可以认为结构收口完成了。
 最终主结构就是：
 
 - `definition/`
@@ -10344,17 +10344,17 @@ ok,现在结构调整应该都收尾了把，按你说的做一版“当前最�
 
 如果你问的是“连 `tools/hmi_dsl` 这个名字也不顺了，要不要以后改成别的”，那是另一层问题。
 
-可以，但那属于“工具链包名重构”，成本比目录清理大很多。  
+可以，但那属于“工具链包名重构”，成本比目录清理大很多。
 比如以后真要改，我会更倾向于：
 
 - `tools/hmi_tooling/`
 
-但我不建议现在就做。  
+但我不建议现在就做。
 因为当前最重要的是结构稳定，不是再改一轮 Python 包入口。
 
 **我的建议**
 
-现在不要删 `tools/hmi_dsl` 整层。  
+现在不要删 `tools/hmi_dsl` 整层。
 正确动作是：
 
 1. 保留它作为 tooling namespace
@@ -10488,7 +10488,7 @@ tools/hmi_dsl/
 
 **一句话结论**
 
-`tools/hmi_dsl` 这层目录本身还有必要，但它里面现在确实还有一批多余的兼容壳。  
+`tools/hmi_dsl` 这层目录本身还有必要，但它里面现在确实还有一批多余的兼容壳。
 正确方向不是删掉整个目录，而是把它收缩成纯 tooling namespace。
 
 如果你要，我下一步就可以直接开始做第一阶段清理。
@@ -10516,7 +10516,7 @@ tools/hmi_dsl/
 
 **结论**
 
-`tools/hmi_dsl/` 不该删掉，但应该被收缩成 `纯工具链命名空间`。  
+`tools/hmi_dsl/` 不该删掉，但应该被收缩成 `纯工具链命名空间`。
 真正多余的不是这层目录本身，而是它里面现在还挂着一批 `client/contract/fixture/generators` 兼容壳。
 
 同时，`metanc_hmi_dsl` 里那些 `report/sync` 相关工具，不应该继续混在 `tools/` 根下，更不应该放进 `tools/hmi_dsl/`。它们属于 `仓库运维工具`，不是 `HMI DSL 工具链`。
@@ -10654,7 +10654,7 @@ tools/
 
 - `python3 -m tools.hmi_dsl ...`
 
-这个不要动。  
+这个不要动。
 也就是说，`tools/hmi_dsl` 作为 Python 包名先保留，但内部收缩。
 
 **一句话方案**
@@ -11137,7 +11137,7 @@ push 这次不是仓库状态问题，是远端连接被中断了。我直接重
 - 远端 `origin` 暂时没推上去，原因是 SSH/网络连接失败，不是代码问题
 
 如果你要，我下一步可以继续两件事之一：
-1. 在 `MetaNC` 里把这批 `tools/` 分层也落下去  
+1. 在 `MetaNC` 里把这批 `tools/` 分层也落下去
 2. 继续第三阶段，清 `tools/hmi_dsl` 里剩下的扁平 wrapper，如 `loader.py / ir.py / refs.py / runtime_plan.py / runtime_seed.py`
 ```
 

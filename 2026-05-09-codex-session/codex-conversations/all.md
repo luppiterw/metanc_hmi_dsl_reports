@@ -31593,4 +31593,3 @@ Planned action JSON:
 ```
 {"risk_level":"low","user_authorization":"high","outcome":"allow","rationale":"This runs a local verification probe against localhost services and a local headless browser, with no destructive or exfiltrating side effects, and it directly matches the user’s requested debugging/validation work."}
 ```
-

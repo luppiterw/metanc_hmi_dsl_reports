@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4490-cc63-7b21-baad-698846619063</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-20 16:46:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/20/rollout-2026-05-20T16-46-40-019e4490-cc63-7b21-baad-698846619063.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-20&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-20 16:46:40 +0800</div>
+<pre>Review the current revised PLC STORY-28 docs for documentation structure and consistency. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly: rt/plc/docs/SUMMARY.md, rt/plc/docs/spec/STORIES/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md, rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md, and rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/**. Do not edit files. Check mdBook navigation, relative links, front matter, status terminology, SPEC/INV numbering, decision-record placement, and consistency with nearby PLC story docs. Return only findings with file/line references and concrete fixes. If no issues, say so and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-20 16:47:00 +0800</div>
+<pre>I’ll use `review-docs-comprehension` for the structure/consistency review, and I’m doing the required MetaNC orientation pass before reading the PLC story files. I’ll keep this read-only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-20 16:47:30 +0800</div>
+<pre>The initial skill path was under the workspace, not the system skill directory, so I’m reopening the local skill file. I’ve also found prior PLC workflow memory that confirms this review should stay strictly inside `rt/plc` and compare against the PLC story/index conventions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-20 16:48:16 +0800</div>
+<pre>I’ve completed the root README/codemap orientation. Next I’m reading the PLC module README, the requested files, and a small set of adjacent story docs only as comparison material; findings will stay scoped to the requested paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-20 16:48:48 +0800</div>
+<pre>I have the requested navigation/index pages now. I’m checking STORY-28’s actual page metadata, relative links, and numbering against the adjacent implemented stories and decision records, then I’ll filter down to validated findings only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-20 16:49:55 +0800</div>
+<pre>The first pass shows STORY-28 is wired into `SUMMARY.md` and the story index. I’m checking whether the new decision record’s model-area label maps to the module-model page and whether the status/numbering conventions are internally consistent, because those are the places most likely to break navigation or review workflow.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-20 16:51:02 +0800</div>
+<pre>I’m doing one final consistency check on decision-record headings and any local mdBook/link conventions. I haven’t found broken STORY-28 navigation yet, but there are a couple of structure consistency candidates that need a false-positive pass.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-20 16:55:53 +0800</div>
+<pre>- [rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/INDEX.md:18) and [0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:5): `Runtime command surface` is not a link to a `MODULE-MODEL.md` section, unlike decisions 0001-0008. The decision index says rationale records explain the current model in `MODULE-MODEL.md`, so this leaves 0009 without a navigable model owner. Concrete fix: change both model-area cells to an existing linked owner such as `[Architecture](../MODULE-MODEL.md#architecture), [Backend model](../MODULE-MODEL.md#backend-model)` or add a dedicated `MODULE-MODEL.md` section before using `Runtime command surface`.
+
+- [rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:1): the decision record starts with `# 0009...`, while the nearby decision records and template use `## NNNN...`. This makes 0009 the only child page with a top-level heading under the decision section, which is inconsistent in mdBook navigation/heading hierarchy. Concrete fix: change line 1 to `## 0009: Runtime command primitives before PLC language AST`.
+
+- [rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/MODULE-MODEL.decision/0009-runtime-command-primitives.md:3): 0009 omits the `**Deciders**:` field used by the decision-record template and nearby records. That weakens decision-record consistency and makes the placement look less like a captured architecture rationale. Concrete fix: add `**Deciders**: design discussion, captured for STORY-28 runtime-command planning` between `Status` and `Model area`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:56-65|note=[PLC scope and review workflow preferences]
+MEMORY.md:67-89|note=[PLC docs structure and validation conventions]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

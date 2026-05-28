@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e4e3a-6197-7352-b337-eef168b8f89a</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-22 13:48:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/22/rollout-2026-05-22T13-48-29-019e4e3a-6197-7352-b337-eef168b8f89a.jsonl</code></div>
+<div><b>Messages</b>: <code>15</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-22 13:48:29 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-05-22&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-22 13:48:29 +0800</div>
+<pre>在 /home/iaar/workspace/ccmix-wp/MetaNC 做只读审查。目标：审查 nrt/hmi 当前关于 Work Offset / work_offset / wcs.offset.table / tooling.wcs.table legacy alias / Tool Offset 的代码与文档一致性。重点找：1) zero_offset/Zero Offset/parameter_zero_offset 残留；2) tooling.wcs.table 是否还被普通文档当正常接口而非 legacy alias；3) wcs.offset.table 是否仍为 canonical，是否有误改成 work_offset.table；4) docs/product/spec, docs/project, docs/requirements, acceptance_reference story_pack 与 definition/ui.structure.yaml/interfaces.machine.yaml/runtime_plan.py 是否一致。不要修改文件。返回 findings，按严重程度列出文件和行号，说明是否需要修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-22 13:48:45 +0800</div>
+<pre>我会按只读审查处理：先满足仓库根部说明和架构导向要求，再围绕 `nrt/hmi` 的接口名、legacy alias 和文档/生成物一致性做定点检索。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-22 13:49:07 +0800</div>
+<pre>架构图把这次范围主要落在 `/nrt/hmi`，并会交叉检查 `/nrt/tooling_management` 暴露的 tooling/WCS/Tool Offset 语义；我先读这些模块自己的工作说明，再做全文和目标文件核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-22 13:49:51 +0800</div>
+<pre>初扫结果很大，尤其是 Tool Offset 相关正常实现很多；接下来我会把检索收窄到用户点名的 source/docs/definition/story-pack 文件，并把 generated snapshot 这类派生噪声先排除，只在需要判断一致性时引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-22 13:50:15 +0800</div>
+<pre>目前没有在非派生源里看到 `zero_offset` 这类直接残留。上一次命令里我误按用户简写找了 `nrt/hmi/runtime_plan.py`，实际文件在 `nrt/hmi/contract/runtime_plan.py`；下面改用真实路径继续核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-22 13:50:47 +0800</div>
+<pre>我找到了几个可能不是实现错误、但会让读者把 legacy alias 看成正式接口的文档位置。现在我会逐段打开上下文，确认它们是不是明确标成 legacy，避免把正常的兼容性保留误判成问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-22 13:51:09 +0800</div>
+<pre>文档上下文显示 canonical 规则本身写得比较清楚：`interfaces.machine.yaml`、`ui.structure.yaml`、`contract/runtime_plan.py` 都以 `wcs.offset.table` 为主，并把 `tooling.wcs.table` 写成兼容别名。剩下要确认的是 story pack 和少数 spec 清单是否缺少 legacy 标注。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-22 13:52:14 +0800</div>
+<pre>`zero_offset`/`Zero Offset`/`parameter_zero_offset` 全树检索无命中；`work_offset.table` 也没有命中。重点转到“哪些文档在列接口时没有说明 `tooling.wcs.table` 是 alias”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-22 13:52:41 +0800</div>
+<pre>还有一个细节：`docs/product/spec/generator_contract.md` 和 `docs/product/spec/interface_integration.md` 把 alias 放在“active resource slice”列表中，缺少就地说明；这和 `runtime_resources.md` 的规范说明不完全同步。我继续检查对应测试和生成来源，判断是普通文档修正还是生成器/定义源要改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-22 13:54:04 +0800</div>
+<pre>我还会检查 story catalog 源，因为 `docs/acceptance_reference/story_pack` 是从它生成的；如果 story pack 需要改，通常应改源和生成器，而不是只改生成 Markdown。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-22 13:55:07 +0800</div>
+<pre>源 `story.catalog.yaml` 里直接把 `tooling.wcs.table` 放进 `interface_refs`，而 story-doc 生成器会统一渲染接口引用，没有能力显示“这是 legacy alias”。这解释了 story pack 的表象问题，也给出修改方向：改源数据或生成器，不应手改生成文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-05-22 13:55:22 +0800</div>
+<pre>项目/需求文档总体和当前实现相符：项目页明确标 legacy，requirements 没直接把 `tooling.wcs.table` 当接口展开。剩余 findings 会集中在 product spec 两个清单和 story-pack/源 catalog 的接口列表表达上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-05-22 13:56:09 +0800</div>
+<pre>我有足够上下文形成审查结论；最后再补一处 execution links 的行号上下文，确保所有引用都精确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-05-22 13:57:12 +0800</div>
+<pre>只读审查完成，未修改文件。没有发现 High/Critical。
+
+**Findings**
+
+1. **Medium - story pack 把 `tooling.wcs.table` 当作普通接口并列展示，缺少 legacy alias 标注。需要修改。**
+   生成的 acceptance story pack 多处把 `tooling.wcs.table` 和 canonical `wcs.offset.table` 并列在 `Interfaces` 中，读者看不出它只是 legacy alias：
+   [feature_backlog.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/feature_backlog.md:128), [product_view.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/product_view.md:129), [interface_integration.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/interface_integration.md:61), [test_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/test_plan.md:123), [traceability_matrix.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/traceability_matrix.md:10), [execution_links.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/execution_links.md:111).
+   Source is [story.catalog.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:759) and later repeated at lines 1427, 1674, 1919. Since story pack is generated, fix should be in `definition/story.catalog.yaml` and/or `tools/hmi_dsl/story_docs.py`, not only generated Markdown.
+
+2. **Medium - product spec 的两个普通文档清单仍把 `res://tooling.wcs.table` 放在 active resource slices 中，未就地标明 legacy alias。需要修改。**
+   [generator_contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/generator_contract.md:167) lists `res://tooling.wcs.table` at line 174 as an active resource slice. [interface_integration.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/interface_integration.md:260) does the same at line 271.
+   This conflicts in presentation with [runtime_resources.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/runtime_resources.md:72), which correctly says `res://wcs.offset.table` is canonical and `res://tooling.wcs.table` is legacy-only. Recommend either remove the alias from “active slices” lists or annotate it inline as `legacy alias -&gt; res://wcs.offset.table`.
+
+**Confirmed Consistent**
+
+- No `zero_offset`, `Zero Offset`, or `parameter_zero_offset` residual found in `nrt/hmi`.
+- No `work_offset.table` or `res://work_offset.table` found; canonical remains `wcs.offset.table`.
+- Retained UI binds Work Offset rows to [res://wcs.offset.table](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/ui.structure.yaml:2158).
+- Interface catalog correctly marks [tooling.wcs.table](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1404) as `compatibility_alias` with replacement [res://wcs.offset.table](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1408), while [wcs.offset.table](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1410) remains normal `on_demand`.
+- `contract/runtime_plan.py` uses canonical `wcs.offset.table` for parameter work-offset derived state and keeps the legacy alias synchronized for compatibility only: [runtime_plan.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/contract/runtime_plan.py:11), [runtime_plan.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/contract/runtime_plan.py:147).
+- Project/requirements docs are mostly aligned; [runtime_split_inventory.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/runtime_split_inventory.md:106) explicitly says canonical vs legacy, and [story_map.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/requirements/story_map.md:95) keeps work-offset authority separate from `tooling_management`.
+
+No tests were run because this was a read-only review.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:597-605|note=[nrt hmi prior review and regeneration context]
+MEMORY.md:632-650|note=[path scoped hmi review and generated output context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019d98f9-6314-7980-aaed-8a6e00054f13
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

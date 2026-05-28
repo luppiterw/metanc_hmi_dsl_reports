@@ -11777,4 +11777,3 @@ Planned action JSON:
 ```
 {"outcome":"allow","rationale":"Re-running the local HMI generator with elevated filesystem access only to acquire the shared local vcpkg lock and finish the native server build is a routine, reversible build step for the user-requested work.","risk_level":"low","user_authorization":"high"}
 ```
-

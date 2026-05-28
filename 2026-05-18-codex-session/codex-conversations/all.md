@@ -14944,4 +14944,3 @@ Planned action JSON:
 ```
 {"outcome":"allow","rationale":"Deleting this specific generated build directory is a routine, reversible cleanup to force a fresh reconfigure and is aligned with the user-authorized integration/test workflow.","risk_level":"low","user_authorization":"high"}
 ```
-

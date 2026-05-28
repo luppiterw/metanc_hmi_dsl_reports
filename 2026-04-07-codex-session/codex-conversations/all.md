@@ -868,7 +868,7 @@ http://127.0.0.1:8123/web/index.html
 - 标题栏和图签字段
 - 活字块、品牌/认证、规格文字
 
-我也保留了可重复执行的提取脚本在 [scripts/extract-cad-readable.mjs](/home/iaar/workspace/codex-wp/test_cad/scripts/extract-cad-readable.mjs#L1)，后面你新增 `dwg/dxf` 后可以继续跑。  
+我也保留了可重复执行的提取脚本在 [scripts/extract-cad-readable.mjs](/home/iaar/workspace/codex-wp/test_cad/scripts/extract-cad-readable.mjs#L1)，后面你新增 `dwg/dxf` 后可以继续跑。
 补充一点：`侧边+活字块.dwg` 解析时会出现一次库的 `error code 68` 提示，但实际主要文字内容已经成功读出并纳入摘要。
 
 如果你要，我下一步可以继续把它导出成：

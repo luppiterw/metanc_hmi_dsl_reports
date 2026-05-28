@@ -77,16 +77,16 @@
 ```
 实施计划如下，我会按这个顺序直接落代码并验证:
 
-1. 重构示例 DSL 与接口契约  
+1. 重构示例 DSL 与接口契约
    把 `examples/june-demo` 改成面向通用 CNC HMI 的页面集合和字段模型，覆盖文档里的核心页面与动作。
 
-2. 重写 Web/QML 生成器外壳与运行时  
+2. 重写 Web/QML 生成器外壳与运行时
    去掉现有 sidebar demo shell，改成全局状态栏 + 主内容区 + 底部软键区，并补齐文档要求的 Mock 命令行为、占位显示、报警高亮和主要交互反馈。
 
-3. 刷新产物与回归基线  
+3. 刷新产物与回归基线
    重新生成 `generated/web`、`generated/qml`、`generated/distribution`，同步文本快照，跑验证和关键测试。
 
-4. 更新仓库文档与今日报告  
+4. 更新仓库文档与今日报告
    加 `.docs` 到 `.gitignore`，补 `CHANGELOG.md` / 生成器契约说明，并创建今天的 `reports/2026-04-11-codex-session/`。
 ```
 
@@ -498,7 +498,7 @@ QML 我会再刷新一次正式离屏基线，然后直接跑完整 pipeline。�
 - `mdbook build reports/2026-04-11-codex-session`
 - `python3 -m unittest tests.test_pipeline`
 
-结果：全部通过。  
+结果：全部通过。
 如果你那边还看不到新效果，直接重新打开上面这个 `generated/distribution/web/index.html`，不要继续看旧标签页或旧路径。
 ```
 
@@ -1252,7 +1252,7 @@ QML 真实文件后端编译已经通过。我现在正式重建最终 targets�
 
 这次程序页我按“更像真实设备文件管理”的方向做了这些：
 
-- 程序根目录改为显式配置，不再是硬编码虚拟数组  
+- 程序根目录改为显式配置，不再是硬编码虚拟数组
   配置在 [product.manifest.yaml](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/product.manifest.yaml) 的 `program_runtime.root_path`
 - 示例真实目录在 [program-root](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/examples/june-demo/program-root)
 - 程序目录显示完整路径
@@ -1264,9 +1264,9 @@ QML 真实文件后端编译已经通过。我现在正式重建最终 targets�
 
 两端实现区别是：
 
-- QML 现在接了真实文件后端  
-  [ProgramWorkspaceBackend.h](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml/ProgramWorkspaceBackend.h)  
-  [ProgramWorkspaceBackend.cpp](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml/ProgramWorkspaceBackend.cpp)  
+- QML 现在接了真实文件后端
+  [ProgramWorkspaceBackend.h](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml/ProgramWorkspaceBackend.h)
+  [ProgramWorkspaceBackend.cpp](/home/iaar/workspace/codex-wp/metanc_hmi_dsl/generated/qml/ProgramWorkspaceBackend.cpp)
   它直接操作打包后的真实 `program-root` 文件夹
 - Web 由于浏览器环境限制，仍是设备风格原型，但已经按同样的目录结构、弹窗和工作区模型来模拟，不再是几条写死文件名
 
@@ -1355,10 +1355,10 @@ QML 侧也做同样的列宽和滚动收口：目录表给每列固定宽度，�
 
 这次重点修了两个你指出的问题：
 
-1. 程序列表列重叠  
+1. 程序列表列重叠
 现在程序目录表已经改成固定列宽，不再让 `name / size / modified / storage` 互相挤压重叠。目录表也保持固定高度，内容多时内部滚动，不再把页面撑高。
 
-2. 程序编辑器不好用、没有滚动  
+2. 程序编辑器不好用、没有滚动
 现在编辑器已经改成显式滚动编辑区：
 - Web 使用可滚动、等宽、禁止自动换行的 `textarea`
 - QML 使用 `ScrollView + TextArea`
@@ -1780,19 +1780,19 @@ Web 这边视图切换标记已经进去了；QML 正在构建。我等它结束
 ```
 我已经把程序页重新规划并修正到最终文件里了，重点针对你这次提的三个问题：
 
-1. 程序列表显示错乱  
+1. 程序列表显示错乱
 已修成固定列宽，`name / size / modified / storage` 不再重叠，目录条目多时内部滚动。
 
-2. 编辑器很奇怪  
+2. 编辑器很奇怪
 已改成真正的滚动编辑区：
 - Web: 可滚动、等宽、非自动换行的 `textarea`
 - QML: `ScrollView + TextArea`
 并且可编辑 editor 不再在下面重复打印 `content` 之类的绑定内容。
 
-3. 程序管理和程序编辑还是堆在一起  
+3. 程序管理和程序编辑还是堆在一起
 已把程序页改成两种模式：
 - `browser`：只显示程序目录和文件管理
-- `editor`：只显示编辑器和编辑动作  
+- `editor`：只显示编辑器和编辑动作
 打开/新建程序后进入编辑模式，返回后回到目录模式，不再把文件管理和编辑器同时挤在一个小区域里。
 
 最终文件已经更新：
@@ -1873,18 +1873,18 @@ Web 这边视图切换标记已经进去了；QML 正在构建。我等它结束
 
 这次重点处理的是：
 
-- 程序列表点击后选中态不刷新的问题  
+- 程序列表点击后选中态不刷新的问题
   现在 QML 选择态显式依赖 `runtime.revision`，单击会更新选中项并高亮，双击会打开程序。
-- 程序管理和程序编辑仍然堆在一起的问题  
+- 程序管理和程序编辑仍然堆在一起的问题
   现在程序页已经改成两种模式：
   - `browser`：只显示程序目录和文件管理
-  - `editor`：只显示编辑器和编辑动作  
+  - `editor`：只显示编辑器和编辑动作
   打开 / 新建程序后进入编辑模式，返回后回到目录模式。
-- 编辑器下方重复出现一堆程序内容的问题  
+- 编辑器下方重复出现一堆程序内容的问题
   可编辑 editor 不再额外把 `content` 绑定摘要再打印一遍，只保留必要状态。
-- 程序目录显示错乱的问题  
+- 程序目录显示错乱的问题
   目录列宽固定，且内部滚动，不再互相挤压重叠。
-- 编辑器滚动问题  
+- 编辑器滚动问题
   Web 和 QML 都已经是内部滚动编辑区，不再挤压页面。
 
 最终文件已经重新生成：

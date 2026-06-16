@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eba67-5c01-70c3-bf8b-a7253ca4ea2b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-12 13:56:36 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/12/rollout-2026-06-12T13-56-36-019eba67-5c01-70c3-bf8b-a7253ca4ea2b.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:56:36 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-12&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:56:36 +0800</div>
+<pre>你是第三轮复审 Agent A，任务是只读复审当前分支 `feat/hmi-work-offset-table` 上 HMI WorkOffset 开发计划是否贴合当前 `nrt/work_offset` 真实契约。不要修改文件，不要运行写入命令。
+
+仓库路径：`/home/iaar/workspace/ccmix-wp/MetaNC`。
+
+必须先按仓库约束读取：
+- `README.md`
+- `docs/dev/architecture.md` 中 `/nrt/hmi` 和 `/nrt/work_offset` 部分
+- `nrt/hmi/README.md`、`nrt/hmi/AGENTS.md`
+- `nrt/work_offset/README.md`、`nrt/work_offset/AGENTS.md`
+
+重点复审计划文件：
+- `nrt/hmi/docs/project/work_offset/index.md`
+- `nrt/hmi/docs/project/work_offset/contract.md`
+- `nrt/hmi/docs/project/work_offset/server_plan.md`
+- `nrt/hmi/docs/project/work_offset/delivery_plan.md`
+- `nrt/hmi/docs/project/work_offset/smoke_report.md`
+
+对照 WorkOffset 事实来源：
+- `nrt/work_offset/docs/integration/hmi-contract.md`
+- `nrt/work_offset/docs/integration/hmi-work-offset-views.md`
+- `nrt/work_offset/docs/spec/IMPLEMENTATION-STATUS.md`
+- `nrt/work_offset/docs/spec/RECORD-STRUCTURES.md`
+- `nrt/work_offset/include/work_offset/*.h`
+
+这轮只报告仍会阻塞实现或明显误导实现的点。重点验证：
+- real backend seed 策略：`preserve` 默认，`empty` 只允许 seed snapshot/profile，是否符合 WorkOffset profile/snapshot 契约
+- activation source 是否避免默认 Program source
+- view result `snapshot_revision` vs row revision 是否清楚
+- axis_id echo 校验是否符合 `AxisComponentValue.axis_id` 契约
+- 不修改 `nrt/work_offset` 是否仍可实现
+
+输出要求：
+- findings first，按严重程度排序。
+- 每个问题给文件:行号，说明计划写法、WorkOffset 实际契约、实现风险。
+- 不要重复已闭环问题。
+- 如果没有 blocker，明确说没有 blocker，并列 residual risks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:57:09 +0800</div>
+<pre>已使用 `superpowers:using-superpowers` 做流程检查。现在按你的只读约束先做仓库和模块定向，再对计划文件与 WorkOffset 契约逐项核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:57:32 +0800</div>
+<pre>README 和架构索引的初读完成：这次范围确实集中在 `/nrt/hmi` 的计划文档与 `/nrt/work_offset` 的集成契约，不需要扩展到 RT 或 program engine 实现。接下来读两个模块的本地说明和 AGENTS，再进入逐行对照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:58:04 +0800</div>
+<pre>本地分支确认是 `feat/hmi-work-offset-table`。我会只用只读命令带行号读取文档和头文件，最终只列仍会阻塞或明显误导实现的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:58:34 +0800</div>
+<pre>计划文档本身已经把多处第二轮关注点写入了：`preserve` 默认、`axis_id` 作为 echo、activation 使用 active-state revision、扩展只发布 canonical resource。现在需要验证这些说法是否真的和 WorkOffset 头文件/集成文档一致，尤其是 source、seed 和 revision 语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:58:58 +0800</div>
+<pre>WorkOffset 文档的关键契约已经确认：视图 `snapshot_revision` 是表/快照级元数据，写行用 `WorkOffsetViewRow.revision`，激活用 `ActiveWorkOffsetState.revision`，`AxisComponentValue.axis_id` 必须从同一视图结果回传。接下来我会用头文件确认实际结构体字段和 helper 名称，避免只按文档判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 13:59:26 +0800</div>
+<pre>头文件确认了一个实现细节：`SelectSettableZeroOffsetRequest.source` 的默认值确实是 `Program`，而 `SetFrameComponentRequest.source` 默认是 `OperatorConfigured`。计划中 activation 路径明确要求 HMI adapter 覆盖为 operator source，这一点符合当前风险点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 13:59:59 +0800</div>
+<pre>我还会补读 `nrt/hmi/AGENTS.md` 列出的本模块本地工作说明，虽然这次不改文件，但它会影响对“计划是否会误导实现路径”的判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 14:00:38 +0800</div>
+<pre>为确认 “不改 `nrt/work_offset` 是否可实现”，我需要看一下 WorkOffset store-backed runtime 的导入/加载实现路径和 CMake 导出选项；这仍是只读检查，用来判断 seed/import 计划是否真的落在现有 API 上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 14:02:01 +0800</div>
+<pre>当前对照没有看到明显违反 WorkOffset 公开结构的地方。最后我再核对操作注册表/集成手册中是否有额外硬约束，例如 `source`、并发 revision、default snapshot/profile 初始化路径是否比记录结构更严格。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 14:02:21 +0800</div>
+<pre>我已经完成主要核对，当前倾向是没有新的实现 blocker。为满足记忆引用规则，我会补取刚才查阅的记忆条目行号，然后给最终复审结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-12 14:03:23 +0800</div>
+<pre>**Findings**
+No blocker found. The current HMI WorkOffset plan aligns with the real `nrt/work_offset` contract on the requested points: `preserve` is the real-backend default, `empty` is constrained to explicit snapshot/profile seed, activation avoids the `Program` default source, row vs snapshot revisions are separated, `axis_id` is treated as echo metadata, and the slice remains implementable without changing `nrt/work_offset`.
+
+**Residual Risks**
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:54): fixed X/Y/Z/A/C column mapping may use display label or configured mapping. This is acceptable for V1 because writes preserve `AxisComponentValue.axis_id`, but custom profiles with duplicate/nonstandard labels should move to explicit configured mapping.
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:84): server-side fallback to fresh `get_active_wcs` for activation satisfies WorkOffset revision requirements, but it weakens client-stale detection until selected-row activation carries `active_state_revision`.
+- [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:200): real backend linkage still depends on resolving the HMI C++17 vs WorkOffset C++20 boundary. The plan calls this out, so it is not a contract blocker.
+
+I only used read-only inspection commands and did not modify files or run write-producing validation.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:40-92|note=[HMI workflow context and downstream package boundary]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+019eaace-b5e9-7943-b514-08e61070e879
+019eaaf7-561d-7cf0-8700-dade8b751af6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

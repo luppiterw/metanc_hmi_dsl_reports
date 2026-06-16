@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eba4f-0803-7373-a9bf-30f6c668cf45</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-12 13:30:02 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/12/rollout-2026-06-12T13-30-02-019eba4f-0803-7373-a9bf-30f6c668cf45.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:30:02 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-12&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:30:02 +0800</div>
+<pre>你是复审 Agent C，任务是按 first-time reader 视角复审当前 HMI WorkOffset 开发计划文档的可读性、边界表达和计划组织。只读审查，不要修改文件。
+
+仓库路径：`/home/iaar/workspace/ccmix-wp/MetaNC`。
+
+请使用文档理解审查口径：关注阅读顺序、重复、事实/计划混淆、章节职责、是否会让读者误解已实现 vs 计划、是否让后续 agent 不知道怎么执行。
+
+必须先按仓库约束读取：
+- `README.md`
+- `docs/dev/docs_policy.md`
+- `docs/dev/architecture.md` 中 `/nrt/hmi` 和 `/nrt/work_offset` 部分
+- `nrt/hmi/README.md`、`nrt/hmi/AGENTS.md`
+- `nrt/hmi/docs/SUMMARY.md`
+- `nrt/work_offset/README.md`、`nrt/work_offset/AGENTS.md`
+
+重点复审：
+- `nrt/hmi/docs/project/work_offset/index.md`
+- `nrt/hmi/docs/project/work_offset/contract.md`
+- `nrt/hmi/docs/project/work_offset/server_plan.md`
+- `nrt/hmi/docs/project/work_offset/delivery_plan.md`
+- `nrt/hmi/docs/project/work_offset/smoke_report.md`
+- `nrt/hmi/docs/project/index.md`
+- `nrt/hmi/docs/SUMMARY.md`
+
+这轮复审重点验证上轮修正是否闭环：
+- 是否已经清楚区分 “Basis from current WorkOffset contract” 与 “HMI proposed plan”
+- `expected_revision`、axis_id、target_ref/selector 的解释是否会误导读者
+- delivery slices 是否可以指导后续实现
+- WorkOffset 子页导航和 smoke report 是否清楚
+- story catalog 不强制的决策是否表达清楚
+
+输出要求：
+- 只报告 validated issues，不要泛泛表扬。
+- findings first，按严重程度排序。
+- 每个问题给文件:行号、问题、读者影响、建议修正。
+- 如果没有 blocker，明确说没有 blocker，并列 residual risks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:30:39 +0800</div>
+<pre>我会按 `review-docs-comprehension` 口径做只读复审，并遵守仓库要求先读根 README，再做架构范围定位和模块级说明。接下来只会读取文件、核对行号，不会改动工作区。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:31:01 +0800</div>
+<pre>根 README 已确认要求先读文档入口和架构说明；我会把 `docs/index.md` 也纳入前置读取，避免后面的复审脱离仓库文档约束。现在先定位 `/nrt/hmi`、`/nrt/work_offset` 在架构 codemap 里的章节边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:31:16 +0800</div>
+<pre>技能要求的重点是“第一次阅读者从上到下是否能正确执行”，所以我会先读目标模块的 README/AGENTS/SUMMARY，再读取 WorkOffset 计划页并建立候选问题，最后逐条做反证校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:31:29 +0800</div>
+<pre>HMI SUMMARY 已包含 Work Offset 子页和 Smoke Report，导航层面初看是接上的。接下来读 WorkOffset 模块本身的边界说明，再进入目标文档逐页审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:31:48 +0800</div>
+<pre>模块维护规约还要求进入 HMI 的 CONTRIBUTING、build/test、tooling、status matrix，以及 WorkOffset 文档首页。我会先补齐这些入口，再判定目标计划文档里哪些说法会让后续 agent 误读。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 13:32:13 +0800</div>
+<pre>我已经补齐了模块入口和维护规则。现在开始逐页读取 Work Offset 计划文档本身，重点看“当前事实 vs HMI 计划”是否在阅读顺序中足够清楚，以及执行切片是否能直接指导后续实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 13:32:35 +0800</div>
+<pre>目标文档本身读完后，候选问题主要集中在执行顺序和命名精确度，而不是导航缺失。为了避免把设计正确性问题误报成可读性问题，我会再抽查 WorkOffset 模块的 HMI 视图/接口注册文档来验证这些术语在当前契约里的含义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 13:32:48 +0800</div>
+<pre>WorkOffset 契约抽查确认：`expected_revision` 分三类来源、`axis_id` 不能由显示轴名反推、`target_ref` 可来自 `row_id` 但不是 HMI 自己的持久字段。这些点在计划页大体有覆盖；我现在做最后一轮候选问题反证，确保只输出确实会影响后续执行的条目。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 13:34:53 +0800</div>
+<pre>候选问题中有几项被反证掉了：导航已经接入，WorkOffset 基础契约与 HMI facade 的边界在 overview 和 contract 页中都有明确声明，story catalog 不强制也有记录。剩下我只保留会让实现顺序或后续 agent 操作产生实质歧义的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 13:36:41 +0800</div>
+<pre>还有一个可能影响 smoke report 的点：仓库里已经有 Work Offset 轻量 UI binding smoke。我要快速看一下这些现有场景的覆盖内容，确认 smoke report 是否会把“已有轻量 smoke”和“计划中的 V1 验证”混在一起。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-12 13:39:53 +0800</div>
+<pre>没有 blocker。
+
+**Findings**
+
+1. [contract.md:93](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:93)
+问题：`wcs.commands.set_offset` 把 `axis_id` 列为请求字段，但后面的行为只说“Resolve `field` to the row&#x27;s `component_axis_ids[field]`”，没有说明客户端传入的 `axis_id` 是权威输入、冗余回显，还是必须与行映射一致。
+读者影响：后续实现 agent 可能直接信任请求里的 `axis_id`，也可能完全忽略它，导致 Web/QML、mock server、real WorkOffset adapter 对同一 payload 的解释不一致。
+建议修正：明确二选一：要么删除请求表里的 `axis_id`，声明 server 永远从当前行投影推导；要么保留它并写明“if supplied, it must equal `component_axis_ids[field]`; mismatch is rejected before calling WorkOffset”。
+原则：reading-order sufficiency / separation of concerns。Confidence 4，Impact 3。
+
+2. [delivery_plan.md:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:20)
+问题：story catalog 决策写成“not required before V1 code, but should be revisited if implementation touches acceptance traceability”，触发条件太抽象。Slice 1-4 本身会改接口、资源形状、Web/QML 行为和 smoke 场景，读者无法判断这些是否已经算“touches acceptance traceability”。
+读者影响：实现 agent 可能跳过 catalog/story-pack 更新，也可能过早拆 story，造成计划执行分叉。
+建议修正：把 gate 写成可执行条件，例如“Slice 0-2 不强制拆 catalog；在新增/修改 `definition/story.catalog.yaml`、acceptance story-pack 输出、或把 WorkOffset V1 smoke 纳入验收链接前，必须重新决策是否拆出 WorkOffset story”。
+原则：reading-order sufficiency。Confidence 3，Impact 3。
+
+3. [smoke_report.md:3](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:3)
+问题：页面标题说记录“HMI WorkOffset integration”证据，但当前只列 docs slice 证据，并把 Web/QML activation/edit smoke 放到 later。仓库已有轻量 Work Offset binding smoke，本文没有说明它是未重跑、非 V1 证据，还是被未来 activation/edit smoke 取代。
+读者影响：后续 agent 可能误以为当前没有任何 WorkOffset smoke，或误把现有轻量 activation/alias smoke 当成真实 WorkOffset backend + stale-write/edit 覆盖。
+建议修正：在 smoke report 加一个短小分区区分“existing light binding smoke”与“V1 real-backend evidence still pending”，并说明当前 docs slice 没有验证 edit/stale/real backend。
+原则：separation of concerns。Confidence 3，Impact 2。
+
+**Residual Risks**
+
+- `expected_revision`、`target_ref`、`selector` 的主干解释已经能区分 WorkOffset 契约来源与 HMI facade，但 `axis_id` 的请求权威性仍需要补一句，否则实现时最容易分叉。
+- delivery slices 大体可执行；主要残余风险是 story/acceptance gate 不够机械化，以及 smoke evidence 页面没有把已有轻量 smoke 和计划中的 V1 smoke 分层。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:85-95|note=[HMI validation and final artifact workflow context]
+MEMORY.md:336-342|note=[HMI docs and story-pack audit context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eaaf7-561d-7cf0-8700-dade8b751af6
+019e4d73-8a73-7882-9f4c-e8eeaf52ef0f
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

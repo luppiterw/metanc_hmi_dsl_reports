@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eba4e-c29e-77a1-85fc-e269eb65a35b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-12 13:29:44 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/12/rollout-2026-06-12T13-29-44-019eba4e-c29e-77a1-85fc-e269eb65a35b.jsonl</code></div>
+<div><b>Messages</b>: <code>20</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:29:44 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-12&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:29:44 +0800</div>
+<pre>你是复审 Agent B，任务是复审当前分支 `feat/hmi-work-offset-table` 上修订后的 HMI WorkOffset 开发计划，在 HMI server/client 现有架构下是否可执行、是否仍漏关键改造点。只读审查，不要修改文件。
+
+仓库路径：`/home/iaar/workspace/ccmix-wp/MetaNC`。
+
+必须先按仓库约束读取：
+- `README.md`
+- `docs/dev/architecture.md` 中 `/nrt/hmi` 和 `/nrt/work_offset` 部分
+- `nrt/hmi/README.md`、`nrt/hmi/AGENTS.md`
+- `nrt/work_offset/README.md`、`nrt/work_offset/AGENTS.md`
+
+重点复审计划文件：
+- `nrt/hmi/docs/project/work_offset/index.md`
+- `nrt/hmi/docs/project/work_offset/contract.md`
+- `nrt/hmi/docs/project/work_offset/server_plan.md`
+- `nrt/hmi/docs/project/work_offset/delivery_plan.md`
+- `nrt/hmi/docs/project/work_offset/smoke_report.md`
+
+对照 HMI 现有实现：
+- `nrt/hmi/definition/interfaces.machine.yaml`
+- `nrt/hmi/definition/ui.structure.yaml`
+- `nrt/hmi/definition/story.catalog.yaml`
+- `nrt/hmi/fixture/mock_runtime_server.py`
+- `nrt/hmi/server/CMakeLists.txt`
+- `nrt/hmi/server/include/hmi/adapters/runtime_extension_adapter.h`
+- `nrt/hmi/server/src/adapters/composite_machine_adapter.cpp`
+- `nrt/hmi/server/src/application/server_app.cpp`
+- `nrt/hmi/server/src/application/resource_service.cpp`
+- `nrt/hmi/server/src/application/command_router.cpp`
+- `nrt/hmi/server/src/extensions/tooling/*` 和 include 对应文件，作为 extension 模式参考
+- `nrt/hmi/client/web_client/widget_core/data_table.py`
+- `nrt/hmi/client/qml_client/main_qml_parts/table_edit.py`
+- Web/QML runtime fragments/tests 中的 wcs/work_offset 相关路径，可用 rg 查找
+
+这轮复审重点验证上轮修正是否足以执行：
+- extension collection 设计是否足够，是否还缺 command/resource merge/precedence/alias 细节
+- Web/QML payload 计划是否具体到可以改生成器和 local runtime
+- CMake/backend selection 是否足够具体，`HMI_WORK_OFFSET_DIR` 解释是否准确
+- mock/native/fixture parity 是否覆盖
+- story catalog 不强制的决定是否会留下验收缺口
+
+输出要求：
+- 只报告仍然存在的问题，不要重复已修且已经闭环的问题。
+- findings first，按严重程度排序。
+- 每个问题给出文件:行号。
+- 说明计划中的遗漏、当前 HMI 架构事实、后续实现会在哪里卡住。
+- 如果没有 blocker，明确说没有 blocker，并列 residual risks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:30:17 +0800</div>
+<pre>Using the Superpowers process guidance for this review pass. I’ll stay read-only, first load the repo/module instructions the way `AGENTS.md` requires, then compare the revised plan against the current HMI implementation paths you named.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:30:37 +0800</div>
+<pre>I’ve loaded the root README and found the relevant architecture anchors. Next I’m reading the module-local instructions and the WorkOffset planning docs with line numbers so findings can point to exact text instead of paraphrase.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:31:13 +0800</div>
+<pre>The planning docs already acknowledge several prior gaps: row metadata, active revision, axis IDs, alias resources, and the server-side mock paths. I’m now checking whether the implementation shape actually has the merge/alias/client payload hooks that the plan assumes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:31:31 +0800</div>
+<pre>The branch is on `feat/hmi-work-offset-table` with the WorkOffset docs untracked and two docs index files modified. I’m staying read-only and narrowing review to whether the plan’s “do this later” bullets are precise enough against the current server/client code.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:31:45 +0800</div>
+<pre>I’m also applying the local documentation-review skill because this is a review of planning/spec docs, but I’m using it only for the review discipline. The output will still follow your requested “findings first, issues only” format.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 13:32:24 +0800</div>
+<pre>The existing native stack already has hardcoded WCS alias canonicalization in `ServerApp`, `CommandRouter`, and `ResourceService`, while extension composition is only a single wrapper today. That matters for whether the plan’s new collection can be implemented cleanly without two independent alias owners.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 13:33:11 +0800</div>
+<pre>I’ve confirmed the current client generators emit WorkOffset edits from generic data-table code, not a WorkOffset-specific component. I’m reading those exact payload builders now because a plan can look complete at the contract level but still leave generator-local payload plumbing underspecified.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 13:33:38 +0800</div>
+<pre>The docs do call out Web/QML payload updates, but current QML/Web helpers also route rejected inline edits through the tooling-specific stale-result handler. I’m checking whether that handler is generic enough for WorkOffset diagnostics or whether this is another implementation trap the plan should name.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 13:34:03 +0800</div>
+<pre>I’m checking the WorkOffset module build/API surface as well, specifically whether the CMake variable names and backend options in the plan match what `nrt/work_offset` actually exports. This is where a plan can be “specific” but still not executable.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 13:34:56 +0800</div>
+<pre>One server-level trap is now clear: `CommandRouter` polls resources after rejected commands, so a stale WorkOffset rejection will still refresh from the adapter unless the plan tells implementers how to prevent that. I’m checking whether current tooling treats that as intentional parity or whether WorkOffset needs a different rule.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-12 13:35:18 +0800</div>
+<pre>I’ve got enough implementation evidence now. I’m doing one pass over the plan text against the identified traps so I don’t report anything that the revised docs already closed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-12 13:37:08 +0800</div>
+<pre>The base simulator itself still advertises and handles `wcs.commands.*`; the plan says WorkOffset should own those commands through the first matching extension. I’m checking the exact simulator handler lines so I can separate “covered by extension order” from anything still under-specified.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-12 13:37:26 +0800</div>
+<pre>I’m wrapping up the review. I don’t see a broad blocker for the overall direction, but I do see a few remaining executable-plan gaps where current HMI behavior will surprise the implementer unless the plan names the exact change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-12 13:38:09 +0800</div>
+<pre>One more small check: I’m verifying whether the WorkOffset CMake dependency set is already visible to HMI server generation, because the plan’s backend-binding section is otherwise accurate about `HMI_WORK_OFFSET_DIR`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-12 13:38:18 +0800</div>
+<pre>CMake backend selection is mostly concrete, but HMI’s server `vcpkg.json` already includes `nlohmann-json`; the plan’s dependency names line up with WorkOffset. I won’t report that as a problem.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-12 13:39:05 +0800</div>
+<pre>I’m doing a quick validator capability check around interface field types. If `component_axis_ids` needs a generic object type that the retained DSL cannot validate today, that would be an execution blocker in Slice 1 rather than a server/client detail.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-12 13:41:46 +0800</div>
+<pre>The review evidence is complete. I’ll keep the final tight: only remaining problems, ordered by severity, with exact plan/code anchors and the expected implementation failure mode.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-06-12 13:42:39 +0800</div>
+<pre>**Findings**
+
+1. **Blocker - real backend `empty` seed mode lacks a profile/snapshot source.**
+   Plan anchor: [server_plan.md:98](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:98). Current WorkOffset fact: `make_default_snapshot_unchecked()` requires a `WorkOffsetProfile`, including axes/startup/required frames, not just a store path: [domain.h:22](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/domain.h:22), [foundation.h:209](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/foundation.h:209).
+   The plan says `HMI_WORK_OFFSET_SEED_MODE=empty` starts from a validated default snapshot, but never defines where HMI gets the machine profile or initial snapshot. Slice 3 will stall when starting real `sqlite` mode against an empty store: the adapter cannot construct a valid WorkOffset snapshot without an explicit profile/snapshot seed contract.
+
+2. **High - extension resource/alias ownership is still ambiguous across existing global alias code.**
+   Plan anchor: [server_plan.md:54](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:54), [server_plan.md:61](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:61). Current architecture fact: WCS alias canonicalization already exists in `ServerApp`, `CommandRouter`, and `ResourceService`: [server_app.cpp:44](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/server_app.cpp:44), [command_router.cpp:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:20), [resource_service.cpp:8](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/resource_service.cpp:8).
+   The revised plan says the collection merges extension resources in order and WorkOffset owns `wcs.offset.table`, while `tooling.wcs.table` is an alias. It still does not say whether alias synchronization remains a server-global concern or moves into the extension collection, nor what wins if canonical and legacy resources both appear. Implementers can end up with two alias owners and order-dependent overrides, especially through `ResourceService::write()`.
+
+3. **High - stale-write “preserve rows” conflicts with current server rejected-command polling.**
+   Plan anchor: [contract.md:128](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:128), [delivery_plan.md:111](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:111). Current architecture fact: `CommandRouter` polls adapter resources even after rejected commands and writes them into the runtime state: [command_router.cpp:135](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:135).
+   The plan says stale WorkOffset rejections must not publish a patched row and should keep the existing row visible until a real refresh. With the current router, a real WorkOffset adapter’s `poll_resources()` after rejection will immediately publish the latest table, so the row will be replaced during the rejected command path. The plan needs an explicit router/adapter rule: either suppress post-reject polling for stale `wcs.commands.*`, or redefine that poll as the “real refresh” and update client expectations.
+
+4. **Medium - Web/QML stale-result handling is still tooling-specific.**
+   Plan anchor: [delivery_plan.md:109](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:109). Current client facts: Web table edits call `handleToolOffsetCommandResult`: [data_table.py:423](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/data_table.py:423), and that handler recognizes tooling revision codes only: [command_guards.py:89](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/command_guards.py:89). QML has the same pattern: [table_edit.py:127](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/table_edit.py:127), [command_actions.py:279](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/command_actions.py:279).
+   The plan names payload fields, but not the required generalization of the stale-result handler and WorkOffset diagnostic-code mapping. Without that, Web/QML may send the new payload but still show generic or tooling-worded rejection messages, and local runtime paths can diverge from native WorkOffset behavior.
+
+5. **Medium - making the story-catalog split optional leaves a real acceptance-traceability gap.**
+   Plan anchor: [delivery_plan.md:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:20), [delivery_plan.md:28](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:28). Current catalog fact: WorkOffset interfaces are still folded into the Tool Management story/test references: [story.catalog.yaml:744](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:744), [story.catalog.yaml:762](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:762), [story.catalog.yaml:1698](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:1698).
+   If V1 code lands without a mandatory WorkOffset story/test entry, generated story docs can still present this as Tool Management coverage. Implementation may pass server/client tests while acceptance traceability has no dedicated WorkOffset operator story or smoke evidence anchor.
+
+Read-only review only; I did not modify files.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:38-95|note=[hmi branch workflow and generated artifact context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+019eaace-b5e9-7943-b514-08e61070e879
+019eaaf7-561d-7cf0-8700-dade8b751af6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

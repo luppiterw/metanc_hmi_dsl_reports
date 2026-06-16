@@ -1,0 +1,1976 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb92a-66ae-7e10-8307-b95541041b10</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-12 08:10:24 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/12/rollout-2026-06-12T08-10-24-019eb92a-66ae-7e10-8307-b95541041b10.jsonl</code></div>
+<div><b>Messages</b>: <code>188</code></div>
+<div><b>User prompts</b>: <code>26</code></div>
+<div><b>Synthetic events</b>: <code>9</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 08:10:37 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-12&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 08:10:37 +0800</div>
+<pre>main和feat/hmi都从远程拉取更新一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 08:11:08 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check. I’ll follow the repo instructions first, then update `main` and `feat/hmi` without touching unrelated worktree changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 08:11:33 +0800</div>
+<pre>I’m doing the lightweight orientation the repo asks for, then I’ll use fast-forward-only updates. That keeps the local branch history intact and will report cleanly if either branch has diverged from its remote.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 08:12:00 +0800</div>
+<pre>The checkout is currently clean on `feat/hmi`; local `main` is 54 commits behind its upstream before fetch. I’m reading the HMI module guidance next because `feat/hmi` is in scope, then I’ll fetch and fast-forward the branches.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 08:12:26 +0800</div>
+<pre>The module guidance confirms `nrt/hmi` is a downstream integration copy and `feat/hmi` is maintained as a branch, not a place to recreate source-only standalone surfaces. I’m now fetching `origin` and will update local `main` and `feat/hmi` only from their corresponding remote tracking branches.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 08:12:49 +0800</div>
+<pre>`origin/main` was force-updated on the server during fetch, so I’m checking ancestry before moving the local branch. If the local branch has commits that the remote no longer contains, I’ll avoid discarding them silently.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 08:12:55 +0800</div>
+<pre>After fetch, `main` is a clean fast-forward by 12 commits and `feat/hmi` is already equal to `origin/feat/hmi`. I’m fast-forwarding `main` now, then I’ll leave the checkout back on `feat/hmi` and verify both refs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 08:13:02 +0800</div>
+<pre>`main` is checked out and ready for a fast-forward update. I’m using `--ff-only` so the command will fail instead of creating a merge commit if anything unexpected appears.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 08:13:14 +0800</div>
+<pre>The fast-forward command failed because this sandbox exposes `.git/FETCH_HEAD` as read-only, not because of a Git conflict. I’m rerunning the Git update with elevated filesystem access so Git can write its metadata.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 08:13:43 +0800</div>
+<pre>`main` fast-forwarded successfully to `origin/main` after allowing Git to update repository metadata. I’m switching back to `feat/hmi` to run the same remote update check there.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 08:13:55 +0800</div>
+<pre>Both local branches now match their remote tracking refs. I’m switching the working tree back to `feat/hmi` since that was the branch you were on when I started.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-12 08:14:05 +0800</div>
+<pre>`feat/hmi` is checked out again and Git reports it is up to date with `origin/feat/hmi`. I’m doing a final status/ref check now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-12 08:14:46 +0800</div>
+<pre>已完成。
+
+`main` 已从远程快进到 `origin/main`，当前是 `3b1a3858 feat(nrt/work_offset): add WorkOffset domain module`。
+`feat/hmi` 已确认和 `origin/feat/hmi` 一致，当前是 `1b77ff87 Merge remote-tracking branch &#x27;origin/main&#x27; into feat/hmi`。
+
+最后状态：工作区在 `feat/hmi`，`git status` 干净；`main...origin/main` 和 `feat/hmi...origin/feat/hmi` 都是 `0 0`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:79-90|note=[used HMI long-lived branch maintenance convention and drift-check reminder]
+MEMORY.md:40-41|note=[confirmed MetaNC HMI maintenance scope]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eaace-b5e9-7943-b514-08e61070e879
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 08:18:40 +0800</div>
+<pre>将main分支最新内容合并到feat/hmi，现在考虑集成零偏表相关功能，你看一下相关模块work-offset，然后先生成一下当前版本最终产物</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 08:18:54 +0800</div>
+<pre>我会先按仓库要求重新做一次范围定位：确认当前分支和工作区状态，读取根 README/架构图，再看 `nrt/work_offset` 和 `nrt/hmi` 的模块说明。之后把 `origin/main` 合到 `feat/hmi`，再生成 HMI 当前版本的最终产物并做可用性检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 08:19:42 +0800</div>
+<pre>当前 `feat/hmi` 干净，`main` 本地已经在 `3b1a3858`。我会先重新 `fetch` 一次确认远端没有新变化，再合并 `origin/main`；合并完成后再阅读新进来的 `nrt/work_offset` 模块文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 08:20:01 +0800</div>
+<pre>远端确认后，`origin/main` 还有 6 个提交没进 `feat/hmi`，其中包括 `feat(nrt/work_offset): add WorkOffset domain module`。`feat/hmi` 自己也有大量长期分支提交，所以这里应该做普通 merge，而不是重置或快进。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 08:20:25 +0800</div>
+<pre>合并已经进入冲突状态，冲突集中在 CI/Docker、RT SDK 文档、Orocos 部署脚本和 RT 进度记录，没有直接打到 `nrt/hmi` 或 `nrt/work_offset`。我会先读相关模块指导，再逐个看冲突内容并尽量保留两边的有效更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 08:20:37 +0800</div>
+<pre>Using `orocos-develop` because this merge has Orocos deployer/script conflicts. It mostly affects conflict-resolution discipline here: keep RT/Core independent, preserve deployer load paths, and verify the generated/build outputs after resolving.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 08:20:53 +0800</div>
+<pre>`nrt/work_offset` 的边界很清楚：它 owns 零偏真值模型、快照、HMI 投影和模块操作入口；HMI 只消费投影和操作，不直接依赖 SQLite 或重做领域规则。现在我在处理合并冲突，先保持 `main` 新增 WorkOffset 模块完整进入 `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 08:21:28 +0800</div>
+<pre>冲突内容基本都是“长期分支已有的 RT mode API 记录”与 `main` 上新加入的 packaged RT runtime 记录并列存在，不能简单选一边。我的处理策略是：配置类文件取两边新增项的并集；文档和 handoff/progress 保留两条历史上下文，但让最新 packaged runtime 路径成为 SDK 默认说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 08:21:39 +0800</div>
+<pre>这里还涉及文档冲突解析，我会使用项目的 `write-docs` 指南来避免把合并后的文档写成重复或过期的入口。接下来会直接补丁处理冲突文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 08:22:01 +0800</div>
+<pre>Using `write-docs` because several conflicts are reader-facing docs. I’m keeping the docs small and navigational, with `metanc-rt` as the SDK default endpoint and the local deployer path preserved for RT development.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 08:22:15 +0800</div>
+<pre>我现在开始改冲突文件：CI/Docker 合并为两边检查的并集，RT SDK 文档采用 packaged runtime 作为默认，Orocos MDA 检查脚本采用 `main` 上已经验证过的 primitive deploy-time 配置，保留 mode API 的既有上下文记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-12 08:23:36 +0800</div>
+<pre>冲突标记已移除，下一步我会检查未合并索引、冲突标记残留，以及这些文件的关键片段是否语义合理。确认后再暂存合并结果完成 merge commit。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-12 08:23:58 +0800</div>
+<pre>冲突文本已经干净；`git diff --check` 也没发现空白问题。还剩 Git 索引处于未标记 resolved 的状态，我先修一下 handoff 里的重复角色行，然后暂存这些冲突文件完成 merge。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-12 08:24:14 +0800</div>
+<pre>准备把已解析的文件加入索引。这个 `git add` 只标记当前合并结果，不会提交；之后我会再看一次整体状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-12 08:24:30 +0800</div>
+<pre>冲突文件已标记 resolved。我会检查索引确认没有未合并路径，然后创建 merge commit。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-12 08:24:45 +0800</div>
+<pre>索引现在没有未合并路径，冲突文件也没有标记残留。我要先完成本地 merge commit，让 `feat/hmi` 真正包含最新 `origin/main`，再开始生成 HMI 产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-12 08:25:00 +0800</div>
+<pre>`origin/main` 已合进 `feat/hmi`，本地 merge commit 是 `7a394e8a`。我会快速确认分支关系，然后在 `nrt/hmi` 生成 docs 和 Web/QML/server/distribution 产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-12 08:25:35 +0800</div>
+<pre>合并后 `nrt/work_offset` 已在当前 `feat/hmi` 工作树里，模块入口和 HMI 契约文档也都可读。现在开始生成当前 HMI 版本最终产物：先构建 docs portal，再跑 `generate_targets.sh` 生成 Web/QML/server/distribution。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-12 08:26:08 +0800</div>
+<pre>HMI docs portal 生成完成，英文和中文页面都出了 `docs_html/index.html`。现在跑完整 target 生成；这个会构建 Web、QML、native server 和 distribution，时间会稍长。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-12 08:26:47 +0800</div>
+<pre>`generate_targets.sh` 正在跑，Web/QML 源、contract bundle 和 QML build 已经开始产出；目前只看到 Qt 的 `qmldir file not found` 警告，构建还在继续。等它结束后我会跑 server ctest 和最终文件存在性检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-12 08:27:22 +0800</div>
+<pre>QML 和 server configure 已过，server 编译也在继续。`vcpkg` 这次用的是本地缓存，未报网络下载失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-12 08:27:35 +0800</div>
+<pre>完整生成完成：Web、QML executable、native server 和 distribution 都已生成。接下来运行 server 的 `ctest`，再检查最终产物文件路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-12 08:27:48 +0800</div>
+<pre>Server 侧 `ctest` 已通过 11/11，关键文件存在性检查也通过；生成产物都在 ignored `generated/` / `docs_html/` 下，所以没有额外未提交 diff。我再按完成前验证流程做一次最终状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-12 08:28:01 +0800</div>
+<pre>Using `verification-before-completion` before I report this as complete. I already have fresh build/test evidence; I’m doing one final branch/status and merge-base check so the final answer is tied to current state, not memory.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / final_answer</h3>
+<div class="time">2026-06-12 08:28:24 +0800</div>
+<pre>已处理。
+
+`origin/main` 已合并进 `feat/hmi`，本地 merge commit 是 `7a394e8a`。合并时有 CI/Docker、RT SDK 文档、Orocos deployer 脚本和 RT handoff/progress 冲突，我已按并集和最新 packaged runtime 路径解析。当前 `origin/main` 已是 `HEAD` 的祖先，`origin/main...HEAD = 0 271`；`feat/hmi` 本地相对 `origin/feat/hmi` ahead 7，未推送。
+
+我也看了 `nrt/work_offset`：它负责 WorkOffset 真值模型、快照、HMI 视图投影和统一操作入口；HMI 集成时应走 `query_work_offset_view`、`query_frame_detail`、`select_settable_zero_offset`、`set_frame_component` 等强类型入口，不能直接写 SQLite 或复制领域规则。
+
+当前版本最终产物已生成并验证：
+
+- `nrt/hmi/docs_html/index.html`
+- `nrt/hmi/generated/web/index.html`
+- `nrt/hmi/generated/qml-final/appCNC_HMI_DSL`
+- `nrt/hmi/generated/server-build/server`
+- `nrt/hmi/generated/distribution/README.md`
+
+验证结果：
+
+- `./tools/build_docs_html.sh` 通过
+- `./tools/generate_targets.sh` 通过
+- `ctest --test-dir generated/server-build --output-on-failure` 通过，11/11 tests passed
+- 最终产物文件存在性检查通过
+
+生成目录都是 ignored 产物；tracked 工作区当前干净，只有本地 `feat/hmi` 合并提交未推送。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:53-61|note=[used long-lived feat/hmi merge workflow context]
+MEMORY.md:89-95|note=[used HMI final artifact generation checklist]
+MEMORY.md:40-41|note=[confirmed MetaNC HMI maintenance scope]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eaace-b5e9-7943-b514-08e61070e879
+019eaaf7-561d-7cf0-8700-dade8b751af6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 08:40:56 +0800</div>
+<pre>下一步要开始在hmi侧实现零偏表的集成，你看看基于main拉个什么分支名比较合适</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 08:41:10 +0800</div>
+<pre>Using `superpowers:brainstorming` here because this is the first decision for a new HMI feature slice. I’ll keep it narrow: branch naming, source base, and why it fits the existing branch model.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-12 08:41:48 +0800</div>
+<pre>建议用：
+
+`feat/hmi-work-offset-table`
+
+理由：短、明确，符合之前 HMI PR slice 从 `main` 拉短分支的习惯；`hmi` 标出集成侧，`work-offset-table` 对应零偏表，不会和长期维护分支 `feat/hmi` 混淆。
+
+备选：
+
+- `feat/hmi-work-offset-integration`：如果第一轮不只是表格，还包含 server adapter、runtime contract、mock seed、Web/QML 端到端接入。
+- `feat/hmi-work-offset-contract`：如果想先做接口/契约/fixture，不碰完整 UI。
+- `feat/hmi-work-offset-ui`：如果 WorkOffset 后端契约已经固定，只做页面绑定和交互。
+
+我会选 `feat/hmi-work-offset-table`。基于最新 `main` 拉的话命令就是：
+
+```bash
+git switch main
+git pull --ff-only
+git switch -c feat/hmi-work-offset-table
+```
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:77-79|note=[used branch model preference for HMI short-lived PR slices from main and feat/hmi as long-lived branch]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+019eaace-b5e9-7943-b514-08e61070e879
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 08:47:01 +0800</div>
+<pre>这个名字感觉合适，目前第一版重点还是零偏表的功能，不包括一些其他tool交互，后面再做这些以及工件测量等等，你综合考虑一下，看一下现在的完成情况，是否足以支撑实现，然后给一个hmi侧的开发计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 08:47:21 +0800</div>
+<pre>我会先按计划类工作处理：用当前仓库状态和 `work_offset`/`hmi` 文档来判断支撑度，再给一个只覆盖 HMI 侧 V1 零偏表的开发计划，不把 tool 交互和工件测量混进第一版。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 08:47:59 +0800</div>
+<pre>我会补一轮针对性的代码/文档检查：看 HMI 里现在已有的 `wcs.offset.table` 绑定、mock/runtime/server 能力，以及 `work_offset` 暴露的接口形状。这样计划可以基于实际完成度，而不是只按文档推断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 08:48:27 +0800</div>
+<pre>我已经看到当前 HMI 里有轻量的 `wcs.offset.table` 资源、旧别名 `tooling.wcs.table`、`wcs.commands.activate/set_offset` mock 逻辑和 Web/QML 表格绑定；但这还不是接入 `nrt/work_offset` 真值模型。我要再看一下接口目录、UI 结构和 server adapter/CMake，这会决定 V1 是“直接接真实模块”还是先补一个 HMI-side adapter seam。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-12 08:49:16 +0800</div>
+<pre>这个分支名可以定：
+
+`feat/hmi-work-offset-table`
+
+我建议第一版就按这个名字做，不叫 `integration`，因为范围明确收窄到“零偏表功能”。后续 tool 交互、工件测量、测头/触碰更新零偏、程序 frame 综合页，可以各自另开 slice，避免第一版变大。
+
+**当前支撑度**
+足以开始实现，但要先补 HMI 侧真实 WorkOffset adapter。
+
+现在已经具备的基础：
+
+- `main` 已有 `nrt/work_offset` 模块：真值模型、快照、SQLite store、`StoreBackedWorkOffsetRuntime`、`query_work_offset_view`、`set_frame_component`、`select_settable_zero_offset` 等入口都在。
+- HMI 已有 PARAM 里的 Work Offset 页面骨架、`wcs.offset.table` 资源、`tooling.wcs.table` 兼容别名、Web/QML 表格绑定、inline edit、`wcs.commands.activate/set_offset` 的轻量 mock。
+- 已有 Web/QML UI smoke 覆盖 `wcs.offset.table` 的基本绑定。
+
+主要缺口：
+
+- 当前 HMI 的 `wcs.offset.table` 还是简化表：`g_code + offset_x/y/z/a/c`，不是 `work_offset` 模块的 `WorkOffsetViewResult` 投影。
+- 当前 server 还没有 `work_offset` extension/backend，只有 simulator/resource 层简单改表。
+- 当前命令 `wcs.commands.set_offset` 没带 `target_ref / axis_id / component_kind / expected_revision`，还没有真实 revision/stale rejection 语义。
+- `G500`、扩展槽位创建、Details、rotation/scale/mirror、工件测量更新零偏都应放后续。
+
+**V1 范围建议**
+第一版只做 Settable Work Offset Table：
+
+- 显示 `query_work_offset_view(view_kind=settable_table)` 的行。
+- 表格列先保留当前 HMI 形态：`G` 代码、`X/Y/Z/A/C` coarse translation。
+- 支持 active row 标识。
+- 支持 `Activate G54/G55/...`，落到 `select_settable_zero_offset`。
+- 支持 inline edit X/Y/Z/A/C，落到 `set_frame_component(component_kind=coarse_translation)`。
+- 支持 Refresh 重新查询。
+- 支持 `expected_revision`，stale 时拒绝并刷新。
+- 保留 `tooling.wcs.table` 只作为 legacy alias，不再表达 tooling ownership。
+
+**开发计划**
+1. 分支准备
+   从最新 `main` 拉 `feat/hmi-work-offset-table`。不要基于长期 `feat/hmi` 开新功能 PR；`feat/hmi` 后续再吸收这个 slice。
+
+2. HMI contract 对齐
+   扩展 `wcs_entry`，至少加入：
+   `row_key/target_ref/selector/active/editable/revision/snapshot_revision/diagnostics`。
+   继续输出旧的 `g_code/offset_x...offset_c`，让现有表格最小改动可用。
+
+3. Server adapter seam
+   新增 `server/include/hmi/extensions/work_offset/` 和 `server/src/extensions/work_offset/`：
+   - `work_offset_backend.h`
+   - `mock_work_offset_backend`
+   - `work_offset_runtime_extension_adapter`
+   - 后续可选 `store_backed_work_offset_backend`
+
+   第一轮可以先做 mock backend + adapter contract，再接 `nrt/work_offset` 真实 backend。
+
+4. 真实 WorkOffset backend
+   在 server CMake 里加 `HMI_WORK_OFFSET_BACKEND=mock|work_offset`。
+   `work_offset` 模式通过 `StoreBackedWorkOffsetRuntime` 查询/写入，禁止直接读写 SQLite 表。
+
+5. Command/resource 映射
+   - `wcs.offset.table` 从 `query_work_offset_view(settable_table)` 投影生成。
+   - `wcs.commands.activate` 映射到 `select_settable_zero_offset`。
+   - `wcs.commands.set_offset` 映射到 `set_frame_component`。
+   - 写成功后重新查询并更新 `wcs.offset.table` 和 legacy alias。
+   - 写失败返回 diagnostics，不做乐观落地。
+
+6. Web/QML 保持现有表格交互
+   先不重做页面。沿用当前 Work Offset 页、footer、inline edit。只把底层数据和命令变成真实 WorkOffset 语义。
+
+7. 测试顺序
+   - C++ adapter tests：projection、activate、set_offset、stale revision rejection。
+   - server REST tests：`wcs.offset.table` 读写后 alias 同步。
+   - mock runtime tests：保留轻量兼容。
+   - pipeline/snapshot tests：确认 Web/QML 输出稳定。
+   - Web/QML smoke：现有 `work_offset_table_binding` 扩展为 edit + activate + refresh。
+   - 最后跑 `./tools/generate_targets.sh` 和 `ctest --test-dir generated/server-build --output-on-failure`。
+
+**结论**
+现在的完成情况已经能支撑 V1，但实现重点不是从零做页面，而是把现有 `wcs.offset.table` 从“模拟资源表”升级成“WorkOffset 模块投影 + 命令 adapter”。这样第一版能快速落地，同时给后续 Details、G500、扩展槽位创建、工件测量更新零偏留下干净边界。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:77-79|note=[used branch model preference for HMI short-lived PR slices from main]
+MEMORY.md:89-91|note=[used HMI generation and snapshot verification conventions]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+019eaace-b5e9-7943-b514-08e61070e879
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 09:15:42 +0800</div>
+<pre>hmi server/client你准备分别怎么做</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 09:16:06 +0800</div>
+<pre>我会按设计讨论来回答，不动代码。先快速核对一下 HMI 现有 server/client 分层和之前的 HMI 分支约定，然后把 server/client 各自的 V1 做法拆开说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-12 09:16:41 +0800</div>
+<pre>我会把这次 V1 分成“server 变真、client 尽量少变”。
+
+**Server 侧**
+核心目标：让 `wcs.offset.table` 不再是 HMI simulator 自己维护的假表，而是 WorkOffset 模块的 HMI 投影。
+
+做法：
+
+1. 新增独立 WorkOffset extension
+   路径类似 tooling extension，不混进 tooling：
+   - `server/include/hmi/extensions/work_offset/work_offset_backend.h`
+   - `server/include/hmi/extensions/work_offset/mock_work_offset_backend.h`
+   - `server/include/hmi/extensions/work_offset/work_offset_runtime_extension_adapter.h`
+   - 对应 `server/src/extensions/work_offset/...`
+
+2. Backend 分两层
+   `mock_work_offset_backend` 用于默认 server build 和当前 smoke，不依赖 `nrt/work_offset`。
+   `store_backed_work_offset_backend` 或 `work_offset_backend` 用于真实集成，内部调用 `StoreBackedWorkOffsetRuntime`，绝不直接读写 SQLite 表。
+
+3. CMake 加开关
+   类似 `HMI_TOOLING_BACKEND`：
+   - `HMI_WORK_OFFSET_BACKEND=mock|work_offset`
+   - mock 作为默认，避免现有 HMI build 被 work_offset 依赖/SQLite 配置拖住。
+   - `work_offset` 模式 add_subdirectory `../../work_offset`，链接 `work_offset::work_offset`。
+
+4. Runtime extension 接管资源和命令
+   Adapter 暴露：
+   - resource: `wcs.offset.table`
+   - legacy alias: `tooling.wcs.table`
+   - command: `wcs.commands.activate`
+   - command: `wcs.commands.set_offset`
+   - 后续再加 `refresh/create/g500/details`
+
+5. 数据投影
+   从 `query_work_offset_view(settable_table)` 转成当前 HMI 可消费行：
+   - `g_code`
+   - `offset_x/y/z/a/c`
+   - `row_key`
+   - `target_ref`
+   - `active`
+   - `editable`
+   - `revision`
+   - `snapshot_revision`
+
+   V1 只映射 `component_kind=coarse_translation` 到 X/Y/Z/A/C。rotation/scale/mirror 不进第一版表。
+
+6. 命令映射
+   - `wcs.commands.activate {g_code}` -&gt; `select_settable_zero_offset`
+   - `wcs.commands.set_offset {g_code, field, value, expected_revision?}` -&gt; `set_frame_component`
+   - `field=offset_x` -&gt; `axis_id=x`, `component_kind=coarse_translation`
+   - 成功后重新查询表并同步 resource/alias。
+   - stale/reject 不做本地乐观写入，返回 diagnostics。
+
+7. 测试
+   server 侧优先补：
+   - projection test：G54..G57 行能从 WorkOffset snapshot 投影为 HMI row。
+   - command test：activate 改 active row。
+   - edit test：set offset_x 推进 revision 并刷新表。
+   - stale test：expected_revision 不匹配时拒绝且旧值不变。
+   - alias test：`tooling.wcs.table` 和 `wcs.offset.table` 始终同步。
+
+**Client 侧**
+核心目标：第一版不大改 UI，只让现有 PARAM Work Offset 页面消费更真实的数据。
+
+做法：
+
+1. 保持现有页面结构
+   `parameter_offsets_view`、`parameter_wcs_table`、footer 先不重做。这样 Web/QML 生成器和快照冲击最小。
+
+2. 扩展 interface type，不换 resource 名
+   `wcs_entry` 继续保留旧字段：
+   - `g_code`
+   - `offset_x/y/z/a/c`
+
+   增加新字段：
+   - `row_key`
+   - `target_ref`
+   - `active`
+   - `editable`
+   - `revision`
+   - `snapshot_revision`
+   - `status/diagnostics` 可选
+
+3. Inline edit 命令补 revision
+   当前 Web/QML table edit 已会发 `wcs.commands.set_offset`。要让它带上当前 row 的 revision：
+   - args 加 `expected_revision`
+   - 保留 `g_code/field/value`
+   - server 再转换成 WorkOffset 强类型请求
+
+4. Active 行视觉
+   表格层只需要轻量增强：active row 有标记或状态文本。第一版可以先通过一列/状态样式完成，不做复杂详情页。
+
+5. Refresh
+   Work Offset footer 里现在有空位。V1 可以补一个 `Refresh` softkey，触发 `wcs.commands.refresh` 或现有资源刷新路径。若先不加命令，也至少在写成功/activate 成功后 server 主动返回刷新后的资源。
+
+6. Web/QML parity
+   两端行为保持一致：
+   - 打开 Work Offset 页能看到真实投影行。
+   - 点击 Activate G54/G55 命令路径一致。
+   - 编辑 X/Y/Z/A/C 单元格命令路径一致。
+   - stale reject 后不显示假成功。
+
+7. Client 测试
+   - `tests.test_pipeline` 锁住新增 fields、resource plan、commands。
+   - Web scenario 扩展 `work_offset_table_binding.json`：打开、激活、编辑 X、确认 resource 更新。
+   - QML smoke 扩展 `ui_work_offset_binding.js`：至少覆盖打开和 activate，编辑可作为第二个测试。
+   - snapshots 更新 Web/QML runtime outputs。
+
+**边界**
+第一版明确不做：
+
+- tool offset / tool management 联动
+- 工件测量 / touch-off 写零偏
+- G500 softkey
+- G505..G599 创建入口
+- Details 页面
+- rotation/scale/mirror 编辑
+- WorkOffset 与程序 frame/总坐标叠加综合页
+
+这套拆法的好处是：server 先把 authority 接到 `nrt/work_offset`，client 只承接真实 row/revision，不重画整个 HMI。第一版能比较快闭环，后续再加工件测量时，只需要新增命令入口，不需要推翻表格和 backend 边界。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:77-79|note=[used HMI short-lived branch and long-lived feat/hmi branch model]
+MEMORY.md:89-91|note=[used HMI generation and snapshot verification conventions]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+019eaace-b5e9-7943-b514-08e61070e879
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 09:20:38 +0800</div>
+<pre>看一下之前tooling_management集成到hmi的时候有写一些开发文档计划之类的吗，story slice spec这种方式</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 09:21:05 +0800</div>
+<pre>我会查两块：`nrt/hmi` 里 HMI 集成/工具偏置相关计划文档，以及 `nrt/tooling_management` 自己的 SDD 规格树。重点看当时有没有按 Story / Slice / Spec / delivery plan 的方式组织，哪些可以复用到 WorkOffset 集成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 09:22:08 +0800</div>
+<pre>我找到了两层材料：HMI 侧是 project/delivery-plan + story catalog + generated story-pack；`tooling_management` 模块自身才是完整 STORY / SLICE / SPEC / INV 规格树。现在我补几段关键文件行号，方便后面直接照着 WorkOffset 复制结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-12 09:22:50 +0800</div>
+<pre>有，而且是两层。
+
+第一层是 **HMI 侧开发计划文档**，主要在 [nrt/hmi/docs/project/tool_offset](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/tool_offset/index.md:1)：
+
+- [index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/tool_offset/index.md:9)：目标、非目标、当前基线、设计决策、阅读路径。
+- [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/tool_offset/delivery_plan.md:1)：按 Phase 拆交付和验证，后面追加 Refresh、External-Change、Magazine V2 等 slice。
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/tool_offset/contract.md:1)：HMI resource shape、command facade、算法步骤、实现位置。
+- [persistence_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/tool_offset/persistence_plan.md:1)：HMI 不拥有 tooling DB，只通过 tooling_management persistence/runtime API 接入。
+- [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/tool_offset/smoke_report.md:1)：Web/QML strict runtime 和 UI automation 验证记录。
+
+第二层是 **`nrt/tooling_management` 自己的 Story / Slice / Spec / Invariant 规格树**。最相关的是：
+
+- [STORY-07 - External Surfaces](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/STORY.md:7)
+- [SLICE-10 - HMI Tool Offset Table Projection](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/SLICE-10-hmi-tool-offset-table-projection/SLICE.md:8)
+- [SPEC-136](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/SLICE-10-hmi-tool-offset-table-projection/SPEC-136.md:13)：deterministic row projection
+- [SPEC-137](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/SLICE-10-hmi-tool-offset-table-projection/SPEC-137.md:13)：filter/pagination/revision query
+- [SPEC-138](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/SLICE-10-hmi-tool-offset-table-projection/SPEC-138.md:13)：adapter operation
+- [SPEC-139](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/SLICE-10-hmi-tool-offset-table-projection/SPEC-139.md:13)：CLI validation surface
+- [INV-047](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/docs/spec/STORIES/STORY-07-external-surfaces/SLICE-10-hmi-tool-offset-table-projection/INV-047.md:14)：projection remains read-only, writes stay explicit
+
+HMI 的 story catalog 也记录了当时的产品/集成状态。比如 [story_product_tool_management_tables](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:712) 明确说 `wcs.offset.table` 还只是 partial，WorkOffset/WCS contract coverage 需要补齐；[integration_tooling_resource_adapter](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:1953) 也写了 work-offset/WCS 还停在当前 resource/command harness path。
+
+对现在 WorkOffset 集成，我建议照这个模式来，但更轻一些：
+
+1. `nrt/work_offset` 已经有自己的 STORY/SLICE/SPEC 树，不需要重写领域规格。
+2. HMI 侧新增一个 `docs/project/work_offset/`，结构可以先放：
+   - `index.md`
+   - `contract.md`
+   - `delivery_plan.md`
+   - `persistence_plan.md`
+   - `smoke_report.md`
+3. 在 `definition/story.catalog.yaml` 里把现有 tooling 表 slice 拆清楚，新增一个专门的 `story_product_work_offset_table` 或至少把 `wcs.offset.table` 从 tooling slice 中独立出来。
+4. 如果要严谨对齐 tooling_management，那 WorkOffset V1 的对应规格主题应该是：
+   - HMI Settable Table Projection
+   - HMI WorkOffset Command Facade
+   - Store-backed WorkOffset Runtime Binding
+   - Web/QML WorkOffset Table Smoke
+
+也就是说，之前 tooling_management 集成确实不是只靠代码做的：HMI 侧有 project delivery/contract/persistence/smoke 文档，domain 侧有完整 Story/Slice/Spec/Invariant。WorkOffset 这次最好按同样方法建一个小文档包，再开始写代码。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:334-341|note=[used prior HMI docs/story-pack guidance and tooling_management ownership boundary]
+MEMORY.md:77-79|note=[used HMI branch workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e4d73-8a73-7882-9f4c-e8eeaf52ef0f
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 09:37:01 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-12&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 09:37:01 +0800</div>
+<pre>work_offset集成仅允许修改hmi中相关内容，你给个落文档计划看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 09:37:22 +0800</div>
+<pre>我会先按仓库要求重新做一遍轻量取向：确认 HMI/WorkOffset 的文档边界和现有 story/spec 组织，然后给你一个只落在 `nrt/hmi` 内的文档计划。我会用 `brainstorming`、`writing-plans` 和 `write-docs` 这几个技能来约束输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 09:37:41 +0800</div>
+<pre>现在先不动文件。重点我会确认三件事：HMI 文档现在怎么组织、已有 tooling 集成文档怎么落、WorkOffset 的 HMI 合同已经写到什么程度，然后把“仅改 `nrt/hmi`”约束固化到计划里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 09:37:59 +0800</div>
+<pre>我已经确认模块边界：`nrt/work_offset` 明确说 HMI 不设计页面，只消费操作和投影；`nrt/hmi` 的规则也要求行为变化同步更新定义文档。接下来我看 HMI 现有 docs 导航、tool_offset 项目文档和 story catalog，避免计划另起一套格式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 09:38:22 +0800</div>
+<pre>现有 tooling 文档是可复用模板：入口页承载目标/非目标/阅读路径，`contract.md` 写资源和命令门面，`delivery_plan.md`按 slice 验证；这正好能套到 WorkOffset，但要更窄，只描述 HMI 集成，不去改 `nrt/work_offset` 规格。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-12 09:38:55 +0800</div>
+<pre>可以。按“仅修改 `nrt/hmi`”这个约束，我建议文档先落成一个 HMI 项目包，不碰 `nrt/work_offset` 的规格树。
+
+**推荐落点**
+- 新增目录：`nrt/hmi/docs/project/work_offset/`
+- 修改导航：
+  - [nrt/hmi/docs/project/index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/index.md)
+  - [nrt/hmi/docs/SUMMARY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/SUMMARY.md)
+- 可选修改：
+  - [nrt/hmi/definition/story.catalog.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml)，把现有混在 Tool Management story 里的 `wcs.offset.table` 拆成 HMI WorkOffset table story，或至少加一个明确的 HMI integration story。
+
+**文档包结构**
+1. `index.md`
+   - HMI WorkOffset V1 目标：Settable Work Offset Table。
+   - 非目标：tool 交互、测量/touch-off、工件测量、G505..G599 创建 UI、rotation/scale/mirror 细节页、program frame/total coordinate 页面。
+   - 当前基线：已有 PARAM -&gt; Work Offset 页面、`wcs.offset.table`、`wcs.commands.activate`、`wcs.commands.set_offset`，但数据仍主要是 HMI mock/simulator 风格。
+   - 明确边界：HMI 只做页面、资源投影、命令门面和 server adapter；真值模型仍由 `nrt/work_offset` 提供。
+
+2. `contract.md`
+   - 资源：`wcs.offset.table` 是 canonical HMI resource；`tooling.wcs.table` 只保留 legacy alias。
+   - 行字段建议：`row_key`、`target_ref`、`g_code`、`offset_x/y/z/a/c`、`active`、`editable`、`revision`、`snapshot_revision`。
+   - 命令：
+     - `wcs.commands.activate` -&gt; `select_settable_zero_offset`
+     - `wcs.commands.set_offset` -&gt; `set_frame_component(component_kind=coarse_translation)`
+   - stale/revision 规则：写入带 `expected_revision`，拒绝时不做 optimistic overwrite，返回 diagnostics 并要求 refresh。
+
+3. `server_plan.md`
+   - HMI server 侧落点，不涉及 `nrt/work_offset` 修改：
+     - 新增 HMI extension/adaptor 层。
+     - mock backend 保持独立可跑。
+     - real backend 只通过 WorkOffset public API 绑定，不读 SQLite。
+     - `wcs.offset.table` 和 legacy alias 同步发布。
+   - 测试计划：projection、activate、set_offset、stale rejection、alias sync。
+
+4. `client_plan.md`
+   - Web/QML 侧落点：
+     - 复用现有 PARAM Work Offset table。
+     - 仅补 active row、row metadata、revision、expected_revision。
+     - 保持 Web/QML parity。
+     - 不引入测量、tool 联动和复杂详情页。
+
+5. `delivery_plan.md`
+   - Slice 1：文档和 story catalog 边界。
+   - Slice 2：server mock contract 固化。
+   - Slice 3：server real WorkOffset backend binding。
+   - Slice 4：client metadata/revision/active row。
+   - Slice 5：Web/QML smoke 和 final artifact generation。
+   - 每个 slice 都列验证命令。
+
+6. `smoke_report.md`
+   - 初始为空的证据页，但不是占位空文档。
+   - 先记录预期 smoke 项，后续实现时补真实命令输出和结果：
+     - `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml`
+     - `./tools/generate_targets.sh`
+     - `ctest --test-dir generated/server-build --output-on-failure`
+     - Web scenario
+     - QML smoke
+
+**我建议先落 4 个文件即可**：`index.md`、`contract.md`、`server_plan.md`、`delivery_plan.md`。`client_plan.md` 可以并入 `delivery_plan.md`，`smoke_report.md` 等实现阶段再加，避免第一版文档太散。
+
+如果你认可，我下一步就只在 `nrt/hmi` 下创建这个文档包并更新 HMI 导航；暂时不改 server/client 代码，也不碰 `nrt/work_offset`。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:333-342|note=[HMI docs story pack conventions and validation commands]
+MEMORY.md:77-91|note=[HMI branch and generation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e4d73-8a73-7882-9f4c-e8eeaf52ef0f
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:22:33 +0800</div>
+<pre>先落一下文档我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 10:22:49 +0800</div>
+<pre>我会按刚才确认的 HMI-only 方案落文档：新增 `docs/project/work_offset/`，更新 HMI docs 导航，不改 `nrt/work_offset` 和实现代码。先读取当前写文档与验证技能，再动文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 10:23:04 +0800</div>
+<pre>我会把第一版控制在 4 个页面，先不改 story catalog：这样你能先审 HMI 侧边界、server/client 拆分和 delivery slice，后续确认后再把 story catalog/generated story pack 一起接上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 10:23:20 +0800</div>
+<pre>我准备开始写这 4 个页面：`index.md`、`contract.md`、`server_plan.md`、`delivery_plan.md`，并只把它们接入 HMI 的 `project` 导航。先不写 decision sidecar，当前选择已能在页面本身说明清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 10:23:49 +0800</div>
+<pre>我注意到当前工作区还在长期 `feat/hmi` 上，且本地领先远端。为了先让你看文档内容，我会在当前工作区只做 HMI docs 草稿；如果你确认方向，再把这组变更搬到正式的短分支/PR 分支上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 10:24:05 +0800</div>
+<pre>我现在写的是“计划文档”，不是实现规范的最终锁定版。里面会明确哪些是 V1 必须实现，哪些是 later slice，避免后面开发时把测量、tool 联动、扩展零偏创建这些范围混进第一版。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 10:24:26 +0800</div>
+<pre>我已确认当前 DSL 资源字段还很薄：`wcs_entry` 只有 `g_code` 和五个 offset 值，`wcs.offset.table` 也还没声明 item shape。文档会把这个作为 V1 contract hardening 的首要任务，而不是假设已经具备。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 10:24:31 +0800</div>
+<pre>目录已建好。接下来用补丁写入页面并更新两个导航文件，内容会保持 HMI 包内自洽，引用 `nrt/work_offset` 只作为已有公共契约来源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 10:26:04 +0800</div>
+<pre>文档草稿已经落到 HMI 项目文档里。下一步我会先做静态检查：看有没有坏链接/明显格式问题，再跑 HMI docs 相关测试和 bookshelf 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 10:26:13 +0800</div>
+<pre>我会先跑轻量 grep/line 检查和 HMI 文档测试；如果 bookshelf 构建环境缺少工具，会如实说明，不把它当作已验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 10:26:43 +0800</div>
+<pre>文档测试和 bookshelf 构建都已经跑过，输出是通过的。我再做一次工作区和空白错误检查，确认没有意外改到 HMI 之外的文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-12 10:26:57 +0800</div>
+<pre>当前只看到 HMI docs 相关修改：两个导航文件和新建的 `work_offset` 文档目录。页面长度也在文档策略限制内。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-12 10:27:20 +0800</div>
+<pre>已先落 HMI-only 文档草稿，未改 `nrt/work_offset`，也未改实现代码。
+
+新增：
+- [index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/index.md)
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md)
+- [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md)
+- [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md)
+
+更新导航：
+- [project/index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/index.md)
+- [SUMMARY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/SUMMARY.md)
+
+验证已跑：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`：11/11 OK
+- `python3 .mdbook/lint_docs_policy.py`：passed
+- `book build`：passed，HMI book 109 pages
+
+当前 `git status` 只包含上述 HMI docs 变更。下一步你可以先看这几个文档；如果方向认可，我再补 story catalog/story pack，或者按这个计划开始建 `feat/hmi-work-offset-table` 实现分支。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:28:39 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+wslview .
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.6838 seconds
+Output:
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:28:50 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+code .
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 127
+Duration: 0.0239 seconds
+Output:
+zsh:1: command not found: code
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:28:57 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+wslview .
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.6964 seconds
+Output:
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:29:27 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+wslview .
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.7219 seconds
+Output:
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:34:35 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+pwd
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.0319 seconds
+Output:
+/home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 10:47:11 +0800</div>
+<pre>不是让基于main开个新分支然后在那个上面集成吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 10:47:29 +0800</div>
+<pre>对，你说得对。刚才我把文档草稿直接落在当前长期 `feat/hmi` 工作区了，这不符合你前面定的“基于 `main` 新开分支做集成”的路径。我现在把这组未提交的 HMI docs 变更搬到 `main` 派生的新分支上，`feat/hmi` 不留下这次草稿改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 10:47:55 +0800</div>
+<pre>我会先临时 stash 这次 HMI 文档草稿，然后切到 `main`、快进到 `origin/main`、新建 `feat/hmi-work-offset-table`，最后把草稿恢复到新分支上。整个过程不提交、不推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 10:48:16 +0800</div>
+<pre>草稿已临时保存。现在我切到 `main` 并确认它是最新远端基线，再开新分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 10:48:21 +0800</div>
+<pre>`feat/hmi` 现在已经恢复成干净状态，保留它原来的本地 ahead 历史。我接下来操作分支指针，不会改动这个长期分支内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 10:48:30 +0800</div>
+<pre>远端引用已刷新。现在切到 `main` 并快进到 `origin/main`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 10:48:38 +0800</div>
+<pre>已经在 `main`，本地提示与 `origin/main` 同步。我再做一次显式快进检查，然后创建分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 10:48:46 +0800</div>
+<pre>`main` 已确认最新。现在创建 `feat/hmi-work-offset-table` 并恢复刚才的文档草稿。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 10:48:52 +0800</div>
+<pre>新分支已创建。我会把 stash 中的 HMI docs 草稿应用到这个分支，然后确认没有冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 10:49:05 +0800</div>
+<pre>草稿已恢复到新分支，没有冲突。接下来我重跑刚才的文档验证，确保换分支后状态仍然成立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 10:49:28 +0800</div>
+<pre>分支已经切正了：当前在 `feat/hmi-work-offset-table`，基线与 `main` 相同，只有这次 HMI 文档修改。`feat/hmi` 上的草稿已移走。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-12 10:49:32 +0800</div>
+<pre>是的，应该基于 `main` 新开分支。我刚才先落在 `feat/hmi` 上不对，已经纠正了。
+
+现在状态：
+- 当前分支：`feat/hmi-work-offset-table`
+- 分支基线：最新 `main`，`git rev-list --left-right --count main...HEAD` 是 `0 0`
+- 当前未提交改动只包含 HMI 文档：
+  - `nrt/hmi/docs/project/work_offset/`
+  - `nrt/hmi/docs/project/index.md`
+  - `nrt/hmi/docs/SUMMARY.md`
+- `feat/hmi` 没留下这次文档草稿改动
+
+重新验证已通过：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`：11/11 OK
+- `python3 .mdbook/lint_docs_policy.py`：passed
+- `book build`：passed</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 11:06:21 +0800</div>
+<pre>你这些文档是基于现在的work_offset写的吗，还是凭空造的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 11:06:43 +0800</div>
+<pre>我不想凭记忆回答这个问题；我会把刚落的 HMI 文档逐条对照当前 `nrt/work_offset` 的公开文档/API 和 HMI 现状，明确哪些是“已有事实”，哪些是“基于事实推导的 HMI 计划”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 11:07:06 +0800</div>
+<pre>我已经对照了一遍。结论不是“凭空造”，但里面分两类内容：一类是当前 `work_offset` 已经明确存在的公开契约，另一类是我基于这个契约给 HMI 侧设计的适配计划；后者我会明确标成计划/建议，不应该写成已实现事实。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-12 11:07:20 +0800</div>
+<pre>不是凭空造的。文档主体是基于当前 `nrt/work_offset` 已有契约写的，但我确实写成了 HMI 侧“集成计划”，里面有一部分是还未实现的 HMI 适配设计。
+
+我刚对照了当前源码/文档，事实依据主要是：
+
+- `work_offset` 已实现 `query_work_offset_view`、`query_frame_detail`、`select_settable_zero_offset`、`set_frame_component`、`PersistenceStore`、`StoreBackedWorkOffsetRuntime`。
+- `settable_table` 已定义为包含 `G54`...`G57` 和已显式创建/导入的 `G505`...`G599` 行，不展示缺失扩展槽位。
+- WorkOffset 行模型已经有 `row_id`、`selector`、`active`、`editable`、`revision`、`snapshot_revision`，值通过 `axis_id + component_kind` 定位。
+- 写分量的真实契约就是 `target_ref + axis_id + component_kind + expected_revision`，HMI 不应直接读写 SQLite，也不能本地乐观写成真值。
+- HMI 当前已有 `wcs.offset.table`、`tooling.wcs.table` alias、`wcs.commands.activate`、`wcs.commands.set_offset` 和 PARAM Work Offset table，但 row shape 还很薄。
+
+所以文档里的这些不是编的：`query_work_offset_view(settable_table)`、`select_settable_zero_offset`、`set_frame_component(coarse_translation)`、`expected_revision`、`target_ref`、不能直接 SQLite、不能隐式创建扩展零偏、HMI 只做页面/adapter。
+
+但这些是我设计的 HMI 计划，不是当前已实现事实：
+- `HMI_WORK_OFFSET_BACKEND=mock|work_offset`
+- `server/include/hmi/extensions/work_offset/...` 这组文件名
+- `wcs_entry` 增加 `row_key/target_ref/active/editable/revision/snapshot_revision`
+- native server 新增 WorkOffset extension/backend
+- Web/QML active-row、stale-write UI 行为
+
+我建议我再小改一下文档，把“事实依据”和“计划建议”在页面里显式分开，并把来源链接写进去，避免读者误以为所有内容都已实现。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 12:58:32 +0800</div>
+<pre>ok 开多个agent review一下当前开发计划有没有问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 12:58:56 +0800</div>
+<pre>我会按多 agent 审查来做：一个看 WorkOffset 领域契约贴合度，一个看 HMI server/client 可执行性，一个看文档/交付计划可读性和边界。先加载并遵循并行 agent 与文档审查技能，然后分派独立审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 12:59:34 +0800</div>
+<pre>Agent A 已在看 WorkOffset 契约贴合度。我继续分派 HMI server/client 可执行性审查和文档阅读性审查；这两个和 A 独立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 12:59:52 +0800</div>
+<pre>Agent B 已分派，聚焦 HMI 架构可执行性。第三个我让它只看文档本身的阅读顺序、事实/计划边界和交付计划表达。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:00:22 +0800</div>
+<pre>三个审查都已并行启动。等待结果时，我会本地做一遍快速交叉检查，重点看刚才用户质疑的“计划/事实混淆”是否需要立刻修文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:00:30 +0800</div>
+<pre>我本地快速读下来，至少有一个需要修的点：文档没有明显区分“当前 WorkOffset 契约依据”和“HMI 计划建议”，这会误导读者。我先等三个 agent 返回，再统一给 findings 和修正建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 13:03:39 +0800</div>
+<pre>审查还没全部返回，我继续等一次；这类 review 需要查多个文件，等到有结果后我会合并去重。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:22:57 +0800</div>
+<pre>Blocker的2个问题：
+1.这部分在hmi server封装就可以了是吧
+2.轴写不硬编，前期固定死的XYZAC，后期还是会以索引方式，等到后面参数配置轴组等确定好后，会有一套完整的配置系统支持
+High的4个问题：
+3.这部分你看怎么优化，不能动底层，可以在hmi server/client处理
+4.你看一下是做拆分还是什么
+5.看看如何扩展设计
+6.可以细化一下计划
+Medium的4个问题：
+7.这部分不做强制要求，视整体情况确定
+8.HMI_WORK_OFFSET_DIR是什么，具体指什么路径
+9.可以
+10.优化一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:23:14 +0800</div>
+<pre>我会按 review feedback 处理：先把你刚确认的取舍落实到文档里，再回答 `HMI_WORK_OFFSET_DIR` 这种具体含义。这里不改底层 `nrt/work_offset`，只把 HMI server/client 怎么兜住这些边界写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:23:28 +0800</div>
+<pre>我会直接修这批文档：把 active revision、轴 ID、target_ref/selector、store-backed runtime、多 extension 组合、Web/QML payload、导航和 evidence destination 都写清楚。`HMI_WORK_OFFSET_DIR` 我会在文档里定义成 HMI server CMake 查找/加入 `nrt/work_offset` 源码目录的路径，默认应指向 `../../work_offset`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:23:42 +0800</div>
+<pre>先补一点上下文：我会读 HMI server 的现有 CMake 和 extension 组合代码，确保“拆分还是多 extension 组合”不是拍脑袋写。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:23:56 +0800</div>
+<pre>现有代码确认了 review 的判断：现在只有一个 `RuntimeExtensionAdapter`，所以 WorkOffset 不应该“直接替换/并排塞进去”，计划应先加一个 extension chain/collection 组合层，让 tooling 和 WorkOffset 都能参与 resource poll 与 command dispatch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:24:38 +0800</div>
+<pre>Web/QML 当前确实只发 `g_code/field/value`，所以 client slice 不能只写“带 expected_revision”，还要具体改 table edit config 的取数策略：从 row 里取 `target_ref`、`component_axis_ids[field]` 和 `revision`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 13:24:56 +0800</div>
+<pre>接下来补丁会新增 `smoke_report.md`，把 WorkOffset 子页嵌套到 SUMMARY，并重写 contract/server/delivery 中的问题段落。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 13:26:48 +0800</div>
+<pre>文档已按 review 调整。现在我会跑文档测试和 bookshelf 构建；如果新增的嵌套列表触发 docs policy，我会按 linter 结果修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 13:27:04 +0800</div>
+<pre>我会先跑 HMI 文档测试、docs policy 和 `book build`，再把 smoke report 里的 pending 改成当前验证结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 13:27:18 +0800</div>
+<pre>验证通过了。我会把 smoke report 里的 pending 替换为刚才的实际验证结果，再跑一次轻量检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 13:27:32 +0800</div>
+<pre>smoke report 已记录当前文档验证结果。我再跑一次 policy/build 相关检查，确保最后状态一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-12 13:27:50 +0800</div>
+<pre>最终文档检查都通过。我再看一下 diff 和状态，准备给你简短说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-12 13:28:15 +0800</div>
+<pre>已按你的取舍把计划文档修了一版，只改 `nrt/hmi` 文档。
+
+关键调整：
+- active revision：明确 V1 可以在 HMI server activate 封装里调用 `get_active_wcs` 取 `ActiveWorkOffsetState.revision`，不要求底层改；后续 selected-row activation 再把 `active_state_revision` 暴露给 client。
+- 轴写入：保留前期固定显示 `X/Y/Z/A/C`，但写入必须通过 WorkOffset view 返回的真实 `axis_id`，不能硬编码 `x/y/z`。
+- `target_ref`：明确 `set_offset` 的 HMI `target_ref` 从 WorkOffset `row_id` 派生；`activate` 使用 `selector/g_code`，不把 `row_id` 当 selector。
+- backend：真实 backend 明确绑定 `StoreBackedWorkOffsetRuntime + PersistenceStore/SQLitePersistenceStore`，不是 process-local `WorkOffsetDomainStore`。
+- server extension：计划改成先加 `RuntimeExtensionCollection`，让 tooling 和 WorkOffset extension 共存。
+- client：细化 Web/QML 要传 `target_ref`、`component_axis_ids[field]`、row `revision`；activation 传 `selector/g_code + active_state_revision`；并停止 rejected write 的本地乐观 patch。
+- story catalog：不强制作为 V1 阻塞项，改为 Slice 0 记录决策并视实现情况再拆。
+- `HMI_WORK_OFFSET_DIR`：已解释为 HMI server CMake 用来定位 `nrt/work_offset` 源码的 cache path，默认从 `nrt/hmi/server` 指向 `../../work_offset`。
+- 导航：WorkOffset 子页改成嵌套结构，并新增 [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md)。
+
+主要文件：
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md)
+- [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md)
+- [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md)
+
+验证已重新跑：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`：11/11 OK
+- `python3 .mdbook/lint_docs_policy.py`：passed
+- `book build`：passed，HMI book 110 pages
+- `git diff --check`：passed</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:28:42 +0800</div>
+<pre>ok 开多个agent 再review一下当前开发计划有没有问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:29:05 +0800</div>
+<pre>我会再开三路审查，和上一轮一样分开看：WorkOffset 契约贴合、HMI server/client 可执行性、文档/交付计划可读性。这轮重点是验证刚修过的 active revision、axis_id、extension collection、store-backed runtime 和导航/evidence 是否已经闭环。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:29:12 +0800</div>
+<pre>我会把这轮 agent prompt 明确成“复审修订后的计划，不要重复已修的问题，只有仍然会卡实现或误导执行的点才报”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:29:31 +0800</div>
+<pre>Agent A 已启动，检查 WorkOffset 契约。继续启动 server/client 架构复审和文档阅读性复审。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:29:51 +0800</div>
+<pre>Agent B 已启动，聚焦 HMI 可执行性。第三个只看文档和计划表达，避免实现审查和阅读性审查混在一起。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:30:12 +0800</div>
+<pre>三路复审都已启动。我等待结果，同时不再改文档，避免 agent 读到的内容变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 13:34:23 +0800</div>
+<pre>复审还在跑，我继续等。当前没有本地并行修改，等结果回来后我再合并。</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:43:53 +0800</div>
+<pre>看了一下你的建议问题不大，按照建议操作一轮我看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:44:16 +0800</div>
+<pre>我会按复审建议收紧文档，不改实现和 `nrt/work_offset`。重点是把 real backend 空库 seed 策略写死、alias 所有权写清、stale reject 的 poll 行为定成 V1 规则，再补 client stale handler 和 smoke/story gate。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:44:30 +0800</div>
+<pre>我已确认要改的都是文档层面的具体决策。现在先定位需要修改的段落行号，然后用补丁一次性收进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:44:37 +0800</div>
+<pre>我会把 V1 real backend 的空库策略收窄：不让 HMI 隐式发明 profile，改成 `preserve` 默认；`empty` 只有在显式提供 seed snapshot/profile fixture 时才允许。这样不需要碰底层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:45:33 +0800</div>
+<pre>补丁已落：`preserve` 作为 real backend 默认，`empty` 要显式 seed snapshot/profile；alias 归全局层；stale reject 后 post-command poll 视为真实 refresh；`axis_id` 是 echo 并由 server 校验。接下来跑文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:45:52 +0800</div>
+<pre>文档验证已通过。我再看一次状态和 diff 摘要，确认只改了 HMI docs。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-12 13:46:16 +0800</div>
+<pre>已按复审建议再收紧一轮，仍然只改 `nrt/hmi` 文档，没有动实现和 `nrt/work_offset`。
+
+这轮主要落了这些决策：
+
+- real backend seed：`preserve` 作为默认；`empty` 只有在显式提供 `HMI_WORK_OFFSET_SEED_SNAPSHOT` 或 `HMI_WORK_OFFSET_PROFILE` 时允许，HMI 不隐式发明轴定义。
+- alias ownership：WorkOffset extension 只发布 canonical `wcs.offset.table`；`tooling.wcs.table` alias 仍由 server 全局 canonicalization 处理。
+- stale rejection：V1 接受当前 `CommandRouter` rejected 后 post-command poll 的行为，把它定义为真实 refresh 数据，不再要求保留旧行直到另一次 refresh。
+- `axis_id`：保留为 client echo，但 server 必须校验它等于当前行 `component_axis_ids[field]`，不一致先拒绝。
+- activation source：HMI adapter 必须显式传 HMI/operator source，不能依赖 WorkOffset 的默认 program source。
+- client stale handler：计划里补了 Web/QML 需要泛化 Tool Offset stale handler，支持 WorkOffset diagnostic code 和文案。
+- story gate：保持“不强制先拆 story catalog”，但明确触发条件：改 catalog、重生成 story pack、或把 V1 smoke 纳入验收链接前必须重新决策。
+- smoke report：区分已有 light binding smoke 和未来 V1 real-backend/edit/stale 证据。
+
+更新文件主要是：
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md)
+- [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md)
+- [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md)
+- [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md)
+
+验证已重新跑：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`：11/11 OK
+- `python3 .mdbook/lint_docs_policy.py`：passed
+- `book build`：passed，HMI book 110 pages
+- `git diff --check`：passed
+
+当前分支仍是 `feat/hmi-work-offset-table`，工作区只包含 HMI docs 变更。</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:55:41 +0800</div>
+<pre>ok 开多个agent 再review一下当前开发计划有没有问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:56:13 +0800</div>
+<pre>我会再开三路复审，限定为只读，不改文件。这轮让它们重点验证刚补的 seed 策略、alias 归属、stale refresh 定义、axis_id echo 校验、story gate 和 smoke 分层是否还有执行风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:56:24 +0800</div>
+<pre>我会分派同样的三类复审，但明确“只报告仍会阻塞实现/误导执行的问题”。等待过程中我不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:56:43 +0800</div>
+<pre>Agent A 已启动，检查 WorkOffset 契约一致性。继续启动 HMI 架构复审。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:57:13 +0800</div>
+<pre>Agent B 已启动，聚焦 HMI server/client 架构。第三路看文档阅读顺序和执行清晰度。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 13:57:42 +0800</div>
+<pre>三路复审都已启动。等待结果期间我保持工作区不变，避免审查对象移动。</pre>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 14:23:30 +0800</div>
+<pre>所以现在设计文档没问题了是吗，接下来就是落代码吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-12 14:23:48 +0800</div>
+<pre>是的，现在这版设计/计划文档没有已知 blocker。第三轮复审剩下的都是实现阶段注意点，不再是计划阻塞项。
+
+接下来可以进入代码实现，但我建议按 slice 走：
+
+1. 先做 Slice 1：HMI retained contract hardening
+   `wcs_entry`、`wcs.offset.table` item shape、`wcs.commands.*` payload、Web/QML 生成快照。
+
+2. 再做 Slice 2：server extension collection + mock WorkOffset extension
+   先把多 extension、canonical resource、alias sync、stale rejection 行为用 mock 跑通。
+
+3. 再做 Slice 3：real WorkOffset backend binding
+   处理 `HMI_WORK_OFFSET_DIR`、C++17/C++20、store-backed runtime、seed/preserve 策略。
+
+4. 最后做 Slice 4/5：Web/QML payload、stale handler、smoke/final artifacts。
+
+我不建议直接从 real backend 开始，因为多 extension、payload、alias 和 stale refresh 这些 HMI 内部基础还没硬化，先接 real backend 容易把问题混在一起。</pre>
+</article>
+</section>
+<section class="turn" id="turn-24">
+<h2>Turn 24</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 14:39:09 +0800</div>
+<pre>给我看一下现在设计文档的核心preview</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 14:39:27 +0800</div>
+<pre>我会直接从当前分支的 WorkOffset 文档包里抽核心设计预览，不做修改。重点给你看设计边界、server/client 拆分、关键决策和实现顺序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-12 14:41:39 +0800</div>
+<pre>现在设计文档的核心 preview 如下，范围还是限定在 HMI 侧，不改 `nrt/work_offset`。
+
+**文档入口**
+- [work_offset/index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/index.md)
+- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md)
+- [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md)
+- [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md)
+
+**核心设计**
+第一版只做 PARAM 里的零偏表集成：读取 WorkOffset 的 `settable_table` 视图，HMI 负责页面、资源投影、命令封装和 Web/QML 展示。暂不做 tool 交互、工件测量、probe/touch-off、G500 UI、创建缺失 G505-G599、Details 页、总坐标页，也不让 HMI 自己维护零偏数据库。
+
+HMI 资源以 `wcs.offset.table` 为 canonical，保留 `tooling.wcs.table` 作为兼容 alias。行数据会从 WorkOffset 的 `row_id / selector / active / editable / values[] / revision / snapshot_revision` 映射出来，HMI 行里会补充 `target_ref`、`component_axis_ids`、`active_state_revision` 等字段。V1 界面可固定显示 `X/Y/Z/A/C`，但写入时不能把轴硬编码成字符串，要通过 WorkOffset 返回的 `axis_id` 传递。
+
+**命令语义**
+`wcs.commands.activate` 调 WorkOffset 的 `select_settable_zero_offset`，使用 active-state revision 做并发保护。
+`wcs.commands.set_offset` 调 `set_frame_component(component_kind=coarse_translation)`，使用行 revision 做并发保护，`axis_id` 由 server 根据当前行映射解析，client 传来的 `axis_id` 只作为 echo 校验，不作为权威来源。
+
+失败或 stale 时不做前端乐观更新。命令后由 server 重新查询 WorkOffset，并发布新的 `wcs.offset.table`，alias 同步放在 HMI app/resource 层统一处理。
+
+**Server 方案**
+计划新增独立的 HMI WorkOffset extension，不塞进 tooling extension。server 侧通过 `RuntimeExtensionCollection` 组合 tooling 和 WorkOffset 两个 extension：
+- tooling 继续拥有 `tool.commands.*`、`tooling.tool.table`、`tooling.magazine.table`
+- WorkOffset 拥有 `wcs.commands.*` 和 canonical `wcs.offset.table`
+- alias `tooling.wcs.table` 不由 WorkOffset extension 直接发布
+
+真实后端走 `StoreBackedWorkOffsetRuntime` + `PersistenceStore`，不直接碰 SQLite。后端开关计划为 `HMI_WORK_OFFSET_BACKEND=mock|work_offset`，默认 mock，真实模式再配置 store kind/path、seed mode、profile/snapshot。
+
+**Client 方案**
+Web/QML 保持现有 PARAM 布局，但表格行要接入 active 标记、editable 状态、revision、target_ref、axis_id 映射。编辑单元格时 payload 带 `target_ref + field + axis_id echo + expected_revision`；激活行时带 `selector/g_code + active_state_revision`。同时把 stale/command failure 的提示从 Tool Offset 专用逻辑泛化出来。
+
+**交付切片**
+当前计划分为：
+1. 文档和 story 边界确认
+2. HMI DSL contract 加固
+3. server mock + extension collection
+4. real WorkOffset backend 接入
+5. Web/QML 客户端接入
+6. smoke/final artifacts
+
+**当前验证**
+文档侧已经跑过：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+- `git diff --check`
+
+结论：设计文档现在已经可以支撑下一步落 HMI 代码。主要剩余风险不在方向上，而是在实现阶段验证 C++17/C++20 边界、真实 WorkOffset store 初始化、以及 Web/QML payload 同步。</pre>
+</article>
+</section>
+<section class="turn" id="turn-25">
+<h2>Turn 25</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 16:06:05 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push，检查一下有没有异常，有异常不要操作</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 16:06:25 +0800</div>
+<pre>我会先做只读检查：当前分支、未提交改动、远端状态、HMI/DSL 同步关系和报告目录状态。确认没有异常后再生成/同步/提交/推送；如果发现分支或工作树不符合预期，我会停下来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 16:06:50 +0800</div>
+<pre>当前 MetaNC 工作树只有这轮 WorkOffset 文档改动，分支是 `feat/hmi-work-offset-table`，不是 `feat/hmi`。我先继续做同步链路检查，尤其确认 standalone `metanc_hmi_dsl` 和报告发布流程是否处在可操作状态；如果分支目标不匹配或存在未预期改动，会停。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 16:07:20 +0800</div>
+<pre>我确认到了一个潜在异常：当前 checkout 是 `feat/hmi-work-offset-table`，而请求里写的是 `MetaNC-feat/hmi`。我不会先做写入动作，继续把两个 repo 的分支和工作树状态查清楚，再判断是否应停。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 16:08:07 +0800</div>
+<pre>异常已经足够明确：MetaNC 当前不在用户指定的 `feat/hmi`，而是在短分支 `feat/hmi-work-offset-table`，并且该分支还有未提交文档改动。按你的要求，我不会生成、同步、commit 或 push；下面只补齐只读状态证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-12 16:08:45 +0800</div>
+<pre>已检查到异常，按你的要求我没有继续执行生成、同步、commit 或 push。
+
+异常点：
+- MetaNC 当前分支是 `feat/hmi-work-offset-table`，不是你指定的 `feat/hmi`。
+- 当前分支有未提交改动：
+  - `nrt/hmi/docs/SUMMARY.md`
+  - `nrt/hmi/docs/project/index.md`
+  - `nrt/hmi/docs/project/work_offset/` 新增文档目录
+- 当前 `HEAD` 在 `origin/main` 对齐点：`3b1a3858 feat(nrt/work_offset): add WorkOffset domain module`，说明这个分支是从 main 拉出的短分支，不是 long-lived `feat/hmi`。
+- `metanc_hmi_dsl` 当前是 `metanc-layout...origin/metanc-layout`，工作树干净。
+- reports submodule 当前是 `main...origin/main`，工作树干净。
+
+所以现在不能直接执行你说的 `sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push`，否则会把当前 WorkOffset 设计文档短分支当作 `feat/hmi` 流程处理。需要先确认目标：是继续发布当前 `feat/hmi-work-offset-table` 这个文档分支，还是先切回/更新 `feat/hmi` 后再跑完整 HMI report/docs/sync 流程。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:137-151|note=[used prior hmi sync and publish workflow expectations]
+skills/metanc-hmi-reports-submodule/SKILL.md:16-25|note=[used report publishing scope]
+skills/metanc-hmi-reports-submodule/SKILL.md:71-75|note=[used submodule then parent commit order]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eaaf7-561d-7cf0-8700-dade8b751af6
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-26">
+<h2>Turn 26</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 17:13:43 +0800</div>
+<pre>你可以开worktree之类的去做这个事吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 17:14:02 +0800</div>
+<pre>可以，用独立 worktree 是这次最合适的处理方式：保留当前 `feat/hmi-work-offset-table` 不动，在 `/tmp` 另开一个 MetaNC `feat/hmi` worktree 跑 report/docs/sync 流程。这样不会把 WorkOffset 文档短分支混进 long-lived `feat/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 17:14:59 +0800</div>
+<pre>我会按这个假设继续：新开 `/tmp` 下的 MetaNC `feat/hmi` worktree，原 checkout 上的 WorkOffset 文档短分支完全不碰；在 worktree 和 standalone `metanc_hmi_dsl` 之间跑既有 sync/report/docs 流程。先建隔离环境并刷新远端信息，任何状态异常继续停。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 17:15:52 +0800</div>
+<pre>远端刷新完成。现在我会先比较本地 `feat/hmi` 与 `origin/feat/hmi`，只在它能安全快进时创建 worktree；如果本地分支有未推送或分叉，我会停下来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 17:16:16 +0800</div>
+<pre>还有一个需要判断的状态：本地 `feat/hmi` 比 `origin/feat/hmi` ahead 7、没有 behind。它不是分叉，但会导致后续 push 发布这 7 个既有本地提交。我先只读查看这 7 个提交是否就是之前的 HMI/main 同步内容，再决定是否继续。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 17:16:35 +0800</div>
+<pre>`feat/hmi` 本地只 ahead 7、没有 behind，`origin/feat/hmi` 是它的祖先；这更像之前把 `origin/main` 合进 long-lived 分支后还没推，而不是分叉异常。接下来我用这个本地 `feat/hmi` 开 `/tmp` worktree，后续所有 MetaNC 写入都在那个隔离目录里做。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-12 17:16:42 +0800</div>
+<pre>隔离 worktree 已建立在 `/tmp/metanc_feat_hmi_publish`。我现在会在这个目录做基线检查和 HMI 模块说明检查，再进入 standalone repo 的 report/docs 流程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-12 17:16:58 +0800</div>
+<pre>接下来我会读取 `/tmp` worktree 的 HMI 指南和 standalone 的本地指南，确认两个包的源/下游边界一致。然后再跑 report exporter 和生成命令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-12 17:17:36 +0800</div>
+<pre>standalone HMI 包和 reports submodule 都是干净的。下一步我会先读同步脚本说明，确认 `import_from_metanc`/`export_to_metanc` 的过滤边界，然后联网刷新 standalone 与 reports 的远端状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-12 17:17:45 +0800</div>
+<pre>同步脚本是明确的 source-only 包装器，符合预期。现在我刷新 `metanc_hmi_dsl` 和 reports submodule 的远端，确认没有本地/远端分叉后再开始生成报告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-12 17:17:53 +0800</div>
+<pre>两个远端刷新命令还在跑，我等它们结束再继续判断状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-12 17:18:15 +0800</div>
+<pre>standalone 与 reports 都和远端一致，MetaNC worktree 仍是预期的 ahead 7。现在开始生成/更新 report 和 docs；这一步会写 standalone 的报告 submodule、docs_html 和生成产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-12 17:18:35 +0800</div>
+<pre>我会先用 exporter 的 help 和现有 2026-06-09 报告结构确认今天的目标输出格式，避免手动拼结构。然后运行 exporter 生成 2026-06-12 session/user-history。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-12 17:19:00 +0800</div>
+<pre>我现在确认 exporter 的行为细节：它会不会自动补 session 目录、聚合索引和 `README`。如果 exporter 只生成 skeleton，我会先停下来补报告内容，不会发布空报告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-12 17:19:38 +0800</div>
+<pre>我已经确认 exporter 会自动 bootstrap session 包，但默认内容会偏 skeleton。后面我会先生成完整导出，再把 2026-06-12 报告页补成实际这轮 HMI/WorkOffset 文档评审与 feat/hmi 同步发布内容，再构建报告书。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-12 17:19:46 +0800</div>
+<pre>现在运行完整会话导出和 brief user-history。生成后我会检查是否只新增/更新今天的报告包和索引，再手工补充实际 report 内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-12 17:20:50 +0800</div>
+<pre>生成命令被沙箱拦住了，因为 standalone `metanc_hmi_dsl` 不在当前 writable root 里；这是权限环境问题，不是 repo 状态异常。我会用审批方式重跑需要写 standalone 的命令，当前 MetaNC worktree 和原分支仍未被修改。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 13:05:06 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba33-8f64-7a10-a0ed-83b9d078997d&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. **High - activation writes do not say where `expected_revision` comes from.**  \n   Location: [contract.md:24](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:24), [contract.md:42](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:42), [delivery_plan.md:84](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:84). WorkOffset basis: [hmi-contract.md:21](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-contract.md:21).  \n   Problem: the HMI table row exposes row `revision` and `snapshot_revision`, then activation asks for `expected_revision`, but WorkOffset requires current-state revision for selection, not the row revision.  \n   Reader impact: a follow-up agent may send the selected row’s `revision` for `wcs.commands.activate`, causing stale-guard behavior to be implemented against the wrong version source.  \n   Suggested fix: explicitly add an HMI field/source such as `active_revision` or a companion active-state resource, and state: activation uses `ActiveWorkOffsetState.revision`; cell edits use row `WorkOffsetRecord.revision`; create uses `snapshot_revision`.\n\n2. **High - current WorkOffset basis and HMI proposed facade are mixed in the same “contract” flow.**  \n   Location: [contract.md:8](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:8), [contract.md:12](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:12), [contract.md:29](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:29), [server_plan.md:62](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:62).  \n   Problem: `row_key`, `offset_x`, `g_code`, and HMI command names are presented next to WorkOffset operation names without a separate “Basis from current WorkOffset contract” section.  \n   Reader impact: a first-time implementer can confuse HMI resource shape with WorkOffset truth contract and try to add HMI fields to `nrt/work_offset`, or assume `offset_x` is a WorkOffset-owned field.  \n   Suggested fix: split the page into “Basis from current WorkOffset contract” and “HMI proposed plan”. Add a mapping table from `WorkOffsetViewRow.row_id/selector/values/revision/snapshot_revision` to HMI `wcs_entry.row_key/g_code/offset_x...`.\n\n3. **Medium - Slice 0 leaves a required pre-implementation decision unresolved.**  \n   Location: [delivery_plan.md:16](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:16), [delivery_plan.md:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:20), [delivery_plan.md:24](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:24).  \n   Problem: the plan says to decide whether to split WorkOffset out of the current Tool Management story catalog entry before implementation, but the exit criteria do not require recording that decision.  \n   Reader impact: the next agent may start Slice 1 without knowing whether story catalog work is mandatory, deferred, or intentionally skipped.  \n   Suggested fix: add a Slice 0 exit criterion naming the decision result and file target, for example `definition/story.catalog.yaml updated` or `decision recorded: story split deferred until later slice`.\n\n4. **Medium - real backend binding lacks a persistence initialization plan.**  \n   Location: [server_plan.md:25](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:25), [server_plan.md:42](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:42), [server_plan.md:110](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:110), [delivery_plan.md:64](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:64).  \n   Problem: the docs correctly reject HMI-owned SQLite schema, but they do not say how the HMI server creates/configures the WorkOffset `PersistenceStore` or store-backed runtime for `HMI_WORK_OFFSET_BACKEND=work_offset`.  \n   Reader impact: implementers must invent environment variables, store paths, missing-snapshot behavior, or linking assumptions.  \n   Suggested fix: add a short “Persistence binding” subsection, not a HMI persistence schema plan: selected WorkOffset runtime/store type, config inputs, missing snapshot behavior, and validation commands.\n\n5. **Medium - final evidence location references a smoke report that is not defined or navigated.**  \n   Location: [delivery_plan.md:111](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:111), [SUMMARY.md:88](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/SUMMARY.md:88).  \n   Problem: Slice 5 says validation evidence is recorded in an “implementation summary or smoke report”, but WorkOffset has no linked smoke report page or named implementation-summary path.  \n   Reader impact: evidence may end up only in chat/PR text instead of a stable retained doc.  \n   Suggested fix: either add and wire `project/work_offset/smoke_report.md`, or replace the sentence with one exact evidence destination.\n\n6. **Medium - navigation is too flat for the WorkOffset pack.**  \n   Location: [SUMMARY.md:88](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/SUMMARY.md:88), [project/index.md:12](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/index.md:12).  \n   Problem: `Contract`, `Server Plan`, and `Delivery Plan` are sidebar peers of `Work Offset`, not children. The intended reading path only appears if the reader opens the index first.  \n   Reader impact: first-time readers can enter `contract.md` directly and miss scope, non-goals, and ownership framing.  \n   Suggested fix: nest the three WorkOffset pages under `Work Offset` in `SUMMARY.md`, and group them under a WorkOffset subsection in `project/index.md`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:05:16 +0800</div>
+<pre>已有一个文档阅读性审查返回，指出两个高优先级问题：`expected_revision` 来源不清、WorkOffset 事实契约和 HMI 计划混在一起。我继续等另外两个审查，重点会合并去重后给你一个 findings 列表。</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 13:07:44 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba33-4df2-7160-a65a-af68c40a0a90&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. Blocker: real activation cannot be implemented from the planned table contract because the plan does not expose the required `ActiveWorkOffsetState.revision`.\n   Location: [nrt/hmi/docs/project/work_offset/contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:40), [nrt/hmi/docs/project/work_offset/delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:32)\n   Current fact: WorkOffset requires current-selection writes to use the active-state revision, not the row record revision; this is explicit in [nrt/work_offset/docs/integration/hmi-contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-contract.md:22) and enforced in [nrt/work_offset/src/domain.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1087). The `settable_table` row exposes record `revision`, while `WorkOffsetViewResult` has no active-state revision field ([nrt/work_offset/include/work_offset/foundation.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/foundation.h:412)).\n   Where it will block: `wcs.commands.activate` against the real backend will return `wcs-expected-revision-required` unless the HMI adapter first calls `get_active_wcs`/`query_work_offset_view(active)` and carries a separate active revision, or the HMI resource shape adds an explicit `active_state_revision`.\n\n2. Blocker: the planned axis mapping hard-codes `offset_x -&gt; x`, but WorkOffset writes require the profile `axis_id`.\n   Location: [nrt/hmi/docs/project/work_offset/contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:70)\n   Current fact: WorkOffset says HMI must write back the `AxisComponentValue.axis_id` from the view, not infer it from display labels ([nrt/work_offset/docs/spec/RECORD-STRUCTURES.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/RECORD-STRUCTURES.md:244)). Existing fixtures use IDs like `axis-x`, not `x` ([nrt/work_offset/test/work_offset_test_helpers.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_test_helpers.h:21)), and unsupported IDs are rejected in [nrt/work_offset/src/domain.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:974).\n   Where it will block: the real adapter can successfully display X/Y/Z/A/C, then fail every edit with `wcs-axis-unsupported` unless the projection stores per-column `axis_id` metadata or derives `offset_x` from `axes[].display_name` while preserving the original `axis_id`.\n\n3. High: server extension plan assumes “add another extension near tooling”, but the current native server only composes one extension.\n   Location: [nrt/hmi/docs/project/work_offset/server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:18)\n   Current fact: `make_default_adapter()` wraps the simulator with only `make_default_tooling_extension()` ([nrt/hmi/server/src/application/server_app.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/server_app.cpp:201)); `CompositeMachineAdapter` holds a single `RuntimeExtensionAdapter` ([nrt/hmi/server/src/adapters/composite_machine_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/adapters/composite_machine_adapter.cpp:18)).\n   Where it will block: adding WorkOffset as a separate extension either displaces tooling or requires a composite-of-extensions layer. The plan should explicitly include multi-extension dispatch/bootstrap/poll resource merging and command precedence for `wcs.commands.*`.\n\n4. High: client payload work is under-specified; current Web/QML inline edit does not send `target_ref` or `expected_revision`.\n   Location: [nrt/hmi/docs/project/work_offset/delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:80)\n   Current fact: Web WCS table edit sends only `g_code`, `field`, `value` ([nrt/hmi/client/web_client/widget_core/data_table.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/data_table.py:483)); QML does the same ([nrt/hmi/client/qml_client/main_qml_parts/table_edit.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/table_edit.py:68)). The current mock runtimes also patch local WCS rows optimistically ([nrt/hmi/client/web_client/runtime_fragments/command_handlers.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/runtime_fragments/command_handlers.py:984), [nrt/hmi/client/qml_client/runtime_fragments/command_blocks/manual_ops.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/runtime_fragments/command_blocks/manual_ops.py:170)).\n   Where it will block: real backend stale-write tests will fail until both generated clients and local/mock command handlers stop local patching for WorkOffset and pass the row revision/target ref through the strict server path.\n\n5. Medium: story catalog/story pack is not just optional planning cleanup; current traceability still puts WorkOffset under Tool Management and marks the WCS gap open.\n   Location: [nrt/hmi/docs/project/work_offset/delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:20), [nrt/hmi/definition/story.catalog.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:721)\n   Current fact: story catalog says WorkOffset/WCS contract coverage “still needs to catch up” ([nrt/hmi/definition/story.catalog.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:746)), and the existing Web UI scenario only checks binding plus `activate_g54`, not edit/revision behavior ([nrt/hmi/tests/ui_scenarios/web/work_offset_table_binding.json](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/ui_scenarios/web/work_offset_table_binding.json:76)).\n   Where it will block: implementation can pass local smoke while still lacking the story-pack acceptance path for real WorkOffset command/resource parity. Treat story split/update as Slice 0 exit criteria, not a later decision.\n\n6. Medium: CMake/backend selection is too coarse for the actual build boundary.\n   Location: [nrt/hmi/docs/project/work_offset/server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:110)\n   Current fact: HMI server is C++17 ([nrt/hmi/server/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/CMakeLists.txt:4)); WorkOffset exports a C++20 static library and optional SQLite/ament knobs ([nrt/work_offset/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/CMakeLists.txt:4)). Tooling backend wiring has explicit add_subdirectory, compile definitions, backend-specific tests, and store envs ([nrt/hmi/server/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/CMakeLists.txt:14)).\n   Where it will block: `HMI_WORK_OFFSET_BACKEND=work_offset` is not enough. The plan needs `HMI_WORK_OFFSET_DIR`, `WORK_OFFSET_WITH_AMENT=OFF`, SQLite option/store path/seed mode, target linkage, compile standard implications, and generated distribution runner selection.\n\nI do not see a concept-level blocker to the WorkOffset HMI slice. The plan is directionally executable, but only if it adds the active-state revision source, preserves real WorkOffset axis IDs, supports multiple runtime extensions, and makes Web/QML/mock/native parity part of the implementation slices rather than polish.\n\nResidual risks: schema docs outside the new project pack still describe the old `g_code/field/value` contract; native simulator currently treats `wcs.commands.set_offset` as a noop while generated local runtimes patch rows; explicit refresh is deferred, so stale-recovery UX will depend on rejection metadata and implicit refresh discipline.  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:07:51 +0800</div>
+<pre>第二个审查返回了，发现两个实现 blocker：激活命令需要 active-state revision，不能用行 revision；轴写入不能硬编码 `x/y/z`，必须保留 WorkOffset profile 的 `axis_id`。我还在等 WorkOffset 契约审查，之后给完整去重结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 13:08:31 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba33-0beb-72b0-976d-cbc6276e9e96&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. **Blocker: activation `expected_revision` has no valid HMI source.**  \n   Plan: [delivery_plan.md:32](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:32) only adds row `revision` and `snapshot_revision`, then [delivery_plan.md:84](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:84) says activation and cell edits should both include `expected_revision`.  \n   Actual contract: [hmi-contract.md:22](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-contract.md:22) splits this: row edits use the WorkOffset record revision; current selection uses `ActiveWorkOffsetState.revision`. [RECORD-STRUCTURES.md:381](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/RECORD-STRUCTURES.md:381) requires that active-state revision for `select_settable_zero_offset`, and [RECORD-STRUCTURES.md:463](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/RECORD-STRUCTURES.md:463) says it comes from `get_active_wcs`.  \n   Impact: using row `revision` or `snapshot_revision` for activation will produce `wcs-active-revision-conflict`; omitting it produces `wcs-expected-revision-required`. The HMI contract needs an explicit active-state revision source, separate from row revision.\n\n2. **Blocker: axis mapping hardcodes display/NC letters as `axis_id`.**  \n   Plan: [contract.md:70](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:70) maps `offset_x -&gt; x`, `offset_y -&gt; y`, etc.; [server_plan.md:105](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:105) repeats that test expectation.  \n   Actual contract: [RECORD-STRUCTURES.md:226](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/RECORD-STRUCTURES.md:226) says `axis_id` comes from `profile.axes[].axis_id`; [RECORD-STRUCTURES.md:341](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/RECORD-STRUCTURES.md:341) explicitly rejects display names, NC addresses, or array positions as write identifiers.  \n   Impact: real profiles can use IDs like `axis-x` with display name `X`. The planned write will call `set_frame_component(axis_id=\&quot;x\&quot;)` and be rejected as `wcs-axis-unsupported`. The adapter must map visible columns through `WorkOffsetViewResult.axes[]` and row `values[]`, not hardcoded letters.\n\n3. **High: `target_ref` is treated as if WorkOffset view rows already provide it.**  \n   Plan: [contract.md:16](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:16) defines HMI `target_ref`; [server_plan.md:64](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:64) says WorkOffset rows become HMI rows and `target_ref` is preserved.  \n   Actual contract: `WorkOffsetViewRow` has `row_id` and `selector`, not `target_ref` ([hmi-work-offset-views.md:37](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-work-offset-views.md:37), [foundation.h:385](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/foundation.h:385)). [RECORD-STRUCTURES.md:261](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/RECORD-STRUCTURES.md:261) says `row_id` should be used as the `target_ref` source. Activation is different: `SelectSettableZeroOffsetRequest` takes `selector`, not `target_ref` ([foundation.h:299](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/foundation.h:299)).  \n   Impact: an adapter written from the plan may look for a nonexistent WorkOffset `target_ref` field, or pass `settable:&lt;id&gt;`/row ID into activation. Set-offset can derive HMI `target_ref` from `row_id`; activation must derive the WorkOffset `selector` from `selector`/`g_code`.\n\n4. **High: real backend plan does not require the store-backed runtime path.**  \n   Plan: [server_plan.md:30](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:30) only says the real mode is “over WorkOffset public operations”; [delivery_plan.md:66](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:66) says to add a selectable `work_offset` backend and keep SQLite behind public APIs.  \n   Actual contract: [README.md:23](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/README.md:23) says normal business calls should use `StoreBackedWorkOffsetRuntime`, which loads from `PersistenceStore` before domain operations; [README.md:27](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/README.md:27) says accepted writes through that runtime save snapshots and append audit JSON. The public runtime already exposes query/select/set APIs in [persistence_store.h:105](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/persistence_store.h:105).  \n   Impact: an HMI “real” backend could accidentally use a process-local `WorkOffsetDomainStore`, pass command tests, but fail persistence, audit, restart, and external same-store update behavior. HMI can avoid changing `nrt/work_offset`, but the plan must explicitly bind the real mode to `StoreBackedWorkOffsetRuntime` plus `PersistenceStore`/`SQLitePersistenceStore`, not just “public operations.”\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:08:42 +0800</div>
+<pre>三个审查都回来了。我先关闭这些 agent，然后给你合并后的结论；结论会按 blocker/high/medium 去重，不重复贴三份原文。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-12 13:09:19 +0800</div>
+<pre>审查结果：当前计划方向可行，但文档还不能作为实现依据直接开工。主要问题如下。
+
+**Blocker**
+1. `expected_revision` 来源错/不完整
+   计划现在只给了 row `revision` 和 `snapshot_revision`，但 WorkOffset 对激活 `select_settable_zero_offset` 要的是 `ActiveWorkOffsetState.revision`。cell edit 用 row record revision，activation 用 active-state revision，create 才是 snapshot revision。
+   需要补：HMI resource 或 companion state 必须暴露 `active_state_revision`，或 server activate 时先 `get_active_wcs` 获取。
+
+2. 轴写入不能硬编码 `offset_x -&gt; x`
+   WorkOffset 写入要求使用 `profile.axes[].axis_id` / `AxisComponentValue.axis_id`，不是显示名或 NC 字母。现有 fixture 可能是 `axis-x`。
+   需要补：HMI row/adapter 保留每个可编辑列对应的真实 `axis_id`，显示列仍可叫 X/Y/Z/A/C。
+
+**High**
+3. `target_ref` 表达不严谨
+   WorkOffset view row 没有 `target_ref` 字段，只有 `row_id` 和 `selector`。set-offset 可从 `row_id` 派生 HMI `target_ref`；activate 应用 `selector`/`g_code`，不能把 row_id 当 selector 乱传。
+
+4. real backend 必须明确走 `StoreBackedWorkOffsetRuntime`
+   现在写成“WorkOffset public operations”太泛，可能让实现误用 process-local `WorkOffsetDomainStore`。真实 HMI backend 应绑定 `StoreBackedWorkOffsetRuntime + PersistenceStore/SQLitePersistenceStore`，否则重启持久化、审计、外部同库更新都会漏。
+
+5. HMI server 现在只支持单 extension 包装
+   计划说“在 tooling 旁边加 WorkOffset extension”，但当前 `CompositeMachineAdapter` 只持有一个 `RuntimeExtensionAdapter`。要么扩成多 extension 组合层，要么明确 WorkOffset 和 tooling 的 command/resource dispatch/merge 规则。
+
+6. Web/QML payload 计划太粗
+   当前 inline edit 只发 `g_code/field/value`，本地 runtime 还会乐观 patch WCS rows。计划要明确改 Web/QML 生成路径：传 `target_ref`、row revision、axis metadata，并停止把 rejected write 本地 patch 成成功。
+
+**Medium**
+7. Story catalog/story pack 不应只是“决定是否拆”
+   当前 traceability 还把 WCS 混在 Tool Management 下，并写着 WCS contract coverage 需要 catch up。建议 Slice 0 直接要求更新 `definition/story.catalog.yaml` 并 regenerate story pack，或者明确记录“暂缓”的决定。
+
+8. CMake/backend selection 太粗
+   需要写清 `HMI_WORK_OFFSET_DIR`、`WORK_OFFSET_WITH_AMENT=OFF`、SQLite option/store path/seed mode、C++20 linkage影响、distribution runner env。
+
+9. 文档结构有误导
+   `contract.md` 混了 WorkOffset 已有契约和 HMI proposed facade。需要拆出 “Basis from current WorkOffset contract” 和 “HMI proposed plan”，并加映射表。
+
+10. 导航和证据页
+   WorkOffset 子页现在在 SUMMARY 里太扁平；另外 delivery 说记录到 smoke report，但没有 smoke_report 页面。建议嵌套导航，并新增/延后明确一个 evidence destination。
+
+我的建议：先修文档，不要进入实现。修完后再跑 docs 检查，然后才开始 Slice 0 story catalog 和实现计划。</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 13:36:27 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba4e-74de-7671-876b-e8e452998aba&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n没有 blocker。修订后的计划在 active-state revision、真实 `axis_id`、`target_ref`/`row_id`/`selector`、store-backed runtime、以及不改 `nrt/work_offset` 这些重点项上基本闭环。\n\n**Residual Risks**\n\n1. `nrt/hmi/docs/project/work_offset/server_plan.md:98`-`102`\n计划写了 `empty` 可在无快照时从“validated default snapshot”启动。当前 WorkOffset 实际只提供 `make_default_snapshot_unchecked(scope, profile)`，必须由调用方提供合法 `WorkOffsetProfile`，`StoreBackedWorkOffsetRuntime::initialize()` 不会自动创建领域快照。影响：Slice 3 实现必须在 HMI 侧明确 profile/snapshot seed 来源并通过 `import_snapshot_replace` 初始化，否则 real backend 空库启动会卡在 `snapshot-not-found` 或隐式发明轴定义。\n\n2. `nrt/hmi/docs/project/work_offset/contract.md:64`-`88`\nactivation facade 只列 `g_code`/`selector`/`expected_revision`，没有说明 adapter 应把 WorkOffset `source` 设为 HMI operator 来源。当前 `SelectSettableZeroOffsetRequest` 需要 `source`，C++ 默认值是 `Program`。影响：如果实现直接依赖默认值，HMI 按钮触发的 accepted activation 会把 `active_state.source` 和审计来源记成 program，而不是 operator-configured。\n\n3. `nrt/hmi/docs/project/work_offset/index.md:21`-`22`\n这里说 WorkOffset view rows 提供 `snapshot_revision`。实际契约中 row 只有记录级 `revision`，`snapshot_revision` 在 `WorkOffsetViewResult` 上。影响：`contract.md` 已经写对，所以不是 blocker；但实现和测试应从 result-level metadata 复制到 HMI facade，不要按 WorkOffset row 字段读取。\n\n只读复审完成，未修改文件，未运行验证命令。  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:36:35 +0800</div>
+<pre>第一路复审说没有 blocker，但指出三个 residual risk：空库 seed 需要明确 profile 来源、activation source 不能用 Program 默认、index 里 `snapshot_revision` 归属措辞要修。等另两路回来后我统一处理。</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 13:39:53 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba4f-0803-7373-a9bf-30f6c668cf45&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;没有 blocker。\n\n**Findings**\n\n1. [contract.md:93](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:93)  \n问题：`wcs.commands.set_offset` 把 `axis_id` 列为请求字段，但后面的行为只说“Resolve `field` to the row&#x27;s `component_axis_ids[field]`”，没有说明客户端传入的 `axis_id` 是权威输入、冗余回显，还是必须与行映射一致。  \n读者影响：后续实现 agent 可能直接信任请求里的 `axis_id`，也可能完全忽略它，导致 Web/QML、mock server、real WorkOffset adapter 对同一 payload 的解释不一致。  \n建议修正：明确二选一：要么删除请求表里的 `axis_id`，声明 server 永远从当前行投影推导；要么保留它并写明“if supplied, it must equal `component_axis_ids[field]`; mismatch is rejected before calling WorkOffset”。  \n原则：reading-order sufficiency / separation of concerns。Confidence 4，Impact 3。\n\n2. [delivery_plan.md:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:20)  \n问题：story catalog 决策写成“not required before V1 code, but should be revisited if implementation touches acceptance traceability”，触发条件太抽象。Slice 1-4 本身会改接口、资源形状、Web/QML 行为和 smoke 场景，读者无法判断这些是否已经算“touches acceptance traceability”。  \n读者影响：实现 agent 可能跳过 catalog/story-pack 更新，也可能过早拆 story，造成计划执行分叉。  \n建议修正：把 gate 写成可执行条件，例如“Slice 0-2 不强制拆 catalog；在新增/修改 `definition/story.catalog.yaml`、acceptance story-pack 输出、或把 WorkOffset V1 smoke 纳入验收链接前，必须重新决策是否拆出 WorkOffset story”。  \n原则：reading-order sufficiency。Confidence 3，Impact 3。\n\n3. [smoke_report.md:3](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:3)  \n问题：页面标题说记录“HMI WorkOffset integration”证据，但当前只列 docs slice 证据，并把 Web/QML activation/edit smoke 放到 later。仓库已有轻量 Work Offset binding smoke，本文没有说明它是未重跑、非 V1 证据，还是被未来 activation/edit smoke 取代。  \n读者影响：后续 agent 可能误以为当前没有任何 WorkOffset smoke，或误把现有轻量 activation/alias smoke 当成真实 WorkOffset backend + stale-write/edit 覆盖。  \n建议修正：在 smoke report 加一个短小分区区分“existing light binding smoke”与“V1 real-backend evidence still pending”，并说明当前 docs slice 没有验证 edit/stale/real backend。  \n原则：separation of concerns。Confidence 3，Impact 2。\n\n**Residual Risks**\n\n- `expected_revision`、`target_ref`、`selector` 的主干解释已经能区分 WorkOffset 契约来源与 HMI facade，但 `axis_id` 的请求权威性仍需要补一句，否则实现时最容易分叉。\n- delivery slices 大体可执行；主要残余风险是 story/acceptance gate 不够机械化，以及 smoke evidence 页面没有把已有轻量 smoke 和计划中的 V1 smoke 分层。  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:40:12 +0800</div>
+<pre>第二路也没有 blocker，主要是三处文档可执行性细节：`axis_id` 请求权威性、story catalog gate 触发条件、smoke report 分层。继续等最后一路 HMI 架构复审。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 13:42:39 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba4e-c29e-77a1-85fc-e269eb65a35b&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. **Blocker - real backend `empty` seed mode lacks a profile/snapshot source.**  \n   Plan anchor: [server_plan.md:98](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:98). Current WorkOffset fact: `make_default_snapshot_unchecked()` requires a `WorkOffsetProfile`, including axes/startup/required frames, not just a store path: [domain.h:22](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/domain.h:22), [foundation.h:209](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/foundation.h:209).  \n   The plan says `HMI_WORK_OFFSET_SEED_MODE=empty` starts from a validated default snapshot, but never defines where HMI gets the machine profile or initial snapshot. Slice 3 will stall when starting real `sqlite` mode against an empty store: the adapter cannot construct a valid WorkOffset snapshot without an explicit profile/snapshot seed contract.\n\n2. **High - extension resource/alias ownership is still ambiguous across existing global alias code.**  \n   Plan anchor: [server_plan.md:54](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:54), [server_plan.md:61](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:61). Current architecture fact: WCS alias canonicalization already exists in `ServerApp`, `CommandRouter`, and `ResourceService`: [server_app.cpp:44](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/server_app.cpp:44), [command_router.cpp:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:20), [resource_service.cpp:8](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/resource_service.cpp:8).  \n   The revised plan says the collection merges extension resources in order and WorkOffset owns `wcs.offset.table`, while `tooling.wcs.table` is an alias. It still does not say whether alias synchronization remains a server-global concern or moves into the extension collection, nor what wins if canonical and legacy resources both appear. Implementers can end up with two alias owners and order-dependent overrides, especially through `ResourceService::write()`.\n\n3. **High - stale-write “preserve rows” conflicts with current server rejected-command polling.**  \n   Plan anchor: [contract.md:128](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:128), [delivery_plan.md:111](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:111). Current architecture fact: `CommandRouter` polls adapter resources even after rejected commands and writes them into the runtime state: [command_router.cpp:135](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:135).  \n   The plan says stale WorkOffset rejections must not publish a patched row and should keep the existing row visible until a real refresh. With the current router, a real WorkOffset adapter’s `poll_resources()` after rejection will immediately publish the latest table, so the row will be replaced during the rejected command path. The plan needs an explicit router/adapter rule: either suppress post-reject polling for stale `wcs.commands.*`, or redefine that poll as the “real refresh” and update client expectations.\n\n4. **Medium - Web/QML stale-result handling is still tooling-specific.**  \n   Plan anchor: [delivery_plan.md:109](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:109). Current client facts: Web table edits call `handleToolOffsetCommandResult`: [data_table.py:423](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/data_table.py:423), and that handler recognizes tooling revision codes only: [command_guards.py:89](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/command_guards.py:89). QML has the same pattern: [table_edit.py:127](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/table_edit.py:127), [command_actions.py:279](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/command_actions.py:279).  \n   The plan names payload fields, but not the required generalization of the stale-result handler and WorkOffset diagnostic-code mapping. Without that, Web/QML may send the new payload but still show generic or tooling-worded rejection messages, and local runtime paths can diverge from native WorkOffset behavior.\n\n5. **Medium - making the story-catalog split optional leaves a real acceptance-traceability gap.**  \n   Plan anchor: [delivery_plan.md:20](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:20), [delivery_plan.md:28](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:28). Current catalog fact: WorkOffset interfaces are still folded into the Tool Management story/test references: [story.catalog.yaml:744](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:744), [story.catalog.yaml:762](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:762), [story.catalog.yaml:1698](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/story.catalog.yaml:1698).  \n   If V1 code lands without a mandatory WorkOffset story/test entry, generated story docs can still present this as Tool Management coverage. Implementation may pass server/client tests while acceptance traceability has no dedicated WorkOffset operator story or smoke evidence anchor.\n\nRead-only review only; I did not modify files.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:42:55 +0800</div>
+<pre>三路复审都回来了。结论是大部分已闭环，但还有一个真正 blocker：real backend 的 empty seed 需要明确 profile/snapshot 来源。另有几个 high/medium 需要补文档。我先关闭 agents，然后给你去重结果和建议处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-12 13:43:18 +0800</div>
+<pre>复审结果：active revision、axis_id、target_ref/selector、store-backed runtime 这些上一轮 blocker 基本修住了；现在剩一个真正会卡实现的点，以及几处需要再收紧的计划细节。
+
+**Blocker**
+1. real backend `empty` seed mode 还缺 profile/snapshot 来源
+   现在文档说空 store 可以从 validated default snapshot 启动，但 WorkOffset 的 default snapshot 需要合法 `WorkOffsetProfile`。HMI 不能凭空造轴定义。
+   需要补清楚：V1 real backend 的 `empty` 模式从哪里拿 seed。建议方案是 HMI 配置一个明确 seed snapshot/profile fixture path，或者 V1 real backend 默认只支持 `preserve`，空库初始化通过独立 seed 工具/fixture 完成。这个要在 `server_plan.md` 和 `delivery_plan.md` 里写死。
+
+**High**
+2. WCS alias 所有权还要明确
+   现在 server_app / command_router / resource_service 已经有全局 alias 同步。计划说 WorkOffset extension owns `wcs.offset.table`，但没说 alias sync 保留在哪里。
+   建议：alias 同步仍由 server-global canonicalization 负责，extension 只发布 canonical `wcs.offset.table`，不要发布 `tooling.wcs.table`；legacy write 由 `ResourceService` 归一化。
+
+3. stale rejection 后是否 poll refresh 需要定策略
+   当前 CommandRouter rejected command 后也会 poll resources。文档说 rejected write 保留旧行直到 refresh，但实际 poll 可能马上把最新表刷出来。
+   两个可选策略：
+   - 明确 stale reject 后的 post-command poll 就是“real refresh”，客户端应接受刷新后的真实表。
+   - 或改 router/adapter 抑制 stale reject 后的 resource poll。
+   我建议选第一种，改文档，不为 V1 改 router 行为。
+
+**Medium**
+4. `axis_id` 请求字段权威性要补一句
+   建议保留 `axis_id`，但 server 必须校验它等于当前行 `component_axis_ids[field]`，不一致则拒绝，不能直接信任 client。
+
+5. activation/source 要补
+   WorkOffset request 有 `source`，默认可能是 Program。HMI adapter 必须显式设成 operator/HMI 来源，避免审计和 active_state source 错。
+
+6. client stale handler 还写得偏粗
+   当前 Web/QML 用 tooling stale handler。计划要明确把它泛化为 table-command stale handler，支持 WorkOffset diagnostic code 和文案，不要显示 tooling wording。
+
+7. story catalog “可选”需要机械化 gate
+   用户口径是不强制，这没问题。但要把触发条件写清楚：V1 code 不强制拆；如果修改 `definition/story.catalog.yaml`、生成 story pack、或要把 V1 smoke 纳入验收链接，就必须重新决策是否拆 WorkOffset story。
+
+8. smoke report 分层
+   需要写清：已有的是 light binding smoke，不代表 real backend/edit/stale 覆盖；V1 real evidence 仍待后续补。
+
+我建议下一步先小改文档，把这 8 点收进去，然后再跑一轮 docs 验证。</pre>
+</article>
+</section>
+<section class="turn event" id="event-7">
+<h3>Event 7 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 14:02:26 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba67-af57-7ea0-b6df-cb0d18538277&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n没有发现第三轮仍会阻塞实现或明显误导实现的点。\n\n**Residual Risks**\n\n- Stale rejection 的“real refresh”当前只适合资源刷新：计划把刷新限定在 `wcs.offset.table` 资源上是兼容的，但现有 `CommandRouter` 拒绝分支只 poll resources，不 poll live/local state。后续如果把 WorkOffset 拒绝后的提示、状态或 active metadata 放到 live/local state，就会漏刷新。证据：[contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:137)、[delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:67)、[command_router.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:135)。\n\n- Client stale handler 泛化仍是高风险改造点，但计划已点名，不算遗漏：当前 Web/QML stale notice 仍是 Tool Offset 专用，WorkOffset 需要按计划泛化。证据：[delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:129)、[command_guards.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/command_guards.py:89)、[notices.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/runtime_fragments/transport_ws_blocks/notices.py:35)。\n\n- Web/QML inline edit payload 目前确实只发旧字段，但 Slice 4 已明确要求补 `target_ref`、`axis_id`、`revision`，且 contract 已定义 `axis_id` echo 不是 authority。实现时要确保两个生成路径同步改。证据：[contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:95)、[delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:119)、[data_table.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/data_table.py:483)、[table_edit.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/table_edit.py:68)。\n\n- Story gate 和 smoke 分层没有验收 blocker，但执行时不要把 light binding smoke 当成 V1 backend evidence；计划已经把这个边界写清楚。证据：[delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:28)、[smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:15)。\n\n只读复审完成，未修改文件，未运行写入命令。  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 14:02:41 +0800</div>
+<pre>第一路 HMI 架构复审没有发现 blocker，只列出后续实现风险：stale refresh 只刷新资源、client stale handler 和 Web/QML payload 是高风险改造点，但计划已经点名。继续等另外两路。</pre>
+</article>
+</section>
+<section class="turn event" id="event-8">
+<h3>Event 8 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 14:03:23 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba67-5c01-70c3-bf8b-a7253ca4ea2b&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\nNo blocker found. The current HMI WorkOffset plan aligns with the real `nrt/work_offset` contract on the requested points: `preserve` is the real-backend default, `empty` is constrained to explicit snapshot/profile seed, activation avoids the `Program` default source, row vs snapshot revisions are separated, `axis_id` is treated as echo metadata, and the slice remains implementable without changing `nrt/work_offset`.\n\n**Residual Risks**\n- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:54): fixed X/Y/Z/A/C column mapping may use display label or configured mapping. This is acceptable for V1 because writes preserve `AxisComponentValue.axis_id`, but custom profiles with duplicate/nonstandard labels should move to explicit configured mapping.\n- [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:84): server-side fallback to fresh `get_active_wcs` for activation satisfies WorkOffset revision requirements, but it weakens client-stale detection until selected-row activation carries `active_state_revision`.\n- [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:200): real backend linkage still depends on resolving the HMI C++17 vs WorkOffset C++20 boundary. The plan calls this out, so it is not a contract blocker.\n\nI only used read-only inspection commands and did not modify files or run write-producing validation.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 14:03:55 +0800</div>
+<pre>第二路 WorkOffset 契约复审也没有 blocker，剩余风险都是已知的实现注意点：固定列映射、server-side active revision fallback 的 stale 检测弱一些、C++17/C++20 边界。等最后一路文档审查。</pre>
+</article>
+</section>
+<section class="turn event" id="event-9">
+<h3>Event 9 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-12 14:03:57 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eba68-1136-7e31-8adb-eab21a69af3b&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. High — Alias ownership is contradictory across the plan.\nLocation: `nrt/hmi/docs/project/work_offset/contract.md:79`, `server_plan.md:65-70`, `server_plan.md:145-149`, `delivery_plan.md:63`, `delivery_plan.md:70-71`.\nProblem: some lines say WorkOffset command/resource publication updates both `wcs.offset.table` and `tooling.wcs.table`; others say extensions publish only canonical `wcs.offset.table` and the application/resource layer owns alias sync.\nReader impact: a follow-up agent can implement alias writes inside the WorkOffset extension, while another keeps alias canonicalization in `ServerApp`/`CommandRouter`/`ResourceService`, producing divergent designs and duplicate tests.\nSuggested fix: make one rule authoritative everywhere: “WorkOffset extension publishes only `wcs.offset.table`; application/resource layer synchronizes `tooling.wcs.table` from canonical.” Rewrite command behavior and Slice 2 bullets to reference that rule.\nConfidence: 4. Impact: 3.\n\n2. Medium — `empty` seed mode does not read as a mechanical startup policy.\nLocation: `nrt/hmi/docs/project/work_offset/server_plan.md:99-115`, `delivery_plan.md:90-98`, `smoke_report.md:28`.\nProblem: `HMI_WORK_OFFSET_SEED_MODE=empty|preserve` says `empty` is allowed only with a seed snapshot or profile-derived valid default snapshot. For WorkOffset, “empty” cannot mean an actually empty invalid table, but the name and bullets do not give a decision table.\nReader impact: an implementer may create an empty HMI-owned/default table, or treat seed snapshot/profile handling as optional, despite WorkOffset requiring valid axes and required `G54`...`G57` records.\nSuggested fix: add a startup matrix: persisted snapshot exists, `preserve` without snapshot, initialize from `HMI_WORK_OFFSET_SEED_SNAPSHOT`, initialize from `HMI_WORK_OFFSET_PROFILE`, missing inputs. State explicitly that `empty` means “initialize a valid WorkOffset snapshot through WorkOffset APIs,” not “serve zero rows.”\nConfidence: 3. Impact: 3.\n\n3. Medium — Story gate is stated, but not mechanical enough for V1 backend evidence.\nLocation: `nrt/hmi/docs/project/work_offset/delivery_plan.md:20-31`, plus current combined story context in `definition/story.catalog.yaml:712-728`.\nProblem: the plan says Slice 0-2 do not require splitting WorkOffset from the existing Tool Management story, then says “decide whether to split” before story catalog changes, story-pack regeneration, or linking V1 smoke evidence. It does not say what the decision artifact is, which later slice must stop, or what outcome is valid.\nReader impact: Slice 3/4/5 agents can either keep filing real WorkOffset backend evidence under the Tool Management story or create a new story ad hoc, both text-supported.\nSuggested fix: add a “Story Gate” checklist with trigger, required output, and allowed decisions. Example: before first real-backend WorkOffset contract/smoke evidence is linked, either update `story_product_tool_management_tables` with explicit WorkOffset rationale or create a dedicated WorkOffset slice story and regenerate story-pack outputs.\nConfidence: 3. Impact: 3.\n\nNo blocker found. Residual risks: the smoke report currently distinguishes light binding from future V1 real-backend evidence clearly enough, and WorkOffset subpage navigation is present in both `docs/project/index.md` and `docs/SUMMARY.md`; I did not find a reportable issue there.  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 14:04:07 +0800</div>
+<pre>三路结果齐了：没有 blocker。只有一个 high 文档矛盾需要修：alias ownership 仍有几处旧措辞；两个 medium 是 seed startup matrix 和 story gate 机械化。现在我会按这三点小改文档并重新验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 14:04:22 +0800</div>
+<pre>我会先修 alias 旧措辞，把所有发布动作统一成只发布 canonical `wcs.offset.table`；再加一个 seed startup matrix 和 story gate checklist。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 14:04:29 +0800</div>
+<pre>我找到了矛盾点：`contract.md` 的 activate 还写“publish 两个资源”，`server_plan` 和 `delivery_plan` 还有“alias resources/same row set”的旧措辞。我会改成 extension 只发布 canonical，global sync 负责 alias，并加 seed matrix/story gate。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 14:05:05 +0800</div>
+<pre>已修 alias 矛盾、seed matrix 和 story gate checklist。现在我会重新跑验证，并用 grep 确认没有剩余“extension 发布 alias”的旧措辞。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-12 14:05:25 +0800</div>
+<pre>验证通过。grep 只剩下“不要发布 legacy alias”的规则句，说明矛盾措辞已清掉。最后看一下状态和 diff 摘要。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-12 14:05:38 +0800</div>
+<pre>第三轮复审结果：没有 blocker。两路直接说没有阻塞点；文档阅读性那一路只指出 3 个可收紧项，我已经按建议修掉了。
+
+本轮修正：
+- 统一 alias 规则：WorkOffset extension 只发布 canonical `wcs.offset.table`；`tooling.wcs.table` 只由 application/resource 层从 canonical 同步。
+- 给 real backend seed 加了启动矩阵：已有 snapshot、`preserve` 空库、`empty + seed snapshot`、`empty + profile`、缺少输入这几种情况都明确了；`empty` 明确定义为“通过 WorkOffset API 初始化有效 snapshot”，不是零行表。
+- 给 story gate 加了 checklist：触发条件、允许决策、需要更新/生成的产物和 stop rule 都写清楚。
+
+验证已跑：
+- `python3 -m unittest -v tests.test_docs_portal tests.test_story_docs`：11/11 OK
+- `python3 .mdbook/lint_docs_policy.py`：passed
+- `book build`：passed，HMI book 110 pages
+- `git diff --check`：passed
+- 额外 grep 确认没有剩余“extension 发布 legacy alias”的矛盾措辞，只保留“不应发布 `tooling.wcs.table`”的规则句。
+
+当前仍在 `feat/hmi-work-offset-table`，工作区只包含 HMI docs 变更。</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

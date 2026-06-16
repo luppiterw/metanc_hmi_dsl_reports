@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>尝试将/mnt/c/Windows/explorer.exe 这个包装成当前wsl可用的指令，比如wsl-explorer，这样方便我使用</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>尝试将/mnt/c/Windows/explorer.exe 这个包装成当前wsl可用的指令，比如wsl-explorer，这样方便我使用</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e5d93-3520-7f73-b05d-ac60a5fc9415</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-25 13:19:49 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/25/rollout-2026-05-25T13-19-49-019e5d93-3520-7f73-b05d-ac60a5fc9415.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-12 13:39:00 +0800</div>
+<pre>尝试将/mnt/c/Windows/explorer.exe 这个包装成当前wsl可用的指令，比如wsl-explorer，这样方便我使用</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-12 13:39:54 +0800</div>
+<pre>我会做成一个用户级命令，优先放到 `~/.local/bin/wsl-explorer`，这样不需要改系统目录。先确认 `explorer.exe` 存在、当前 shell 的 PATH 是否已经包含 `~/.local/bin`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-12 13:40:54 +0800</div>
+<pre>`~/.local/bin` 已经在 PATH 里，所以我直接创建 `wsl-explorer` 包装脚本。脚本会支持无参数打开当前目录，也支持传入 WSL/Linux 路径并自动转成 Windows 路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-12 13:43:00 +0800</div>
+<pre>脚本已写入，我现在加可执行权限并做非 GUI 的可用性检查：确认命令能被 PATH 找到、帮助信息正常、路径转换正常。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-12 13:43:49 +0800</div>
+<pre>刚才 `chmod` 和 `command -v` 是并行跑的，存在先后竞态；我再串行确认一次 PATH 解析。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-12 13:44:33 +0800</div>
+<pre>已创建好命令：
+
+`/home/iaar/.local/bin/wsl-explorer`
+
+现在可以直接用：
+
+```bash
+wsl-explorer
+```
+
+打开当前目录，或：
+
+```bash
+wsl-explorer /home/iaar/workspace/ccmix-wp
+wsl-explorer .
+wsl-explorer /mnt/c/Users/53012/Desktop
+```
+
+它会自动用 `wslpath` 把 WSL 路径转成 Windows Explorer 能识别的路径，再调用 `/mnt/c/Windows/explorer.exe`。`~/.local/bin` 已经在你的 `PATH` 里，所以新 shell 里也能直接用。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

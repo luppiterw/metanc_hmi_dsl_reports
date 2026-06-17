@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk-review option E for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option E covers currently not...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Risk-review option E for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option E covers currently not...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed32c-e8bd-7ed0-adae-6c5adbc995e1</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 09:23:16 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T09-23-16-019ed32c-e8bd-7ed0-adae-6c5adbc995e1.jsonl</code></div>
+<div><b>Messages</b>: <code>5</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:23:16 +0800</div>
+<pre>Risk-review option E for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option E covers currently not-recommended bigger work: zero_offset owner/scope promotion, semantic path grammar, axis alias/profile schema, runtime registry/API. Do not edit files. Focus on scope creep, missing owner evidence, false implementation readiness, and what should be explicitly deferred. Return: GO/CONDITIONAL/NO-GO and concise rationale.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:23:47 +0800</div>
+<pre>I’ll review this as an OpenSpec exploration/risk call, with no file edits. I’m going to first locate the Option E material and the recent TP004 context so the GO/NO-GO is grounded in the current repo state.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:24:10 +0800</div>
+<pre>The first pass confirms the current TP004 contract is deliberately narrow: `parameter_id`, `owner`, `scope`, and `semantic_name`, with axis aliases and semantic-path grammar already called out as deferred. I’m narrowing the read to the current-state pack and checker-backed files now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:25:52 +0800</div>
+<pre>I don’t see a literal “Option E” artifact in the repo; I’m treating Option E as the bundle you named. The key signal so far is that `zero_offset` is legal as a value-set token but still unassigned in the owner registry, and its scope binding is only provisional.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-17 09:27:18 +0800</div>
+<pre>**NO-GO** for Option E as one implementation bundle.
+
+- Scope creep risk is high: the current TP004 contract is deliberately only `parameter_id`, `owner`, `scope`, `semantic_name`, and the status page explicitly defers semantic path grammar, machine-profile axis alias schema, runtime registry behavior, and provisional owner-scope promotion ([parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:13), [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:77)).
+- `zero_offset` has reference-family evidence, but not owner readiness evidence: it is still listed under `unassigned_owner_tokens`, and the `zero_offset -&gt; frame_axis_component` pair is only provisional ([OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:91), [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:162)).
+- False implementation readiness: `$P_UIFR[...]` docs show a desired dispatch to `zero_offset`, but that is access-definition/design context, not proof that the owner boundary, API, registry semantics, axis profile schema, or checker-backed promotion are ready ([zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:47)).
+- Explicitly defer: semantic path grammar, axis alias/profile schema, runtime registry/API, formal promotion of `zero_offset` owner/scope, and any checker/API work that would make provisional notes look accepted.
+
+A smaller conditional path would be: promote exactly one owner-scope pair only after source evidence for `zero_offset` ownership/API exists, leaving grammar, axis profiles, and runtime registry as separate later proposals.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:488-491|note=[TP004 current-state pack and minimal descriptor boundary]
+MEMORY.md:439-444|note=[current-state discussion pack pointer]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

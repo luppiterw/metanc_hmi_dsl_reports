@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk-review option C for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option C: create only a new O...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Risk-review option C for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option C: create only a new O...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed326-30f3-73d2-91ea-55ed7214b2e3</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 09:15:56 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T09-15-56-019ed326-30f3-73d2-91ea-55ed7214b2e3.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:15:56 +0800</div>
+<pre>Risk-review option C for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option C: create only a new OpenSpec proposal for next TP004 owner/scope promotion, recommended `tool_management -&gt; tool_edge`, no checker implementation. Do not edit files. Focus on whether a proposal-only step is useful or creates extra process overhead, what scope boundaries must be explicit, and what user decision is needed first. Return: GO/CONDITIONAL/NO-GO and concise rationale.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:16:09 +0800</div>
+<pre>I’ll keep this read-only and ground the review in the current OpenSpec/TP004 context before giving a go/no-go. I’m going to check the local guidance and the relevant TP004 notes, then inspect only the current proposal/spec shape needed for this risk review.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:17:37 +0800</div>
+<pre>The memory/context points to TP004’s existing minimal descriptor model and the prior pressure to avoid concept expansion. I’m now checking the live OpenSpec state and the actual TP004 owner/scope docs so the recommendation doesn’t rely only on prior notes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:18:04 +0800</div>
+<pre>Current OpenSpec has only the completed `document-parameter-descriptor-current-state` change active, so Option C would not be competing with another live change. I’m reading the concrete owner/scope/value-set pages next, especially whether `tool_management` and `tool_edge` already exist as governed tokens.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 09:19:22 +0800</div>
+<pre>The source pages confirm the key boundary: `tool_management` is registered and `tool_edge` exists, but the pair is still explicitly provisional. The risk question is therefore about whether to formalize the decision path before implementation, not about inventing new model surface.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-17 09:19:50 +0800</div>
+<pre>**CONDITIONAL GO.**
+
+A proposal-only step is useful if the goal is to make the next TP004 decision explicit before touching checker-backed contract: `tool_management` is already a registered owner, `tool_edge` is already an object scope, and the pair is already documented as provisional. A small proposal can define the promotion slice without prematurely changing validation behavior.
+
+It becomes process overhead if it only restates “maybe promote `tool_management -&gt; tool_edge`” without new source evidence, acceptance criteria, or a clear handoff to the later implementation slice. Since Option C excludes checker work, it must not claim the pair is promoted or accepted yet.
+
+Scope boundaries must say explicitly:
+
+- only one pair: `tool_management -&gt; tool_edge`
+- no checker implementation, tests, generated docs, or source contract edits
+- no new owner/scope/value-set tokens
+- no semantic path grammar, access/value metadata, runtime registry, or `semantic_name` governance
+- future implementation would be a separate change that moves the pair into checker-backed `owner_scope_bindings`
+
+User decision needed first: confirm whether `tool_management -&gt; tool_edge` is the next real promotion target, based on TP002/tooling evidence, or whether this should stay deferred until another owner/scope pair has stronger source pressure.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:483-491|note=[TP004 minimal descriptor contract and deferred owner-scope promotion]
+MEMORY.md:458-461|note=[user preference to keep TP004 scope narrow]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec89a-58ce-7150-8b75-064670002e44
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

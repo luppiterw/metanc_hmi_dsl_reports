@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review option C for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option C: create only a new OpenSp...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Review option C for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option C: create only a new OpenSp...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed324-f6c5-7e62-a162-3f8f910f1a94</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 09:14:35 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T09-14-35-019ed324-f6c5-7e62-a162-3f8f910f1a94.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:14:35 +0800</div>
+<pre>Review option C for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option C: create only a new OpenSpec proposal for next TP004 owner/scope promotion, recommended `tool_management -&gt; tool_edge`, with no checker implementation. Do not edit files. Assess feasibility, likely proposal/design/spec/tasks contents, affected paths, acceptance checks, and blockers. Return: GO/CONDITIONAL/NO-GO and concise rationale.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:14:52 +0800</div>
+<pre>I’ll use the `openspec-explore` skill here because this is a no-edit feasibility review before deciding whether to create an OpenSpec change. I’ll verify the current TP004/OpenSpec state in the repo and keep the review scoped to proposal-only work.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:15:18 +0800</div>
+<pre>The initial repo scan shows TP004 already has current-state artifacts and several archived parameter descriptor changes. I’m now checking active OpenSpec state and the exact TP004 owner/scope docs so the recommendation is about the current repository, not the remembered direction.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:15:38 +0800</div>
+<pre>Current state is lining up with Option C’s premise: `tool_management -&gt; tool_edge` is already recorded as a deferred candidate rather than a formal binding. I’m reading the source TP004 pages and previous OpenSpec change shape now, mainly to separate “proposal can be created” from “promotion is already accepted.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 09:15:58 +0800</div>
+<pre>I found the source boundary: formal `owner_scope_bindings` currently only include `motion.axis -&gt; axis`, while `tool_management -&gt; tool_edge` is explicitly provisional. I’m checking whether tool-edge has enough existing evidence in TP002/TP004 access definitions to make a proposal-only change coherent without writing checker logic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 09:16:25 +0800</div>
+<pre>One important nuance: a proposal-only change can say “promote this next,” but it must not silently move the pair into `owner_scope_bindings`. That actual promotion would be a later implementation task touching TP004 source/projection/checker paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 09:16:55 +0800</div>
+<pre>There is no repo mutation risk from this review; `git status` is clean and the existing completed change validates. I’m doing one last pass over the tool-management evidence and current-state page so the GO/CONDITIONAL call is tied to concrete acceptance conditions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 09:18:30 +0800</div>
+<pre>I have enough for the recommendation. I’m only checking the memory line ranges I used so the final citation block is accurate; no repository files are being edited.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-17 09:19:53 +0800</div>
+<pre>**GO** for Option C as proposal-only. Do not present it as an implemented promotion.
+
+Feasible because current TP004 already has the exact setup needed: `tool_management -&gt; tool_edge` is visible as a provisional owner/scope pair, `tool_management` is registered, `tool_edge` exists as an object scope, and `$TC_DP3[tool,edge]` evidence maps to `owner: tool_management` / `scope: tool_edge`.
+
+Likely proposal contents:
+- `Why`: promote one real deferred pair next, keeping TP004 narrow.
+- `What`: propose `tool_management -&gt; tool_edge` as the next owner/scope promotion candidate.
+- `Non-goals`: no checker implementation, no `zero_offset`, no semantic path grammar, no runtime/tooling implementation.
+- `Design`: cite TP002 tooling ownership, TP004 object scope, owner registry, Siemens/MetaNC tool-edge access definitions.
+- `Spec`: require future promotion to move the pair from provisional notes to checker-backed `owner_scope_bindings`; proposal itself does not change current contract.
+- `Tasks`: proposal setup/validation now; later unchecked tasks for evidence refresh, source-doc promotion, projections, focused checker/tests if implementation proceeds.
+
+Affected paths for Option C only:
+- `openspec/changes/&lt;change-id&gt;/proposal.md`
+- `openspec/changes/&lt;change-id&gt;/design.md`
+- `openspec/changes/&lt;change-id&gt;/tasks.md`
+- `openspec/changes/&lt;change-id&gt;/specs/&lt;capability&gt;/spec.md`
+
+Future implementation paths, not touched by Option C:
+- `TP004-parameter-system/openspec/OBJECT-SCOPES.md`
+- TP004 book/i18n projections
+- `tools/check_parameter_value_sets.py` and tests, only if new test coverage is added
+
+Acceptance checks:
+- `openspec validate &lt;change-id&gt; --strict`
+- `git diff --check`
+- Confirm diff is limited to the new OpenSpec change directory
+
+Blockers:
+- No blocker for proposal creation.
+- Blocker for claiming actual promotion: the pair must not be treated as checker-backed until source docs move it into `owner_scope_bindings` and validation proves it.
+
+I did not edit files; worktree is clean.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:488-491|note=[current TP004 descriptor state and deferred promotion context]
+MEMORY.md:470-486|note=[OpenSpec topic boundaries and TP004 validation patterns]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+019ec89a-58ce-7150-8b75-064670002e44
+019ec893-a01e-7e92-bfb9-4816e46ef544
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

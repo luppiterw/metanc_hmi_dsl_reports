@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed474-cbc0-7cb0-99f0-149ef1bbc695</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 15:21:24 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T15-21-24-019ed474-cbc0-7cb0-99f0-149ef1bbc695.jsonl</code></div>
+<div><b>Messages</b>: <code>14</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 15:21:24 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-17&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 15:21:24 +0800</div>
+<pre>你是只读架构/契约一致性审核 agent。不要修改任何文件。任务：审核 Work Offset Slice 4 文档是否与 HMI/WorkOffset 边界、V1 零偏表范围、Web/QML/Server 契约一致。
+
+工作目录：/home/iaar/workspace/ccmix-wp/MetaNC
+
+重点文件：
+- nrt/hmi/docs/project/work_offset/contract.md
+- nrt/hmi/docs/project/work_offset/delivery_plan.md
+- docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md
+
+可读辅助文件：
+- nrt/hmi/docs/project/work_offset/server_plan.md
+- nrt/hmi/definition/interfaces.machine.yaml
+- nrt/hmi/server/include/hmi/extensions/work_offset/work_offset_backend.h
+- nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp
+- nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+
+审核重点：
+- 是否仍严格限定零偏表，不混入 Tool Mgmt/测量/G500/Details。
+- `wcs.offset.table` canonical、`tooling.wcs.table` legacy alias 的表达是否一致。
+- `target_ref/component_axis_ids/revision/active_state_revision` 的来源和使用是否一致。
+- 新计划里的 `wcs.commands.refresh_offset_table` 是否与当前 server facade/command adapter 边界冲突，是否需要在正式 contract.md/delivery_plan.md 中更明确。
+- 不要做代码实现。
+
+输出要求：
+- Findings first，按严重程度排序。
+- 每条包含：Problem / Location（文件:行号，短引用）/ Boundary or contract risk / Fix。
+- 最后给出：是否存在必须先修文档的契约风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 15:22:36 +0800</div>
+<pre>Using `review-docs-comprehension` for the document-audit posture, and I’ll also do the required repo orientation pass before judging the Work Offset contracts. I’ll keep this read-only and focus findings on boundary/contract risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 15:23:04 +0800</div>
+<pre>I found relevant prior memory saying this exact area has drift-prone status, so I’ll verify everything against the live checkout rather than relying on it. Next I’m doing the required README/codemap/module orientation, then I’ll read the three target docs and compare them to the interface/backend seams.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 15:23:46 +0800</div>
+<pre>The worktree is dirty before my review: both target docs already have local edits, plus related HMI tests and changelog changes. I’m treating those as user/existing state and will not touch them.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 15:24:16 +0800</div>
+<pre>Orientation confirms the active boundary: `nrt/work_offset` owns WorkOffset semantics and persistence-backed operations; `nrt/hmi` owns page flow, projection, transport/session behavior, and generated client surfaces. I’m now reading the target docs with line numbers so findings can point to exact contract text.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 15:24:53 +0800</div>
+<pre>The main docs are already strongly scoped to zero-offset V1 in several places, but I haven’t decided findings yet; I’m checking the possible conflict area around the new refresh command against the actual retained interface and server adapter.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 15:25:26 +0800</div>
+<pre>The Slice 4 plan itself currently says two different things about explicit refresh: it proposes adding it now, while delivery_plan still lists it under deferred slices. I’m checking whether that is merely stale wording or a real boundary conflict with current server facade code.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 15:26:01 +0800</div>
+<pre>I’ve read the local module guidance now. The next check is purely contract matching: retained interface fields versus server adapter payload handling, because that is where `target_ref`, revisions, alias sync, and refresh semantics can quietly diverge.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 15:26:38 +0800</div>
+<pre>The retained interface already contains `wcs.commands.refresh_offset_table`, so the plan is not inventing a wholly foreign command. The sharper issue is whether the plan’s proposed server implementation reports the right revision source and whether the formal docs still call explicit refresh “later/deferred.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 15:27:15 +0800</div>
+<pre>The server adapter currently handles only `activate` and `set_offset`; it does not route `wcs.commands.refresh_offset_table` yet. I’m checking whether the retained catalog already defines that command or whether the implementation plan’s Step 2 is based on stale assumptions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 15:28:52 +0800</div>
+<pre>I found one clear contract bug in the implementation plan: the sample refresh adapter returns `snapshot.active_state_revision` under the name `snapshot_revision`, even though the formal contract keeps those revision meanings separate. I’m checking for any second-order effects in the client/mock snippets before I write the findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 15:29:47 +0800</div>
+<pre>I have enough evidence for the review. I’m doing one last pass over the cited line numbers so the final findings are precise and don’t overstate implementation details.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-17 15:31:55 +0800</div>
+<pre>**Findings**
+
+1. **Problem:** `wcs.commands.refresh_offset_table` 在 Slice 4 中同时被定义为“要做”和“延期/以后做”。
+   **Location:** `delivery_plan.md:353` “`WO-S4-SPEC-004A`: Work Offset Refresh”; `delivery_plan.md:451` “explicit `wcs.commands.refresh_offset_table`”; `contract.md:338` “A later explicit Refresh command should”; `2026-06-17-work-offset-slice4-client-table.md:7` “Add a lightweight `wcs.commands.refresh_offset_table` facade”.
+   **Boundary or contract risk:** 这是正式计划和执行计划的契约冲突。当前 server adapter 也只路由 `activate` / `set_offset`，未路由 refresh：`work_offset_runtime_extension_adapter.cpp:247` “return path == kActivateCommand || path == kSetOffsetCommand”。如果不先修文档，执行 agent 可能在“延期项”里实现新 server facade，或反过来跳过 Slice 4 必需的 Refresh。
+   **Fix:** 二选一：要么把 explicit refresh 正式提升为 Slice 4，在 `contract.md` Commands 中明确 request/response、只读语义、alias sync 边界，并从 Deferred 删除；要么保留 deferred，Slice 4 plan 改成使用现有 poll/bootstrap refresh，不新增 `wcs.commands.refresh_offset_table`。
+
+2. **Problem:** Slice 4 plan 的 refresh server 代码片段把 `active_state_revision` 当成 `snapshot_revision` 返回。
+   **Location:** `2026-06-17-work-offset-slice4-client-table.md:351` “`*known != snapshot.active_state_revision`”; `:358` “`snapshot_revision`, json::number(snapshot.active_state_revision)”。正式契约区分三种 revision：`contract.md:85-87` row `revision` / `active_state_revision` / `snapshot_revision`。
+   **Boundary or contract risk:** 这会混淆 activation guard 和 table refresh metadata。客户端可能用 active-state revision 判断表是否 changed，或把 table snapshot revision 显示/传递错，破坏 V1 stale handling。
+   **Fix:** refresh 的 `known_revision` 必须和 table `snapshot_revision` 比较；返回字段 `snapshot_revision` 必须来自 `query_work_offset_view(settable_table)` 的 snapshot revision。若需要 active state，也另加 `active_state_revision` 字段，不要复用名称。
+
+3. **Problem:** `Activate Selected` 计划把 HMI `row_key` 直接放进 `selector`，但契约中的 `selector` 是 WorkOffset/G-code selector。
+   **Location:** `contract.md:35-37` 定义 `row_key` 为 opaque HMI key、`g_code` 为 selector；`contract.md:72` “Submit row `selector` or `g_code`”; `2026-06-17...md:176` “`selector: state://runtime_state.selected_wcs_row_key`”; 默认值 `2026-06-17...md:157` “`selected_wcs_row_key: wcs:g54`”。server 解析后直接传给 WorkOffset：`work_offset_backend_adapter.cpp:405-407` “`command.selector = request.selector`”。
+   **Boundary or contract risk:** 如果 Web/QML enrichment 没有介入，server 会收到 `wcs:g54` 这种 HMI selection key，而不是 `G54`，把 UI-local identity 泄漏到 WorkOffset selector 语义里。
+   **Fix:** retained action 不应把 `row_key` 当 selector。计划应明确：selection state 只用于查找当前行；实际 command payload 发送 `selector`/`g_code` 和 `expected_revision`，来源分别为 row `g_code` 和 row `active_state_revision`。如果要 server 接受 `row_key`，必须在正式 contract 中新增并命名为 selection key，不要塞进 `selector`。
+
+4. **Problem:** `contract.md` 对 accepted `activate` / `set_offset` response 的 metadata 描述高于当前 retained interface/server 契约。
+   **Location:** `contract.md:254` “Return accepted status, table revision, row count, and diagnostics”; `contract.md:291` 同样要求；但 retained interface 只声明 `accepted`/`message`：`interfaces.machine.yaml:1478-1483`, `:1495-1500`。当前 real backend accepted activation 返回 `active_state_revision`：`work_offset_backend_adapter.cpp:420-424`；set offset 返回 row revision：`:476-478`。
+   **Boundary or contract risk:** Web/QML 可能按文档依赖 accepted command response 的 table metadata，而实际一致性来源是后续 resource poll。
+   **Fix:** 要么扩展 retained interface/server response，真正返回 `snapshot_revision`、`row_count`、diagnostics；要么把 `contract.md` 改成“accepted response 可带 command-specific details；table metadata 以 post-command resource poll / refreshed `wcs.offset.table` 为准”。
+
+**Scope Check**
+
+未发现 V1 范围混入 Tool Mgmt/测量/G500/Details 的问题：`delivery_plan.md:46-50` 明确 V1 只做 PARAM Work Offset 表，排除 G500、G505...G599 创建、Details、measurement/touch-off 等；`contract.md:97-99` 也明确不吸收 Tool Management 概念。`wcs.offset.table` canonical 与 `tooling.wcs.table` legacy alias 的方向总体一致：canonical 由 WorkOffset 发布，alias 在 application/resource 层同步。
+
+**是否必须先修文档**
+
+是。至少要先修 `contract.md` / `delivery_plan.md` / Slice 4 plan 中关于 explicit refresh 的范围冲突和 revision 来源错误；否则实现会在 server facade 边界和 Web/QML revision 契约上走偏。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:240-262|note=[used prior WorkOffset V1 boundary and alias/revision context]
+MEMORY.md:145-149|note=[used prior HMI versus work_offset ownership boundary]
+MEMORY.md:221-223|note=[used rollout id for freshest WorkOffset audit context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-79d3-7753-8090-208db77e848c
+019eb545-cef2-7971-8ca7-7d8b3e0a4f3-66a16bcb861d
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

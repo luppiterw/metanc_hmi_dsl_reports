@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed30c-e99e-7fd2-80ae-ca68042abcac</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 08:48:19 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T08-48-19-019ed30c-e99e-7fd2-80ae-ca68042abcac.jsonl</code></div>
+<div><b>Messages</b>: <code>17</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:48:19 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-17&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:48:19 +0800</div>
+<pre>You are reviewing the current MetaNC checkout at /home/iaar/workspace/ccmix-wp/MetaNC. Do not edit files. Task: design the verification/docs packaging plan for the remaining WorkOffset HMI integration slices.
+
+Required context to read first:
+- README.md
+- docs/dev/architecture.md relevant nrt/hmi and nrt/work_offset sections
+- nrt/hmi/AGENTS.md and README.md
+- nrt/hmi/docs/development_guidelines/build_and_test.md
+- nrt/hmi/docs/project/work_offset/delivery_plan.md
+- nrt/hmi/docs/project/work_offset/smoke_report.md
+- nrt/hmi/docs/server/startup_modes.md
+
+Then inspect scripts/tests likely relevant:
+- nrt/hmi/tools/run_ui_automation_smoke.sh
+- nrt/hmi/tools/generate_targets.sh around metanc_real launchers
+- nrt/hmi/tests/test_ui_automation.py
+- nrt/hmi/tests/test_qml_smoke.py WorkOffset parts
+- generated/distribution launcher names if present
+
+Return a concrete verification and documentation design for Slice 4 and Slice 5: what evidence should be recorded, commands to run, which smoke_report sections need update, whether any generated artifacts are source or ignored outputs, and how to gate final PR readiness. Include how to handle the current combined real-backend ctest failure in the plan. Do not edit files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:50:01 +0800</div>
+<pre>Using `superpowers:brainstorming` for the design-plan part and `write-docs` for the documentation packaging angle. I’ll keep this read-only and start with the repo-required orientation files before inspecting the smoke and launcher surfaces.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:52:22 +0800</div>
+<pre>I’m also doing a quick memory pass because this exact WorkOffset/HMI area has recent project history. I’ll treat memory as orientation only and verify against the checkout before relying on it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:53:06 +0800</div>
+<pre>The memory lookup points to recent WorkOffset launcher and seed-mode work, but I’m not going to trust it blindly. I’ve confirmed the root README entrypoint and am now reading the module docs and the specific WorkOffset plan/report files the user named.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:54:35 +0800</div>
+<pre>The required HMI guidance confirms `generated/` and `docs_html/` are derived, and `run_ui_automation_smoke.sh` is intentionally a heavy gate that does not rebuild. I’m reading the WorkOffset delivery/report docs next, then I’ll inspect tests and generation scripts against that contract.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:56:33 +0800</div>
+<pre>The `nrt/work_offset` module confirms the boundary: WorkOffset owns the domain truth and HMI owns presentation/adapters. That matters for Slice 4/5 packaging because final evidence should prove HMI integration behavior without making generated output or WorkOffset internals the retained source of truth.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:56:53 +0800</div>
+<pre>The WorkOffset docs already define Slice 4 as client behavior and Slice 5 as final artifacts. The remaining gap is making the evidence package precise: which tests prove Web/QML behavior, which generated outputs are intentionally ignored, and how the combined real-backend failure is handled without diluting PR gates.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:57:41 +0800</div>
+<pre>I found the UI automation smoke currently includes only a WorkOffset binding scenario in Web and QML, not necessarily the full Slice 4 edit/stale path. I’m going deeper into those scenario files and the current generated launcher inventory so the plan is concrete instead of generic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 08:58:06 +0800</div>
+<pre>The generated distribution already contains the combined real-backend launchers and separate `server-build-metanc-real`, `server-build-work-offset`, and tooling build trees. I’ll check existing CTest logs and build metadata rather than rerunning tests, because the user asked for a no-edit review and CTest would write fresh test logs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 08:58:53 +0800</div>
+<pre>The current combined real-backend CTest failure is specific: `runtime_rest_api_test` rejects an activation with `work_offset.active_revision_mismatch` because the test expected `accepted:true` after state already reports `active_state_revision:2`. The plan should make that a blocking known issue for final PR readiness, not a tolerated failure.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 08:59:11 +0800</div>
+<pre>The generator and test search is large, so I’m narrowing to the exact files that own WorkOffset edit payloads and stale handling. That should let the plan say what must be added for Slice 4 rather than only restating the delivery-plan bullets.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 08:59:32 +0800</div>
+<pre>The ignored-output check confirmed `nrt/hmi/generated/` and `nrt/hmi/docs_html/` are not source artifacts; tracked generated-like evidence lives in `nrt/hmi/tests/snapshots/`. I’m checking the generator source paths now so Slice 4’s verification plan names the source edits and the snapshot evidence separately.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 09:00:05 +0800</div>
+<pre>I’m collecting exact line anchors for the final answer now. The core finding is that the current checkout has the launcher/build scaffolding for Slice 5 and light binding smoke for Slice 4, but Slice 4 still needs explicit edit/stale scenario coverage and the combined real CTest failure must remain a PR blocker.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-17 09:00:43 +0800</div>
+<pre>I’ve got enough evidence for the read-only plan. I’ll finish by tying the proposed Slice 4/5 evidence to exact existing gaps and to smoke_report updates, including the generated artifact policy and the current combined real-backend failure.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-17 09:00:59 +0800</div>
+<pre>One more small check: I’m reading the exact CTest wrapper and test registration so the plan can describe the failure fix target without guessing. After that I’ll give the plan.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / final_answer</h3>
+<div class="time">2026-06-17 09:01:40 +0800</div>
+<pre>Read-only review complete. I did not edit files or rerun write-producing tests.
+
+**Current State**
+Slice 4 is not fully evidenced yet. The existing Web/QML smoke only proves Work Offset page binding, alias sync, and activation via legacy `g_code` payload; it does not prove inline edit payloads, stale-write behavior, or WorkOffset-specific retry notices. The current Web and QML edit generators still send only `{g_code, field, value}` for `parameter_wcs_table` ([data_table.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/data_table.py:483), [table_edit.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/table_edit.py:68)).
+
+**Slice 4 Verification Design**
+Record a new `## Slice 4 Client Table Behavior` section in [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:200) with separate rows for:
+
+- Source/generator checks: `python3 -m unittest -v tests.test_ui_automation tests.test_tooling_contract_docs tests.test_web_qml_parity_docs`
+- Contract generation: `python3 -m tools.hmi_dsl validate definition/product.manifest.yaml` and `python3 -m tools.hmi_dsl build-ir definition/product.manifest.yaml`
+- Generated snapshot check: `python3 -m unittest -v tests.test_pipeline` after generated Web/QML snapshots are updated if output changes
+- Web positive path: a scenario that opens PARAM / Work Offset, verifies active row visual state from `active`, edits one coarse translation cell, and asserts command args include `target_ref`, `axis_id` from `component_axis_ids[field]`, and row `revision`
+- Web stale path: a scenario that submits stale `expected_revision`, asserts WorkOffset-specific refresh/retry notice, and asserts no local optimistic row patch
+- QML positive/stale path: add or extend QML smoke so it covers activation plus inline edit payload and stale rejection, not only binding
+
+The current heavy smoke wrapper should include the new Web stale/edit scenario and QML edit smoke alongside the existing binding smoke ([run_ui_automation_smoke.sh](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/run_ui_automation_smoke.sh:34)). The existing `work_offset_table_binding.json` can remain as the light binding/activation check ([work_offset_table_binding.json](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/ui_scenarios/web/work_offset_table_binding.json:1)).
+
+**Slice 5 Packaging Design**
+Record a new `## Slice 5 Final Artifact Generation` section in `smoke_report.md` with:
+
+- `./tools/generate_targets.sh`
+- `./tools/build_docs_html.sh`
+- `ctest --test-dir generated/server-build --output-on-failure`
+- `ctest --test-dir generated/server-build-work-offset --output-on-failure`
+- `ctest --test-dir generated/server-build-metanc-real --output-on-failure`
+- `./tools/run_ui_automation_smoke.sh`
+- repo-root docs gate: `python3 .mdbook/lint_docs_policy.py` and `book build`
+
+For the artifact checklist, record existence only, not tracked diffs: `docs_html/index.html`, `generated/web/index.html`, `generated/qml-final/appCNC_HMI_DSL`, `generated/server-build/server`, `generated/distribution/README.md`, and combined real launchers. `generated/` and `docs_html/` are ignored derived outputs, not source truth ([build_and_test.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/development_guidelines/build_and_test.md:7)). Tracked source evidence is retained DSL/generators/tests/docs plus snapshot files under `nrt/hmi/tests/snapshots/`.
+
+**Combined Real-Backend Failure**
+Treat the current `generated/server-build-metanc-real` CTest failure as a final PR blocker. The failing test is `runtime_rest_api_test`, specifically `work_offset_rest_command_details`: it expects `&quot;accepted&quot;:true` but the real backend rejects with `work_offset.active_revision_mismatch` and reports `active_state_revision:2` ([LastTest.log](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/server-build-metanc-real/Testing/Temporary/LastTest.log:18)). The test sends hard-coded `expected_revision:1` ([runtime_rest_api_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/runtime_rest_api_test.cpp:447)), while real seeded tests run through an isolated WorkOffset store wrapper ([CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/CMakeLists.txt:193)).
+
+Plan: fix the test or setup so it reads the current active-state revision from `wcs.offset.table` before activation, or reseeds/replaces the store state consistently before the REST assertion. Do not mark Slice 5 complete until `ctest --test-dir generated/server-build-metanc-real --output-on-failure` passes cleanly.
+
+**Final PR Gate**
+PR-ready only when Slice 4 client evidence, Slice 5 artifact evidence, default mock server CTest, WorkOffset-only real backend CTest, combined real backend CTest, heavy UI smoke, and docs gates are all recorded in `smoke_report.md`. This matches the existing delivery model that slices are internal checkpoints and final PR readiness requires implementation plus validation evidence together ([delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:3)).
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:39-48|note=[used to orient current WorkOffset HMI integration history before verifying checkout]
+MEMORY.md:84-91|note=[used to identify real backend launcher and seed mode context to verify locally]
+MEMORY.md:96-101|note=[used to compare known combined real backend failure context against current logs]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a82d-7e82-945f-115cbe6e03a3
+019ec898-99ca-7a93-9357-c18b4e56049e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

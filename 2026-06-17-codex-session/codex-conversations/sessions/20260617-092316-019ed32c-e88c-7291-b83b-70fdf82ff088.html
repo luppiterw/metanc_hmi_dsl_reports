@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review option E for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option E covers currently not-reco...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Review option E for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option E covers currently not-reco...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed32c-e88c-7291-b83b-70fdf82ff088</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 09:23:16 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T09-23-16-019ed32c-e88c-7291-b83b-70fdf82ff088.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:23:16 +0800</div>
+<pre>Review option E for /home/iaar/workspace/ccmix-wp/metanc_drafts. Option E covers currently not-recommended bigger work: `zero_offset -&gt; frame_axis_component`, semantic path grammar, axis alias/profile schema, runtime registry/API. Do not edit files. Assess whether any subpart is feasible today, affected files, prerequisites, and likely validation gates. Return: GO/CONDITIONAL/NO-GO and concise rationale.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:23:51 +0800</div>
+<pre>I’ll review this as an OpenSpec exploration, with a quick memory pass first because TP004 and descriptor governance have prior context in this workspace. I’ll keep this read-only and ground the answer in current files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:24:08 +0800</div>
+<pre>Memory points to TP004’s current minimal descriptor model and prior decision to keep axis aliases out of descriptor identity. I’m now checking the live OpenSpec/topic files to see whether Option E has any currently grounded slice rather than treating the whole bundle as one item.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:24:26 +0800</div>
+<pre>The repo already contains archived design language that explicitly deferred the `zero_offset -&gt; frame_axis_component` pair and runtime registry, but the value-set/validation material appears richer than the minimal descriptor page. I’m narrowing on whether that richness is enough for a small today-slice, or only enough to plan prerequisites.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 09:24:52 +0800</div>
+<pre>I’ve got the key current-state docs now. One notable point: Option E is not uniformly “too big”; the zero-offset owner/scope pair has concrete tokens and validation examples, while semantic path grammar, alias/profile schema, and runtime registry are still explicitly listed as deferred. I’m checking the backing value sets and checker shape before assigning GO/NO-GO.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 09:25:42 +0800</div>
+<pre>I’m doing one last pass over the concrete zero-offset validation set and checker locations, because that determines whether the feasible part is a real bounded promotion or only a documentation note. No edits are being made.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 09:26:53 +0800</div>
+<pre>I’ve finished the read-only review. I’m going to give the decision as a bundle verdict plus per-subpart gates, because the only feasible piece is much smaller than “Option E” as described.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-17 09:27:35 +0800</div>
+<pre>**Verdict: CONDITIONAL**
+
+Option E as a bundle is **NO-GO today**. It combines four deferred areas that the current TP004 docs explicitly keep outside the checker-backed contract: semantic path grammar, machine-profile axis alias schema, runtime registry behavior, and promotion of provisional owner-scope pairs.
+
+The only feasible subpart today is a **narrow conditional slice**: promote `zero_offset -&gt; frame_axis_component` from provisional to checker-backed **only if** you first accept `zero_offset`’s topic ownership boundary. The repo already has the scope record and Siemens validation evidence for `$P_UIFR[frame,axis,component]`, but `zero_offset` is still an unassigned owner token, so promoting the pair without owner evidence would freeze an unresolved boundary.
+
+Affected files for that narrow slice:
+- [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:117): move `zero_offset -&gt; frame_axis_component` from `provisional_owner_scope_notes` into `owner_scope_bindings`.
+- [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:91): resolve `zero_offset` from `unassigned_owner_tokens` or explicitly justify keeping it unassigned while still binding.
+- [zero-offset-user-frame-axis-component.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/siemens/zero-offset-user-frame-axis-component.md:1): use as supporting evidence for the Siemens `$P_UIFR` family.
+- [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:691) and [test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1553): likely need focused tests proving the pair is accepted and provisional notes remain non-formal.
+- i18n/source projections for object scopes, descriptor status, and any discussion pack pages if this becomes a formal change.
+
+Prerequisites:
+- Decide the `zero_offset` owner boundary and evidence source.
+- Keep semantic path grammar out of this slice.
+- Keep axis aliases/profile schema out of this slice.
+- Keep runtime registry/API out of this slice.
+
+Likely validation gates:
+`openspec validate &lt;new-change&gt; --strict`, `python3 -m unittest discover -s tools/tests`, `python3 tools/check_parameter_value_sets.py`, `python3 tools/check_docs_i18n_sync.py`, `./tools/build_docs_html.sh`, `python3 tools/check_docs_i18n_sync.py --require-published-html`, `git diff --check`.
+
+So: **CONDITIONAL GO only for the zero-offset owner/scope promotion after owner-boundary evidence is ready; NO-GO for semantic path grammar, axis alias/profile schema, and runtime registry/API today.**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:480-491|note=[TP004 descriptor boundary and validation context]
+MEMORY.md:428-429|note=[task 8 rollout ids for descriptor governance]
+MEMORY.md:439-440|note=[task 9 rollout ids for current-state contract]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

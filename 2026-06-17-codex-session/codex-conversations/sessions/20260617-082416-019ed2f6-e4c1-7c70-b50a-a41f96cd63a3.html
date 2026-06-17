@@ -1,0 +1,1727 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下目前参数相关的进度</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下目前参数相关的进度</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed2f6-e4c1-7c70-b50a-a41f96cd63a3</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-17 08:24:16 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T08-24-16-019ed2f6-e4c1-7c70-b50a-a41f96cd63a3.jsonl</code></div>
+<div><b>Messages</b>: <code>201</code></div>
+<div><b>User prompts</b>: <code>17</code></div>
+<div><b>Synthetic events</b>: <code>17</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:24:32 +0800</div>
+<pre>看一下目前参数相关的进度</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:24:50 +0800</div>
+<pre>我会用 `openspec-explore` 来做当前状态梳理，并先按记忆里 TP004/参数线索快速定位，再查工作区里的实际文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:25:22 +0800</div>
+<pre>当前 OpenSpec 里只有一个参数相关变更还列在 active changes 中，但它的任务状态已经是 complete。接下来我会读当前状态页、descriptor 草案、checker 和最近提交，确认这不是只停留在讨论包里的状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:25:40 +0800</div>
+<pre>我看到 reader 页本身是 include wrapper，所以要继续看 `openspec/` 源文件和 checker 规则，避免把展示层误认为真实契约。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:25:58 +0800</div>
+<pre>目前判断上，参数线已从“术语/访问定义治理”推进到“Parameter Descriptor 最小契约”，但还没有进入完整 runtime 参数系统实现。为了给你一个可落地的进度判断，我再确认 checker 实现和测试覆盖是否跟文档一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:26:10 +0800</div>
+<pre>我会再跑两个轻量验证：参数 value-set/descriptor checker 和这个 OpenSpec change 的 strict validate。这样最终判断可以区分“文档写了”与“当前校验仍然能过”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:26:22 +0800</div>
+<pre>我会用 `verification-before-completion` 的规则来做最终状态断言：先跑命令，再说通过与否。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:26:31 +0800</div>
+<pre>校验已经跑完：参数 checker、OpenSpec strict validate、i18n 结构检查都是 exit 0。现在我把进度按“已完成/当前边界/下一步”整理给你。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-17 08:27:16 +0800</div>
+<pre>目前参数这块的状态：已经从概念讨论收敛到 TP004 `Parameter Descriptor` 的最小契约，并且有 checker 兜住；但还没进入完整 runtime 参数系统/参数 registry 实现。
+
+- 当前 OpenSpec change：`document-parameter-descriptor-current-state` 是 `complete`，`15/15` 任务完成，`openspec validate ... --strict` 当前通过。
+- 当前最小模型只有 4 个字段：`parameter_id`、`owner`、`scope`、`semantic_name`。它明确不是 runtime value slot、UI path、控制器原生变量表达式或 machine-profile 轴配置，见 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:13) 和 [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:31)。
+- checker 目前覆盖：`parameter_id` 必填且唯一、`owner`/`scope` 解析到 governed value set、`owner_scope_bindings` 校验、`parameter_id` 与 owner 前缀和 `semantic_name` 后缀一致、拒绝轴显示 alias 作为 descriptor identity、拒绝 `access.readable/writable` 进入最小模型。
+- 当前真正放开的 owner/scope 只有 `motion.axis -&gt; axis`；`tool_management -&gt; tool_edge`、`zero_offset -&gt; frame_axis_component`、`hal -&gt; machine`、`magazine -&gt; machine` 还只是 provisional，见 [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136)。
+- 明确还没做的是：semantic path grammar、machine-profile axis alias schema、runtime registry、`semantic_name` 值集合治理、正式 `parameter_descriptor.value/access`、activation/persistence 字段，以及 provisional owner/scope 的晋级。
+
+我刚跑了当前校验：`python3 tools/check_parameter_value_sets.py` 通过，`openspec validate document-parameter-descriptor-current-state --strict` 通过，`python3 tools/check_docs_i18n_sync.py` 通过。工作区状态也干净，当前在 `main...origin/main`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:488-491|note=[used to cross-check current TP004 parameter descriptor status and deferred items]
+MEMORY.md:480-486|note=[used to preserve earlier TP004 descriptor governance context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:39:03 +0800</div>
+<pre>你的测试校验主要是校验什么，原则我看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:39:22 +0800</div>
+<pre>我会直接从当前 checker 和测试文件里提炼原则，不按记忆复述。重点看参数 descriptor 相关规则、i18n 结构规则、OpenSpec strict validate 分别在防什么。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-17 08:39:46 +0800</div>
+<pre>主要校验的是“文档里的参数治理规则有没有漂移”，不是 runtime 参数读写功能。
+
+**参数 checker**
+`python3 tools/check_parameter_value_sets.py` 主要防这些：
+
+- 参数 descriptor 只能先认最小 4 字段：`parameter_id`、`owner`、`scope`、`semantic_name`。
+- `parameter_id` 必须唯一，且要和 `owner` 前缀、`semantic_name` 后缀一致。
+- `owner` 不能是随便写的字符串，必须来自 `VS010023 / owner_reference`。
+- `scope` 不能是随便写的字符串，必须来自 `VS060003 / object_scope`。
+- `owner + scope` 组合必须在 `owner_scope_bindings` 里显式放开；`provisional_owner_scope_notes` 只算候选，不算通过。
+- 轴名/轴别名，比如 `X/Y/Z/A/B/C`，不能混进稳定的 `parameter_id`。
+- `access.readable`、`access.writable` 这种访问字段现在不允许进入最小 descriptor 模型。
+- `OBJECT-SCOPES.md` 里的 scope 必须能对上 value set，`value_id` 也要匹配。
+
+核心原则：**先稳定身份和治理边界，不提前冻结 value/access/runtime 语义。**
+
+**i18n/docs checker**
+`python3 tools/check_docs_i18n_sync.py` 主要防这些：
+
+- 中文 reader 页不能只是英文 include wrapper，必须有可读中文说明。
+- 只有允许名单里的 registry 页面可以 include canonical source，但前面也要有中文引导。
+- source/projection 的必要文本、导航入口、相对链接不能断。
+- Owner Registry 这类结构化 YAML 在投影页里不能和 canonical source 漂移。
+- 如果加 `--require-published-html`，还会检查 `docs_html/` 是否和 `docs_i18n/site/` 构建结果一致。
+
+核心原则：**canonical source 可以集中维护，但读者页面必须可读，投影不能悄悄漂移。**
+
+**OpenSpec validate**
+`openspec validate document-parameter-descriptor-current-state --strict` 主要校验这个 change 自身结构合法：proposal/design/spec/tasks 是否符合 OpenSpec 约束，spec delta 是否能被识别。
+
+所以这套校验目前证明的是：TP004 参数 descriptor 的“文档契约 + 治理规则 + 投影页面”一致；它不证明已经有参数 runtime registry、参数 API、参数解析/读写实现。</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:42:31 +0800</div>
+<pre>TP004这个我希望接下来的内容给我罗列一下，是不是要到收尾阶段（初步）</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:42:51 +0800</div>
+<pre>我继续用 `openspec-explore` 来做 TP004 的收尾判断：先看当前 active changes、TP004 目录和状态页，再给你一个按阶段的清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-17 08:43:16 +0800</div>
+<pre>是，可以判断为 **TP004 初步收尾阶段**，但要限定口径：这是“参数系统/运行时访问的文档治理与第一批契约基线”收尾，不是 runtime 参数系统实现收尾。
+
+当前 TP004 已经有：术语表、value sets、schema-field binding、owner registry、object scopes、access definitions、validation sets、usage index、Parameter Descriptor 最小模型和当前状态页。剩下不应该再大扩概念，应该按收尾清单处理。
+
+建议接下来罗列为：
+
+- 归档当前已完成 change：`document-parameter-descriptor-current-state` 已是 `15/15 complete`，下一步应 archive，避免 active change 一直挂着。
+- 固化 TP004 当前状态页：保留 `parameter_id / owner / scope / semantic_name` 这个 minimal contract，不再往里面塞 value/access/runtime 字段。
+- 做一页 TP004 初步收尾总览：列清楚“已 checker-backed / draft but not formal / explicitly deferred / next slices”，作为后续入口。
+- 清点 candidate/near-formal 内容：尤其 value sets、access definitions、validation sets 里大量 `candidate`，需要标明哪些只是治理锚点，哪些能进入实现前冻结。
+- 选择一个 owner-scope 晋级切片：不要全放开，优先从真实证据最足的一对里选，比如 `zero_offset -&gt; frame_axis_component` 或 `tool_management -&gt; tool_edge`，单独做 checker-backed promotion。
+- 单独讨论 semantic path grammar：不要和 `parameter_id` 混在一起；它应是路径语法/绑定规则，不是普通 enum，也不是稳定身份本身。
+- 单独讨论 machine/profile axis alias：`X/Z/AX1` 这类属于配置/兼容层，不进入 descriptor identity。
+- 暂缓 `parameter_descriptor.value/access/activation/persistence`：这些现在有候选材料，但还不应正式纳入 descriptor，除非有实现侧用例压出来。
+- 对接实现前，再补 runtime registry/API 设计：现在 TP004 只是治理基线，还没定义运行时 registry 行为、读写 API、加载流程、存储模型。
+- 最后跑完整发布校验：参数 checker、i18n sync、docs html build、OpenSpec validate、unit tests、`git diff --check`。
+
+我的判断：**可以进入初步收尾**。收尾目标不是“把所有参数问题解决完”，而是把 TP004 关成一个稳定的第一阶段基线：已有内容可查、可验证、边界清楚，后续只通过窄切片推进。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:47:14 +0800</div>
+<pre>开多agent讨论接下来的详细计划，然后罗列详细结果给我看一下，然后我来决定今天落什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:47:35 +0800</div>
+<pre>我会按你的要求开多 agent 做一次“下一步计划评审”，但先加载并遵循多 agent 和探索相关的工作流。这个回合只产出候选计划和取舍，不直接改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:47:50 +0800</div>
+<pre>两个 superpowers skill 的缓存路径和清单里不一致，我先定位实际文件和可用的 sub-agent 工具；不影响后续，我会继续按多 agent 方式做。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:48:01 +0800</div>
+<pre>我找到了实际 skill 路径，也发现 sub-agent 工具现在可用。接下来我会派 4 个 explorer 分别看“收尾总览”“实现前最小推进”“文档/发布闭环”“风险和不该今天做的事”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:49:19 +0800</div>
+<pre>4 个 explorer 已经并行启动。我这边不重复他们的任务，先做主线程的骨架整理：把“今天可落”的候选拆成关闭型、文档型、推进型三类，等 agent 回来后合并。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:50:06 +0800</div>
+<pre>我先读几份高信号文件来准备合并口径：不是为了改，而是避免 agent 结果回来后缺少主线判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:50:50 +0800</div>
+<pre>主线程这边已经确认：当前最自然的“收尾”不是新增规则，而是把 current-state change 归档，并补一个更上层的 TP004 初步收尾/后续切片决策页。等 4 个 agent 回来后，我会把它们的建议压成今天可选的 A/B/C 工作包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:56:43 +0800</div>
+<pre>第一轮等待 5 分钟还没返回完整结果，说明这些 explorer 在读比较多的 TP004 内容。我先继续补一份主线程可选工作包草稿，之后再取它们的结果合并。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 08:57:55 +0800</div>
+<pre>我这里先把草稿按“今天可以落什么”分成三档：最低风险是归档+收尾页，中等是选一个 owner/scope 晋级，高风险是开始 runtime/API。现在看 TP004 的状态更适合前两档，不适合今天直接跳 runtime。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:13:56 +0800</div>
+<pre>每个建议开多个agent审一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:14:14 +0800</div>
+<pre>我会用 `dispatching-parallel-agents` 的方式做：每个候选建议安排两个独立 reviewer，一个看“可落性/文件路径/验证”，一个看“风险/边界/是否该今天做”。这轮仍只审计划，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:14:35 +0800</div>
+<pre>我会把 A-E 作为五个独立候选包审查。为避免重复劳动，每个 agent 都会只看自己的选项，并输出 go/conditional/no-go、必要文件、校验和最大风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:15:55 +0800</div>
+<pre>我已经派出 A、B 和 C 的部分 reviewer；现在继续派 C 的风险 reviewer，以及 D/E 的双 reviewer。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 09:16:18 +0800</div>
+<pre>当前并发 agent 数到上限了，所以我先等 A/B/C 这批返回并关闭，再继续派 D/E 的双审。</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:33:05 +0800</div>
+<pre>先落B</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:33:22 +0800</div>
+<pre>我开始落 B：先按 archive skill 看当前归档流程，然后改两个窄点，再归档和跑验证。改动会控制在 discussion-pack 流程、i18n published invariant、OpenSpec archive。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:33:45 +0800</div>
+<pre>我先做 RED：给 `check_docs_i18n_sync.py` 的 published-page invariants 加测试，先确认当前缺 `parameter-descriptor-status.md` 会被测试抓到，再改 checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:34:05 +0800</div>
+<pre>我会先补测试断言，让当前 checker 因缺少 `parameter-descriptor-status.md` published invariant 而失败；确认 RED 后再改 checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 09:34:18 +0800</div>
+<pre>测试已补，现在跑单测确认它确实失败在缺 current-state published invariant，而不是别的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 09:34:38 +0800</div>
+<pre>RED 正常：失败点就是 `PUBLISHED_PAGES` 没覆盖 current-state 页。接下来改 checker，加 topic/root/en/zh 四个 current-state 页面，并更新流程文档为当前 `README/session/report` 模式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 09:34:53 +0800</div>
+<pre>我已经确认 RED。现在加 current-state 页的 4 个 published invariant：TP004 topic book、root aggregate book、英文、中文；这些只检查已存在页面，不引入新语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 09:35:07 +0800</div>
+<pre>我还会把 daily discussion pack 流程文档从旧的全量日结格式收窄成当前实际模式：默认 `README.md`、`session.md`、`report.md`，图和 standalone HTML 只在需要时生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 09:35:38 +0800</div>
+<pre>Checker invariant 已加。接下来改流程文档，避免它继续要求旧的 `discussion-log/diagrams/html` 作为每个日结的必备文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 09:35:59 +0800</div>
+<pre>两个窄改动已完成。现在跑刚才失败的单测，确认 GREEN；然后跑 i18n checker 看新增 invariant 对当前页面是否成立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 09:36:15 +0800</div>
+<pre>GREEN 通过，i18n 源结构也通过。现在需要归档 completed change；按 archive skill 的要求，我会先检查任务和 delta spec 状态，再 archive，不同步 delta spec 到根 specs，因为这个 repo 当前没有对应根 spec 面，且 B 的范围是不改语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 09:36:35 +0800</div>
+<pre>归档前检查结果：change artifacts 全 done，tasks 全勾选；有 delta spec，但当前仓库没有 `openspec/specs/` 主 spec 面。按 B 的边界，我会跳过 spec sync，只移动到 archive，不引入新的根 spec 语义面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 09:36:57 +0800</div>
+<pre>Diff 符合 B 的边界。现在执行归档移动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-17 09:37:13 +0800</div>
+<pre>归档目录已移动。接下来跑完整验证链；其中 `./tools/build_docs_html.sh` 会重建本地生成输出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-17 09:37:23 +0800</div>
+<pre>源结构、参数 checker 和 active change 状态都通过了；`openspec list` 现在为空。继续跑 docs rebuild、published HTML check 和单元测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-17 09:37:41 +0800</div>
+<pre>Docs rebuild 已通过。现在跑 published HTML 同步、全部单测和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-17 09:37:53 +0800</div>
+<pre>验证全部通过。最后我检查归档目录内容和 summary diff，确认没有生成文件被意外纳入 git 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-06-17 09:38:13 +0800</div>
+<pre>B 已落完，并且验证通过。
+
+改动内容：
+- 更新 [DAILY-DISCUSSION-PACK-PROCESS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/DAILY-DISCUSSION-PACK-PROCESS.md)，把日结流程从旧的 `discussion-log/diagrams/html` 必备模式收窄到当前 `README.md / session.md / report.md` 模式。
+- 更新 [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py)，把 `parameter-descriptor-status.md` 加入 root/en/zh/topic published-page invariant。
+- 补了对应测试 [test_check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_docs_i18n_sync.py)。
+- 已归档 `document-parameter-descriptor-current-state` 到 `openspec/changes/archive/2026-06-17-document-parameter-descriptor-current-state/`，当前 `openspec list --json` 返回空 active changes。
+
+验证已跑：
+- `python3 tools/check_docs_i18n_sync.py`
+- `./tools/build_docs_html.sh`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，76 tests OK
+- `openspec validate --all --strict`
+- `git diff --check`
+
+没有改 TP004 参数 schema、value sets、`tools/check_parameter_value_sets.py` 或 descriptor 语义。生成的 docs 输出已重建，但仍是 ignored。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:53:22 +0800</div>
+<pre>看下现在的状况</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:54:50 +0800</div>
+<pre>我直接查当前工作区、OpenSpec active changes、归档目录和待提交 diff，给你一个现在状态判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:56:39 +0800</div>
+<pre>当前代码层面已经是“B 已落、未提交”状态。我再抽查关键验证是否仍通过，以及 archive 是否只是移动造成的删除/新增。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-17 09:58:02 +0800</div>
+<pre>现在状态：
+
+- B 已落地，但还没 commit。
+- `openspec list --json` 返回空，说明当前没有 active change。
+- `document-parameter-descriptor-current-state` 已移动到 `openspec/changes/archive/2026-06-17-document-parameter-descriptor-current-state/`。
+- 工作区有待提交变更：1 个流程文档更新、2 个 checker/test 更新、以及 OpenSpec change 归档移动。
+- 没有改 TP004 参数 schema、value sets、descriptor 语义或参数 checker。
+
+刚刚复跑验证都通过：
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，76 tests OK
+- `openspec validate --all --strict`
+- `git diff --check`
+
+下一步如果你要继续，我建议直接 commit 这一批，commit message 可以用：
+
+`docs: archive TP004 descriptor current-state change`</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 10:11:11 +0800</div>
+<pre>commit一下，然后列一下后续计划内容</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 10:13:40 +0800</div>
+<pre>我先做提交前的状态核对，然后 stage 这批 B 的变更并 commit；提交后再给你列后续计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 10:14:15 +0800</div>
+<pre>我用 `verification-before-completion` 约束提交前状态。验证刚刚已跑过，我现在确认暂存范围只包含这批 B 变更，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 10:15:27 +0800</div>
+<pre>暂存范围确认只包含 B 的流程清理、published invariant/test 和 OpenSpec 归档移动。我现在 stage 并提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 10:16:30 +0800</div>
+<pre>变更已暂存；我会查看 staged diff 摘要再 commit，确保没有混入别的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 10:17:13 +0800</div>
+<pre>Staged diff 是预期内容，归档被识别为 rename。现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 10:18:28 +0800</div>
+<pre>提交已完成。现在做提交后状态和关键校验确认，然后整理后续计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-17 10:20:39 +0800</div>
+<pre>已提交：`7c69bd4 docs: archive TP004 descriptor current-state change`
+
+当前状态：
+- 工作区干净：`main...origin/main [ahead 1]`
+- `openspec list --json` 为空，没有 active change
+- 提交后复查通过：`check_docs_i18n_sync.py --require-published-html`、`python3 -m unittest discover -s tools/tests`，76 tests OK
+- 本轮提交前也已跑过 docs build、参数 checker、OpenSpec validate、diff check
+
+后续计划建议：
+
+1. 推送当前收尾提交
+   把 `7c69bd4` 推到远端，完成 TP004 Parameter Descriptor current-state 文档包归档闭环。
+
+2. 开下一个窄 proposal：`tool_management -&gt; tool_edge`
+   只写 OpenSpec proposal，明确这是下一对 owner/scope 晋级候选，不直接改 checker，不声称已晋级。
+
+3. 如 proposal 通过，再做实现切片
+   单独 change，把 `tool_management -&gt; tool_edge` 从 provisional 移到 checker-backed `owner_scope_bindings`，补测试和中英文文档投影。
+
+4. 暂缓 `zero_offset -&gt; frame_axis_component`
+   先不要落，因为 `zero_offset` owner boundary 还没解决；需要先明确 owner evidence。
+
+5. 暂缓大项
+   semantic path grammar、axis alias/profile schema、runtime registry/API、`parameter_descriptor.value/access` 都继续保持 deferred，不混进 owner/scope 晋级切片。
+
+我建议下一步先做第 1 项推送；然后再开第 2 项 proposal。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 12:51:22 +0800</div>
+<pre>按照你的建议执行一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 12:52:24 +0800</div>
+<pre>我会按刚才的顺序执行：先推送当前收尾提交，然后创建下一步 `tool_management -&gt; tool_edge` 的窄 OpenSpec proposal，不做 checker 实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 12:52:42 +0800</div>
+<pre>我会先推送 `7c69bd4`。推送完成后再开一个新 change，只写 `tool_management -&gt; tool_edge` 的 proposal/design/spec/tasks，不触碰 checker 实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 12:53:06 +0800</div>
+<pre>推送完成。现在创建新 OpenSpec proposal；change 名我用 `promote-tool-edge-owner-scope`，范围限定为 proposal-only，不实现 promotion。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 12:53:18 +0800</div>
+<pre>开始 scaffold OpenSpec change，并读取生成的 artifact 指令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 12:53:42 +0800</div>
+<pre>Scaffold 已创建。接下来读取 status 和各 artifact 指令，按 schema 填 proposal/design/spec/tasks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 12:54:17 +0800</div>
+<pre>我已经确认 `tool_management` 注册在 TP002，`tool_edge` 已是 object scope，`$TC_DP3[tool,edge]` 明确是 domain-table field 而不是普通参数。现在开始写 proposal，边界会写清：只提出晋级计划，不实现 checker-backed promotion。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 12:54:33 +0800</div>
+<pre>我会先写 proposal/design/spec/tasks 四个 artifact。因为这是 proposal-only，tasks 会把实现任务列为后续，不在当前 proposal 阶段勾完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 12:55:38 +0800</div>
+<pre>Artifact 已写好。现在跑 status/strict validate；如果通过，我会把 review-scope 任务勾掉，保留未来实现任务未完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 12:56:08 +0800</div>
+<pre>`openspec validate` 已通过。虽然 artifact 状态已 complete，我会把 tasks 里已经完成的 proposal/review 项勾上，未来实现项保持未勾，避免误读为已经实现晋级。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 12:56:36 +0800</div>
+<pre>Proposal/review 任务已标记完成，未来实现任务仍未勾。现在跑最终校验、查看工作区，并提交这个 proposal change。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 12:56:54 +0800</div>
+<pre>校验通过，只有新 proposal 目录未跟踪。接下来 stage 并提交这个 proposal。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 12:57:07 +0800</div>
+<pre>我会先看 staged 内容，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-17 12:57:30 +0800</div>
+<pre>Staged 内容只包含新 OpenSpec proposal change。现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-17 12:57:42 +0800</div>
+<pre>Proposal 提交完成。现在推送最新提交，并做最终状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-17 12:58:04 +0800</div>
+<pre>推送完成。我最后检查工作区、active change 和验证状态，确认没有遗留本地改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / final_answer</h3>
+<div class="time">2026-06-17 12:58:24 +0800</div>
+<pre>已按建议执行完，并已推送到远端。
+
+结果：
+- 推送了收尾提交：`7c69bd4 docs: archive TP004 descriptor current-state change`
+- 新建并提交/推送了 proposal：`05ea76c docs: propose tool edge owner scope promotion`
+- 当前工作区干净：`main...origin/main`
+- 当前 active change：`promote-tool-edge-owner-scope`
+- OpenSpec 状态：6/9 tasks 完成，剩下 3 个是未来实现切片任务，故状态是 `in-progress`
+- 校验通过：`openspec validate promote-tool-edge-owner-scope --strict`、`python3 tools/check_docs_i18n_sync.py`
+
+新 proposal 明确了边界：
+- 只提出 `tool_management -&gt; tool_edge` 作为下一对 owner/scope 晋级候选。
+- 不实现 checker-backed promotion。
+- 不新增 descriptor 字段。
+- 不碰 semantic path grammar、runtime registry/API、axis alias/profile schema、`parameter_descriptor.value/access`。
+- `$TC_DP3[tool,edge]` 只作为 access-family evidence，不变成普通 Parameter Descriptor。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 13:01:21 +0800</div>
+<pre>1. 只提出 tool_management -&gt; tool_edge 作为下一对 owner/scope 晋级候选 这个具体是指什么
+2. 不实现 checker-backed promotion。 这个是什么
+3. 不新增 descriptor 字段。不新增 descriptor 字段。这个针对什么
+4. 不碰 semantic path grammar、runtime registry/API、axis alias/profile schema、parameter_descriptor.value/access 这个针对什么
+5. $TC_DP3[tool,edge] 只作为 access-family evidence，不变成普通 Parameter Descriptor 普通的Parameter Descriptor又是什么意思</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 13:02:51 +0800</div>
+<pre>我会按当前 proposal 和 TP004 现有文档来解释这几个词，不扩展到新设计。重点是把“候选、晋级、descriptor、access-family evidence”的边界讲清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-17 13:03:45 +0800</div>
+<pre>1. **“只提出 `tool_management -&gt; tool_edge` 作为下一对 owner/scope 晋级候选”是什么意思**
+
+意思是：现在 `OBJECT-SCOPES.md` 里有两类 owner/scope pair。
+
+已正式允许的：
+
+```yaml
+owner_scope_bindings:
+  - owner: motion.axis
+    allowed_scopes:
+      - axis
+```
+
+暂缓候选的：
+
+```yaml
+provisional_owner_scope_notes:
+  - owner: tool_management
+    candidate_scopes:
+      - tool_edge
+```
+
+“提出 `tool_management -&gt; tool_edge`”就是建议下一步只把这一对从“暂缓候选”提升到“checker-backed 正式绑定”。不同时提升 `zero_offset`、`hal`、`magazine` 等其他 pair。
+
+2. **“不实现 checker-backed promotion”是什么**
+
+`checker-backed promotion` 指真的改源文档和测试，让 checker 接受这一对。
+
+实际实现时会做类似：
+- 在 `OBJECT-SCOPES.md` 里把 `tool_management -&gt; tool_edge` 移进 `owner_scope_bindings`
+- 补测试证明 `parameter_descriptor.owner=tool_management` 且 `scope=tool_edge` 可以通过
+- 仍证明其他 provisional pair 不会误通过
+
+现在这个 change 只是 proposal，所以还没有真的让 checker 接受它。
+
+3. **“不新增 descriptor 字段”针对什么**
+
+针对 `parameter_descriptor` 这条记录的 schema。
+
+当前最小模型只有：
+
+```yaml
+parameter_descriptor:
+  parameter_id: motion.axis.max_velocity
+  owner: motion.axis
+  scope: axis
+  semantic_name: max_velocity
+```
+
+“不新增字段”就是这次不加：
+
+```yaml
+value:
+access:
+semantic_path_template:
+activation_timing:
+persistence_policy:
+unit:
+instance_binding:
+```
+
+因为这些还没稳定，不能混进当前 minimal contract。
+
+4. **“不碰 semantic path grammar、runtime registry/API、axis alias/profile schema、parameter_descriptor.value/access”针对什么**
+
+这是防止这个小 change 扩散。
+
+- `semantic path grammar`：比如 `axis.{axis_slot}.motion.max_velocity` 这种路径模板怎么定义、变量怎么绑定。
+- `runtime registry/API`：运行时如何加载参数注册表、怎么 read/write、接口长什么样。
+- `axis alias/profile schema`：`X/Z/AX1` 这些轴显示名、别名、profile 配置怎么建模。
+- `parameter_descriptor.value/access`：参数值类型、单位、读写权限、访问策略这些是否进入 descriptor。
+
+这些都是后续独立问题，不属于 `tool_management -&gt; tool_edge` 这一对 owner/scope 晋级。
+
+5. **“`$TC_DP3[tool,edge]` 只作为 access-family evidence，不变成普通 Parameter Descriptor”是什么意思**
+
+`$TC_DP3[tool,edge]` 是 Siemens 风格访问表达，表示刀具/刀刃表里的某个字段。TP004 里当前把它当作 **access family / 访问族证据**：
+
+```text
+input &quot;$TC_DP3[10,1]&quot;
+  -&gt; parse as tool data expression
+  -&gt; descriptor maps tool=10, edge=1, field=DP3
+  -&gt; dispatch calls tool_management owner
+```
+
+它证明：`tool_management` 确实拥有 tool-edge 数据，`tool_edge` 这个 scope 是合理的。
+
+但它不应该被变成普通 Parameter Descriptor，例如不要写成：
+
+```yaml
+parameter_descriptor:
+  parameter_id: tool_management.tool_edge.dp3
+  owner: tool_management
+  scope: tool_edge
+  semantic_name: dp3
+```
+
+为什么？因为 `$TC_DP3` 是领域表格字段访问，不是一个已经定义好的 MetaNC 普通参数。它可以支持 owner/scope 晋级，但不能直接被扁平化成“参数目录里的一条普通参数”。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 13:20:35 +0800</div>
+<pre>暂时同意，继续</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 13:21:09 +0800</div>
+<pre>我按“继续到实现切片”理解：开始应用当前 `promote-tool-edge-owner-scope` change，把 `tool_management -&gt; tool_edge` 真正晋级为 checker-backed pair。先读取 apply 指令和现有测试，再按 TDD 做最小实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 13:21:41 +0800</div>
+<pre>Apply 指令显示当前 change 还有 3 个实现任务未完成。我会先补一个针对真实 `OBJECT-SCOPES.md` 的 failing test：当前 `tool_management -&gt; tool_edge` 还在 provisional，所以 test 应该失败；然后再移动这一对并更新投影。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 13:23:29 +0800</div>
+<pre>我按“继续落实现切片”处理：先把 `tool_management -&gt; tool_edge` 用测试钉住，再改 source / reader projection / OpenSpec 任务状态，最后跑完整校验并提交。当前 proposal 原来写的是 proposal-only，我会同步改掉这处口径，避免文档和实际落地互相矛盾。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 13:23:45 +0800</div>
+<pre>现在工作区是干净的，适合直接推进。刚确认到中文 reader 页里仍把 `tool_management -&gt; tool_edge` 放在暂缓列表，所以这次不仅要改 canonical YAML，还要把状态页和中文投影同步，否则读者路径会继续表达旧状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 13:24:10 +0800</div>
+<pre>我先加一个 focused test：它直接用当前 repo 的 source docs 去验证真实 pair，而不是用 synthetic fixture。这样 RED 阶段应该明确失败在“`tool_management -&gt; tool_edge` 还没进 `owner_scope_bindings`”，改完后才会转绿。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 13:24:16 +0800</div>
+<pre>我会让子 agent 同时做两类审查：一个只审 implementation 边界是否越界，另一个只审 reader/OpenSpec 一致性。主线这边继续做改动，等它们返回后再把发现并入最终检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 13:24:51 +0800</div>
+<pre>测试插入点确定了：现有单元测试已经覆盖 synthetic binding 和 provisional 不生效，我会补一个“真实仓库 source docs 中该 pair 必须可用”的测试。这能直接防止以后又把它误放回暂缓区。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 13:25:16 +0800</div>
+<pre>RED 结果符合预期，失败点就是 `tool_management -&gt; tool_edge is not checker-backed`。下面开始改 source，把它从暂缓 notes 移到正式 `owner_scope_bindings`，并同步状态页和 proposal-only 口径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 13:25:47 +0800</div>
+<pre>我也检查了 i18n checker 的约束：状态页要求保留 “No item in this list” 和中文“都不属于当前 checker-backed contract”这类锚点，所以更新 wording 时会保留这些检测短语。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 13:26:18 +0800</div>
+<pre>实现层面我会补两个 test：一个证明真实 `tool_management -&gt; tool_edge` 被接受，另一个证明真实 `zero_offset -&gt; frame_axis_component` 仍不被接受。前者刚才已 RED，后者是防止这次变成 bundle promotion。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 13:26:47 +0800</div>
+<pre>canonical source 已经把 `tool_management -&gt; tool_edge` 移到 `owner_scope_bindings`，并在 note 里保留 `$TC_DP3` 仍是 access-definition family 的边界。接下来同步中文对象范围页和 current-state 状态页，防止发布页出现新旧状态冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 13:27:05 +0800</div>
+<pre>现在 reader 的对象范围页已同步。下一步改 current-state 页，把 “provisional examples” 从包含 tool_edge 改成“当前 checker-backed pairs 包含 motion.axis/axis 和 tool_management/tool_edge”，同时保留剩余暂缓列表。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 13:53:22 +0800</div>
+<pre>看一下未处理内容</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 13:54:39 +0800</div>
+<pre>我先按当前仓库状态查，不按记忆判断：看 git 是否干净、OpenSpec 还有哪些 active/未归档 change、任务清单里是否有未勾项，以及 TP004 状态页里仍明确 deferred 的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 13:55:15 +0800</div>
+<pre>当前检查到 worktree 是干净的，`promote-tool-edge-owner-scope` 已 9/9 complete，但还处在 active changes 里没有 archive。为了把“未处理内容”列准，我再抽取状态页、对象范围 provisional block 和相关 Open Questions。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-17 13:55:50 +0800</div>
+<pre>我看了当前仓库，未处理内容分两类：
+
+**1. 流程收尾**
+- `promote-tool-edge-owner-scope` 已经 `9/9 complete`，但还在 active changes 里，尚未 archive。
+- worktree 是干净的，`main` 已同步 `origin/main`。
+- 这一步建议下一步直接做 archive，把已完成 change 并入正式 spec。
+
+**2. TP004 后续未落内容**
+当前状态页明确还未处理这些内容：
+- 剩余 provisional owner/scope 晋级：
+  - `motion -&gt; machine/channel/axis/spindle`
+  - `zero_offset -&gt; frame_axis_component`
+  - `hal -&gt; machine`
+  - `magazine -&gt; machine`
+- semantic path grammar
+- machine-profile axis alias schema
+- runtime registry behavior
+- `semantic_name` value-set governance
+- formal `parameter_descriptor.value`
+- formal `parameter_descriptor.access`
+- activation / persistence fields
+- 剩余 provisional pair 的 promotion
+
+从优先级看，我建议：
+1. 先 archive 当前 complete change。
+2. 然后做 TP004 初步收尾页，列清“已完成/暂缓/下一阶段入口”。
+3. 下一块如果要继续，不建议马上做 `zero_offset` 晋级；它更像 instance binding 问题，应该先单独开 proposal。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 14:01:43 +0800</div>
+<pre>可以 先收尾 看看下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 14:02:23 +0800</div>
+<pre>我按“先把当前 complete change 做正式归档，然后基于归档后的仓库状态列下一步计划”执行。会先读归档流程说明，再跑 archive/校验/提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 14:03:33 +0800</div>
+<pre>`promote-tool-edge-owner-scope` 是唯一 active 且 complete 的 change，所以这里不再停下来选 change。下一步我会先检查 artifact/status 与 delta spec 是否需要同步到主 spec，再执行 archive。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 14:04:46 +0800</div>
+<pre>当前 change 的 artifacts 是 done、tasks 是 9/9。这里没有 `openspec/specs/` 主 spec 目录，说明这套仓库更多是 change/archive 工作流；我先确认 `openspec archive` 的实际选项，优先用 CLI 归档而不是手动移动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 14:05:28 +0800</div>
+<pre>归档方式我会用 `openspec archive promote-tool-edge-owner-scope --skip-specs -y`：这个仓库目前没有 `openspec/specs/` 主 spec 目录，前面的归档也都保留在 `openspec/changes/archive/`；本次实际规范内容已经落在 TP004 topic 文档里，不额外创建根级 spec。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 14:05:59 +0800</div>
+<pre>归档完成，目标是 `openspec/changes/archive/2026-06-17-promote-tool-edge-owner-scope`。现在跑归档后的状态、校验和文档检查，确认 active changes 为空且仓库仍一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 14:06:23 +0800</div>
+<pre>归档后 active changes 已为空，OpenSpec 没有待校验项，TP004 checker 和 published HTML 检查都通过。接下来我看 git diff，确认只有 archive 移动，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 14:07:01 +0800</div>
+<pre>diff 当前显示为目录移动，还没 staged，所以 `git diff --stat` 只统计了删除侧。我会确认归档目录完整性后用 `git add -A` 让 Git 识别 rename，再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 14:07:41 +0800</div>
+<pre>归档目录内容完整，`tasks.md` 仍是 9/9，delta spec 也被带到 archive 下。现在 staging 这个目录移动，然后提交推送归档收尾。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 14:08:15 +0800</div>
+<pre>归档移动已 staged。我再看一次 name-status，确认是 rename 而不是丢文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 14:08:37 +0800</div>
+<pre>Git 识别为 100% rename，没内容变更。现在提交归档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 14:09:00 +0800</div>
+<pre>归档提交已生成：`153cc6c docs: archive tool edge owner scope change`。我会推送并做最终状态确认，然后给你下一步计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 14:09:46 +0800</div>
+<pre>push 完成。最后确认 `main == origin/main`、active changes 为空、worktree 干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-17 14:10:27 +0800</div>
+<pre>已收尾完成：
+
+- 已归档 `promote-tool-edge-owner-scope`
+- 归档位置：`openspec/changes/archive/2026-06-17-promote-tool-edge-owner-scope/`
+- 提交并推送：`153cc6c docs: archive tool edge owner scope change`
+- 当前 `main == origin/main`
+- worktree clean
+- active OpenSpec changes 为空
+
+验证结果：
+- `openspec list --json`：`changes: []`
+- `openspec validate --all --strict`：无待校验项
+- `python3 tools/check_parameter_value_sets.py`：通过
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：通过
+
+下一步计划我建议分两步：
+
+1. 先做 TP004 初步收尾页
+   把当前参数描述符状态整理成一个读者友好的 closure/status 页面：已完成什么、checker-backed 到哪、哪些明确 deferred、下一阶段入口是什么。这个不新增模型，只做阶段收口。
+
+2. 再开下一条 proposal：`Parameter Instance Binding`
+   建议首个对象选 `frame_axis_component`，但不是直接晋级 `zero_offset -&gt; frame_axis_component`。先定义 instance binding 的最小规则：descriptor 是否存在、scope 是否匹配、instance keys 是否匹配、source 是否匹配。继续不碰 runtime value、semantic path grammar、registry/API。
+
+如果今天继续落，我建议先落第 1 步收尾页；它风险最低，也能让 TP004 当前阶段更像“初步结束”。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:524-527|note=[used TP004 next-slice guidance and closure boundary]
+MEMORY.md:487-490|note=[used narrow TP004 parameter-scope preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 14:31:35 +0800</div>
+<pre>今天TP004能收尾吗（初步）</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 14:32:24 +0800</div>
+<pre>我先再确认一下当前 repo 状态，避免用刚才的印象回答。重点看 active change、git 状态、TP004 状态页里剩余 deferred 是否已经足够支撑“初步收尾”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-17 14:33:01 +0800</div>
+<pre>可以，按“初步收尾”标准，今天 TP004 Parameter Descriptor 这条线已经可以收尾。
+
+判断依据：
+- worktree clean，`main == origin/main`
+- active OpenSpec changes 为空
+- `document-parameter-descriptor-current-state` 已 archive
+- `promote-tool-edge-owner-scope` 已 implement + archive
+- 当前 checker-backed 最小契约已经明确：
+  - `parameter_id`
+  - `owner`
+  - `scope`
+  - `semantic_name`
+- 当前 checker-backed owner/scope 已有两组：
+  - `motion.axis -&gt; axis`
+  - `tool_management -&gt; tool_edge`
+- deferred 内容已经明确列出，没有混在当前 contract 里：
+  - semantic path grammar
+  - runtime registry
+  - axis alias/profile schema
+  - `parameter_descriptor.value/access`
+  - activation/persistence
+  - 剩余 owner/scope promotion
+
+我建议今天不要再继续扩实现。最多再落一个“TP004 初步收尾说明/closure note”，把今天状态写成一页：已完成、未完成、下一阶段入口。这样收尾更稳，也方便明天接 `Parameter Instance Binding`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 14:36:20 +0800</div>
+<pre>可以 按照你的规划记处理一下先，然后看一下今天的条目总结  - 总结简短的几句</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 14:36:56 +0800</div>
+<pre>我按“落一个轻量 TP004 初步收尾说明，然后给你今天条目总结”处理。先查一下现有 TP004 目录和导航，避免新增页面放错位置或漏掉中文 reader。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 14:38:13 +0800</div>
+<pre>我会走最小收尾：不新开 OpenSpec change、不新增 schema，只在现有 Parameter Descriptor 当前状态页补一段“初步收尾说明”，并同步中文 reader 页。这样收束今天状态，同时不制造新的待归档项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 14:39:08 +0800</div>
+<pre>现有 root/en 是 include wrapper，中文是真实页面；所以只需要改 topic source 状态页和中文状态页，然后 rebuild/校验。内容会保持描述性，不新增规范字段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 14:40:37 +0800</div>
+<pre>初步收尾段已加到英文 source 和中文 reader 页。现在跑 i18n 结构检查、构建 HTML、published HTML 检查和参数 checker，确认这只是文档收束，没有破坏发布路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 14:41:05 +0800</div>
+<pre>基础检查通过，active changes 仍为空。接下来重建 docs HTML 并复查 published HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 14:41:50 +0800</div>
+<pre>HTML 已重建。现在跑 published HTML 检查，再看 diff 范围；如果只剩这两页改动，就提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 14:42:25 +0800</div>
+<pre>diff 很窄，只改了英文状态页和中文状态页。最后跑一次全量 tools 单测加 diff check，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 14:42:52 +0800</div>
+<pre>验证通过。现在提交：`docs: note TP004 descriptor initial closure`，然后推送并确认 clean。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 14:43:55 +0800</div>
+<pre>提交已完成：`5683978 docs: note TP004 descriptor initial closure`。我会推送到 origin，然后给你今天简短条目总结。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 14:44:27 +0800</div>
+<pre>push 完成。最后确认本地和远端一致、active changes 为空。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-17 14:45:06 +0800</div>
+<pre>已按规划处理完并推送。
+
+落地内容：
+- 在 TP004 Parameter Descriptor 当前状态页补了“Initial Closure / 初步收尾”说明。
+- 同步了中文 reader 页。
+- 没新开 change、没新增 schema、没碰 checker 逻辑。
+- 提交：`5683978 docs: note TP004 descriptor initial closure`
+- 当前 `main == origin/main`，worktree clean，active OpenSpec changes 为空。
+
+验证：
+- `python3 -m unittest discover -s tools/tests`：78 OK
+- `python3 tools/check_parameter_value_sets.py`：通过
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：通过
+- `./tools/build_docs_html.sh`：通过
+- `git diff --check`：通过
+
+今天条目总结：
+- TP004 Parameter Descriptor 最小契约完成初步收尾。
+- `tool_management -&gt; tool_edge` 已从候选提升为 checker-backed owner/scope。
+- 当前 deferred 边界已明确保留，未扩到 runtime、semantic path、value/access。
+- OpenSpec 当前无 active change，今天可以按 TP004 初步闭环记录。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 14:45:36 +0800</div>
+<pre>generate/update report &amp; docs + sync MetaNC-feat/hmi metanc_hmi_dsl + commit + push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 14:45:52 +0800</div>
+<pre>生成今天的report 记录session</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 14:46:35 +0800</div>
+<pre>我按 TP004 topic-local discussion pack 的现有格式生成今天的 `README/session/report`，并同步 topic book、root book、英文/中文 reader 路径和导航。先看 2026-06-15 这组的结构，复用它的发布方式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 14:47:09 +0800</div>
+<pre>我会创建 `2026-06-17-parameter-descriptor-initial-closure` 这一组：source 里放英文 session/report，中文 reader 写真实中文，root/en 用 include wrapper。随后更新 2026-06 索引和 SUMMARY 导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 14:47:53 +0800</div>
+<pre>现有 2026-06 月索引是手工表格，英文 root/en 是 include wrapper，中文是真实页面。接下来我会生成 source pack 和中文 pack，再补 index/SUMMARY 导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 14:48:22 +0800</div>
+<pre>source book 的 session/report 实际是 include 到 `TP004-parameter-system/discussions/...`，中文则是完整翻译页。我会按这个结构同时创建 canonical discussion pack 和 book include wrappers。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 14:49:00 +0800</div>
+<pre>我现在开始创建文件。内容会覆盖今天实际完成的三块：B cleanup/归档、tool_edge 晋级、初步收尾说明；后续计划只列 Parameter Instance Binding，不扩 runtime。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 14:49:46 +0800</div>
+<pre>目录已建好；接下来用补丁添加 canonical pack、book wrappers、root/en wrappers 和中文 reader 页面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 14:50:22 +0800</div>
+<pre>wrapper 相对路径已确认。我会用同一层级路径创建新 wrapper。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 14:52:24 +0800</div>
+<pre>日结内容已生成。接下来更新 2026-06 月索引和四套 SUMMARY 导航，让页面能从 book 里访问。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 14:52:52 +0800</div>
+<pre>我会把 2026-06-17 放在 2026-06 列表最前面，并在四套 SUMMARY 中加 session/report 子项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 14:54:10 +0800</div>
+<pre>导航已经更新。现在先跑 i18n/checker，看是否需要把新页面加入 published-page 检查或修 relative include。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 14:54:40 +0800</div>
+<pre>结构检查和参数 checker 都通过。下一步构建 HTML 并跑 published HTML 检查，然后全量单测。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 14:55:22 +0800</div>
+<pre>HTML 构建通过。现在复查 published HTML、全量 tests 和 diff 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-17 14:56:13 +0800</div>
+<pre>日结页、session/report、中文 reader 和导航都已生成并通过构建。刚才的 diff stat 没显示新文件是因为它们还未 staged；我会先看完整状态，再做最终校验和提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-17 14:56:44 +0800</div>
+<pre>状态正常，active changes 仍为空。现在 staged 所有日结文件，复查 staged diff，再提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-17 14:57:25 +0800</div>
+<pre>文件已 staged。我再检查 staged 范围和 whitespace，确认没有漏掉生成的日结页面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-17 14:58:04 +0800</div>
+<pre>staged 内容正确，21 个文件全是日结包和导航。现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-17 14:58:48 +0800</div>
+<pre>提交已完成：`9cf9296 docs: add TP004 descriptor closure discussion pack`。推送后我会做最终 clean 状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-17 14:59:34 +0800</div>
+<pre>push 已完成。最后确认远端同步、worktree clean、active changes 为空。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-06-17 15:00:09 +0800</div>
+<pre>已生成并推送今天的 TP004 report/session。
+
+位置：
+- `TP004-parameter-system/discussions/2026-06-17-parameter-descriptor-initial-closure/README.md`
+- `TP004-parameter-system/discussions/2026-06-17-parameter-descriptor-initial-closure/session.md`
+- `TP004-parameter-system/discussions/2026-06-17-parameter-descriptor-initial-closure/report.md`
+
+也已同步到：
+- topic book
+- root book
+- docs_i18n/en
+- docs_i18n/zh
+- 2026-06 月索引
+- SUMMARY 导航
+
+提交并推送：
+`9cf9296 docs: add TP004 descriptor closure discussion pack`
+
+验证通过：
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_parameter_value_sets.py`
+- `./tools/build_docs_html.sh`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 -m unittest discover -s tools/tests`
+- `git diff --check`
+
+当前状态：
+- `main == origin/main`
+- worktree clean
+- active OpenSpec changes 为空
+
+今天简短总结：
+- TP004 Parameter Descriptor minimal contract 达到初步收尾。
+- `tool_management -&gt; tool_edge` 已提升为 checker-backed owner/scope。
+- OpenSpec changes 已归档，current-state 页面和日结包已记录收尾边界。
+- 下一步建议从 `Parameter Instance Binding` 开始，不扩 runtime 或 semantic path。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 08:57:57 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed30d-129f-72d2-b299-1b0c7ec31cce&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**State Assessment**\n\nTP004 is not ready to close as a whole topic: `openspec/TOPICS.md` still marks it as an `active design baseline`, and the broader runtime-access baseline still has open design areas.\n\nThe Parameter Descriptor slice is stable enough for initial closure. The current stable contract is deliberately narrow: `parameter_id`, `owner`, `scope`, and `semantic_name`, with checker-backed owner/scope bindings, ID consistency, duplicate detection, axis-alias rejection, and exclusion of `access.readable` / `access.writable`.\n\nThe only active OpenSpec change is `document-parameter-descriptor-current-state`; `openspec status --change ... --json` reports `isComplete: true` and `15/15` tasks done. So this looks like completed work awaiting archive, not unfinished implementation.\n\nI verified read-only checks today:\n\n```bash\nopenspec validate document-parameter-descriptor-current-state --strict\npython3 tools/check_docs_i18n_sync.py\npython3 tools/check_docs_i18n_sync.py --require-published-html\npython3 tools/check_parameter_value_sets.py\nPYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests\ngit diff --check\n```\n\nAll passed. I did not rebuild docs because that writes generated output.\n\n**Recommended Closure Tasks In Order**\n\n1. Declare closure scope explicitly: close the Parameter Descriptor initial slice only, not all TP004.\n2. Promote `TP004-parameter-system/book/src/parameter-descriptor-status.md` as the explicit TP004 closure/status artifact for this slice.\n3. Keep the archived discussion pack as evidence, especially `TP004-parameter-system/discussions/2026-06-15-parameter-descriptor-current-state/report.md`.\n4. Archive `openspec/changes/document-parameter-descriptor-current-state` using the repo’s normal OpenSpec archive flow.\n5. Before archive, rerun the full gate including the writing steps: docs build, published HTML projection check, value-set checker, OpenSpec strict validation, unit tests, and diff whitespace checks.\n6. After archive, confirm `openspec list --json` has no active TP004 descriptor closure changes.\n7. Leave deferred work as future slices: semantic path grammar, machine-profile axis aliases, runtime registry behavior, `semantic_name` governance, descriptor value/access fields, activation/persistence, and provisional owner-scope promotion.\n\n**Narrow Scope Today**\n\nToday’s narrow, safe closure scope is:\n\n- Archive the completed `document-parameter-descriptor-current-state` change.\n- Do not add descriptor fields.\n- Do not promote provisional owner/scope pairs.\n- Do not reword TP004 as fully closed.\n- Treat the status page as the closure artifact for the initial Parameter Descriptor contract.\n- Gate the archive with the full validation set, including `./tools/build_docs_html.sh`, because closure should prove source and generated reader surfaces match.\n\n**Files Relied On**\n\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/TOPICS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/TOPICS.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/tasks.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/tasks.md)\n- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-15-parameter-descriptor-current-state/report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-15-parameter-descriptor-current-state/report.md)\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 08:57:57 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed30d-1366-7ed3-b6ad-bac8f4018957&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No edits made.\n\n**Top Risks**\n1. `candidate` / `near-formal` can be misread as implementation readiness. In the current docs, status is value maturity only, not owner/API/runtime readiness; `near-formal` still needs explicit promotion before schema freeze. See [STATUS-USAGE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/STATUS-USAGE.md:3) and [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:107).\n2. Provisional owner-scope pairs can look “almost accepted.” Today only `motion.axis -&gt; axis` is checker-backed; `tool_management -&gt; tool_edge`, `zero_offset -&gt; frame_axis_component`, `hal -&gt; machine`, etc. are explicitly deferred. See [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136).\n3. `semantic_name` governance is a likely scope-creep trigger. Current contract keeps it owner-local text, not a governed value set; adding naming rules now could turn a small descriptor slice into taxonomy governance. See [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:57).\n4. Access/value fields are already formal in access definitions, but not in `parameter_descriptor`. Promoting `parameter_descriptor.value` or `parameter_descriptor.access` now would blur the boundary the current-state page explicitly defers. See [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:118) and [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:168).\n5. Siemens examples can become accidental MetaNC runtime contracts. `$TC_DP3`, `$P_UIFR`, and `$MA_MAX_AX_VELO` are valuable compatibility/access-family evidence, but their dispatch strings and owner availability fixtures are not runtime implementation APIs. See [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:131), [zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:122), and [axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:117).\n6. Current-state closure can be mistaken for implementation closure. `document-parameter-descriptor-current-state` is complete, but it closed a descriptive docs/status slice, not runtime registry behavior or formal value/access fields.\n\n**Guardrails For Today**\n- Treat the current descriptor contract as exactly four fields: `parameter_id`, `owner`, `scope`, `semantic_name`.\n- Promote at most one owner-scope pair, and only with owner evidence, object-scope meaning, checker rule, and negative test.\n- Do not add new status words or readiness columns.\n- Do not promote `semantic_name` to a value set unless real collisions or misuse examples exist.\n- Keep Siemens compatibility examples under access-definition/validation scope, not descriptor identity or runtime API scope.\n- Keep runtime registry, machine-profile axis aliases, value metadata, access policy, activation, and persistence as deferred.\n\n**Questions Before Implementation**\n- Which single owner-scope pair, if any, is worth promoting next: `tool_management -&gt; tool_edge`, `zero_offset -&gt; frame_axis_component`, or none?\n- Is today’s goal descriptor governance only, or also access-family validation? Mixing both is the main scope creep path.\n- Should `semantic_name` remain owner-local until misuse appears, or do you want a minimal lexical rule now?\n- Are Siemens examples meant to validate parsing/mapping only, or should they drive a MetaNC owner API backlog?\n- What counts as closure today: docs/checker proof, OpenSpec proposal ready, or runtime implementation plan?\n\n**Go / No-Go Options**\n- **Go:** one narrow docs/checker slice that promotes one owner-scope pair with evidence and tests.\n- **Conditional Go:** prepare an OpenSpec proposal only, if the owner evidence is not ready.\n- **No-Go for runtime:** do not start runtime registry or dispatch implementation from the current TP004 state.\n- **No-Go for schema expansion:** do not add formal `parameter_descriptor.value`, `parameter_descriptor.access`, semantic path grammar, or `semantic_name` value-set governance today.\n\nMy recommendation: **Conditional Go** unless you can name one owner-scope pair with enough evidence today. Otherwise keep today’s work as review/proposal hardening and avoid claiming implementation readiness.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:58:13 +0800</div>
+<pre>两个 agent 已回：一个主张“只收 Parameter Descriptor slice，不关整个 TP004”，另一个强调“今天不要误入 runtime/schema 扩张”。我还在等实现桥接和发布检查两个结果，回来后一起合并。</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:01:00 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed30d-12e4-7c11-90c2-5eba32fbc628&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No files edited. I inspected the current TP004 docs/checker surface and the safest bridge is still small: promote one concrete boundary at a time, then add grammar/alias rules around it.\n\n**Candidate Slices**\n| Slice | Purpose | Files affected | Dependencies | Acceptance checks | Risk |\n|---|---|---|---|---|---|\n| 1. Promote `zero_offset -&gt; frame_axis_component` owner/scope | Move one already evidenced provisional pair into checker-backed descriptor eligibility. Best link to existing `$P_UIFR[frame,axis,component]` access family. | [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136), [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:175), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:91), checker tests | `zero_offset` owner evidence must be registered, not just listed as unassigned; existing zero-offset access definition/validation set provides shape evidence. | `tools/check_parameter_value_sets.py` accepts `zero_offset/frame_axis_component`; rejects provisional-only pairs; validation set still proves `$P_UIFR` descriptor/dispatch behavior. | Medium: `zero_offset` is currently unassigned, so owner registry evidence may be the real blocker. |\n| 2. Promote `tool_management -&gt; tool_edge` owner/scope | Admit the tooling descriptor boundary using the already registered TP002 owner and `$TC_DP3[tool,edge]` evidence. | [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:156), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:62), checker tests | TP002 owner is already registered; access family says tool data is domain-table, not flattened parameter. | Descriptor pair accepted only for `tool_management/tool_edge`; no conversion of `$TC_DP3` into ordinary parameter catalog. | Low-medium: easiest evidence path, but slightly less aligned with “Parameter Descriptor” if treated as domain-table field. |\n| 3. Semantic path grammar, documentation-only first | Define `semantic_path_template` grammar as grammar plus variable binding, not enum and not identity. | [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:130), [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:36), maybe [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:231) later | Owner/scope path variables must be stable enough; do not require it on all descriptors yet. | Examples only use variables declared by scope `path_variables`; checker can reject unknown variables later. | Medium: easy to accidentally make it a required descriptor field or URL-like path. |\n| 4. Axis alias/profile boundary | Add a configuration-owned alias asset shape for axis references used by validation fixtures, without putting aliases into descriptor identity. | [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:90), [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:833), [validation-sets/case-schema.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/case-schema.md:77) | Needs a separate machine/profile owner-kind decision; current profile-owned declarations are compatibility-profile owned only. | `axis_map` fixtures resolve aliases; `parameter_id` still rejects `x/y/z/a/b/c` identity segments. | High for today: machine-profile ownership is explicitly reserved. |\n| 5. Runtime registry/API boundary note | Define what generated registry/API metadata may consume from descriptors without defining runtime registry schema. | [access-definitions/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/README.md:81), [validation.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/validation.md:156), baseline docs | Should follow owner/scope promotion and semantic path grammar, not precede them. | Text says access definitions are source, generated registry is downstream, runtime instances are not persisted rows. | High if it expands into runtime-symbol/API design. |\n\n**Best For Today**\nDo slice 2: promote `tool_management -&gt; tool_edge`.\n\nWhy: `tool_management` is already registered with TP002 evidence in [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:62), and `$TC_DP3[tool,edge]` already has access-definition and validation-set coverage. It is the narrowest implementation bridge because it exercises owner/scope promotion without first solving unassigned `zero_offset`, semantic path grammar, or machine-profile alias ownership.\n\n**Explicitly Not Today**\n- Do not define runtime registry/API schema. Current docs explicitly keep runtime registry behavior deferred.\n- Do not add broad runtime-symbol expansion or PLC/NC symbol catalog work.\n- Do not formalize `parameter_descriptor.value`, `parameter_descriptor.access`, activation, or persistence fields.\n- Do not define machine-profile axis alias schema today.\n- Do not make `semantic_path_template` required today.\n- Do not promote broad pairs like `motion -&gt; machine/channel/axis/spindle`, `hal -&gt; machine`, or `magazine -&gt; machine`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:01:27 +0800</div>
+<pre>第三个 agent 建议今天最适合做 `tool_management -&gt; tool_edge` 的单对 owner/scope 晋级；这比 `zero_offset` 风险低，因为 tooling owner 已有 TP002 evidence。还差发布/文档 agent，如果它超时，我会用现有信息先给你完整决策表。</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:01:29 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed30d-131d-7ce0-a131-3d5c6ae24e97&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Read-only audit complete. I did not edit files.\n\n**Status**\nGo for initial docs closure with one caveat: TP004 reader/i18n/published HTML validates cleanly, but `document-parameter-descriptor-current-state` is still an active OpenSpec change even though it is complete `15/15`. Worktree is clean.\n\n**1. Doc/Publish Checklist**\n- Reader path is mostly wired: TP004 topic book, root aggregate book, English i18n, and Chinese i18n all link `Parameter Descriptor Current State` and the `2026-06-15` session/report pack.\n- Chinese projection policy is explicit in [docs_i18n/PROJECTION-RULES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/PROJECTION-RULES.md:22): Chinese reader pages need visible Chinese prose; only registry-style includes are allowlisted.\n- `tools/check_docs_i18n_sync.py` enforces projection drift, Chinese include policy, source links, owner-registry sync, and `docs_i18n/site` vs `docs_html` sync.\n- `docs_html/index.html`, `docs_html/en/index.html`, `docs_html/zh/index.html`, and both en/zh current-state pages exist and pass published-tree validation.\n- `./tools/build_docs_html.sh` is the publish entrypoint: check i18n, delete generated output, build root/topic/en/zh mdBooks, stage `docs_i18n/site`, mirror to `docs_html`, then re-check.\n- Generated output is ignored by git via `.gitignore`, so closure should treat `docs_html/` as local published preview, not committed source.\n- OpenSpec status: `document-parameter-descriptor-current-state` is valid and complete, but not archived.\n\n**2. Likely Missing Cleanup**\n- Archive `document-parameter-descriptor-current-state` after review; it is the main remaining closure item.\n- Align `TP004-parameter-system/discussions/DAILY-DISCUSSION-PACK-PROCESS.md`: it still describes older packs requiring `discussion-log.md`, `diagrams.md`, and standalone HTML, while current closure packs use `README.md`, `session.md`, and `report.md`.\n- Add `parameter-descriptor-status.md` to the checker’s explicit published-page invariants. It exists and is linked, but `tools/check_docs_i18n_sync.py` does not currently list it in `PUBLISHED_PAGES`.\n- Decide whether root aggregate docs should include Siemens Reference Notes. Topic and i18n sidebars include it, but root aggregate sidebar/html do not.\n\n**3. Safest Today-Sized Deliverable**\nTreat today as an initial closure package, not a new design slice: archive the completed OpenSpec change, rebuild published docs, rerun validation, and leave schema/checker semantics unchanged. If doing only one small docs cleanup before archive, I would fix the discussion-pack process wording so it matches the current `session.md`/`report.md` closure format.\n\n**4. Exact Validation Commands**\nRead-only/current checks:\n\n```bash\ngit status --short\npython3 tools/check_docs_i18n_sync.py\npython3 tools/check_docs_i18n_sync.py --require-published-html\npython3 tools/check_parameter_value_sets.py\nopenspec validate document-parameter-descriptor-current-state --strict\nPYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests\ngit diff --check\nopenspec list --json\nopenspec status --change document-parameter-descriptor-current-state --json\n```\n\nPublish/archive flow when edits are allowed:\n\n```bash\n./tools/build_docs_html.sh\npython3 tools/check_docs_i18n_sync.py --require-published-html\nopenspec archive document-parameter-descriptor-current-state -y\npython3 tools/check_docs_i18n_sync.py\npython3 tools/check_parameter_value_sets.py\nPYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests\ngit diff --check\n```\n\nRead-only checks passed in this audit, including `76` unit tests.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:01:58 +0800</div>
+<pre>所有 agent 都已完成并关闭。我现在合并成一个决策清单：会明确区分“可今天落”“可作为 proposal”“今天不建议碰”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-17 09:02:36 +0800</div>
+<pre>多 agent 结论比较一致：**TP004 整体还不能说收尾，但 Parameter Descriptor 初步切片可以收尾**。今天最关键的选择是：只做“初步收尾包”，还是在收尾后再开一个很窄的推进切片。
+
+**共识判断**
+- TP004 仍是 `active design baseline`，不能宣布整个 TP004 完结。
+- `document-parameter-descriptor-current-state` 已经 `15/15 complete`，更像“完成后待 archive”，不是还在实施中。
+- 当前稳定契约只应保持 4 字段：`parameter_id`、`owner`、`scope`、`semantic_name`。
+- 今天不要碰 runtime registry/API、`parameter_descriptor.value/access`、activation/persistence、machine-profile axis alias。
+- 如果要推进，只推进一个 owner/scope pair，不能一口气放开 provisional 列表。
+
+**今天可选工作包**
+| 选项 | 内容 | 风险 | 适合什么目标 |
+|---|---|---:|---|
+| A. 初步收尾包 | archive 当前完成的 OpenSpec change；重建 docs；跑完整校验；不改 schema/checker 语义 | 低 | 今天想把已有工作干净收口 |
+| B. 收尾 + 小清理 | A + 修 `DAILY-DISCUSSION-PACK-PROCESS.md` 让它匹配当前 `README/session/report` 格式；把 `parameter-descriptor-status.md` 加进发布页 invariant | 低 | 今天想让文档维护流程更稳 |
+| C. 新推进 proposal | 不直接实现，只写下一个 owner/scope 晋级 proposal，推荐 `tool_management -&gt; tool_edge` | 低 | 今天想定下一步，但不动 checker |
+| D. 小实现推进 | promote `tool_management -&gt; tool_edge`，补 checker/test/docs，只放开这一对 | 中低 | 今天想实质推进一点 |
+| E. 暂不建议 | `zero_offset -&gt; frame_axis_component`、semantic path grammar、axis alias schema、runtime API | 中到高 | 需要更多证据或单独设计 |
+
+**我建议今天落 B**
+先把 `Parameter Descriptor` 初步切片收干净：archive active change、重建 docs、跑校验，再顺手修两个文档维护小洞。这个不会扩大概念，也不会误伤当前最小契约。
+
+**如果你想今天再推进一点**
+选 D，但我建议放在 B 之后，且只做 `tool_management -&gt; tool_edge`。原因是 `tool_management` 已经有 TP002 owner evidence，`$TC_DP3[tool,edge]` 也有 access definition 和 validation set，比 `zero_offset` 更适合作为第一对晋级。
+
+**今天不要落的内容**
+- 不把 TP004 整体标记为完成。
+- 不新增 `parameter_descriptor.value` / `parameter_descriptor.access`。
+- 不把 `semantic_name` 做成 value set。
+- 不定义 semantic path grammar。
+- 不定义 axis alias/profile schema。
+- 不开始 runtime registry/API 设计或实现。
+- 不把 Siemens 示例当成 MetaNC runtime API 承诺。
+
+**推荐执行顺序**
+1. `B`：完成初步收尾包。
+2. 验证后看剩余时间。
+3. 如果还想推进，开 `tool_management -&gt; tool_edge` 的窄切片 proposal 或直接做 `D`。
+4. 其他内容全部进后续切片，不混进今天。
+
+我给你的决策建议是：**今天选 B；如果你明确想有一点推进，再追加 C 或 D。**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:480-491|note=[used to keep TP004 next-step options aligned with prior descriptor governance decisions]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:19:14 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed324-f5e0-7e23-8848-509c1ecaedba&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**CONDITIONAL GO**\n\nOption A is acceptable if it is framed as **closure of the `document-parameter-descriptor-current-state` documentation/change package only**, not as “TP004 closure” or “Parameter Descriptor complete.”\n\nRationale:\n- The change is currently complete: `openspec status --change document-parameter-descriptor-current-state --json` reports `isComplete: true`, 15/15 tasks done.\n- `openspec validate document-parameter-descriptor-current-state --strict` passes.\n- The proposal and design explicitly say no schema/checker/value-set/runtime changes are in scope: [proposal.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/proposal.md:30), [design.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/design.md:21).\n- The status page itself keeps the right boundary: “not a new schema page,” draft/provisional/deferred material remains separated: [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:1).\n- Archive timing is reasonable: this is the only active change, complete, valid, and the target archive path for today does not already exist.\n\nMain risk:\n- The phrase “TP004 Parameter Descriptor closure package” can falsely imply the whole TP004 descriptor model is done. It is not. Semantic path grammar, runtime registry, access/value fields, `semantic_name` governance, and owner-scope promotions remain deferred.\n\nGuardrails:\n- Archive message should say: “archive current-state documentation package,” not “close TP004.”\n- Do not sync/promote the delta spec into topic-local normative specs as part of Option A.\n- Do not touch `tools/check_parameter_value_sets.py`, value sets, schema fields, or TP004 topic status.\n- Re-run before archive: docs i18n check, docs rebuild, published-html check, parameter checker, `openspec validate`, `git diff --check`.\n- After archive, confirm only `openspec/changes/...` moved and generated docs changed only if rebuild output actually differs.\n\nI did not edit files.  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:19:40 +0800</div>
+<pre>A 的风险审查已回：结论是 conditional go，核心条件是只能叫“current-state 文档包归档”，不能叫 TP004 完成。继续等剩余 A/B/C。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:19:50 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed326-30f3-73d2-91ea-55ed7214b2e3&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**CONDITIONAL GO.**\n\nA proposal-only step is useful if the goal is to make the next TP004 decision explicit before touching checker-backed contract: `tool_management` is already a registered owner, `tool_edge` is already an object scope, and the pair is already documented as provisional. A small proposal can define the promotion slice without prematurely changing validation behavior.\n\nIt becomes process overhead if it only restates “maybe promote `tool_management -&gt; tool_edge`” without new source evidence, acceptance criteria, or a clear handoff to the later implementation slice. Since Option C excludes checker work, it must not claim the pair is promoted or accepted yet.\n\nScope boundaries must say explicitly:\n\n- only one pair: `tool_management -&gt; tool_edge`\n- no checker implementation, tests, generated docs, or source contract edits\n- no new owner/scope/value-set tokens\n- no semantic path grammar, access/value metadata, runtime registry, or `semantic_name` governance\n- future implementation would be a separate change that moves the pair into checker-backed `owner_scope_bindings`\n\nUser decision needed first: confirm whether `tool_management -&gt; tool_edge` is the next real promotion target, based on TP002/tooling evidence, or whether this should stay deferred until another owner/scope pair has stronger source pressure.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:19:57 +0800</div>
+<pre>C 的风险审查也回了：proposal-only 可以做，但必须有明确目标和验收标准，否则就是流程开销。还在等 A 可落性、B 双审、C 可落性。</pre>
+</article>
+</section>
+<section class="turn event" id="event-7">
+<h3>Event 7 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:20:01 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed324-f6c5-7e62-a162-3f8f910f1a94&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**GO** for Option C as proposal-only. Do not present it as an implemented promotion.\n\nFeasible because current TP004 already has the exact setup needed: `tool_management -&gt; tool_edge` is visible as a provisional owner/scope pair, `tool_management` is registered, `tool_edge` exists as an object scope, and `$TC_DP3[tool,edge]` evidence maps to `owner: tool_management` / `scope: tool_edge`.\n\nLikely proposal contents:\n- `Why`: promote one real deferred pair next, keeping TP004 narrow.\n- `What`: propose `tool_management -&gt; tool_edge` as the next owner/scope promotion candidate.\n- `Non-goals`: no checker implementation, no `zero_offset`, no semantic path grammar, no runtime/tooling implementation.\n- `Design`: cite TP002 tooling ownership, TP004 object scope, owner registry, Siemens/MetaNC tool-edge access definitions.\n- `Spec`: require future promotion to move the pair from provisional notes to checker-backed `owner_scope_bindings`; proposal itself does not change current contract.\n- `Tasks`: proposal setup/validation now; later unchecked tasks for evidence refresh, source-doc promotion, projections, focused checker/tests if implementation proceeds.\n\nAffected paths for Option C only:\n- `openspec/changes/&lt;change-id&gt;/proposal.md`\n- `openspec/changes/&lt;change-id&gt;/design.md`\n- `openspec/changes/&lt;change-id&gt;/tasks.md`\n- `openspec/changes/&lt;change-id&gt;/specs/&lt;capability&gt;/spec.md`\n\nFuture implementation paths, not touched by Option C:\n- `TP004-parameter-system/openspec/OBJECT-SCOPES.md`\n- TP004 book/i18n projections\n- `tools/check_parameter_value_sets.py` and tests, only if new test coverage is added\n\nAcceptance checks:\n- `openspec validate &lt;change-id&gt; --strict`\n- `git diff --check`\n- Confirm diff is limited to the new OpenSpec change directory\n\nBlockers:\n- No blocker for proposal creation.\n- Blocker for claiming actual promotion: the pair must not be treated as checker-backed until source docs move it into `owner_scope_bindings` and validation proves it.\n\nI did not edit files; worktree is clean.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:20:19 +0800</div>
+<pre>C 的两个 reviewer 已形成一致结论：proposal-only 可做，并且风险低；但它不能替代实际 promotion。接下来拿 B 和 A 的剩余结果，然后继续补派 D/E。</pre>
+</article>
+</section>
+<section class="turn event" id="event-8">
+<h3>Event 8 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:20:23 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed324-f629-7ab2-bf5c-79cb33cf6e15&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**CONDITIONAL**\n\nOption B’s added cleanup is feasible today, but the whole option inherits Option A’s unknowns because Option A is not defined in this turn. For the B-specific scope, I see no repo blocker.\n\nRationale:\n- `TP004-parameter-system/discussions/DAILY-DISCUSSION-PACK-PROCESS.md` is stale: it still requires `discussion-log.md`, `diagrams.md`, `html/index.html`, and `YYYY-MM-DD-parameter-system/`, while current packs use `README.md`, `session.md`, `report.md`, and descriptive dated slugs.\n- Adding `parameter-descriptor-status.md` to `tools/check_docs_i18n_sync.py` published-page invariants is appropriate: it is already in both `docs_i18n/en/src/SUMMARY.md` and `docs_i18n/zh/src/SUMMARY.md`, and both generated HTML pages exist with stable text.\n- Current tree is clean: `## main...origin/main`; no edits made.\n\nExact files:\n- [DAILY-DISCUSSION-PACK-PROCESS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/DAILY-DISCUSSION-PACK-PROCESS.md:1)\n- [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:430)\n- [test_check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_docs_i18n_sync.py:159)\n- [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:1)\n- [zh parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:1)\n\nCommands/tests to run after edits:\n```bash\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py\n./tools/build_docs_html.sh\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py --require-published-html\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_parameter_value_sets.py\nenv PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests\ngit diff --check\n```\n\nAlready verified now, without edits:\n- `check_docs_i18n_sync.py`: passed\n- `check_docs_i18n_sync.py --require-published-html`: passed\n- `check_parameter_value_sets.py`: passed\n- `python3 -m unittest discover -s tools/tests`: 76 tests passed\n\nBlockers:\n- None for the B-specific cleanup.\n- Only condition is Option A itself must already be acceptable.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:20:29 +0800</div>
+<pre>B 的可落性审查已回：文档流程确实有旧格式残留，published-page invariant 也值得补；条件是 A 本身先成立。继续等 A 可落性和 B 风险审查。</pre>
+</article>
+</section>
+<section class="turn event" id="event-9">
+<h3>Event 9 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:21:01 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed324-f68d-71e3-adb3-9a3ff3be0134&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;CONDITIONAL.\n\nDo Option B only as a narrow closure cleanup before archive, and keep it to two things:\n\n- Clarify discussion-pack process wording around current-state pages and review/closure, without adding new schema/checker expectations.\n- Add `parameter-descriptor-status.md` to published-page invariants only for the already-published root/en/zh reader pages, with stable required text like “not a new schema page”, “Checker-Backed Today”, and “No item in this list...”.\n\nRationale: the current-state page is already in navigation and generated HTML, but it is missing from `PUBLISHED_PAGES`, so the invariant would close a real coverage gap. Risk becomes NO-GO if it expands into broader “all current-state pages” discovery, new descriptor semantics, or new checker rules. Generated docs churn is manageable because `docs_html/` and mdBook HTML are ignored outputs; still run rebuild plus `check_docs_i18n_sync.py --require-published-html`.\n\nArchive timing: do this before archive if the intent is to archive a complete, review-stable change. If you archive first, this becomes a new docs-hardening change, which is cleaner only if you want zero post-completion edits on the active change.\n\nNo files edited.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:21:09 +0800</div>
+<pre>B 的两个 reviewer 也一致：conditional go，且建议在 archive 前只做两个很窄的 cleanup。还剩 A 可落性结果；之后我会关闭这批 agent 并继续审 D/E。</pre>
+</article>
+</section>
+<section class="turn event" id="event-10">
+<h3>Event 10 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:22:50 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed324-f553-7442-9d2a-ae0fc38d51dd&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**GO**\n\nFeasible today. I did not edit files. Current state supports Option A:\n\n- Worktree is clean.\n- `document-parameter-descriptor-current-state` exists and is complete.\n- `openspec status --change document-parameter-descriptor-current-state --json` reports `isComplete: true`.\n- `openspec validate document-parameter-descriptor-current-state --strict` passes.\n- `openspec validate --all --strict` passes.\n- `mdbook` is installed: `mdbook v0.5.2`.\n- Archive target `openspec/changes/archive/2026-06-17-document-parameter-descriptor-current-state/` does not exist.\n\n**Affected Files**\n\nArchive move only:\n\n- From `openspec/changes/document-parameter-descriptor-current-state/`\n- To `openspec/changes/archive/2026-06-17-document-parameter-descriptor-current-state/`\n\nFiles moved:\n\n- `proposal.md`\n- `design.md`\n- `tasks.md`\n- `specs/parameter-descriptor-current-state/spec.md`\n\nDocs rebuild writes generated outputs:\n\n- `book/html/`\n- `TP004-parameter-system/book/html/`\n- `docs_i18n/en/book/`\n- `docs_i18n/zh/book/`\n- `docs_i18n/site/`\n- `docs_html/`\n\nNo expected edits to schema/checker semantics, including `tools/check_parameter_value_sets.py`, TP004 value sets, schema fields, or descriptor contract source semantics.\n\n**Commands**\n\nRecommended gate:\n\n```bash\ngit status --short\nopenspec status --change document-parameter-descriptor-current-state --json\nopenspec validate document-parameter-descriptor-current-state --strict\nmkdir -p openspec/changes/archive\nmv openspec/changes/document-parameter-descriptor-current-state openspec/changes/archive/2026-06-17-document-parameter-descriptor-current-state\npython3 tools/check_docs_i18n_sync.py\n./tools/build_docs_html.sh\npython3 tools/check_docs_i18n_sync.py --require-published-html\npython3 tools/check_parameter_value_sets.py\npython3 -m unittest discover -s tools/tests\nopenspec validate --all --strict\ngit diff --check\ngit status --short\n```\n\n**Blockers**\n\nNo hard blockers found. One procedural note: the change has a delta spec, while this repo currently has no `openspec/specs/` main spec tree. For this Option A, archive without syncing the delta spec is the clean path; syncing would create a new root spec surface and is outside “closure package, no schema/checker semantics change.”\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:22:59 +0800</div>
+<pre>A/B/C 的双审已完成。我先关闭这些 agent 释放名额，再派 D/E 的双审。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:23:15 +0800</div>
+<pre>A/B/C 评审已关闭。我现在派 D 和 E 的双 reviewer，补齐每个建议都有多个 agent 审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 09:23:20 +0800</div>
+<pre>D/E 的四个 reviewer 已启动。我会等它们返回后给你最终矩阵，不会再扩展新的候选。</pre>
+</article>
+</section>
+<section class="turn event" id="event-11">
+<h3>Event 11 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:27:22 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed32c-e8bd-7ed0-adae-6c5adbc995e1&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**NO-GO** for Option E as one implementation bundle.\n\n- Scope creep risk is high: the current TP004 contract is deliberately only `parameter_id`, `owner`, `scope`, `semantic_name`, and the status page explicitly defers semantic path grammar, machine-profile axis alias schema, runtime registry behavior, and provisional owner-scope promotion ([parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:13), [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:77)).\n- `zero_offset` has reference-family evidence, but not owner readiness evidence: it is still listed under `unassigned_owner_tokens`, and the `zero_offset -&gt; frame_axis_component` pair is only provisional ([OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:91), [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:162)).\n- False implementation readiness: `$P_UIFR[...]` docs show a desired dispatch to `zero_offset`, but that is access-definition/design context, not proof that the owner boundary, API, registry semantics, axis profile schema, or checker-backed promotion are ready ([zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:47)).\n- Explicitly defer: semantic path grammar, axis alias/profile schema, runtime registry/API, formal promotion of `zero_offset` owner/scope, and any checker/API work that would make provisional notes look accepted.\n\nA smaller conditional path would be: promote exactly one owner-scope pair only after source evidence for `zero_offset` ownership/API exists, leaving grammar, axis profiles, and runtime registry as separate later proposals.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:27:28 +0800</div>
+<pre>E 的风险审查已回：作为一包 implementation 是 no-go，主要因为 `zero_offset` 还在 unassigned，其他语法/API/alias 内容也都被当前状态页明确 deferred。继续等 D 和 E 可落性。</pre>
+</article>
+</section>
+<section class="turn event" id="event-12">
+<h3>Event 12 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:27:35 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed32c-e88c-7291-b83b-70fdf82ff088&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Verdict: CONDITIONAL**\n\nOption E as a bundle is **NO-GO today**. It combines four deferred areas that the current TP004 docs explicitly keep outside the checker-backed contract: semantic path grammar, machine-profile axis alias schema, runtime registry behavior, and promotion of provisional owner-scope pairs.\n\nThe only feasible subpart today is a **narrow conditional slice**: promote `zero_offset -&gt; frame_axis_component` from provisional to checker-backed **only if** you first accept `zero_offset`’s topic ownership boundary. The repo already has the scope record and Siemens validation evidence for `$P_UIFR[frame,axis,component]`, but `zero_offset` is still an unassigned owner token, so promoting the pair without owner evidence would freeze an unresolved boundary.\n\nAffected files for that narrow slice:\n- [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:117): move `zero_offset -&gt; frame_axis_component` from `provisional_owner_scope_notes` into `owner_scope_bindings`.\n- [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:91): resolve `zero_offset` from `unassigned_owner_tokens` or explicitly justify keeping it unassigned while still binding.\n- [zero-offset-user-frame-axis-component.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/siemens/zero-offset-user-frame-axis-component.md:1): use as supporting evidence for the Siemens `$P_UIFR` family.\n- [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:691) and [test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1553): likely need focused tests proving the pair is accepted and provisional notes remain non-formal.\n- i18n/source projections for object scopes, descriptor status, and any discussion pack pages if this becomes a formal change.\n\nPrerequisites:\n- Decide the `zero_offset` owner boundary and evidence source.\n- Keep semantic path grammar out of this slice.\n- Keep axis aliases/profile schema out of this slice.\n- Keep runtime registry/API out of this slice.\n\nLikely validation gates:\n`openspec validate &lt;new-change&gt; --strict`, `python3 -m unittest discover -s tools/tests`, `python3 tools/check_parameter_value_sets.py`, `python3 tools/check_docs_i18n_sync.py`, `./tools/build_docs_html.sh`, `python3 tools/check_docs_i18n_sync.py --require-published-html`, `git diff --check`.\n\nSo: **CONDITIONAL GO only for the zero-offset owner/scope promotion after owner-boundary evidence is ready; NO-GO for semantic path grammar, axis alias/profile schema, and runtime registry/API today.**\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:27:47 +0800</div>
+<pre>E 的两个 reviewer 一致：整包 no-go；唯一可能的子项是 zero_offset 单独晋级，但前提是先解决 owner boundary，所以今天不推荐。继续等 D 两个结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-13">
+<h3>Event 13 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:28:39 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed32c-e85b-73d3-89b5-3d4323625621&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**CONDITIONAL**\n\nDo not put Option D into the already-complete `document-parameter-descriptor-current-state` change. That change explicitly says it does not promote provisional owner/scope pairs and does not change checker semantics ([proposal.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/proposal.md:32), [design.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/design.md:21)). Archive/close first, then treat this as a separate narrow follow-up.\n\nRationale: mechanically, risk is low because the checker already supports additional `owner_scope_bindings`; `tool_edge` and `tool_management` already exist as governed tokens, and the pair is already visible as provisional ([OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:156)). But semantically, risk is real: `$TC_DP3[tool,edge]` is documented as `domain_table_field`, not a flattened ordinary parameter ([tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:8)). Promotion must not add a `$TC_DP3` Parameter Descriptor, must not imply a runtime read/write contract beyond the existing access-definition dispatch, and should probably be accompanied by one small negative/clarifying test or doc note that access-definition `semantics.scope: tool_edge` is not the same thing as `parameter_descriptor.scope`.\n\nSo: **GO only as a post-archive, one-pair follow-up with explicit boundary wording; NO-GO inside the current completed closure package.**\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:28:45 +0800</div>
+<pre>D 的风险审查回了：机械上可行，但必须作为 archive 之后的单独 change，而且要严防把 `$TC_DP3` 变成普通 Parameter Descriptor。还差 D 可落性审查。</pre>
+</article>
+</section>
+<section class="turn event" id="event-14">
+<h3>Event 14 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 09:28:54 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed32c-e7c1-7b70-86ee-53f6044cebc0&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**GO.** Option D is feasible today as a narrow follow-on slice.\n\nRationale: the infrastructure already exists. `tool_edge` is already a governed `object_scope`, `tool_management` is already a governed owner with TP002 evidence, and `OBJECT-SCOPES.md` already has `tool_management -&gt; tool_edge` as a provisional note. The checker already validates formal `owner_scope_bindings`, so this should mostly be a data/docs/tests promotion, not checker architecture.\n\nLikely affected files:\n\n- `TP004-parameter-system/openspec/OBJECT-SCOPES.md`: move exactly `tool_management -&gt; tool_edge` from provisional notes into `owner_scope_bindings`.\n- `TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md`: clarify this is the first promoted tool pair, without adding new descriptor fields.\n- `docs_i18n/en/src/TP004-parameter-system/object-scopes.md`\n- `docs_i18n/zh/src/TP004-parameter-system/object-scopes.md`\n- `tools/tests/test_check_parameter_value_sets.py`: add focused accept/reject coverage for `tool_management -&gt; tool_edge`.\n- Possibly `TP004-parameter-system/openspec/USAGE-INDEX.generated.md` only if a new structured `parameter_descriptor` example is added.\n\nRequired checks:\n\n- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests`\n- `PYTHONDONTWRITEBYTECODE=1 python3 tools/check_parameter_value_sets.py`\n- `PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py`\n- `./tools/build_docs_html.sh`\n- `python3 tools/check_docs_i18n_sync.py --require-published-html`\n- `openspec validate &lt;new-change-name&gt; --strict`\n- `git diff --check`\n\nDependencies are satisfied: TP002 evidence exists in `TP002-tooling-management/openspec/DESIGN-BASELINE.md`, and `$TC_DP3[tool,edge]` is already validated through `TP004-parameter-system/openspec/access-definitions/siemens/tool.md` plus `validation-sets/siemens/tool-dp3.md`.\n\nBlockers: none found. Main risk is scope creep: do not add `semantic_path_template`, access/value/unit fields, runtime registry behavior, or more owner/scope pairs like `zero_offset -&gt; frame_axis_component`.\n\nCurrent baseline I ran is clean: 76 unit tests pass, TP004 value-set checker passes, i18n structure check passes, OpenSpec validation passes, and git status stayed clean.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:29:04 +0800</div>
+<pre>D/E 双审都完成了。我关闭这批 agent，然后给你一张最终审查矩阵和今天推荐路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 09:29:19 +0800</div>
+<pre>所有 agent 已关闭。我会把每个建议的双审结论汇总成一个简明决策表，并给出今天最稳的落地组合。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-17 09:29:37 +0800</div>
+<pre>已按每个建议开多 agent 审完。结论如下：
+
+| 选项 | 双审结论 | 今天是否建议落 | 关键条件 |
+|---|---|---|---|
+| A. 初步收尾包 | GO + CONDITIONAL GO | 可以 | 只能表述为 `document-parameter-descriptor-current-state` 文档包归档，不是 TP004 完成 |
+| B. 收尾 + 小清理 | CONDITIONAL + CONDITIONAL | 最推荐 | 只做两个小清理：更新 discussion pack 流程；把 current-state 页加入 published-page invariant |
+| C. 下一步 proposal | GO + CONDITIONAL GO | 可选 | 只能是 proposal，不声称 `tool_management -&gt; tool_edge` 已晋级 |
+| D. `tool_management -&gt; tool_edge` 实现推进 | GO + CONDITIONAL | 可做，但放在 archive 之后 | 必须单独 change；不能混进当前 completed change；不能把 `$TC_DP3` 变成普通参数描述符 |
+| E. 大包：zero_offset / semantic path / axis alias / runtime API | NO-GO + CONDITIONAL | 今天不建议 | `zero_offset` owner 边界未解决；其余都属于明确 deferred |
+
+**今天最稳组合**
+- 做 **B**：收尾 + 小清理 + archive + 全量验证。
+- 如果还想推进下一步，做 **C**：开一个 `tool_management -&gt; tool_edge` 晋级 proposal。
+- 不建议今天直接做 **D**，除非你明确想进入实现推进；那也必须在 B 完成后作为单独 change。
+- **E 不做**。
+
+**如果今天落 B，具体内容**
+- 更新 `TP004-parameter-system/discussions/DAILY-DISCUSSION-PACK-PROCESS.md`，从旧的 `discussion-log/diagrams/html` 模式调整到当前 `README/session/report` 模式。
+- 在 `tools/check_docs_i18n_sync.py` 的 published-page invariant 里加入 `parameter-descriptor-status.md`，确保 root/en/zh 已发布页面持续被检查。
+- 归档 `openspec/changes/document-parameter-descriptor-current-state`。
+- 重建 docs，跑 i18n、参数 checker、unit tests、OpenSpec validate、diff check。
+
+我的建议：**今天先落 B**。这是收尾质量最高、风险最低、和当前状态最匹配的选择。</pre>
+</article>
+</section>
+<section class="turn event" id="event-15">
+<h3>Event 15 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 13:27:25 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed409-c82c-7f41-9d88-b0ed569334b2&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;结论：这个 slice 可以成立，但边界必须很窄。它不需要新增 descriptor fields、semantic path grammar、runtime registry/API、axis alias/profile schema，也不应该碰 `parameter_descriptor.value/access`。当前仓库里 checker 逻辑已经支持 `owner_scope_bindings`，所以实施重点是源文档晋级、projection/status 同步、focused test 与 OpenSpec 状态闭合。\n\n**1) 必须改的文件/点**\n\n- [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136)\n  - 把 `tool_management -&gt; tool_edge` 从 `provisional_owner_scope_notes` 移到 `owner_scope_bindings`。\n  - 保留其他 provisional pairs 不动：`zero_offset -&gt; frame_axis_component`、`motion` broad pairs、`hal`、`magazine`。\n  - 文案要继续强调 `tool_edge` 是 tooling data scope，不是 flat parameter table。\n\n- [tools/tests/test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1683)\n  - 当前已有 focused acceptance test：`test_parameter_descriptor_accepts_real_tool_edge_owner_scope_binding`。\n  - 但它现在失败，因为源页还没晋级：`tool_management -&gt; tool_edge is not checker-backed`。\n  - 实施时要让这个测试通过，并保留/补强 still-provisional rejection 测试，例如继续证明 `zero_offset -&gt; frame_axis_component` 或 `motion -&gt; machine` 仍不被接受。\n\n- [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:60)\n  - 更新 “Provisional Boundaries”：移除 `tool_management -&gt; tool_edge` 的 provisional 表述。\n  - 更新 “Checker-Backed Today”：明确当前 checker-backed pair 包含 `tool_management -&gt; tool_edge`，但不要写成 TP004 全面完成。\n\n- Reader projections：\n  - root/topic book include 页面大多是 include wrapper，可随源页更新。\n  - [zh status page](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:55) 是真实中文页面，必须同步中文说明，不能只依赖英文 include。\n  - `docs_i18n/en` 目前是 include wrapper，主要检查相对路径和 i18n checker 是否通过。\n\n- [openspec change](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/promote-tool-edge-owner-scope/tasks.md:13)\n  - 这个 active change 当前还有 3 个 future implementation tasks 未完成。\n  - 实施后应更新 tasks/spec/proposal 状态语义：从 proposal-only 的 “later implementation” 变成本 slice 已实施，或者另开 implementation change，避免 artifact 自相矛盾。\n\n**2) 不该碰的边界**\n\n- 不改 [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:118) 的 optional candidates 为正式字段。\n- 不新增 `parameter_descriptor.value`、`parameter_descriptor.access`、activation、persistence 字段；当前页明确这些不是本 slice schema。\n- 不新增或修改 [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:231) 里的 descriptor field bindings；现有只需要 `owner` 和 `scope`。\n- 不定义 semantic path grammar；`path_variables` 仍是描述性草案。\n- 不把 `$TC_DP3[tool,edge]` 写成 Parameter Descriptor record，也不把 tool table fields flatten 成普通参数。\n- 不碰 runtime registry/API、generated metadata、TP002 API 对齐实现。\n- 不碰 axis alias/profile schema；axis guardrail 继续保持 “配置层所有”。\n- 不提升 `zero_offset -&gt; frame_axis_component`；memory 和当前 plan 都指向那是后续 Parameter Instance Binding slice。\n\n**3) 高风险漏项**\n\n- 当前 worktree 已经有修改：`M tools/tests/test_check_parameter_value_sets.py`。我没有改文件；但这说明实施者需要先确认这是未提交的工作还是他人改动，避免覆盖。\n- 当前单测已经失败：`test_parameter_descriptor_accepts_real_tool_edge_owner_scope_binding` 期望晋级后行为，但 [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:156) 仍在 provisional。这个是最高风险不一致。\n- 如果只改 source，不同步中文 status/projection，容易违反现有 i18n 规则；中文页是 reader-facing 真页面。\n- 如果 OpenSpec artifacts 仍保留 “proposal-only / later implementation” 文案，而代码和 docs 已实施，会造成 change 状态漂移。\n- 如果 acceptance test 只证明 `tool_management -&gt; tool_edge` 通过，但没有证明其他 provisional pair 仍拒绝，会放松 slice 边界。\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 13:27:42 +0800</div>
+<pre>第一个审查 agent 已返回，结论和当前执行一致：关键漏项就是中文状态页、OpenSpec 仍残留 proposal-only，以及要补“剩余 provisional 仍拒绝”的测试。我已经按这个方向在改，下面处理 OpenSpec artifacts 的口径闭合。</pre>
+</article>
+</section>
+<section class="turn event" id="event-16">
+<h3>Event 16 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 13:27:59 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed409-e76f-7751-8852-c320b966f5a2&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;未修改文件。按当前仓库状态看，`tool_management -&gt; tool_edge` 晋级不能只改 `OBJECT-SCOPES.md`，否则会留下 “proposal-only / provisional / later slice” 旧口径。\n\n**1) 必须同步的位置**\n- Canonical source: [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136)  \n  把 `tool_management -&gt; tool_edge` 从 `provisional_owner_scope_notes` 移到 `owner_scope_bindings`，同时保留 `zero_offset -&gt; frame_axis_component` 等仍为 provisional。\n- Current-state reader page: [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:60)  \n  这里现在明确列 `tool_management -&gt; tool_edge` 为 provisional，晋级后必须改成 checker-backed today，并从 provisional examples 删除。\n- 中文投影: [object-scopes.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/object-scopes.md:127) 和 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:55)  \n  中文页必须是可读中文说明，不应只靠 include。\n- 读者投影/聚合书:  \n  `TP004-parameter-system/book/src/object-scopes.md`、`book/src/TP004-parameter-system/object-scopes.md`、`docs_i18n/en/src/TP004-parameter-system/object-scopes.md`，以及对应 `parameter-descriptor-status.md` 页面。\n- OpenSpec change:  \n  [proposal.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/promote-tool-edge-owner-scope/proposal.md:17)、[design.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/promote-tool-edge-owner-scope/design.md:28)、[spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/promote-tool-edge-owner-scope/specs/tool-edge-owner-scope-promotion/spec.md:23) 现在都写着 proposal-only / later implementation。若本 change 直接晋级，要改掉这些旧口径；否则应新建 implementation change。\n- 任务状态: [tasks.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/promote-tool-edge-owner-scope/tasks.md:17)  \n  `3.1`、`3.2`、`3.3` 仍未勾选；晋级完成后必须更新。\n- 测试: [test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1683)  \n  已有测试期望真实 `tool_management -&gt; tool_edge` 被接受；还要保留/确认 [zero_offset 仍拒绝](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1796)。\n\n**2) checker/i18n 风险**\n- `tools/check_parameter_value_sets.py` 只接受 `owner_scope_bindings`，不会把 `provisional_owner_scope_notes` 当正式 binding；只改 prose 不改 YAML 会继续失败。\n- 中文 `object-scopes.md` 和 `parameter-descriptor-status.md` 若仍写“暂缓/后续提升”，会与 canonical checker-backed 状态冲突。\n- `check_docs_i18n_sync.py` 对中文 reader prose 和 published HTML 有显式检查；更新源页后不 rebuild 会触发 published HTML drift。\n- OpenSpec 当前是 in-progress，且 `openspec list --json` 显示 6/9 tasks；即使 `openspec status --change ... --json` 报 artifacts complete，也不能代表 implementation tasks 完成。\n- 不要把 `$TC_DP3[tool,edge]` 误写成普通 Parameter Descriptor record；它仍应作为 access-family/domain-table evidence。\n\n**3) 最小验证命令**\n```bash\npython3 -m unittest discover -s tools/tests\npython3 tools/check_parameter_value_sets.py\npython3 tools/check_docs_i18n_sync.py\nopenspec validate promote-tool-edge-owner-scope --strict\n./tools/build_docs_html.sh\npython3 tools/check_docs_i18n_sync.py --require-published-html\nrg -n \&quot;proposal-only|later implementation|not checker-backed|provisional_owner_scope_notes|tool_management -&gt; tool_edge\&quot; TP004-parameter-system docs_i18n book openspec/changes/promote-tool-edge-owner-scope\ngit diff --check\n```\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 13:28:06 +0800</div>
+<pre>第二个审查 agent 也确认了同一组同步点，并特别提醒 build 后再跑 `--require-published-html`。我会照这个门禁跑，另外用 `rg` 扫掉 proposal-only / later implementation 的残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 13:28:26 +0800</div>
+<pre>OpenSpec design 口径已从“之后另做”改成“本 slice 实施”。我会再改 spec 和 tasks，但 tasks 的 3.3 会等完整验证跑完后再勾，不提前标完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 13:28:44 +0800</div>
+<pre>spec 已闭合：现在 requirement 明确是实际 admit 这个 pair，同时写清“不扩展 Parameter Descriptor schema”。接下来先把已实施的 3.1/3.2 标掉，3.3 等验证完成后再标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 13:28:55 +0800</div>
+<pre>实现和文档同步已完成第一轮，下面跑 targeted test 看 RED 是否转绿，并同时确认 zero_offset 仍被拒绝。如果这里通过，再跑文档/i18n 和 OpenSpec 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 13:29:14 +0800</div>
+<pre>targeted tests 过了：tool_edge 晋级已被真实 source docs 接受，zero_offset 仍保持 provisional 拒绝。接下来跑 checker 与文档同步；如果 HTML 检查提示没 rebuild，我会先 rebuild 再复查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 13:29:31 +0800</div>
+<pre>第一轮 checker / i18n / OpenSpec 都过了，但残留扫描抓到 tasks 里还有 “proposal-only change” 旧字样。这个虽然不影响校验，但会误导读者；我先修 tasks 文案，再跑完整验证门禁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 13:29:49 +0800</div>
+<pre>旧口径已修掉。现在开始跑完整门禁：全量 tools 单测、TP004 checker、i18n、OpenSpec strict、docs build、published HTML 复查、残留扫描和 diff whitespace 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 13:29:57 +0800</div>
+<pre>全量单测现在是 78 个通过，checker / i18n / OpenSpec strict 也都通过。下一步 build docs HTML，然后跑 published HTML 检查，确保生成物和 source 同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 13:30:16 +0800</div>
+<pre>docs HTML 已重建。现在跑 published HTML 检查、残留文案扫描和 diff 检查；如果都过，再把 3.3 勾上并做最后一轮轻量复查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 13:30:33 +0800</div>
+<pre>发布 HTML 检查通过，旧口径扫描也没有残留。`tool_management -&gt; tool_edge` 现在只出现在“已晋级/被接受/本 slice 实施”的上下文里；接下来我把 3.3 标完成，然后做最后一次 OpenSpec 与整体状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 13:30:47 +0800</div>
+<pre>任务清单已闭合为 9/9。现在复跑 OpenSpec strict、查看 diff 摘要，再准备提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-17 13:31:01 +0800</div>
+<pre>OpenSpec 现在显示 `promote-tool-edge-owner-scope` 为 complete，9/9 tasks。变更面集中在 source docs、中文 reader、active change artifacts 和 focused tests；我会最后看一遍关键 diff，确认没有误碰 schema/checker 代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-17 13:31:24 +0800</div>
+<pre>diff 检查没有发现误碰 checker 逻辑或 schema fields；这次变更面确实保持在 owner/scope source、reader 状态页、OpenSpec artifact 和 focused tests。最后我会复跑一组简明门禁，然后提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-17 13:31:37 +0800</div>
+<pre>完整门禁通过：78 个 tools 单测、参数 value-set checker、published HTML 检查、`openspec validate --all --strict` 都是绿的。现在做 `git diff --check` 和状态确认后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-17 13:31:54 +0800</div>
+<pre>状态确认：worktree 只有本次 9 个预期文件变更，OpenSpec 显示 active change 已 complete，旧口径扫描无残留。我现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-17 13:32:08 +0800</div>
+<pre>文件已 staged。提交信息会保持窄边界：`docs: promote tool edge owner scope binding`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-17 13:32:17 +0800</div>
+<pre>提交已完成：`d388679 docs: promote tool edge owner scope binding`。我会推送到 origin，然后给你收尾状态和后续计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-17 13:32:43 +0800</div>
+<pre>push 已完成。最后我做一次 clean status 和最近提交确认，确保远端同步后没有遗留本地修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-06-17 13:33:08 +0800</div>
+<pre>已继续落 B 的下一步，并提交推送完成。
+
+本次落地内容：
+- `tool_management -&gt; tool_edge` 已从 `provisional_owner_scope_notes` 晋级到 checker-backed `owner_scope_bindings`。
+- 保留 `$TC_DP3[tool,edge]` 作为 access-family evidence，不把它写成普通 Parameter Descriptor。
+- 同步英文状态页、中文 `object-scopes` / `parameter-descriptor-status` reader 页。
+- OpenSpec change 已从 proposal-only 口径改成 implementation complete，任务 `9/9`。
+- 新增 focused tests：
+  - 接受真实 `tool_management -&gt; tool_edge`
+  - 继续拒绝真实 `zero_offset -&gt; frame_axis_component`
+
+提交已推送：
+`d388679 docs: promote tool edge owner scope binding`
+
+验证已过：
+- `python3 -m unittest discover -s tools/tests`：78 OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `openspec validate --all --strict`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前状态：
+- `main` 与 `origin/main` 同步
+- worktree clean
+- active OpenSpec change：`promote-tool-edge-owner-scope`，complete `9/9`
+
+后续我建议按这个顺序：
+1. 归档 `promote-tool-edge-owner-scope`，把已完成实现并入正式 spec。
+2. 做 TP004 Parameter Descriptor 初步收尾页：明确“当前已完成/未完成/下一阶段入口”。
+3. 再决定下一个候选，不建议立刻扩大到 `zero_offset`；如果要做，应先开独立 proposal，重点审 instance binding，而不是直接升 owner/scope。</pre>
+</article>
+</section>
+<section class="turn event" id="event-17">
+<h3>Event 17 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-17 14:45:41 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

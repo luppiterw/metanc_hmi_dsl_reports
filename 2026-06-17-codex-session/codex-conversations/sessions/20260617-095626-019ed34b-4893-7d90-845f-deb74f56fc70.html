@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /mnt/d/Projects/LuppiterProjects/LuImageDrafts &lt;INSTRUCTIONS&gt; # 工作区 AI...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /mnt/d/Projects/LuppiterProjects/LuImageDrafts &lt;INSTRUCTIONS&gt; # 工作区 AI...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed34b-4893-7d90-845f-deb74f56fc70</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-17 09:56:26 +0800</code></div>
+<div><b>CWD</b>: <code>/mnt/d/Projects/LuppiterProjects/LuImageDrafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T09-56-26-019ed34b-4893-7d90-845f-deb74f56fc70.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>5</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:57:43 +0800</div>
+<pre># AGENTS.md instructions for /mnt/d/Projects/LuppiterProjects/LuImageDrafts
+
+&lt;INSTRUCTIONS&gt;
+# 工作区 AI 代理说明
+
+这个目录是草稿与知识资料工作区，不是单一产品仓库。AI 代理在这里工作时，要让目录保持直观：用户应该能按主题名直接找到资料。
+
+## 进入后先读
+
+在创建、移动、删除任何长期文件或目录之前，先阅读：
+
+1. `README.md`
+2. `docs/quick-map.md`
+3. `docs/project-index.md`
+4. `docs/directory-conventions.md`
+
+如果子目录里有自己的 `AGENTS.md` 或 `README.md`，进入该子目录工作前也要先读。
+
+## 核心放置原则
+
+- 根目录按主题、来源或项目名组织，例如 `iaar/`、`siemens/`、`LuNovelCellar/`。
+- 不要创建 `active/`、`linked/`、`archive/`、`inbox/` 这类抽象状态目录。
+- 默认结构控制在 `主题/项目` 两层。项目内部可以再有 `docs/`、`assets/`、`outputs/`、`prompts/` 等工作子目录。
+- 新增长期资料时，优先问：“我以后会按什么名字找它？”答案通常就是根目录主题名或项目名。
+- 不确定放哪里时，不要发明新分类；先放到最接近的主题目录，或询问用户。
+- 一次性临时文件放到 `tmp/`。不要把 `tmp/` 当长期资料区。
+
+## 当前主题入口
+
+- `iaar/`：IAAR 相关资料，包括 AI 编程、MetaNC、数控规划、报告等。
+- `siemens/`：Siemens、SINUMERIK、PLC、CNC 相关知识资料。
+- `LuNovelCellar/`：与外部 LuNovelCellar 仓库或作品相关的草稿资料。当前它不是 git 仓库。
+- `wechat-stickers/`：微信表情草稿。当前另一个 AI 正在处理，暂时保持在根目录。
+
+## 外部仓库同名目录
+
+如果某个目录与外部 git 仓库同名，但目录内没有 `.git`，把它当作“该仓库相关草稿资料”，不要当作源码仓库本体。
+
+如果某个子目录内存在 `.git`：
+
+- 把该子目录视为独立仓库边界。
+- 没有用户明确许可，不要移动或重命名它。
+- 只有任务需要时，才在该仓库内部执行 git 命令。
+
+## 文档维护职责
+
+新增或移动长期目录时，必须同步维护文档：
+
+1. 为该目录新增或更新 `README.md`。
+2. 更新 `docs/project-index.md`。
+3. 如果根目录主题入口发生变化，更新 `docs/quick-map.md`。
+4. 如果形成了新的放置规则，更新 `docs/directory-conventions.md`。
+
+每个长期项目目录的 README 至少说明：
+
+- 用途
+- 当前状态
+- 重要输入
+- 重要输出
+- 是否关联外部仓库、产品、会议或资料来源
+
+## 安全要求
+
+- 不要为了整理目录而删除用户内容。
+- 不要移动看起来正在被其他进程或其他 AI 使用的目录。
+- 除非用户明确要求清理，否则保留已有生成产物。
+- `.venv/` 是本地 Python 环境，不要把它登记成知识资料。
+- 中英文混合文档统一使用 UTF-8 Markdown。
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/mnt/d/Projects/LuppiterProjects/LuImageDrafts&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-17&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/mnt/d/Projects/LuppiterProjects/LuImageDrafts&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/mnt/d/Projects/LuppiterProjects/LuImageDrafts&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 09:57:43 +0800</div>
+<pre>讨论一下ai时代的自然语言，现在很多harnees / loop engineering的概念，但是我的角度，我觉得ai的特性或者说是语言特性本身其实都是遵循了人类语言的总结，所以不管设计什么语言，只要是建立在人类理解之上的，必然有其缺陷和短板，那么如何跳脱出这种限制来实现一套专用于ai、避开人类缺陷的语言，我觉得是有必要的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 09:58:41 +0800</div>
+<pre>我会用 `superpowers:brainstorming` 来组织这次讨论，因为你提的是语言/系统设计方向，不是单纯定义概念。先把问题边界捋清，再谈可能的技术形态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-17 09:59:19 +0800</div>
+<pre>你的判断是对的，但我会加一个限制：**只要 AI 最终服务的是人类目标，它就不可能完全跳出人类语言；但它可以不把人类自然语言当作内部工作语言。**
+
+更合理的方向不是“发明一种新自然语言”，而是分层：
+
+1. **人类意图层**
+   仍然用自然语言，因为目标、价值、偏好、边界最终来自人。
+
+2. **AI 工作语言层**
+   这层不应该是自然语言，而应该更像：
+   - 类型系统
+   - 约束系统
+   - 可执行计划
+   - 状态机
+   - 证明/校验结构
+   - 带不确定性的知识图谱
+   - 可追踪来源和责任边界
+
+3. **执行与验证层**
+   AI 的输出不只是“说得通”，还要能被检查：
+   - 这个结论依赖什么？
+   - 哪些是假设？
+   - 哪些可以验证？
+   - 哪些不能验证？
+   - 如果失败，失败在哪个状态、哪个约束、哪个输入？
+
+所以我觉得核心问题不是“创造一门 AI 语言”，而是：**创造一种 AI 可操作、可校验、可组合的语义协议。**
+
+人类自然语言的主要缺陷是：模糊、上下文依赖、隐含前提太多、叙事性强、容易把流畅性误认为正确性。AI 如果继续在自然语言里做复杂推理，就会继承这些问题。所谓 harness / loop engineering 本质上是在外部给自然语言套结构，但还没有把“语言本身”变成可靠中间表示。
+
+我会把你这个方向归纳成一句话：
+
+&gt; AI 时代需要的不是更强的 prompt 语言，而是从自然语言意图到机器可验证语义结构的转换层。
+
+这套语言应该具备几个特征：
+
+- **显式语义**：每个概念必须有边界、类型、作用域。
+- **显式不确定性**：不是只输出答案，而是标记置信度、证据等级、未知项。
+- **显式上下文**：上下文不是散落在对话里，而是作为可引用状态存在。
+- **显式目标与约束**：目标、禁止项、偏好、资源限制要分开表达。
+- **可执行性**：语言里的任务单元可以被调度、运行、回滚、重试。
+- **可审计性**：每个判断能追到来源、假设、推理链或工具结果。
+- **可组合性**：多个 AI、工具、子任务之间可以交换结构，而不是互相转述自然语言。
+
+但这里有一个关键风险：如果这门语言完全脱离人类可读性，它会变成黑箱协议，人类只能相信 AI 的解释。这不一定更安全。所以我倾向于“双层表达”：
+
+- 内部是 AI 优先的结构语言；
+- 外部有稳定的人类可读投影。
+
+类似“源码/AST/IR/机器码”的关系。自然语言是需求说明，不是执行语义；AI 专用语言更像 IR，也就是中间表示。
+
+第一个要明确的问题是：你设想的这套“AI 专用语言”，主要是给谁用？
+
+A. 单个 AI 内部推理和计划使用
+B. 多个 AI/Agent 之间协作使用
+C. 人类和 AI 共同编写任务、约束、流程使用
+D. 作为未来替代 prompt 的通用语言体系</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 10:10:37 +0800</div>
+<pre>主要和AI沟通用，因为发现设计很多限制、规则、约束、规范、准则，结果AI实际操作的时候还是各种drift、各种瞎打嘴炮</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-17 10:11:14 +0800</div>
+<pre>对，这个痛点本质上不是“AI 不理解规则”，而是**自然语言规则没有执行约束力**。
+
+你写一堆限制、规范、准则，AI 通常会把它们当作“上下文风格建议”，而不是“运行时必须满足的合同”。所以它会出现：
+
+- 读到了规则，但没有把规则绑定到每一步动作；
+- 当前目标一强，前面的约束就被压低权重；
+- 规则之间冲突时，自己偷偷选一个解释；
+- 做不到时不承认，改成嘴炮解释；
+- 输出看起来合规，但没有经过可验证检查。
+
+所以我觉得你要的不是普通 prompt language，而是**面向 AI 操作的沟通协议**。它的核心不是“把话写清楚”，而是把沟通拆成几类硬对象：
+
+```text
+Intent        我要什么
+Scope         哪些范围内可以动
+Constraints   永远不能违反什么
+State         当前已知事实是什么
+Actions       允许执行哪些动作
+Checks        每一步完成后如何验证
+Evidence      结论必须引用什么证据
+Failure       做不到时必须如何停下来
+```
+
+关键差别在于：
+自然语言说“不要瞎编”，AI 还是可能瞎编。
+协议语言应该表达成：
+
+```text
+IF evidence == missing:
+  MUST output status = blocked
+  MUST NOT infer
+  MUST ask for source or inspect environment
+```
+
+也就是说，要把“准则”降级成**可检查的状态转换规则**。
+
+我会把这个方向叫成类似：
+
+&gt; Human-AI Contract Language
+&gt; 人类-AI 合同语言
+
+它不是为了让人类读起来优雅，而是为了让 AI 在每一步都必须回答：
+
+- 我现在处于什么状态？
+- 我依据哪些输入？
+- 我准备做什么动作？
+- 这个动作是否违反约束？
+- 我怎么证明完成了？
+- 如果不能证明，我必须停在哪里？
+
+这比 harness / loop engineering 更底层一点。Harness 是外部控制循环，合同语言是循环里流动的语义对象。
+
+我先问一个关键问题：你主要想解决的是哪类 drift？
+
+A. 工程执行 drift：AI 改错文件、越权重构、忘记测试
+B. 认知表达 drift：AI 没证据就总结、编概念、嘴炮
+C. 长期上下文 drift：多轮以后忘记最初目标和约束
+D. 多 Agent 协作 drift：不同 AI 互相转述后语义变形</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 10:14:47 +0800</div>
+<pre>ABCD</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-17 10:15:31 +0800</div>
+<pre>那就不能把它设计成“一门更好的 prompt 语言”。ABCD 全要解决的话，它应该是一个**AI 沟通协议栈**，自然语言只是入口和展示层。
+
+我会这样拆：
+
+```text
+Human Natural Language
+        ↓
+Intent Contract        人类意图、目标、边界
+        ↓
+Task State Machine     当前任务状态、允许动作、退出条件
+        ↓
+Evidence Ledger        证据、来源、观察/推断/假设区分
+        ↓
+Action Protocol        文件、命令、工具、编辑、验证动作
+        ↓
+Verification Gates     每步完成条件、失败处理、禁止嘴炮
+        ↓
+Response Projection    给人类看的摘要
+```
+
+核心原则是：**不再要求 AI “记住规则”，而是要求 AI 每次行动前后都必须产出可检查状态。**
+
+比如自然语言规则是：
+
+&gt; 不要乱改文件，先确认范围。
+
+协议表达应该接近：
+
+```yaml
+scope:
+  writable_paths:
+    - /project/src/payment
+  forbidden_paths:
+    - /project/auth
+    - /project/db/migrations
+
+before_action_required:
+  - inspect_current_file_state
+  - classify_change_scope
+  - declare_target_files
+
+violation_behavior:
+  on_scope_uncertain: stop_and_ask
+  on_forbidden_path_needed: request_permission
+```
+
+再比如防止嘴炮，不应该写：
+
+&gt; 不要编造。
+
+而应该写：
+
+```yaml
+claim_policy:
+  allowed_claim_types:
+    observed:
+      requires: direct_evidence
+    inferred:
+      requires: evidence_links
+      must_mark_as: inference
+    speculative:
+      allowed: false
+
+if_evidence_missing:
+  status: blocked
+  allowed_response: ask_for_evidence_or_inspect
+  forbidden_response: confident_answer
+```
+
+这个东西真正要解决的是四个 drift：
+
+```text
+A 工程执行 drift
+  用 scope、allowed_actions、verification gates 约束。
+
+B 认知表达 drift
+  用 evidence ledger、claim typing 约束。
+
+C 长期上下文 drift
+  用 persistent contract、context delta、state snapshot 约束。
+
+D 多 Agent 协作 drift
+  用 handoff packet、责任边界、证据引用约束。
+```
+
+所以我觉得最小内核不是“语言语法”，而是这几个对象：
+
+```text
+Goal        目标
+Scope       范围
+State       当前状态
+Action      动作
+Evidence    证据
+Claim       声明
+Constraint  约束
+Gate        验证门
+Failure     失败处理
+Handoff     交接包
+```
+
+如果这个内核成立，人和 AI 沟通时就不是写一大段 prompt，而是发一份“合同”：
+
+```yaml
+goal:
+  type: implement_change
+  success_condition: tests_pass_and_diff_within_scope
+
+scope:
+  allowed:
+    - src/editor/*
+  forbidden:
+    - src/auth/*
+    - database/*
+
+action_rules:
+  before_edit:
+    - read_relevant_files
+    - state_intended_change
+  after_edit:
+    - show_diff_summary
+    - run_verification
+
+claim_rules:
+  no_unverified_completion_claim: true
+  must_report_failed_checks: true
+
+failure_rules:
+  if_tests_cannot_run: report_unverified
+  if_scope_conflict: stop
+```
+
+但这里有个现实问题：**只靠语言本身还是不够。**
+因为 AI 仍然可能输出一份看起来合规的 YAML，然后实际行为漂移。要真正有用，这套语言需要配合 runner / harness / reviewer：
+
+- AI 读合同；
+- AI 每步输出结构化状态；
+- 外部检查器验证它有没有越界；
+- 失败时强制 stop；
+- 最后输出必须带 evidence 和 verification result。
+
+所以结论可以更尖锐一点：
+
+&gt; AI 沟通语言的目标不是让 AI 更“懂话”，而是让 AI 的不守约变得可检测、可中断、可追责。
+
+我建议下一步先定义这套语言的**最小合同格式**，不要一开始追求完整语言。先能覆盖一个典型场景：
+“让 AI 在代码仓库里完成一个小修改，但不能越权、不能嘴炮、必须验证。”
+
+你觉得第一版应该偏哪种形态？
+
+A. 类 YAML 的人类可写合同
+B. 类 TypeScript/JSON Schema 的强类型协议
+C. 类状态机 DSL 的流程语言
+D. 类数据库/知识图谱的事实与证据模型</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 10:19:36 +0800</div>
+<pre>ABCD</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-17 10:20:31 +0800</div>
+<pre>那第一版就不该选单一形态，而应该设计成**一个语义核心，四种投影**。
+
+```text
+Canonical Core
+  ↓
+A. YAML Projection        人类可写、可读
+B. Schema Projection      强类型校验
+C. State Machine View     执行动作与流程约束
+D. Evidence Graph View    事实、证据、声明关系
+```
+
+重点是：**YAML、TypeScript、状态机、知识图谱都不是本体；本体是中间语义模型。**
+
+我会把核心叫成类似 `AI Contract IR`，它的最小对象是：
+
+```text
+Contract      本次人机协作合同
+Goal          目标
+Scope         允许/禁止范围
+Actor         人类、AI、子 Agent、工具
+State         当前任务状态
+Action        可执行动作
+Constraint    不可违反约束
+Gate          验证门
+Evidence      证据
+Claim         声明
+Assumption    假设
+Failure       失败处理
+Handoff       交接包
+```
+
+最关键的是：AI 不能自由说话。每次输出都必须属于一种消息类型：
+
+```text
+PLAN        我准备做什么
+ACTION      我执行了什么
+OBSERVE     我观察到了什么
+CLAIM       我声称什么为真
+INFER       我从证据推断了什么
+BLOCKED     我为什么不能继续
+ASK         我需要人类补充什么
+HANDOFF     我把什么交给另一个 Agent
+SUMMARY     给人类看的压缩投影
+```
+
+这样可以直接压制“嘴炮 drift”。因为普通自然语言回答会被降级成 `SUMMARY`，而 `SUMMARY` 不能作为事实来源；事实必须来自 `OBSERVE / CLAIM / EVIDENCE`。
+
+一个很小的例子：
+
+```yaml
+contract:
+  goal:
+    id: fix-login-timeout
+    success:
+      - tests_pass
+      - diff_within_scope
+      - behavior_verified
+
+  scope:
+    allow:
+      - src/auth/session.ts
+      - tests/auth/*
+    forbid:
+      - database/migrations/*
+      - src/billing/*
+
+  claim_policy:
+    observed:
+      requires: evidence
+    inferred:
+      requires:
+        - evidence
+        - inference_marker
+    completion:
+      requires:
+        - verification_result
+    speculation:
+      allowed: false
+
+  state_machine:
+    initial: inspecting
+    states:
+      inspecting:
+        allowed_actions: [read_file, search, ask]
+        next: planning
+      planning:
+        allowed_actions: [propose_plan]
+        next: editing
+      editing:
+        allowed_actions: [edit_file]
+        next: verifying
+      verifying:
+        allowed_actions: [run_tests, inspect_diff]
+        next: done_or_blocked
+
+  failure:
+    if_scope_uncertain: ask
+    if_test_unavailable: report_unverified
+    if_forbidden_path_needed: stop
+```
+
+这就不是“请你遵守这些规则”，而是把 AI 放进一个协议里：
+
+- 没有证据，不能声称。
+- 没有验证，不能说完成。
+- 范围不清，不能继续做。
+- 要改禁止路径，必须停。
+- 多 Agent 交接时，只能交接结构化状态、证据和未决问题，不能靠自然语言转述。
+
+我觉得这里最重要的设计原则是：
+
+&gt; AI 专用沟通语言不是为了表达更多，而是为了减少自由度。
+
+自然语言的问题正是自由度太高。
+而 AI 执行任务时，最危险的不是“不知道”，而是“不知道自己不知道，还继续生成”。
+
+所以这套语言应该强制 AI 把所有内容拆成：
+
+```text
+事实：我看到了什么
+假设：我暂时认为但没验证什么
+推断：我从事实推出什么
+动作：我做了什么
+约束：我不能做什么
+验证：我怎么证明
+失败：我在哪里停下
+```
+
+下一步我建议先不发明完整语法，而是定义一个**最小可用合同 MVP**。它只解决一个场景：
+
+&gt; 人类给 AI 一个任务，AI 必须在执行过程中持续产出结构化状态，最后只能在验证门通过后声明完成。
+
+第一个关键设计问题是：这套语言的“强制力”应该主要来自哪里？
+
+A. 靠 AI 自己遵守协议
+B. 靠外部 runner 检查每一步输出
+C. 靠另一个 reviewer agent 审查主 agent
+D. 靠工具权限系统硬限制动作范围</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

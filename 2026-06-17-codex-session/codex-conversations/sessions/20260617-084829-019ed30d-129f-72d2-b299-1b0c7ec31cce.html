@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: inspect cur...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: inspect cur...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed30d-129f-72d2-b299-1b0c7ec31cce</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 08:48:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T08-48-29-019ed30d-129f-72d2-b299-1b0c7ec31cce.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:48:29 +0800</div>
+<pre>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: inspect current TP004-parameter-system state and propose a detailed initial-closure plan. Focus on what is already stable enough to close, what should be archived, what should become an explicit TP004 closure/status artifact, and what validation should gate closure. Read relevant files such as openspec list/status, openspec/TOPICS.md, TP004-parameter-system/book/src/parameter-descriptor-status.md, TP004-parameter-system/openspec/*.md, and current openspec/changes. Return: (1) concise state assessment, (2) recommended closure tasks in order, (3) what can be done today in a narrow scope, (4) file paths you relied on. No implementation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:49:16 +0800</div>
+<pre>I’ll use the `openspec-explore` skill because this is a planning/status review around an OpenSpec topic. I’ll also do a light memory pass for prior TP004 context, then verify against the current checkout before making recommendations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:49:30 +0800</div>
+<pre>I’m checking prior TP004 notes only to anchor known decisions, then I’ll treat the live files as authoritative. The review itself will stay read-only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:50:17 +0800</div>
+<pre>The live OpenSpec list shows one active change, `document-parameter-descriptor-current-state`, and it is already marked complete at `15/15`. I’m now reading the topic registry, TP004 source pages, and change artifacts to separate “complete enough” from “not yet archived/closed.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:50:33 +0800</div>
+<pre>The topic registry still labels TP004 as an active design baseline, while the current-state page deliberately says it is not a schema page. I’m checking whether the active change is just unarchived paperwork or whether there are remaining normative gaps that should block closure.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:50:45 +0800</div>
+<pre>The change itself is complete by OpenSpec status, and its tasks say validation already passed when it was implemented. I’m still going through the TP004 baseline files and archived changes so the closure plan can say exactly what should be archived versus what should remain as a visible topic status artifact.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:51:10 +0800</div>
+<pre>I’ve confirmed there are no uncommitted changes in this checkout, so the review is against a clean current state. Next I’m checking the descriptor-adjacent baseline files, because closure should gate on the checker-backed contract rather than on the broader TP004 runtime-access baseline.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:51:42 +0800</div>
+<pre>The baseline confirms a narrow split: TP004 as a whole is still an active design baseline, but the Parameter Descriptor slice has a stable four-field/checker-backed boundary. I’m checking navigation/projection and archived change history now, since the closure plan likely needs two tracks: archive the completed change, and preserve a first-class status artifact for the still-active topic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 08:52:05 +0800</div>
+<pre>The projection search was noisy because it hit generated HTML search indexes, but it did show the current-state page is present in the topic book and built HTML. I’m going to run only read-only validation checks now; I’m deliberately not rebuilding docs because that would modify generated output.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 08:53:22 +0800</div>
+<pre>The read-only checks all pass: active change validation, i18n projection structure, parameter value-set binding, and whitespace diff check. I’m doing one final pass over index/navigation and the discussion pack so the plan can point at the actual closure artifact instead of inventing a new broad one.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 08:53:30 +0800</div>
+<pre>I have enough context now. One notable point: there is nothing to implement before an initial closure decision; the only obvious mechanical next step is to archive the completed active change after running the full closure validation set.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 08:54:19 +0800</div>
+<pre>I’m adding the two remaining read-only checks from the historical closure path: published HTML i18n verification and unit tests with bytecode writing disabled. That gives the validation gate a cleaner status without touching files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-17 08:57:19 +0800</div>
+<pre>**State Assessment**
+
+TP004 is not ready to close as a whole topic: `openspec/TOPICS.md` still marks it as an `active design baseline`, and the broader runtime-access baseline still has open design areas.
+
+The Parameter Descriptor slice is stable enough for initial closure. The current stable contract is deliberately narrow: `parameter_id`, `owner`, `scope`, and `semantic_name`, with checker-backed owner/scope bindings, ID consistency, duplicate detection, axis-alias rejection, and exclusion of `access.readable` / `access.writable`.
+
+The only active OpenSpec change is `document-parameter-descriptor-current-state`; `openspec status --change ... --json` reports `isComplete: true` and `15/15` tasks done. So this looks like completed work awaiting archive, not unfinished implementation.
+
+I verified read-only checks today:
+
+```bash
+openspec validate document-parameter-descriptor-current-state --strict
+python3 tools/check_docs_i18n_sync.py
+python3 tools/check_docs_i18n_sync.py --require-published-html
+python3 tools/check_parameter_value_sets.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests
+git diff --check
+```
+
+All passed. I did not rebuild docs because that writes generated output.
+
+**Recommended Closure Tasks In Order**
+
+1. Declare closure scope explicitly: close the Parameter Descriptor initial slice only, not all TP004.
+2. Promote `TP004-parameter-system/book/src/parameter-descriptor-status.md` as the explicit TP004 closure/status artifact for this slice.
+3. Keep the archived discussion pack as evidence, especially `TP004-parameter-system/discussions/2026-06-15-parameter-descriptor-current-state/report.md`.
+4. Archive `openspec/changes/document-parameter-descriptor-current-state` using the repo’s normal OpenSpec archive flow.
+5. Before archive, rerun the full gate including the writing steps: docs build, published HTML projection check, value-set checker, OpenSpec strict validation, unit tests, and diff whitespace checks.
+6. After archive, confirm `openspec list --json` has no active TP004 descriptor closure changes.
+7. Leave deferred work as future slices: semantic path grammar, machine-profile axis aliases, runtime registry behavior, `semantic_name` governance, descriptor value/access fields, activation/persistence, and provisional owner-scope promotion.
+
+**Narrow Scope Today**
+
+Today’s narrow, safe closure scope is:
+
+- Archive the completed `document-parameter-descriptor-current-state` change.
+- Do not add descriptor fields.
+- Do not promote provisional owner/scope pairs.
+- Do not reword TP004 as fully closed.
+- Treat the status page as the closure artifact for the initial Parameter Descriptor contract.
+- Gate the archive with the full validation set, including `./tools/build_docs_html.sh`, because closure should prove source and generated reader surfaces match.
+
+**Files Relied On**
+
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/TOPICS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/TOPICS.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/tasks.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/tasks.md)
+- [/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-15-parameter-descriptor-current-state/report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-15-parameter-descriptor-current-state/report.md)
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:438-491|note=[prior TP004 current-state closure context and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec89a-58ce-7150-8b75-064670002e44
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

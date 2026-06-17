@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: audit TP004...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: audit TP004...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed30d-131d-7ce0-a131-3d5c6ae24e97</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 08:48:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T08-48-29-019ed30d-131d-7ce0-a131-3d5c6ae24e97.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:48:30 +0800</div>
+<pre>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: audit TP004 docs/publishing/i18n readiness for an initial closure day. Focus on reader path, Chinese projection, discussion-pack/session/report expectations, mdBook/docs_html generation, OpenSpec archive flow, and validation commands. Inspect docs_i18n/PROJECTION-RULES.md, tools/check_docs_i18n_sync.py, TP004-parameter-system/book/src/SUMMARY.md, TP004 discussions, docs_i18n/en and zh TP004 pages, and current changes. Return: (1) detailed doc/publish checklist, (2) likely missing cleanup items, (3) safest today-sized docs deliverable, (4) exact validation commands. No implementation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:48:43 +0800</div>
+<pre>I’ll do this as a read-only audit: first refresh the TP004-specific memory notes, then inspect the live repo state and the publishing/i18n files you named before giving a checklist and closure-sized recommendation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:50:59 +0800</div>
+<pre>The worktree is clean right now: `git status --short`, `git diff --stat`, and `git diff --name-only` all returned no output. I’m moving into the projection rules, checker behavior, and TP004 navigation/discussion surfaces.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:52:05 +0800</div>
+<pre>The rules/checker are already fairly concrete: Chinese pages must have real Chinese prose, only three registry-style TP004 pages are allowlisted for include projection, and `--require-published-html` checks `docs_i18n/site` against `docs_html`. I’m checking the actual TP004 reader pages and discussion-pack layout now, including whether the latest 2026-06-15 pack is wired through all reader paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:53:52 +0800</div>
+<pre>The 2026-06-15 pack is present with `README.md`, `session.md`, and `report.md`, and it is linked from the topic book and bilingual summaries. One notable historical-process mismatch is visible already: the daily process file still describes older packs with `discussion-log.md`, `diagrams.md`, and standalone HTML, while the newer closure packs use `session.md`/`report.md` only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:54:46 +0800</div>
+<pre>I’m going to run the read-only validators that do not regenerate output. I will not run `./tools/build_docs_html.sh` because it writes generated `docs_i18n/site` and `docs_html` content, which would violate your no-edit constraint.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:55:27 +0800</div>
+<pre>All read-only checks I ran passed, including the published HTML sync check. The one command I’m deliberately not executing is the rebuild script; the existing generated tree is already consistent according to the checker, but rebuilding would modify generated files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:55:52 +0800</div>
+<pre>I’m checking the OpenSpec state and the generated-site artifacts next. That should separate “ready to close documentation today” from “the active OpenSpec change still needs an explicit archive step.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 08:56:52 +0800</div>
+<pre>I’ve found the main closure boundary: docs and generated published HTML validate cleanly, but `document-parameter-descriptor-current-state` is still an active OpenSpec change even though it is complete. I’m doing one last targeted pass for navigation/link coverage so the final checklist is concrete rather than generic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 08:57:32 +0800</div>
+<pre>One concrete navigation gap turned up: the TP004 topic and bilingual sidebars include Siemens Reference Notes, but the root aggregate sidebar appears to omit that linked page even though the root source page exists. I’m checking the generated root/topic HTML presence before I classify it as cleanup rather than a blocker.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 08:58:28 +0800</div>
+<pre>I’m done with inspection and validation; I’m just pulling exact memory citation ranges for the final note because I used prior TP004 publishing history to frame the audit.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-17 08:59:13 +0800</div>
+<pre>I’m checking the OpenSpec archive command help and ignore rules so the final “archive flow” and generated-output wording is exact.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-17 09:01:25 +0800</div>
+<pre>Read-only audit complete. I did not edit files.
+
+**Status**
+Go for initial docs closure with one caveat: TP004 reader/i18n/published HTML validates cleanly, but `document-parameter-descriptor-current-state` is still an active OpenSpec change even though it is complete `15/15`. Worktree is clean.
+
+**1. Doc/Publish Checklist**
+- Reader path is mostly wired: TP004 topic book, root aggregate book, English i18n, and Chinese i18n all link `Parameter Descriptor Current State` and the `2026-06-15` session/report pack.
+- Chinese projection policy is explicit in [docs_i18n/PROJECTION-RULES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/PROJECTION-RULES.md:22): Chinese reader pages need visible Chinese prose; only registry-style includes are allowlisted.
+- `tools/check_docs_i18n_sync.py` enforces projection drift, Chinese include policy, source links, owner-registry sync, and `docs_i18n/site` vs `docs_html` sync.
+- `docs_html/index.html`, `docs_html/en/index.html`, `docs_html/zh/index.html`, and both en/zh current-state pages exist and pass published-tree validation.
+- `./tools/build_docs_html.sh` is the publish entrypoint: check i18n, delete generated output, build root/topic/en/zh mdBooks, stage `docs_i18n/site`, mirror to `docs_html`, then re-check.
+- Generated output is ignored by git via `.gitignore`, so closure should treat `docs_html/` as local published preview, not committed source.
+- OpenSpec status: `document-parameter-descriptor-current-state` is valid and complete, but not archived.
+
+**2. Likely Missing Cleanup**
+- Archive `document-parameter-descriptor-current-state` after review; it is the main remaining closure item.
+- Align `TP004-parameter-system/discussions/DAILY-DISCUSSION-PACK-PROCESS.md`: it still describes older packs requiring `discussion-log.md`, `diagrams.md`, and standalone HTML, while current closure packs use `README.md`, `session.md`, and `report.md`.
+- Add `parameter-descriptor-status.md` to the checker’s explicit published-page invariants. It exists and is linked, but `tools/check_docs_i18n_sync.py` does not currently list it in `PUBLISHED_PAGES`.
+- Decide whether root aggregate docs should include Siemens Reference Notes. Topic and i18n sidebars include it, but root aggregate sidebar/html do not.
+
+**3. Safest Today-Sized Deliverable**
+Treat today as an initial closure package, not a new design slice: archive the completed OpenSpec change, rebuild published docs, rerun validation, and leave schema/checker semantics unchanged. If doing only one small docs cleanup before archive, I would fix the discussion-pack process wording so it matches the current `session.md`/`report.md` closure format.
+
+**4. Exact Validation Commands**
+Read-only/current checks:
+
+```bash
+git status --short
+python3 tools/check_docs_i18n_sync.py
+python3 tools/check_docs_i18n_sync.py --require-published-html
+python3 tools/check_parameter_value_sets.py
+openspec validate document-parameter-descriptor-current-state --strict
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests
+git diff --check
+openspec list --json
+openspec status --change document-parameter-descriptor-current-state --json
+```
+
+Publish/archive flow when edits are allowed:
+
+```bash
+./tools/build_docs_html.sh
+python3 tools/check_docs_i18n_sync.py --require-published-html
+openspec archive document-parameter-descriptor-current-state -y
+python3 tools/check_docs_i18n_sync.py
+python3 tools/check_parameter_value_sets.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/tests
+git diff --check
+```
+
+Read-only checks passed in this audit, including `76` unit tests.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:482-489|note=[TP004 publishing pattern, i18n rules, current-state pack, validation path]
+MEMORY.md:435-444|note=[current-state discussion pack and active OpenSpec change context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

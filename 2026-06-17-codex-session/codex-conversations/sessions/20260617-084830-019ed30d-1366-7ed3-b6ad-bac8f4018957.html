@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: risk-review...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: risk-review...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed30d-1366-7ed3-b6ad-bac8f4018957</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 08:48:30 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T08-48-30-019ed30d-1366-7ed3-b6ad-bac8f4018957.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:48:30 +0800</div>
+<pre>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: risk-review the proposed TP004 next steps. Identify what could cause scope creep or false closure. Focus on candidate/near-formal statuses, provisional owner-scope pairs, semantic_name governance, access/value fields, Siemens compatibility examples, and boundary with runtime implementation. Return: (1) top risks, (2) guardrails for today&#x27;s work, (3) questions the user should decide before implementation, (4) recommended go/no-go options. No implementation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:48:50 +0800</div>
+<pre>I’ll treat this as a review pass only: I’ll inspect the current TP004 materials and use the OpenSpec explore guidance for a no-edit risk assessment. I’ll keep the output focused on failure modes and decisions, not implementation steps.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:49:30 +0800</div>
+<pre>The memory hit confirms TP004 has recent decisions around compact descriptor identity, owner/scope separation, deferred semantic_name guardrails, and keeping 840D/Siemens as reference input rather than architecture ownership. I’m now checking the live docs so the review reflects the current repository state, not just prior notes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:49:55 +0800</div>
+<pre>I found the active OpenSpec change is already marked complete (`document-parameter-descriptor-current-state`, 15/15). The risk review therefore needs to separate “current-state closure” from “ready to implement runtime behavior,” because that is one of the likely false-closure traps.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:50:41 +0800</div>
+<pre>The current source pages are careful in several places: they explicitly call optional access/value/path fields “candidates,” and only one owner-scope binding is checker-backed today. The main review question is whether today’s next step promotes exactly one thing with evidence, or accidentally makes candidate language look formal.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:50:53 +0800</div>
+<pre>I’m also reading the checker because it defines what is actually enforced. That matters here: a docs page can say “do not promote,” but false closure happens when the validator accepts more than the review thinks it accepts, or when reviewers treat a prose example as checker-backed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:51:47 +0800</div>
+<pre>I’m checking the actual Siemens/access/value examples next, because they are the place where “compatibility example” can silently become “MetaNC runtime contract.” I’ll use those to ground the go/no-go recommendation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:54:53 +0800</div>
+<pre>The Siemens examples are mixed by design: they use formal validation-case files for access-family behavior, but some owners in those examples (`zero_offset`, `motion.axis`) are still unassigned or only narrowly checker-backed in descriptor space. That creates a real risk if implementation treats access-definition maturity as descriptor/runtime readiness.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 08:55:45 +0800</div>
+<pre>There are also generated planning artifacts under `docs/superpowers/plans/`; I’m sampling those because they may be what “proposed next steps” refers to. I’ll keep them secondary to canonical TP004 source files unless they expose a different intended scope.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 08:56:14 +0800</div>
+<pre>I have enough context now. The final review will call out the main risk pattern: TP004 is in a good narrow state, but the next step can still over-close if it promotes status words, provisional pairs, access-definition examples, or Siemens compatibility cases into implementation-ready descriptor/runtime contracts.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-17 08:57:26 +0800</div>
+<pre>No edits made.
+
+**Top Risks**
+1. `candidate` / `near-formal` can be misread as implementation readiness. In the current docs, status is value maturity only, not owner/API/runtime readiness; `near-formal` still needs explicit promotion before schema freeze. See [STATUS-USAGE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/STATUS-USAGE.md:3) and [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:107).
+2. Provisional owner-scope pairs can look “almost accepted.” Today only `motion.axis -&gt; axis` is checker-backed; `tool_management -&gt; tool_edge`, `zero_offset -&gt; frame_axis_component`, `hal -&gt; machine`, etc. are explicitly deferred. See [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136).
+3. `semantic_name` governance is a likely scope-creep trigger. Current contract keeps it owner-local text, not a governed value set; adding naming rules now could turn a small descriptor slice into taxonomy governance. See [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:57).
+4. Access/value fields are already formal in access definitions, but not in `parameter_descriptor`. Promoting `parameter_descriptor.value` or `parameter_descriptor.access` now would blur the boundary the current-state page explicitly defers. See [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:118) and [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:168).
+5. Siemens examples can become accidental MetaNC runtime contracts. `$TC_DP3`, `$P_UIFR`, and `$MA_MAX_AX_VELO` are valuable compatibility/access-family evidence, but their dispatch strings and owner availability fixtures are not runtime implementation APIs. See [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:131), [zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:122), and [axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:117).
+6. Current-state closure can be mistaken for implementation closure. `document-parameter-descriptor-current-state` is complete, but it closed a descriptive docs/status slice, not runtime registry behavior or formal value/access fields.
+
+**Guardrails For Today**
+- Treat the current descriptor contract as exactly four fields: `parameter_id`, `owner`, `scope`, `semantic_name`.
+- Promote at most one owner-scope pair, and only with owner evidence, object-scope meaning, checker rule, and negative test.
+- Do not add new status words or readiness columns.
+- Do not promote `semantic_name` to a value set unless real collisions or misuse examples exist.
+- Keep Siemens compatibility examples under access-definition/validation scope, not descriptor identity or runtime API scope.
+- Keep runtime registry, machine-profile axis aliases, value metadata, access policy, activation, and persistence as deferred.
+
+**Questions Before Implementation**
+- Which single owner-scope pair, if any, is worth promoting next: `tool_management -&gt; tool_edge`, `zero_offset -&gt; frame_axis_component`, or none?
+- Is today’s goal descriptor governance only, or also access-family validation? Mixing both is the main scope creep path.
+- Should `semantic_name` remain owner-local until misuse appears, or do you want a minimal lexical rule now?
+- Are Siemens examples meant to validate parsing/mapping only, or should they drive a MetaNC owner API backlog?
+- What counts as closure today: docs/checker proof, OpenSpec proposal ready, or runtime implementation plan?
+
+**Go / No-Go Options**
+- **Go:** one narrow docs/checker slice that promotes one owner-scope pair with evidence and tests.
+- **Conditional Go:** prepare an OpenSpec proposal only, if the owner evidence is not ready.
+- **No-Go for runtime:** do not start runtime registry or dispatch implementation from the current TP004 state.
+- **No-Go for schema expansion:** do not add formal `parameter_descriptor.value`, `parameter_descriptor.access`, semantic path grammar, or `semantic_name` value-set governance today.
+
+My recommendation: **Conditional Go** unless you can name one owner-scope pair with enough evidence today. Otherwise keep today’s work as review/proposal hardening and avoid claiming implementation readiness.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:458-491|note=[TP004 current descriptor boundary and deferred governance context]
+MEMORY.md:435-440|note=[current-state discussion pack and rollout identifiers]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a83d-7182-8ce4-94a3a211e04e
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

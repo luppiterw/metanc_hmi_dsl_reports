@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed474-ca82-70d3-863d-b918d953d2b1</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 15:21:24 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T15-21-24-019ed474-ca82-70d3-863d-b918d953d2b1.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 15:21:24 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-17&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 15:21:24 +0800</div>
+<pre>你是只读实现计划审核 agent。不要修改任何文件。任务：审核 Slice 4 实施计划是否足够可执行、是否存在步骤缺口或错误顺序。
+
+工作目录：/home/iaar/workspace/ccmix-wp/MetaNC
+
+重点文件：
+- docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md
+- nrt/hmi/docs/project/work_offset/delivery_plan.md
+
+可读辅助文件（只为核对计划涉及路径/现状）：
+- nrt/hmi/definition/ui.structure.yaml
+- nrt/hmi/definition/interfaces.machine.yaml
+- nrt/hmi/client/web_client/widget_core/data_table.py
+- nrt/hmi/client/web_client/widget_core/command_guards.py
+- nrt/hmi/client/qml_client/main_qml_parts/table_edit.py
+- nrt/hmi/client/qml_client/main_qml_parts/command_actions.py
+- nrt/hmi/client/web_client/runtime_fragments/command_handlers.py
+- nrt/hmi/client/qml_client/runtime_fragments/command_blocks/manual_ops.py
+- nrt/hmi/tests/test_pipeline.py
+
+审核标准：
+- 计划是否能被另一个 agent 按 task 执行。
+- 是否有必须先做但被放后的依赖。
+- 是否有不存在的函数/测试名/命令/文件路径。
+- 是否有太抽象、没有足够代码或验收依据的步骤。
+- 不要改文件。
+
+输出要求：
+- Findings first，按严重程度排序。
+- 每条包含：Problem / Location（文件:行号，短引用）/ Execution risk / Fix。
+- 最后给出 go/no-go：是否建议直接按此计划执行，还是先修计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 15:22:22 +0800</div>
+<pre>Using `review-docs-comprehension` because this is a read-only audit of a plan document’s executability and reader path. I’ll also follow the repo’s required orientation pass before checking the plan against the current files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 15:22:56 +0800</div>
+<pre>I’m starting with the mandated repo orientation plus a lightweight memory lookup for the HMI WorkOffset context, then I’ll cross-check the plan’s referenced paths and commands against the live tree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 15:23:24 +0800</div>
+<pre>The relevant architecture scope is `nrt/hmi` as the owner of HMI page flow/client generation and `nrt/work_offset` as the domain owner behind the table semantics. I’m reading those module-local instructions before judging whether the plan orders the work correctly.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 15:24:34 +0800</div>
+<pre>I’ve confirmed the branch context from memory but I’m treating it as potentially stale; the findings will come from the live files. Next I’m checking the exact symbols and test names the plan tells an implementer to use.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 15:25:11 +0800</div>
+<pre>The first consistency issue I’m seeing is that some plan steps introduce API/test assumptions that may not match the current retained DSL or server adapter. I’m narrowing that into concrete findings with line numbers rather than broad commentary.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 15:25:53 +0800</div>
+<pre>The plan’s high-level slice boundary matches the delivery plan, but the detailed task list has a few execution hazards. I’m checking whether each hazard is a plan defect or just an implementation detail the worker could resolve locally.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 15:26:30 +0800</div>
+<pre>One concrete mismatch is emerging around refresh: the delivery plan lists explicit refresh as deferred, while the Slice 4 implementation plan makes it mandatory. I’m checking the surrounding text to decide if that is an intentional superseding change or a contradiction that would confuse execution.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 15:27:07 +0800</div>
+<pre>I’m also checking the generator support code because some planned snippets are literal insertions into Python strings that emit JavaScript/QML. If those anchors are wrong, that is an execution-blocking plan issue.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 15:28:00 +0800</div>
+<pre>I have enough to draft findings, but I’m doing one last read of the affected helper bodies to avoid reporting snippet-fit issues that the current code already supports.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-17 15:29:03 +0800</div>
+<pre>I’m ready to report. The review is read-only; I did not modify files or run any write-producing commands.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-17 15:36:29 +0800</div>
+<pre>**Findings**
+
+1. **Problem:** Scope contradiction: Slice 4 plan makes `wcs.commands.refresh_offset_table` mandatory, while delivery plan still lists explicit refresh as deferred.
+   **Location:** [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:353) “`WO-S4-SPEC-004A`: Work Offset Refresh”; [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:451) “selected-row activation...” / [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:452) “explicit `wcs.commands.refresh_offset_table`”
+   **Execution risk:** Another agent can implement the refresh command per Slice 4 and still appear to violate the project delivery plan’s deferred scope. Reviewers may disagree on whether refresh belongs in this slice.
+   **Fix:** Update `delivery_plan.md` before execution: remove refresh from deferred slices or explicitly mark it as promoted into Slice 4, including the exact command contract and validation gate.
+
+2. **Problem:** Refresh contract shape in the implementation plan is incomplete compared with existing command conventions. The plan’s YAML omits `request.type`, `response.type`, `accepted`, `message`, `timeout_ms`, and likely `diagnostics`, while existing commands include these fields.
+   **Location:** [2026-06-17-work-offset-slice4-client-table.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:286) “`request: fields:`”; compare live pattern [interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1159) “`tool.commands.refresh_offset_table`” and [interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1167) “`accepted: bool`”
+   **Execution risk:** A literal implementation may produce a DSL contract inconsistent with existing command schema/docs and weaker client/server result typing. It may validate today if schema is loose, but it will be a bad retained contract precedent.
+   **Fix:** Mirror `tool.commands.refresh_offset_table`: include `request.type: object`, `response.type: object`, `accepted`, `message`, `snapshot_revision`, `row_count`, `changed`, `diagnostics`, `timeout_ms`, and `idempotency`.
+
+3. **Problem:** Server refresh step only returns details; it does not state how the command causes the resource table to reload/synchronize. Current `CommandRouter` polls resources after accepted commands, so this may work indirectly, but the plan never names that dependency or asserts the resource/alias result.
+   **Location:** [2026-06-17-work-offset-slice4-client-table.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:326) “Implement adapter refresh command”; [command_router.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:121) “`const auto polled_resources = adapter_.poll_resources();`”
+   **Execution risk:** An agent can pass the planned focused test by returning refresh details, yet miss the user-visible requirement that Refresh reloads `wcs.offset.table` and syncs `tooling.wcs.table`. This is especially risky for real backend unavailable/changed states.
+   **Fix:** Add a test assertion after invoking refresh that `resource_service().read(&quot;wcs.offset.table&quot;)` and `tooling.wcs.table` are updated/synchronized, and document that refresh relies on accepted-command post-poll or explicitly writes refreshed resources.
+
+4. **Problem:** The Web/QML smoke scenario steps are too abstract for the existing scenario runner format. They say “edits the first editable WCS X cell”, “submits a stale command through the generated path”, and “records an assertion marker”, but do not specify concrete JSON actions/assertion keys compatible with existing scenario shape.
+   **Location:** [2026-06-17-work-offset-slice4-client-table.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:971) “Add Web positive scenario”; [2026-06-17-work-offset-slice4-client-table.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:983) “Add Web stale scenario”
+   **Execution risk:** Different agents may invent incompatible scenario actions, or only satisfy source-level string tests without real browser-backed coverage of inline edit/stale behavior.
+   **Fix:** Add a small concrete JSON skeleton using the actual supported action kinds from `test_web_ui_scenario_shape` and the runner’s existing assertion schema. If stale injection needs a new runner feature, make that a prior explicit task.
+
+5. **Problem:** Final verification omits `./tools/generate_targets.sh`, but later commands assume `generated/server-build` and regenerated Web/QML output already exist.
+   **Location:** [2026-06-17-work-offset-slice4-client-table.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:1127) “Final Verification”
+   **Execution risk:** A fresh checkout or cleaned `generated/` tree can fail final verification for missing build artifacts even if the retained/source changes are correct.
+   **Fix:** Include `cd nrt/hmi &amp;&amp; ./tools/generate_targets.sh` before final server `ctest`, or state that Final Verification must be run after Task 7 Step 2 in the same unchanged workspace.
+
+**Go/No-Go**
+
+No-go for direct execution as written. The plan is close and mostly executable, but refresh scope/contract must be corrected first, and the smoke scenario steps need concrete runner-compatible acceptance detail before another agent starts implementing.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:259-266|note=[used to orient current WorkOffset slice authority and verification expectations]
+MEMORY.md:240-242|note=[used to confirm V1 scope and prior multi-review preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-79d3-7753-8090-208db77e848c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

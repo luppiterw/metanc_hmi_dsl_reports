@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed474-cc23-7653-afe0-fef52efaee33</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 15:21:24 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T15-21-24-019ed474-cc23-7653-afe0-fef52efaee33.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 15:21:24 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-17&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 15:21:24 +0800</div>
+<pre>你是只读测试/验收覆盖审核 agent。不要修改任何文件。任务：审核 Work Offset Slice 4 文档和实施计划里的测试、smoke、验收是否覆盖主要风险，是否有不可执行或证据链断点。
+
+工作目录：/home/iaar/workspace/ccmix-wp/MetaNC
+
+重点文件：
+- nrt/hmi/docs/project/work_offset/smoke_report.md
+- nrt/hmi/docs/project/work_offset/delivery_plan.md
+- docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md
+
+可读辅助文件：
+- nrt/hmi/tests/test_ui_automation.py
+- nrt/hmi/tests/test_pipeline.py
+- nrt/hmi/tests/qml_smoke/ui_work_offset_binding.js
+- nrt/hmi/tests/ui_scenarios/web/work_offset_table_binding.json
+- nrt/hmi/tools/run_ui_automation_smoke.sh
+- nrt/hmi/server/tests/work_offset_runtime_extension_adapter_test.cpp
+
+审核重点：
+- Web/QML 是否都覆盖 footer hierarchy、enriched activation、inline edit payload、refresh、stale rejection、no optimistic patch。
+- 计划里的 source-level 测试和 smoke 测试是否能真正证明 spec，而不是只查字符串。
+- 最终 verification 是否足够，是否缺 real-backend/combined-backend 或 docs gate。
+- 不要修改文件。
+
+输出要求：
+- Findings first，按严重程度排序。
+- 每条包含：Problem / Location（文件:行号，短引用）/ Coverage risk / Fix。
+- 最后给出：最低限度需要补哪些验收项才能开始实现或合并 Slice 4。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 15:22:35 +0800</div>
+<pre>Using `review-docs-comprehension` for the document-review discipline, and keeping this read-only as requested. I’ll first honor the repo workflow by reading the root docs/codemap, then inspect the named Slice 4 evidence chain with line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 15:22:57 +0800</div>
+<pre>I found existing memory on WorkOffset boundaries and prior artifact gates, but I’m treating it as stale context and verifying the current files directly. The first pass confirms the module scope is `nrt/hmi` plus `nrt/work_offset`, with HMI owning page flow/projection and Work Offset owning revision-aware domain semantics.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 15:23:36 +0800</div>
+<pre>The worktree already has modified Slice 4-related files, so I’ll avoid touching anything and treat the current contents as the review target. Next I’m reading the module-local instructions and then the exact docs/tests the review depends on.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 15:24:27 +0800</div>
+<pre>The Slice 4 docs state the intended coverage fairly clearly, but the implementation plan is long enough that I’m checking the proposed tests against the existing test harness files rather than assuming the named checks are meaningful. That is where coverage gaps and “string-only proof” usually show up.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 15:25:42 +0800</div>
+<pre>The current Web/QML smokes are still binding-level: they use the old body `activate_g54` path and don’t inspect inline edit metadata or stale behavior. The plan proposes adding checks, but several of those proposed checks are source/string assertions, so I’m now checking whether the actual smoke runner can enforce command payloads and no-mutation assertions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 15:26:43 +0800</div>
+<pre>The Web runner is capable of checking command arguments and post-state resources, so a strong Web smoke is feasible. The current plan underuses that capability in places by only adding source-level file-text checks or scenario marker strings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 15:28:23 +0800</div>
+<pre>The existing table edit helpers confirm the core Slice 4 risk: Work Offset edit payloads currently only send `g_code`, `field`, and `value`. So the planned positive/stale smokes need to exercise real inline editing, not just assert that future source files contain the right words.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 15:30:21 +0800</div>
+<pre>I’m seeing one concrete execution gap: the Web scenario runner can assert command arguments and resources, but it currently has no action for filling an inline editor or sending Enter. A plan that says “edit a cell” without extending the runner would either be impossible or would bypass the generated UI path with `runtime_command`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 15:31:36 +0800</div>
+<pre>I have enough for the review now. I’m doing one last line-reference pass for the most relevant plan and evidence locations so the findings can point to concrete text instead of broad document sections.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-17 15:33:42 +0800</div>
+<pre>**Findings**
+
+1. **Problem:** Final Verification gate is weaker than the Slice 4/Slice 5 acceptance chain.
+   **Location:** [2026-06-17-work-offset-slice4-client-table.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:1127) short quote: only runs `validate`, `build-ir`, Python unittests, default `server-build` focused CTest, docs lint, `git diff --check`.
+   **Coverage risk:** This can pass without packaged Web/QML smoke, `server-build-work-offset`, `server-build-metanc-real`, `./tools/generate_targets.sh`, `./tools/build_docs_html.sh`, or repo-root `book build`, even though [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:420) and [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:281) require those for final acceptance.
+   **Fix:** Make Final Verification match the stronger gate: generate targets, build docs HTML, run default mock CTest, WorkOffset real CTest, combined real-backend CTest, packaged UI smoke, repo-root docs lint, and `book build`.
+
+2. **Problem:** Planned Web inline-edit smoke is not currently executable through the scenario runner.
+   **Location:** [plan](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:973) short quote: “edits the first editable WCS X cell”; but [run_web_ui_scenario.js](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/ui_automation/run_web_ui_scenario.js:611) only supports `runtime_command`, `dom_pointer`, `dom_press`, `dom_release`, `dom_expect`, and `wait`.
+   **Coverage risk:** The positive/stale Web smoke cannot prove generated inline edit payload assembly. If implemented with `runtime_command`, it bypasses the UI path that must create `target_ref`, `axis_id`, and `expected_revision`.
+   **Fix:** Add a scenario action for inline editing, for example click cell, set `.data-table-cell-editor` value, send Enter/blur, then assert `command_expectations` and resource no-mutation.
+
+3. **Problem:** Refresh evidence uses inconsistent revision semantics.
+   **Location:** [plan](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:349) short quote: `known != snapshot.active_state_revision` and returns `&quot;snapshot_revision&quot;` from `active_state_revision`; [work_offset_backend.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/include/hmi/extensions/work_offset/work_offset_backend.h:40) has table snapshot rows plus `active_state_revision`, not a table-level `snapshot_revision`.
+   **Coverage risk:** Refresh can report the wrong `changed` state after a cell edit, because row/table revision and active-state revision are separate streams. That breaks evidence for refresh and stale-retry clearing.
+   **Fix:** Add a real table-level snapshot revision to the HMI facade or derive a consistent table revision from rows, and use the same value for client `known_revision`, server comparison, and response `snapshot_revision`.
+
+4. **Problem:** Several proposed source-level tests are string-presence checks, not behavioral proof.
+   **Location:** [plan](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:395) short quote: `read_text(...); self.assertIn(...)`; [plan](/home/iaar/workspace/ccmix-wp/MetaNC/docs/superpowers/plans/2026-06-17-work-offset-slice4-client-table.md:937) checks scenario JSON contains `target_ref`, `axis_id`, `expected_revision`, and `no_optimistic_patch`.
+   **Coverage risk:** These can pass with dead code, unwired helpers, or marker strings in JSON while payload enrichment, stale handling, and no optimistic patch still fail.
+   **Fix:** Keep string checks only as weak guardrails. Add executable assertions against generated command traces, command results, and resource snapshots for Web and QML.
+
+5. **Problem:** QML smoke can be skipped while the runner still exits green.
+   **Location:** [test_qml_smoke.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_qml_smoke.py:875) short quote: skips if `QtWebSockets` is unavailable; [run_ui_automation_smoke.sh](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/run_ui_automation_smoke.sh:41) just invokes the QML unittest set.
+   **Coverage risk:** Slice 4 could record “smoke passed” while QML WorkOffset activation/edit/stale coverage never ran.
+   **Fix:** For Slice 4 acceptance, require QML smoke not skipped, for example set/enforce `HMI_REQUIRE_QTWEBSOCKETS=1`, or record the skip as a blocker rather than pass evidence.
+
+**Minimum Acceptance To Add**
+
+Before implementation: fix the plan so Web inline edit is executable, refresh revision semantics are coherent, and source tests are not the primary proof.
+
+Before merge: require evidence for Web and QML footer hierarchy, enriched activation, inline edit payload, refresh, stale rejection, and no optimistic patch from generated runtime smokes; require no QML skip; run default, real WorkOffset, and combined real-backend CTests; run docs lint plus `book build`; regenerate targets/docs HTML and record artifact existence in `smoke_report.md`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:260-266|note=[WorkOffset design center and final artifact gate context]
+MEMORY.md:39-42|note=[current checkout verification reminder]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-79d3-7753-8090-208db77e848c
+019ecdbe-a82d-7e82-945f-115cbe6e03a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

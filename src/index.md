@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-06-17` | Session bootstrap and Codex user-history export tooling |
 | `2026-06-12` | Isolated `MetaNC/feat/hmi` publication worktree setup, WorkOffset HMI integration plan convergence, standalone `metanc_hmi_dsl` report/docs refresh, and guarded standalone/downstream sync preparation |
 | `2026-06-09` | MetaNC `feat/hmi` Magazine fixture review-fix back-sync into `metanc_hmi_dsl`, mock Magazine command parity, table-level magazine revision seed alignment, generated snapshot/test refresh, report/docs publication, and downstream sync-boundary verification |
 | `2026-05-28` | HMI Tool Management Add Tool / Add Edge Detail draft unification, Magazine V2 create/assign/move/unload workflow, real tooling-management magazine command parity, generated artifact refresh, MetaNC sync, and report/docs publication |

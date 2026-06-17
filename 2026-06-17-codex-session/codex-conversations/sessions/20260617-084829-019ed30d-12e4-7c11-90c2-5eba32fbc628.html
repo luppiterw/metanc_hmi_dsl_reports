@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: propose the...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: propose the...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed30d-12e4-7c11-90c2-5eba32fbc628</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-17 08:48:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/17/rollout-2026-06-17T08-48-29-019ed30d-12e4-7c11-90c2-5eba32fbc628.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-17 08:48:30 +0800</div>
+<pre>You are reviewing /home/iaar/workspace/ccmix-wp/metanc_drafts. Do not edit files. Task: propose the next detailed TP004 implementation-bridge slices after the current Parameter Descriptor minimal model. Focus on owner/scope promotion, semantic path grammar, machine/profile axis aliases, and runtime registry/API boundaries. Keep scope narrow; avoid broad runtime-symbol expansion. Inspect TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md, OBJECT-SCOPES.md, SCHEMA-FIELDS.md, VALUE-SETS.md, access definitions, validation sets, and related discussion packs. Return: (1) candidate slices with purpose, files affected, dependencies, acceptance checks, and risk, (2) which slice is best for today and why, (3) which slices should explicitly not be done today. No implementation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-17 08:49:13 +0800</div>
+<pre>I’ll treat this as an OpenSpec exploration/review task, so I’m using the `openspec-explore` skill and doing a quick memory pass for TP004 context before inspecting the live files. No file edits.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-17 08:50:45 +0800</div>
+<pre>The prior notes confirm the important constraint: TP004 parameter work has been repeatedly narrowed to descriptor governance, owner/scope separation, and avoiding runtime-symbol expansion. I’m now checking the current source docs and discussion packs to see where the next bridge can actually attach.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-17 08:51:30 +0800</div>
+<pre>The active OpenSpec change is already complete (`document-parameter-descriptor-current-state`, 15/15), so I’m reading the archived minimal-model decisions plus the canonical TP004 docs. The key question is where to add just enough implementation bridge without turning descriptors into a full runtime symbol table.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-17 08:52:31 +0800</div>
+<pre>The source docs show only `parameter_descriptor.owner` and `.scope` are currently bound in `SCHEMA-FIELDS.md`; semantic path, axis alias/profile data, and runtime registry are all deliberately deferred. I’m checking the concrete Siemens/access examples next so the proposed slices line up with existing evidence rather than inventing new axes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-17 08:53:42 +0800</div>
+<pre>I’ve confirmed the current minimal model already made `semantic_name` part of identity, kept axis aliases outside identity, and left only owner/scope as descriptor schema-field bindings. I’m checking the discussion/current-state pages and checker surface now so the acceptance checks are realistic.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-17 08:54:43 +0800</div>
+<pre>The discussion pack says the weakest current area is “future slices need real source evidence before promoting optional value/access/runtime fields.” I’m now reading the older descriptor-governance and value-set binding packs plus the checker/tests to separate good next slices from tempting but premature ones.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-17 08:55:39 +0800</div>
+<pre>The checker today is stronger than the docs alone imply: it already loads fenced YAML, owner registry, object-scope records, schema-field bindings, and profile-owned value sets. I’m narrowing the proposed acceptance checks to what can be validated with that existing tool shape plus small new checks, not a new implementation architecture.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-17 08:57:36 +0800</div>
+<pre>At this point the shape is clear: the next bridge should probably promote one deferred owner/scope pair, then separately define grammar and alias boundaries. I’m doing one last targeted pass for discussion-pack wording around semantic paths, machine profile ownership, and runtime registry/API boundaries before I rank today’s slice.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-17 08:58:00 +0800</div>
+<pre>I have enough source context now. I’m going to synthesize the slices as planning guidance only, with file-level impact and validation paths, and explicitly mark the tempting-but-wrong expansions to keep out of today’s work.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-17 09:00:56 +0800</div>
+<pre>No files edited. I inspected the current TP004 docs/checker surface and the safest bridge is still small: promote one concrete boundary at a time, then add grammar/alias rules around it.
+
+**Candidate Slices**
+| Slice | Purpose | Files affected | Dependencies | Acceptance checks | Risk |
+|---|---|---|---|---|---|
+| 1. Promote `zero_offset -&gt; frame_axis_component` owner/scope | Move one already evidenced provisional pair into checker-backed descriptor eligibility. Best link to existing `$P_UIFR[frame,axis,component]` access family. | [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136), [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:175), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:91), checker tests | `zero_offset` owner evidence must be registered, not just listed as unassigned; existing zero-offset access definition/validation set provides shape evidence. | `tools/check_parameter_value_sets.py` accepts `zero_offset/frame_axis_component`; rejects provisional-only pairs; validation set still proves `$P_UIFR` descriptor/dispatch behavior. | Medium: `zero_offset` is currently unassigned, so owner registry evidence may be the real blocker. |
+| 2. Promote `tool_management -&gt; tool_edge` owner/scope | Admit the tooling descriptor boundary using the already registered TP002 owner and `$TC_DP3[tool,edge]` evidence. | [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:156), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:62), checker tests | TP002 owner is already registered; access family says tool data is domain-table, not flattened parameter. | Descriptor pair accepted only for `tool_management/tool_edge`; no conversion of `$TC_DP3` into ordinary parameter catalog. | Low-medium: easiest evidence path, but slightly less aligned with “Parameter Descriptor” if treated as domain-table field. |
+| 3. Semantic path grammar, documentation-only first | Define `semantic_path_template` grammar as grammar plus variable binding, not enum and not identity. | [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:130), [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:36), maybe [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:231) later | Owner/scope path variables must be stable enough; do not require it on all descriptors yet. | Examples only use variables declared by scope `path_variables`; checker can reject unknown variables later. | Medium: easy to accidentally make it a required descriptor field or URL-like path. |
+| 4. Axis alias/profile boundary | Add a configuration-owned alias asset shape for axis references used by validation fixtures, without putting aliases into descriptor identity. | [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:90), [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:833), [validation-sets/case-schema.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/case-schema.md:77) | Needs a separate machine/profile owner-kind decision; current profile-owned declarations are compatibility-profile owned only. | `axis_map` fixtures resolve aliases; `parameter_id` still rejects `x/y/z/a/b/c` identity segments. | High for today: machine-profile ownership is explicitly reserved. |
+| 5. Runtime registry/API boundary note | Define what generated registry/API metadata may consume from descriptors without defining runtime registry schema. | [access-definitions/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/README.md:81), [validation.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/validation.md:156), baseline docs | Should follow owner/scope promotion and semantic path grammar, not precede them. | Text says access definitions are source, generated registry is downstream, runtime instances are not persisted rows. | High if it expands into runtime-symbol/API design. |
+
+**Best For Today**
+Do slice 2: promote `tool_management -&gt; tool_edge`.
+
+Why: `tool_management` is already registered with TP002 evidence in [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:62), and `$TC_DP3[tool,edge]` already has access-definition and validation-set coverage. It is the narrowest implementation bridge because it exercises owner/scope promotion without first solving unassigned `zero_offset`, semantic path grammar, or machine-profile alias ownership.
+
+**Explicitly Not Today**
+- Do not define runtime registry/API schema. Current docs explicitly keep runtime registry behavior deferred.
+- Do not add broad runtime-symbol expansion or PLC/NC symbol catalog work.
+- Do not formalize `parameter_descriptor.value`, `parameter_descriptor.access`, activation, or persistence fields.
+- Do not define machine-profile axis alias schema today.
+- Do not make `semantic_path_template` required today.
+- Do not promote broad pairs like `motion -&gt; machine/channel/axis/spindle`, `hal -&gt; machine`, or `magazine -&gt; machine`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:458-491|note=[TP004 scope constraints and current descriptor state]
+MEMORY.md:421-433|note=[descriptor governance and i18n context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

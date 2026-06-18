@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ec938-80e0-7050-91cc-c84b760537e4</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-15 10:59:43 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/15/rollout-2026-06-15T10-59-43-019ec938-80e0-7050-91cc-c84b760537e4.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 10:59:44 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-15&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 10:59:44 +0800</div>
+<pre>你是 MetaNC HMI WorkOffset Slice 1 的只读文档/计划审查 agent。不要修改文件。
+
+工作区：/home/iaar/workspace/ccmix-wp/MetaNC
+当前变更尚未提交，审查当前 working tree diff。
+
+项目工作流要求：先读 repo root README.md，再看 docs/dev/architecture.md 中相关模块；本次范围是 nrt/hmi docs，必要时读 nrt/hmi/README.md 和 nrt/hmi/AGENTS.md。
+
+审查视角：docs/plan/story boundary correctness。重点文件：
+- nrt/hmi/docs/SUMMARY.md
+- nrt/hmi/docs/project/index.md
+- nrt/hmi/docs/project/work_offset/index.md
+- nrt/hmi/docs/project/work_offset/contract.md
+- nrt/hmi/docs/project/work_offset/server_plan.md
+- nrt/hmi/docs/project/work_offset/delivery_plan.md
+- nrt/hmi/docs/project/work_offset/smoke_report.md
+
+背景：Slice 0 是文档基线；用户强调不要把 Slice 0 单独合 PR，所有 slice 最终统一 PR。Slice 1 已落 contract hardening 并在 smoke report 记录证据。请审查文档是否准确表达 scope/non-goals/ownership、是否误称当前未实现功能已经完成、是否和“统一最终 PR”策略冲突。
+
+请输出 findings-first 报告：
+- Critical / Important / Minor / No issue，按严重性排序
+- 每个 finding 给文件和行号，说明为什么是问题、建议修复
+- 如无问题，明确说 No issues found，并列 residual risk / missing verification
+- 不要改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-15 11:01:09 +0800</div>
+<pre>Using `review-docs-comprehension` for the document clarity/scope-boundary review, and I’ll keep this read-only as requested. I’m first doing the required repo/module orientation, then I’ll inspect the working tree diff and referenced docs with line numbers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-15 11:01:45 +0800</div>
+<pre>The repo-level README confirms this is a docs/build-oriented repo with mdBook documentation as a first-class surface. Next I’m reading the architecture map and HMI-local instructions, plus the diff, so the findings are grounded in the current branch rather than memory.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-15 11:02:05 +0800</div>
+<pre>The current worktree includes both docs and implementation/test changes, but I’m limiting the review to the requested documentation and plan boundary. I’m now reading the changed WorkOffset docs top-to-bottom with line numbers and checking whether the diff introduces any premature delivery claims or PR-slicing language.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-15 11:03:02 +0800</div>
+<pre>The prior WorkOffset boundary notes match the architecture map: domain semantics/revision guards belong to `nrt/work_offset`, while HMI server owns transport/session facades and mocks. I’m checking the new docs against that boundary and against the current implementation diff so I don’t report a purely wording-level false positive.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-15 11:03:45 +0800</div>
+<pre>I’ve found the docs explicitly state the “single integration branch/final PR only” model in both the overview and delivery plan, so that part is not obviously conflicting. I’m doing one more pass over the retained contract/code diff and keyword searches for “complete/ready/final PR” style wording to catch premature completion claims.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-15 11:05:45 +0800</div>
+<pre>**Critical**
+No issues found.
+
+**Important**
+1. [index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/index.md:82) still describes pre-Slice-1 contract gaps as “current”: missing `target_ref`, `expected_revision`, active metadata, active-state revision, and per-cell `axis_id` metadata. That now conflicts with [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:16), which records Slice 1 contract hardening as landed, and with the working tree contract changes in [interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:58).
+   - Why it matters: a reviewer can incorrectly conclude Slice 1 has not happened, or reopen already-landed contract scope.
+   - Suggested fix: rename the section to “Pre-Slice-1 Baseline” or add a current-status subsection that marks retained contract hardening as complete while leaving server extension / real backend / client behavior as pending.
+
+**Minor**
+1. [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:29) says “Coverage added in this slice,” but then says generated Web/QML snapshots are “expected to carry” the hardened shape.
+   - Why it matters: the evidence report blurs verified evidence versus expected artifact state.
+   - Suggested fix: if snapshots were verified, say they “now carry” the hardened shape and keep the validation command in the evidence table; otherwise move that bullet to missing/follow-up evidence.
+
+**No Issue**
+The unified final-PR strategy is stated consistently: [index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/index.md:16), [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:5), and [smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:5) do not conflict with “all slices in one final PR.”
+
+Scope, non-goals, and ownership are generally clear and aligned with the HMI/WorkOffset boundary: [index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/index.md:59), [index.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/index.md:96), and [server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:216).
+
+Residual risk: I did not rerun the smoke-report commands; this review checked the current working tree diff and documentation consistency only. No files were modified.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:78-83|note=[WorkOffset HMI boundary and mock ownership context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb545-cef2-7971-8ca7-7d8b3e0a4d49
+019eb92d-005c-71c0-a4f3-66a16bcb861d
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

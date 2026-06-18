@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8ad6-1463-79f0-9c8d-b40ec025efaa</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 08:15:46 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T08-15-46-019e8ad6-1463-79f0-9c8d-b40ec025efaa.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:15:46 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-03&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:15:46 +0800</div>
+<pre>Review /home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc build/test integration and coverage for the current PLC work. Follow repo workflow: read root README.md, docs/dev/architecture.md, rt/plc/README.md; check for rt/plc/AGENTS.md. Do not edit files. Scope strictly inside rt/plc plus root docs build/lint commands if needed. Focus on CMakeLists.txt, CTest labels, Story-44 runtime contract test integration, regression coverage interactions with Story-28/30/32/33/35/43, and whether the tests actually freeze the documented behavior. Report findings only with severity and file:line. If no findings, say no findings and list validation commands you ran or inspected.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:15:58 +0800</div>
+<pre>I’ll do this as a review-only pass. I’m first checking the repo workflow files and the relevant prior PLC notes so I don’t miss existing validation conventions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:16:12 +0800</div>
+<pre>The scope orientation confirms `/rt/plc` is the machine-logic/PLC framework under the RT development stack, with no nested `AGENTS.md` found under `rt/plc`. I’m now reading the PLC build graph and tests/docs around Story-44 and the earlier regression stories.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:16:34 +0800</div>
+<pre>The build graph has one Story-44 test executable added and folded into the existing adapter/payload labels. I’m checking whether that single target matches the Story-44 docs, and whether the older Story-28/30/32/33/35 baselines are still selected coherently.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:16:57 +0800</div>
+<pre>Story-44’s documentation is broader than the currently wired test target: most slices remain planned, while `story44_runtime_contract_tests` appears to cover the first runtime-freeze slice. I’m narrowing the review to whether that implementation claim is adequately frozen and whether the CTest grouping can regress silently.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:17:23 +0800</div>
+<pre>I’ve got one likely integration issue around coverage claims versus actual CTest targets, but I’m verifying the exact lines before reporting it. I’m also checking the generated CTest metadata so this is based on what CTest will actually select, not just the CMake source.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 08:17:38 +0800</div>
+<pre>The generated build configured cleanly in `/tmp/metanc_plc_review_build`, which is enough to inspect CTest names/labels without editing the repo. I’m running CTest discovery now and then I’ll finalize with findings only, per your requested review format.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-03 08:18:11 +0800</div>
+<pre>- Medium: [rt/plc/tests/story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:121), [rt/plc/include/metanc/plc/runtime_command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/runtime_command.hpp:15), [rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md:25): Story-44’s command inventory is manually duplicated in `all_command_kinds()` and is not tied to `RuntimeCommandKind`, so a new runtime command can be added without entering the Story-44 state matrix while the test still passes.
+
+- Medium: [rt/plc/tests/story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:486), [rt/plc/tests/story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:489), [rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md:28): The Story-44 state matrix only asserts status/code for most command-state combinations, but the documented freeze includes message, `lines`, and typed payload behavior; those can drift for successful matrix cases without this matrix failing.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[used prior PLC review workflow and validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

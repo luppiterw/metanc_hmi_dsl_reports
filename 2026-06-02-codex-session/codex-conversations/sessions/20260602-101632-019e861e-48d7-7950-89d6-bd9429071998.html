@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>只读审查。工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts。目标：审查刚修完后的中文翻译完整性。重点看 docs_i18n/zh/src/TP004-p...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>只读审查。工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts。目标：审查刚修完后的中文翻译完整性。重点看 docs_i18n/zh/src/TP004-p...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e861e-48d7-7950-89d6-bd9429071998</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 10:16:32 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T10-16-32-019e861e-48d7-7950-89d6-bd9429071998.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 10:16:32 +0800</div>
+<pre>只读审查。工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts。目标：审查刚修完后的中文翻译完整性。重点看 docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/{tool,axis-machine-data,zero-offset}.md、validation-sets/case-schema.md、TP004 首页，与 TP004-parameter-system/openspec 对应源相比是否仍缺关键验证示例、验证矩阵、说明、开放问题、治理内容。也检查 docs_html/zh 是否反映这些内容。不要修改文件。输出 findings，按 severity 排序，必须带文件路径和行号；如果没有问题，说明你检查了哪些源/目标和搜索结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 10:17:07 +0800</div>
+<pre>我会按只读审查处理：先用 OpenSpec 相关流程确认源规范位置，再逐页对比中文源文档和已发布 `docs_html/zh`，只输出带行号的 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 10:17:57 +0800</div>
+<pre>OpenSpec 当前没有活动 change，审查对象是 `TP004-parameter-system/openspec` 的静态源和中文发布树。工作区已有未提交改动，我会只读比对，不碰这些文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 10:18:22 +0800</div>
+<pre>前两页初看：`tool.md` 的验证示例、矩阵、说明和开放问题基本已带过来；`axis-machine-data.md` 里我已经看到至少一个访问契约说明行可能漏翻。接下来我会继续核对 `zero-offset`、`case-schema`、首页以及 HTML 输出是否同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 10:18:32 +0800</div>
+<pre>`zero-offset` 和 `case-schema` 的验证主体也基本存在；但 `zero-offset` 访问契约同样少了源文档里的 `note`，这类内容直接影响治理边界。下一步我会用结构化搜索把“源有、中文/HTML 无”的关键短语收敛出来，避免只靠肉眼。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 10:19:03 +0800</div>
+<pre>首页对比暴露的是压缩过度：中文 TP004 首页保留了“阅读顺序/治理”骨架，但源文档里更细的 scope 和 topic ownership 边界没有完整呈现。我会再确认 HTML 行号和是否还有其他关键短语缺失。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-02 10:19:33 +0800</div>
+<pre>目前可确认的不是验证示例/矩阵大段缺失，而是少数关键治理/边界说明没有落到中文源和发布 HTML。为了给 findings 准确行号，我现在只读截取 HTML 对应段落和首页正文。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-02 10:20:18 +0800</div>
+<pre>我已经把目标中文 Markdown 与发布 HTML 的关键段落都定位到行号。最后再跑一组小范围搜索，确认 `case-schema` 和三页 Siemens 验证段没有遗漏“验证示例/矩阵/说明/开放问题”这些标题和典型错误码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-02 10:21:33 +0800</div>
+<pre>**Findings**
+
+High: TP004 中文首页仍缺 OpenSpec 首页的关键治理边界。中文源只给了压缩后的专题范围 [docs_i18n/zh/src/TP004-parameter-system/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/index.md:14)，发布 HTML 也只反映这版内容 [docs_html/zh/TP004-parameter-system/index.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/index.html:184)。相比源文档，它遗漏了“baseline is active/current design position” [TP004-parameter-system/openspec/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:6)、具体覆盖对象清单 [TP004-parameter-system/openspec/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:13)，以及 HMI/PLC/tooling 不归 TP004 直接拥有、只消费访问契约的边界 [TP004-parameter-system/openspec/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:23)。
+
+Medium: `axis-machine-data` 和 `zero-offset` 的中文访问契约 YAML 缺少源文档里的 `note`，发布 HTML 同步缺失。`axis-machine-data` 中文源在 `persistence_policy` 后直接进入 `guards` [docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/axis-machine-data.md:88)，HTML 同样缺 [docs_html/zh/TP004-parameter-system/access-definitions/siemens/axis-machine-data.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/axis-machine-data.html:245)，但源文档有说明最终访问仍受 controller access level、channel state、activation timing、owner policy 约束 [TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:116)。`zero-offset` 同样在中文源 [docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/zero-offset.md:97) 和 HTML [docs_html/zh/TP004-parameter-system/access-definitions/siemens/zero-offset.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/zero-offset.html:254) 缺少源文档的 access-governance note [TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:121)。
+
+我未修改文件。验证示例、验证矩阵、说明、开放问题在 `tool.md`、`axis-machine-data.md`、`zero-offset.md` 和 `case-schema.md` 的中文源与 `docs_html/zh` 中都有对应标题与典型用例/错误码；本轮未发现这些块整体缺失。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:140-177|note=[used docs_i18n docs_html and parameter-system publishing context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6d14-a2f1-7d62-82ef-4cc7879838d9
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

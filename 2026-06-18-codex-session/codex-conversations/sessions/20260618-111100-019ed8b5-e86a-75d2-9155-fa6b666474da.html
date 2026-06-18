@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing i18n/reader publication consistency for a TP004 docs change in /home/iaar/workspa...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing i18n/reader publication consistency for a TP004 docs change in /home/iaar/workspa...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed8b5-e86a-75d2-9155-fa6b666474da</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-18 11:11:00 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T11-11-00-019ed8b5-e86a-75d2-9155-fa6b666474da.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 11:11:00 +0800</div>
+<pre>You are reviewing i18n/reader publication consistency for a TP004 docs change in /home/iaar/workspace/ccmix-wp/metanc_drafts. Scope: inspect git diff, docs_i18n zh projection, reader include paths, tools/check_docs_i18n_sync.py changes, and published-page validation logic. Check for missing Chinese prose, brittle required_texts, broken include/nav paths, or HTML matching issues. Return findings with file/line references if any, or say no blocking issues. Do not modify files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:11:13 +0800</div>
+<pre>I’ll review this as a code/content consistency pass, starting from the live diff and the TP004/i18n context already recorded for this repo. I’ll keep it read-only and report only actionable findings with file/line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 11:11:40 +0800</div>
+<pre>The current worktree has five modified tracked files plus one untracked OpenSpec change directory. I’m now reading the actual diffs and rendered source paths, with extra attention to the path-sensitive wrappers and the checker’s published HTML assumptions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 11:12:13 +0800</div>
+<pre>The English/topic-book source for the new page already appears to be wrapper-based, so I’m checking the wrapper targets and SUMMARY entries rather than assuming the new checker entries are enough. I’m also going to run the i18n checker in read-only mode to catch path and published-page mismatches that are hard to spot by eye.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 11:12:59 +0800</div>
+<pre>The checker passes both without and with `--require-published-html`, which means the obvious source, nav, and published-page checks are green. I’m doing one more pass over the exact rendered HTML and the untracked change metadata to look for review-only issues the checker would not catch.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 11:13:26 +0800</div>
+<pre>The rendered HTML contains the expected text on root, topic, English, and Chinese published paths, including the escaped arrow after unescaping. I’m checking the checker entrypoints now so the result is not just “the current files happen to pass” but also whether the validation path would keep catching drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 11:14:25 +0800</div>
+<pre>One reader-consistency problem did turn up: the Chinese binding page kept the old “next use” sentence and then added the new one, while the English source replaced that sentence. I’m checking whether that stale sentence is also present in published HTML before I finalize.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-18 11:14:46 +0800</div>
+<pre>No blocking issues found.
+
+Finding: [docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md:145) keeps the old “apply binding rules first, then consider promotion” next-use sentence and then adds the new “review evidence for promotion” sentence at line 148. The English source now only has the new wording at [TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md:155). This is also present in published Chinese HTML at [docs_html/zh/TP004-parameter-system/parameter-instance-bindings.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/parameter-instance-bindings.html:292), so readers see a stale extra step.
+
+Validation checked: `python3 tools/check_docs_i18n_sync.py`, `python3 tools/check_docs_i18n_sync.py --require-published-html`, and `git diff --check` all passed. Include/nav paths and published-page required text matching looked okay.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:539-540|note=[TP004 include path and Chinese reader prose review context]
+MEMORY.md:562-563|note=[known TP004 wrapper and Chinese projection failure modes]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

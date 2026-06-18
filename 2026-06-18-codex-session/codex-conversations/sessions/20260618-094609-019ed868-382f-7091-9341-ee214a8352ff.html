@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed868-382f-7091-9341-ee214a8352ff</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-18 09:46:09 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T09-46-09-019ed868-382f-7091-9341-ee214a8352ff.jsonl</code></div>
+<div><b>Messages</b>: <code>15</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 09:46:09 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-18&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 09:46:09 +0800</div>
+<pre>Read-only review task in /home/iaar/workspace/ccmix-wp/MetaNC. Follow repo instructions: read root README.md, docs/dev/architecture.md scope, and nrt/hmi README/AGENTS as needed. User wants to implement nrt/hmi WorkOffset Slice 4 if design is sound.
+
+Scope: review client/contract side feasibility for WorkOffset Slice 4. Inspect:
+- nrt/hmi/docs/project/work_offset/contract.md
+- nrt/hmi/docs/project/work_offset/delivery_plan.md, especially Slice 4
+- nrt/hmi/definition/ui.structure.yaml and interfaces.machine.yaml
+- relevant Web/QML generator/runtime command guard code under nrt/hmi/client and nrt/hmi/tools/hmi_dsl
+- existing test patterns under nrt/hmi/tests for parameter footer/table/work_offset/tool_offset
+
+Do not edit files. Return findings only. Prioritize blockers/risks for starting implementation: contradictions, missing design decisions, places where current generator architecture makes the design infeasible, or exact tests that should be written first. If no blocker, say so and list the smallest safe TDD entry points.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 09:46:46 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check. I’ll keep this read-only and start with the repo orientation files plus a quick memory pass for prior WorkOffset context, then inspect the contract, Slice 4 plan, DSL definitions, generator/runtime guards, and nearby tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 09:47:07 +0800</div>
+<pre>The codemap places this in NRT software, with HMI presenting/editing Work Offset while `nrt/work_offset` owns the domain. I’m narrowing the review to the HMI generator/runtime boundary and the zero-offset table Slice 4 plan.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 09:47:30 +0800</div>
+<pre>The module-level instructions add `CONTRIBUTING.md` plus HMI development guideline pages as “read first” material. I’m reading those now, then I’ll switch to line-numbered inspection so findings can point to exact files/lines.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 09:48:07 +0800</div>
+<pre>The status matrix already says WorkOffset has light Web/QML binding smoke, but broader WCS contract coverage remains open. I’m checking the Work Offset module readme/guidance next so I don’t misassign HMI-owned interaction state to the domain layer.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 09:48:29 +0800</div>
+<pre>The Work Offset module guidance confirms HMI owns page flow/local UI state while the domain owns semantics and revisions. I’m now locating the exact generator fragments, runtime guards, and tests that already touch `wcs.offset.table`, activation, and `set_offset`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 09:49:51 +0800</div>
+<pre>Current retained UI does not yet match Slice 4: the Work Offset body still contains `Activate G54/G55`, and its footer currently repeats PARAM domain navigation instead of Work Offset actions. I’m checking whether that is just an incomplete DSL configuration or whether generator architecture lacks the hooks for selected row, inline edit payload enrichment, refresh, and stale notices.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 09:50:31 +0800</div>
+<pre>The retained interface shape is mostly hardened already: `wcs_entry` has row metadata and the command catalog has WCS command entries. The question is implementation feasibility in the generated clients: current table widgets have generic selection/edit hooks, but may need WorkOffset-specific guards similar to Tool Offset.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 09:51:44 +0800</div>
+<pre>One concrete contract mismatch is visible already: Slice 4 requires `wcs.commands.refresh_offset_table`, but the retained interface catalog only declares Tool Offset refresh plus WCS activate/set-offset. I’m checking server/client command dispatch to see whether this is just an interface omission or a deeper missing runtime path.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 09:52:02 +0800</div>
+<pre>The client-side gaps are specific, not architectural: Web/QML both already have inline table editors and command guard extension points, but WorkOffset still uses legacy payloads and Tool Offset-specific notice handling. I’m checking the native server extension next because Slice 4’s refresh command name may be inconsistent with what the server currently accepts.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 09:52:46 +0800</div>
+<pre>The server extension does not currently implement `wcs.commands.refresh_offset_table`; its `can_invoke` only accepts activate and set-offset. That is the main design/contract blocker I see so far, because Slice 4 calls for a client footer action against a command that is not retained or routed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 09:53:23 +0800</div>
+<pre>The existing Web/QML automation only covers light WorkOffset binding and activation. I’m checking the runner capabilities because the Slice 4 plan explicitly says source-level string tests are not enough and the Web runner must be able to execute inline edits.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 09:53:45 +0800</div>
+<pre>I’ve got the key current-state shape now. I’m doing one final pass over the contract command section and any test/build boundary docs, then I’ll return findings ordered by implementation risk with concrete TDD entry points.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-18 09:55:04 +0800</div>
+<pre>**Findings**
+
+- **High: Slice 4 depends on `wcs.commands.refresh_offset_table`, but that command is only documented, not actually retained/routed.**
+  The contract and Slice 4 plan require it ([contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:312), [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:355)), but `interfaces.machine.yaml` currently declares only `wcs.commands.activate` and `wcs.commands.set_offset` for WCS ([interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1471)). The native WorkOffset extension also only accepts activate/set-offset ([work_offset_runtime_extension_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:247)).
+  This is the main blocker to starting Slice 4 as a client-only change. Make refresh a first TDD seam, or remove it from Slice 4.
+
+- **High: retained UI currently contradicts the Slice 4 footer/body hierarchy.**
+  Slice 4 says Work Offset actions must be in the second-level footer and absent from the page body ([delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:285)). Current body still contains `activate_g54` / `activate_g55` buttons ([ui.structure.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/ui.structure.yaml:2746)), while `parameter_work_offset_footer_buttons` still repeats PARAM domain navigation rather than table actions ([ui.structure.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/ui.structure.yaml:1266)). Also, the state model lacks `runtime_state.selected_wcs_row_key`, and `parameter_wcs_table` lacks `selection_key` / `selection_state_ref`, so `Activate Selected` has no retained selection source yet.
+
+- **High: generated inline edit paths still send legacy WorkOffset payloads and do not enforce row metadata.**
+  The contract requires `target_ref`, `axis_id`, and row `revision` for edits ([contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:163)). Current Web emits only `g_code`, `field`, `value` for `parameter_wcs_table` ([data_table.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/data_table.py:483)); QML does the same ([table_edit.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/main_qml_parts/table_edit.py:68)). Both paths route rejection handling through Tool Offset-specific helpers, so WorkOffset stale notices are not implemented yet.
+
+- **Medium: local/generated mock runtimes still optimistically patch WCS rows.**
+  Web local runtime updates `wcs.offset.table` directly on `wcs.commands.set_offset` ([command_handlers.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/runtime_fragments/command_handlers.py:984)); QML local runtime mirrors that behavior ([manual_ops.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/runtime_fragments/command_blocks/manual_ops.py:170)). Slice 4 explicitly requires stale rejection with no local optimistic patch, so local/mock behavior needs to be brought up to the same revision-aware semantics as the native server path.
+
+- **Medium: current automation cannot yet prove the planned Web inline edit acceptance criteria.**
+  The plan says the Web scenario runner must support executable inline-edit actions ([delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:423)), but the runner only supports `runtime_command`, pointer press/release, DOM expect, and wait actions ([run_web_ui_scenario.js](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/ui_automation/run_web_ui_scenario.js:611)). The existing WorkOffset scenario only checks fixed activation with `g_code` ([work_offset_table_binding.json](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/ui_scenarios/web/work_offset_table_binding.json:77)).
+
+**Implementation Readiness**
+
+The design is feasible in the current generator architecture. Web and QML already have table selection/edit hooks and command guard seams. The blocker is scope clarity: Slice 4 must include the missing `wcs.commands.refresh_offset_table` contract/server/mock/runtime path, or it should be split out before client work.
+
+Smallest safe TDD entry points:
+
+1. Add failing contract tests for `wcs.commands.refresh_offset_table` in `tests.test_tooling_contract_docs`.
+2. Add server extension tests for WorkOffset refresh command acceptance, metadata, alias sync, and unavailable-backend behavior.
+3. Add IR tests for WorkOffset footer hierarchy, `selected_wcs_row_key`, table `selection_key: row_key`, and no body action buttons.
+4. Add Web/QML source or snapshot tests for enriched `set_offset` and `activate` payload assembly.
+5. Extend Web UI automation with an inline-edit action, then add positive/stale WorkOffset scenarios.
+6. Extend QML smoke to cover footer, activation metadata, edit metadata, stale notice, and no optimistic patch.
+
+I did not edit files or run mutating commands.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:264-275|note=[prior WorkOffset Slice 4 baseline and accepted UI constraints]
+MEMORY.md:265-267|note=[V1 contract center and implementation sequence]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ed281-9af4-7c02-84ea-e8c33feafe7c
+019ecddc-79d3-7753-8090-208db77e848c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

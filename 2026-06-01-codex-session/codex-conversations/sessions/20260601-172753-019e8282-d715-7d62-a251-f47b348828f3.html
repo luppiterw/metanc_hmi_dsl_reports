@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8282-d715-7d62-a251-f47b348828f3</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-01 17:27:53 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/01/rollout-2026-06-01T17-27-53-019e8282-d715-7d62-a251-f47b348828f3.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 17:27:53 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-01&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 17:27:53 +0800</div>
+<pre>你是 Reviewer B，做测试覆盖审查。仓库：/home/iaar/workspace/mirror-ccmix-wp/MetaNC，分支 feat/plc，当前 HEAD `af74a7b7`。请只读不改文件。
+
+审查范围：RT SDK command lifecycle states 和 review follow-up 的测试覆盖。重点文件：
+- rt-sdk/tests/sim_command_lifecycle_tests.cpp
+- rt-sdk/tests/command_completion_placeholder_tests.cpp
+- rt-sdk/tests/public_header_boundary_tests.cpp
+- rt-sdk/CMakeLists.txt
+- 必要时读实现文件。
+
+关注：是否覆盖 accepted/running/completed/failed/canceled/timed_out；mark_* 返回值与 status readback 是否都覆盖；unknown transition 是否足够；axes-group/standalone-axis/spindle completed-placeholder 是否都覆盖；CMake target include/registration/labels 是否正确；是否有测试误报、遗漏、warning 风险。输出 code review findings，包含文件/行号/严重级别/理由；没有问题明确说 No findings，并列 remaining test gaps。不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:28:11 +0800</div>
+<pre>我会按只读审查来做：先满足仓库要求读根 README 和架构索引，再定位 `rt-sdk` 相关模块说明与测试/实现文件，最后给出 review findings。并且会先做一次很轻的记忆检索，避免漏掉这个分支相关的既有背景。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 17:28:29 +0800</div>
+<pre>当前分支和 HEAD 与请求一致，根 README/架构图也确认 `rt-sdk/` 是本次边界。接下来我会读 `rt-sdk` 模块级说明和目标测试/CMake，再回溯实现来判断覆盖是否真实有效。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 17:29:50 +0800</div>
+<pre>测试本身是手写 main，覆盖点需要从断言和实现一起看，不能只看测试名称。我现在会把生命周期 tracker、公共 command API、machine power receipt 的实现和 CMake 注册逐段对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 17:32:51 +0800</div>
+<pre>CMake 注册看起来在同一个 `METANC_RT_SDK_BUILD_TESTS` 门控下，目标名/`add_test`/label 都存在；我还需要对比一下分支差异和相邻测试，确认是否存在“看似覆盖但实际不会防回归”的点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 17:36:23 +0800</div>
+<pre>我找到一个可能的边界测试遗漏：公开头里有一个生命周期内部状态前置声明/构造参数，但 public-header 测试的禁用 token 没覆盖它。我会再对照 RT SDK 文档确认这是应算作 boundary leak 还是有意的 opaque 类型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 17:37:39 +0800</div>
+<pre>我已经有结论方向：核心 lifecycle/placeholder/CMake 覆盖大体成立，但 public-header boundary guard 有一个当前会漏掉的内部类型暴露，另有一个较小的状态字段断言缺口。为了给最终行号精确，我再取一次带行号的记忆引用和相关源码片段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 17:38:27 +0800</div>
+<pre>为了避免把纯静态推断误报成问题，我会在 `/tmp` 做一次 RT SDK 的配置/构建/ctest 验证；这不改仓库文件，只确认测试目标是否真能注册和运行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-01 17:39:57 +0800</div>
+<pre>**Findings**
+
+- P2 Medium: [rt-sdk/tests/public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:51) omits `CommandCompletionState` from the forbidden public-header tokens. The public header currently exposes that internal lifecycle type via [rt-sdk/include/metanc/rt_sdk/command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/include/metanc/rt_sdk/command.hpp:32) and the public `MachineCommandApi` constructor at line 61. So the boundary test passes while a backend-private completion state type remains part of the public header surface, giving false confidence that lifecycle internals are hidden.
+
+**Remaining Test Gaps**
+
+- `sim_command_lifecycle_tests.cpp` covers accepted/running/completed/failed/canceled/timed_out and checks each `mark_*` return plus readback. It does not assert `failure_reason` is absent for non-failed statuses in the generic `expect_status()` path.
+- Unknown transitions cover an unallocated positive id for all `mark_*`; zero-id transition calls are not separately covered.
+- Completed-placeholder coverage includes axes group, standalone axis, and spindle, but only one representative power method per kind in `command_completion_placeholder_tests.cpp`; receipt tests cover the broader method set.
+- CMake target include dirs, test registration, and labels look correct. I verified with `cmake -S rt-sdk -B /tmp/metanc_rt_sdk_review_build`, `cmake --build /tmp/metanc_rt_sdk_review_build`, and `ctest --test-dir /tmp/metanc_rt_sdk_review_build --output-on-failure`: all 13 RT SDK tests passed.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:47-58|note=[confirmed prior PLC review context before current rt-sdk review]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

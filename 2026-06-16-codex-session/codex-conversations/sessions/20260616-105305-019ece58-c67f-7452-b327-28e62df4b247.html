@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece58-c67f-7452-b327-28e62df4b247</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 10:53:05 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T10-53-05-019ece58-c67f-7452-b327-28e62df4b247.jsonl</code></div>
+<div><b>Messages</b>: <code>21</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:53:05 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-16&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:53:05 +0800</div>
+<pre>You are reviewing uncommitted changes in /home/iaar/workspace/ccmix-wp/MetaNC. Do not edit files. Review only.
+
+Scope: HMI WorkOffset Slice 3 real backend set_offset implementation and tests.
+
+Context/requirements:
+- Branch has uncommitted changes for Slice 3.
+- Goal of this batch: implement real WorkOffsetBackend::set_offset in nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp via StoreBackedWorkOffsetRuntime::set_frame_component using FrameComponentKind::CoarseTranslation.
+- It must resolve row by target_ref first, g_code fallback; reject unknown row, readonly row, unknown field, axis mismatch before mutation; submit target_ref, axis_id from component_axis_ids[field], value, OperatorConfigured source, selector evidence, optional expected_revision.
+- It must map WorkOffset diagnostics to stable HMI codes: row conflict -&gt; work_offset.revision_mismatch; expected revision required -&gt; work_offset.expected_revision_required; value invalid -&gt; work_offset.offset_value_invalid; unsupported axis -&gt; work_offset.axis_unknown; not found -&gt; work_offset.row_unknown; fallback -&gt; work_offset.operation_rejected.
+- Accepted writes should refresh the table and return updated row revision; SQLite-backed accepted writes should survive backend reconstruction.
+- Negative tests in nrt/hmi/server/tests/work_offset_real_backend_test.cpp should cover stale, axis mismatch, unknown field, unknown target, nonfinite, no mutation.
+
+Please inspect these files primarily:
+- nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+- nrt/hmi/server/include/hmi/extensions/work_offset/work_offset_backend.h
+- nrt/hmi/server/tests/work_offset_real_backend_test.cpp
+- nrt/hmi/server/src/extensions/work_offset/real_work_offset_backend_factory.cpp if needed
+
+Also run lightweight read-only commands if useful, but do not run expensive full builds unless needed. Return findings first, ordered by severity. Include file/line references. If no issues, say so and mention residual risks/test gaps.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:53:19 +0800</div>
+<pre>I’m using `superpowers:using-superpowers` first because the enabled workflow requires it, then I’ll keep this to a read-only code review and follow the repo orientation instructions before inspecting the Slice 3 files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:53:44 +0800</div>
+<pre>I’ll first establish the repo and module boundaries the local instructions require, then compare the uncommitted diff against the Slice 3 contract. I’ll also do a short memory lookup because this WorkOffset area has prior branch/scope notes that may affect review assumptions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:54:07 +0800</div>
+<pre>The repo map puts this work across `/nrt/hmi` and `/nrt/work_offset`: HMI owns projection/command wrapping, while the domain runtime owns revision-guarded WorkOffset semantics. I’m reading the module-local guidance now and then I’ll pin any findings to exact changed lines.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:54:32 +0800</div>
+<pre>The initial diff shows the implementation is in the expected adapter path and adds persistence/seed factory behavior alongside the requested `set_offset` work. I’m checking the exact domain API and diagnostics now, because the review hinges on whether the HMI adapter preserves domain semantics and stable HMI codes without pre-validating into the wrong bucket.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:55:32 +0800</div>
+<pre>One review-sensitive detail is the command parser: if it turns absent fields into empty strings or always-populated optionals, the target-ref-first fallback logic can change behavior. I’m reading that path plus the domain revision code to separate real defects from acceptable HMI pre-validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 10:56:22 +0800</div>
+<pre>I found the direct `set_frame_component` call path and it passes `CoarseTranslation`, `OperatorConfigured`, row-derived `target_ref`/axis, and optional row revision. I’m doing one more pass over the build wiring and targeted hunks so the final review can distinguish confirmed findings from residual test gaps.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 10:56:53 +0800</div>
+<pre>I’m going to capture the memory line numbers I relied on for the boundary assumptions, then I’ll finalize the review. I haven’t edited files or run any build.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 10:57:18 +0800</div>
+<pre>One small extra file is referenced by the changed CMake but is untracked, so I’m reading it too to avoid missing a test-run regression caused outside the four primary files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 10:57:30 +0800</div>
+<pre>I’m checking one parser helper definition before finalizing because empty optional-string handling determines whether legacy `g_code` fallback still works when clients send blank metadata fields.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 10:58:20 +0800</div>
+<pre>A likely build issue surfaced in the test file: the server project is C++17, while the new test uses C++20-style designated initializers. I’m reading the target setup around that test to confirm whether it gets a C++20 override.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 10:58:53 +0800</div>
+<pre>The real backend library is C++20, but the test target itself does not inherit that feature from a private dependency. I’m checking `work_offset::work_offset` export now because it might still propagate C++20 and change whether this is an actual compile failure.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 10:59:32 +0800</div>
+<pre>I’m checking the generated client command shape for whether it can send blank `target_ref` fields. If it always omits missing metadata, the stricter target-ref resolution is fine; if it sends empty strings, that is a compatibility regression.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 11:00:24 +0800</div>
+<pre>The domain view currently marks row/component editability uniformly in this fixture path, so the readonly branch is only covered through non-settable or future projections if present. I’m checking fixtures and prior tests for any machine/base rows in the settable table before deciding whether that is a finding or just a missing future test.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 11:01:27 +0800</div>
+<pre>I’m validating whether “refresh the table” happens through the runtime extension/resource poll rather than in the backend result itself. This matters because the backend can query fresh rows, but the HMI resource has to actually publish them after a command.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 11:02:19 +0800</div>
+<pre>I’m doing a quick read of SQLite store initialization semantics because one factory test opens a fresh store and immediately calls `load_snapshot`; if that requires `initialize()`, the new test would be flaky.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 11:02:26 +0800</div>
+<pre>The SQLite load path is normal after a write-backed store has created tables, so I don’t see a factory-test issue there. I’ll now return the review with findings first and note that I did not run builds.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-16 11:05:22 +0800</div>
+<pre>One more scope-adjacent check: the real backend can accept revision-aware requests, but generated WCS inline edit paths may still emit legacy-only args. I’m reading the focused runtime extension test to see whether that’s intentionally out of this Slice 3 batch or a coverage hole.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-16 11:05:36 +0800</div>
+<pre>The mock runtime extension covers readonly and refresh behavior, but the real backend negative batch doesn’t include a real readonly-row fixture. I’ll call that out as a residual coverage gap, not a confirmed behavior defect, because the current domain settable-table projection only emits editable settable rows.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-06-16 11:05:44 +0800</div>
+<pre>**Findings**
+- No blocking correctness issues found in the reviewed Slice 3 implementation. `RealWorkOffsetBackend::set_offset()` resolves by `target_ref` before `g_code`, rejects unknown row/readonly/unknown field/axis mismatch before mutation, calls `StoreBackedWorkOffsetRuntime::set_frame_component()` with `FrameComponentKind::CoarseTranslation`, row-derived `target_ref`, row-derived `axis_id`, `OperatorConfigured`, selector evidence, and optional `expected_revision`, and maps the specified WorkOffset diagnostics to stable HMI codes. See [work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:427).
+
+**Residual Risks / Test Gaps**
+- I did not run a build or the focused CTest, per the “lightweight/read-only” review scope.
+- The real backend negative tests cover stale, axis mismatch, unknown field, unknown target, nonfinite value, and no mutation, but not a real readonly-row case. Existing mock extension tests cover readonly rejection; the current real `settable_table` fixture appears to project only editable settable rows, so this is a coverage gap rather than a confirmed bug.
+- Generated Web/QML inline edit helpers still appear to emit legacy `g_code`/`field`/`value` only, without `target_ref`, `axis_id`, or `expected_revision`. The backend supports legacy fallback but real WorkOffset will reject missing `expected_revision` as `work_offset.expected_revision_required`, so end-to-end real-backend editing may remain gated on the client payload slice.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:79-83|note=[WorkOffset and HMI ownership boundary for review]
+MEMORY.md:181-184|note=[V1 WorkOffset table contract and target_ref axis_id revision semantics]
+MEMORY.md:147-151|note=[Relevant prior WorkOffset slice context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb545-cef2-7971-8ca7-7d8b3e0a4d49
+019ec893-a014-7253-ad54-2cdfce601b27
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

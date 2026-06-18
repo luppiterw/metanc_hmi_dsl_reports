@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8ad5-e1cd-7242-94f4-361d33270b8e</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 08:15:33 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T08-15-33-019e8ad5-e1cd-7242-94f4-361d33270b8e.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:15:33 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-03&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:15:33 +0800</div>
+<pre>Review the current MetaNC /rt/plc runtime code for defects or contract risks. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly inside rt/plc. Follow repo workflow: read root README.md, docs/dev/architecture.md, rt/plc/README.md; check for rt/plc/AGENTS.md. Do not edit files. Focus on runtime-facing code and recent Story-44 contract-freeze area: include/metanc/plc/runtime_command.hpp, command_result.hpp, command_executor.hpp, local_runtime_adapter.hpp, runtime_simulation_session.hpp, framework.hpp and corresponding src files/tests, especially rt/plc/tests/story44_runtime_contract_tests.cpp. Report findings only: severity, file:line, concrete problem, expected behavior, and suggested fix. If no findings, say no findings and mention residual risks/test gaps.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:15:45 +0800</div>
+<pre>I’ll keep this strictly review-only inside `rt/plc`. I’m first checking the repo guidance and prior PLC context, then I’ll inspect the Story-44 runtime contract surface and tests for behavioral or contract risks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:15:58 +0800</div>
+<pre>There is no `rt/plc/AGENTS.md` in this checkout. The architecture map places `rt/plc` under the RT development stack’s machine-logic/runtime area, so I’m narrowing the review to the runtime command/session/framework boundary and Story-44 tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:16:11 +0800</div>
+<pre>The recent `rt/plc` history is clean for the scoped tree and the latest commit is the Story-44 contract-freeze test change. I’m now reading the frozen headers, implementation files, and the focused test with line numbers so any findings can be tied to exact locations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:16:38 +0800</div>
+<pre>The focused test intentionally freezes some surprising behavior, including virtual observations failing before boot while other observations are readable. I’m checking whether those expectations match the actual adapter/session contract or whether the freeze would lock in unsafe behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:16:50 +0800</div>
+<pre>The runtime snapshot is built from framework state only after boot; before boot the descriptor-derived command catalog exists but framework-owned virtual values do not. I’m checking the adapter/session lifecycle and sim backends now, because pre-boot mutation support may interact badly with `boot()` reset semantics.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 08:17:59 +0800</div>
+<pre>One concrete contract risk is emerging around scan-command exclusion: the executor has a busy flag, but it is a plain `bool` with no atomic or lock, which does not actually protect a runtime adapter from concurrent scan requests. I’m doing one more pass for similar lifecycle and frozen-test issues before I finalize findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 08:18:12 +0800</div>
+<pre>The older Story-28 invariant explicitly says a single `CommandExecutor` must execute at most one scan command at a time and return `error/executor-busy` on violation. The existing test covers only nested same-thread reentry via an injected callback, not concurrent adapter calls, so the plain-`bool` guard is a real defect once the adapter is used from more than one caller.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 08:18:43 +0800</div>
+<pre>I’m also checking whether the descriptor-derived command catalog matches the framework’s initialized signal model. That matters because Story-44 freezes adapter-visible success versus unknown-signal behavior across stopped, running, paused, and stop-requested states.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 08:19:22 +0800</div>
+<pre>I found another lifecycle risk outside the command structs but still runtime-facing: `Framework::shutdown()` has several unguarded runtime operations before it records backend shutdown failures. I’m checking whether those helpers catch internally or can leave the framework stuck mid-shutdown.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-03 08:20:35 +0800</div>
+<pre>**Findings**
+
+1. **High** - [rt/plc/src/framework.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/framework.cpp:807)
+   Concrete problem: `Framework::shutdown()` switches to `SHUTTING_DOWN`, then calls virtual runtime cleanup methods directly, including `backends().nrt.drain()` and `backends().io.write_outputs()`, before the guarded backend shutdown wrappers run. If either throws, shutdown exits early, may leave the framework stuck in `SHUTTING_DOWN`, and may skip remaining backend shutdowns.
+   Expected behavior: shutdown should attempt all backend cleanup, report stable lifecycle errors, and leave the framework in a well-defined stopped state.
+   Suggested fix: wrap all virtual cleanup calls in the same failure-recording path used for backend shutdown, and use a final state transition/cleanup path that cannot be bypassed by an exception. Add Story-44 lifecycle fault-injection tests for `drain()` and `write_outputs()` failures.
+
+2. **High** - [rt/plc/include/metanc/plc/command_executor.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/command_executor.hpp:65)
+   Concrete problem: `scan_command_active_` is a plain `bool`; `execute_run_cycles()` and `run_one_scan()` check/set it without locking or atomics at [command_executor.cpp:231](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:231) and [command_executor.cpp:631](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:631). Concurrent adapter calls can data-race and both enter the scan path, violating the `ExecutorBusy` contract.
+   Expected behavior: one executor should run at most one scan command at a time; concurrent/reentrant scan requests should reliably return `error/executor-busy`.
+   Suggested fix: replace the guard with an `std::atomic_flag`/CAS guard or a mutex-protected critical section, and add a two-thread contract test through `LocalRuntimeAdapter` or `CommandExecutor`.
+
+3. **Medium** - [rt/plc/src/runtime_simulation_session.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:20)
+   Concrete problem: `RuntimeSignalCatalog` is parsed once in the session constructor, but `boot()` reparses `machine_yaml` later for the framework at [runtime_simulation_session.cpp:43](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:43). If the descriptor file changes between construction and boot/reboot, command validation can use stale signal names while the framework runs a different descriptor.
+   Expected behavior: command validation should reflect the same descriptor instance that booted the runtime.
+   Suggested fix: parse once and share that descriptor/catalog with framework boot, or rebuild the catalog/executor during successful boot. Add a temp-file test that changes the descriptor between adapter construction and boot.
+
+4. **Medium** - [rt/plc/src/command_executor.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:480)
+   Concrete problem: pre-boot virtual-signal reads return generic `ExecutionFailed` because the descriptor-derived catalog knows the signal but `Framework::snapshot()` has no initialized virtual values yet. Story-44 freezes this at [story44_runtime_contract_tests.cpp:406](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:406), which risks locking in an ambiguous adapter contract.
+   Expected behavior: pre-boot virtual observations should either be rejected as `InvalidRuntimeState` or return descriptor/default state consistently with other pre-boot observations.
+   Suggested fix: choose an explicit pre-boot virtual-signal contract and update both `GetVirtualSignal`/`ListVirtualSignals` and Story-44 tests accordingly.
+
+Scope note: `rt/plc/include/metanc/plc/command_result.hpp` does not exist in this checkout; `CommandResult` is defined in `runtime_command.hpp`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-232|note=[rt/plc review workflow and scope context]
+MEMORY.md:263-272|note=[prior PLC runtime stack and risk context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

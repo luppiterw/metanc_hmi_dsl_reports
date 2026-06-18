@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ec9cf-5df4-7bb1-8462-7c995b071e5e</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-15 13:44:30 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/15/rollout-2026-06-15T13-44-30-019ec9cf-5df4-7bb1-8462-7c995b071e5e.jsonl</code></div>
+<div><b>Messages</b>: <code>14</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 13:44:31 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-15&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 13:44:31 +0800</div>
+<pre>You are reviewing the current uncommitted changes in /home/iaar/workspace/ccmix-wp/MetaNC. Scope: C++ HMI server WorkOffset extension architecture only. Do not edit files. Focus on nrt/hmi/server/include/hmi/adapters/runtime_extension_collection.h, nrt/hmi/server/src/adapters/runtime_extension_collection.cpp, nrt/hmi/server/include/hmi/extensions/work_offset/*, nrt/hmi/server/src/extensions/work_offset/*, nrt/hmi/server/src/application/server_app.cpp, and nrt/hmi/server/CMakeLists.txt. Review for correctness, ownership boundaries, build/link risks, lifetime/null handling, resource merge behavior, exception handling, and regressions versus existing tooling extension patterns. Return findings first, ordered by severity, each with file:line references and concrete reasoning. If no findings, say so and list residual risks. Do not rely on conversation history; inspect the repo/diff directly.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-15 13:44:39 +0800</div>
+<pre>I’ll use the `superpowers:using-superpowers` startup guidance, then inspect the repo and the scoped diff directly for this review.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-15 13:44:51 +0800</div>
+<pre>I’m following the repo workflow first: root README, architecture codemap, then the scoped HMI server/module guidance before looking at the uncommitted diff. After that I’ll review only the files you named.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-15 13:45:04 +0800</div>
+<pre>The architecture map puts this scope at the `/nrt/hmi` boundary presenting/editing `/nrt/work_offset` data through backend integration. I’m reading the module guidance now, then I’ll compare the new WorkOffset extension against the existing tooling extension pattern.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-15 13:45:17 +0800</div>
+<pre>The module guidance files are next, along with the exact diffs and line-numbered current files. I’m keeping this as a review pass only and won’t modify anything.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-15 13:45:35 +0800</div>
+<pre>I’ve finished the required orientation. Now I’m opening the scoped extension files and the existing tooling adapter side by side so the findings can be tied to concrete build/ownership/lifetime behavior rather than inferred intent.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-15 13:45:48 +0800</div>
+<pre>The diff shows the main architectural shift: the default adapter now wraps a collection containing tooling and WorkOffset extensions. I’m checking whether the collection’s merge/invoke semantics preserve the old tooling behavior and whether WorkOffset is independent of tooling backend linkage.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-15 13:46:04 +0800</div>
+<pre>I’m checking the surrounding adapter contracts and command router next. The likely risk areas are unhandled backend exceptions during command execution and whether resource polling refreshes too broadly or clobbers overlapping keys.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-15 13:46:25 +0800</div>
+<pre>The scoped C++ paths are readable and the new WorkOffset adapter mirrors the tooling adapter structurally. I’m doing one pass over the exact test target and generated contract expectations to distinguish intentional compatibility choices from review findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-15 13:46:59 +0800</div>
+<pre>I’ve found one concrete architecture issue in the scoped code and am validating whether it is an actual defect rather than a future enhancement gap. The rest of the extension wiring largely matches the documented plan: ordered extension ownership, canonical WorkOffset resource, and server-level aliasing.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-15 13:47:21 +0800</div>
+<pre>I’m checking the JSON serializer behavior for numeric inputs because the WorkOffset command accepts raw numeric values and then republishes them as JSON resources. That determines whether malformed numeric input is just rejected or can poison the resource payload.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-15 13:47:36 +0800</div>
+<pre>One issue is solid enough to report; I’m checking the command request parser line references so the reasoning is tied to how raw request args enter the adapter.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-15 13:48:55 +0800</div>
+<pre>**Findings**
+
+1. [nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:461](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:461), [nrt/hmi/server/src/application/server_app.cpp:259](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/server_app.cpp:259), [nrt/hmi/server/src/application/server_app.cpp:343](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/server_app.cpp:343)
+   **High: WorkOffset backend-unavailable handling can leave stale/seeded offset tables visible.**
+   `WorkOffsetRuntimeExtensionAdapter::bootstrap_resources()` catches backend query exceptions and returns only `wcs.offset.table.diagnostic`, not `wcs.offset.table`. But `ServerApp::initialize()` merges adapter resources over `contract_.seed_resources`, and `refresh_from_adapter()` merges polled resources over the existing snapshot. Because absence never deletes a resource, an unavailable WorkOffset backend still leaves the seed table, or the last successful table, in `wcs.offset.table`; `sync_wcs_offset_resource_aliases()` then mirrors that stale canonical value into `tooling.wcs.table`. That defeats the adapter’s “do not publish a successful table on unavailable backend” behavior and can present operator-visible WorkOffset data as current when the backend has failed. The unavailable path needs an explicit stale-table policy, such as publishing an empty/error table payload, tombstoning/removing the table, or failing startup for authoritative backends.
+
+2. [nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:328](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:328), [nrt/hmi/server/src/extensions/work_offset/mock_work_offset_backend.cpp:233](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/mock_work_offset_backend.cpp:233), [nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:289](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:289)
+   **Medium: non-finite numeric command values can poison the WorkOffset resource JSON.**
+   `parse_double_arg()` accepts any `std::stod` value with full consumption. C library conversions commonly accept `nan`, `inf`, and `infinity`; those values are then stored directly in the mock backend row and serialized through `json::number(row.offset_x)` etc. That can emit non-JSON numeric tokens such as `nan`/`inf` into `wcs.offset.table`, breaking clients and state serialization. The WorkOffset adapter should reject non-finite values before calling the backend.
+
+**Residual Risks**
+
+I did not edit files or run the build/tests. I did not find build/link ownership regressions in the scoped CMake wiring or extension collection pattern: null extension handling, ordered command dispatch, and canonical-only WorkOffset resource publication match the documented tooling-extension composition approach.</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

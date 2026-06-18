@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在 /home/iaar/workspace/ccmix-wp/metanc_drafts 做只读审查。重点审查 mdBook 总分结构和中英文投影：root book/、TP001-hmi/boo...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>在 /home/iaar/workspace/ccmix-wp/metanc_drafts 做只读审查。重点审查 mdBook 总分结构和中英文投影：root book/、TP001-hmi/boo...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e825e-7801-7a70-8dd3-2df364f57fce</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-01 16:48:09 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_parameter</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/01/rollout-2026-06-01T16-48-09-019e825e-7801-7a70-8dd3-2df364f57fce.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 16:48:09 +0800</div>
+<pre>在 /home/iaar/workspace/ccmix-wp/metanc_drafts 做只读审查。重点审查 mdBook 总分结构和中英文投影：root book/、TP001-hmi/book、TP002/TP003/TP004/TP005 的 topic book、docs_i18n/en/src、docs_i18n/zh/src、docs_html 输出路径。请检查 include 链路、路径命名、是否仍有旧 parameter-system 路径、总书/分书是否能分别理解。不要改文件，输出 findings，按严重程度排序，带路径引用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 16:48:54 +0800</div>
+<pre>我会先做只读盘点：确认目录结构、SUMMARY/include 链路、输出路径和残留旧路径，再按审查格式整理 findings。不会修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 16:49:12 +0800</div>
+<pre>当前环境声明的 `zsh` 启动失败，我改用可用 shell 继续只读检查。先看记忆里有没有这个草稿库的既有约定，然后直接审查目标目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 16:49:26 +0800</div>
+<pre>工具进程报的是工作目录不存在，我先从上层确认实际 checkout 位置，再继续只读审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 16:49:34 +0800</div>
+<pre>看起来不是目标目录本身的问题，而是命令启动路径在这个会话里异常。我会用绝对可执行路径探测一下可用 shell；如果还是无法启动，就只能反馈环境阻塞。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 16:49:46 +0800</div>
+<pre>我注意到不带 `workdir` 时工具仍可能尝试进入会话初始目录；我切到 `/tmp` 作为工作目录来避开这个启动问题，然后用绝对路径读取目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 16:50:01 +0800</div>
+<pre>已经能读取目录了。现在我会重点抽取各本书的 `book.toml`、`SUMMARY.md`、include 指令和旧路径残留，再交叉检查 referenced files 是否存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 16:50:21 +0800</div>
+<pre>结构上已经看到三套输出并存：各 topic 的 `book/html`、root 的 `book/html`、以及 `docs_i18n/{en,zh}/book`/`docs_i18n/site`/`docs_html`。我接下来核对配置里的 build-dir 和 SUMMARY/include 指向，区分“源结构问题”和“生成物残留问题”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 16:50:31 +0800</div>
+<pre>include 列表很长，手工看容易漏；我用只读脚本解析 `SUMMARY.md` 链接和 `{{#include}}` 目标是否存在，同时检查输出目录是否和配置一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 16:51:11 +0800</div>
+<pre>交叉检查结果显示 SUMMARY 和 include 目标本身没有缺失；主要风险转向内容投影和输出约定。现在我读关键入口页和语言切换脚本，确认读者能否从总书/分书分别理解。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-01 16:51:53 +0800</div>
+<pre>**Findings**
+
+1. **High: 中文投影不是中文内容，只是中文目录套英文源。**
+   `docs_i18n/zh/src/SUMMARY.md:1`、`:5`、`:12` 使用中文目录标题，但各正文页基本通过 include 指向英文/topic book 源，例如 `docs_i18n/zh/src/TP004-parameter-system/baseline/design-baseline.md:1`、`docs_i18n/zh/src/TP001-hmi/index.md:1`。这会导致 `docs_i18n/zh/book.toml:5` 声明 `zh-CN`，但页面正文仍是英文或双语原文，中文书不能被理解为真正中文投影。
+
+2. **Medium: i18n 输出路径契约不清，生成物有三套并存。**
+   `docs_i18n/en/book.toml:8` 和 `docs_i18n/zh/book.toml:8` 没有 `[build] build-dir`，所以直接 mdBook 构建会默认输出到 `docs_i18n/{en,zh}/book/`；现有目录同时存在 `docs_i18n/{en,zh}/book/`、`docs_i18n/site/{en,zh}/`、`docs_html/{en,zh}/`。而发布入口 `docs_html/index.html:53` 指向 `docs_html/zh/index.html`，不是 book.toml 可直接生成的位置。读者和维护者无法从配置判断 canonical 输出到底是 `docs_html` 还是 `docs_i18n/site`。
+
+3. **Medium: root book 和 i18n aggregate book 的职责重复，容易分叉。**
+   `book/src/SUMMARY.md:7` 到 `:38` 与 `docs_i18n/en/src/SUMMARY.md:7` 到 `:38` 结构基本相同，`book/src/index.md:1` 到 `:29` 也与 `docs_i18n/en/src/index.md:1` 到 `:29` 高度重复。root `book/` 是英文总书，`docs_i18n/en/` 也是英文总书，但两者输出路径不同，后续更新很容易出现一个总书更新、另一个总书滞后的情况。
+
+4. **Low: `docs_i18n/shared/theme` 里的语言切换模板看起来是旧实现/未接入实现。**
+   `docs_i18n/shared/theme/head-en.hbs:18` 和 `head-zh.hbs:18` 硬编码跳到 `../../zh/index.html` / `../../en/index.html`，但当前 `book.toml` 只通过 `additional-js = [&quot;language-switch.js&quot;]` 接入脚本，未配置 theme/head 模板。实际生效的是 `docs_i18n/en/language-switch.js:4` 到 `:14` 的路径替换逻辑。保留两套切换机制会让维护者误判哪套是发布规则。
+
+5. **Low: TP002/TP003/TP005 分书只能理解为占位，不足以作为独立 topic book。**
+   `TP002-tooling-management/book/src/index.md:1` 到 `:5`、`TP003-plc-runtime/book/src/index.md:1` 到 `:5`、`TP005-configuration-system/book/src/index.md:1` 到 `:5` 都只有状态和一句范围说明。作为 root 总书的 queue marker 可以理解，但如果要求“分书能分别理解”，这三本还没有足够上下文、范围边界或后续阅读路径。
+
+我没有发现断掉的 `SUMMARY.md` 链接或 `{{#include}}` 目标；只读解析里这些目标都存在。也没有看到独立旧 `parameter-system/` 顶层路径残留；当前出现的 `parameter-system` 基本都是 `TP004-parameter-system` 这个 topic slug 或正文术语。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

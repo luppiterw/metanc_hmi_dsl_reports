@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是文档审查 agent C。工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts。只读审查，不要修改文件。 目标：审查中文 reader-facing...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是文档审查 agent C。工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts。只读审查，不要修改文件。 目标：审查中文 reader-facing...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb07d-fa23-7582-8163-056888e7ed75</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-10 15:45:06 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/10/rollout-2026-06-10T15-45-06-019eb07d-fa23-7582-8163-056888e7ed75.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-10 15:45:06 +0800</div>
+<pre>你是文档审查 agent C。工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts。只读审查，不要修改文件。
+
+目标：审查中文 reader-facing 文档是否缺翻译、术语不一致、读者看不懂，尤其是新增 Owner Registry / Status Usage / links 优化相关内容。
+
+范围：
+- docs_i18n/zh/src/TP004-parameter-system/index.md
+- docs_i18n/zh/src/TP004-parameter-system/status-usage.md
+- docs_i18n/zh/src/TP004-parameter-system/owner-registry.md
+- docs_i18n/zh/src/TP004-parameter-system/baseline/design-baseline.md
+- docs_i18n/zh/src/TP004-parameter-system/access-definitions/index.md
+- docs_i18n/zh/src/TP004-parameter-system/validation-sets/index.md
+- docs_i18n/zh/src/TP004-parameter-system/validation-sets/case-schema.md
+
+检查点：页面是否仍是 include 壳；关键解释是否是中文而不是英文原文；链接文字是否帮助人类阅读；`owner`、`value set`、`term`、`status` 等术语是否前后一致；有无明显错别字/未解释缩写。
+
+输出格式：按 severity 排序，列出 file:line + 具体问题 + 为什么影响中文读者 + 建议修复。没有问题也明确说。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-10 15:45:29 +0800</div>
+<pre>使用 `superpowers:using-superpowers` 做流程检查；这是只读文档审查，我会只读取目标文件和必要的对照上下文，不做任何写入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-10 15:45:52 +0800</div>
+<pre>我先按目标清单抓取带行号的中文页面，再抽查英文/规范源作为对照，重点看新增页是否还只是转引、术语表述是否能独立读懂。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-10 15:46:32 +0800</div>
+<pre>第一轮已经看到两个值得继续验证的点：`owner-registry.md` 的读者链接相对路径可能不对，且 YAML 示例里的责任说明仍是英文。接下来我会检查剩余两页和链接目标，确认这是实际问题还是上下文允许的代码块原文。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-10 15:48:01 +0800</div>
+<pre>目标文件没有裸 `{{#include ...}}` 壳，这是好迹象；问题更集中在新增中文页内部还保留英文规范内容、以及若干链接文字/术语对中文读者不够直接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-10 15:50:07 +0800</div>
+<pre>只读审查完成，未修改文件。目标页面没有发现裸 `{{#include ...}}` 壳。
+
+**High**
+
+1. `docs_i18n/zh/src/TP004-parameter-system/owner-registry.md:63`
+   问题：`owners[]` 里的 `responsibility` / `non_responsibility` 仍是英文原文，例如 “Owns the NRT-side tooling truth model...”。
+   影响：这是 Owner 注册表的核心 reader-facing 内容，不是单纯代码字段；中文读者无法直接理解每个 owner 的职责边界。
+   建议：保留 YAML token 和路径，但把责任说明改成中文，或在每条英文后补中文说明。
+
+**Medium**
+
+2. `docs_i18n/zh/src/TP004-parameter-system/index.md:21`
+   问题：专题范围列表大量保留英文术语且未解释，例如 `HAL-like namespace`、`vendor-native expression`、`MetaNC semantic descriptor`、`owner-token`。
+   影响：首页是中文读者入口，这些词会让读者难以判断 TP004 到底治理哪些对象。
+   建议：改为“类似 HAL 的命名空间”“厂商原生表达”“MetaNC 语义描述符”“owner token / 归属 token”，首次出现时给中文解释。
+
+3. `docs_i18n/zh/src/TP004-parameter-system/status-usage.md:47`
+   问题：术语写法不统一，`access-form status`、`owner token`、`dispatch target token`、`value item` 混用英文短语和中文描述。
+   影响：状态规则本来就在区分 `status`、`openness`、owner、dispatch target；术语不稳定会让读者误以为它们是不同概念或新字段。
+   建议：统一为“访问形式状态”“owner token / 归属 token”“dispatch target token / 分发目标 token”“value item / 值条目”，并在首次出现处固定译名。
+
+4. `docs_i18n/zh/src/TP004-parameter-system/validation-sets/index.md:7`
+   问题：关系图节点仍是英文：`Access Definition`、`Validation Set`、`Compatibility Matrix`。
+   影响：这是解释验证集合用途的核心图，中文读者需要先翻译节点才能理解链路。
+   建议：改成中文节点，例如“访问结构化定义”“验证集合”“兼容矩阵”，必要时括号保留英文。
+
+5. `docs_i18n/zh/src/TP004-parameter-system/validation-sets/index.md:20`
+   问题：链接文字是源文件路径 `access-definitions/validation.md`，后文还有 `stage`、`diagnostic code`、`inline examples`、`review ID`、`Siemens catalog`。
+   影响：链接文字和解释偏源代码视角，不够 reader-facing；读者不容易知道点进去能看到什么。
+   建议：改为人类可读链接文字，如“访问定义验证方法”，并把上述术语补成“阶段 stage”“诊断码 diagnostic code”“内联示例”“评审 ID”“Siemens 目录 catalog”。
+
+6. `docs_i18n/zh/src/TP004-parameter-system/validation-sets/case-schema.md:12`
+   问题：`profile`、`owner`、`descriptor`、`access-policy`、`fixture override` 等术语未统一解释。
+   影响：该页是用例结构说明，未解释缩写/英文术语会直接影响读者编写或审查验证集合。
+   建议：首次出现时补中文定义，例如“fixture / 测试夹具”“profile / 兼容配置档”“descriptor / 语义描述符”“access policy / 访问策略”。
+
+**Low**
+
+7. `docs_i18n/zh/src/TP004-parameter-system/access-definitions/index.md:151`
+   问题：表头 `Block` 保留英文；多处仍写 `registry entry`、`parser/resolver`、`raw text`、`Owner`。
+   影响：不阻断理解，但中文页面风格不一致。
+   建议：表头改为“定义块”，正文统一用“注册表条目”“解析器 / 解析器组件”“原始文本”“owner / 归属方”。
+
+8. `docs_i18n/zh/src/TP004-parameter-system/baseline/design-baseline.md:52`
+   问题：多处结构图和示例标签仍是英文，例如 `Parameter and Runtime Access Model`、`Unified Access Registry`、`native expression`、`semantic descriptor`。
+   影响：基线页整体已有中文解释，因此不是严重翻译缺失；但图和字段标签对中文读者仍有理解成本。
+   建议：给图节点和示例标签补中文，或改成“英文术语 / 中文解释”的并列形式。
+
+9. `docs_i18n/zh/src/TP004-parameter-system/owner-registry.md:55`
+   问题：标题“已注册 Owner”“未分配 Owner Token”中 Owner 大写英文，与正文 `owner token` 写法不统一。
+   影响：轻微术语不一致。
+   建议：统一为“已注册 owner”“未分配 owner token”，或采用“已注册归属方（owner）”。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:186-202|note=[checked prior Chinese reader-facing docs rule]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

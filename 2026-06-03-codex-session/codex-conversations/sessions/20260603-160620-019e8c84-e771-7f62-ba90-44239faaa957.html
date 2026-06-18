@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8c84-e771-7f62-ba90-44239faaa957</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 16:06:20 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T16-06-20-019e8c84-e771-7f62-ba90-44239faaa957.jsonl</code></div>
+<div><b>Messages</b>: <code>20</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:06:20 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-03&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:06:20 +0800</div>
+<pre>Read-only review. Workspace: /home/iaar/workspace/mirror-ccmix-wp/MetaNC, current branch feat/work-offset. Do not edit or create files. Inspect nrt/work_offset docs/spec/integration/README/AGENTS plus repo registration docs (README, bookshelf, docs/nrt). Report: what is specified, current claimed status, docs consistency, gaps/contradictions, and whether docs overclaim implementation. Use current worktree only and cite file paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:06:41 +0800</div>
+<pre>I’ll keep this read-only and treat it as a docs review: first I’m loading the repo workflow guidance and the docs-review skill, then I’ll inspect the work-offset module and registration surfaces with line citations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:07:08 +0800</div>
+<pre>The branch is `feat/work-offset` and the worktree is clean from the status check. The memory registry only surfaced older HMI “tool-offset” notes, not this WorkOffset module, so I’m using the current checkout as the source of truth.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 16:07:32 +0800</div>
+<pre>I’ve confirmed the repository-level map names `nrt/work_offset` in the root README, but the architecture codemap excerpt I saw does not obviously list it as a codemap module. I’m checking the full registration surfaces now because that looks like a likely consistency point.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 16:08:00 +0800</div>
+<pre>I’m going broad before narrowing: the docs set is large, so I’m scanning status/implementation language and then I’ll read the specific files where claims, boundaries, and registration disagree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 16:08:23 +0800</div>
+<pre>I found two separate registration systems: `bookshelf.toml` registers Work Offset as a book, while the root `docs/SUMMARY.md` only links the NRT index and the NRT index links out to Work Offset. I’m now checking the module’s own claimed status against headers, CMake, and tests so the overclaim assessment is grounded in the current worktree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 16:08:47 +0800</div>
+<pre>The implementation status document claims the main surfaces are implemented, and CMake does define the static library, CLI, optional SQLite backend, and four test executables. I’m reading the contract docs next, especially places where “HMI service”, “adapter”, or parser/kernel wording could imply a stronger integration than the code actually provides.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 16:09:15 +0800</div>
+<pre>The module repeatedly draws the same boundary: non-real-time C++/CLI/HMI-view/parser-context contracts are in scope; HMI pages, network transports, hard-real-time ABI, PostgreSQL/service backends, programmable frame lifecycle, and rotation/scale/mirror writes are out. I’m checking whether individual integration pages keep that distinction consistently.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 16:09:49 +0800</div>
+<pre>The source-facing claims mostly line up at the symbol level, but I’m not building or running tests because the request prohibits creating files. I’m doing static checks only: headers, CMake registrations, test inventory, and docs cross-references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 16:10:20 +0800</div>
+<pre>I’ve got enough context for the main review shape. I’m doing one more pass over operation, CLI, persistence, and acceptance-gate docs to catch any mismatched status words or missing references before I write the findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 16:10:34 +0800</div>
+<pre>I’m using one small memory citation because I checked the memory registry for possible prior WorkOffset notes and found only unrelated HMI tool-offset history. I’ll include that as memory-derived context at the end, separate from the current-worktree findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 16:11:05 +0800</div>
+<pre>I’m also checking `docs/nrt/getting_started` because it is part of the repo-level NRT registration surface and may conflict with WorkOffset’s standalone Windows/CMake guidance.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-03 16:11:53 +0800</div>
+<pre>One possible overclaim is cross-module integration maturity, so I’m checking whether `nrt/nc_kernel` and related pipeline directories actually exist in this branch or whether WorkOffset only ships its own contract tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-03 16:12:50 +0800</div>
+<pre>Static cross-module search did not find external modules calling the WorkOffset API; the adjacent references I found are lower-level range/profile or mock-HMI state. I’m pulling line numbers for those so the overclaim note can be precise rather than inferred from absence alone.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-03 16:14:23 +0800</div>
+<pre>I’m checking one last evidence-source detail: several docs cite a Windows screenshot path as proof, so I’m verifying whether any corresponding image assets exist in the current tree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-03 16:14:38 +0800</div>
+<pre>The screenshot path is referenced as evidence but those exact images are not present under `nrt/work_offset`; the only PNGs in this checkout are HMI assets/snapshots/reference images elsewhere. I’m rerunning that text search with fixed escaping for exact line citations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-03 16:14:55 +0800</div>
+<pre>I’m going to treat the missing screenshot assets as a docs evidence gap, not an implementation overclaim, since the tests encode expected projections. I’m pulling the SINUMERIK behavior page lines now for the exact statement.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-03 16:15:49 +0800</div>
+<pre>I found another status-wording edge: the story slice includes “transport consistency” in scope, while the registry later says generic adapter envelope dispatch is not exposed. I’m checking that spec before deciding whether it is a contradiction or just shorthand for strong-type prevalidation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-06-03 16:16:40 +0800</div>
+<pre>Read-only review completed on current worktree `feat/work-offset`. I did not edit or create files, and I did not run builds/tests because CMake/CTest would create build artifacts.
+
+**What Is Specified**
+`nrt/work_offset` is specified as a Siemens 840D NRT WorkOffset module: snapshot validation/import/export, `G54`...`G57` plus profile-enabled `G505`...`G599`, active WCS state, `G500/G53/G153/SUPA` suppression, CLI/HMI/parser-kernel registry operations, `PersistenceStore`, and SQLite as the only current local backend. See [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md:17), [nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md:3), and [nrt/work_offset/docs/spec/INTERFACE-REGISTRY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/INTERFACE-REGISTRY.md:14).
+
+The intended boundary is also clear: no HMI page/front-end state machine, no network transport, no hard-real-time ABI, no PostgreSQL/service backend, no programmable-frame lifecycle, and no direct rotation/scale/mirror writes. See [nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md:27), [BASELINE-DECISIONS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/BASELINE-DECISIONS.md:48), and [compatibility-and-versioning.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/compatibility-and-versioning.md:19).
+
+**Current Claimed Status**
+The docs claim the core WorkOffset surfaces are implemented: domain queries/commands, HMI projection rows, normalized block handling, CLI file mode, `PersistenceStore`, optional SQLite backend, and parser/kernel contract tests. That claim is reflected in CMake: static library, CLI executable, optional SQLite source, and four test executables are registered in [nrt/work_offset/CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/CMakeLists.txt:33). Public headers expose the matching API names in [domain.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/domain.h:47) and [persistence_store.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/persistence_store.h:84).
+
+**Consistency Issues / Gaps**
+1. WorkOffset is registered in root README, bookshelf, and `docs/nrt/index.md`, but not in the architecture codemap’s NRT module list. The codemap lists `/nrt/gcode_parser`, `/nrt/nc_kernel`, `/nrt/tooling_management`, `/nrt/hmi`, `/nrt/program_engine`, etc., but has no `/nrt/work_offset` entry in the NRT section. Compare [docs/dev/architecture.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/dev/architecture.md:209), [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md:13), [bookshelf.toml](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/bookshelf.toml:66), and [docs/nrt/index.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/nrt/index.md:7). This is the main registration contradiction.
+
+2. Repo NRT getting-started still says NRT packages are built together as ROS 2 packages, but WorkOffset’s current recommended path is standalone CMake with `WORK_OFFSET_WITH_AMENT=OFF`, especially from Windows. Compare [docs/nrt/getting_started/index.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/nrt/getting_started/index.md:6) with [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md:30) and [nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md:50). That can mislead first-time builders.
+
+3. Several specs cite `D:\tmp\840D_wcs\*.png` as screenshot evidence, but those evidence files are not present under the current WorkOffset docs tree. See [SINUMERIK-840D-BEHAVIOR.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/SINUMERIK-840D-BEHAVIOR.md:5) and [hmi-work-offset-views.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-work-offset-views.md:3). This is an evidence-packaging gap, not necessarily an implementation gap.
+
+4. Some wording says “parser/kernel integration” is implemented, but the current repo has no `nrt/nc_kernel` directory, and static search found only WorkOffset-owned contract tests plus limited parser/HMI mock references. The safer reading is “WorkOffset provides and tests the parser/kernel contract,” not “adjacent parser/kernel modules are integrated.” See [SPEC-011.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/STORIES/STORY-03-external-surfaces/SLICE-01-cli-hmi-and-pipeline-contract/SPEC-011.md:15), [nrt/work_offset/test/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/README.md:12), and [nrt/gcode_parser/src/machine_profile.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/gcode_parser/src/machine_profile.cpp:29).
+
+**Overclaim Assessment**
+Mostly not overclaiming implementation inside `nrt/work_offset`: the main “implemented” claims map to public headers, CMake targets, source files, and test inventory. The overclaim risk is in cross-module wording: “HMI 服务端” and “parser/kernel integration” can read as completed integration in external modules, while the stronger evidence is WorkOffset-side contracts/projections/tests. The docs should phrase those as “provided contract for HMI server/parser/kernel consumers” unless actual downstream wiring is also added.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:203-204|note=[checked prior notes and found only unrelated HMI tool-offset docs context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

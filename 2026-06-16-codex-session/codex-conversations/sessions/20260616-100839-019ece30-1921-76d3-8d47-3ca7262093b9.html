@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review the TP004 documentation changes in `/tmp/metanc_drafts_tool_edge_slice` from a checker/build...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Review the TP004 documentation changes in `/tmp/metanc_drafts_tool_edge_slice` from a checker/build...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece30-1921-76d3-8d47-3ca7262093b9</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 10:08:39 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T10-08-39-019ece30-1921-76d3-8d47-3ca7262093b9.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:08:39 +0800</div>
+<pre>Review the TP004 documentation changes in `/tmp/metanc_drafts_tool_edge_slice` from a checker/build integration perspective. Scope: whether the docs introduce terms, examples, or field-like names that may imply missing value-set/schema-field/checker support; whether validation commands should be expanded. Read the current diff and relevant tools: `tools/check_parameter_value_sets.py`, `tools/check_docs_i18n_sync.py`, and the changed docs. Do not edit files. Return findings ordered by severity with file/line references and recommended validation commands.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:09:17 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required workflow check, then I’ll do a read-only review of the `/tmp` worktree diff, the two checker scripts, and the changed TP004 docs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:09:48 +0800</div>
+<pre>I’m checking the temporary worktree state first so the review is tied to the actual diff, not assumptions from the main checkout. After that I’ll inspect the checker scripts against the changed docs for validator coverage gaps.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:10:45 +0800</div>
+<pre>The diff only touches four Markdown files. I’m now reading the current checker implementations so I can distinguish “docs intentionally deferred” from “docs introduce a name the automation will silently miss.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:11:16 +0800</div>
+<pre>The i18n checker has explicit projection pairs for many TP004 pages, but I need to confirm whether the two changed descriptor/status pages are registered there and whether generated HTML requirements cover the newly added terms.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:12:34 +0800</div>
+<pre>So far one integration gap is clear: the status page is in navigation and changed in source/zh, but the i18n checker’s published-page list covers `parameter-descriptors.md` and skips `parameter-descriptor-status.md`. I’m checking whether that is the only material gap or whether any newly introduced names should also force value-set/schema-field support.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 10:12:53 +0800</div>
+<pre>I’m going to run the read-only checker commands with bytecode disabled so the review can separate real failures from theoretical coverage gaps. I will not run the docs build because it updates generated output.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 10:13:31 +0800</div>
+<pre>The read-only checks all pass, including `--require-published-html`, which is useful evidence for the review: the current commands do not catch the coverage gap I’m seeing. I’m doing one last pass over generated/published include paths and line refs before writing findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 10:13:47 +0800</div>
+<pre>I’ve got enough to write the review. The short version is: the new terms are mostly fenced as deferred, so I don’t see a schema/value-set blocker in the docs themselves; the practical build/check gap is that one changed, navigated page is not part of the explicit i18n/published-page assertions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 10:14:19 +0800</div>
+<pre>One additional read-only check will make the published-HTML finding concrete: I’m checking whether the generated HTML for the changed status page actually contains the new section while the existing `--require-published-html` command still passes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-16 10:15:52 +0800</div>
+<pre>**Findings**
+- Medium: The changed descriptor roadmap content is not fully covered by the explicit i18n/published-page checks. The new sections in [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:148) and [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:60) have matching zh edits, but `check_docs_i18n_sync.py` only has generic `parameter-descriptors.md` published checks at [tools/check_docs_i18n_sync.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_docs_i18n_sync.py:319) and [tools/check_docs_i18n_sync.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_docs_i18n_sync.py:501), and no `parameter-descriptor-status.md` `PublishedPage`/`ProjectionPair` despite the page being in navigation at [SUMMARY.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/SUMMARY.md:13). Result: `--require-published-html` can pass while these new “Later Necessary/后续必要” sections drift or disappear. Add explicit checks for `parameter-descriptor-status.md`, and preferably a source-to-zh `ProjectionPair` or required-text assertions for the new descriptor section.
+
+No schema/value-set blocker found. The new field-like names (`instance keys`, `guard tokens`, `path_variables`, runtime registry/catalog, etc.) are framed as deferred and non-formal at [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:167) and [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:136). Current checker scope is still narrow: owner/scope bindings and minimal descriptor access booleans are enforced in [check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:776) and [check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:800).
+
+I ran these read-only checks; all exited 0:
+
+```bash
+env PYTHONDONTWRITEBYTECODE=1 python3 tools/check_parameter_value_sets.py
+env PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py
+env PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py --require-published-html
+git diff --check
+```
+
+Recommended validation before merge:
+
+```bash
+env PYTHONDONTWRITEBYTECODE=1 python3 tools/check_parameter_value_sets.py
+./tools/build_docs_html.sh
+env PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py --require-published-html
+rg -n &quot;Later Necessity Markers|Later Necessary Boundaries|后续必要|tool_management\.tool_edge\.dp3&quot; docs_html TP004-parameter-system/book/html book/html
+git diff --check
+```
+
+If the checker is expanded, also run:
+
+```bash
+python3 -m unittest discover -s tools/tests
+```
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:398-407|note=[tp004 checker validation path and descriptor governance context]
+MEMORY.md:401-406|note=[parameter descriptor field boundary and i18n projection rules]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

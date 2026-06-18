@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审查任务 B：docs/i18n/published surface 审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：这次变更是 add...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>审查任务 B：docs/i18n/published surface 审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：这次变更是 add...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e873f-0b15-71b3-bc6a-e0ce34403be3</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 15:31:56 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T15-31-56-019e873f-0b15-71b3-bc6a-e0ce34403be3.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 15:31:56 +0800</div>
+<pre>审查任务 B：docs/i18n/published surface 审查。
+
+工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts
+背景：这次变更是 add-parameter-value-set-binding，增加 TP004 的 VALUE-SETS / SCHEMA-FIELDS / USAGE-INDEX，以及中英文 docs_i18n 和 topic book 页面。此前中文版本曾经缺翻译，用户现在怀疑这次又漏了很多新东西。
+
+请只做只读审查，不修改文件。重点看：
+- TP004-parameter-system/book/src/SUMMARY.md 和新 include pages
+- docs_i18n/en/src/SUMMARY.md 与 docs_i18n/en/src/TP004-parameter-system/{value-sets.md,schema-fields.md,usage-index.md}
+- docs_i18n/zh/src/SUMMARY.md 与 docs_i18n/zh/src/TP004-parameter-system/{value-sets.md,schema-fields.md,usage-index.md}
+- docs_i18n/zh/src/TP004-parameter-system/baseline/design-baseline.md
+- tools/check_docs_i18n_sync.py 对新增页面的覆盖
+- docs_html 下是否应该有对应发布页面（如果当前存在可检查）
+
+请从“用户能否在最新 HTML/中文文档里看到完整内容”的角度审查，尤其看：SUMMARY 导航是否全；中文是否只是英文 include 而不是翻译；中文是否漏了 baseline 新章节；生成页是否路径一致；检查脚本是否能防止未来漏翻译。
+
+输出格式：
+1. Findings：按严重程度列出，必须包含文件和行号。
+2. Missing Published Surface：列出漏暴露/漏翻译/漏生成的页面或锚点。
+3. Verdict：ready / needs fixes / needs discussion。
+
+不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 15:32:35 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required workflow check. I’ll keep this strictly read-only and review the navigation, translated source pages, sync guard, and current published output as user-visible surfaces.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 15:33:00 +0800</div>
+<pre>I’ve confirmed the working tree has the value-set binding changes unstaged/untracked, so I’m reviewing the current checkout as-is. Next I’m reading the mdBook summaries, the three new page pairs, the Chinese baseline page, and the sync checker with line numbers so findings can be anchored precisely.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 15:33:49 +0800</div>
+<pre>The summaries all expose the three new TP004 pages in the topic book and both language books. A major surface difference is already visible: the English i18n pages are thin include wrappers, while the Chinese pages are hand-authored projections; I’m now comparing the Chinese baseline and the published HTML to see whether the latest sections survived into the rendered site.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 15:34:16 +0800</div>
+<pre>The rendered `docs_html` tree currently does contain the three new pages in both `/en` and `/zh`, and both TOCs link to them. I’m checking now whether those rendered pages are generated from the intended language sources, and whether the sync checker would catch future source-only additions that are not actually published.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 15:34:46 +0800</div>
+<pre>The sync checker passes, but that is a structural/required-text check only. I’m doing one more pass for “can this regress again” problems: whether the checker validates `SUMMARY.md` entries, generated `docs_html` presence, and stale rendered HTML after source changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-02 15:37:15 +0800</div>
+<pre>1. Findings
+
+- P2 - `tools/check_docs_i18n_sync.py` 不能防止“页面存在但未暴露/未发布”。它只遍历硬编码的 `PROJECTION_PAIRS`，见 [tools/check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:27) 和 [tools/check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:252)，没有检查 `SUMMARY.md` 导航，也没有检查 `docs_html/{en,zh}/.../*.html` 是否生成。当前三页已经在中英文 SUMMARY 和 `docs_html` 里出现，但未来新增页仍可能漏导航/漏发布而检查通过。
+
+- P2 - `usage-index` 的中文投影检查过弱，不能可靠防止未来漏翻译/漏同步。该 pair 明确关闭 heading/table 数量检查，只要求少量固定文本，见 [tools/check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:67) 和 [tools/check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:71)。如果生成索引未来新增 value set、schema field 或 structured source，但中文 `usage-index.md` 没更新，只要这些固定锚点仍存在，检查仍可能通过。
+
+2. Missing Published Surface
+
+- 当前未发现这三页漏暴露：`value-sets` / `schema-fields` / `usage-index` 已出现在 topic book、英文 SUMMARY、中文 SUMMARY。
+- 当前 `docs_html` 下也存在对应页面：`docs_html/en/.../{value-sets,schema-fields,usage-index}.html` 和 `docs_html/zh/.../{value-sets,schema-fields,usage-index}.html`。
+- 当前中文三页不是英文 include wrapper，内容是中文投影。
+- 当前中文 baseline 包含新增“值集合绑定模型”章节。
+- 缺的是自动防线：SUMMARY 导航、`docs_html` 生成页面、以及 generated usage-index 的逐项同步没有被 checker 严格覆盖。
+
+3. Verdict
+
+needs fixes
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:49-50|note=[docs_html and docs_i18n publish workflow context]
+MEMORY.md:160-168|note=[published root and path drift context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

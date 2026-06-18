@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审查任务 B：lint 工具 / 测试覆盖 / usage index 审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：这次 revie...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>审查任务 B：lint 工具 / 测试覆盖 / usage index 审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：这次 revie...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8763-2f96-7b72-934b-8a228bbdb7d8</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 16:11:24 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T16-11-24-019e8763-2f96-7b72-934b-8a228bbdb7d8.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 16:11:25 +0800</div>
+<pre>审查任务 B：lint 工具 / 测试覆盖 / usage index 审查。
+
+工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts
+背景：这次 review-fix 修改了 `tools/check_parameter_value_sets.py`，增加了 access-definition 扫描、required 检查、跨 set value_id 唯一性、usage index field/value/source references，并接入 i18n/docs 检查。请只做只读审查，不修改文件。
+
+重点文件：
+- tools/check_parameter_value_sets.py
+- tools/tests/test_check_parameter_value_sets.py
+- tools/check_docs_i18n_sync.py
+- TP004-parameter-system/openspec/{VALUE-SETS.md,SCHEMA-FIELDS.md,USAGE-INDEX.generated.md}
+
+审查重点：
+- checker 是否真的能扫到 access-definitions 和 validation sets 的真实 YAML。
+- `access_definition.*` / `validation_case.*` path 模型是否正确，是否有 false positive/false negative。
+- required 检查是否有缺陷。
+- usage index 是否真的可以做影响分析，是否还缺 line number / path / grouping。
+- tests 是否覆盖 reviewer 指出的风险，是否仍有明显缺口。
+- check_docs_i18n_sync 是否会误判或漏判 docs_html/SUMMARY 发布面。
+
+输出格式：
+1. Findings：按严重程度列出，必须包含文件和行号。
+2. Coverage Gaps：列出测试或工具遗漏。
+3. Verdict：ready / needs fixes / needs discussion。
+
+不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 16:11:52 +0800</div>
+<pre>Using `superpowers:using-superpowers` for process discipline; this is a read-only review, so I’ll inspect the listed files and validation paths without touching the worktree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 16:12:29 +0800</div>
+<pre>I see this is a dirty review-fix worktree with the target checker/tests untracked, so I’m treating all listed files as review material and keeping the inspection read-only. Next I’m going through the actual scanners and the generated docs surfaces with line numbers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 16:14:16 +0800</div>
+<pre>The checker does invoke on the current tree cleanly, but I’m not treating that as sufficient. The important review point is whether the path resolution can miss malformed real docs while still passing; I’m checking the source YAML shapes against the implementation now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 16:19:32 +0800</div>
+<pre>The real YAML confirms a useful distinction: formal validation-set files have both top-level fixtures and case-local fixtures, while the checker’s `validation_case.*` resolver only walks case lists. I’m checking whether that creates missed value references and stale published-surface risks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 16:21:09 +0800</div>
+<pre>One publish-check risk is concrete: `check_docs_i18n_sync.py` requires existing generated HTML before `build_docs_html.sh` deletes and rebuilds it. That means it is useful as a drift guard on a populated checkout, but it is not a reliable clean-build gate by itself.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-02 16:34:54 +0800</div>
+<pre>**Findings**
+1. High: top-level validation-set fixtures are not checked or indexed. `binding_roots()` only returns cases under `valid/invalid/access/dispatch`, so shared `fixtures.profile` is invisible even though the schema documents it. A typo in `fixtures.profile: siemens-compat-first-slice` would pass and be absent from impact analysis. See [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:255), [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:163), [case-schema.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/case-schema.md:118), [tool-dp3.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/siemens/tool-dp3.md:23).
+
+2. High: `required` validation is too weak. It only reports missing fields when the parent path exists and no tokens are found, so missing parent containers are skipped; for lists, one valid element hides another element missing a required leaf. Example risk: `shape.indexes.type` is required, but one index with `type` can mask another without it. See [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:295), [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:85).
+
+3. Medium: docs publication checking can both false-positive and miss a SUMMARY surface. `check_docs_i18n_sync.py` checks only a hardcoded set of generated HTML paths by existence, while `build_docs_html.sh` calls it before deleting/rebuilding `docs_html`; a clean checkout without generated HTML fails before it can build. It also omits the root aggregate `book/src/SUMMARY.md`, which currently lacks the new TP004 value/schema/usage pages. See [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:190), [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:319), [build_docs_html.sh](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/build_docs_html.sh:14), [book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/book/src/SUMMARY.md:21).
+
+4. Medium: the usage index is still weak for impact analysis. `ValueReference` has source/field/value/document only, and generation emits no line number, resolved YAML path, list index, or grouping by `value_id`; duplicate-looking refs such as the two `integer` index entries cannot be mapped back to `tool` vs `edge`. It also treats schema examples as structured sources. See [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:40), [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:397), [USAGE-INDEX.generated.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/USAGE-INDEX.generated.md:158), [USAGE-INDEX.generated.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/USAGE-INDEX.generated.md:169).
+
+**Coverage Gaps**
+- Tests do not cover top-level validation-set fixtures or real `load_structured_docs()` scans across current Markdown files.
+- The required-field test uses an unprefixed synthetic path, not the production `validation_case.*` path model.
+- No tests cover missing parent containers, list elements missing required fields, optional non-string enum values, or `profile_owned` extension behavior.
+- No tests assert usage-index line/path/grouping quality.
+- No tests exercise clean `docs_html` absence, stale generated HTML, or root aggregate SUMMARY wiring.
+
+**Verdict**
+needs fixes
+
+I ran the checker, unit tests, and i18n sync check read-only; all pass, but the gaps above are real validation/coverage holes.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:44-50|note=[docs_html build and publish root context]
+MEMORY.md:156-160|note=[parameter docs source and published site context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是 PLC tests/fixtures coverage 方向的只读 review agent。工作区 `/tmp/metanc_plc_review`，当前 HEAD `e205f479`。请...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是 PLC tests/fixtures coverage 方向的只读 review agent。工作区 `/tmp/metanc_plc_review`，当前 HEAD `e205f479`。请...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7174-10d8-7cf2-9189-af5f0d0b5359</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-29 09:58:12 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T09-58-12-019e7174-10d8-7cf2-9189-af5f0d0b5359.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-29 09:58:12 +0800</div>
+<pre>你是 PLC tests/fixtures coverage 方向的只读 review agent。工作区 `/tmp/metanc_plc_review`，当前 HEAD `e205f479`。请审查 `rt/plc/tests`、fixtures、`rt/plc/CMakeLists.txt` 中与最近改动相关的测试覆盖。重点看：新增 tests 是否真的覆盖 bug、是否有 label/CTest 缺漏、是否有 flaky shell/popen 测试、是否有未测试的高风险路径（scan watchdog quick_stop/safe_output、io_channels catalog、scenario unknown input、simulator virtual list）。不要改文件。输出 code review findings：严重级别、文件:行号、原因、建议；没问题则列测试盲点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-29 09:58:21 +0800</div>
+<pre>我会先快速查一下本地记忆里和 `MetaNC rt/plc` 测试工作流相关的注意事项，然后只读检查 `/tmp/metanc_plc_review` 的 diff、测试注册和相关 fixtures。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-29 09:59:14 +0800</div>
+<pre>HEAD 和分支匹配：`feat/plc-review-fixes` at `e205f479`。我会把重点放在最近提交相对父提交的测试/fixture/CMake 变更，同时对你点名的高风险路径做覆盖性抽查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-29 10:00:06 +0800</div>
+<pre>刚才无 range 的 diff 是空的，说明工作树本身干净；我现在改看 `HEAD~1..HEAD` 的实际补丁，并顺带读同一提交的生产代码改动，判断测试是否打到真实分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-29 10:00:58 +0800</div>
+<pre>测试注册本身没有随提交改动，但相关测试都已有 `add_test`；接下来我会检查这些 test harness 的执行方式，尤其是 `popen`/shell 命令构造和 CTest label 是否能让新增覆盖被选择性跑到。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-29 10:01:25 +0800</div>
+<pre>我看到新增用例大多塞进已有 test binary，所以 CTest 注册层没有新增目标；这会影响“按 label 跑回归”的可见性。还需要再确认 scan watchdog 的 quick_stop/safe_output 两条路径是否真的被行为断言覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-29 10:02:00 +0800</div>
+<pre>目前主要风险集中在两处：scan watchdog 新集成只测了 descriptor/monitor，没有测 Framework 触发后的 safe_output/quick_stop 行为；另外部分新增覆盖依赖已有 shell `popen` harness，路径未引用会让测试对构建路径敏感。我再核对一下源文件精确行号和是否已有可替代覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-29 10:06:05 +0800</div>
+<pre>**Findings**
+
+1. 严重级别: High
+   `rt/plc/tests/story03_task_watchdog_tests.cpp:52`
+   新增测试只验证 `runtime.yaml -&gt; FrameworkConfig`，后面的 watchdog 测试仍然直接测 `WatchdogMonitor`。最近生产代码把 watchdog 接进了 `Framework::run_cycle_once()`，并新增 `safe_output` / `quick_stop_request` 行为分支，但没有测试真正跑到 framework 集成路径。
+   建议: 加 framework-level 用例：boot 启用 `task_watchdogs.plc_scan` 的 runtime，先完成一次 scan，再 advance tick 触发 omitted-cycle；分别断言 `safe_output` 会广播 watchdog fault 且不 stop，`quick_stop_request` 会广播 fault 并 `stop_requested()`。
+
+2. 严重级别: Medium
+   `rt/plc/CMakeLists.txt:600`
+   新增 simulator virtual list 回归在 `metanc_plc_story27_interactive_sim_tests` 里，但该 CTest 目标没有任何 label；而 adapter/payload baseline label 只覆盖 Story-28/29/30/33 等目标。这样 `ctest -L plc_adapter_contract_baseline` 或 `-L plc_command_result_payload_baseline` 不会跑到这次修的 simulator virtual list 回归。
+   建议: 要么给 story27 simulator 兼容测试补合适 label，要么把“motion descriptor no hardcoded virtual errors”移到已标记的 Story-28/30 simulator adapter 测试中。
+
+3. 严重级别: Medium
+   `rt/plc/tests/story27_interactive_sim_tests.cpp:71`
+   `popen()` shell 命令只 quote 了 `printf` 输入，`METANC_PLC_SIM_EXECUTABLE` 和 fixture path 直接拼接。构建目录或源码路径含空格/特殊字符时会误拆参数，新增 simulator 回归会变成环境相关 flaky。`story29_scenario_observation_tests.cpp:63` 也有同类问题。
+   建议: 对 executable 和所有路径参数统一 `shell_quote()`，或改成非 shell 的进程调用/临时输入文件，至少避免路径敏感失败。
+
+**测试盲点**
+
+`io_channels` catalog 这次有 in-memory 覆盖和既有 fixture roundtrip，基本覆盖了“io_channels 替代 legacy inventory”的主路径；但还缺一个直接从含 analog channels 的 fixture 构造 `RuntimeSignalCatalog` 的断言，确保 AI/AO 不被误列入 DI/DO。
+`scenario unknown input` 已覆盖 CLI 错误码和 `GetDigitalInput` 命令路径。
+`simulator virtual list` 覆盖了 motion machine 不再探测硬编码 virtuals，但如上所述 label 和 shell harness 仍是风险点。
+
+未改文件；本次是只读 diff/注册审查。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:51-64|note=[MetaNC rt/plc review workflow context]
+MEMORY.md:152-155|note=[rt/plc independent build and test workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

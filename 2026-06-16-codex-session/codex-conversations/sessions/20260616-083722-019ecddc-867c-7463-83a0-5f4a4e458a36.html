@@ -1,0 +1,2869 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下现在的情况</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下现在的情况</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ecddc-867c-7463-83a0-5f4a4e458a36</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-16 08:37:22 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T08-37-22-019ecddc-867c-7463-83a0-5f4a4e458a36.jsonl</code></div>
+<div><b>Messages</b>: <code>212</code></div>
+<div><b>User prompts</b>: <code>22</code></div>
+<div><b>Synthetic events</b>: <code>6</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 08:37:35 +0800</div>
+<pre>看一下现在的情况</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 08:38:15 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check, and I’ll treat this as a current repo/workspace status pass. I’m going to inspect the checkout state, recent commits, and relevant OpenSpec/drafts structure before summarizing.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 08:38:33 +0800</div>
+<pre>The first pass shows the checkout is on `main`, with no local changes reported and a recent TP004 descriptor/current-state history. I’m refreshing `origin` once so the ahead/behind answer is based on current remote state, then I’ll inspect the active OpenSpec change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 08:38:57 +0800</div>
+<pre>Fetch completed cleanly. I’m checking branch parity, the active change files, and the validation surface so the status is useful rather than just “clean tree.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 08:39:14 +0800</div>
+<pre>The active change `document-parameter-descriptor-current-state` is fully checked off in its task file, but it is still sitting under `openspec/changes/` rather than `archive/`. I’m checking OpenSpec’s own view and the latest commit contents to distinguish “implemented and committed” from “formally archived.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 08:39:31 +0800</div>
+<pre>The repo-level evidence says the change is valid and committed, but before I call the state “green” I’m going to run the same lightweight validation suite this workspace normally uses for TP004 docs/i18n.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 08:39:41 +0800</div>
+<pre>Using `superpowers:verification-before-completion` because I’m about to report pass/fail status, so I need fresh evidence. Running the actual checks now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 08:39:51 +0800</div>
+<pre>The fast checks passed. I’m running the remaining docs build and test checks now, because this repo’s TP004 status is only really meaningful after the generated HTML and checker tests are in agreement.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 08:40:15 +0800</div>
+<pre>The build also completed and rewrote the local HTML outputs. I’m doing one final status check plus the published-HTML i18n check so I can tell you whether anything was left dirty.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-06-16 08:40:38 +0800</div>
+<pre>当前状态：
+
+- 仓库在 `main`，已 `git fetch origin`，本地和 `origin/main` 同步：`0 0`，没有 ahead/behind。
+- 工作区干净；我跑完 docs build 后再查了一次，`git status` 仍然干净。
+- 最新提交是 `ef5513c docs: add 2026-06-15 parameter descriptor session`，已在 `origin/main`。
+- 当前唯一 active OpenSpec change 是 `document-parameter-descriptor-current-state`，`openspec list` 显示 `✓ Complete`，`openspec validate ... --strict` 通过。
+- 注意：这个 change 虽然任务全勾、实现已提交，但还没归档，仍在 `openspec/changes/document-parameter-descriptor-current-state/`，不是 `archive/`。
+
+我刚跑的验证结果：
+
+- `python3 -m unittest discover -s tools/tests`：76 tests OK
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `openspec validate document-parameter-descriptor-current-state --strict`：valid
+- `./tools/build_docs_html.sh`：成功生成 `docs_html/` 和 `docs_i18n/site/`
+- `git diff --check`：无输出
+
+结论：当前 repo 是干净、同步、验证通过的状态。剩下的明确动作就是如果你认为 `document-parameter-descriptor-current-state` 已经可以收口，下一步可以走 OpenSpec archive。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:389-408|note=[metanc_drafts TP004 publishing and validation workflow]
+MEMORY.md:358-367|note=[recent TP004 descriptor i18n governance context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 08:44:52 +0800</div>
+<pre>看一下下一步的计划和已经完成的内容</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 08:45:02 +0800</div>
+<pre>我会按当前 `metanc_drafts` 的实际文件来梳理，不只复述上次状态。这里涉及 OpenSpec/current change 和 TP004 后续路线，我先读取对应的 OpenSpec 工作流说明，然后检查计划、任务、最新文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 08:45:27 +0800</div>
+<pre>Using `openspec-explore` for this pass: I’ll keep it read-only and separate “已经完成” from “下一步建议/待决策”。现在我在看 active change、TP004 状态页和最近提交，把计划按可执行切片整理出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 08:45:41 +0800</div>
+<pre>目前 active change 自己标记为 15/15 完成，最新提交也在 `origin/main`。我再对照 canonical TP004 页面里的 “推荐后续切片” 和已归档 OpenSpec 变更，避免把已经做完的项重复列成计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 08:46:02 +0800</div>
+<pre>已完成部分可以分成三层：已归档的 OpenSpec 切片、当前已完成但未归档的 change、以及文档/校验产物。我正在把归档任务也展开看一下，这样下一步不会和已经归档的切片重叠。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-16 08:46:32 +0800</div>
+<pre>当前看下来，TP004 参数描述符这条线已经收到了一个“当前状态可读、边界清楚”的阶段。
+
+**已经完成**
+
+- 工作区：`main` 和 `origin/main` 同步，当前干净。
+- Active OpenSpec change：`document-parameter-descriptor-current-state` 已是 `15/15` 完成，`openspec list --json` 标记为 `complete`。
+- 最新提交链已经包括：
+  - `e858e33`：TP004 descriptor/i18n governance
+  - `cbe5e63`：minimal model
+  - `409678e` / `924ef07`：owner-scope binding guardrails + archive
+  - `e73944b` / `f889cd6`：parameter_id consistency + archive
+  - `67e1e7a`：current-state 页面
+  - `ef5513c`：2026-06-15 session/report
+- 当前最小契约已经明确为 `parameter_id`、`owner`、`scope`、`semantic_name` 四个字段。
+- Checker 已覆盖：descriptor ID 唯一性、owner/scope value-set 解析、`owner_scope_bindings`、`parameter_id` owner 前缀与 semantic_name 后缀、轴显示名/alias 不作为 descriptor identity、minimal model 中拒绝 `access.readable/writable`。
+- 中文 reader-facing 页面已经不是薄 include wrapper，而是有可读中文说明。
+
+**还没收口的点**
+
+- `document-parameter-descriptor-current-state` 虽然完成并已提交，但还没有 archive，仍在 [openspec/changes/document-parameter-descriptor-current-state](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/tasks.md)。
+
+**下一步计划建议**
+
+1. 先归档 `document-parameter-descriptor-current-state`。
+   这是当前最自然的收口动作，不改语义，只把已完成 change 移到 archive。
+
+2. 做一次页面级 review，重点看 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md) 是否准确表达“状态页，不是新 schema 页”。
+   这里不应该新增字段、不新增 checker 规则、不提升 provisional owner-scope pair。
+
+3. 下一轮真正的功能切片，只选一个 evidence-ready 的 owner-scope pair 从 provisional 提升到 checker-backed。
+   当前候选在 [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md) 里，包括 `tool_management -&gt; tool_edge`、`zero_offset -&gt; frame_axis_component`、`hal -&gt; machine`、`magazine -&gt; machine` 等。不要一次全提。
+
+4. `semantic_name` 先不要治理成 value set。
+   只有出现真实误用样例，再加最小 misuse check。
+
+5. `semantic path grammar` 和 machine-profile axis alias 单独开切片。
+   这两个不要混进 descriptor identity：一个是路径/绑定语法问题，一个是 configuration-owned 轴配置问题。
+
+我建议顺序是：**archive 当前 change -&gt; review current-state 页面 -&gt; 选一个 owner-scope pair 提升**。其中第三步如果结合最近 HMI WorkOffset 方向，`zero_offset -&gt; frame_axis_component` 可能是最有现实牵引的候选，但前提是先补足来源证据。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:347-408|note=[TP004 parameter descriptor completed slices and next-step boundaries]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb5c5-ec24-73c3-9701-7096ca3f4efc
+019eb926-3a64-7ef0-a173-fae37eb589a8
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:05:17 +0800</div>
+<pre>我记得昨天按照SDD方式已经落了部分文档和代码了，看一下具体的story slice spec</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:05:39 +0800</div>
+<pre>Using `openspec-explore` again for a read-only SDD/story-slice inspection. I’ll search both the current draft workspace and the remembered TP004/SDD context from June 15, then summarize the concrete slice specs and what was actually landed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:06:05 +0800</div>
+<pre>我查到这里的 “SDD/story slice spec” 在当前仓库主要落成了 OpenSpec change/spec delta，加上两个 `docs/superpowers/plans/` 执行计划；不是单独的 `story.catalog.yaml`。我继续把每个 spec delta 展开成切片清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-16 09:06:54 +0800</div>
+<pre>你记得没错。2026-06-15 昨天这里不是 `story.catalog.yaml` 那种 story pack，而是按 SDD/计划执行方式落成了 **OpenSpec spec delta + Superpowers implementation plan + docs/checker code**。
+
+**昨天落下的 Slice**
+
+1. **Parameter Descriptor Minimal Model**
+   - Spec: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-15-refine-parameter-descriptor-minimal-model/specs/parameter-descriptor-minimal-model/spec.md)
+   - Plan: [2026-06-15-parameter-descriptor-minimal-model.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-minimal-model.md)
+   - 核心：把 descriptor 收窄成 `parameter_id`、`owner`、`scope`、`semantic_name` 四字段。
+   - 明确不做：`semantic_path_template`、value metadata、access policy、activation/persistence。
+   - 已落：文档、中文 projection、checker 测试和 `tools/check_parameter_value_sets.py` 支持。
+   - 主要提交：`cbe5e63`，后续由 `21b9124` 归档。
+
+2. **Parameter Descriptor Binding Guardrails**
+   - Spec: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-15-add-parameter-descriptor-binding-guardrails/specs/parameter-descriptor-binding-guardrails/spec.md)
+   - Plan: [2026-06-15-parameter-descriptor-binding-guardrails.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md)
+   - 核心：区分 `owner_scope_bindings` 和 `provisional_owner_scope_notes`。
+   - 当前正式 checker-backed pair 只有 `motion.axis -&gt; axis`。
+   - `tool_management -&gt; tool_edge`、`zero_offset -&gt; frame_axis_component` 等仍是 provisional。
+   - 已落：OBJECT-SCOPES 文档拆分、descriptor pair checker、测试。
+   - 主要提交：`409678e`，归档提交 `924ef07`。
+
+3. **Parameter Descriptor ID Consistency**
+   - Spec: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-15-add-parameter-descriptor-id-consistency/specs/parameter-descriptor-id-consistency/spec.md)
+   - 核心：`parameter_id` 必须与最小字段一致，但不引入 path 语义。
+   - 规则：
+     - 必须以 `&lt;owner&gt;.` 开头；
+     - 必须以 `.&lt;semantic_name&gt;` 结尾；
+     - `scope` 单独校验，不要求出现在 `parameter_id` segment 里。
+   - 已落：checker 和测试。
+   - 主要提交：`e73944b`，归档提交 `f889cd6`。
+
+4. **Parameter Descriptor Current State Page**
+   - Spec: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/specs/parameter-descriptor-current-state/spec.md)
+   - 页面： [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md)
+   - 核心：把当前状态、checker-backed 边界、草案材料、provisional 边界、下一步切片一次说清。
+   - 已落：状态页、英文 include、中文 reader-facing projection、session/report。
+   - 主要提交：`67e1e7a`、`ef5513c`。
+   - 状态：完成但还没 archive，仍是 active OpenSpec change。
+
+**现在最具体的 Story/Slice Spec 入口**
+
+如果你要继续看“slice spec”，优先看这几个文件：
+
+- Minimal model: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-15-refine-parameter-descriptor-minimal-model/specs/parameter-descriptor-minimal-model/spec.md)
+- Binding guardrails: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-15-add-parameter-descriptor-binding-guardrails/specs/parameter-descriptor-binding-guardrails/spec.md)
+- ID consistency: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-15-add-parameter-descriptor-id-consistency/specs/parameter-descriptor-id-consistency/spec.md)
+- Current state: [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/document-parameter-descriptor-current-state/specs/parameter-descriptor-current-state/spec.md)
+
+结论：昨天已经落的不只是文档，`tools/check_parameter_value_sets.py` 和对应单测也跟着落了。当前唯一没完全收尾的是 `document-parameter-descriptor-current-state` 这个 completed change 还没 archive。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:347-408|note=[TP004 SDD slices, descriptor governance, validation and publishing context]
+MEMORY.md:224-276|note=[story-slice terminology context and distinction from PLC story planning]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb5c5-ec24-73c3-9701-7096ca3f4efc
+019eb926-3a64-7ef0-a173-fae37eb589a8
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+019e7281-27b4-78a3-9e1e-3cac25e68d2d
+019eb5dc-a2e9-7611-8947-35f66ed5a559
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:13:33 +0800</div>
+<pre>看一下下一步的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:13:54 +0800</div>
+<pre>我会按当前 OpenSpec/TP004 文件来做下一步计划，不直接改文件。这里同时适用 `openspec-explore` 和 `superpowers:writing-plans`：先确认 active change 与现有 roadmap，再把下一步拆成可执行切片、文件、校验和风险点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:14:18 +0800</div>
+<pre>Using the writing-plans skill to structure the implementation plan, but I’m keeping this as a reviewable plan in the reply unless you ask me to save it as a plan file. I’m checking the current checker entry points and source docs now so the task list names exact files and validation commands.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:14:57 +0800</div>
+<pre>我看到当前 checker 已经能从 `OBJECT-SCOPES.md` 读 `owner_scope_bindings` 并校验 descriptor pair，所以下一步如果选 owner-scope promotion，代码改动可能很小，主要是先补证据和红测。我要再确认 `zero_offset` / `tool_management` 的 owner/value-set 条目，避免计划里写一个不存在的 token。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-16 09:15:30 +0800</div>
+<pre>我建议下一步不要直接做 `zero_offset -&gt; frame_axis_component`，因为现在 `zero_offset` 在 [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md) 里还是 `unassigned_owner_tokens`。更稳的下一步是：
+
+**主线计划**
+
+1. **先收口当前 completed change**
+   - 目标：archive `document-parameter-descriptor-current-state`。
+   - 不改语义，只移动 OpenSpec change。
+   - 验证：
+     - `openspec list --json`
+     - `python3 -m unittest discover -s tools/tests`
+     - `python3 tools/check_parameter_value_sets.py`
+     - `python3 tools/check_docs_i18n_sync.py --require-published-html`
+     - `git diff --check`
+
+2. **开新 SDD slice：promote `tool_management -&gt; tool_edge`**
+   - 原因：`tool_management` 已是 registered owner，有 TP002 evidence；`tool_edge` 已在 `VS060003 / object_scope`。
+   - 目标：把它从 `provisional_owner_scope_notes` 提升到 checker-backed `owner_scope_bindings`。
+   - 暂不碰：`zero_offset`、semantic path grammar、runtime registry、access policy。
+
+3. **新 change 建议名**
+   - `promote-tool-management-tool-edge-binding`
+
+4. **Spec 重点**
+   - Requirement: `tool_management -&gt; tool_edge` owner-scope pair is checker-backed.
+   - Scenario: descriptor with `owner: tool_management`, `scope: tool_edge` passes.
+   - Scenario: same pair no longer appears in `provisional_owner_scope_notes`.
+   - Scenario: unrelated provisional pairs remain provisional.
+
+5. **主要文件**
+   - 新增：
+     - `openspec/changes/promote-tool-management-tool-edge-binding/proposal.md`
+     - `openspec/changes/promote-tool-management-tool-edge-binding/design.md`
+     - `openspec/changes/promote-tool-management-tool-edge-binding/tasks.md`
+     - `openspec/changes/promote-tool-management-tool-edge-binding/specs/parameter-descriptor-tool-edge-binding/spec.md`
+   - 修改：
+     - [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md)
+     - `docs_i18n/zh/src/TP004-parameter-system/object-scopes.md`
+     - `tools/tests/test_check_parameter_value_sets.py`
+   - 可能不需要改：
+     - `tools/check_parameter_value_sets.py`，现有 checker 已支持 owner-scope pair 校验。
+
+6. **TDD 顺序**
+   - 先加测试：`tool_management/tool_edge` descriptor 当前应失败。
+   - 修改 `OBJECT-SCOPES.md`：把 `tool_management -&gt; tool_edge` 移入 `owner_scope_bindings`。
+   - 再跑测试，确认通过。
+   - 更新中文 projection。
+   - 跑完整验证。
+
+7. **完整验证闭环**
+   - `openspec validate promote-tool-management-tool-edge-binding --strict`
+   - `python3 -m unittest discover -s tools/tests`
+   - `python3 tools/check_parameter_value_sets.py`
+   - `python3 tools/check_docs_i18n_sync.py`
+   - `./tools/build_docs_html.sh`
+   - `python3 tools/check_docs_i18n_sync.py --require-published-html`
+   - `git diff --check`
+
+**后续第二个候选**
+
+等 `zero_offset` owner 有明确 primary topic/evidence 后，再开单独 slice：
+
+- `assign-zero-offset-owner-boundary`
+- 然后才做 `promote-zero-offset-frame-axis-component-binding`
+
+这个顺序更干净：先 owner 边界，再 owner-scope binding。否则会出现 pair 被 checker-backed 了，但 owner registry 仍说它是 unassigned 的不一致。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:347-408|note=[TP004 descriptor governance slices and validation workflow]
+MEMORY.md:79-79|note=[work_offset APIs may support later zero_offset evidence]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:26:27 +0800</div>
+<pre>可以 按照干净顺序处理，可以开多个agent的可以多个subagent处理，提高效率</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:26:51 +0800</div>
+<pre>我会按两段处理：先归档已完成的 current-state change，再开新的窄切片处理 `tool_management -&gt; tool_edge`。我先读取归档/执行相关技能和当前 OpenSpec 状态，然后再动文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:27:04 +0800</div>
+<pre>当前工作区干净，并且唯一 active change 已标记 complete。我会让并行 agent 做“只读审查/计划校验”，实际文件修改由我串行执行，避免多个 agent 同时改同一批 OpenSpec/TP004 文件造成冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:27:28 +0800</div>
+<pre>我会按这个顺序执行，并把修改串行落地：归档 current-state → 新建 `promote-tool-management-tool-edge-binding` → 先红测再改文档/投影 → 全量验证。因为这是在 `main` 上做 repo 维护，我先检查 worktree/分支隔离要求，避免把归档和新 slice 混在不清楚的状态里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:27:50 +0800</div>
+<pre>I’m using the TDD and worktree skills for this execution. Since this checkout is a normal `main` checkout, I’m going to avoid starting feature edits directly on `main`; I’ll create an isolated worktree under `/tmp` for the new slice if the sandbox allows it, then bring back the result if needed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:27:58 +0800</div>
+<pre>我确认到当前不是 linked worktree，而是普通 `main` checkout。接下来我会先建 `/tmp/metanc_drafts_tool_edge_slice` 的 worktree 分支来承载归档和新 slice，避免污染当前主目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:28:10 +0800</div>
+<pre>Worktree 已创建在 `/tmp/metanc_drafts_tool_edge_slice`，分支 `feat/tp004-tool-edge-binding`。我现在先做基线验证，然后归档 current-state change。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:28:21 +0800</div>
+<pre>基线通过。归档这一步只移动已完成的 OpenSpec change，不做 spec 同步到 root specs，因为这个仓库当前用 root `openspec/changes/archive` 保存这些已完成工作。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 09:28:29 +0800</div>
+<pre>Artifact status is complete, and the task file is already 15/15 checked. I’m moving it to the dated archive now, then I’ll validate the archive checkpoint before opening the new change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 09:28:58 +0800</div>
+<pre>归档后的 active change list 已空，基础检查也通过。`git diff --stat` 对 rename 显示成删除是因为未暂存，实际 archive 目录已经存在；我会先提交这个归档 checkpoint，再开始新 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 09:29:13 +0800</div>
+<pre>Archive checkpoint committed as `8fcff66`. Next I’m creating the new OpenSpec artifacts for `promote-tool-management-tool-edge-binding`, then I’ll add the failing test before changing `OBJECT-SCOPES.md`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 09:29:25 +0800</div>
+<pre>现有代码和测试已经确认：`tool_management` token、`tool_edge` scope、TP002 evidence 都存在；`zero_offset` 还未注册 owner boundary，所以本轮只提升 `tool_management -&gt; tool_edge`。我现在会创建 OpenSpec change 文件，然后进入红绿测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 09:29:45 +0800</div>
+<pre>I found the subagent tool and will use it for parallel read-only review while I continue the critical path locally. They’ll check docs/spec consistency and checker/test risks; I’ll keep file writes serialized in the `/tmp` worktree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 09:30:17 +0800</div>
+<pre>I’m adding the new OpenSpec change artifacts now: proposal/design/tasks/spec for `promote-tool-management-tool-edge-binding`. These are narrow: they only admit `tool_management -&gt; tool_edge` and explicitly leave `zero_offset` and semantic-path work out.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 09:30:26 +0800</div>
+<pre>OpenSpec directory is in place. I’m writing the four artifacts with `apply_patch` so the change starts with explicit scope and task gates before code/docs edits.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 09:31:13 +0800</div>
+<pre>New change artifacts are written. I’ll validate the change syntax, then add the red test against the current source docs before promoting the binding.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 09:31:34 +0800</div>
+<pre>OpenSpec validation passed; my focused unittest path used the wrong test class name, so that command did not test behavior. I’m checking the actual test class name and then I’ll add the red test.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-16 09:31:48 +0800</div>
+<pre>I’m adding the red test in the existing checker test class. It will load the real `OBJECT-SCOPES.md` state, build a minimal tool-edge descriptor, and assert the current source rejects it before promotion.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-16 09:32:09 +0800</div>
+<pre>The red test is in place. I’m running only that test now; expected failure is the owner/scope pair not being checker-backed yet.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-16 09:32:29 +0800</div>
+<pre>Red phase is confirmed with the expected error: `tool_management -&gt; tool_edge is not checker-backed`. I’m now promoting that pair in `OBJECT-SCOPES.md` and the Chinese projection, without touching checker production code.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-16 09:32:47 +0800</div>
+<pre>Before editing, I’ll incorporate any read-only subagent findings that are already back; if not, I’ll proceed with the narrow local edits and use their review during validation.</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:45:51 +0800</div>
+<pre>现在parameter进度发一下，关键点和进度可以用百分比之类的直观表达</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-16 09:46:18 +0800</div>
+<pre>截至当前 `feat/tp004-tool-edge-binding` 分支，Parameter / TP004 进度可以这样报：
+
+| 模块 | 进度 | 状态 |
+|---|---:|---|
+| Value Set / Schema Field 治理 | 90% | 已有 value-set、schema-field、usage-index、checker 闭环 |
+| Parameter Descriptor 最小模型 | 85% | 四字段模型已稳定：`parameter_id` / `owner` / `scope` / `semantic_name` |
+| Descriptor Checker 支撑 | 80% | 已校验 ID 唯一性、owner/scope、owner-scope pair、axis alias 防误用 |
+| Owner-Scope Binding | 45% | 已正式支持 `motion.axis -&gt; axis` 和 `tool_management -&gt; tool_edge`；`zero_offset` 等仍暂缓 |
+| 中文 / 英文 reader-facing 文档 | 85% | 中文不再只是 include wrapper，关键页已同步 |
+| Semantic Path / Instance Binding | 15% | 只保留草案方向，尚未正式定义 grammar |
+| Runtime Registry / 实际运行参数系统 | 10% | 目前主要是治理和规格层，runtime registry 未展开 |
+| Zero Offset Parameter 化 | 25% | 有验证集和 provisional scope，但 owner boundary 还未正式注册 |
+
+**总体估算：65%**
+
+这里的 65% 指的是 **TP004 参数治理/文档/checker 体系**，不是完整 runtime 参数系统。
+
+关键完成点：
+
+- 已建立参数治理基础：value set、schema field、usage index、checker。
+- Parameter Descriptor 已从“大而散”收敛到最小身份模型。
+- `parameter_id` 规则已落：必须匹配 owner 前缀和 semantic_name 后缀。
+- owner/scope 已分离治理，不能从 ID 里隐式推断。
+- `tool_management -&gt; tool_edge` 已从 provisional 提升为 checker-backed。
+- `zero_offset -&gt; frame_axis_component` 仍保持 provisional，顺序是对的，后面要先补 owner boundary。
+- 当前 OpenSpec active changes 已清空，已完成 slice 都归档了。
+
+下一步建议优先级：
+
+1. `zero_offset` owner boundary 注册：把 `zero_offset` 从 unassigned owner token 提升为 registered owner。
+2. 再做 `zero_offset -&gt; frame_axis_component` binding promotion。
+3. 单独讨论 semantic path grammar，不要和 descriptor identity 混在一起。
+4. 后面再进入 runtime registry / parameter catalog 实现层。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:48:12 +0800</div>
+<pre>现在TP004的这个你说的参数治理.文档.checker体系，具体指的是包含哪些方面</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:48:32 +0800</div>
+<pre>我会按刚才完成的 `feat/tp004-tool-edge-binding` 状态来解释，不把它泛化成完整 runtime 参数系统。先快速对照 TP004 的源文件，把“治理 / 文档 / checker 体系”拆成具体组成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:48:52 +0800</div>
+<pre>Using `openspec-explore` for a read-only explanation. I’ll inspect the relevant TP004 source pages/checker files and answer as a concrete component map.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-16 09:49:19 +0800</div>
+<pre>这里的“参数治理 / 文档 / checker 体系”，具体不是 runtime 参数库，而是 TP004 里一套让参数/访问描述可定义、可引用、可校验、可发布的基础设施。包含这些方面：
+
+| 方面 | 具体内容 | 当前作用 |
+|---|---|---|
+| 术语治理 | `TERMS.md` | 给 Parameter Descriptor、Value Set、Owner、Access Definition 等概念稳定命名 |
+| Value Set 治理 | `VALUE-SETS.md` | 管 enum-like 值，比如 `owner_reference`、`object_scope`、`access_context`、`operation_kind` |
+| Schema Field 绑定 | `SCHEMA-FIELDS.md` | 规定某个字段必须引用哪个 value set，例如 `parameter_descriptor.owner -&gt; owner_reference` |
+| Owner Registry | `OWNER-REGISTRY.md` | 说明 `tool_management`、`plc_runtime` 等 owner token 归哪个 topic 负责 |
+| Object Scope | `OBJECT-SCOPES.md` | 定义 `machine/channel/axis/tool_edge/frame_axis_component` 这类 scope 的含义 |
+| Owner-Scope Binding | `OBJECT-SCOPES.md` 中的 `owner_scope_bindings` | 决定哪些 `(owner, scope)` pair 可以正式用于 Parameter Descriptor |
+| Parameter Descriptor 最小模型 | `PARAMETER-DESCRIPTORS.md` | 当前四字段：`parameter_id`、`owner`、`scope`、`semantic_name` |
+| Usage Index | `USAGE-INDEX.generated.md` | 生成反向索引，查某个 value / field 被哪些文档和例子使用 |
+| Access Definitions | `access-definitions/` | 描述 Siemens / MetaNC access family，比如 tool、zero-offset、axis-machine-data |
+| Validation Sets | `validation-sets/` | 用样例证明 access parsing / descriptor / access / dispatch 预期 |
+| i18n / reader docs | `book/src/`、`docs_i18n/en`、`docs_i18n/zh` | 把 OpenSpec 源文档投影成可读文档，中文页也要有真实说明 |
+| Checker | `tools/check_parameter_value_sets.py` | 校验 value set、schema field、owner registry、descriptor、owner-scope pair、usage index |
+| i18n Checker | `tools/check_docs_i18n_sync.py` | 校验中文/英文投影、导航、已发布 HTML 不漂移 |
+
+当前已经 checker-backed 的 Parameter Descriptor 规则包括：
+
+- `parameter_id` 必须存在且不能重复。
+- `owner` 必须解析到 `VS010023 / owner_reference`。
+- `scope` 必须解析到 `VS060003 / object_scope`。
+- `(owner, scope)` 必须出现在 checker-backed `owner_scope_bindings`。
+- `parameter_id` 必须以 `&lt;owner&gt;.` 开头。
+- `parameter_id` 必须以 `.&lt;semantic_name&gt;` 结尾。
+- 轴显示名/alias 不能进入 descriptor identity。
+- minimal model 里拒绝 `access.readable` / `access.writable`。
+
+现在正式支持的 owner-scope pair：
+
+- `motion.axis -&gt; axis`
+- `tool_management -&gt; tool_edge`
+
+仍然暂缓的典型 pair：
+
+- `zero_offset -&gt; frame_axis_component`
+- `motion -&gt; machine/channel/axis/spindle`
+- `hal -&gt; machine`
+- `magazine -&gt; machine`
+
+所以可以把它理解成三层：
+
+```text
+治理层
+  TERMS / VALUE-SETS / OWNER-REGISTRY / OBJECT-SCOPES / SCHEMA-FIELDS
+
+描述层
+  PARAMETER-DESCRIPTORS / ACCESS-DEFINITIONS / VALIDATION-SETS / USAGE-INDEX
+
+校验发布层
+  check_parameter_value_sets.py / check_docs_i18n_sync.py / mdBook docs
+```
+
+它目前解决的是“参数和访问描述怎么被规范定义、引用、校验、发布”。还没解决的是“runtime 里怎么注册、存储、读取、写入、同步这些参数值”。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:51:45 +0800</div>
+<pre>现在的范围和定义大概都到什么程度了，有双链或者单链关联吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:52:12 +0800</div>
+<pre>Using `openspec-explore` for a read-only clarification. I’ll ground this in the current TP004 files and explain “单链/双链”按现在实际已经落下的关联模型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-16 09:53:36 +0800</div>
+<pre>现在 TP004 的范围已经从“泛泛的参数系统”收窄到一个比较清楚的治理骨架，但还没到运行时实现闭环。
+
+**范围成熟度**
+大概可以分三层看：
+
+1. **已经比较稳的部分，约 70%-80%**
+   - 术语、值集、schema field、owner、object scope 的治理方式已经明确。
+   - `parameter_descriptor.owner` 绑定 `VS010023 / owner_reference`。
+   - `parameter_descriptor.scope` 绑定 `VS060003 / object_scope`。
+   - `parameter_id` 的最小规则已经定了：必须以 `owner.` 开头，并以 `.semantic_name` 结尾。
+   - checker 已经能查 owner、scope、owner-scope pair、descriptor identity 这些基础一致性。
+   - 当前 checker-backed 的合法 owner/scope pair 是：
+     - `motion.axis -&gt; axis`
+     - `tool_management -&gt; tool_edge`
+
+2. **定义了方向，但还属于草案的部分，约 40%-60%**
+   - object scope 的 instance keys、instance source、path variables。
+   - descriptor 的 instance binding、semantic path、value metadata、access policy、activation、persistence。
+   - access definition / validation set 与 descriptor 的进一步闭合关系。
+   - runtime access chain 的边界已经画出来，但没有落成运行时注册表或真实调度实现。
+
+3. **还没正式落地的部分，约 10%-30%**
+   - runtime parameter registry/catalog。
+   - 真实读写路径、存储、revision、权限执行。
+   - semantic path grammar。
+   - machine-profile / axis alias schema。
+   - `semantic_name` 是否需要值集治理。
+   - `zero_offset` 现在还只是合法 owner token，但 owner registry 和 owner-scope pair 都没正式闭环。
+
+**有没有单链或双链关联**
+有，两种都有，但用途不同。
+
+**单链**主要是字段和值集治理链，已经比较明确：
+
+```text
+schema field
+  -&gt; value_set_id
+  -&gt; value_id / token
+  -&gt; optional term
+  -&gt; TERMS.md
+  -&gt; usage index
+```
+
+例如：
+
+```text
+parameter_descriptor.scope
+  -&gt; VS060003
+  -&gt; tool_edge
+  -&gt; object scope definition
+```
+
+这条链解决的是“一个字段允许填什么值，以及这个值的定义在哪里”。
+
+**双链**主要体现在 Parameter Descriptor 上：
+
+```text
+身份链:
+parameter_id
+  -&gt; owner prefix
+  -&gt; semantic_name suffix
+
+治理链:
+owner -&gt; VS010023 -&gt; OWNER-REGISTRY
+scope -&gt; VS060003 -&gt; OBJECT-SCOPES
+(owner, scope) -&gt; owner_scope_bindings
+```
+
+也就是说，TP004 现在不是用 `parameter_id` 一条链推导一切，而是把它拆成两件事：
+
+- `parameter_id` 负责稳定身份和命名一致性。
+- `owner + scope` 负责治理、归属、对象范围和合法组合。
+
+这就是现在的“双链”核心。它不是重复建两个 ID，而是同时校验“名字是否一致”和“治理归属是否成立”。
+
+还有一个更偏运行时设计的双链，目前只是设计态：
+
+```text
+外部访问链:
+native expression / HMI / API
+  -&gt; access definition / descriptor map / validation set
+
+owner 调度链:
+descriptor owner + scope
+  -&gt; owner registry
+  -&gt; owner API / domain operation
+```
+
+这条链目前还没有进入完整实现，只是边界已经在文档里立住了。
+
+一句话概括：现在 TP004 已经完成了“参数定义治理骨架”和两个示范闭环，特别是 `motion.axis -&gt; axis`、`tool_management -&gt; tool_edge`；但“运行时值实例、访问调度、真实读写”的链路还没有落地。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:54:12 +0800</div>
+<pre>未落地的这部分你觉得是必要的吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:54:21 +0800</div>
+<pre>我先按 `openspec-explore` 的方式处理这个判断题：不急着扩大范围，先把“必要”和“暂缓”的边界讲清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:54:37 +0800</div>
+<pre>我会把结论分成“V1 必要”“晚一点必要”“暂时不必要”三类，这样不把后续工作都一次性压进当前 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-16 09:55:03 +0800</div>
+<pre>我判断：**必要，但不是现在全部必要**。当前 TP004 最重要的是先把“参数定义治理”立稳；未落地部分里有些是以后进入真实运行时前必须补的，有些现在补反而会把模型做重。
+
+**必须补，但可以分 slice**
+这些是从“文档治理”走向“可用参数系统”前绕不过去的：
+
+| 项 | 必要性 | 原因 |
+|---|---:|---|
+| runtime registry / catalog | 高 | 否则 descriptor 只是文档记录，不能被 HMI/API/PLC 查找和解析 |
+| instance binding | 高 | `scope: axis/tool_edge/frame_axis_component` 只说明对象类，还不能定位具体实例 |
+| owner dispatch / domain operation | 高 | `owner` 现在只治理归属，后面必须能分发到对应 domain |
+| access policy | 中高 | 只读可以晚点；一旦支持写入、保护级、机床状态约束，就必须有 |
+| value metadata / validation | 中高 | 真实值需要类型、单位、范围、枚举、revision 等，否则不能安全校验 |
+| semantic path grammar | 中 | 需要给 UI/search/API 稳定路径时必须补，但不应该变成 descriptor identity |
+
+**现在不建议急着补**
+这些可以继续延后：
+
+| 项 | 当前建议 | 原因 |
+|---|---|---|
+| `semantic_name` 全局值集化 | 暂缓 | 现在 owner-local 更灵活，过早做全局 enum 会卡住各 domain 演进 |
+| activation / persistence 正式字段 | 暂缓 | 没有真实写入和存储边界前，容易空泛 |
+| machine-profile 完整 axis alias schema | 分离处理 | 它属于配置模型，不应该塞进 descriptor 当前 slice |
+| `access.readable/writable` 布尔字段 | 不建议回收 | 太粗，后面应该走 policy/contract，不是两个 boolean |
+| 所有 provisional owner-scope 一次性转正 | 不建议 | 应该按证据逐个 promote，比如 `zero_offset` 单独一刀 |
+
+我的建议路径是：
+
+```text
+现在完成:
+descriptor identity + owner/scope governance + checker
+
+下一步优先:
+一个真实 domain 的 owner-scope + instance binding
+
+再下一步:
+resolver / registry / dispatch contract
+
+最后:
+value metadata + access policy + persistence
+```
+
+所以结论是：**未落地部分对最终 TP004 是必要的，但对当前阶段不是全部必要。**
+
+当前最值得继续推进的不是“大而全 runtime”，而是选一个证据最清楚的领域做闭环。比如：
+
+```text
+zero_offset
+  -&gt; frame_axis_component
+  -&gt; instance keys: frame / axis / component
+  -&gt; semantic path grammar candidate
+  -&gt; validation case
+  -&gt; checker-backed owner_scope_binding
+```
+
+这样能把“定义、实例、路径、checker”串起来，但仍然不碰真实运行时读写。这个顺序比较干净。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:56:31 +0800</div>
+<pre>中高必要性那些落一下文档，其他的先标记、不要深入，然后给我一个总结计划概览</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:56:47 +0800</div>
+<pre>我会继续沿用当前 TP004 的干净工作树，把“中高必要性”的内容落成文档边界，不把暂缓项展开成方案。先确认当前分支和相关文档位置，再改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:57:07 +0800</div>
+<pre>我已经看过 brainstorming 规则；这里不是新功能方案，而是把刚才已经收敛的必要性分层写入 TP004 文档。接下来我按现有 OpenSpec/TP004 文档结构做窄改，验证 checker 和文档同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:57:26 +0800</div>
+<pre>Using change: none active. There is no active OpenSpec change in this worktree, so I’m treating this as a narrow documentation follow-up on the TP004 branch rather than applying an existing change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:58:19 +0800</div>
+<pre>我看到这棵工作树里 `TP004-parameter-system/docs_i18n` 不存在，i18n 内容是在仓库根的 `docs_i18n/zh/src/TP004-parameter-system/...`。我会同步改 canonical openspec、book 页面和中文页面，避免 checker 之后报发布文档不同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:58:47 +0800</div>
+<pre>我准备把这次改动控制在两类文档：canonical 的 `PARAMETER-DESCRIPTORS.md` / `parameter-descriptor-status.md`，以及中文读者页。不会新增 schema field、value set、checker 规则，也不会展开 runtime 方案。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:59:06 +0800</div>
+<pre>当前结构确认完了：英文 i18n 源页大多是 include canonical book，中文源页是独立翻译。接下来我会同时补英文 canonical 和中文读者页，保持“中高必要性落边界、暂缓项只标记”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:59:46 +0800</div>
+<pre>我现在开始改文档。改动会聚焦在 `Parameter Descriptor` 当前状态页和最小模型页：把 runtime registry、instance binding、owner dispatch、access policy、value metadata、semantic path grammar 标成后续必要边界；暂缓项只留标记和归属。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 10:00:46 +0800</div>
+<pre>文档已补第一轮。现在我会检查英文 canonical 与中文读者页是否一致、是否有换行/术语问题，然后跑现有 checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 10:01:02 +0800</div>
+<pre>第一轮校验已经过了：参数值集 checker、i18n 结构同步、`git diff --check` 都干净。现在我跑一次文档构建和 published HTML 同步检查，确认中文页面输出也能跟上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 10:01:15 +0800</div>
+<pre>HTML 构建也通过了，当前只有 4 个源文档变更，没有额外生成文件残留。最后我再跑 published HTML 同步检查和文档 diff 摘要，然后给你总结计划概览。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-16 10:01:50 +0800</div>
+<pre>已按这个边界落文档，改动在 `/tmp/metanc_drafts_tool_edge_slice` 的 `feat/tp004-tool-edge-binding` 分支，未提交。
+
+落下来的内容：
+- 在 [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:148) 增加 `Later Necessity Markers`，把中高必要项标清：runtime registry/catalog、instance binding、owner dispatch、access policy、value metadata/validation、semantic path grammar。
+- 在 [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:57) 增加当前状态视角的 `Later Necessary Boundaries` 和 `Marked Only`。
+- 同步中文读者页：[parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:130)、[parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:52)。
+
+没有做的事：
+- 没新增 schema field。
+- 没新增 value set。
+- 没改 checker 规则。
+- 没深入 runtime/access/persistence 设计。
+- 暂缓项只标记：`semantic_name` 值集治理、activation/persistence descriptor 字段、axis alias schema、批量 owner-scope promotion、boolean access flags。
+
+总结计划概览：
+
+```text
+P0 已完成:
+descriptor identity + owner/scope governance + 当前必要性分层文档
+
+P1 下一步:
+选一个 evidence-ready owner-scope pair
+  -&gt; 推荐 zero_offset -&gt; frame_axis_component
+  -&gt; 只做一个 pair 的 promotion
+
+P2:
+为该 pair 补 instance-binding 形状
+  -&gt; frame / axis / component
+  -&gt; 仍先不做真实 runtime value
+
+P3:
+定义 read-only runtime registry/catalog contract
+  -&gt; 只读发现与解析
+  -&gt; 不碰写入
+
+P4:
+定义 owner dispatch
+  -&gt; accepted access -&gt; owner domain operation
+  -&gt; 写入前必须有这层
+
+P5:
+跟随真实读写用例补 access policy + value metadata/validation
+
+P6:
+semantic path grammar 单独切片
+machine-profile axis alias 单独配置切片
+```
+
+验证已跑过：
+- `python3 tools/check_parameter_value_sets.py` 通过
+- `python3 tools/check_docs_i18n_sync.py` 通过
+- `./tools/build_docs_html.sh` 通过
+- `python3 tools/check_docs_i18n_sync.py --require-published-html` 通过
+- `git diff --check` 通过</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:04:43 +0800</div>
+<pre>你这些怎么感觉很多都很抽象</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:05:00 +0800</div>
+<pre>你这个判断是对的。上一版把“必要性”落成了架构边界表，但没有写清楚每项落地时具体长什么样、用什么例子证明、checker 能查什么，所以读起来会像抽象分类。
+我现在把它收敛成“每项一条可验证交付物 + 一个 concrete example + 明确不做什么”，不展开 runtime 实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:05:15 +0800</div>
+<pre>我会把刚才那张“高/中高/中”的表改成更工程化的形状：后续 slice 必须交付什么、拿哪个例子证明、明确排除什么。这样文档仍然窄，但读者能看出下一步要写什么。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:06:28 +0800</div>
+<pre>我已经把抽象表改成了“后续必须交付什么”的表。现在重新跑同一组验证，确认这次改动没有破坏文档和 checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:06:39 +0800</div>
+<pre>基础验证通过了。我再构建一次 HTML 和 published 同步，最后给你一个更实在的总结，重点说“现在文档里具体化了什么”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:06:50 +0800</div>
+<pre>HTML 构建通过，关键段落现在已经能直接看到具体 artifact 和例子。我再做 published HTML 同步的最后确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-16 10:07:04 +0800</div>
+<pre>你说得对，上一版太像“架构词表”。我已经把它改成更落地的格式：每个后续必要项都必须回答三件事：
+
+```text
+后续切片必须交付什么
+用哪个具体例子证明
+仍然明确不做什么
+```
+
+现在文档里已经具体到这种程度：
+
+- `runtime registry/catalog`：只做 read-only lookup contract；例子是查 `tool_management.tool_edge.dp3` 返回 metadata 和 owner/scope binding，不返回值。
+- `instance binding`：必须给一个 scope 的 instance keys/source/valid-invalid cases；例子是 `tool_edge` 用 `{tool}`、`{edge}` 来自 `tool_catalog.edges`。
+- `owner dispatch`：必须给 accepted operation 到 owner boundary 的映射；例子是 `tool_management` 路由到 tooling-management edge records，provisional pair 仍拒绝。
+- `access policy`：必须给一个具体 policy 形状和拒绝案例；不回收 `access.readable/writable`。
+- `value metadata/validation`：必须给一个参数的 type/unit/range 或 enum source，并给 invalid example。
+- `semantic path grammar`：必须给一个 path template，比如 `tool.{tool}.edge.{edge}.dp3`，并校验变量匹配 scope variables。
+
+改动位置：
+- [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:148)
+- [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:60)
+- 中文页也同步了。
+
+验证通过：
+- `check_parameter_value_sets.py`
+- `check_docs_i18n_sync.py`
+- `build_docs_html.sh`
+- `check_docs_i18n_sync.py --require-published-html`
+- `git diff --check`
+
+当前仍是 4 个文档文件改动，没碰 schema/checker/runtime。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:07:42 +0800</div>
+<pre>落一下文档，开多个agent审查</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:08:03 +0800</div>
+<pre>我会按你这个方向收尾：先把刚才的文档改动整理成可审查状态，然后开并行 agent 做不同角度审查，最后根据审查意见修正并跑验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:08:13 +0800</div>
+<pre>我会用两个并行审查方向：一个查 TP004 概念边界是否还抽象或越界，另一个查文档投影/i18n/读者可读性。先找可用的 subagent 工具。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:08:39 +0800</div>
+<pre>我会开 3 个独立审查：概念边界、文档可读性/i18n、checker/构建风险。主线程这边不等空转，我会同步准备最终验证清单和可能的修正点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:08:49 +0800</div>
+<pre>3 个审查 agent 已经启动。主线程这边我先复核 diff 的行号和验证命令，等审查回来后只处理实际问题，不会为了“响应审查”做无意义改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:09:17 +0800</div>
+<pre>我已经确认当前 diff 只集中在 4 个文档源文件。现在等三路审查结果回来，之后我会按严重程度处理：真正的边界/可读性问题会修，不成立的意见会说明不采纳理由。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:27:02 +0800</div>
+<pre>再看一下前面讨论的下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:27:20 +0800</div>
+<pre>我先从当前工作树里看最新落下来的 plan 段落和状态，避免按旧印象复述。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-16 10:27:36 +0800</div>
+<pre>现在下一步计划已经收敛成一个比较干净的顺序：
+
+```text
+0. 先把当前文档 slice 收稳
+1. 只 promotion 一个 evidence-ready owner-scope pair
+2. 给这个 pair 补 instance binding
+3. 再定义 read-only runtime registry/catalog
+4. 再定义 owner dispatch
+5. 最后跟随真实读写用例补 access policy + value metadata
+6. semantic path / machine-profile axis alias 单独切片，不混进当前链路
+```
+
+我建议下一步实际做 **P1：promote 一个真实 owner-scope pair**，优先候选还是：
+
+```text
+zero_offset -&gt; frame_axis_component
+```
+
+原因是它现在已经在 provisional 里，且实例维度天然具体：
+
+```text
+frame / axis / component
+```
+
+但这个 slice 只做三件事：
+
+```text
+1. 把 zero_offset -&gt; frame_axis_component 从 provisional 提升到 checker-backed owner_scope_bindings
+2. 补清楚它的 source evidence 和 owner registry 状态
+3. 增加 checker/validation 覆盖，证明这个 pair 可用、其他 provisional 仍不可用
+```
+
+明确不做：
+
+```text
+不做 runtime registry
+不做真实值读写
+不做 access policy
+不做 persistence
+不做 semantic path grammar
+不做 machine-profile axis alias schema
+```
+
+也就是说，下一步不是继续抽象设计，而是拿 `zero_offset -&gt; frame_axis_component` 做一个小闭环。当前文档里对应的后续计划位置在 [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:123)。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:31:17 +0800</div>
+<pre>先做一个小闭环我看看情况</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:31:42 +0800</div>
+<pre>我按刚才定的 P1 小闭环做：只把 `zero_offset -&gt; frame_axis_component` 从 provisional 提升到 checker-backed，并补最小验证；不碰 runtime registry、真实读写、access policy 或 semantic path。先看当前 checker 和 YAML 结构，避免改偏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:31:56 +0800</div>
+<pre>我会先做 TDD：补一个 `zero_offset -&gt; frame_axis_component` 合法、但其他 provisional 不合法的单测，确认当前失败；然后再改 OWNER/OBJECT scopes 和中文页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:32:06 +0800</div>
+<pre>我会补一个 source-level 测试：`zero_offset.user_frame_axis_component` 应该能通过当前源文档的 owner/scope 校验，同时 `motion -&gt; machine` 继续失败。先让它红。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:32:22 +0800</div>
+<pre>测试已补。现在跑这个单测，当前应因为 `zero_offset -&gt; frame_axis_component` 还没提升而失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:33:56 +0800</div>
+<pre>Red 已确认。现在做最小实现：注册 `zero_offset` owner，并把 `zero_offset -&gt; frame_axis_component` 放进 checker-backed binding；中文投影同步同样内容，provisional 里移除这一项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 10:35:46 +0800</div>
+<pre>我发现这一步不只是 OBJECT-SCOPES：`zero_offset` 目前还在 `OWNER-REGISTRY` 的 unassigned 里，所以提升 pair 前必须先把 owner 注册到一个主责专题。已有 TP004 zero-offset access/validation 文档足够作为本切片证据，但我会把边界写窄：只注册 TP004 中的 zero-offset access/descriptor 边界，不声明真实运行时存储。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 10:36:17 +0800</div>
+<pre>刚才那条 `rg` 里因为 shell 把反引号当命令替换，报了一个无害的 `zero_offset` command not found；它不影响文件状态。我已经拿到需要的证据页，接下来直接改 owner registry 和 object scope 的 canonical/中文投影。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 10:40:55 +0800</div>
+<pre>book 和英文 i18n 是 include canonical，实际需要手改的是 canonical owner/object 文档和中文 owner/object 文档。现在应用最小 patch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 10:41:25 +0800</div>
+<pre>zero_offset 的 owner 和 owner-scope binding 已经提升。现在同步修 status/descriptor 里仍说 “zero_offset provisional” 的旧句子，然后跑定向测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 10:41:53 +0800</div>
+<pre>旧的 provisional 文案已清理。现在跑刚才红的定向测试，确认提升生效，同时会暴露 owner registry 是否还缺 evidence/path 问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 10:42:25 +0800</div>
+<pre>定向测试已经绿了，参数 checker 也过了。接下来我会跑 i18n/owner projection 检查；因为 owner registry 有多份读者投影，可能还需要把 `zero_offset` 注册同步到 book/en 投影。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 10:42:34 +0800</div>
+<pre>预期内：owner registry 的 book/en 投影还没同步。现在把三份英文读者投影的 YAML 与 canonical 对齐；中文已经同步了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 10:42:45 +0800</div>
+<pre>为避免手工三处重复出错，我会用现有 canonical YAML 直接同步到三个英文读者投影里的注册块，保持 prose 不动。这个是机械替换，但仍会用 patch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 10:43:17 +0800</div>
+<pre>英文投影同步完成。现在重跑 i18n 和参数 checker；如果结构过了，再补 published HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 10:43:28 +0800</div>
+<pre>结构验证和全量 tools 单测都通过。现在构建 HTML 并跑 published 检查，确认读者页也同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 10:43:42 +0800</div>
+<pre>HTML 构建通过。最后跑 published HTML 检查和 targeted grep，确认 `zero_offset` 已经显示为注册 owner 和 checker-backed binding。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-06-16 10:44:07 +0800</div>
+<pre>小闭环已经落了，范围保持很窄：`zero_offset -&gt; frame_axis_component` 现在从 provisional 提升为 checker-backed。
+
+具体变化：
+- 在 [OWNER-REGISTRY.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OWNER-REGISTRY.md:90) 注册了 `zero_offset` owner，主责先限定在 TP004 的 zero-offset access/descriptor 边界。
+- 在 [OBJECT-SCOPES.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OBJECT-SCOPES.md:150) 把 `zero_offset -&gt; frame_axis_component` 加入 `owner_scope_bindings`。
+- 从 provisional 列表移除了 `zero_offset -&gt; frame_axis_component`，其他 provisional 仍保持不通过。
+- 补了单测：`zero_offset.user_frame_axis_component` 通过，`motion -&gt; machine` 仍拒绝。
+
+明确没做：
+- 没做 runtime registry。
+- 没做真实值读写。
+- 没做 access policy / persistence。
+- 没做 semantic path grammar。
+- 没做 machine-profile axis alias。
+
+验证通过：
+- `python3 -m unittest discover -s tools/tests`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py`
+- `./tools/build_docs_html.sh`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `git diff --check`
+
+当前工作树未提交，分支还是 `/tmp/metanc_drafts_tool_edge_slice` 的 `feat/tp004-tool-edge-binding`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:45:20 +0800</div>
+<pre>我有点没太懂，你这部分收窄主要做了什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-16 10:45:36 +0800</div>
+<pre>这次“收窄”主要是把问题从：
+
+```text
+TP004 参数系统要不要支持 zero_offset？
+```
+
+缩小成：
+
+```text
+TP004 的 Parameter Descriptor 里，
+zero_offset 这个 owner 是否允许声明 frame_axis_component 这种 scope？
+```
+
+也就是只确认一条治理关系：
+
+```text
+zero_offset -&gt; frame_axis_component
+```
+
+它现在表示：
+
+```text
+owner: zero_offset
+scope: frame_axis_component
+```
+
+是合法组合。
+
+更具体一点，这次只做了三件事：
+
+1. **注册 owner**
+
+   以前 `zero_offset` 只是 value set 里的合法 token，但还在 `unassigned_owner_tokens` 里，意思是“名字合法，但归属边界没定”。
+
+   现在把它注册到 owner registry，说明 TP004 里可以把 zero-offset 访问/descriptor 边界归到 `zero_offset`。
+
+2. **允许 owner/scope 组合**
+
+   以前 `frame_axis_component` 这个 scope 存在，但 `zero_offset -&gt; frame_axis_component` 还只是 provisional。
+
+   现在把它放进 checker-backed `owner_scope_bindings`，所以 descriptor 可以正式写：
+
+   ```yaml
+   parameter_descriptor:
+     parameter_id: zero_offset.user_frame_axis_component
+     owner: zero_offset
+     scope: frame_axis_component
+     semantic_name: user_frame_axis_component
+   ```
+
+3. **加 checker 证明**
+
+   新单测证明：
+
+   ```text
+   zero_offset -&gt; frame_axis_component 通过
+   motion -&gt; machine 仍然拒绝
+   ```
+
+所以这不是实现 zero offset，也不是实现参数读写。它只是把一条“描述符治理边”从候选状态提升成正式可校验状态。
+
+可以理解成：
+
+```text
+之前：
+zero_offset token 合法
+frame_axis_component scope 合法
+但二者不能正式组合
+
+现在：
+zero_offset + frame_axis_component 可以正式组合
+```
+
+这就是这个小闭环的全部。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:51:10 +0800</div>
+<pre>看一下现在的story slice spec 完成情况</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:51:26 +0800</div>
+<pre>我会按 OpenSpec/SDD 视角核对当前 story slice：先看变更状态、slice/spec 文档位置，再把“已完成、验证过、还没落地”的边界拆清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:51:41 +0800</div>
+<pre>我先核实工作树而不是只按记忆回答，重点看 `/tmp/metanc_drafts_tool_edge_slice` 里当前分支、OpenSpec active/archive 状态，以及 TP004 descriptor 相关文档是否已经同步到发布侧。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:51:58 +0800</div>
+<pre>当前没有 active OpenSpec change，说明这个 story slice 已经不是“提案待实现”状态，而是以基线文档和 checker 改动的形式落在分支里了。现在我再抽取 diff 和校验结果，确认完成度不是只停在文档描述。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:52:18 +0800</div>
+<pre>校验这边已经跑过一轮：value-set checker、i18n 同步检查、工具单测都通过。现在我补看具体行号和 archive/spec 位置，方便把完成情况定位到文档而不是泛泛说“完成”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:52:39 +0800</div>
+<pre>刚才有一个测试文件路径我打错了，实际文件是 `tools/tests/test_check_parameter_value_sets.py`。我会补取相关测试片段和 archived story slice 的任务记录，再给你一个完成度表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-16 10:53:17 +0800</div>
+<pre>当前 `story slice spec` 状态可以这样看：
+
+| Slice/范围 | 完成度 | 状态 |
+|---|---:|---|
+| `tool_management -&gt; tool_edge` descriptor binding slice | 100% | 已归档，tasks 全部勾完，无 active OpenSpec change |
+| Parameter Descriptor 最小模型 | 100% | 已落基线：`parameter_id/owner/scope/semantic_name` |
+| owner/scope 双链治理 | 90% | `owner -&gt; OWNER-REGISTRY`、`scope -&gt; OBJECT-SCOPES`、`(owner,scope) -&gt; owner_scope_bindings` 已形成 checker 约束 |
+| `zero_offset -&gt; frame_axis_component` 小闭环 | 85% | 文档、owner registry、object scope、checker test 已落；当前还未 commit/归档 |
+| 后续必要边界标记 | 70% | runtime registry、instance binding、dispatch、access/value/path 都已具体标记，但还没深入实现 |
+| runtime registry / access policy / value metadata | 10-20% | 仅定义“后续 slice 应产出什么”，没有正式 schema/checker |
+
+关键证据：
+
+- 最小模型和后续边界在 [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:148)。
+- 当前 checker-backed 能力在 [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:27)。
+- `tool_management -&gt; tool_edge` 和 `zero_offset -&gt; frame_axis_component` 现在都在 [OBJECT-SCOPES.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136)。
+- `zero_offset` owner 已正式注册到 [OWNER-REGISTRY.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OWNER-REGISTRY.md:90)。
+- checker 测试覆盖了 `tool_management -&gt; tool_edge` 和 `zero_offset -&gt; frame_axis_component`，见 [test_check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/tests/test_check_parameter_value_sets.py:1683)。
+
+验证结果刚跑过：
+
+```text
+python3 tools/check_parameter_value_sets.py        passed
+python3 tools/check_docs_i18n_sync.py             passed
+python3 -m unittest discover -s tools/tests       78 tests OK
+```
+
+需要注意：当前分支还有 14 个未提交文件，主要是“后续必要边界文档具体化 + zero_offset 小闭环”。所以结论是：`tool_edge` story slice spec 已完成并归档；当前新收窄出来的小闭环已经跑通，但还处在未提交状态。下一步干净顺序应该是先提交这个小闭环，然后再开下一片：`instance binding` 的 formal/checker-backed slice。</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:56:55 +0800</div>
+<pre>你这里100%完成的是什么意思</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-16 10:57:13 +0800</div>
+<pre>这里的 `100%` 不是说整个 TP004 Parameter System 完成了，而是说**这个被收窄的 story slice 内部的验收项完成了**。
+
+具体是两层意思：
+
+1. `tool_management -&gt; tool_edge` 这个 slice 的 `100%`
+   表示：
+   - OpenSpec change 已归档；
+   - tasks.md 里的任务全勾完；
+   - `tool_management` owner 已能和 `tool_edge` scope 形成 checker-backed binding；
+   - 文档、中文投影、checker、测试、docs build 都通过；
+   - 没有继续挂在 active changes 里。
+
+   它只证明这一条链闭合了：
+
+   ```text
+   parameter_descriptor.owner = tool_management
+   parameter_descriptor.scope = tool_edge
+   -&gt; owner/scope pair 被 OBJECT-SCOPES 允许
+   -&gt; checker 接受
+   ```
+
+2. `Parameter Descriptor 最小模型` 的 `100%`
+   表示当前 slice 定义的最小字段已经闭合：
+
+   ```text
+   parameter_id
+   owner
+   scope
+   semantic_name
+   ```
+
+   并且 checker 已经能校验：
+   - owner token 合法；
+   - scope token 合法；
+   - owner/scope pair 是否 checker-backed；
+   - parameter_id 是否和 owner、semantic_name 一致；
+   - 不接受 `access.readable/writable` 这种提前扩张字段。
+
+它**不表示**这些已经完成：
+
+```text
+runtime registry
+instance binding 正式模型
+access policy
+value metadata
+read/write dispatch
+semantic path grammar
+persistence / activation
+```
+
+所以更准确的说法应该是：
+
+| 表述 | 准确含义 |
+|---|---|
+| `tool_edge slice 100%` | 这个 story slice 内完成 |
+| `descriptor minimal model 100%` | 当前最小合同完成 |
+| `TP004 参数系统整体` | 远没完成，大概只是治理骨架和两个 owner/scope 小闭环跑通 |
+
+我前面那个 `100%` 如果不加 “slice 内” 容易误导。更严谨应该写成：**`tool_management -&gt; tool_edge` story slice：slice 内验收 100%，整体参数系统完成度不按这个数字计算。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 11:04:04 +0800</div>
+<pre>看一下未完成的这些，缺省内容详细描述一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 11:04:26 +0800</div>
+<pre>我会继续用 OpenSpec explore 的方式，只读取现状，不改文件。重点把“未完成”拆成每项到底缺什么、缺到什么程度、下一步最小可落地产物是什么。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 11:04:52 +0800</div>
+<pre>我需要补取几个当前文档片段来避免凭感觉列缺口：看 status 页、descriptor 页、object scopes、schema fields 以及 checker 当前支持到哪里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 11:04:57 +0800</div>
+<pre>现状清楚了：未完成项已经被文档列出来，但粒度还混着“必要但未做”和“只标记不该做深”。我下面会按缺省内容给你拆成可执行层级。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-16 11:05:29 +0800</div>
+<pre>未完成项可以分成两类：**后面必须补的能力**，和**现在只标记、不该深入的边界**。
+
+**1. Instance Binding，缺省最多**
+
+当前只有 scope 的静态描述：
+
+```yaml
+scope: tool_edge
+instance_keys: [tool, edge]
+instance_source: tool_catalog.edges
+```
+
+缺的是：怎么从一个 descriptor 落到一个具体实例。
+
+也就是还没有正式定义：
+
+```yaml
+parameter_instance:
+  parameter_id: tool_management.tool_edge.dp3
+  instance:
+    tool: tool_10
+    edge: edge_1
+```
+
+需要补的内容：
+
+| 缺省点 | 具体缺什么 |
+|---|---|
+| instance key schema | `{tool, edge}` 或 `{frame, axis, component}` 的正式结构 |
+| instance source contract | `tool_catalog.edges` / `zero_offset.frames` 到底返回什么 |
+| valid cases | 什么实例算有效，比如 `tool_10.edge_1` |
+| invalid cases | 缺 edge、tool 不存在、frame/axis/component 不存在怎么 reject |
+| checker | 校验 descriptor scope 的 instance keys 是否和 object scope 匹配 |
+
+建议下一步最小 slice 就做这个，优先选一个：`zero_offset -&gt; frame_axis_component` 或 `tool_management -&gt; tool_edge`。
+
+**2. Runtime Registry / Catalog**
+
+当前 checker 能验证 descriptor 是否合法，但还没有“查询目录”的合同。
+
+缺的是类似：
+
+```yaml
+descriptor_registry:
+  lookup(parameter_id) -&gt; descriptor metadata
+  filter(owner, scope) -&gt; descriptor list
+```
+
+注意它不是取值，不是读机床参数，只是查 descriptor 定义。
+
+需要补的内容：
+
+| 缺省点 | 具体缺什么 |
+|---|---|
+| lookup contract | `parameter_id` 查不到、重复、命中时返回什么 |
+| 返回字段 | owner、scope、semantic_name、instance binding metadata 是否返回 |
+| filter contract | 是否允许按 owner/scope 查 |
+| 不包含内容 | 不返回实时值、不写入、不做 persistence |
+| checker | source docs 是否存在 registry example，字段是否完整 |
+
+**3. Owner Dispatch / Domain Operation**
+
+当前只知道 owner 是谁，但还没有定义“接受一个访问请求后交给谁处理”。
+
+缺的是：
+
+```text
+accepted access
+-&gt; owner = tool_management
+-&gt; dispatch target = tooling-management edge records
+```
+
+或者：
+
+```text
+owner = zero_offset
+-&gt; dispatch target = zero-offset frame-axis-component boundary
+```
+
+需要补的内容：
+
+| 缺省点 | 具体缺什么 |
+|---|---|
+| dispatch map | owner 到 domain boundary 的映射 |
+| operation shape | read/write/resolve 这种操作怎么表达 |
+| rejection cases | owner 不可用、target 缺失、owner/scope 未绑定时怎么 reject |
+| domain boundary | 只定义边界，不实现 owner API 内部逻辑 |
+
+**4. Access Policy**
+
+现在明确拒绝了：
+
+```yaml
+access:
+  readable: true
+  writable: true
+```
+
+缺的是正式 policy 形态。
+
+不是简单布尔值，而应该是：
+
+```yaml
+access_policy:
+  source: owner_defined
+  policy_ref: zero_offset.write_policy
+  guards:
+    - machine_state_allows_write
+    - protection_level_allows_write
+```
+
+需要补的内容：
+
+| 缺省点 | 具体缺什么 |
+|---|---|
+| policy source | policy 是 owner 定义、profile 定义，还是 controller 定义 |
+| read/write distinction | read 和 write 是否同一套 policy |
+| guard code | 保护等级、机床状态、通道状态等 guard 如何枚举或引用 |
+| rejection examples | 哪些状态必须拒绝 |
+| checker | 不允许裸布尔，只允许 policy/contract 语义 |
+
+**5. Value Metadata / Validation**
+
+现在 descriptor 不定义 value：
+
+```yaml
+parameter_descriptor.value  # 未正式存在
+```
+
+缺的是参数值的类型、单位、范围或枚举来源。
+
+例如以后可能需要：
+
+```yaml
+value:
+  type: float
+  unit_source: owner_defined
+  range_source: owner_defined
+```
+
+但现在还没定。
+
+需要补的内容：
+
+| 缺省点 | 具体缺什么 |
+|---|---|
+| type | float/int/string/enum/bool 等是否作为 value set |
+| unit | 单位是固定值、owner_defined，还是 controller_defined |
+| range | 最小/最大值来源 |
+| enum source | 如果是枚举，枚举来自哪里 |
+| invalid value cases | string 塞进 float、越界、未知 enum 怎么 reject |
+
+**6. Semantic Path Grammar**
+
+当前 `parameter_id` 是 identity，但不是 UI/search path。
+
+缺的是公开搜索路径的模板语法，例如：
+
+```text
+tool.{tool}.edge.{edge}.dp3
+```
+
+需要补的内容：
+
+| 缺省点 | 具体缺什么 |
+|---|---|
+| template grammar | `{tool}` 这种变量怎么写 |
+| variable binding | 模板变量必须匹配 scope 的 `path_variables` |
+| uniqueness | path 是否要求唯一 |
+| optional/mandatory | 只给 public/searchable surface 用，不强制每个 descriptor 都有 |
+| checker | path 里的变量是否都来自 object scope |
+
+这个优先级比 instance binding、registry 低一些，因为它偏展示/搜索，不是核心 runtime lookup。
+
+**7. `semantic_name` Governance**
+
+现在 `semantic_name` 只是 owner-local 文本，不是 value set。
+
+缺的是是否要治理它：
+
+```yaml
+semantic_name: max_velocity
+```
+
+目前没有：
+
+```text
+semantic_name registry
+semantic_name value set
+semantic_name uniqueness beyond owner/scope
+```
+
+这个我不建议现在做深。它容易把系统拉成全局参数名大表，反而破坏 owner 边界。
+
+**8. Activation / Persistence**
+
+当前也没有正式字段：
+
+```yaml
+activation_timing
+persistence_policy
+```
+
+缺的是：
+
+| 字段 | 缺什么 |
+|---|---|
+| activation | 立即生效、重启生效、通道重置生效、周期边界生效 |
+| persistence | profile snapshot、controller persistent、runtime volatile 等 |
+
+这两个现在只应标记。原因是它们依赖 access/write 语义，前面 dispatch、policy、value 都没稳，先做会悬空。
+
+**9. Machine Profile Axis Alias Schema**
+
+当前明确说：`X/Y/Z/A/B/C` 不是 descriptor identity。
+
+缺的是机床配置层自己的 schema：
+
+```yaml
+machine_axes:
+  - axis_slot: 0
+    display_name: X
+    aliases: [AX1]
+```
+
+这不属于 TP004 descriptor 主线，应该单独开 machine-profile/configuration slice。
+
+**10. Remaining Provisional Owner/Scope Pairs**
+
+还没正式推广的有：
+
+```text
+motion -&gt; machine/channel/axis/spindle
+hal -&gt; machine
+magazine -&gt; machine
+```
+
+缺的是每一对都要有：
+
+```text
+owner registry evidence
+object scope evidence
+valid descriptor example
+checker acceptance
+negative case
+```
+
+不能批量全放开。当前策略是“一对一对 promote”。
+
+我的建议优先级：
+
+| 顺序 | 下一步 | 原因 |
+|---:|---|---|
+| 1 | Instance binding 小闭环 | 这是 descriptor 走向实际实例的第一步，最缺 |
+| 2 | Read-only registry contract | 有 descriptor + instance 后，才有查目录意义 |
+| 3 | Owner dispatch | registry 之后再定义访问交给谁 |
+| 4 | Access policy + value metadata | 必须基于具体 read/write case |
+| 5 | Semantic path grammar | 只服务公开/搜索面，不做核心 identity |
+| 6 | Activation / persistence / alias schema | 后置，避免概念过早膨胀 |
+
+一句话：现在缺的不是“再补几个字段”，而是从 **合法 descriptor** 往 **可实例化、可查询、可分派、可访问** 逐层补合同。下一片最稳的是 `instance binding`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 11:09:25 +0800</div>
+<pre>后面的多步计划详细看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 11:09:43 +0800</div>
+<pre>我会按“后续多步执行计划”来整理，不直接改文件。这里会用 OpenSpec explore 看边界，再用 writing-plans 把它拆成可验收的步骤。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 11:10:00 +0800</div>
+<pre>我会把计划拆成“先收尾当前小闭环，再逐层推进 runtime 能力”。关键原则是每一步只让一个新概念变成 checker-backed，避免一次塞 registry、dispatch、access、value 导致边界看不清。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-16 11:16:55 +0800</div>
+<pre>可以。后面的多步计划我建议按 **7 个 slice** 走，每个 slice 都只解决一个新问题，完成标准是“文档 + checker/test + i18n/docs build”闭合。
+
+当前前置状态：`tool_management -&gt; tool_edge` 已归档；现在工作树里还有 `zero_offset -&gt; frame_axis_component` 小闭环和必要边界文档未提交，需要先收尾。
+
+**总路线**
+
+```text
+S0 收尾当前小闭环
+  ↓
+S1 Instance Binding
+  ↓
+S2 Read-only Descriptor Registry
+  ↓
+S3 Owner Dispatch
+  ↓
+S4 Access Policy
+  ↓
+S5 Value Metadata / Validation
+  ↓
+S6 Semantic Path Grammar
+  ↓
+S7 后置边界：activation / persistence / machine-profile aliases
+```
+
+**S0：收尾当前小闭环**
+
+目标：把已经做完的 `zero_offset -&gt; frame_axis_component` 收成一个干净提交。
+
+范围：
+- `zero_offset` owner 已注册；
+- `zero_offset -&gt; frame_axis_component` 已从 provisional 提到 checker-backed binding；
+- checker 测试已证明这个 pair 被接受；
+- `motion -&gt; machine` 仍被拒绝；
+- 中文/英文投影和 docs sync 已通过。
+
+验收：
+- `python3 -m unittest discover -s tools/tests`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py`
+- `./tools/build_docs_html.sh`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `git diff --check`
+- commit 一次。
+
+完成度：当前约 `85-90%`，主要差 commit 和最后一次全量确认。
+
+**S1：Instance Binding**
+
+目标：让 descriptor 能说明“它如何实例化到具体对象”。
+
+建议优先用 `zero_offset -&gt; frame_axis_component`，因为刚刚小闭环已经有 evidence。
+
+要定义的最小形态：
+
+```yaml
+parameter_instance_binding:
+  parameter_id: zero_offset.user_frame_axis_component
+  scope: frame_axis_component
+  instance_keys:
+    - frame
+    - axis
+    - component
+  instance_source: zero_offset.frames
+```
+
+要补的测试：
+- `frame + axis + component` 齐全时通过；
+- 缺 `component` 拒绝；
+- 使用 scope 不存在的 key 拒绝；
+- `tool_edge` 的 `{tool, edge}` 不应和 `frame_axis_component` 混用。
+
+不做：
+- 不定义实际 value；
+- 不读写零偏；
+- 不做完整 machine profile；
+- 不解决 axis alias。
+
+预估完成度提升：这是从“合法 descriptor”到“可实例化 descriptor”的关键一步。
+
+**S2：Read-only Descriptor Registry**
+
+目标：定义只读 descriptor 目录，不是 runtime value store。
+
+最小合同：
+
+```yaml
+descriptor_registry:
+  lookup_by_parameter_id:
+    input: parameter_id
+    returns:
+      - parameter_id
+      - owner
+      - scope
+      - semantic_name
+      - instance_binding_ref
+  filter:
+    by_owner: true
+    by_scope: true
+```
+
+要补的测试：
+- `lookup(zero_offset.user_frame_axis_component)` 返回 metadata；
+- 查不到返回明确 diagnostic；
+- duplicate `parameter_id` 拒绝；
+- registry 不允许包含 value/write/storage 字段。
+
+不做：
+- 不返回实时值；
+- 不提供 write；
+- 不做 persistence。
+
+**S3：Owner Dispatch**
+
+目标：定义访问请求被接受后，路由到哪个 owner/domain boundary。
+
+最小形态：
+
+```yaml
+owner_dispatch:
+  owner: zero_offset
+  operation: resolve_descriptor_target
+  target_boundary: zero_offset.frame_axis_component
+```
+
+要补的测试：
+- `zero_offset` 能路由到 zero-offset boundary；
+- `tool_management` 能路由到 tooling edge records；
+- 未注册 owner 或未绑定 owner/scope 拒绝；
+- provisional pair 继续拒绝。
+
+不做：
+- 不实现 owner API 内部；
+- 不写 runtime 代码；
+- 不定义 write policy。
+
+**S4：Access Policy**
+
+目标：替代 `access.readable/writable: true` 这种布尔捷径。
+
+最小形态：
+
+```yaml
+access_policy:
+  owner: zero_offset
+  operation: write
+  policy_ref: zero_offset.frame_axis_component.write
+  guards:
+    - machine_state_allows_zero_offset_change
+    - protection_level_allows_write
+```
+
+要补的测试：
+- 有 `policy_ref + guards` 的写策略通过；
+- 裸 `readable/writable` 继续拒绝；
+- 缺 guard 或未知 guard 拒绝；
+- unsafe machine state 示例拒绝。
+
+不做：
+- 不实现实际权限系统；
+- 不做 UI 权限；
+- 不做通用策略引擎。
+
+**S5：Value Metadata / Validation**
+
+目标：给一个 owner-evidenced parameter 定义值类型、单位来源、范围或枚举来源。
+
+最小形态可以先选一个 zero-offset 数值：
+
+```yaml
+parameter_value_metadata:
+  parameter_id: zero_offset.user_frame_axis_component
+  type: float
+  unit_source: owner_defined
+  range_source: owner_defined
+```
+
+要补的测试：
+- float value 通过；
+- string value 拒绝；
+- 未知 unit source 拒绝；
+- 不把 `controller_defined` 当具体单位。
+
+不做：
+- 不建全局单位库；
+- 不做存储模型；
+- 不绑定真实控制器值。
+
+**S6：Semantic Path Grammar**
+
+目标：只服务 public/searchable surface，不替代 `parameter_id`。
+
+最小形态：
+
+```yaml
+semantic_path:
+  parameter_id: tool_management.tool_edge.dp3
+  template: tool.{tool}.edge.{edge}.dp3
+```
+
+要补的测试：
+- `{tool}`、`{edge}` 都来自 `tool_edge.path_variables` 时通过；
+- 模板使用未知变量拒绝；
+- semantic path 不能作为 descriptor identity；
+- 不要求所有 descriptor 都必须有 semantic path。
+
+不做：
+- 不建 display alias 表；
+- 不把 native expression 当 path；
+- 不强制所有 descriptor 都配置 path。
+
+**S7：后置边界**
+
+这一组现在不建议深做，只保持标记：
+
+| 项 | 为什么后置 |
+|---|---|
+| activation timing | 依赖 write/access 语义 |
+| persistence policy | 依赖 value/storage 语义 |
+| machine-profile axis aliases | 属于配置域，不是 descriptor identity |
+| `semantic_name` value-set governance | 容易变成全局参数名表，先不要 |
+| 批量 promote provisional pairs | 风险大，必须一对一对 evidence-backed |
+
+**建议执行节奏**
+
+我建议下一步不是直接做 S1，而是先做：
+
+1. 提交 S0 当前小闭环；
+2. 为 S1 开一个 OpenSpec change：`add-parameter-instance-binding-slice`；
+3. 用 TDD 先写一个失败测试；
+4. 只支持一个 scope：建议 `frame_axis_component`；
+5. 文档同步；
+6. 多 agent review；
+7. 归档 S1。
+
+这样每一步都有清晰验收，不会重新变抽象。</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 13:27:29 +0800</div>
+<pre>S1的详细计划我看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 13:27:49 +0800</div>
+<pre>我会用 writing-plans 的粒度来拆 S1，但这次先只给你审阅版计划，不落文件、不改代码；等你确认后再把它写成 OpenSpec change / plan 文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 13:28:05 +0800</div>
+<pre>我再补看 checker 的函数结构和现有测试写法，这样 S1 计划会落到具体函数、文件和测试点，不停留在概念层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-16 13:28:53 +0800</div>
+<pre>S1 我建议定义成：**Parameter Instance Binding 小闭环**。目标不是做 runtime 值，也不是做 registry，而是把现在的 descriptor 从“只知道 owner/scope 合法”推进到“知道这个 scope 需要哪些实例键，并能拒绝不匹配的实例绑定”。
+
+**S1 目标**
+
+让这条链闭合：
+
+```text
+parameter_descriptor
+  owner: zero_offset
+  scope: frame_axis_component
+        ↓
+object_scope.frame_axis_component
+  instance_keys: [frame, axis, component]
+  instance_source: zero_offset.frames
+        ↓
+parameter_instance_binding
+  必须提供 frame + axis + component
+        ↓
+checker 接受/拒绝
+```
+
+建议 S1 只选一个 scope：`frame_axis_component`。不要同时做 `tool_edge`，否则 slice 会变大。
+
+**S1 不做什么**
+
+明确不做：
+
+```text
+不定义参数值 value
+不读写零偏
+不做 runtime registry
+不做 owner dispatch
+不做 access policy
+不做 axis alias / machine-profile schema
+不做 persistence / activation
+不推广 motion/hal/magazine provisional pairs
+```
+
+**建议新增的最小模型**
+
+先不要把它塞进 `parameter_descriptor` 本体，而是作为独立记录：
+
+```yaml
+parameter_instance_binding:
+  parameter_id: zero_offset.user_frame_axis_component
+  scope: frame_axis_component
+  instance_keys:
+    - frame
+    - axis
+    - component
+  instance_source: zero_offset.frames
+```
+
+原因：descriptor 仍保持最小模型；instance binding 是下一层合同。
+
+**涉及文件**
+
+| 文件 | 动作 |
+|---|---|
+| [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:148) | 把 `Instance binding` 从 later marker 提升为 S1 具体规则 |
+| [OBJECT-SCOPES.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OBJECT-SCOPES.md:117) | 保持 `frame_axis_component` 的 `instance_keys/source` 作为 source of truth |
+| `TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md` | 建议新增，专门定义 instance binding |
+| `docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md` | 中文读者页 |
+| [tools/check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:733) | 新增 checker：校验 instance binding |
+| [tools/tests/test_check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/tests/test_check_parameter_value_sets.py:1704) | TDD 测试 |
+| `tools/check_docs_i18n_sync.py` | 加发布页/中文页同步检查 |
+| `SUMMARY.md` / book summaries | 接入导航 |
+
+**Checker 规则**
+
+S1 的 checker 只校验 5 件事：
+
+| 规则 | 接受/拒绝 |
+|---|---|
+| `parameter_id` 必须引用已存在 descriptor | 不存在则拒绝 |
+| `scope` 必须等于 descriptor 的 scope | 不一致则拒绝 |
+| `instance_keys` 必须和 object scope 的 `instance_keys` 一致 | 缺 key、多 key、错 key 都拒绝 |
+| `instance_source` 必须等于 object scope 的 `instance_source` | 不一致则拒绝 |
+| provisional owner/scope 不能通过 instance binding 绕过 | 仍拒绝 |
+
+这里先不校验具体 `frame=1`、`axis=X`、`component=TR` 是否存在，因为那会进入 machine/profile/domain data。S1 只校验 binding shape。
+
+**TDD 测试计划**
+
+第一个失败测试：有效 binding 通过。
+
+```yaml
+parameter_descriptor:
+  parameter_id: zero_offset.user_frame_axis_component
+  owner: zero_offset
+  scope: frame_axis_component
+  semantic_name: user_frame_axis_component
+
+parameter_instance_binding:
+  parameter_id: zero_offset.user_frame_axis_component
+  scope: frame_axis_component
+  instance_keys:
+    - frame
+    - axis
+    - component
+  instance_source: zero_offset.frames
+```
+
+期望：`[]` errors。
+
+第二个失败测试：缺 key 拒绝。
+
+```yaml
+parameter_instance_binding:
+  parameter_id: zero_offset.user_frame_axis_component
+  scope: frame_axis_component
+  instance_keys:
+    - frame
+    - axis
+  instance_source: zero_offset.frames
+```
+
+期望错误：
+
+```text
+parameter_instance_binding zero_offset.user_frame_axis_component: instance_keys must match scope frame_axis_component keys frame, axis, component
+```
+
+第三个失败测试：错 scope 拒绝。
+
+```yaml
+parameter_instance_binding:
+  parameter_id: zero_offset.user_frame_axis_component
+  scope: tool_edge
+  instance_keys:
+    - tool
+    - edge
+  instance_source: tool_catalog.edges
+```
+
+期望错误：
+
+```text
+parameter_instance_binding zero_offset.user_frame_axis_component: scope tool_edge does not match descriptor scope frame_axis_component
+```
+
+第四个失败测试：错 source 拒绝。
+
+```yaml
+parameter_instance_binding:
+  parameter_id: zero_offset.user_frame_axis_component
+  scope: frame_axis_component
+  instance_keys:
+    - frame
+    - axis
+    - component
+  instance_source: machine_configuration.axes
+```
+
+期望错误：
+
+```text
+parameter_instance_binding zero_offset.user_frame_axis_component: instance_source must be zero_offset.frames
+```
+
+第五个 source-level 测试：真实文档通过。
+
+```python
+errors = checker.validate_parameter_instance_bindings(
+    checker.load_parameter_instance_binding_docs(),
+    checker.load_parameter_descriptor_docs(),
+    checker.load_object_scope_docs(),
+    checker.load_value_sets(),
+    checker.load_schema_fields(),
+)
+self.assertEqual([], errors)
+```
+
+**执行步骤**
+
+1. 先提交 S0 当前小闭环，保证工作树干净。
+2. 创建 OpenSpec change：`add-parameter-instance-binding-slice`。
+3. 写 `proposal.md/design.md/tasks.md/spec delta`，明确只做 `frame_axis_component`。
+4. 先写 checker 失败测试。
+5. 实现 `validate_parameter_instance_bindings()`。
+6. 新增 `PARAMETER-INSTANCE-BINDINGS.md` source 文档。
+7. 新增中文 reader page 和 book 导航。
+8. 加 `check_docs_i18n_sync.py` 发布页检查。
+9. 跑全量验证。
+10. 开 2-3 个 subagent review：
+   - 一个看概念边界是否又扩散；
+   - 一个看 checker 是否 fail-closed；
+   - 一个看中英文投影和导航。
+11. 根据 review 修正。
+12. archive OpenSpec change。
+13. commit。
+
+**验收命令**
+
+```bash
+openspec validate add-parameter-instance-binding-slice --strict
+python3 -m unittest discover -s tools/tests
+python3 tools/check_parameter_value_sets.py
+python3 tools/check_docs_i18n_sync.py
+./tools/build_docs_html.sh
+python3 tools/check_docs_i18n_sync.py --require-published-html
+git diff --check
+```
+
+**S1 完成后的状态**
+
+完成后 TP004 会从现在的：
+
+```text
+descriptor 合法
+owner/scope 合法
+```
+
+推进到：
+
+```text
+descriptor 合法
+owner/scope 合法
+descriptor 可以声明如何实例化
+checker 能拒绝不匹配的 instance binding
+```
+
+但仍然不会进入：
+
+```text
+查 registry
+读值
+写值
+权限策略
+runtime dispatch
+```
+
+我建议 S1 就按这个边界做，大小合适，也能给后面的 registry/dispatch 提供真实输入。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:377-384|note=[used TP004 scope control and owner scope guidance]
+MEMORY.md:401-405|note=[used descriptor governance and path identity guidance]
+MEMORY.md:420-422|note=[used anti-sprawl guidance for parameter slice planning]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb5c5-ec24-73c3-9701-7096ca3f4efc
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+019ec893-a01e-7e92-bfb9-4816e46ef544
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 14:11:25 +0800</div>
+<pre>生成一下今天的report和记录一下session，没问题commit+push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 14:11:45 +0800</div>
+<pre>我会按现有 TP004 discussion-pack 流程做：先补今天的 `session/report`，接入导航和中英文投影；然后跑完整校验，没问题就 commit + push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 14:12:08 +0800</div>
+<pre>我已经确认这类任务在记忆里对应 TP004 discussion-pack/publish 流程：源讨论包、book/i18n 投影、docs_html 重建、校验后提交推送。接下来先定位今天已有 discussion 目录和导航结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 14:12:30 +0800</div>
+<pre>我找到现有 2026-06-15 TP004 discussion pack 作为模板。现在先读取它的结构和 SUMMARY/index，之后会用 `apply_patch` 添加今天的源包和 book 投影。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 14:13:01 +0800</div>
+<pre>我会新增一个 `2026-06-16-parameter-descriptor-slice-planning` discussion pack，内容覆盖今天的 Parameter Descriptor 完成度澄清、zero_offset 小闭环、未完成项、S1 计划。先补源文件和 book 导航，随后再同步 i18n/HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 14:13:38 +0800</div>
+<pre>接下来开始落文件：我会优先把源 discussion pack 写在 `TP004-parameter-system/discussions/2026-06-16-parameter-descriptor-slice-planning/`，再用 include 包装接到 topic book 和 aggregate/i18n 导航里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 14:13:45 +0800</div>
+<pre>我现在会用 `apply_patch` 添加今天的三份源文件和 topic-book include 文件，并更新 2026-06 月索引。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 14:14:57 +0800</div>
+<pre>源包和 topic book 包装已经加上了。下一步更新根 book、英文/中文 i18n 的 SUMMARY 导航和必要 include 包装，保证 mdBook 能看到新 session/report。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 14:15:39 +0800</div>
+<pre>导航和 include 包装已经补上。下一步我会运行 i18n 同步检查，预期可能会暴露新 discussion 页未纳入 published-page 检查或 include 路径问题，按结果修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 14:16:04 +0800</div>
+<pre>检查结果符合预期：中文 discussion 页不能只是 include wrapper。我会把三份中文页改成真实中文读者页，保留与源内容一致的结论和链接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 14:16:14 +0800</div>
+<pre>我会直接把新增的中文三页改成中文实页，避免 include-only 违规。内容会跟英文源保持同一事实边界，但中文表述更适合读者阅读。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 14:17:28 +0800</div>
+<pre>中文页已经改成真实中文内容。现在我会重新跑 i18n 检查和 docs build，修掉任何路径或导航问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 14:17:40 +0800</div>
+<pre>i18n 结构检查已经通过。现在我会跑完整发布门禁，包括 mdBook 构建和 published HTML 检查；如果失败会停下来修具体错误。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 14:17:58 +0800</div>
+<pre>构建脚本虽然返回 0，但 mdBook 输出里有 include 路径错误，这不能当作通过。我会先修 root book 和英文 i18n 的 include 层级，中文页已经是实页不需要改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 14:18:24 +0800</div>
+<pre>根因确认了：新增 root book wrapper 多退了一层目录，英文 i18n wrapper 也多退了一层；mdBook 解析 include 时跑到了 repo 外层，所以读不到文件。中文页不是 wrapper，不受影响。我会按现有 2026-06-15 wrapper 的层级修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 14:18:33 +0800</div>
+<pre>我将修正这 6 个 include wrapper 的相对路径：root book 用 `../../../../../...`，英文 i18n 用 `../../../../../../...`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 14:18:54 +0800</div>
+<pre>路径已按工作样例修正。现在重新跑构建，并会检查输出里是否还有 `ERROR Error updating`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-16 14:19:08 +0800</div>
+<pre>构建现在没有 include 错误。接下来跑剩余完整门禁，包括 published HTML 检查、单测、value-set checker 和 diff whitespace。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-16 14:19:22 +0800</div>
+<pre>完整门禁通过了。现在我会检查 git diff 和生成的 HTML 是否包含今天的 report/session，再准备提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-16 14:19:43 +0800</div>
+<pre>发布 HTML 中已经能看到 2026-06-16 的新 discussion pack，前面的门禁也都通过。现在我会 stage 全部本次变更，做 cached whitespace 检查，然后 commit 和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-16 14:19:50 +0800</div>
+<pre>当前分支还没有 upstream，但 remote 是 `origin`。我会提交到当前 feature 分支，然后用 `git push -u origin feat/tp004-tool-edge-binding` 建立跟踪。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-16 14:20:01 +0800</div>
+<pre>已 stage 全部变更。现在做 staged diff 检查和 cached whitespace 检查，确认提交内容干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-16 14:20:09 +0800</div>
+<pre>staged 内容和 whitespace 检查都干净。我现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-16 14:20:19 +0800</div>
+<pre>提交已完成。推送前我会快速确认提交后工作树干净，并跑一次关键状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-16 14:20:27 +0800</div>
+<pre>工作树干净，发布 HTML 检查通过。现在推送当前 feature 分支到 origin 并建立 upstream。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-16 14:21:05 +0800</div>
+<pre>推送成功并建立了 upstream。我再做最后状态确认，确保本地和远端一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / final_answer</h3>
+<div class="time">2026-06-16 14:21:34 +0800</div>
+<pre>已生成并提交推送。
+
+本次新增了今天的 TP004 discussion pack：
+
+- `TP004-parameter-system/discussions/2026-06-16-parameter-descriptor-slice-planning/`
+  - `README.md`
+  - `session.md`
+  - `report.md`
+
+同时接入了 topic book、root book、英文 i18n、中文 i18n 导航和页面。中文页不是 include wrapper，是实际中文读者页。
+
+提交信息：
+
+```text
+1251074 docs: document TP004 descriptor slice planning
+```
+
+已推送到：
+
+```text
+origin/feat/tp004-tool-edge-binding
+```
+
+验证已跑：
+
+```text
+python3 -m unittest discover -s tools/tests        78 tests OK
+python3 tools/check_parameter_value_sets.py        passed
+python3 tools/check_docs_i18n_sync.py              passed
+./tools/build_docs_html.sh                         passed
+python3 tools/check_docs_i18n_sync.py --require-published-html passed
+git diff --check                                   passed
+git diff --cached --check                          passed
+```
+
+当前工作树干净，并已跟踪远端分支。</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 17:18:55 +0800</div>
+<pre>总结一下今天的条目，简短一些，- 分条目</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-16 17:19:30 +0800</div>
+<pre>- 收敛了 TP004 Parameter Descriptor 当前状态：明确 `100%` 只代表 slice 内完成，不代表 TP004 整体完成。
+
+- 落地了 `zero_offset -&gt; frame_axis_component` 小闭环：owner 注册、scope binding、checker 测试、i18n/文档同步。
+
+- 把后续缺口拆清楚：instance binding、registry、dispatch、access policy、value metadata、semantic path 等分层推进。
+
+- 细化了 S1 计划：下一步优先做 `Parameter Instance Binding`，先只覆盖 `frame_axis_component`。
+
+- 新增了今天的 discussion pack：`2026-06-16-parameter-descriptor-slice-planning`，包含 `README/session/report`。
+
+- 跑完验证并提交推送：`1251074 docs: document TP004 descriptor slice planning`，分支 `origin/feat/tp004-tool-edge-binding`。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-16 09:32:49 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ece0c-b791-7d30-ac1a-6e74dd65b419&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Production checker code likely does **not** need changes. The logic is already generic: [check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:640) builds allowed `(owner, scope)` pairs from `owner_scope_bindings`, and [line 796](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:796) rejects descriptor pairs not in that set. `tool_edge` is already a declared object scope, while `tool_management -&gt; tool_edge` is currently only provisional in [OBJECT-SCOPES.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OBJECT-SCOPES.md:156), so this should be a docs/data promotion plus test.\n\nAdd the red test in [test_check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/tests/test_check_parameter_value_sets.py:1641), next to `test_parameter_descriptor_accepts_checker_backed_owner_scope_pair` / `test_parameter_descriptor_rejects_unlisted_owner_scope_pair`. Best shape: use real `checker.load_value_sets()`, `checker.load_schema_fields()`, and `checker.load_object_scope_docs()` with an inline minimal descriptor:\n\n`parameter_id: tool_management.cutting_edge_length`, `owner: tool_management`, `scope: tool_edge`, `semantic_name: cutting_edge_length`.\n\nAssert `errors == []`. Before promotion, it should fail with `owner/scope pair tool_management -&gt; tool_edge is not checker-backed`; after moving the pair into `owner_scope_bindings` and removing the provisional note, it should pass.\n\nValidation commands to run:\n\n```bash\npython3 -m unittest tools.tests.test_check_parameter_value_sets.ParameterValueSetChecksTest.&lt;new_test_name&gt;\npython3 -m unittest discover -s tools/tests\npython3 tools/check_parameter_value_sets.py\npython3 tools/check_docs_i18n_sync.py\nopenspec validate promote-tool-management-tool-edge-binding --strict\n./tools/build_docs_html.sh\npython3 tools/check_docs_i18n_sync.py --require-published-html\ngit diff --check\n```\n\nI did not edit files or run validations.  \n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:33:05 +0800</div>
+<pre>The checker-focused agent confirms the intended path: no production checker change should be needed; this is a source-data promotion plus test. I’m going to also update the current-state page because it currently lists `tool_management -&gt; tool_edge` as provisional, and leaving that stale would create docs drift.</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-16 09:33:10 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ece0c-b732-7b42-ab5a-44bdd7a0bcc3&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1.  `tool_management -&gt; tool_edge` looks evidence-ready for promotion. `tool_management` is already a registered owner with TP002 evidence, `tool_edge` is already `VS060003.I005`, and Siemens DP3 validation cases already dispatch/describe through `tool_management`. Current blocker is only placement: the pair is still under `provisional_owner_scope_notes`, not `owner_scope_bindings`.\n\n2.  Likely edit files:\n    - [/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136): move `tool_management -&gt; tool_edge` into `owner_scope_bindings`, remove it from provisional notes.\n    - [/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/object-scopes.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/object-scopes.md): Chinese reader projection parity.\n    - [/tmp/metanc_drafts_tool_edge_slice/docs_i18n/en/src/TP004-parameter-system/object-scopes.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/en/src/TP004-parameter-system/object-scopes.md) and [/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/object-scopes.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/object-scopes.md): projection/book copies if this repo keeps them committed.\n    - [/tmp/metanc_drafts_tool_edge_slice/tools/tests/test_check_parameter_value_sets.py:1683](/tmp/metanc_drafts_tool_edge_slice/tools/tests/test_check_parameter_value_sets.py:1683): focused checker coverage. Notably, this `/tmp` tree already contains a test expecting source `tool_management -&gt; tool_edge` to pass.\n    - Generated docs after rebuild, if tracked: `docs_html/.../TP004-parameter-system/object-scopes.html`. In this `/tmp` tree `docs_html` is currently absent.\n\n3.  Scope-creep risks to avoid:\n    - Do not promote `zero_offset -&gt; frame_axis_component`.\n    - Do not add descriptor fields beyond the minimal model: `parameter_id`, `owner`, `scope`, `semantic_name`.\n    - Do not define semantic path grammar or instance-binding grammar for `{tool}` / `{edge}` yet.\n    - Do not change DP3 access-definition semantics, dispatch policy, activation, persistence, runtime registry, or TP002 tooling behavior.\n    - Do not treat validation-set examples alone as a general promotion rule; this promotion is justified by registered-owner evidence plus existing governed scope.\n\nRead-only note: the target OpenSpec change directory already exists in `/tmp/metanc_drafts_tool_edge_slice`, with proposal/design/tasks/spec stubbed, despite the stated “about to create” context.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:33:29 +0800</div>
+<pre>Both read-only agents agree on the same narrow route. I’m applying the promotion now and also updating the current-state pages so they no longer describe `tool_management -&gt; tool_edge` as provisional after this change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:33:37 +0800</div>
+<pre>I confirmed the aggregate/en pages include the TP004 source status page, while Chinese has its own prose. I’m editing source + Chinese projection + status page now to reflect the promoted pair.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:33:59 +0800</div>
+<pre>The binding is now promoted in source docs and Chinese projection, and the status page no longer lists it as provisional. I’m running the focused test to verify the red test turns green.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:34:08 +0800</div>
+<pre>Focused test is green. Next I’ll mark the completed task checkboxes through the test/docs stage, then run broader validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:34:31 +0800</div>
+<pre>Task status is updated through the focused green test. I’m running the full unit suite, checker, i18n, OpenSpec validation, and diff check in parallel where safe.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:34:41 +0800</div>
+<pre>All non-build validations passed, and the grep confirms `zero_offset` remains provisional while `tool_management` moved under formal bindings. I’ll rebuild docs now, then run the published-HTML i18n check.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:35:15 +0800</div>
+<pre>Published HTML i18n check passed. I’m doing a diff review now and tightening the integration test to load the real TP004 value-set/schema-field docs, since this slice is about source-doc state rather than a synthetic binding fixture.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 09:35:37 +0800</div>
+<pre>Diff review shows the intended docs movement and no checker production changes. I’m tightening the new test to use the real TP004 value-set and schema-field loaders so it proves the repository source state, not a synthetic token fixture.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 09:35:58 +0800</div>
+<pre>The test now uses real source loaders. I’m rerunning focused and full validation because this changed the test shape.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 09:36:07 +0800</div>
+<pre>Validation remains green. I’ll mark the remaining validation/review tasks complete, then do one final build/check cycle and commit the new slice.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 09:36:33 +0800</div>
+<pre>Tasks are fully checked off. I’m running the final verification suite exactly once after the task-file update, then I’ll review the final diff and commit.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 09:36:40 +0800</div>
+<pre>Core checks are green. I’m rebuilding docs once more after the task checkbox update and then running the published HTML check.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 09:37:12 +0800</div>
+<pre>Final checks are green. I’m reviewing tracked and new files, then I’ll commit the new slice separately from the archive checkpoint.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 09:37:40 +0800</div>
+<pre>Diff review looks scoped: no checker production change, no new descriptor fields, and `zero_offset` remains provisional. I’ll commit the completed new slice, then run a final branch/status check.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 09:37:56 +0800</div>
+<pre>The new slice is committed as `7c37409`, after archive commit `8fcff66`. I’m doing final verification from the committed branch and checking whether it’s ready to push or still local-only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 09:38:09 +0800</div>
+<pre>I’m going to do one final review pass with a subagent over the committed branch diff while I run the validation suite locally. This keeps the last check independent without letting another agent modify the worktree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-16 09:38:40 +0800</div>
+<pre>Committed branch is clean so far and the active new change is complete. I’m validating the new change, rebuilding docs, and checking whitespace/HTML before I decide whether to push.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-16 09:39:15 +0800</div>
+<pre>Final build and OpenSpec validation passed; branch is 2 commits ahead of `origin/main` and not behind. I’m running the published HTML check and a clean status check after build, then I’ll wait for the independent final review result.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-16 09:39:27 +0800</div>
+<pre>The worktree is clean after build, and changed files are exactly the archive plus TP004 slice files. I’m waiting on the final read-only reviewer now; if they find nothing blocking, this is ready to push or PR.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-16 09:40:50 +0800</div>
+<pre>The final reviewer hasn’t returned within the first minute. I won’t block on that indefinitely; I’ve already run the full verification suite locally, so I’m doing one more short wait and then I’ll close the agent if it’s still not done.</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-16 09:42:39 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ece14-36c2-7750-a711-95b1052b7354&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nI reviewed `/tmp/metanc_drafts_tool_edge_slice` on `feat/tp004-tool-edge-binding`, commits `8fcff66` and `7c37409`, against `main`. The current-state change is archived as a pure rename into `openspec/changes/archive/2026-06-16-document-parameter-descriptor-current-state`. The new change `promote-tool-management-tool-edge-binding` promotes only `tool_management -&gt; tool_edge` into `owner_scope_bindings`, removes that pair from provisional notes, and leaves `zero_offset -&gt; frame_axis_component` provisional.\n\nI also confirmed there are no production checker changes in the diff, no edits to descriptor schema/value-set/schema-field/runtime/access files, and the added test is focused on acceptance of the new source-backed `tool_management/tool_edge` pair. Existing tests already cover rejection of unlisted pairs and ignoring provisional notes. `git diff --check main..HEAD` produced no whitespace errors.\n\nResidual risk: I did not run the full validation suite because this was requested as a read-only final review; I inspected diffs and relevant files only.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:43:00 +0800</div>
+<pre>The independent final reviewer also found no issues. I’m closing the review agents and marking the local execution plan complete; the branch is ready, but I have not pushed it because you didn’t explicitly ask for remote publication in this turn.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:43:12 +0800</div>
+<pre>One more note before I finish: because this work lives in the isolated worktree `/tmp/metanc_drafts_tool_edge_slice`, your original `metanc_drafts` checkout is still untouched on `main`. I’ll include the exact branch and commits in the final.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:43:44 +0800</div>
+<pre>One cleanup remains for a truly clean OpenSpec state: the new slice is complete, so I’m going to archive it as a third commit rather than leave another completed active change behind. That matches the pattern already used for the earlier TP004 slices.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:43:55 +0800</div>
+<pre>The new change is complete by OpenSpec status. I’m archiving it now, then I’ll rerun the same validation commands and commit that archive movement.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:44:27 +0800</div>
+<pre>Archive move is validated and active changes are now empty. I’m committing this final archive movement separately.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:44:46 +0800</div>
+<pre>Final archive commit is in place. I’m doing the final clean-status and validation summary checks now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-16 09:45:17 +0800</div>
+<pre>已按干净顺序处理完，放在隔离 worktree：
+
+`/tmp/metanc_drafts_tool_edge_slice`
+branch: `feat/tp004-tool-edge-binding`
+
+完成了 3 个提交：
+
+- `8fcff66` `docs: archive parameter descriptor current state`
+- `7c37409` `docs: promote TP004 tool-edge descriptor binding`
+- `b0aedbd` `docs: archive TP004 tool-edge binding slice`
+
+具体落地内容：
+
+- 归档了已完成的 `document-parameter-descriptor-current-state`
+- 新建并完成 `promote-tool-management-tool-edge-binding` slice
+- 将 `tool_management -&gt; tool_edge` 从 provisional 提升到 checker-backed `owner_scope_bindings`
+- 保持 `zero_offset -&gt; frame_axis_component` 仍为 provisional
+- 更新中文 projection 和 current-state 页面，避免还把 `tool_management -&gt; tool_edge` 列为暂缓
+- 新增 focused checker 测试，验证 source-backed `tool_management/tool_edge` descriptor 可通过
+- 未修改 production checker 代码，现有 checker 泛化逻辑够用
+- 最后把新 slice 也归档了，所以现在 `openspec list --json` 返回空 active changes
+
+验证结果：
+
+- `python3 -m unittest discover -s tools/tests`：77 tests OK
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `openspec validate promote-tool-management-tool-edge-binding --strict`：passed
+- `./tools/build_docs_html.sh`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `git diff --check`：clean
+- final `openspec list --json`：`{&quot;changes&quot;:[]}`
+
+并行 agent 也做了只读审查：一个看 docs/evidence readiness，一个看 checker/test 路径，一个做最终 diff review；最终 review 是 no findings。
+
+当前状态：worktree 干净，分支比 `origin/main` ahead 3 commits、behind 0。原始 checkout `/home/iaar/workspace/ccmix-wp/metanc_drafts` 仍在 `main...origin/main`，没有被改动。下一步可以把 `feat/tp004-tool-edge-binding` push 出去开 PR，或按你的流程合回 main。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:347-408|note=[TP004 descriptor governance slices and validation workflow]
+MEMORY.md:79-79|note=[work_offset APIs noted for later zero_offset evidence boundary]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-16 10:11:11 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ece30-188d-7de1-be95-d2699d0bd08e&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n1. **Medium** — Semantic path grammar is promoted too strongly from optional/deferred to “necessary” for runtime parameter access.  \n   [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:150) says the listed boundaries are necessary before runtime access is complete, and line 165 includes semantic path grammar. That conflicts with the same file’s still-open question about whether semantic paths are required for all descriptors or only public/searchable ones at line 241. The status page repeats the same framing at [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:60).  \n   Recommendation: qualify semantic path grammar as necessary only for public/searchable surfaces, or move it under “candidate later boundary” rather than runtime-access completion.\n\n2. **Low** — The runtime registry row risks implying a composite lookup identity before that contract exists.  \n   [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:160) says lookup is “by `parameter_id`, `owner`, and `scope`,” while the current minimal model keeps `parameter_id` as stable identity and treats `owner`/`scope` as governed fields, not derived identity components, at lines 43-64.  \n   Recommendation: use the looser status-page wording, or say “lookup by `parameter_id`, returning owner/scope metadata, with possible owner/scope filters.”\n\n3. **Low** — Access/value rows are concrete enough for a roadmap, but a few terms are not yet source-owned.  \n   [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:163) introduces “guard tokens,” protection-level mismatches, and owner policy references; line 164 introduces type/unit/range/enum-source expectations. They remain deferred, but the wording starts naming future access/value vocabulary before the owning evidence slice exists.  \n   Recommendation: anchor these rows to “one owner-evidenced case” and avoid making any of those names look like chosen descriptor fields.\n\n**Concise Recommendation**\nAccept the direction after small wording fixes. The additions are mostly concrete and mostly stay outside the current minimal descriptor contract, especially with the explicit deferral at [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:167) and lines 198-210. The main change needed is to soften “necessary” where it could prematurely lock semantic paths or registry lookup identity.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:11:26 +0800</div>
+<pre>第一个审查回来了，意见成立：`semantic path grammar` 被写得过强，registry lookup 也容易被读成 composite identity。我先等另外两个审查结果，避免来回改同一段。</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-16 10:12:31 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ece30-18f1-7072-80b1-6e0d7224acc9&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No high-severity content blocker found. The model semantics mostly track the English source, but I’d flag these before publishing.\n\n**Findings**\n\n- **Medium**: [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:191) labels the section as “后续校验目标”, but the section lists the current slice’s validation targets. That conflicts with the English “Validation Targets” wording in [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:212) and with the status page’s “当前已由 Checker 支撑” list in [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:27). This could make Chinese readers think these checks are future work rather than current/narrow checker responsibilities.\n\n- **Medium**: [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:163) says “access 后续应通过 policy 或 contract 语义返回.” This is too abstract in Chinese and does not clearly express the English intent from [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:182): if access capability returns later, it should come through policy/contract semantics, not boolean shortcuts. A clearer Chinese wording would explicitly say “后续如果重新引入 access 能力，应由 policy/contract 定义读写语义，而不是用 boolean 字段表示.”\n\n- **Low**: [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:57), [line 61](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:61), and [line 69](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:69) drop the English source’s navigable links to `OBJECT-SCOPES.md` and `OWNER-REGISTRY.md`. The same happens around [lines 198-201](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:198). This is not a semantic error, but it weakens reader-facing parity and makes the Chinese page less useful.\n\n- **Low**: The “后续必要性” tables are meant to be concrete, but the Chinese text remains heavy with untranslated labels like “read-only lookup contract”, “accepted access”, “guard token”, “rejection case”, and “invalid-value” in [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:144) and [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:64). This does not materially diverge from English, but it is still abstract for a Chinese reader page.\n\nNo edits made.  \n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:12:47 +0800</div>
+<pre>第二个审查也回来了，中文可读性意见成立：`后续校验目标` 会误导成未来工作，部分中文表述还偏英文化。我先读取接收审查反馈的规则，然后等第三个审查一起修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:12:57 +0800</div>
+<pre>我看完了接收审查规则。当前两条 medium 都可以直接修：弱化 semantic path 的必要性、修中文“后续校验目标”和 access 表述。等第三个 checker 视角回来后合并一轮 patch。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-16 10:15:53 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ece30-1921-76d3-8d47-3ca7262093b9&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n- Medium: The changed descriptor roadmap content is not fully covered by the explicit i18n/published-page checks. The new sections in [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:148) and [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:60) have matching zh edits, but `check_docs_i18n_sync.py` only has generic `parameter-descriptors.md` published checks at [tools/check_docs_i18n_sync.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_docs_i18n_sync.py:319) and [tools/check_docs_i18n_sync.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_docs_i18n_sync.py:501), and no `parameter-descriptor-status.md` `PublishedPage`/`ProjectionPair` despite the page being in navigation at [SUMMARY.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/SUMMARY.md:13). Result: `--require-published-html` can pass while these new “Later Necessary/后续必要” sections drift or disappear. Add explicit checks for `parameter-descriptor-status.md`, and preferably a source-to-zh `ProjectionPair` or required-text assertions for the new descriptor section.\n\nNo schema/value-set blocker found. The new field-like names (`instance keys`, `guard tokens`, `path_variables`, runtime registry/catalog, etc.) are framed as deferred and non-formal at [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:167) and [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:136). Current checker scope is still narrow: owner/scope bindings and minimal descriptor access booleans are enforced in [check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:776) and [check_parameter_value_sets.py](/tmp/metanc_drafts_tool_edge_slice/tools/check_parameter_value_sets.py:800).\n\nI ran these read-only checks; all exited 0:\n\n```bash\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_parameter_value_sets.py\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py --require-published-html\ngit diff --check\n```\n\nRecommended validation before merge:\n\n```bash\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_parameter_value_sets.py\n./tools/build_docs_html.sh\nenv PYTHONDONTWRITEBYTECODE=1 python3 tools/check_docs_i18n_sync.py --require-published-html\nrg -n \&quot;Later Necessity Markers|Later Necessary Boundaries|后续必要|tool_management\\.tool_edge\\.dp3\&quot; docs_html TP004-parameter-system/book/html book/html\ngit diff --check\n```\n\nIf the checker is expanded, also run:\n\n```bash\npython3 -m unittest discover -s tools/tests\n```\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:16:07 +0800</div>
+<pre>三路审查都回来了。我会采纳这几类实质问题：弱化 semantic path、避免 registry 读成复合身份、把中文读者页改得更明确，并补一个 published-page 检查，防止状态页后续漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:16:24 +0800</div>
+<pre>我会按 TDD 处理 checker 这条反馈：先找现有 `check_docs_i18n_sync` 测试，补一个能证明 `parameter-descriptor-status` 发布页缺失会被抓到的用例，再改 checker。文档措辞修正会和 checker 改动分开做，但同一轮验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:16:45 +0800</div>
+<pre>我现在看 `check_docs_i18n_sync` 的 published-page 数据结构和单测写法，先补失败用例再改 checker。这个改动很窄，只让 `parameter-descriptor-status` 被发布页检查覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:16:59 +0800</div>
+<pre>我先补 checker 覆盖的 failing test：要求四个发布面都包含 `parameter-descriptor-status.md`，当前应该会失败。然后再加 `PublishedPage` 条目让它通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:17:07 +0800</div>
+<pre>我要编辑测试和 checker 数据表。先只改测试，跑单测确认失败；再加 published page 条目。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 10:17:18 +0800</div>
+<pre>测试已补。现在跑这个单测，按预期它应该先失败，证明当前 checker 覆盖确实缺失。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 10:17:29 +0800</div>
+<pre>Red 阶段确认了：新增测试能抓到状态页 published-page 覆盖缺失。现在我改 checker 的 `PUBLISHED_PAGES`，给 canonical、aggregate、英文、中文四个发布面都加状态页检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 10:17:50 +0800</div>
+<pre>我现在同时做两件事：一是把审查发现的概念措辞收窄，二是把 published-page checker 覆盖补上。checker 部分已经有失败用例证明缺口存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 10:19:04 +0800</div>
+<pre>这一轮 patch 因为中文页上下文行跟我预期不完全一致没有应用。没有写入部分修改；我会先定位精确行，再分小块修改，避免误改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 10:19:11 +0800</div>
+<pre>定位完成。下面分两步应用：先改文档措辞和中文链接，再改 checker 列表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 10:20:19 +0800</div>
+<pre>文档措辞修完了。现在补 checker 的 published-page 条目，让刚才失败的测试变绿。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 10:20:46 +0800</div>
+<pre>checker 条目已补。现在先跑刚才失败的定向单测，确认 TDD 绿，再跑完整 tools 测试和文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 10:21:00 +0800</div>
+<pre>定向测试已经从红到绿。现在跑完整验证；如果 published HTML 因新增 required text 需要重建，我会先让检查暴露出来再构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 10:21:09 +0800</div>
+<pre>完整单测、参数 checker、i18n 结构和 diff whitespace 都通过了。现在重建 HTML，再跑带 published HTML 的检查和内容存在性 grep。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 10:21:22 +0800</div>
+<pre>HTML 已重建。现在跑最终 published 检查和内容 grep，确认新状态页和后续必要性段落确实出现在发布输出里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 10:21:41 +0800</div>
+<pre>最终验证已经跑完，三路审查的问题也处理了：概念边界收窄、中文可读性修正、published-page checker 覆盖补上。现在我关闭这几个审查 agent，然后给你一版简要总结。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-06-16 10:21:56 +0800</div>
+<pre>已落文档并开 3 个 agent 审查，审查反馈已处理。
+
+主要修正：
+- 把 `semantic path grammar` 从“runtime access 完整性必需”收窄为“只对 public/searchable surface 必要”，避免过早要求每个 descriptor 都有 path。
+- 把 registry lookup 改成 `parameter_id` 只读查询，返回 owner/scope metadata，可按 owner/scope filter，避免看起来像复合身份。
+- access/value rows 改成 “owner-evidenced case”，避免提前冻结字段名。
+- 中文页修了“后续校验目标”误导，改成“当前校验目标”。
+- 中文页补了 owner registry / object scopes 的可点击链接，并把 access boolean 那句改清楚。
+- 补了 `check_docs_i18n_sync.py` 对 `parameter-descriptor-status.md` 四个发布面的覆盖，并加了单测。这个先跑出失败，再修到通过。
+
+当前改动 6 个文件：
+- `TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md`
+- `TP004-parameter-system/book/src/parameter-descriptor-status.md`
+- `docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md`
+- `docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md`
+- `tools/check_docs_i18n_sync.py`
+- `tools/tests/test_check_docs_i18n_sync.py`
+
+验证已通过：
+- `python3 -m unittest discover -s tools/tests`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py`
+- `./tools/build_docs_html.sh`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `git diff --check`
+- 发布 HTML 内容 grep 也确认了新段落存在。</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

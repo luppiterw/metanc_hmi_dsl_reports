@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read-only test coverage and build review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc. Re...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Read-only test coverage and build review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc. Re...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7120-c934-7bd3-a080-b1981d0910d2</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-29 08:27:14 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T08-27-14-019e7120-c934-7bd3-a080-b1981d0910d2.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-29 08:27:14 +0800</div>
+<pre>Read-only test coverage and build review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc. Review CMakeLists, tests, fixtures, demo commands, and capability claims. Identify gaps where implemented stories lack tests, tests are wired incorrectly, labels/targets are misleading, or validation commands would miss regressions. Do not edit files. Output findings first with file/line references and concrete reasoning.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-29 08:27:38 +0800</div>
+<pre>I’ll keep this read-only and treat it as a review: first I’m checking prior `rt/plc` context, then I’ll inspect the CMake/test/demo surfaces under `/tmp/metanc_plc_review` and report only findings with evidence.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-29 08:27:59 +0800</div>
+<pre>The memory notes say this subproject has had several story-by-story validation passes, but they also flag that story status and command coverage can drift by checkout. I’m using that only as orientation and checking this `/tmp/metanc_plc_review` tree directly for current wiring.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-29 08:28:26 +0800</div>
+<pre>I found the first important seam to audit: the docs claim all stories 1-42 except 13 are implemented, while the CMake file only wires named test executables. I’m now comparing the story index, actual `tests/*.cpp`, and CTest registrations so findings are based on concrete mismatches rather than naming assumptions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-29 08:28:49 +0800</div>
+<pre>There are several status-to-wiring mismatches emerging: some implemented stories have no CTest target with the documented name, and at least one focused command set omits all later adapter/frontend tests. I’m checking whether those stories are intentionally validated by shared tests or whether the docs point to targets that do not exist.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-29 08:29:08 +0800</div>
+<pre>I’m narrowing this to actionable review findings. The candidates I’m verifying now are: implemented stories without their own registered tests, documented validation commands that select no matching tests, and demo/docs commands that reference files or labels that are not wired.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-29 08:29:32 +0800</div>
+<pre>The gaps are now concrete enough to validate against CTest selection behavior. I’m going to configure a temporary build tree under `/tmp` and use `ctest -N`/label filters only, which writes no workspace files and lets me prove which documented selectors actually run tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-29 08:30:09 +0800</div>
+<pre>The CTest metadata confirms `-R story16`, `-R story31`, and `-R story34|story37` select zero tests in this checkout, even though those stories are marked implemented in the docs. I’m doing one last pass over scenario fixtures and labels so the final review separates hard gaps from weaker “could be clearer” observations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-29 08:30:42 +0800</div>
+<pre>I’ve got the review set. One nuance: a few “implemented” stories are intentionally documentation/process gates, but their current wording still creates a validation gap because the default commands do not include any docs validation step and CTest cannot select those story names.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-29 08:31:38 +0800</div>
+<pre>I’m checking whether any `tests/*.cpp` files are simply not registered at all, because that would be a stronger wiring bug than a documentation selector issue.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-05-29 08:33:47 +0800</div>
+<pre>**Findings**
+
+1. [rt/plc/docs/CURRENT-CAPABILITIES.md](/tmp/metanc_plc_review/rt/plc/docs/CURRENT-CAPABILITIES.md:151) has stale focused validation commands. The three `ctest -R ...` examples stop at `story27`, while the same page claims Story-01 through Story-42 are implemented except Story-13 at [line 15](/tmp/metanc_plc_review/rt/plc/docs/CURRENT-CAPABILITIES.md:15). CMake registers later regression suites for Story-28 through Story-30 at [CMakeLists.txt:603](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:603), Story-32/33 at [CMakeLists.txt:738](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:738), Story-35 at [CMakeLists.txt:1046](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:1046), and Story-36 through Story-42 at [CMakeLists.txt:854](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:854). Anyone using the focused commands would miss runtime-command/session, adapter-contract, typed-payload, local-facade, and frontend-lowering regressions.
+
+2. [rt/plc/docs/CURRENT-CAPABILITIES.md](/tmp/metanc_plc_review/rt/plc/docs/CURRENT-CAPABILITIES.md:30) tells users to run `story16` tests, but no `story16` CTest target is registered. The implementation is actually covered by `metanc_plc_story04_sequence_tests` at [CMakeLists.txt:179](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:179), and STORY-16’s own slice table says `validated by [story04_sequence_tests]` at [SLICE.md:55](/tmp/metanc_plc_review/rt/plc/docs/spec/STORIES/STORY-16-sequence-dsl-control-flow/SLICE-01-subsequence-and-if-then-else/SLICE.md:55). I confirmed `ctest -N -R story16` selects `Total Tests: 0`, so the documented selector is a no-op.
+
+3. The implemented-story status mixes code-tested and docs-only/process stories, but the default validation path does not include docs validation. [README.md:13](/tmp/metanc_plc_review/rt/plc/README.md:13) and [CURRENT-CAPABILITIES.md:46](/tmp/metanc_plc_review/rt/plc/docs/CURRENT-CAPABILITIES.md:46) list only `cmake`, build, and `ctest`. STORY-31 says its validation is docs lint, diff check, and book build at [READINESS-REVIEW.md:58](/tmp/metanc_plc_review/rt/plc/docs/spec/STORIES/STORY-31-runtime-adapter-readiness/READINESS-REVIEW.md:58), and Story-34 specs are validated by docs policy/book/review at [SPEC-090.md:47](/tmp/metanc_plc_review/rt/plc/docs/spec/STORIES/STORY-34-external-adapter-gate-review/SLICE-01-ownership-gate-map/SPEC-090.md:47). `ctest -N -R &quot;story31|story34&quot;` selects zero tests, so default build/test can pass while those implemented contracts are unvalidated.
+
+4. [SPEC-110.md](/tmp/metanc_plc_review/rt/plc/docs/spec/STORIES/STORY-37-plc-frontend-lowering-contract/SLICE-04-prototype-entry-gate/SPEC-110.md:70) recommends `ctest -R &quot;story36|story37|lowering&quot;`, but there is no Story-37 CTest target. Story-37 is marked as contract-review validation at [SPEC-110.md:8](/tmp/metanc_plc_review/rt/plc/docs/spec/STORIES/STORY-37-plc-frontend-lowering-contract/SLICE-04-prototype-entry-gate/SPEC-110.md:8), while the executable lowering prototype starts at Story-38 in CMake at [CMakeLists.txt:908](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:908). The selector still runs some `story36`/`lowering` tests, but the `story37` part itself is misleading.
+
+5. The `plc_command_result_payload_baseline` label is over-broad. It correctly labels Story-33 payload tests at [CMakeLists.txt:847](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:847), but it is also applied to Story-28 through Story-30 runtime/session tests at [CMakeLists.txt:1095](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:1095), and to Story-32 contract tests at [CMakeLists.txt:751](/tmp/metanc_plc_review/rt/plc/CMakeLists.txt:751). That makes a payload-specific label select broad adapter/runtime coverage, so CI failures under that label are harder to interpret and there is no clean payload-only CTest label.
+
+Read-only checks performed: configured CMake metadata under `/tmp/metanc_plc_review_build_ro`, used `ctest -N`/label filters only, and verified all `rt/plc/tests/*.cpp` files are referenced and registered in CMake. I did not edit files or run test binaries.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:51-55|note=[rt/plc scoped review orientation]
+MEMORY.md:146-155|note=[prior PLC capability and validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

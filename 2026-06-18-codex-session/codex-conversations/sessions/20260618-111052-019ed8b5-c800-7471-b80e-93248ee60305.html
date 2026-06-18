@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing a docs-only TP004 change in /home/iaar/workspace/ccmix-wp/metanc_drafts. Scope: v...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing a docs-only TP004 change in /home/iaar/workspace/ccmix-wp/metanc_drafts. Scope: v...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed8b5-c800-7471-b80e-93248ee60305</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-18 11:10:52 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T11-10-52-019ed8b5-c800-7471-b80e-93248ee60305.jsonl</code></div>
+<div><b>Messages</b>: <code>5</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 11:10:52 +0800</div>
+<pre>You are reviewing a docs-only TP004 change in /home/iaar/workspace/ccmix-wp/metanc_drafts. Scope: verify the change does NOT accidentally promote zero_offset -&gt; frame_axis_component and that TP004 boundary language remains correct. Please inspect git diff and relevant files only. Return findings with file/line references if any, or say no blocking issues. Do not modify files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:11:03 +0800</div>
+<pre>I’ll keep this to a review pass: first checking the existing TP004 memory notes for the expected boundary, then reading only the active diff and the files touched by that diff.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 11:11:30 +0800</div>
+<pre>The diff is small and all touched files are TP004 docs/checker surfaces. I’m going to read the unified diff plus the exact current lines around `zero_offset`, `frame_axis_component`, and the checker rule so the review can cite concrete locations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 11:11:59 +0800</div>
+<pre>The current language is repeatedly framing `frame_axis_component` as candidate evidence, with explicit “not promoted” wording. I’m doing one final line-number pass now, including the current checker and docs lines that would matter if there were a regression.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-18 11:12:54 +0800</div>
+<pre>No blocking issues found.
+
+The change keeps `zero_offset -&gt; frame_axis_component` provisional, not promoted. The key boundary language is explicit in [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:68), [PARAMETER-INSTANCE-BINDINGS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md:122), and the Chinese projection at [parameter-instance-bindings.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md:117).
+
+The checker diff only adds required projection/published-page text checks for the binding page and HTML unescaping for published HTML checks; it does not alter owner/scope acceptance rules. See [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:103) and [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:736).
+
+No files modified.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:539-542|note=[TP004 slice boundary and frame_axis_component scope guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

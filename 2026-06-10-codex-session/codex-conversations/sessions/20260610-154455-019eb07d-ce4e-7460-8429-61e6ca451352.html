@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是文档审查 agent B。工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts。只读审查，不要修改文件。 目标：审查 canonical/source...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是文档审查 agent B。工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts。只读审查，不要修改文件。 目标：审查 canonical/source...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb07d-ce4e-7460-8429-61e6ca451352</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-10 15:44:55 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/10/rollout-2026-06-10T15-44-55-019eb07d-ce4e-7460-8429-61e6ca451352.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-10 15:44:55 +0800</div>
+<pre>你是文档审查 agent B。工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts。只读审查，不要修改文件。
+
+目标：审查 canonical/source Markdown 的相对链接和投影复用是否有问题。重点是：这些源 Markdown 既可能被 GitHub/editor 直接阅读，也可能被 mdBook/docs_i18n 投影到 reader page，不能只保证 docs_html 可点。
+
+范围：
+- TP004-parameter-system/openspec/README.md
+- TP004-parameter-system/openspec/DESIGN-BASELINE.md
+- TP004-parameter-system/openspec/STATUS-USAGE.md
+- TP004-parameter-system/openspec/OWNER-REGISTRY.md
+- TP004-parameter-system/openspec/access-definitions/README.md
+- TP004-parameter-system/openspec/validation-sets/README.md
+- TP004-parameter-system/openspec/validation-sets/case-schema.md
+- 相关 book/src 或 docs_i18n wrapper 页面如有必要可抽查。
+
+检查点：Markdown 链接是否相对源文件真实存在；是否为了 HTML 链接正确而破坏 canonical 源文档；是否有 include 同一 canonical 导致不同投影路径冲突；是否需要 reader projection 独立页面或 link rewriting。
+
+输出格式：按 severity 排序，列出 file:line + 具体问题 + 复现方式/缺失目标 + 建议修复。没有问题也明确说。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-10 15:45:23 +0800</div>
+<pre>我会保持只读审查，重点核对 canonical Markdown 在源目录内的真实相对链接，以及被 `book/src` / `docs_i18n` 投影后是否产生路径冲突。先快速看一下 TP004 文档发布相关的历史约定，再做文件级扫描。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-10 15:46:08 +0800</div>
+<pre>当前工作树已有多处未提交改动，我会把它们当作待审内容读取，不会改动或回退。接下来先抽取目标源文件里的 Markdown 链接，再对照实际路径和投影 wrapper。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-10 15:46:28 +0800</div>
+<pre>初步扫描已经看到一个模式：部分源文档同时混用了 canonical 源路径和 book 投影路径，例如 `openspec/README.md` 后半段指向 `baseline/...` 和 lowercase `value-sets.md`。我会继续确认这些路径在源树和投影树中的解析结果，避免把单个环境下可点误判为整体正确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-10 15:46:32 +0800</div>
+<pre>我会用一个只读解析脚本列出目标源文件里所有相对 Markdown 链接的落点，并同时模拟常见投影路径解析。这样能把“源文件坏”和“只在投影里好/坏”分开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-10 15:46:56 +0800</div>
+<pre>脚本确认了多个源内链接在 `TP004-parameter-system/openspec` 下直接解析失败；这不是构建产物问题，而是 GitHub/editor 直接阅读会断。现在检查 wrapper 是否把同一 canonical 文件投影到不同目录，造成只能服务某一套路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-10 15:47:15 +0800</div>
+<pre>Wrapper 结构显示 aggregate/i18n 主要 include `TP004-parameter-system/book/src/...`，而 topic-local book 再 include canonical `openspec/...`。这会让 canonical 里的链接按最终页面路径解析，而不是按 canonical 文件所在目录解析；我会继续抽查构建前后的具体 HTML href，确认哪些链接是靠投影路径才成立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-10 15:47:31 +0800</div>
+<pre>几个问题已经足够明确，但我还需要核对 `SUMMARY.md` 和新增 wrapper 是否存在“同一 include 在不同目录下产生不同 href”的情况。这个部分会决定建议是改 canonical 链接，还是拆 reader projection 独立页面并做 link rewriting。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-10 15:47:57 +0800</div>
+<pre>我已经定位到一类主问题：canonical 源里的链接被改成了 projection 页面路径，导致源文件直接阅读断链。最后我会把同类问题合并，避免逐行列几十个重复断链，但会给出代表行和完整复现方式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-10 15:48:45 +0800</div>
+<pre>我还会轻量检查中文独立 reader 页面自己的相对链接，确认这些不是同一类错误的来源。到目前为止，`validation-sets/README.md` 里到 `../access-definitions/validation.md` 的链接在源树和投影树中都能成立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-10 15:52:04 +0800</div>
+<pre>只读审查完成，未修改文件。
+
+**High**
+- `TP004-parameter-system/openspec/README.md:41`，同类还有 `42-49,58,62-63`：canonical README 后半段使用了 reader projection 路径和 lowercase 文件名，例如 `baseline/design-baseline.md`、`value-sets.md`。从源文件位置解析时目标不存在：`TP004-parameter-system/openspec/baseline/design-baseline.md`、`TP004-parameter-system/openspec/value-sets.md` 等。建议改回源树真实目标：`DESIGN-BASELINE.md`、`TERMS.md`、`VALUE-SETS.md`、`SCHEMA-FIELDS.md`、`USAGE-INDEX.generated.md`；reader 首页已有 `TP004-parameter-system/book/src/index.md` 承担 projection 链接，不应污染 canonical README。
+
+- `TP004-parameter-system/openspec/DESIGN-BASELINE.md:27`，同类还有 `31,43,70,441-442`：canonical baseline 链接是投影页相对路径。源文件直接阅读时 `terms.md`、`../value-sets.md`、`../schema-fields.md` 分别解析到不存在的 `openspec/terms.md`、`TP004-parameter-system/value-sets.md`、`TP004-parameter-system/schema-fields.md`。但它通过 `TP004-parameter-system/book/src/baseline/design-baseline.md:1` include 到 `book/src/baseline/` 后这些链接才成立。建议 canonical 源改为源树真实链接，并为 mdBook reader 页做独立 projection 页面或 link rewriting。
+
+- `TP004-parameter-system/openspec/STATUS-USAGE.md:37`，同类覆盖 `38-40,50,53-60,120-121,129-130,137-138,144-145,171-176,185-191`；`TP004-parameter-system/openspec/OWNER-REGISTRY.md:3`，同类还有 `8,17,25,34,45,102,114`：这些新增 canonical 文件大量链接到 `baseline/terms.md`、`value-sets.md`、`schema-fields.md`。源树中这些目标不存在，只有 projection 页存在。建议同上：canonical 使用 `TERMS.md`、`VALUE-SETS.md`、`SCHEMA-FIELDS.md`；reader 页面不要 raw include 同一份未重写链接的 canonical。
+
+- `TP004-parameter-system/openspec/access-definitions/README.md:17`，同类还有 `18,22,25,31-32,40-41,184-185,206`；`TP004-parameter-system/openspec/validation-sets/case-schema.md:48`，同类还有 `51,55,57`：嵌套 canonical 文件也使用了 projection 目录结构，例如 `../baseline/terms.md`。从源文件位置应是 `../TERMS.md`、`../DESIGN-BASELINE.md`、`../VALUE-SETS.md`、`../SCHEMA-FIELDS.md`。这些文件当前通过 `TP004-parameter-system/book/src/access-definitions/index.md:1` 和 `TP004-parameter-system/book/src/validation-sets/case-schema.md:1` include 后才可点，说明同一 canonical 已经产生投影路径冲突。建议拆 reader projection 或在构建前生成重写后的 book 源。
+
+**Medium**
+- `TP004-parameter-system/openspec/OWNER-REGISTRY.md:38-41`：文档明确写“Links inside this file are only used for TP004-local reader pages”，这和“canonical/source Markdown 也要能被 GitHub/editor 直接阅读”的要求冲突。建议把规则改成：canonical 源内链接必须先在源树成立；reader projection 如需不同路径，由 wrapper/rewrite 层负责。
+
+**No Issue Found**
+- `TP004-parameter-system/openspec/validation-sets/README.md:38,42` 的 `../access-definitions/validation.md` 在源树和当前 projection 结构中都能解析。
+- 抽查 `docs_i18n/zh/src/TP004-parameter-system/...` 独立中文 reader 页，相对链接目标存在；问题主要集中在 raw include canonical 后为 HTML 路径牺牲源路径。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:170-202|note=[TP004 docs publishing and projection context]
+MEMORY.md:150-158|note=[docs_i18n docs_html projection context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

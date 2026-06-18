@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是文档审查 agent 1，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/a...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是文档审查 agent 1，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/a...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb591-748a-74c2-9672-116f66bfde98</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-11 15:24:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/11/rollout-2026-06-11T15-24-29-019eb591-748a-74c2-9672-116f66bfde98.jsonl</code></div>
+<div><b>Messages</b>: <code>3</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:24:29 +0800</div>
+<pre>你是文档审查 agent 1，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md` 的读者理解问题。
+
+上下文：这是 TP004 parameter-system 下 Siemens compatibility 的参考笔记。它不是 MetaNC term/value set/owner/schema 规范，而是解释 Siemens-style 兼容输入如何影响 MetaNC 设计问题。用户觉得这份文件“差点意思，怪怪的”。
+
+请只读相关文件，不要修改文件。重点从“人类读者读起来哪里卡、哪里抽象、哪里容易误解”角度审查。输出要求：
+- 先列 3-6 个具体问题，按严重度排序。
+- 每个问题给文件行号或章节名。
+- 给一句可执行改进建议。
+- 最后给一个总判断：这份文档最像什么、但现在哪里不够像。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:24:57 +0800</div>
+<pre>我会按审查口径只看目标文档本身，重点抓读者理解上的断点和可改写方向。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 15:25:34 +0800</div>
+<pre>1. **最严重：读者很难判断“这页到底要帮我做哪一步判断”**
+   行 10-25、401-415。目的和映射规则说的是“四个问题”和“case slice 引用本页”，但没有给出一个从 Siemens 输入到 MetaNC 边界判断的完整走读。
+   建议：在开头加一个 5-8 行的“使用路径”：看到 `DEF NCK REAL ...` -&gt; 识别 Siemens 概念 -&gt; 判断哪些只是兼容输入 -&gt; 哪些进入 MetaNC 设计讨论。
+
+2. **核心解释太像术语库，少了“兼容输入如何改变 MetaNC 设计问题”的主线**
+   行 102-190、192-249、251-354。每组都有 Concept/Summary/Terms，但读者读完更像在背 Siemens 词条，而不是理解这些词条为什么影响 MetaNC 的 owner、scope、permission、persistence 建模。
+   建议：每个概念组前或后增加一句“它改变的 MetaNC 问题是……”，例如 LUD/PUD/GUD 组明确落到“不能把所有访问目标都建成 persistent parameter”。
+
+3. **“不是 MetaNC X”反复出现，但正向替代物不够清楚**
+   行 32-34、267-272、283-284、337-343、403-407。文档反复说不是 term、不是 schema field、不是 permission enum、不是 owner，但读者会卡在“那它现在是什么、下一步该怎么处理”。
+   建议：增加一个小表：`Siemens artifact` / `This page records it as` / `MetaNC follow-up artifact`，把“参考笔记、设计提醒、未来规范项”的层级分清。
+
+4. **SQL-like 类比有帮助，但可能误导为 MetaNC 想要 SQL 化声明模型**
+   行 255-263、295-320。类比很醒目，且比真实 Siemens 语句更易读，读者可能把它当成目标 IR 或未来 schema 草案。虽然行 297-299 有免责声明，但不够强。
+   建议：把免责声明改成更具体的限制，例如“仅用于人工阅读 token 角色；不是 MetaNC syntax、IR、schema、parser target”。
+
+5. **双语排版增加了“怪怪的”感觉，读者连续性被打断**
+   全文多处，例如行 3-8、27-41、274-293。英文段落和中文段落逐块重复，且中文中夹杂大量 `range`、`owner`、`value set`、`timing behavior`，读起来像草稿拼接。
+   建议：若这是给中文读者看的审查材料，改成中文主文 + 英文术语保留；若是双语发布页，拆成语言切换页或让每节只保留一套主叙述。
+
+6. **Open Verification List 放在末尾，容易让读者误以为前面所有 Siemens 事实都已经充分闭合**
+   行 378-399。待核验项很重要，尤其 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 看起来才像实际 TP004 access family，但它们直到末尾才出现。
+   建议：在开头 Boundary 或 Current Concept Groups 处提前声明“当前正文只覆盖 GUD/DEF；tool data、machine data、frame 等实际访问族仍在待核验区”。
+
+**总判断：**这份文档现在最像“Siemens 术语摘录 + MetaNC 防误用注释”，但还不够像“兼容输入分析指南”。它需要更强的读者路径：从一个 Siemens-style 输入出发，解释它触发哪些 MetaNC 设计问题、哪些不能直接映射、下一份规范应该接住什么。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

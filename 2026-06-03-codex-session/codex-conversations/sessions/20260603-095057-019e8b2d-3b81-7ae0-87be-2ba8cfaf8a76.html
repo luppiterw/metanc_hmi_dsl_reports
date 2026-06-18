@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8b2d-3b81-7ae0-87be-2ba8cfaf8a76</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 09:50:57 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T09-50-57-019e8b2d-3b81-7ae0-87be-2ba8cfaf8a76.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:50:58 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-03&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:50:58 +0800</div>
+<pre>You are reviewing /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Goal: keep reviewing PLC docs/code until no issues. Scope strictly rt/plc/docs. First read README.md, docs/dev/architecture.md, rt/plc/README.md. Use first-time-reader documentation comprehension stance. Review current uncommitted docs changes: CURRENT-CAPABILITIES, IMPLEMENTATION-READINESS, NEXT-ROADMAP, Story index, Story-28 command table, Story-44 STORY/PLAN/READINESS/Slice01/SPEC-135. Do not edit files. Report only validated comprehension problems, contradictions, overclaims, stale tables, or validation wording gaps. If no findings, say No findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:52:31 +0800</div>
+<pre>I’ll use `review-docs-comprehension` for this turn because the requested stance matches that skill. I’ll keep this read-only and scoped to `rt/plc/docs` plus the required orientation files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:53:53 +0800</div>
+<pre>The repo orientation shows `rt/plc` is the module boundary in scope, and there are no nested `AGENTS.md` files under it. I also found prior PLC review memory saying docs/status claims have drifted before, so I’ll validate these docs against the current diff and nearby evidence rather than treating status tables as authoritative.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:54:52 +0800</div>
+<pre>I’m going through the uncommitted patch now, then I’ll read the touched files in their current form with line numbers. The review target is narrow: only issues that survive a first-time-reader reread and are tied to the changed documentation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 09:55:39 +0800</div>
+<pre>The patch mostly updates Story-44 from “planned” to “active with Slice 01 complete,” so I’m checking whether every status, validation row, and roadmap pointer says the same thing. I’m also checking the added Story-28 command rows against the surrounding command vocabulary so I don’t report naming drift that is only superficial.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 09:58:06 +0800</div>
+<pre>I found one suspicious validation gap in the Story-44 implementation plan: the patch table says the Slice 01 freeze validation includes Story-19, but the slice/spec validation text below does not. I’m validating whether that mismatch is a real reader problem or just acceptable broader coverage.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 09:59:13 +0800</div>
+<pre>One more cross-check: I’m scanning the referenced validation labels and story rows for omissions that would make a table stale. I’m not changing files; this is just to distinguish real documentation drift from harmless shorthand.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 10:01:17 +0800</div>
+<pre>I’m doing one final pass over the two command-table additions because those are the only changed rows that can create an immediate wrong action for a reader. The Story-44 status wording is internally consistent after reread; the remaining concern is whether the Story-28 table now documents terminal spellings that the rest of the docs do not support.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-03 10:02:12 +0800</div>
+<pre>**Findings**
+
+1. `rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:91` and `:94` document terminal spellings that are not supported by `metanc_plc_sim`.
+
+`di &lt;name&gt;` is listed as the terminal spelling for `GetDigitalInput`, and `virtuals` is listed for `ListVirtualSignals`. But the current simulator command docs only list `di &lt;name&gt; &lt;true|false&gt;` for setting DI and no `virtuals` command, and the simulator dispatch only handles `di` as a 3-token setter plus `virtual &lt;name&gt;` as the virtual-signal reader.
+
+Reader effect: a first-time reader will try `di part_present` or `virtuals` in the REPL and get a usage/unknown-command error, despite the Story-28 table saying these are terminal spellings.
+
+Fix: change those terminal-spelling cells to “not exposed directly in terminal REPL” or document the actual terminal path, such as `inputs` for listing DI and `snapshot` for virtual-signal listing, unless the intent is to add matching REPL commands.
+
+Confidence: 4
+Impact: 3
+
+I did not edit files. I also checked `git diff --check -- rt/plc/docs`; it reported no whitespace errors.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:263-270|note=[prior PLC validation and docs drift context]
+MEMORY.md:280-280|note=[prior warning to audit capability and validation claims against tests]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

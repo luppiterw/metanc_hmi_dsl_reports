@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审查任务 C：lint 工具/测试覆盖审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：这次变更增加 tools/check_parame...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>审查任务 C：lint 工具/测试覆盖审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：这次变更增加 tools/check_parame...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e873f-9713-7c11-9299-612233d849e1</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 15:32:32 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T15-32-32-019e873f-9713-7c11-9299-612233d849e1.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 15:32:32 +0800</div>
+<pre>审查任务 C：lint 工具/测试覆盖审查。
+
+工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts
+背景：这次变更增加 tools/check_parameter_value_sets.py，用来检查 TP004 value-set binding，并接入 tools/check_docs_i18n_sync.py。用户怀疑我漏了很多新东西。
+
+请只做只读审查，不修改文件。重点看：
+- tools/check_parameter_value_sets.py
+- tools/tests/test_check_parameter_value_sets.py
+- tools/check_docs_i18n_sync.py
+- TP004-parameter-system/openspec/VALUE-SETS.md
+- TP004-parameter-system/openspec/SCHEMA-FIELDS.md
+- TP004-parameter-system/openspec/USAGE-INDEX.generated.md
+
+请从“工具是否真的能建立绑定机制、防止 drift”的角度审查，尤其看：
+- parser 是否可靠；是否只扫到部分 fenced YAML；是否遗漏 schema 字段和 usage；
+- 能否发现 value_set_id 重命名、value_id 重复、废弃值使用、未知值、usage index stale；
+- 测试是否覆盖足够；
+- 接入点是否会在 docs_html build 或 i18n sync 时必跑；
+- 是否存在 false positive / false negative 风险。
+
+输出格式：
+1. Findings：按严重程度列出，必须包含文件和行号。
+2. Coverage Gaps：列出测试或工具遗漏。
+3. Verdict：ready / needs fixes / needs discussion。
+
+不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 15:33:33 +0800</div>
+<pre>Using `superpowers:using-superpowers` for required skill routing; this is a read-only code review, so I’ll keep the work to inspection and avoid edits. I’ll also do a quick memory pass because this repo’s docs/governance history is relevant.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 15:34:03 +0800</div>
+<pre>I found the repo is dirty with the target files untracked/modified, so I’ll review the working tree as-is and avoid changing anything. Next I’m reading the checker, its tests, the sync/build entrypoints, and the three TP004 spec files with line numbers for precise findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 15:34:21 +0800</div>
+<pre>The checker is wired into `check_docs_i18n_sync.py`, and `build_docs_html.sh` calls that sync check before building, so the main concern is not “is it reachable” but whether the checker’s model is complete enough. I’m now checking the actual TP004 markdown/YAML shapes and running the read-only tests/checks to see what currently passes or misses.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 15:34:45 +0800</div>
+<pre>The current structured-source index only lists `validation-sets/*.md`; I’m checking the access-definition examples because they contain bound fields too. That will determine whether the tool prevents drift across all TP004 examples or only the validation-case slice.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 15:35:01 +0800</div>
+<pre>I won’t run `tools/build_docs_html.sh` because it deletes and regenerates output directories. I am running the read-only checker, the i18n sync check, and the unit tests directly so the validation signal is still captured without writing files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-02 15:35:44 +0800</div>
+<pre>I have enough for the main review: the largest gap is a false-negative path where governed fields in access-definition YAML are not scanned, and the current docs already contain values that would fail if they were scanned. I’m doing one last pass for exact line references around the generated index and field-binding semantics before finalizing.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-02 15:37:19 +0800</div>
+<pre>One more integration issue is about publishing, not the core checker: the parameter check runs before build, but the i18n copies of the generated usage index are only weakly checked. I’m reading those projection files now so the final verdict can distinguish source-check readiness from published-doc drift risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-02 15:41:19 +0800</div>
+<pre>**1. Findings**
+- **High**: access-definition 绑定基本没被验证。[tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:234) 只扫描 `validation-sets/**/*.md`，而 [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:56) 已绑定 `access_definition.descriptor_map.target_kind`。当前访问定义里实际有 `target_kind: domain_table`，例如 [siemens/tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:114)，但值集合里是 `domain_table_field` [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:60)。工具仍通过，说明主干 access-definition 示例存在 false negative。
+- **High**: 即使扩大扫描范围，`access_definition.*` 路径也和当前 YAML 形状不匹配。工具按完整 dotted path 查找 [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:215)，但访问定义 YAML 顶层是 `descriptor_map` / `access_contract`，不是 `access_definition.descriptor_map`，例如 [siemens/axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:95)。这会让 access-definition 字段绑定继续失效。
+- **Medium**: `required` 被声明但没有执行缺失检查。[SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:25) 定义 required 语义，多个字段标为 required；工具只在路径存在时校验值 [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:211)，`FieldBinding.required` 没有用于报告缺失字段。删除 `expect_error.stage/code` 或 `descriptor_map.target_kind` 这类必填 enum 字段不会失败。
+- **Medium**: parser 对 fenced YAML 的匹配过窄。[tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:22) 只匹配小写 `yaml/yml` 且紧跟 LF；带属性、CRLF、大小写变化或缩进 fence 会被跳过，且没有“期望扫描到多少 YAML block”的独立断言。
+- **Medium**: `value_id` 重复只在单个 value set 内检查。[tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:87) 每个 set 重置 `seen_value_ids`，跨 set 复用同一 `value_id` 会通过；但文档把 `values[].value_id` 定义为稳定值身份 [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:41)。
+- **Medium**: `profile_owned` 规则未实现。[SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:95) 说 profile-owned 可由 profile asset 声明扩展值，但工具对任何未知字符串都直接报错 [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:218)，没有读取 profile 声明。
+- **Medium**: Usage index 不是实际 usage index。生成逻辑只列 value sets、schema fields 和 YAML block 数 [tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:274)，当前文件也只显示 block count [USAGE-INDEX.generated.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/USAGE-INDEX.generated.md:89)。合法值之间的使用变化不会让 usage index stale。
+- **Low/Medium**: 非字符串 enum 值被静默跳过。[tools/check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:215) 遇到非 `str` 直接 `continue`，所以 `stage: 1` 或列表值不会作为 malformed/unknown enum 报错。
+
+**2. Coverage Gaps**
+- 测试只有 3 个直接函数用例 [test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:7)，没有覆盖 loader、fenced YAML 提取、`check()`、usage index stale、i18n/build 集成。
+- 缺少“扫描 access-definitions 并发现 `target_kind: domain_table`”的回归测试。
+- 缺少 required 字段缺失、非字符串 enum、跨 set `value_id` 重复、未知 `value_set`、重复 `value_set_id`、invalid status/openness 的测试。
+- 缺少 profile-owned 声明机制测试。
+- 缺少 zh usage-index projection stale 测试；`check_docs_i18n_sync.py` 对 usage index 只要求少量文本 [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:66)。
+
+**3. Verdict**
+`needs fixes`.
+
+接入点本身存在：`check_docs_i18n_sync.py` 会先跑 parameter checker，`build_docs_html.sh` 会跑 i18n sync。但当前 checker 的扫描范围、路径模型和 required/profile-owned/usage-index 语义不足，不能可靠建立绑定机制或防止 drift。只读验证中，`check_parameter_value_sets.py`、`check_docs_i18n_sync.py` 和单测都通过。&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[repo governance and build context lookup]
+MEMORY.md:49-49|note=[docs_html build entrypoint memory checked against current tree]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

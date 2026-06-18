@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review the Chinese and reader-facing documentation changes in `/tmp/metanc_drafts_tool_edge_slice`....</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Review the Chinese and reader-facing documentation changes in `/tmp/metanc_drafts_tool_edge_slice`....</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece30-18f1-7072-80b1-6e0d7224acc9</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 10:08:39 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T10-08-39-019ece30-18f1-7072-80b1-6e0d7224acc9.jsonl</code></div>
+<div><b>Messages</b>: <code>4</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:08:39 +0800</div>
+<pre>Review the Chinese and reader-facing documentation changes in `/tmp/metanc_drafts_tool_edge_slice`. Scope: readability, Chinese/English parity, and whether wording is too abstract. Read these files: `TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md`, `TP004-parameter-system/book/src/parameter-descriptor-status.md`, `docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md`, `docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md`. Do not edit files. Return findings ordered by severity with file/line references, especially any Chinese wording that is unclear, overly abstract, or diverges materially from the canonical English docs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:09:20 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check, then I’ll use the review stance the request calls for and inspect only the specified files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:09:46 +0800</div>
+<pre>I found the relevant memory around TP004 descriptor docs and the prior requirement that Chinese reader pages carry real visible prose. Now I’m reading the four requested files with line numbers so the review can stay anchored to concrete text.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-16 10:12:26 +0800</div>
+<pre>No high-severity content blocker found. The model semantics mostly track the English source, but I’d flag these before publishing.
+
+**Findings**
+
+- **Medium**: [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:191) labels the section as “后续校验目标”, but the section lists the current slice’s validation targets. That conflicts with the English “Validation Targets” wording in [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:212) and with the status page’s “当前已由 Checker 支撑” list in [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:27). This could make Chinese readers think these checks are future work rather than current/narrow checker responsibilities.
+
+- **Medium**: [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:163) says “access 后续应通过 policy 或 contract 语义返回.” This is too abstract in Chinese and does not clearly express the English intent from [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:182): if access capability returns later, it should come through policy/contract semantics, not boolean shortcuts. A clearer Chinese wording would explicitly say “后续如果重新引入 access 能力，应由 policy/contract 定义读写语义，而不是用 boolean 字段表示.”
+
+- **Low**: [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:57), [line 61](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:61), and [line 69](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:69) drop the English source’s navigable links to `OBJECT-SCOPES.md` and `OWNER-REGISTRY.md`. The same happens around [lines 198-201](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:198). This is not a semantic error, but it weakens reader-facing parity and makes the Chinese page less useful.
+
+- **Low**: The “后续必要性” tables are meant to be concrete, but the Chinese text remains heavy with untranslated labels like “read-only lookup contract”, “accepted access”, “guard token”, “rejection case”, and “invalid-value” in [parameter-descriptors.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptors.md:144) and [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:64). This does not materially diverge from English, but it is still abstract for a Chinese reader page.
+
+No edits made.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:404-406|note=[TP004 descriptor and i18n projection context]
+MEMORY.md:416-422|note=[Chinese reader-facing prose quality risks]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

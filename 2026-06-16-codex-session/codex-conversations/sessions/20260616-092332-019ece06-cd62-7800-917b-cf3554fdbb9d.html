@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece06-cd62-7800-917b-cf3554fdbb9d</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 09:23:32 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T09-23-32-019ece06-cd62-7800-917b-cf3554fdbb9d.jsonl</code></div>
+<div><b>Messages</b>: <code>39</code></div>
+<div><b>User prompts</b>: <code>3</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:23:32 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-16&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:23:32 +0800</div>
+<pre>You are implementing Task 1: accepted real WorkOffset set_offset and SQLite reload TDD.
+
+## Context
+
+Repo: /home/iaar/workspace/ccmix-wp/MetaNC
+Branch: feat/hmi-work-offset-table
+This branch already has uncommitted Slice 3 changes from another worker. You are not alone in the codebase. Do not revert or overwrite changes you did not make. Work only in the files listed below and accommodate existing local changes.
+
+Important: Do NOT commit. The plan template says commit, but for this run commits are disabled because the working tree already contains uncommitted user/agent changes. Report changed files instead.
+
+Follow repository instructions before task work: read root README.md, docs/dev/architecture.md, nrt/hmi/README.md, nrt/hmi/AGENTS.md, nrt/hmi/server/README.md, nrt/work_offset/README.md, and nrt/work_offset/AGENTS.md.
+
+Use TDD strictly: write the failing test first, run it and confirm it fails for the expected missing implementation, then write the minimal production code, then rerun and confirm green.
+
+## Task Description
+
+Goal: Complete the first real set_offset batch: accepted set_offset updates real WorkOffset store and survives backend reconstruction.
+
+Write scope:
+- Modify: nrt/hmi/server/tests/work_offset_real_backend_test.cpp
+- Modify: nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+
+Do not modify docs, generated files, CMake, or nrt/work_offset.
+
+### Step 1: Add helper functions for row values
+
+In nrt/hmi/server/tests/work_offset_real_backend_test.cpp, after find_row, add:
+
+```cpp
+double offset_value(const hmi_work_offset::WorkOffsetRow&amp; row,
+                    std::string_view field) {
+  if (field == &quot;offset_x&quot;) {
+    return row.offset_x;
+  }
+  if (field == &quot;offset_y&quot;) {
+    return row.offset_y;
+  }
+  if (field == &quot;offset_z&quot;) {
+    return row.offset_z;
+  }
+  if (field == &quot;offset_a&quot;) {
+    return row.offset_a;
+  }
+  if (field == &quot;offset_c&quot;) {
+    return row.offset_c;
+  }
+  return std::numeric_limits&lt;double&gt;::quiet_NaN();
+}
+```
+
+Also add `#include &lt;limits&gt;` near the other includes.
+
+### Step 2: Write failing accepted-write and reload test
+
+In nrt/hmi/server/tests/work_offset_real_backend_test.cpp, before the factory seed tests, add:
+
+```cpp
+bool real_backend_set_offset_updates_store_and_survives_reconstruction() {
+  const auto database_path = unique_database_path();
+  const auto snapshot = work_offset::load_snapshot_file(
+      std::string(WORK_OFFSET_SOURCE_DIR) +
+      &quot;/test/fixtures/snapshots/valid/basic_xyzac.snapshot.json&quot;);
+  auto store =
+      std::make_unique&lt;work_offset::SQLitePersistenceStore&gt;(database_path);
+  const work_offset::WorkOffsetScope scope;
+  const auto imported_revision = seed_store(*store, scope, snapshot);
+  if (!imported_revision.has_value()) {
+    return false;
+  }
+
+  hmi_work_offset::RealWorkOffsetBackend backend(std::move(store), scope);
+  const auto before_table = backend.query_work_offsets();
+  const auto* before_g54 = find_row(before_table, &quot;G54&quot;);
+  if (!expect_true(before_g54 != nullptr, &quot;expected G54 before set_offset&quot;)) {
+    std::filesystem::remove(database_path);
+    return false;
+  }
+
+  const auto axis_it = before_g54-&gt;component_axis_ids.find(&quot;offset_x&quot;);
+  if (!expect_true(axis_it != before_g54-&gt;component_axis_ids.end(),
+                   &quot;expected G54 offset_x axis id&quot;)) {
+    std::filesystem::remove(database_path);
+    return false;
+  }
+
+  const auto updated = backend.set_offset({
+      .target_ref = before_g54-&gt;target_ref,
+      .g_code = before_g54-&gt;g_code,
+      .field = &quot;offset_x&quot;,
+      .axis_id = axis_it-&gt;second,
+      .value = 12.5,
+      .expected_revision = before_g54-&gt;revision,
+  });
+
+  bool ok = true;
+  ok &amp;= expect_true(updated.accepted,
+                    &quot;expected real WorkOffset set_offset to be accepted&quot;);
+  ok &amp;= expect_equal(updated.status, &quot;accepted&quot;, &quot;set_offset status&quot;);
+  ok &amp;= expect_equal(updated.code,
+                     &quot;work_offset.offset_updated&quot;,
+                     &quot;set_offset code&quot;);
+
+  const auto refreshed = backend.query_work_offsets();
+  const auto* refreshed_g54 = find_row(refreshed, &quot;G54&quot;);
+  ok &amp;= expect_true(refreshed_g54 != nullptr, &quot;expected G54 after set_offset&quot;);
+  if (refreshed_g54 != nullptr) {
+    ok &amp;= expect_near(refreshed_g54-&gt;offset_x, 12.5, &quot;G54 refreshed X offset&quot;);
+    ok &amp;= expect_true(refreshed_g54-&gt;revision &gt; before_g54-&gt;revision,
+                      &quot;expected G54 row revision to advance after set_offset&quot;);
+  }
+
+  auto reloaded_store =
+      std::make_unique&lt;work_offset::SQLitePersistenceStore&gt;(database_path);
+  hmi_work_offset::RealWorkOffsetBackend reloaded(std::move(reloaded_store),
+                                                  scope);
+  const auto reloaded_table = reloaded.query_work_offsets();
+  const auto* reloaded_g54 = find_row(reloaded_table, &quot;G54&quot;);
+  ok &amp;= expect_true(reloaded_g54 != nullptr, &quot;expected G54 after reload&quot;);
+  if (reloaded_g54 != nullptr) {
+    ok &amp;= expect_near(reloaded_g54-&gt;offset_x, 12.5, &quot;G54 reloaded X offset&quot;);
+  }
+
+  std::filesystem::remove(database_path);
+  return ok;
+}
+```
+
+In main(), add:
+
+```cpp
+  ok &amp;= real_backend_set_offset_updates_store_and_survives_reconstruction();
+```
+
+### Step 3: Run test and verify it fails for expected reason
+
+Run:
+
+```bash
+cmake --build nrt/hmi/generated/server-build-work-offset --target work_offset_real_backend_test
+ctest --test-dir nrt/hmi/generated/server-build-work-offset -R work_offset_real_backend_test --output-on-failure
+```
+
+Expected: build passes, CTest fails because RealWorkOffsetBackend::set_offset returns work_offset.real_backend_not_implemented.
+
+### Step 4: Implement minimal accepted-write translation
+
+In nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp, add these helpers near activate_rejection:
+
+```cpp
+hmi::server::adapters::AdapterValueMap row_details(
+    std::string_view target_ref,
+    std::uint64_t revision) {
+  return {{&quot;target_ref&quot;, json::quote(target_ref)},
+          {&quot;revision&quot;, json::number(revision)}};
+}
+```
+
+Replace RealWorkOffsetBackend::set_offset with minimal implementation:
+
+- Query current HMI table with query_work_offsets().
+- Resolve the row by request.target_ref first; if absent, by request.g_code.
+- Reject missing row with `work_offset.row_unknown`.
+- Reject non-editable row with `work_offset.row_readonly`.
+- Resolve request.field through row.component_axis_ids.
+- Reject unsupported field with `work_offset.offset_field_unsupported`.
+- Reject request.axis_id mismatch before calling WorkOffset with `work_offset.axis_mismatch`.
+- Build `meta_nc::work_offset::SetFrameComponentRequest`:
+  - target_ref = row.target_ref
+  - axis_id = resolved axis id
+  - component_kind = FrameComponentKind::CoarseTranslation
+  - value = request.value
+  - source = StateSource::OperatorConfigured
+  - selector_evidence = row.g_code
+  - expected_revision = Revision{*request.expected_revision} if provided
+- Call `runtime_.set_frame_component(scope_, command)`.
+- Map accepted to `work_offset.offset_updated`, with details from refreshed row revision.
+- Map `wcs-row-revision-conflict` to `work_offset.revision_mismatch`.
+- Map `wcs-expected-revision-required` to `work_offset.expected_revision_required`.
+- Map `wcs-offset-value-invalid` to `work_offset.value_invalid`.
+- Map `wcs-axis-unsupported` to `work_offset.axis_unknown`.
+- Map `wcs-not-found` to `work_offset.row_unknown`.
+- Otherwise return `work_offset.operation_rejected`.
+
+Keep implementation minimal; do not implement Slice 4 Web/QML behavior.
+
+### Step 5: Run accepted-write test and verify it passes
+
+Run:
+
+```bash
+cmake --build nrt/hmi/generated/server-build-work-offset --target work_offset_real_backend_test
+ctest --test-dir nrt/hmi/generated/server-build-work-offset -R work_offset_real_backend_test --output-on-failure
+```
+
+Expected: work_offset_real_backend_test passes.
+
+## Report Format
+
+- Status: DONE | DONE_WITH_CONCERNS | BLOCKED | NEEDS_CONTEXT
+- What you implemented
+- TDD evidence: exact RED failure and GREEN pass commands/results
+- Files changed
+- Self-review findings
+- Any concerns
+
+Remember: do not commit.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:23:58 +0800</div>
+<pre>I’ll use the Superpowers workflow pieces that apply here: `using-superpowers` for skill handling, `brainstorming` only to constrain the already-specified design, `test-driven-development` for RED/GREEN, and `verification-before-completion` before I report done.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:24:12 +0800</div>
+<pre>I’m starting with the mandated repo orientation and a quick memory lookup for this WorkOffset branch, then I’ll make only the test file change needed for RED before touching production code.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:24:48 +0800</div>
+<pre>The repo orientation confirms the scope boundary: HMI server owns the adapter/command surface, while `nrt/work_offset` owns the domain semantics and SQLite persistence. I’ll keep the change to the two files the task named.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:25:10 +0800</div>
+<pre>There are existing uncommitted edits in both files I’m allowed to touch, so I’m reading the current versions carefully before patching. That avoids trampling the Slice 3 work already in the tree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:25:32 +0800</div>
+<pre>I’ve completed the required HMI/work_offset reading pass and confirmed there is no additional `AGENTS.md` below `nrt/hmi/server`. Next I’m checking the exact domain request/result types so the production patch stays minimal and matches the existing adapter style.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:25:57 +0800</div>
+<pre>The existing diff shows the two target files already carry prior Slice 3 changes, including factory tests and adapter comments. I’ll layer the new RED test around those changes without removing or rearranging them.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:26:09 +0800</div>
+<pre>I’m applying the RED test now: include `&lt;limits&gt;`, add the row-value helper after `find_row`, add the accepted-write/reload test before the factory tests, and wire it into `main()`. No production implementation change yet.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 09:26:38 +0800</div>
+<pre>The RED test is in place and production code is still the not-implemented stub. I’m running the requested build/test pair now to confirm the test fails for the expected adapter stub code, not for a compile or fixture problem.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 09:26:56 +0800</div>
+<pre>The RED build passed, which means the new test compiles against the current branch state. I’m running CTest now and expecting the command result to report `work_offset.real_backend_not_implemented`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 09:27:06 +0800</div>
+<pre>RED is confirmed: CTest failed because `set_offset` still returns `unavailable` with `work_offset.real_backend_not_implemented`, and the SQLite reload stayed at the original G54 X value. I’m moving to the minimal production adapter implementation now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 09:27:50 +0800</div>
+<pre>The mock WorkOffset backend already has the HMI-facing rejection codes for row lookup, unsupported fields, axis echo mismatches, and row revision mismatches. I’m matching those public codes while delegating accepted writes and domain diagnostics to the real WorkOffset runtime.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 09:28:28 +0800</div>
+<pre>One implementation detail I checked: the WorkOffset runtime only persists accepted writes, and rejected commands return without saving. The adapter can therefore do preflight HMI validation, call `set_frame_component`, then re-query for the refreshed row revision on success.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 09:29:25 +0800</div>
+<pre>I’m editing the adapter in the same style as the existing activation path: small local helpers for row resolution/details, preflight HMI checks, then a domain command plus diagnostic-code translation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 09:30:07 +0800</div>
+<pre>The production implementation is patched. I’m rebuilding the focused target first; if there is a compile issue, I’ll fix that before running CTest.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 09:30:21 +0800</div>
+<pre>The focused build is clean after the adapter change. I’m running the requested CTest command now to verify the RED test turns green.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-16 09:30:49 +0800</div>
+<pre>The GREEN test passed. I’m doing a final diff/status review now to separate my two-file changes from the pre-existing uncommitted Slice 3 edits and to catch any accidental scope drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-16 09:31:20 +0800</div>
+<pre>The diff review confirms only the two requested files were edited by this task, but the worktree still contains unrelated pre-existing modifications in other HMI files. I also noticed the requested `offset_value` helper is currently unused; that is exactly as requested, and the build accepts it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-16 09:31:39 +0800</div>
+<pre>I’ll run one final focused verification pass before the report so the final status is backed by the latest build/test output from this exact tree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-16 09:32:39 +0800</div>
+<pre>I’m grabbing the exact memory citation lines now because I used the saved WorkOffset branch context during orientation. After that I’ll send the report in the format you requested.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / final_answer</h3>
+<div class="time">2026-06-16 09:32:57 +0800</div>
+<pre>Status: DONE
+
+What I implemented:
+- Added the requested `offset_value()` helper and `&lt;limits&gt;` include in [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:6).
+- Added the real backend accepted `set_offset` SQLite reload regression test in [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:362).
+- Replaced the real backend `set_offset` stub with a minimal HMI-to-WorkOffset translation in [work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:427): row lookup, editability/field/axis preflight, `SetFrameComponentRequest`, accepted result mapping, and domain diagnostic mapping.
+
+TDD evidence:
+- RED build: `cmake --build nrt/hmi/generated/server-build-work-offset --target work_offset_real_backend_test` exited 0.
+- RED test: `ctest --test-dir nrt/hmi/generated/server-build-work-offset -R work_offset_real_backend_test --output-on-failure` failed as expected:
+  - `expected real WorkOffset set_offset to be accepted`
+  - `set_offset status: expected accepted, got unavailable`
+  - `set_offset code: expected work_offset.offset_updated, got work_offset.real_backend_not_implemented`
+- GREEN build: same `cmake --build ...` exited 0.
+- GREEN test: same `ctest ...` passed: `100% tests passed, 0 tests failed out of 1`.
+
+Files changed:
+- `nrt/hmi/server/tests/work_offset_real_backend_test.cpp`
+- `nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp`
+
+Self-review findings:
+- No commit made.
+- Scope stayed within the two requested files.
+- The worktree still has pre-existing uncommitted Slice 3 changes in other HMI files; I left them untouched.
+- The requested `offset_value()` helper is currently unused, but present exactly for the row-value helper step.
+
+Concerns:
+- The requested mapping says `wcs-offset-value-invalid` maps to `work_offset.value_invalid`; existing runtime-extension parsing uses `work_offset.offset_value_invalid` for parse-time invalid values. I followed the task text for the real backend domain diagnostic path.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:181-184|note=[confirmed WorkOffset V1 branch boundary and HMI-owned set_offset adapter scope]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a014-7253-ad54-2cdfce601b27
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:53:07 +0800</div>
+<pre>Task 1 code quality review found issues. Please fix them using TDD, no commit.
+
+Repo: /home/iaar/workspace/ccmix-wp/MetaNC
+You are not alone in the codebase. Do not revert unrelated changes. Work only in:
+- nrt/hmi/server/tests/work_offset_real_backend_test.cpp
+- nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+
+## Issues to fix
+
+Important:
+1. Real backend maps domain `wcs-offset-value-invalid` to `work_offset.value_invalid`, but existing HMI command parser maps invalid set_offset values to `work_offset.offset_value_invalid` in `work_offset_runtime_extension_adapter.cpp`. We need one stable public HMI code: use `work_offset.offset_value_invalid` for the real backend domain diagnostic too.
+
+TDD requirement for issue 1:
+- Add a failing real-backend test that calls `backend.set_offset` directly with a non-finite value (`std::numeric_limits&lt;double&gt;::quiet_NaN()`), otherwise valid `target_ref`, field, axis_id, and row revision.
+- Expected code: `work_offset.offset_value_invalid`.
+- Verify RED first: it should fail because current code returns `work_offset.value_invalid`.
+- Then change `set_offset_rejection()` mapping for `wcs-offset-value-invalid` to `work_offset.offset_value_invalid`.
+- Verify GREEN with focused `work_offset_real_backend_test`.
+
+Minor fixes:
+2. In accepted-path test, assert `updated.details[&quot;revision&quot;]` matches refreshed G54 row revision. Use existing `detail_uint()` helper.
+3. Use the `offset_value()` helper in assertions so it is not dead code, or remove the helper and `&lt;limits&gt;` only if you replace the NaN test with another include source. Since NaN test needs `&lt;limits&gt;`, keeping the helper is fine but use it where practical.
+4. If `seed_store()` fails in the new/accepted tests, remove `database_path` before returning.
+
+Please report:
+- Status
+- RED command/output summary for invalid-value mapping test
+- GREEN command/output summary
+- Files changed
+- Self-review findings
+
+Do not commit.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:53:31 +0800</div>
+<pre>I’ll use `receiving-code-review` for the review feedback, `test-driven-development` for the requested RED/GREEN loop, and `verification-before-completion` before reporting. I’ll also keep the repo-orientation pass lightweight but current before editing.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:53:56 +0800</div>
+<pre>The review requirements are clear: stabilize the invalid-value code to `work_offset.offset_value_invalid`, add a direct real-backend NaN regression first, and tighten the accepted-path assertions. I’m re-reading the repo/module instructions and current file state before the RED edit.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:54:24 +0800</div>
+<pre>The repo rules still point to the same boundary: HMI server owns this public command-code mapping, and `nrt/work_offset` stays untouched. I’m checking the current two-file diff and HMI local guidance, then I’ll add only the RED test/minor test tightening before production changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:54:41 +0800</div>
+<pre>I found the exact current mismatch in `set_offset_rejection()`: the real backend returns `work_offset.value_invalid` while the runtime parser already uses `work_offset.offset_value_invalid`. I’m adding the direct NaN real-backend test now and tightening the accepted test assertions before touching that production mapping.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:55:17 +0800</div>
+<pre>The RED test and minor test fixes are in place. Production still returns the old invalid-value code, so I’m running the focused build and CTest to confirm the new test fails for that exact reason.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:55:50 +0800</div>
+<pre>RED is confirmed: the new test fails only on the public code mismatch, expecting `work_offset.offset_value_invalid` but receiving `work_offset.value_invalid`. I’m making the one-line production mapping change now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:56:10 +0800</div>
+<pre>The production change is now limited to the diagnostic-code mapping. I’m rerunning the same focused build and CTest for GREEN, then I’ll inspect the final diff.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 09:56:28 +0800</div>
+<pre>The focused target rebuilt cleanly after the mapping change. I’m running CTest now for the GREEN result.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 09:56:44 +0800</div>
+<pre>GREEN is confirmed for the focused test. I’m doing a final scope/diff review now, including checking that only the two allowed files changed in this pass and that unrelated dirty files remain untouched.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 09:57:01 +0800</div>
+<pre>One review item was still incomplete in the accepted-path test: its `seed_store()` failure branch still leaked the temporary database path. I’m fixing that cleanup now and rerunning the same focused verification.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 09:57:09 +0800</div>
+<pre>The cleanup branch is fixed. I’m rerunning build and CTest fresh so the final report has current evidence after that last test-file change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-16 09:57:35 +0800</div>
+<pre>The rerun is green after the cleanup fix. I’m doing one last diff/status check for the final self-review and citation lines.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-16 09:57:48 +0800</div>
+<pre>The final diff showed one cleanup branch still missing in the accepted-path test because the earlier patch matched a similar `seed_store()` block first. I’m correcting that exact branch and rerunning the focused verification once more.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-16 09:58:00 +0800</div>
+<pre>That targeted cleanup change is in. I’m verifying the exact lines and rerunning the focused test pair fresh.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-16 09:58:29 +0800</div>
+<pre>The final focused verification is green after the cleanup fix. I’ll update the plan and send the concise report with RED/GREEN evidence and the remaining dirty-worktree note.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / final_answer</h3>
+<div class="time">2026-06-16 09:58:50 +0800</div>
+<pre>Status: DONE
+
+Implemented:
+- Added direct real-backend NaN `set_offset` regression expecting `work_offset.offset_value_invalid`.
+- Changed real backend domain `wcs-offset-value-invalid` mapping to `work_offset.offset_value_invalid`.
+- Tightened accepted-path test to assert result `details[&quot;revision&quot;]` matches refreshed G54 row revision.
+- Used `offset_value()` in refreshed/reloaded assertions.
+- Added temp DB cleanup on `seed_store()` failure paths in the touched tests.
+
+RED evidence:
+- Build: `cmake --build nrt/hmi/generated/server-build-work-offset --target work_offset_real_backend_test` exited 0.
+- Test: `ctest --test-dir nrt/hmi/generated/server-build-work-offset -R work_offset_real_backend_test --output-on-failure` failed as expected:
+  - `non-finite set_offset code: expected work_offset.offset_value_invalid, got work_offset.value_invalid`
+
+GREEN evidence:
+- Build: same `cmake --build ...` exited 0.
+- Test: same `ctest ...` passed:
+  - `100% tests passed, 0 tests failed out of 1`
+
+Files changed:
+- `nrt/hmi/server/tests/work_offset_real_backend_test.cpp`
+- `nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp`
+
+Self-review findings:
+- No commit made.
+- Scope stayed inside the two allowed files.
+- Worktree still has unrelated pre-existing uncommitted HMI changes; I did not touch or revert them.
+- The public invalid-value code is now consistent with `work_offset_runtime_extension_adapter.cpp`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:181-184|note=[confirmed WorkOffset V1 adapter boundary and HMI-owned set_offset semantics]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a014-7253-ad54-2cdfce601b27
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

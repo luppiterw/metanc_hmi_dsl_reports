@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8258-1d88-7cd2-b686-b9e51f4f72d6</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-01 16:41:13 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/01/rollout-2026-06-01T16-41-13-019e8258-1d88-7cd2-b686-b9e51f4f72d6.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 16:41:13 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-01&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 16:41:13 +0800</div>
+<pre>你是 Reviewer C，做文档/架构边界一致性审查。仓库：/home/iaar/workspace/mirror-ccmix-wp/MetaNC，分支 feat/plc。范围：审查最近提交 `3abae500 feat(rt-sdk): add command lifecycle states` 相对父提交的文档与 public/private 边界。请只读不改文件。
+
+重点文件：
+- rt-sdk/README.md
+- rt-sdk/docs/src/concepts/simulation-live-adapter-design.md
+- rt-sdk/docs/src/concepts/simulation-backend-readiness.md
+- rt-sdk/docs/src/concepts/simulation-baseline-closeout.md
+- rt-sdk/docs/src/concepts/simulation-backend-design.md
+- rt-sdk/tests/public_header_boundary_tests.cpp
+- rt-sdk/include/metanc/rt_sdk/command.hpp
+
+重点问题：文档是否准确表达“内部 tracker 支持状态，但 connected placeholder profiles 仍 immediate completed”；下一步是否统一为 command execution source；有没有仍暗示 runtime/PLC boot、live executor、public endpoint grammar、public tracker API；README 是否有语病或矛盾；public header boundary 是否足够防泄漏。
+
+输出按 code review 格式：Finding 列表，包含文件/行号、严重级别、理由；没有问题就明确说 no findings，并列 remaining risks。不要做代码修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 16:42:15 +0800</div>
+<pre>我会按只读审查来做：先满足仓库的 AGENTS 流程，读根 README 和架构 codemap，再定位 `rt-sdk` 模块边界与这次提交的 diff。并使用文档理解审查技能，因为这次重点是文档/架构边界一致性。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 16:44:17 +0800</div>
+<pre>根 README 和架构 codemap 已读；架构里 `/rt-sdk` 是稳定的 userland SDK 边界，不能直接泄漏 RT runtime/Orocos 实现。接下来我会读 `rt-sdk` 的本地说明和该提交的 diff，然后逐条对照你列的边界问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 16:45:16 +0800</div>
+<pre>`rt-sdk` 下没有额外 AGENTS 文件，只有模块 README；当前分支正停在 `3abae500`。我已经看到这次提交主要改了文档措辞、私有 lifecycle tracker 实现和边界测试，下一步会逐文件核对现行行号而不是只看 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 16:46:12 +0800</div>
+<pre>文档整体已经过一遍，候选问题集中在 baseline closeout 的旧风险措辞，以及 public header boundary 测试是否覆盖全部 public include。现在我会补查 public include 列表、CMake 测试定义和关键关键词，确认是否是实质性 finding。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 16:46:40 +0800</div>
+<pre>有两个候选已经看起来成立：一处 closeout 文档仍说 tracker “只限于 id allocation + immediate completed”，这和本提交新增的内部状态支持相冲突；另一处边界测试漏扫了 `parameters.hpp` 这个 public header。我会最后再确认 public 聚合头和文档上下文，避免误报。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-01 16:47:26 +0800</div>
+<pre>**Findings**
+
+1. **Medium** - [rt-sdk/tests/public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:41) omits `include/metanc/rt_sdk/parameters.hpp` from the public-header scan, even though [rt-sdk/include/metanc/rt_sdk.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/include/metanc/rt_sdk.hpp:7) exports it as part of the public SDK surface. That leaves one public header unguarded against the newly added private lifecycle tokens (`CommandLifecycleRecord`, `mark_running`, etc.) and the existing PLC/runtime leakage tokens. The current file does not appear to leak them, but the boundary test is not sufficient to prevent future leakage in all public headers.
+
+2. **Low** - [rt-sdk/docs/src/concepts/simulation-baseline-closeout.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/docs/src/concepts/simulation-baseline-closeout.md:77) still says tracker docs/tests keep the lifecycle tracker “limited to id allocation plus immediate completed placeholders.” That now conflicts with the same page’s later statement that the tracker can represent `accepted`, `running`, `completed`, `failed`, `canceled`, and `timed-out` states at lines 100-103. This weakens the intended message: internal tracker state support exists, but connected placeholder profiles still complete immediately.
+
+**Remaining Risks**
+
+I did not run tests or docs builds because this was a read-only review. I did not find remaining wording that incorrectly makes runtime/PLC boot, live executor behavior, stable public endpoint grammar, or public tracker APIs part of the current public contract; the reviewed docs consistently frame those as private or future work.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:45-50|note=[repo-family PLC review context and recheck guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

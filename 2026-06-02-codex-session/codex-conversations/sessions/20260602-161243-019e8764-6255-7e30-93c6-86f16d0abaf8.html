@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审查任务 D：现有 TP004 controlled vocabulary 漏项覆盖审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：我们...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>审查任务 D：现有 TP004 controlled vocabulary 漏项覆盖审查。 工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts 背景：我们...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8764-6255-7e30-93c6-86f16d0abaf8</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 16:12:43 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T16-12-43-019e8764-6255-7e30-93c6-86f16d0abaf8.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 16:12:43 +0800</div>
+<pre>审查任务 D：现有 TP004 controlled vocabulary 漏项覆盖审查。
+
+工作区：/home/iaar/workspace/ccmix-wp/metanc_drafts
+背景：我们补了 second-slice value sets：operation/context/vendor/index type/component/value type/unit/dispatch target/profile/symbol kind。但用户怀疑仍然漏了很多新东西。请只做只读审查，不修改文件。
+
+搜索范围：
+- TP004-parameter-system/openspec/**/*.md
+- TP004-parameter-system/book/src/**/*.md
+- docs_i18n/en/src/TP004-parameter-system/**/*.md
+- docs_i18n/zh/src/TP004-parameter-system/**/*.md
+
+任务：找出还像 enum / controlled vocabulary / schema field path / diagnostic code / lifecycle state / access status / owner kind / profile kind / selector kind / mapping kind / dispatch target 的东西，但没有纳入 VALUE-SETS.md 或 SCHEMA-FIELDS.md，或者纳入后仍无法被 checker 扫到。
+
+输出格式：
+1. Findings：按严重程度列出，必须包含文件和行号。
+2. Candidate Missing Value Sets：按 value set 名称建议列出，应纳入哪些现有值。
+3. Verdict：ready / needs fixes / needs discussion。
+
+不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 16:13:57 +0800</div>
+<pre>Using `superpowers:using-superpowers` to check the applicable workflow first. I’ll keep this as a read-only review, then inspect the TP004 vocabulary registries and search the requested doc scopes for unregistered controlled terms.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 16:14:18 +0800</div>
+<pre>I’m reading the active TP004 registries first, then I’ll compare them against vocabulary-looking tokens in the requested Markdown scopes. The review will stay limited to those files plus the referenced registry files needed for comparison.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 16:15:21 +0800</div>
+<pre>The worktree is already dirty and includes the new TP004 registry/checker files as untracked or modified, so I’m treating the current filesystem state as the review target and not touching it. Next I’m checking what the registries actually define and what the checker can discover.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 16:16:01 +0800</div>
+<pre>The checker currently loads only `TP004-parameter-system/openspec/access-definitions` and `TP004-parameter-system/openspec/validation-sets`, so published `book/src` and `docs_i18n` copies are not independently scanned. I’m now looking for schema/value tokens inside those Markdown/YAML blocks that are outside the current binding paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 16:16:55 +0800</div>
+<pre>Some broad `rg` patterns were too noisy because the docs contain many backticked path examples and duplicated published copies. I’m narrowing this to YAML fields and tabular “status/result/stage” vocabularies, then I’ll verify each candidate against `VALUE-SETS.md`, `SCHEMA-FIELDS.md`, and the checker’s actual load paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-02 16:22:27 +0800</div>
+<pre>The strongest pattern so far is not just missing values, but missing bindings for entire families of fields: owners, fixture owner availability, supported/unsupported form status, descriptor domain/field names, and top-level case group/status concepts. I’m doing one structured pass over fenced YAML now so the final findings are grounded in specific paths and not just prose matches.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-02 16:30:25 +0800</div>
+<pre>只读审查完成，未修改文件。`python3 tools/check_parameter_value_sets.py` 当前通过，但它没有覆盖下面这些漏项。
+
+**Findings**
+
+1. **High**: 顶层 `fixtures.profile` 已有值集但扫不到。`siemens-compat-first-slice` 出现在 [tool-dp3.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/siemens/tool-dp3.md:24)，但 `SCHEMA-FIELDS.md` 只绑定了 case-local `validation_case.fixtures.profile`，见 [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:163)。checker 对 `validation_case.*` 只遍历 `valid/invalid/access/dispatch` case，见 [check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:255)。所以顶层 fixture profile 永远不会进入 usage index。
+
+2. **High**: checker 不扫描本任务要求的 published/i18n 范围。它只加载 `TP004-parameter-system/openspec/access-definitions` 和 `validation-sets`，见 [check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:345)。但 `docs_i18n/zh` 中有实际 YAML，例如 [tool-dp3.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/validation-sets/siemens/tool-dp3.md:47)。这些副本漂移时不会失败。
+
+3. **High**: owner 类值未治理。`tool_management`、`motion.axis`、`zero_offset` 出现在 `descriptor_map.owner`、`dispatch.owner`、`expect.descriptor.owner`、`fixtures.owners.*`，如 [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:115)、[axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:96)、[zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:101)。`SCHEMA-FIELDS.md` 目前只覆盖 vendor/dispatch target/missing_targets，没有 owner binding。
+
+4. **Medium**: descriptor domain 和 native field symbol 未治理。`tool_table`/`machine_data`/`zero_offset` 以及 `DP3`/`MAX_AX_VELO`/`UIFR` 是稳定映射值，但不在 value sets 或 schema bindings 中，见 [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:120)、[axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:101)、[zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:106)。
+
+5. **Medium**: access guard / access capability 状态未治理。`readable`、`writable` 和 guard codes 如 `tool_must_exist`、`axis_must_exist`、`activation_timing_must_be_respected` 都是受控行为条件，见 [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:126)、[axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:112)、[zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:117)。
+
+6. **Medium**: selector names 和 `path_params` type binding 漏扫。`tool`、`edge`、`axis_ref`、`frame`、`axis`、`component` 是 selector vocabulary，见 [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:107)。MetaNC 示例使用 `shape.path_params[].type`，见 [README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/metanc/README.md:47)，但 binding 只有 `shape.indexes.type`，见 [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:85)。
+
+7. **Medium**: supported/unsupported form status 未治理。Status 列出现 `supported reference`、`profile-defined MetaNC compatibility extension`、`invalid`、`invalid for this native view`、`profile-defined`、`placeholder only`、`configuration-dependent`、`invalid or unresolved`，见 [tool.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/tool.md:164)、[axis-machine-data.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:147)、[zero-offset.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:154)。
+
+8. **Low/Discussion**: validation case group 和 fixture field kind 是受控 schema vocabulary，但没有显式 registry。`valid/invalid/access/dispatch` 见 [case-schema.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/case-schema.md:18)，fixture fields `profile/owners/axis_map/frames/components/symbols` 见 [case-schema.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/validation-sets/case-schema.md:82)。
+
+**Candidate Missing Value Sets**
+
+- `owner_reference`: `tool_management`, `motion.axis`, `zero_offset`.
+- `descriptor_domain`: `tool_table`, `machine_data`, `zero_offset`.
+- `native_descriptor_field`: `DP3`, `MAX_AX_VELO`, `UIFR`.
+- `selector_name`: `tool`, `edge`, `axis_ref`, `frame`, `axis`, `component`.
+- `access_guard_code`: `tool_must_exist`, `edge_must_exist`, `axis_must_exist`, `frame_must_exist`, `write_context_must_allow_tool_table_change`, `write_context_must_allow_axis_machine_data_change`, `write_context_must_allow_zero_offset_change`, `activation_timing_must_be_respected`.
+- `owner_availability`: existing representation is `true`/`false`; consider normalized values `available`/`unavailable`.
+- `access_form_status`: `supported reference`, `profile-defined MetaNC compatibility extension`, `profile-defined`, `placeholder only`, `configuration-dependent`, `invalid`, `invalid for this native view`, `invalid or unresolved`.
+- `validation_case_group_kind`: `valid`, `invalid`, `access`, `dispatch`.
+- `fixture_field_kind`: `profile`, `owners`, `axis_map`, `frames`, `components`, `symbols`.
+
+**Verdict**
+
+`needs fixes`. The second-slice value sets cover several concrete fields, but checker coverage and schema-field binding are still too narrow. Owner/domain/field/guard/status vocabularies need either formal value sets or an explicit decision that they are governed elsewhere.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:108-111|note=[workspace lineage and metanc_drafts parameter docs context]
+MEMORY.md:145-157|note=[parameter terminology governance preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

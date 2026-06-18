@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read-only code review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc only. Review runtime c...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Read-only code review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc only. Review runtime c...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7120-85db-7ac1-ade9-e85202094e5f</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-29 08:26:57 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T08-26-57-019e7120-85db-7ac1-ade9-e85202094e5f.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-29 08:26:57 +0800</div>
+<pre>Read-only code review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc only. Review runtime command/session/adapter surfaces for contract bugs and adapter boundary issues. Focus: command_executor, runtime_command, runtime_simulation_session, local_runtime_adapter, scenario runner command bridge, typed payloads. Include tests under rt/plc/tests/story28, story29, story30, story32, story33, story35. Do not edit files. Output findings first with file/line references; include any missing tests or contract ambiguities.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-29 08:27:09 +0800</div>
+<pre>I’ll keep this strictly read-only and inside `rt/plc`. I’m doing a quick memory pass for prior `rt/plc` workflow context, then I’ll inspect the command/session/adapter surfaces and the named story tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-29 08:27:25 +0800</div>
+<pre>The checkout is detached-head in `/tmp/metanc_plc_review`, and I’ll ignore anything outside `rt/plc`. I found the prior PLC notes confirming this area has a local `RuntimeSimulationSession` and command executor flow, so now I’m reading the actual headers/sources plus the requested story tests for current behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-29 08:28:07 +0800</div>
+<pre>The core executor is small enough to audit line-by-line. I’m now following the command bridge from scenario scripts into the session/adapter and comparing it against the story tests so findings are grounded in tested contracts, not just style concerns.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-29 08:28:39 +0800</div>
+<pre>The scenario runner has a dedicated `ScenarioCommandSession` bridge in `demo_support.cpp`, so I’m expanding that section next. I’m also checking descriptor/snapshot structures because typed payload correctness depends on whether the catalog reflects all declared signals.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-29 08:29:04 +0800</div>
+<pre>I’ve got the main bridge points now: `CommandExecutor`, `RuntimeSimulationSession`, `LocalRuntimeAdapter`, `ScenarioCommandSession`, and terminal simulator command parsing. Next I’m reading the story-specific tests in full, because the review needs to call out gaps where the test suite locks in the wrong behavior or misses an adapter contract.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-29 08:31:12 +0800</div>
+<pre>One likely class of issue is catalog mismatch: the executor validates command names against a descriptor-derived catalog, while the runtime reads/writes through bound backend channels. I’m checking the descriptor parser and fixture shapes now to see whether names and channels can diverge in supported configs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-05-29 08:32:37 +0800</div>
+<pre>A concrete lifecycle bug is emerging: shutdown requests stop, but boot does not appear to clear that stop request before re-entering RUNNING. I’m verifying whether that is intentional in docs/tests or just an uncovered adapter/session contract break.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-05-29 08:32:54 +0800</div>
+<pre>Framework restart itself is covered by older tests, but the session/facade restart path is not. I’m going to inspect the exact framework boot/reset code around the successful boot tail and the restart tests so I can distinguish a real bug from a lower-level guarantee.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-05-29 08:34:20 +0800</div>
+<pre>There are now a few candidate findings; I’m checking the story specs before finalizing severity. The strongest issues so far are adapter bridges still parsing legacy line text, terminal simulator hard-coding demo virtual names, and scenario DI observations lacking the same unknown-signal path that DO/virtual observations have.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-05-29 08:36:45 +0800</div>
+<pre>I’ve found a stronger adapter-boundary issue in the signal catalog: it can merge legacy `io.digital_*` names with `io_channels` even though runtime binding validation treats `io_channels` as authoritative. I’m checking whether validation forbids that mixed descriptor shape; if it does not, the executor can accept commands for non-runtime channels.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-05-29 08:38:35 +0800</div>
+<pre>**Findings**
+
+- High: `RuntimeSignalCatalog` can accept non-runtime DI/DO names when a descriptor contains both legacy `io.digital_*` lists and `io_channels`. The catalog appends both sources in [runtime_command.cpp](/tmp/metanc_plc_review/rt/plc/src/runtime_command.cpp:146), while runtime binding validation switches to `io_channels` authority when that inventory exists in [descriptors.cpp](/tmp/metanc_plc_review/rt/plc/src/descriptors.cpp:1477). `SetDigitalInput` then validates against the over-broad catalog and writes an arbitrary sim input in [command_executor.cpp](/tmp/metanc_plc_review/rt/plc/src/command_executor.cpp:284). Result: an adapter can receive `ok/set-digital-input` for a DI name that no PLC behavior can observe.
+
+- Medium: Scenario DI observation misses the stable unknown-signal contract. `di.&lt;name&gt;` reads use `ListInputs` and then parse for a matching line in [demo_support.cpp](/tmp/metanc_plc_review/rt/plc/src/demo_support.cpp:718); when the DI is absent, `ListInputs` still returns OK and `parse_command_bool_line()` throws a generic missing-line error from [demo_support.cpp](/tmp/metanc_plc_review/rt/plc/src/demo_support.cpp:613). DO and virtual unknowns go through command results, but DI does not. The Story-29 validation explicitly says missing observed names should fail with executor code such as `error/unknown-signal` in [SLICE.md](/tmp/metanc_plc_review/rt/plc/docs/spec/STORIES/STORY-29-scenario-runner-runtime-command-adapter/SLICE-02-scenario-observation-reads/SLICE.md:49), and tests only cover unknown DO/virtual cases in [story29_scenario_observation_tests.cpp](/tmp/metanc_plc_review/rt/plc/tests/story29_scenario_observation_tests.cpp:114).
+
+- Medium: `metanc_plc_sim` still has demo-specific virtual signal names embedded in the adapter. `known_virtuals()` returns only `cycle_active` and `sequence_done` in [plc_sim_main.cpp](/tmp/metanc_plc_review/rt/plc/src/plc_sim_main.cpp:49), and both snapshot and tick summaries iterate that list in [plc_sim_main.cpp](/tmp/metanc_plc_review/rt/plc/src/plc_sim_main.cpp:534) and [plc_sim_main.cpp](/tmp/metanc_plc_review/rt/plc/src/plc_sim_main.cpp:643). Non-demo descriptors will either omit their real virtuals or print hard-coded `error/unknown-signal` records. This is an adapter-boundary leak; the command surface lacks a descriptor-driven virtual listing command/payload.
+
+**Missing Tests / Ambiguities**
+
+- Add a mixed `io` + `io_channels` descriptor test for `RuntimeSignalCatalog`, `SetDigitalInput`, `ListInputs`, and `ListOutputs`; define whether legacy lists are forbidden once `io_channels` exists or whether the executor should use only the active runtime inventory.
+
+- Add scenario watch/expect tests for `di.missing_input`. If `ListInputs` remains the DI observation command, the contract should specify the missing-record error shape; otherwise add a `GetDigitalInput` command to match DO/virtual unknown-name behavior.
+
+- Clarify pre-boot observation semantics. `GetState` can return OK before boot because [command_executor.cpp](/tmp/metanc_plc_review/rt/plc/src/command_executor.cpp:325) has no runtime-state guard, and tests accept that in [story32_request_response_contract_tests.cpp](/tmp/metanc_plc_review/rt/plc/tests/story32_request_response_contract_tests.cpp:168). The session contract says successful `boot()` is the only path that allows commands to run, so observations need an explicit exception or a stricter guard.
+
+No files were edited; this was a static read-only review.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:120-124|note=[prior RuntimeSimulationSession context]
+MEMORY.md:172-175|note=[prior PLC validation context]
+MEMORY.md:110-114|note=[prior Story-28 command context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e47de-63d6-7253-8e15-843faec297b6
+019e299c-b0bc-7ab0-a940-802cf0dd3586
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

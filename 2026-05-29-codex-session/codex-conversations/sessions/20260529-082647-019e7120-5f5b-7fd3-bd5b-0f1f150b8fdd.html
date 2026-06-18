@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read-only code review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc only. Review PLC core...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Read-only code review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc only. Review PLC core...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7120-5f5b-7fd3-bd5b-0f1f150b8fdd</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-29 08:26:47 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T08-26-47-019e7120-5f5b-7fd3-bd5b-0f1f150b8fdd.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-29 08:26:47 +0800</div>
+<pre>Read-only code review task. Workspace: /tmp/metanc_plc_review. Scope: rt/plc only. Review PLC core runtime/framework code for bugs, inconsistent lifecycle semantics, unsafe state handling, or behavior regressions. Focus files: rt/plc/include/metanc/plc/framework.hpp, behavior.hpp, descriptors.hpp, sequence.hpp, motion.hpp and matching src files. Do not edit files. Output findings first, ordered by severity, with file/line references and concrete reasoning. If no issues, say so and note residual risks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-29 08:26:59 +0800</div>
+<pre>I’ll keep this read-only and stay inside `/tmp/metanc_plc_review/rt/plc`. I’m doing a quick memory check for prior `rt/plc` review context, then I’ll inspect the focused headers/sources with line numbers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-29 08:27:13 +0800</div>
+<pre>Memory only confirmed the prior boundary: PLC work should remain strictly under `rt/plc`. I’ve confirmed this checkout is detached HEAD and I’m now reading the focused runtime/framework files plus nearby tests/specs where needed for contract evidence.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-29 08:27:51 +0800</div>
+<pre>The framework path is large enough that I’m splitting it into lifecycle, reload, cycle loop, and cleanup sections. One suspicious area so far is reload/ownership handling, so I’m cross-checking it against the motion backend and tests before deciding whether it’s a real finding.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-29 08:29:53 +0800</div>
+<pre>The descriptor parser/validator is mostly hand-rolled, so I’m checking parser state flags against validation, not just the happy path. I’m also reading the sequence tests because control-flow state bugs usually only show up across repeated `run()` calls.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-29 08:30:52 +0800</div>
+<pre>I’ve found two plausible lifecycle defects in `Framework::boot/reload`, both around cleanup after partial success. I’m checking whether watchdog configuration is wired through the framework as well, because the focused files define the monitor but the run loop I’ve read so far does not invoke it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-29 08:35:01 +0800</div>
+<pre>The watchdog code is intentionally a pure monitor, but the current capability docs say the framework detects task heartbeat timeouts. I’m checking whether the parsed runtime watchdog config ever reaches `FrameworkConfig` or `Framework::run_cycle_once`; if not, that is a concrete regression between docs/config and runtime behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-29 08:41:32 +0800</div>
+<pre>**Findings**
+- High: [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:652) marks the PLC scan heartbeat running before unguarded backend/hook calls, but completion is only recorded at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:702). If `read_inputs`, `poll_incoming`, `after_poll_incoming`, outbound evaluation, or `write_outputs` throws, `run_cycle_once()` exits with state still `RUNNING` and heartbeat stuck in `kRunning`. `run()` also has no catch boundary at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:718), so the framework can look alive after an aborted scan.
+
+- High: [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:544) initializes candidate reload behaviors before declarative ownership conflict checks at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:566). A candidate `init()` can call motion APIs through `AxisHandle::move_to()` at [motion.cpp](/tmp/metanc_plc_review/rt/plc/src/motion.cpp:52) while the old runtime still owns the axis; even the sim backend mutates state to fault on owner mismatch at [sim_backends.cpp](/tmp/metanc_plc_review/rt/plc/src/sim_backends.cpp:265). A reload later rejected for ownership conflict can therefore perturb the live old runtime.
+
+- High: [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:581) stops old behaviors and [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:591) releases old PLC motion owners before acquiring candidate declarative owners at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:594). If candidate acquisition then fails, the function returns `kRejectedInitFailed` at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:603) without restoring the old runtime’s lifecycle/ownership state. This leaves “rejected reload, still RUNNING” semantics with old behaviors already stopped and old owners gone.
+
+- Medium: Runtime task-watchdog config is parsed but dropped. `RuntimeDescriptor` parses `task_watchdogs` in [descriptors.cpp](/tmp/metanc_plc_review/rt/plc/src/descriptors.cpp:1794), but `FrameworkConfig` has no watchdog field at [framework.hpp](/tmp/metanc_plc_review/rt/plc/include/metanc/plc/framework.hpp:191), and `load_config_from_files()` copies only backend/scan fields at [config.cpp](/tmp/metanc_plc_review/rt/plc/src/config.cpp:39). `run_cycle_once()` never invokes `WatchdogMonitor`, so configured `safe_output`/`quick_stop_request` task watchdog actions cannot fire.
+
+- Medium: `clear_faults()` does not clear queued behavior faults. Behavior exceptions enqueue `pending_behavior_faults_` at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:1693); the scan loop applies NRT inbound actions before draining that queue at [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:658) and [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:667). If an operator clear arrives after a throwing cycle but before the queued fault is drained, [framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:838) resets behaviors and then the stale pending fault is broadcast in the same scan.
+
+No files were edited. I kept the review scoped to `/tmp/metanc_plc_review/rt/plc` and did not run build/test commands.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:128-129|note=[confirmed rt/plc scope preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

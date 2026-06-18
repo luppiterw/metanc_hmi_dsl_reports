@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece16-b2e3-7af1-8a16-edf26556120b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 09:40:54 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T09-40-54-019ece16-b2e3-7af1-8a16-edf26556120b.jsonl</code></div>
+<div><b>Messages</b>: <code>14</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:40:54 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-16&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:40:54 +0800</div>
+<pre>You are doing code quality review for Task 1. Do not edit files.
+
+Repo: /home/iaar/workspace/ccmix-wp/MetaNC
+Branch: feat/hmi-work-offset-table
+There are pre-existing uncommitted Slice 3 changes. Review Task 1-specific changes only.
+
+## Description
+Task 1 implemented accepted real WorkOffset `set_offset` and SQLite reload persistence in:
+- nrt/hmi/server/tests/work_offset_real_backend_test.cpp
+- nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+
+Spec compliance review passed after clarifying that factory seed/preserve tests were pre-existing dirty work.
+
+## Plan/Requirements
+Task 1 requirements:
+- Add accepted real set_offset test that seeds SQLite from `basic_xyzac.snapshot.json`, finds G54, calls `backend.set_offset` for `offset_x` with `target_ref`, `g_code`, matching `axis_id`, value 12.5, and row revision.
+- Assert accepted status/code, refreshed `offset_x == 12.5`, row revision advanced, and the write survives backend reconstruction over the same SQLite DB.
+- Replace `RealWorkOffsetBackend::set_offset()` stub with minimal HMI-to-WorkOffset translation:
+  - query current table
+  - resolve row by `target_ref` first, else `g_code`
+  - reject missing/readonly/unsupported field/axis mismatch before mutation
+  - build `SetFrameComponentRequest` with `FrameComponentKind::CoarseTranslation`, operator source, selector evidence, optional expected revision
+  - call `runtime_.set_frame_component`
+  - map accepted and diagnostics to stable HMI codes.
+- No Slice 4 Web/QML behavior.
+
+## Review Focus
+Read actual code and diff. Look for:
+- correctness bugs, especially stale pointer/lifetime issues around row pointers from copied snapshots
+- diagnostic mapping or details that will make Task 2 negative tests hard or wrong
+- whether accepted result detail uses refreshed row revision reliably
+- whether tests are deterministic and clean up SQLite files/env state
+- whether implementation is minimal and follows existing style
+- whether any unused helper/includes create avoidable warnings or quality issues
+
+Report with:
+- Strengths
+- Issues: Critical/Important/Minor with file:line references
+- Assessment: approved or needs fixes
+
+Do not modify files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:41:08 +0800</div>
+<pre>I’m using `superpowers:using-superpowers` because it is required at the start of a session. I’ll keep this as a read-only review and first do the repository/module orientation the repo asks for.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:44:04 +0800</div>
+<pre>I’ll use the prior memory lightly for the HMI WorkOffset boundary, then verify everything against the current checkout. After that I’ll inspect only the two Task 1 files and their diffs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:44:41 +0800</div>
+<pre>The memory hit only confirms the scope boundary: first HMI WorkOffset slice is the zero-offset table, with WorkOffset owning semantics and HMI server owning the adapter. I’m now reading the relevant module docs and then I’ll pin the Task 1 diff against the branch’s dirty state.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:44:58 +0800</div>
+<pre>I see extra dirty test changes in the same test file that the prompt says are Slice 3/pre-existing, so I’m separating them from the Task 1 set_offset path. Next I’m checking the surrounding adapter code and domain API to validate pointer lifetimes, revision behavior, and diagnostic mapping.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:45:21 +0800</div>
+<pre>The adapter implementation is short, but its correctness depends on how the WorkOffset runtime reports revisions and diagnostics. I’m tracing those exact domain functions now rather than judging from the HMI wrapper alone.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:45:44 +0800</div>
+<pre>The accepted set_offset test mostly matches the requirement, but I’m checking one suspicious assertion shape: it verifies the refreshed table revision, not the command result’s detail revision. Since Task 2 will likely depend on those details for stale handling, I’m checking how command details are consumed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:46:08 +0800</div>
+<pre>I don’t see a stale pointer bug in the main set_offset path: the pointer into the queried table stays within that table’s lifetime, and the target_ref is copied before the mutation. I’m now checking whether any review findings remain around diagnostics and test assertions before I give the assessment.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 09:46:20 +0800</div>
+<pre>I have enough for the review. I’m doing one last line-number check on the memory source I used for scope context, then I’ll report only Task 1-specific findings without proposing edits.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 09:48:29 +0800</div>
+<pre>One possible finding hinges on whether `work_offset.value_invalid` is an intentional new HMI code. I’m checking the WorkOffset contract doc before classifying it, because the existing runtime parser already exposes `work_offset.offset_value_invalid`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-16 09:50:58 +0800</div>
+<pre>One more cleanup detail is worth checking before I finalize: whether the SQLite store creates sidecar files, since the Task 1 test removes only the main database path while the backend objects are still alive.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-16 09:51:06 +0800</div>
+<pre>SQLite is using default rollback journal behavior and no WAL pragma, so the cleanup is probably adequate for the Task 1 test path. I’ll include that as a strength rather than a finding.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-16 09:52:39 +0800</div>
+<pre>**Strengths**
+- The real backend translation is minimal and scoped: it resolves `target_ref` before `g_code`, rejects readonly/unsupported-field/axis-mismatch before mutation, and calls `set_frame_component` with `CoarseTranslation`, `OperatorConfigured`, selector evidence, and optional row revision.
+- I do not see a stale pointer/lifetime bug in the main path. Row pointers stay within the queried snapshot lifetime, and `target_ref` is copied before mutation/re-query.
+- Accepted writes re-query the table and use the refreshed row revision for result details when the row is found. The new test covers actual SQLite persistence across backend reconstruction.
+
+**Issues**
+
+Critical: none.
+
+Important:
+- [nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:317): domain `wcs-offset-value-invalid` maps to `work_offset.value_invalid`, but the existing HMI command parser maps invalid `set_offset` values to `work_offset.offset_value_invalid` in [work_offset_runtime_extension_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:198). That splits one public value-invalid failure into two HMI codes depending on whether invalidity is caught before or inside the real backend, which will make Task 2 negative tests/client handling brittle.
+
+Minor:
+- [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:399): the accepted-path test checks status/code and then refreshes the table, but it does not assert `updated.details[&quot;revision&quot;]` matches the refreshed G54 row revision. A stale result-detail regression would pass.
+- [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:111): `offset_value()` and its `&lt;limits&gt;` include are unused in the current file, creating avoidable warning/noise.
+- [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:370): if `seed_store()` fails, the Task 1 test returns without removing the temporary SQLite file. This is failure-only cleanup debt, but the review focus explicitly called out SQLite cleanup.
+
+**Assessment**
+Needs fixes, mainly for the value-invalid HMI code split. The implementation shape is otherwise sound for Task 1 and stays inside the real WorkOffset backend slice. I did not edit files or run tests.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:181-183|note=[used to confirm HMI WorkOffset V1 boundary and adapter ownership]
+MEMORY.md:147-151|note=[used to confirm branch and set_offset scope keywords]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a014-7253-ad54-2cdfce601b27
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

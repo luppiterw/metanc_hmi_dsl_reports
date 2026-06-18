@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read-only review in /home/iaar/workspace/ccmix-wp/metanc_drafts. Task: Review the accuracy of the p...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Read-only review in /home/iaar/workspace/ccmix-wp/metanc_drafts. Task: Review the accuracy of the p...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb42f-2eda-7eb3-b9e9-4e248fe1aa1b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-11 08:57:31 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/11/rollout-2026-06-11T08-57-31-019eb42f-2eda-7eb3-b9e9-4e248fe1aa1b.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:57:31 +0800</div>
+<pre>Read-only review in /home/iaar/workspace/ccmix-wp/metanc_drafts.
+
+Task: Review the accuracy of the proposed wording for the next TP004 parameter-system discussion stage.
+
+Conversation context to evaluate:
+- We have mostly finished governance/meta definitions: term, value, value set, owner, status, schema-field binding, usage index.
+- The user proposed that the next stage is roughly from meta definitions / tokens toward grammar.
+- Then we refined it as not pure lexer/parser work, but something like &quot;grammar + topology&quot;.
+- Current candidate phrasing: &quot;Access Definition Structure and Module Binding&quot; / &quot;访问定义结构与模块绑定&quot;.
+- Informal shorthand: &quot;Access Description Grammar + Module Access Topology&quot; / &quot;访问描述语法 + 模块访问拓扑&quot;.
+- Intended boundary: TP004 should describe expression/definition/case structure, semantic mapping, owner binding, module access contract, read/write/dispatch boundaries. TP004 should NOT define internal TP002 tooling implementation, TP003 PLC runtime execution, motion execution internals, or zero_offset storage implementation.
+
+Please inspect relevant docs:
+- TP004-parameter-system/openspec/README.md
+- TP004-parameter-system/openspec/DESIGN-BASELINE.md
+- TP004-parameter-system/openspec/TERMS.md
+- TP004-parameter-system/openspec/VALUE-SETS.md
+- TP004-parameter-system/openspec/SCHEMA-FIELDS.md
+- TP004-parameter-system/openspec/OWNER-REGISTRY.md
+- TP004-parameter-system/openspec/access-definitions/README.md
+- TP004-parameter-system/openspec/validation-sets/README.md
+
+Focus only on terminology/naming precision. Answer:
+1. Is &quot;grammar + topology&quot; acceptable as an informal shorthand?
+2. Is &quot;Access Definition Structure and Module Binding&quot; accurate as formal wording?
+3. What wording would you recommend if these are inaccurate?
+4. Any wording that should be avoided because it implies runtime implementation or compiler scope?
+
+Do not edit files. Return concise findings with file references when useful.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:57:51 +0800</div>
+<pre>Using `openspec-explore` because this is a terminology-boundary review for an OpenSpec topic; I’ll keep it read-only and focus on wording precision.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 08:58:10 +0800</div>
+<pre>I’ll first anchor the wording against the existing TP004 documents and the prior workspace notes, then answer only on naming and boundary implications.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 08:58:32 +0800</div>
+<pre>The memory registry points to prior TP004 value-set work and confirms this area has been treated as governance plus visible access-contract terminology, not an implementation slice. Now I’m reading the specified source docs for the exact term definitions and boundary language.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 08:58:48 +0800</div>
+<pre>The strongest anchors so far are `Access Definition / 访问结构化定义`, `Access Contract`, `Descriptor Mapping`, `Owner`, and `dispatch`; the docs already distinguish “definition structure” from generated registries and execution engines. I’m narrowing on whether “module binding/topology” matches the owner/API language or overstates it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 08:59:05 +0800</div>
+<pre>The baseline already has a formal section named “Access Description Grammar And Validation Flow,” which makes the shorthand partly grounded. The question is mainly whether “topology” should remain informal, because the normative model says owner tokens, topic ownership, access contracts, and dispatch rules rather than a generalized topology graph.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 08:59:19 +0800</div>
+<pre>I have enough to answer the naming questions. I’m doing one last pass over the governed value-set names because they reveal whether “module binding” is the right formal noun or whether “owner/dispatch” is safer.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-11 09:00:04 +0800</div>
+<pre>1. Yes, `grammar + topology` is acceptable as informal shorthand, but only if “grammar” means `Access Description Grammar`, not lexer/parser work, and “topology” means owner/dispatch/access-contract relationships, not runtime module topology. The docs already use `Access Description Grammar` for document/expression shape and validation flow ([DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:274), [TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:154)).
+
+2. `Access Definition Structure and Module Binding` is close, but not precise enough as formal wording. `Access Definition Structure` fits the current model. `Module Binding` is the weak half: TP004’s governed terms are `Owner`, `Access Contract`, `Descriptor Mapping`, and `dispatch`, while module ownership is mediated through owner tokens and topic boundaries ([TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:147), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:3), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:109)).
+
+3. Recommended formal wording: `Access Definition Structure and Owner/Dispatch Contracts` / `访问结构化定义结构与 Owner/分发契约`. If you want to preserve the “module” idea: `Access Definition Structure and Owner-Module Access Contracts` / `访问结构化定义结构与 Owner/模块访问契约`. This keeps the boundary on expression shape, semantic descriptor mapping, owner binding, read/write policy, and dispatch, matching the access-definition block model ([access-definitions/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/README.md:200)).
+
+4. Avoid formal titles containing `parser`, `lexer`, `compiler`, `runtime binding`, `realtime binding`, `execution topology`, `module runtime topology`, `storage binding`, or `backend implementation`. Those imply implementation/compiler/runtime ownership, while TP004 explicitly stays at access contracts and excludes runtime string resolution, storage flattening, and domain execution internals ([README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:23), [DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:652)).
+
+No files edited.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:170-203|note=[TP004 prior governance and terminology context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是文档审查 agent 3，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/a...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是文档审查 agent 3，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/a...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb591-751e-75b3-9d1d-e55edc5aaa67</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-11 15:24:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/11/rollout-2026-06-11T15-24-29-019eb591-751e-75b3-9d1d-e55edc5aaa67.jsonl</code></div>
+<div><b>Messages</b>: <code>4</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:24:29 +0800</div>
+<pre>你是文档审查 agent 3，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md` 的来源证据模型。
+
+上下文：这份文档用 source_level / verification_status / Sources 表来区别 Siemens 官方事实、项目推断和讨论占位。用户问过 sources 表是怎么来的，担心自创东西太多。
+
+请只读相关文件，不要修改文件。重点检查：Sources 表是否足以支撑正文、source_id 是否被一致使用、official/partial/needs verification 是否清楚、哪些说法看似 confirmed 但证据不足。
+
+输出要求：
+- 3-6 个证据/来源问题，按严重度排序。
+- 每个问题给具体章节/行号。
+- 每个问题给一句改进建议。
+- 最后给一个最小 Sources 模型建议，不引入复杂新治理概念。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:25:16 +0800</div>
+<pre>我会按文档审查口径处理，只读取目标文档和最小相关上下文，重点看正文声明和 Sources 表之间的可追溯性。先做一轮轻量上下文查找，再读目标文件行号。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 15:27:59 +0800</div>
+<pre>目前看到目标文件只登记了一个 Siemens 官方来源，并把很多不同粒度的事实都挂在同一个 `Supports` 单元里。接下来我会把正文里标成 `confirmed` 的断言和这个来源行逐项对照，找证据粒度不够的地方。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-11 15:30:38 +0800</div>
+<pre>**证据/来源问题**
+
+1. [REFERENCE-NOTES.md:96](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:96)-[100](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:100)
+   `Sources` 表只有一个 Siemens source_id，却支撑了全文大量 `official/confirmed` 断言；`Supports` 粒度太粗，无法判断每个正文说法是否真的被该页面直接支持。
+   建议：把 `Supports` 拆成更小的 claim/locator，例如 “LUD/PUD/GUD lifetime”, “GUD access tokens”, “DEF data types”，并加章节锚点或页面段落说明。
+
+2. [REFERENCE-NOTES.md:185](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:185)-[190](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:190), [347](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:347)-[353](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:353)
+   行内同时包含 Siemens meaning 和 MetaNC interpretation，但整行标成 `official/confirmed`，容易把项目映射判断也读成 Siemens 官方事实。
+   建议：`official/confirmed` 只覆盖 Siemens meaning；MetaNC interpretation 另标 `project-inferred` 或明确写成 “mapping note, not source-verified”。
+
+3. [REFERENCE-NOTES.md:124](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:124)-[140](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:140)
+   LUD/PUD/GUD 的 lifetime、visibility、persistence 结论写得像已确认事实，但 Sources 表没有单独说明这些细节由哪段 Siemens 文档支持。
+   建议：为 lifetime/persistence 增加独立 source claim；补不上证据前把相关 status 降为 `partial`。
+
+4. [REFERENCE-NOTES.md:196](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:196)-[205](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:205), [248](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:248)-[249](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:249)
+   `NCK` 正文说 “confirmed source identifies NC-global”，术语表却标 `partial`；`CHAN` 则是 `confirmed`。读者不清楚 partial 指 token、语义还是 abbreviation expansion。
+   建议：拆清楚 “token usage confirmed” 和 “expansion/name needs source”，不要让同一术语的正文和表格状态相互打架。
+
+5. [REFERENCE-NOTES.md:349](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:349)-[351](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:351)
+   Access context 行把 `OPI` partial 和 protection tokens confirmed 混在一个 verification_status 单元里；后面的 OPI protection 又直接 confirmed，状态模型不一致。
+   建议：拆成 “token appears”, “token meaning”, “caller context interpretation” 三类最小行，保证每行只有一个 verification_status。
+
+6. [REFERENCE-NOTES.md:367](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:367)-[376](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:376)
+   DEF data type 表把 `CHAR` 的 ASCII、`FRAME` 的 static coordinate transformation 等具体含义标为 `confirmed`，但 Sources 表只笼统写 “DEF data types”。
+   建议：没有逐项来源定位前，具体语义用 `partial`；只把 token 出现在 DEF syntax 中标为 `confirmed`。
+
+**最小 Sources 模型建议**
+
+保留现有三层，不引入新治理概念：
+
+`Source ID | Source level | Locator | Supports claim | Claim status | Used by`
+
+其中 `Supports claim` 必须是一句可核验的小断言，`Claim status` 只描述这句断言，`Used by` 填正文小节或术语行。MetaNC mapping note 不进入 `official/confirmed`，只写成 `project-inferred` 设计提醒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:170-203|note=[TP004 source and docs context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

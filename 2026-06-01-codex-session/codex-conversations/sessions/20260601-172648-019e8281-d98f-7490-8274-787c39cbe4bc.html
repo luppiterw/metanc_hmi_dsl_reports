@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8281-d98f-7490-8274-787c39cbe4bc</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-01 17:26:48 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/01/rollout-2026-06-01T17-26-48-019e8281-d98f-7490-8274-787c39cbe4bc.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 17:26:48 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-01&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 17:26:48 +0800</div>
+<pre>你是 Reviewer A，做代码正确性审查。仓库：/home/iaar/workspace/mirror-ccmix-wp/MetaNC，分支 feat/plc，当前 HEAD 是 `af74a7b7 test(rt-sdk): cover command lifecycle review gaps`。请只读不改文件。
+
+审查范围：最近两次提交 `3abae500..af74a7b7` 之后的最终状态，重点看 RT SDK command lifecycle states 及 follow-up 是否有 bug。重点文件：
+- rt-sdk/src/sim_command_lifecycle.hpp
+- rt-sdk/src/sim_command_lifecycle.cpp
+- rt-sdk/src/machine.cpp
+- rt-sdk/src/command.cpp
+- rt-sdk/src/machine_factory.hpp
+- rt-sdk/src/sim_live_adapter.hpp/.cpp
+
+关注：状态转换是否正确持久化；failure_reason 在非 failed 状态是否清理；unknown id 是否正常 ReadResult；Machine axes-group/standalone-axis/spindle accepted paths 是否仍 completed placeholders；CommandCompletionState 不完整 public 类型和 shared_ptr 使用是否安全；是否有 const/lifetime/thread-safety/ABI 边界风险。输出 code review findings，包含文件/行号/严重级别/理由；没有问题明确说 No findings，并列 remaining risks。不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:27:04 +0800</div>
+<pre>我会按只读审查处理：先做仓库说明和架构定位，再聚焦 `3abae500..af74a7b7` 最终状态里的 RT SDK command lifecycle 相关代码，不会改文件。先快速查一下本地记忆里是否有这条 PLC/RT SDK 分支的既有上下文。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 17:27:27 +0800</div>
+<pre>根 README 和架构图已读，`/rt-sdk` 是本次相关模块边界。接下来我会读模块级说明/约束和这两次提交的 diff，再对当前文件逐行看状态机语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 17:28:36 +0800</div>
+<pre>`rt-sdk/README.md` 说明这些命令完成状态仍是仿真 placeholder 合同的一部分，accepted receipt 分配本地 command id。现在我在对照 public header、Machine 接收路径和 sim live adapter 的持有关系，看接口边界和生命周期状态是否一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 17:29:13 +0800</div>
+<pre>`sim_live_adapter` 当前只创建一份 tracker 并随 session 交给 Machine，未看到新增实现差异。下一步我会读 public command/machine 头和新增测试，判断测试覆盖是否真正锁住了这些 reviewer 关注点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 17:30:09 +0800</div>
+<pre>新增测试覆盖了 “unknown id 返回 ReadResult” 和基本状态持久化，但还需要看边界测试是否覆盖 public/private 头文件隔离，以及 Machine 接收路径是否依旧返回 completed placeholder。继续只读检查测试和调用点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 17:30:59 +0800</div>
+<pre>到目前为止我没有看到明显的状态持久化错误。还有一个需要认真判断的点是 public `MachineCommandApi` 持有未完整定义的 `CommandCompletionState`，我会确认这在 shared_ptr/incomplete type 语义下是否只是实现细节隔离，还是会造成头文件 ABI/编译边界问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 17:32:03 +0800</div>
+<pre>我还在核对是否存在真实 bug 而不是风格问题。一个潜在关注点是 tracker 没有互斥保护；我会看 RT SDK 文档/测试是否声明同一 `Machine` 或 command API 可跨线程使用，避免把未承诺的并发语义误报成缺陷。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 17:32:33 +0800</div>
+<pre>我已经完成主要代码路径阅读，结论倾向于没有可报的 correctness finding。最后我会补一遍行号和记忆引用信息，确保输出里的文件/行号和剩余风险准确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 17:33:53 +0800</div>
+<pre>我补看一下 `sim_backend.cpp`，因为 session 里的 tracker 只有在 connect 时注入 `Machine` 才算完整；这是确认 live adapter 边界是否真的被最终状态使用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-01 17:35:24 +0800</div>
+<pre>**Findings**
+No findings. I did not find correctness bugs in the final state of `3abae500..af74a7b7` for the scoped RT SDK command lifecycle changes.
+
+Checked points:
+- Lifecycle status updates persist through `CommandLifecycleTracker::status()`.
+- `failure_reason` is cleared on non-`failed` transitions because all non-failed update paths pass `std::nullopt`.
+- Unknown/zero ids return normal `ReadResult` failures with `ReadErrorCode::unknown_path`.
+- `Machine` accepted axes-group, standalone-axis, and spindle power paths still allocate immediate `completed` placeholders.
+- Public headers keep lifecycle tracker internals private; `shared_ptr` to incomplete `CommandCompletionState` is safe here because construction/destruction logic lives out-of-line in the library implementation.
+
+**Remaining Risks**
+- `CommandLifecycleTracker` is not thread-safe. I am not reporting this as a bug because the current placeholder docs/tests do not appear to promise concurrent access, but a future live/runtime-backed command path will need synchronization or single-thread ownership.
+- The tracker currently allows arbitrary terminal-state rewrites, such as `failed -&gt; completed`. That matches its current internal placeholder role, but a real execution source should define allowed transition rules before exposing non-immediate lifecycle semantics.
+- I did not run the RT SDK test suite; this was a read-only code review plus diff/header/path inspection. `git diff --check` on the scoped source files was clean.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:45-54|note=[PLC review context and prior rollout pointer]
+MEMORY.md:66-73|note=[prior PLC risk context checked before current review]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece2c-612c-7283-993f-9b1e59c69ea6</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 10:04:35 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T10-04-35-019ece2c-612c-7283-993f-9b1e59c69ea6.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:04:35 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-16&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:04:35 +0800</div>
+<pre>Re-review code quality for Task 1 after fixes. Do not edit files.
+
+Repo: /home/iaar/workspace/ccmix-wp/MetaNC
+Review only Task 1-specific changes in:
+- nrt/hmi/server/tests/work_offset_real_backend_test.cpp
+- nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+
+Pre-existing dirty changes not part of Task 1: factory include, `store_has_snapshot`, factory seed/preserve tests and their main calls.
+
+Earlier code quality issues were:
+- Important: domain `wcs-offset-value-invalid` mapped to `work_offset.value_invalid`, inconsistent with parser `work_offset.offset_value_invalid`.
+- Minor: accepted test did not assert `updated.details[&quot;revision&quot;]` matches refreshed row revision.
+- Minor: `offset_value()` unused.
+- Minor: seed_store failure path did not remove temp DB.
+
+Implementer claims fixes:
+- Added direct NaN real-backend test expecting `work_offset.offset_value_invalid`; RED failed with old code, GREEN passes.
+- Mapping changed to `work_offset.offset_value_invalid`.
+- Accepted test asserts `details[&quot;revision&quot;]` equals refreshed G54 row revision.
+- Uses `offset_value()` in assertions.
+- Adds temp DB cleanup on seed failure in touched tests.
+- Focused `work_offset_real_backend_test` passes.
+
+Review focus:
+- Are prior issues actually fixed?
+- Any new correctness bugs or quality issues in Task 1 changes?
+- Does implementation remain minimal and safe?
+
+Report:
+- Strengths
+- Issues: Critical/Important/Minor with file:line refs
+- Assessment: approved or needs fixes
+
+Do not edit files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:05:04 +0800</div>
+<pre>Using `superpowers:requesting-code-review` for the review workflow, and I’ll also follow the repository AGENTS orientation before inspecting the Task 1 diff.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:05:23 +0800</div>
+<pre>I’m doing the required repo orientation first, then I’ll narrow to the two requested files and separate Task 1 changes from unrelated dirty work. After that I’ll inspect the exact mapping/test assertions and line numbers for the review report.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:05:43 +0800</div>
+<pre>The relevant modules are the HMI server extension layer and the WorkOffset domain boundary. I’ve confirmed the repository-level map says HMI presents/edits WorkOffset through backend integration while `nrt/work_offset` owns the domain semantics, so I’m checking for adapter-level translation mistakes rather than domain redesign.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:06:05 +0800</div>
+<pre>I’ve got the raw diff now. The unrelated factory include/seed-preserve additions are present in the same test file, so I’m excluding those from the review as requested and focusing on the adapter plus the real-backend `set_offset` tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 10:06:22 +0800</div>
+<pre>The adapter now has a real `set_offset` path, so I’m reading the surrounding helper code and the domain request/diagnostic surface. That’s where subtle review findings usually show up: stale revisions, lookup ambiguity, and error-code translation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 10:06:42 +0800</div>
+<pre>The direct fix for the earlier important issue is visible: `wcs-offset-value-invalid` is now translated to `work_offset.offset_value_invalid`. I’m checking whether the new tests exercise the path through the real backend rather than only the parser/mock layer, and whether any new adapter behavior weakens revision safety.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 10:06:56 +0800</div>
+<pre>So far, the focused Task 1 changes look small: `set_offset` now delegates to `StoreBackedWorkOffsetRuntime::set_frame_component`, and the added tests cover acceptance, persistence after reconstruction, revision detail, and a real-domain NaN rejection. I’m running a focused verification if the build directory is available; if it’s not, I’ll report review-only evidence.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 10:07:01 +0800</div>
+<pre>A configured WorkOffset-specific server build already exists under `nrt/hmi/generated/server-build-work-offset`, so I’m using that for the focused test rather than reconfiguring. This stays within the no-edit request.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-16 10:07:19 +0800</div>
+<pre>The focused test passes in the existing WorkOffset server build: `ctest --test-dir nrt/hmi/generated/server-build-work-offset -R &#x27;^work_offset_real_backend_test$&#x27; --output-on-failure` completed with 1/1 passed. I’m doing one last line-reference pass now so the review report is concrete.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-16 10:08:38 +0800</div>
+<pre>**Strengths**
+- Prior important issue is fixed: `wcs-offset-value-invalid` now maps to `work_offset.offset_value_invalid` in the real backend rejection path at [work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:317).
+- The accepted `set_offset` test now asserts `details[&quot;revision&quot;]` matches the refreshed G54 row revision at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:414).
+- `offset_value()` is now used in refreshed/reloaded assertions at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:422).
+- The new NaN test exercises the real backend/domain path directly and expects the stable HMI code at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:446).
+- The adapter remains minimal: it resolves the HMI row/axis echo, delegates the actual write to `StoreBackedWorkOffsetRuntime::set_frame_component`, and refreshes the row before returning the accepted revision.
+
+**Issues**
+- Critical: none found.
+- Important: none found.
+- Minor: none found in Task 1-specific changes. I excluded the factory include, `store_has_snapshot`, factory seed/preserve tests, and their `main()` calls as requested.
+
+**Verification**
+- Ran `ctest --test-dir nrt/hmi/generated/server-build-work-offset -R &#x27;^work_offset_real_backend_test$&#x27; --output-on-failure`.
+- Result: 1/1 passed.
+
+**Assessment**
+Approved. The prior issues are fixed, and I do not see new correctness or quality problems in the Task 1-specific changes.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:79-83|note=[WorkOffset and HMI ownership boundary used for review scope]
+MEMORY.md:181-184|note=[HMI WorkOffset V1 contract and set_offset revision context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb545-cef2-7971-8ca7-7d8b3e0a4d49
+019ec893-a014-7253-ad54-2cdfce601b27
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

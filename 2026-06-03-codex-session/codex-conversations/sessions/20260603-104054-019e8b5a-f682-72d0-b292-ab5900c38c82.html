@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你在 /home/iaar/workspace/ccmix-wp/metanc_drafts 做只读复审。不要编辑文件。重点审查 docs_i18n、docs_html、tools/check_do...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你在 /home/iaar/workspace/ccmix-wp/metanc_drafts 做只读复审。不要编辑文件。重点审查 docs_i18n、docs_html、tools/check_do...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8b5a-f682-72d0-b292-ab5900c38c82</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 10:40:54 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T10-40-54-019e8b5a-f682-72d0-b292-ab5900c38c82.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 10:40:55 +0800</div>
+<pre>你在 /home/iaar/workspace/ccmix-wp/metanc_drafts 做只读复审。不要编辑文件。重点审查 docs_i18n、docs_html、tools/check_docs_i18n_sync.py 和发布面。请检查发布哨兵是否覆盖 TERMS/value-sets/schema-fields/usage-index 新增内容；中文 docs 是否仍缺关键翻译；docs_html 是否可能 stale；include wrapper 例外是否合理；check_docs_i18n_sync.py 是否有误报/漏报。输出 findings 按严重度，带 file:line；如没有高/中问题明确说。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:41:37 +0800</div>
+<pre>我会先做一轮轻量记忆查找确认这个工作区之前的发布约定，然后只读检查 `docs_i18n`、`docs_html`、同步脚本和发布入口，不做任何文件修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 10:41:59 +0800</div>
+<pre>记忆里确认到当前约定：`docs_i18n/` 是源，`docs_html/` 是稳定发布输出，`./tools/build_docs_html.sh` 负责构建并镜像。我现在按这个边界检查源、发布物和哨兵脚本之间是否一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 10:42:22 +0800</div>
+<pre>工作树是脏的，但我只会读取。初步看到 `docs_i18n/zh/src/...` 和 TP004 源文档有改动，而 `docs_html/` 没有出现在改动列表里；我会进一步核对这是否只是已构建后的同内容状态，还是发布物滞后。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 10:42:52 +0800</div>
+<pre>脚本本身已经把 TERMS/value-sets/schema-fields/usage-index 加入投影对和发布页哨兵；接下来我会看它检查的“粒度”是否足够，以及当前生成 HTML 是否真反映了这些源文件改动，而不只是在关键词层面通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 10:43:18 +0800</div>
+<pre>两个检查命令都通过，包括 `--require-published-html`。但这只能证明列出的哨兵文本存在；我还要对比最近新增字段/值集合的完整性，确认有没有“关键词通过但页面仍滞后”的漏报。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 10:43:55 +0800</div>
+<pre>目前最可疑的是翻译完整性而不是页面是否存在：`--require-published-html` 只查关键字符串，不做源和 HTML 的内容等价比较。我会定位具体缺口，避免把“风险”写成没有证据的 finding。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 10:44:34 +0800</div>
+<pre>我已经确认一个实证缺口：中文 terms 投影和已发布 zh HTML 漏掉了 canonical TERMS 的新增内容，但当前脚本仍通过。我会再检查三个 registry-style include wrapper 是否只用于结构化清单页，避免把合理例外误报成问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 10:45:20 +0800</div>
+<pre>三个中文 include wrapper 都是“中文导语 + canonical registry include”的形式，且只出现在 value-sets/schema-fields/usage-index 这三个结构化页，和脚本白名单一致。我会再扫一遍脚本的测试和 include 解析边界，确认是否有可复现的误报/漏报点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 10:45:41 +0800</div>
+<pre>我找到的主要问题集中在 `TERMS` 中文投影与已发布 zh 页面没有完全跟上 canonical 源；同步脚本的现有测试也解释了为什么会漏掉这种“部分行内容缺失”。我会最后再取一下记忆引用行号，然后给出按严重度排序的 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 10:46:14 +0800</div>
+<pre>为避免刚才一个 shell 反引号干扰的搜索结果，我会用单引号重跑关键缺口确认，只读。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-03 10:47:35 +0800</div>
+<pre>只读复审完成，未编辑文件。未发现 High 问题；发现 2 个 Medium。
+
+**Findings**
+- **Medium**: 中文 TERMS 投影漏掉 canonical TERMS 的关键新增内容，发布 zh HTML 也继承了这个缺口。canonical `T000014` 明确说明 `profile_id` 绑定到 `compatibility_profile_id`，见 [TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:130)；中文投影只保留了 record name，见 [terms.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/baseline/terms.md:130)，发布页同样缺失，见 [terms.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/baseline/terms.html:304)。canonical 还新增了 `T070007 Profile Dependency`，见 [TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:191)，但中文投影从 `T070006` 直接跳到 `T090001`，见 [terms.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/baseline/terms.md:190) 和 [terms.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/baseline/terms.md:191)。这是关键术语/治理语义缺口。
+
+- **Medium**: `check_docs_i18n_sync.py` 对 TERMS 存在漏报，导致上面的问题在 `python3 tools/check_docs_i18n_sync.py --require-published-html` 下仍通过。TERMS 投影哨兵只检查少量 required text，见 [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:52)；通用检查只比 heading/fence/table-separator 数量和 required text，见 [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:390)。因为表格行数不被比较，新增/缺失术语行不会触发；发布 zh TERMS 哨兵也没有要求 `compatibility_profile_id` 或 `T070007`，见 [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:314)。
+
+**Other Checks**
+- `value-sets` / `schema-fields` / `usage-index` 的中文 include wrapper 例外合理：三个页面都有中文导语后 include canonical registry 源，不是 bare wrapper。
+- `docs_html` 对 value-sets/schema-fields/usage-index 当前能搜到新增标识；未发现这三页当前 stale。TERMS 的 zh 发布面问题更像中文源投影漏同步，而不是单纯 HTML 未重建。
+- 已运行：`python3 tools/check_docs_i18n_sync.py`、`python3 tools/check_docs_i18n_sync.py --require-published-html`、`python3 -m unittest tools.tests.test_check_docs_i18n_sync`，均通过。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:49-50|note=[docs_html publish entrypoint and zh projection convention]
+MEMORY.md:160-168|note=[source versus publish root boundary]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是 PLC runtime/framework 方向的只读 review agent。工作区是 `/tmp/metanc_plc_review`，当前 HEAD 是 `e205f479` (`or...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是 PLC runtime/framework 方向的只读 review agent。工作区是 `/tmp/metanc_plc_review`，当前 HEAD 是 `e205f479` (`or...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7173-6fa8-7473-ab7f-b38a30b1014f</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-05-29 09:57:31 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T09-57-31-019e7173-6fa8-7473-ab7f-b38a30b1014f.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-05-29 09:57:31 +0800</div>
+<pre>你是 PLC runtime/framework 方向的只读 review agent。工作区是 `/tmp/metanc_plc_review`，当前 HEAD 是 `e205f479` (`origin/feat/plc`)。请审查 `rt/plc/include/metanc/plc/framework.hpp`、`rt/plc/src/framework.cpp`、`rt/plc/src/config.cpp` 以及相关 tests，重点看：scan 异常边界、task watchdog 接入、clear_faults pending fault 清理、reload declarative motion ownership 的事务性/状态一致性。不要改文件。输出按 code review 形式：只列确定的问题，含严重级别、文件:行号、原因、建议；如果没发现问题，说明残余风险/测试盲点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-05-29 09:57:40 +0800</div>
+<pre>我会先做一次轻量记忆检索确认这条分支相关的 review 背景，然后在 `/tmp/metanc_plc_review` 里只读检查目标文件、调用链和测试覆盖。不会改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-05-29 09:57:51 +0800</div>
+<pre>HEAD 确认是用户给的 `e205f479`，当前工作树在一个 review-fixes 分支名上但提交一致。记忆里提示 Story-03 已有 watchdog/clear_faults 覆盖，我会重点核对这些新边界是否真的由代码和 tests 保住。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-05-29 09:58:03 +0800</div>
+<pre>`rg` 命中很多历史 story，先不跑测试改状态；我会按四个风险点收窄到 `run_cycle_once`、`reload`、`clear_faults`、motion ownership helper 和对应 story 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-05-29 09:58:50 +0800</div>
+<pre>几个猜测的测试文件名不存在，我会先列出 tests 再按实际文件打开；目前已经看到 watchdog 单元测试只覆盖 `WatchdogMonitor` 和 config 到达，未覆盖 Framework 集成路径，这是一个需要继续判断是否只是盲点还是实际 bug 的信号。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-05-29 09:59:11 +0800</div>
+<pre>`reload` 的声明式 motion 路径值得细看：它先初始化候选 behavior，再停旧 behavior、释放旧 owner、重新 acquire。这个顺序对 same-owner 可以碰巧成立，但对 reload 新增的 acquire-before-init 轴看起来会破坏语义，我会查测试夹具和 behavior 实现确认是否是确定问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-05-29 10:00:13 +0800</div>
+<pre>我现在有一个确定的 reload 事务问题：候选 behavior 的 `init()` 在 reload 过程中已经能写入当前框架的 pending fault 队列，但 reload 失败时不会回滚这类 side effect。再核对是否还有同级别的 scan/watchdog 边界问题后我会汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-05-29 10:02:34 +0800</div>
+<pre>**Findings**
+
+- High - [rt/plc/src/framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:655): `plc_scan` runtime watchdog is not actually supervised while the scan is running. `supervise_plc_scan_watchdog()` runs before `plc_scan_.mark_entry()` and there is no independent supervisor call during the body of the scan. A long or stuck scan therefore cannot trigger `WatchdogTimeoutSource::kPlcScanRuntime`; by the next `run_cycle_once()` the heartbeat is already `kCompleted`.
+  建议：把 task watchdog 接到独立 supervisor/timer 路径，或至少在 scan completion 上按 elapsed/runtime budget 触发 action；现有 `story03_task_watchdog_tests.cpp` 只测 `WatchdogMonitor`，需要补 Framework 级集成用例。
+
+- High - [rt/plc/src/framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:559): reload 在候选 behavior `init()` 前没有 acquire 新的 declarative motion ownership。boot 路径是 acquire 后 init，但 reload 路径先 `initialize_behaviors(assembly.behaviors)`，后面才 `release_motion_axis_owners_for()` / `acquire_declarative_axis_ownerships()`。这会让 `ownership: acquire_before_init` 在 reload 时语义不一致，候选 init 期间可能看不到 owner，或仍看到旧 runtime 的 owner。
+  建议：对 declarative ownership reload 做两阶段事务；要么先完成可回滚的 ownership handoff 再 init 候选，要么拒绝这类 reload，直到透明 handoff 实现。
+
+- High - [rt/plc/src/framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:583): reload acquire 失败后的回滚不完整。代码先 stop 旧 behaviors、释放旧 motion owner，然后尝试 acquire 候选 declarative axes；如果 acquire 抛异常，函数返回 `kRejectedInitFailed`，但旧 behaviors 已 stop、旧 owner 已释放，Framework 仍保持 RUNNING 且旧 assembly 仍挂在快照里，状态不一致。
+  建议：在旧 runtime 停止/释放前保证候选 ownership 可提交，或失败时重新 acquire/restart 旧 runtime；无法恢复时不要返回“rejected but still running”。
+
+- Medium - [rt/plc/src/framework.cpp](/tmp/metanc_plc_review/rt/plc/src/framework.cpp:654): scan hardening 边界没有覆盖 `TimeBackend::current_tick()` 和 watchdog supervision。`try` 从 662 行才开始，所以这些虚接口/诊断路径抛异常时会绕过 `error/plc-scan-threw`、heartbeat completion 和 `request_stop()`。
+  建议：把 tick 获取、watchdog supervision、heartbeat entry 纳入同一 scan 异常边界，或为 pre-entry 失败定义单独的 stop/diagnostic 路径。
+
+未改文件；未运行测试。`clear_faults()` 本身已清理 `pending_behavior_faults_`，我没看到确定的直接缺陷。&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:96-104|note=[identified prior STORY-03 fault watchdog and clear_faults context]
+MEMORY.md:160-166|note=[checked prior scan overrun and watchdog coverage notes]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e2961-7737-7973-8256-f3d311be5d13
+019e2428-b62a-7393-989e-1a0393d6397a
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

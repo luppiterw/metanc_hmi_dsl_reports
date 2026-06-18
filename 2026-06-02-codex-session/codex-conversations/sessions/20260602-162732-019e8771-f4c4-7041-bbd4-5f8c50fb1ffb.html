@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8771-f4c4-7041-bbd4-5f8c50fb1ffb</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 16:27:32 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T16-27-32-019e8771-f4c4-7041-bbd4-5f8c50fb1ffb.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 16:27:33 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-02&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 16:27:33 +0800</div>
+<pre>只读 review 当前工作区 PLC Story-44 相关 CMake/test integration。重点检查 `rt/plc/CMakeLists.txt` 是否正确添加 `metanc_plc_story44_runtime_contract_tests`、target link/define、ctest 名称、labels，以及是否影响现有 baseline 分组。可运行轻量验证命令，但不要修改文件。请返回 findings，按严重程度列出文件/行号；如果没有问题，明确说 no findings，并列出你跑过的验证命令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 16:27:41 +0800</div>
+<pre>我会按仓库指引先读根 README 和架构 codemap，再只读检查 PLC 相关 CMake/test wiring。之后用轻量命令验证目标和 ctest 注册，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 16:28:07 +0800</div>
+<pre>根文档确认 `/rt/plc` 属于 RT Development Stack 的 Machine Logic Layer 范围。我还查到一条历史 PLC 验证路径记忆，但会以当前 checkout 的文件和配置结果为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 16:28:25 +0800</div>
+<pre>工作区已有 Story-44 相关未提交改动；我会只读审查这些现有内容。接下来读 `rt/plc/README.md`、CMake 和新增测试源，并检查配置后的 test 列表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 16:28:46 +0800</div>
+<pre>CMake wiring looks structurally in the right area: target is added inside `METANC_PLC_BUILD_TESTS`, links `metanc_plc_core`, defines `METANC_PLC_SOURCE_DIR`, registers the same ctest name, and is included in the existing adapter/payload baseline label group. I’m going to configure a fresh `/tmp` build and query ctest labels to catch registration mistakes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 16:29:01 +0800</div>
+<pre>配置生成通过，说明 `add_executable` / link / define 的 CMake 表达式没有直接破坏生成。现在我会用 `ctest -N` 和 label 过滤看实际注册名与 baseline 分组成员数。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-02 16:29:16 +0800</div>
+<pre>`ctest -N` 在未 build 的树里会打印 “Could not find executable”，但仍确认了注册项、测试编号和 labels。为避免只验证到 CTest 元数据，我再轻量 build 单个 Story-44 目标并运行该测试本身。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-02 16:29:49 +0800</div>
+<pre>单目标 build 通过，说明 link 和 compile definition 也实际可用。最后运行 Story-44 ctest，并顺手查一下是否有排序/分组上的潜在基线影响。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-02 16:30:38 +0800</div>
+<pre>No findings.
+
+Reviewed [rt/plc/CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/CMakeLists.txt:1079). `metanc_plc_story44_runtime_contract_tests` is added under `METANC_PLC_BUILD_TESTS`, links `metanc_plc_core`, defines `METANC_PLC_SOURCE_DIR`, registers the expected CTest name, and is included in the existing `plc_adapter_contract_baseline;plc_command_result_payload_baseline` label group without changing the earlier baseline test entries.
+
+Validation run:
+
+```bash
+cmake -S rt/plc -B /tmp/metanc_plc_story44_review_build
+ctest --test-dir /tmp/metanc_plc_story44_review_build -N -R metanc_plc_story44_runtime_contract_tests -V
+ctest --test-dir /tmp/metanc_plc_story44_review_build -N -L plc_adapter_contract_baseline
+ctest --test-dir /tmp/metanc_plc_story44_review_build -N -L plc_command_result_payload_baseline
+cmake --build /tmp/metanc_plc_story44_review_build --target metanc_plc_story44_runtime_contract_tests
+ctest --test-dir /tmp/metanc_plc_story44_review_build -R metanc_plc_story44_runtime_contract_tests --output-on-failure
+```
+
+The Story-44 target built successfully and its CTest run passed: `1/1 Test #69: metanc_plc_story44_runtime_contract_tests ... Passed`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[used prior PLC workflow and validation path context, then reverified current checkout]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

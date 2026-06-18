@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是本轮文档审查的 Siemens 事实准确性 reviewer。只读，不要修改文件。 工作目录：/home/iaar/workspace/ccmix-wp/metanc_parameter 背景：...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是本轮文档审查的 Siemens 事实准确性 reviewer。只读，不要修改文件。 工作目录：/home/iaar/workspace/ccmix-wp/metanc_parameter 背景：...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e814f-ae68-7ca0-9212-f87185a61884</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-01 11:52:23 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_parameter</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/01/rollout-2026-06-01T11-52-23-019e814f-ae68-7ca0-9212-f87185a61884.jsonl</code></div>
+<div><b>Messages</b>: <code>5</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 11:52:23 +0800</div>
+<pre>你是本轮文档审查的 Siemens 事实准确性 reviewer。只读，不要修改文件。
+
+工作目录：/home/iaar/workspace/ccmix-wp/metanc_parameter
+背景：当前有未提交文档改动，新增/更新了 parameter-system 的 access-definitions，特别是 Siemens 风格表达：$TC_DP3[tool,edge]、$MA_MAX_AX_VELO[axis_ref]、$P_UIFR[frame,axis,component]。前一轮已把 $TC_DP3[TNo,1]、$TC_DP3[T10,D1]、$P_UIFR[1].X 等高风险写法改掉。
+
+请审查这些文件：
+- openspec/specs/parameter-system/access-definitions/siemens/README.md
+- openspec/specs/parameter-system/access-definitions/siemens/tool.md
+- openspec/specs/parameter-system/access-definitions/siemens/axis-machine-data.md
+- openspec/specs/parameter-system/access-definitions/siemens/zero-offset.md
+- openspec/specs/parameter-system/TERMS.md 中 T040001 附近
+- openspec/specs/parameter-system/DESIGN-BASELINE.md 中 native expression / validation 部分
+
+审查重点：
+1. 是否仍有把 MetaNC 自定义语义标签误写成 Siemens 原生语法的地方。
+2. $MA_MAX_AX_VELO[axis_ref] 对数字轴引用/配置轴名的描述是否过度承诺或过度否定。
+3. $P_UIFR[frame,axis,component] 的 frame/axis/component 维度是否表达清楚，是否还残留旧的 dot-axis 模型。
+4. $TC_DP3 是否避免了未确认的 TNo/T10/D1 写法，是否把 DP3 含义描述得过死。
+5. 需要指出具体文件和行号，按 Critical / Important / Minor / No issue 分类。只给审查结论，不要改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 11:52:54 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check. I’ll keep this read-only and review the listed docs against Siemens syntax/semantics, then return findings with file and line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 11:53:19 +0800</div>
+<pre>I found current local edits only in docs/spec areas, so I’m staying read-only. I’m also checking Siemens primary/manual evidence for the three syntax forms because the review hinges on whether the docs overstate native syntax.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 11:55:44 +0800</div>
+<pre>The main factual pressure point is the axis machine-data indexing language: Siemens sources support axis-name indexing such as internal `AX1` or configured names, while direct numeric-axis index syntax is less clearly supported as a native expression. I’m checking the baseline for places where that nuance was lost.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-01 11:59:00 +0800</div>
+<pre>**Critical**
+
+No Critical issues found.
+
+**Important**
+
+1. [axis-machine-data.md:41](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/axis-machine-data.md:41), [axis-machine-data.md:80](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/axis-machine-data.md:80), [axis-machine-data.md:142](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/axis-machine-data.md:142), [axis-machine-data.md:153](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/axis-machine-data.md:153)
+`$MA_MAX_AX_VELO[1]` is promoted to a supported Siemens-style reference and validation-positive case. This is over-committed. Siemens material clearly shows `$MA_MAX_AX_VELO[AX1]`; machine-data lists also use `$MA_MAX_AX_VELO[n]`, but the docs should not imply that literal numeric input, base/index order, and resolution to `X` are confirmed unless the compatibility profile explicitly defines that.
+
+2. [DESIGN-BASELINE.md:251](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/DESIGN-BASELINE.md:251)
+`axis_ref:int|configured_axis_name` carries the same over-commit into the baseline. Safer wording would treat numeric axis references as profile-defined or controller-list notation until validated.
+
+3. [DESIGN-BASELINE.md:234](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/DESIGN-BASELINE.md:234)
+The tool example fixes `unit: mm` for `$TC_DP3`. That is too specific for a Siemens compatibility baseline; `tool.md` correctly avoids over-defining DP3’s machining meaning. Prefer controller/tool-type-defined unit/meaning unless this slice intentionally validates only a metric length-1 profile.
+
+**Minor**
+
+1. [zero-offset.md:52](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/zero-offset.md:52)
+The resolution flow says `siemens.zero-offset.user-frame-axis`, while [zero-offset.md:61](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/zero-offset.md:61) uses `siemens.zero-offset.user-frame-axis-component`. This looks like a leftover two-dimension name and slightly weakens the otherwise clear `frame,axis,component` model.
+
+2. [tool.md:152](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/tool.md:152) and [tool.md:153](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/tool.md:153)
+Duplicate mapping rows. Not a Siemens factual error, but it should be cleaned up later.
+
+**No Issue**
+
+- [TERMS.md:150](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/TERMS.md:150) keeps native expression and MetaNC descriptor separate; no remaining `T10`/`D1` native-syntax leak there.
+- [tool.md:162](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/tool.md:162), [tool.md:192](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/tool.md:192) use `$TC_DP3[T10,D1]` only as invalid/negative examples.
+- [zero-offset.md:40](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/zero-offset.md:40) and [zero-offset.md:76](/home/iaar/workspace/ccmix-wp/metanc_parameter/openspec/specs/parameter-system/access-definitions/siemens/zero-offset.md:76) correctly model `$P_UIFR` as bracketed `frame,axis,component`; I found no residual `$P_UIFR[1].X` dot-axis model.
+
+Sources spot-checked: Siemens/ManualsLib examples for `$MA_MAX_AX_VELO[AX1]` and `$MA_MAX_AX_VELO[n]` ([manualslib.com](https://www.manualslib.com/manual/1376174/Siemens-Sinumerik-840d-Sl.html?page=254&amp;utm_source=openai)) ([manualslib.de](https://www.manualslib.de/manual/45599/Siemens-Sinumerik-840D-Sl.html?page=166)), `$P_UIFR[25,Z,TR]` ([manualslib.com](https://www.manualslib.com/manual/1797033/Siemens-Sinumerik-840d-Sl.html?page=635)), and `$TC_DP3[&lt;t&gt;,&lt;d&gt;]` ([manualslib.com](https://www.manualslib.com/manual/1640200/Siemens-Sinumerik-840d-Sl.html?page=229)).
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[identified metanc_parameter docs context]
+MEMORY.md:37-38|note=[confirmed parameter-system terminology source context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

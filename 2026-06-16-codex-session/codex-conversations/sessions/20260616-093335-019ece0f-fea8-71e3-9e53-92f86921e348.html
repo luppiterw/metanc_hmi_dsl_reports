@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece0f-fea8-71e3-9e53-92f86921e348</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 09:33:35 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T09-33-35-019ece0f-fea8-71e3-9e53-92f86921e348.jsonl</code></div>
+<div><b>Messages</b>: <code>14</code></div>
+<div><b>User prompts</b>: <code>3</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:33:35 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-16&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:33:35 +0800</div>
+<pre>You are reviewing whether Task 1 implementation matches its specification. Do not edit files.
+
+Repo: /home/iaar/workspace/ccmix-wp/MetaNC
+Branch: feat/hmi-work-offset-table
+You are not alone in the codebase. There are pre-existing uncommitted Slice 3 changes. Review only Task 1 scope.
+
+## What Was Requested
+
+Task 1: accepted real WorkOffset set_offset and SQLite reload TDD.
+
+Write scope was limited to:
+- nrt/hmi/server/tests/work_offset_real_backend_test.cpp
+- nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp
+
+Requirements:
+1. Add `#include &lt;limits&gt;` and helper after `find_row`:
+
+```cpp
+double offset_value(const hmi_work_offset::WorkOffsetRow&amp; row,
+                    std::string_view field) {
+  if (field == &quot;offset_x&quot;) {
+    return row.offset_x;
+  }
+  if (field == &quot;offset_y&quot;) {
+    return row.offset_y;
+  }
+  if (field == &quot;offset_z&quot;) {
+    return row.offset_z;
+  }
+  if (field == &quot;offset_a&quot;) {
+    return row.offset_a;
+  }
+  if (field == &quot;offset_c&quot;) {
+    return row.offset_c;
+  }
+  return std::numeric_limits&lt;double&gt;::quiet_NaN();
+}
+```
+
+2. Add test `real_backend_set_offset_updates_store_and_survives_reconstruction()` that:
+- seeds SQLite store from `basic_xyzac.snapshot.json`
+- constructs `RealWorkOffsetBackend`
+- finds `G54`
+- sends `backend.set_offset` for `offset_x` with `target_ref`, `g_code`, matching `axis_id`, value `12.5`, and row `revision`
+- expects accepted status and code `work_offset.offset_updated`
+- re-queries and expects `G54.offset_x == 12.5` and row revision advanced
+- reconstructs backend with a new `SQLitePersistenceStore` over same db and expects `G54.offset_x == 12.5`
+- is called from `main()`
+
+3. Verify RED first: test fails because `RealWorkOffsetBackend::set_offset` returns `work_offset.real_backend_not_implemented`.
+
+4. Replace `RealWorkOffsetBackend::set_offset` minimal implementation:
+- Query current HMI table with `query_work_offsets()`.
+- Resolve row by `request.target_ref` first; if absent, by `request.g_code`.
+- Reject missing row with `work_offset.row_unknown`.
+- Reject non-editable row with `work_offset.row_readonly`.
+- Resolve `request.field` through `row.component_axis_ids`.
+- Reject unsupported field with `work_offset.offset_field_unsupported`.
+- Reject `request.axis_id` mismatch before calling WorkOffset with `work_offset.axis_mismatch`.
+- Build `meta_nc::work_offset::SetFrameComponentRequest` with target_ref, axis_id, `FrameComponentKind::CoarseTranslation`, value, `StateSource::OperatorConfigured`, `selector_evidence`, optional `Revision`.
+- Call `runtime_.set_frame_component(scope_, command)`.
+- Map accepted to `work_offset.offset_updated`, with details from refreshed row revision.
+- Map `wcs-row-revision-conflict` to `work_offset.revision_mismatch`.
+- Map `wcs-expected-revision-required` to `work_offset.expected_revision_required`.
+- Map `wcs-offset-value-invalid` to `work_offset.value_invalid`.
+- Map `wcs-axis-unsupported` to `work_offset.axis_unknown`.
+- Map `wcs-not-found` to `work_offset.row_unknown`.
+- Otherwise return `work_offset.operation_rejected`.
+
+5. Verify GREEN focused test passes.
+
+No docs, generated files, CMake, or `nrt/work_offset` edits. No commits.
+
+## What Implementer Claims They Built
+
+Status DONE. Claims:
+- Added `offset_value()` helper and `&lt;limits&gt;` include in `work_offset_real_backend_test.cpp`.
+- Added accepted set_offset SQLite reload regression test.
+- Replaced real backend set_offset stub with row lookup, editability/field/axis preflight, `SetFrameComponentRequest`, accepted mapping, and domain diagnostic mapping.
+- RED build passed and RED test failed with expected unavailable/not implemented status/code.
+- GREEN build passed and GREEN CTest passed: `100% tests passed, 0 tests failed out of 1`.
+- Changed only:
+  - `nrt/hmi/server/tests/work_offset_real_backend_test.cpp`
+  - `nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp`
+- No commit.
+- Concern: domain `wcs-offset-value-invalid` maps to `work_offset.value_invalid`, while existing parse-time invalid values use `work_offset.offset_value_invalid`; implementer followed task text.
+
+## CRITICAL: Do Not Trust the Report
+
+Verify independently by reading actual code and `git diff`. Do not rely on implementer claims. Compare implementation to requirements line by line. Look for missing requirements, extra work, or misunderstandings.
+
+Report:
+- ✅ Spec compliant, or
+- ❌ Issues found with specific file:line references.
+
+Do not modify files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:34:07 +0800</div>
+<pre>Using the Superpowers startup workflow to check process requirements, then I’ll do this as a read-only review: repo instructions first, then Task 1 diff and exact file/line verification.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 09:34:28 +0800</div>
+<pre>I’ve got the root instructions and the relevant memory context. Next I’m orienting through the architecture map and module instructions, then I’ll inspect only the requested diff and current code paths.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 09:34:45 +0800</div>
+<pre>The working tree is dirty beyond Task 1, as warned. I’m keeping the review anchored to the two allowed files and checking surrounding APIs only to verify behavioral mapping.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 09:35:16 +0800</div>
+<pre>I’ve completed the required module orientation. Now I’m reading the actual Task 1 diff and current line-numbered files, then I’ll cross-check each requested diagnostic and persistence behavior against the WorkOffset API surface.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-16 09:35:36 +0800</div>
+<pre>The diff already shows extra test changes outside the requested Task 1 test. I’m checking whether those extra changes came from pre-existing Slice 3 work versus this Task 1 diff, and whether the two allowed files still satisfy the requested behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-16 09:36:08 +0800</div>
+<pre>The core set_offset path is present and mostly follows the requested sequence. I’m now checking request parsing/domain diagnostics because the subtle review points are usually “accepted path passes” versus “wrong fallback/mapping/staleness details.”</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-16 09:36:24 +0800</div>
+<pre>I don’t need to run a build to establish the main review result: the diff itself contains scope creep in the allowed test file, and the requested set_offset implementation can be checked statically. I’m grabbing exact line references for the final report now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-16 09:38:25 +0800</div>
+<pre>I found one concrete scope problem in the Task 1 diff: the current test file includes new factory/bootstrap coverage that is not part of the accepted set_offset + SQLite reload task. I’m doing one last pass for any actual set_offset semantic mismatch before finalizing.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-06-16 09:39:37 +0800</div>
+<pre>❌ Issues found.
+
+Finding: Task 1 scope is polluted by factory/startup coverage in the same test file. The requested test file changes were only `&lt;limits&gt;`, `offset_value()`, the accepted `set_offset` SQLite reload regression, and the `main()` call for that test. Current diff also adds `real_work_offset_backend_factory.h` at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:12), `store_has_snapshot()` at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:149), and two factory seed/preserve tests plus `main()` calls at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:431) and [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:487). Those are not part of Task 1’s accepted real `set_offset` + SQLite reload scope.
+
+Task 1’s actual `set_offset` implementation looks aligned with the requested behavior: row lookup, readonly/field/axis preflight, `SetFrameComponentRequest`, runtime call, accepted mapping, and diagnostic mappings are present in [work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:427). The requested regression test is also present and called from `main()` at [work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:362).
+
+I did not edit files or run CTest. I treated the other dirty repo files as pre-existing Slice 3 noise per your instruction, but the extra factory coverage inside the Task 1 test file is still outside the stated Task 1 requirements unless you explicitly classify those lines as pre-existing Slice 3 work.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:147-184|note=[used to confirm HMI WorkOffset V1 scope and branch context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a014-7253-ad54-2cdfce601b27
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 09:39:57 +0800</div>
+<pre>Please re-review with this clarification: the factory/startup coverage you flagged was pre-existing dirty Slice 3 work before Task 1 began. Specifically, `real_work_offset_backend_factory.h`, `store_has_snapshot()`, `real_backend_factory_seeds_empty_store_when_requested()`, `real_backend_factory_preserve_rejects_empty_store()`, and their `main()` calls were already present before the Task 1 implementer started. They should not count as Task 1 scope pollution.
+
+For this re-review, evaluate only whether the Task 1-specific additions comply:
+- `&lt;limits&gt;` and `offset_value()` helper
+- `real_backend_set_offset_updates_store_and_survives_reconstruction()`
+- `main()` call for that test
+- replacement of `RealWorkOffsetBackend::set_offset()` stub with the requested minimal accepted-write translation and diagnostic mappings
+
+Do not edit files. Report ✅ if compliant, or ❌ with only issues in those Task 1-specific changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 09:40:11 +0800</div>
+<pre>I’ll re-review with that boundary: I’m excluding the clarified Slice 3 factory/startup lines and checking only the Task 1 additions against the requested contract.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-16 09:40:36 +0800</div>
+<pre>✅ Spec compliant.
+
+With the clarified boundary, the Task 1-specific changes match the requested scope: `&lt;limits&gt;` and `offset_value()` are present, the SQLite reload regression test covers accepted `set_offset`, refreshed row value/revision, and reconstruction persistence, and `main()` calls that test. `RealWorkOffsetBackend::set_offset()` implements the requested row resolution, preflight rejects, `SetFrameComponentRequest` translation, accepted result, and diagnostic mappings.
+
+No files edited.</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed891-c797-71d1-abd8-ee0971307344</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-18 10:31:33 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T10-31-33-019ed891-c797-71d1-abd8-ee0971307344.jsonl</code></div>
+<div><b>Messages</b>: <code>17</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:31:33 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-18&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:31:33 +0800</div>
+<pre>You are doing a read-only review in /home/iaar/workspace/ccmix-wp/MetaNC. Follow repository instructions first: read root README.md, docs/dev/architecture.md enough to orient to nrt/hmi and work_offset, and module README/AGENTS files in scope. Do not edit files.
+
+Scope: HMI WorkOffset zero-offset table Slice 4 server/backend integration status on branch feat/hmi-work-offset-table.
+
+Review nrt/hmi/definition/interfaces.machine.yaml, nrt/hmi/server include/src/tests for work_offset, nrt/work_offset public contracts if needed, and tests. Compare against nrt/hmi/docs/project/work_offset/delivery_plan.md Slice 4 backend/contract expectations, especially refresh command, enriched activation payload support, revision metadata, alias synchronization, and failure/error codes.
+
+Questions to answer:
+1. Is wcs.commands.refresh_offset_table defined and implemented across mock backend, real adapter, runtime extension, and tests with known_revision semantics?
+2. Does server/backend correctly support Activate Selected and fixed G-code actions, including row_key/target_ref/g_code selector resolution and expected_revision validation where required?
+3. Are set-offset payloads using target_ref/axis_id/expected_revision and are stale/invalid diagnostics returned consistently?
+4. Are any backend-side gaps likely to block implementation of detailed design?
+
+Return concise findings ordered by severity, with exact file paths/line refs where possible. Do not edit files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 10:32:04 +0800</div>
+<pre>Using `superpowers:using-superpowers` to satisfy the session skill workflow, then I’ll keep this as a read-only code review and follow the repo orientation requirements before judging Slice 4 status.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 10:32:45 +0800</div>
+<pre>I confirmed the checkout is on `feat/hmi-work-offset-table`. I’m reading only the orientation and in-scope module files now, then I’ll compare implementation against the Slice 4 plan rather than editing anything.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 10:33:19 +0800</div>
+<pre>The module boundaries match the task: `nrt/work_offset` owns domain semantics and revision guards, while `nrt/hmi/server` owns projection, command wrapping, refresh/session behavior, and adapters. I’m now reading the delivery plan and the retained interface catalog to turn that into concrete review checks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 10:34:02 +0800</div>
+<pre>The Slice 4 plan adds one backend-relevant requirement beyond client behavior: `wcs.commands.refresh_offset_table` with `known_revision` and alias synchronization, plus revision-aware activate/set-offset payloads. I’m checking the extension adapter, mock backend, real backend bridge, and tests against those exact points.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 10:34:45 +0800</div>
+<pre>The public HMI backend interface and extension adapter do include refresh and parse `known_revision`. I’m drilling into the real adapter now because that is where selector resolution, WorkOffset diagnostic mapping, and required revision behavior can diverge from the mock.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 10:35:01 +0800</div>
+<pre>The real adapter maps set-offset through `target_ref` plus the row’s `component_axis_ids[field]`, and activation through WorkOffset `select_settable_zero_offset`. I’m reading tests and app-level alias/resource routing next, because refresh semantics are only complete if the command path republishes canonical data and keeps the legacy alias in sync.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 10:35:17 +0800</div>
+<pre>Tests cover refresh metadata, alias sync after refresh, stale set-offset rejection without local mutation, and real activation missing-revision rejection. I’m continuing through the rest of the real-backend tests to see whether real set-offset missing revision and invalid metadata are covered consistently.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 10:35:34 +0800</div>
+<pre>The app-level command router polls resources after both accepted and rejected commands, then canonicalizes `wcs.offset.table` and `tooling.wcs.table`. I’m checking the HTTP/fixture paths and generated contract fixtures so the answer can say whether support is across mock backend, real adapter, runtime extension, and tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 10:37:04 +0800</div>
+<pre>The Python fixture has its own WCS command handlers too; it supports refresh and alias sync, but its error-code namespace is legacy-style (`wcs_revision_mismatch`, `wcs_axis_mismatch`) rather than the native `work_offset.*` codes. I’m verifying whether that inconsistency matters for the specific backend-side questions or is only a client/fixture parity risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 10:37:26 +0800</div>
+<pre>The fixture and generated local runtime support the command names, but the local runtime fragment still treats WCS activate/set-offset as a simple mock path. I’m checking the WorkOffset public contracts briefly so the final findings distinguish true domain-backed behavior from fixture compatibility behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 10:37:41 +0800</div>
+<pre>The domain contract confirms HMI writes must carry `expected_revision`, with missing/stale revisions rejected by WorkOffset and exposed by the adapter as stable HMI codes. I’m doing one last pass for HTTP/API tests and exact line references for the final severity list.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 10:39:12 +0800</div>
+<pre>There is one backend-facing issue shaping up: refresh metadata is computed from a derived max rather than an explicit table snapshot revision, and the mock rows do not advance `snapshot_revision` on activation. I’m checking generated dispatch references before I decide whether that is the only finding or whether activation metadata also has a backend gap.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-18 10:39:31 +0800</div>
+<pre>I have enough implementation evidence now. I’m only pulling the exact memory line references required by the session memory policy, then I’ll return concise review findings with file/line refs from the current checkout.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-18 10:42:52 +0800</div>
+<pre>The retained/generated UI command binding still sends `selected_wcs_row_key` directly as `selector` for Activate Selected, while the backend can resolve row keys in mock and real adapters. That makes it a client-side contract miss more than a server/backend blocker; I’ll call it out only where it affects the backend-support question.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / final_answer</h3>
+<div class="time">2026-06-18 10:51:26 +0800</div>
+<pre>**Findings**
+- Medium: refresh `known_revision` is not purely tied to table `snapshot_revision`. Slice 4 says compare against table `snapshot_revision`, not `active_state_revision` ([delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:355)). The native mock/real helpers compute refresh revision starting from `active_state_revision` ([mock_work_offset_backend.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/mock_work_offset_backend.cpp:54), [work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:238)). In mock mode, activation increments active revision but row `snapshot_revision` remains row revision ([mock_work_offset_backend.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/mock_work_offset_backend.cpp:175), [mock_work_offset_backend.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/mock_work_offset_backend.cpp:204)), so refresh can report `changed` against metadata the table rows do not expose.
+
+- Medium: fixture/local mock diagnostics are weaker than native backend diagnostics. The Python fixture returns stale failures as messages like `wcs_revision_mismatch` ([mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:1023), [mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:1053)), but `_command_code()` maps them to generic `runtime.command_rejected` ([mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:1928)). Native C++ consistently returns `work_offset.*` codes for stale/missing/invalid revision paths.
+
+- Low: real refresh has implementation but no direct real-backend test. Real adapter implements `refresh_offset_table` ([work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:515)); mock/runtime tests cover refresh and alias sync ([work_offset_runtime_extension_adapter_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_runtime_extension_adapter_test.cpp:250), [work_offset_runtime_extension_adapter_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_runtime_extension_adapter_test.cpp:391)), but `work_offset_real_backend_test` covers query/activate/set/seed only ([work_offset_real_backend_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_real_backend_test.cpp:863)).
+
+**Answers**
+1. Yes: `wcs.commands.refresh_offset_table` is defined in the retained interface ([interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1502)), exposed on the C++ backend interface ([work_offset_backend.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/include/hmi/extensions/work_offset/work_offset_backend.h:67)), routed by the runtime extension ([work_offset_runtime_extension_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:221)), and implemented in mock/real backends. Caveats above.
+
+2. Native server/backend supports enriched Activate Selected and fixed G-code activation: mock resolves row key/target/g-code forms, real resolves row key/target/g-code to WorkOffset selector and enforces `expected_revision` ([work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:429)). Retained UI still sends row key or `g_code` without enrichment ([ui.structure.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/ui.structure.yaml:1278)), so real backend will reject that until client dispatch adds `expected_revision`.
+
+3. Set-offset is in good shape in native paths: generated Web/QML payloads include `target_ref`, `axis_id`, and `expected_revision` ([app.js](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/web/app.js:14261), [Main.qml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/qml/Main.qml:8383)); real backend maps through current row metadata and WorkOffset domain guards ([work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:461), [domain.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:949)).
+
+4. I do not see a C++ real-backend blocker for detailed design. The likely blockers are parity/test issues around refresh revision semantics and fixture diagnostics, plus client-side activation enrichment. No files were edited; I did not run tests.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:264-266|note=[prior WorkOffset branch and contract context]
+MEMORY.md:39-42|note=[memory routing for current HMI WorkOffset status review]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a82d-7e82-945f-115cbe6e03a3
+019ec898-99ca-7a93-9357-c18b4e56049e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

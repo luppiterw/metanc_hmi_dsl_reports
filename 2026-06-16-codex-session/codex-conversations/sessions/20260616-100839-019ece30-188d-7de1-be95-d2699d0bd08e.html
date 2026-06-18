@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review the TP004 parameter descriptor documentation changes in `/tmp/metanc_drafts_tool_edge_slice`...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Review the TP004 parameter descriptor documentation changes in `/tmp/metanc_drafts_tool_edge_slice`...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ece30-188d-7de1-be95-d2699d0bd08e</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-16 10:08:39 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/16/rollout-2026-06-16T10-08-39-019ece30-188d-7de1-be95-d2699d0bd08e.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-16 10:08:39 +0800</div>
+<pre>Review the TP004 parameter descriptor documentation changes in `/tmp/metanc_drafts_tool_edge_slice`. Scope: concept boundary and concreteness only. Read these files: `TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md`, `TP004-parameter-system/book/src/parameter-descriptor-status.md`, `TP004-parameter-system/openspec/OBJECT-SCOPES.md`, `TP004-parameter-system/openspec/OWNER-REGISTRY.md`. Focus on whether the new `Later Necessity Markers` / `Later Necessary Boundaries` sections are concrete enough, stay within the current minimal descriptor contract, and avoid prematurely formalizing runtime/access/value fields. Do not edit files. Return findings ordered by severity with file/line references, plus a concise recommendation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-16 10:08:55 +0800</div>
+<pre>I’ll use the Superpowers startup skill, then do a read-only review of the specified docs and the relevant TP004 memory context.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-16 10:09:11 +0800</div>
+<pre>Using `openspec-explore` for this OpenSpec documentation boundary review. I’m keeping it read-only and will ground findings in line-numbered references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-16 10:09:33 +0800</div>
+<pre>I’m pulling the four files with line numbers and doing a narrow memory lookup for TP004 descriptor decisions, so the review can distinguish intentional scope from accidental drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-16 10:09:47 +0800</div>
+<pre>I have the line-numbered content. I’m checking the local diff metadata now, mainly to see exactly what was added versus pre-existing context before I call something a regression.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-16 10:11:11 +0800</div>
+<pre>**Findings**
+1. **Medium** — Semantic path grammar is promoted too strongly from optional/deferred to “necessary” for runtime parameter access.
+   [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:150) says the listed boundaries are necessary before runtime access is complete, and line 165 includes semantic path grammar. That conflicts with the same file’s still-open question about whether semantic paths are required for all descriptors or only public/searchable ones at line 241. The status page repeats the same framing at [parameter-descriptor-status.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/book/src/parameter-descriptor-status.md:60).
+   Recommendation: qualify semantic path grammar as necessary only for public/searchable surfaces, or move it under “candidate later boundary” rather than runtime-access completion.
+
+2. **Low** — The runtime registry row risks implying a composite lookup identity before that contract exists.
+   [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:160) says lookup is “by `parameter_id`, `owner`, and `scope`,” while the current minimal model keeps `parameter_id` as stable identity and treats `owner`/`scope` as governed fields, not derived identity components, at lines 43-64.
+   Recommendation: use the looser status-page wording, or say “lookup by `parameter_id`, returning owner/scope metadata, with possible owner/scope filters.”
+
+3. **Low** — Access/value rows are concrete enough for a roadmap, but a few terms are not yet source-owned.
+   [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:163) introduces “guard tokens,” protection-level mismatches, and owner policy references; line 164 introduces type/unit/range/enum-source expectations. They remain deferred, but the wording starts naming future access/value vocabulary before the owning evidence slice exists.
+   Recommendation: anchor these rows to “one owner-evidenced case” and avoid making any of those names look like chosen descriptor fields.
+
+**Concise Recommendation**
+Accept the direction after small wording fixes. The additions are mostly concrete and mostly stay outside the current minimal descriptor contract, especially with the explicit deferral at [PARAMETER-DESCRIPTORS.md](/tmp/metanc_drafts_tool_edge_slice/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:167) and lines 198-210. The main change needed is to soften “necessary” where it could prematurely lock semantic paths or registry lookup identity.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:401-405|note=[current TP004 descriptor boundary]
+MEMORY.md:381-381|note=[avoid TP004 concept sprawl]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

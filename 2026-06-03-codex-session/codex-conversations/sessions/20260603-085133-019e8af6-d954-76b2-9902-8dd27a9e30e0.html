@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8af6-d954-76b2-9902-8dd27a9e30e0</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 08:51:33 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T08-51-33-019e8af6-d954-76b2-9902-8dd27a9e30e0.jsonl</code></div>
+<div><b>Messages</b>: <code>14</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:51:33 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-03&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:51:33 +0800</div>
+<pre>Review current uncommitted PLC build/validation integration in /home/iaar/workspace/mirror-ccmix-wp/MetaNC. Scope strictly rt/plc plus root docs validation commands. Follow AGENTS workflow: read root README.md, docs/dev/architecture.md, rt/plc/README.md; check for rt/plc/AGENTS.md. Do not edit files. Focus on whether changes require CMake label updates, whether all affected tests are built/runnable, and whether validation commands are sufficient. Inspect CMakeLists.txt, changed tests, and docs validation. Report findings only with severity, file:line, concrete problem, and suggested fix. If no findings, say no findings and list validation commands you ran or inspected.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:51:52 +0800</div>
+<pre>I’ll do this as a review only: first the required repo orientation, then the uncommitted `rt/plc` diff, CMake/test wiring, and docs validation commands without modifying files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:52:06 +0800</div>
+<pre>The required orientation shows `/rt/plc` is the PLC framework under the RT development stack, and there is no `rt/plc/AGENTS.md` in this checkout. I’m now narrowing to the uncommitted diff and target/test registration so the review stays inside `rt/plc` plus root docs validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:52:24 +0800</div>
+<pre>The uncommitted set touches only existing PLC runtime headers/sources, existing story tests, and PLC docs. I’m checking whether those changed tests are already registered in CTest and whether any label/filter assumptions in the docs now drift from CMake.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:52:46 +0800</div>
+<pre>The CMake registrations for the changed story 19/28/30/44 tests are present. I’m going deeper into changed implementation and docs references now, because the likely review risks are test filters/labels and validation claims rather than missing targets.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:53:16 +0800</div>
+<pre>I found label use is selective in this subproject: Story-32/33/35 and source tracks have labels, while many story tests are invoked by name. I’m checking Story-44’s exact CMake block and the updated `validated-by` docs to see whether the new contract-freeze work is actually discoverable by the intended validation filters.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 08:53:43 +0800</div>
+<pre>The Story-44 target is also included in both adapter/payload CTest labels, so a label update appears already present in the current CMake file. I’m going to run the relevant build/test and docs validation gates now, because the remaining question is whether the changed integration actually compiles and whether the documented commands are sufficient.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 08:53:57 +0800</div>
+<pre>Configure, whitespace check, and docs policy lint are clean. I’m building the PLC subproject and then I’ll run the targeted labels/full CTest plus root book build to confirm the changed tests are actually runnable through the advertised gates.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 08:54:18 +0800</div>
+<pre>The PLC build includes the changed Story-44 target and root docs build passes. I’m running the CTest label gates plus the changed-story regex and then the full PLC CTest run to catch any runnable/coverage gap before I write findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 08:54:37 +0800</div>
+<pre>One of the parallel label runs reported a Story-30 failure while another simultaneous run of the same test passed, so I’m treating that as a possible shared-temp/test-isolation issue until verified. I’m rerunning the label gate sequentially and then the full suite to distinguish a real validation problem from my concurrent CTest invocation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 08:54:48 +0800</div>
+<pre>The sequential label gate passes, so the earlier Story-30 failure was caused by my parallel invocation of overlapping CTest labels sharing a fixed temp filename. I’m running the full suite once now; after that I’ll report only concrete findings with file/line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 08:55:07 +0800</div>
+<pre>The full CTest suite passes sequentially. I have one review finding from the overlapping label run: the changed Story-30 test uses a fixed `/tmp` filename, which made the same test fail when two valid label gates selected it at the same time.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-03 08:55:27 +0800</div>
+<pre>Medium - [rt/plc/tests/story30_runtime_simulation_session_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story30_runtime_simulation_session_tests.cpp:70):70: `temp_path()` always writes `metanc_plc_story30_catalog_boot_machine.yaml` under the shared temp directory, and the changed test rewrites that same file at lines 214-225. Because this test is included in both `plc_adapter_contract_baseline` and `plc_command_result_payload_baseline` labels, concurrent validation of those label gates can race and fail with `machine descriptor is empty`. Suggested fix: make the test path unique per process/test run, for example by using a temporary directory or appending the PID/thread-safe unique suffix, and clean it up after the test.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC scope and validation workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

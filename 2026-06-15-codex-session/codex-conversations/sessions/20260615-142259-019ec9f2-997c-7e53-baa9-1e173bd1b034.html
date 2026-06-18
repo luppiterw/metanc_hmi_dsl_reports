@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read-only review task. Workspace: /home/iaar/workspace/ccmix-wp/metanc_drafts. Review docs/superpow...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Read-only review task. Workspace: /home/iaar/workspace/ccmix-wp/metanc_drafts. Review docs/superpow...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ec9f2-997c-7e53-baa9-1e173bd1b034</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-15 14:22:59 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/15/rollout-2026-06-15T14-22-59-019ec9f2-997c-7e53-baa9-1e173bd1b034.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 14:23:00 +0800</div>
+<pre>Read-only review task. Workspace: /home/iaar/workspace/ccmix-wp/metanc_drafts. Review docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md from a TP004 documentation and terminology-boundary perspective. Inspect TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md, OBJECT-SCOPES.md, SCHEMA-FIELDS.md as needed. Do not edit files. Find whether the plan preserves the user&#x27;s desired minimal descriptor scope, whether it risks concept sprawl, whether provisional owner-scope handling is clear, and whether proposed docs wording is misleading. Return findings ordered by severity with file/line references where possible, plus a recommendation: proceed as-is, revise plan, or block.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-15 14:23:40 +0800</div>
+<pre>Using `openspec-explore` because this is a read-only TP004 plan review where the key work is checking terminology boundaries and requirement clarity.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-15 14:24:12 +0800</div>
+<pre>I’ll keep this read-only and ground the review in the plan plus the TP004 descriptor/scope/schema references. I’m also doing a light memory lookup because TP004 descriptor-boundary decisions are likely to have prior context.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-15 14:24:33 +0800</div>
+<pre>The current docs already show the four-field descriptor model and only two schema-field bindings for descriptors. I’m reading the rest of the plan now for places where it may accidentally harden provisional examples or introduce naming drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-15 14:24:54 +0800</div>
+<pre>The plan is mostly aligned with the narrow descriptor direction, but I’m checking two likely risk areas before I call it: whether the proposed checker implementation hard-fails provisional records in an ambiguous way, and whether the docs text swaps “semantic_name” for older semantic-path wording.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-15 14:26:26 +0800</div>
+<pre>One terminology concern has emerged: the plan creates a new `status: checker_backed` marker even though the split roots already carry that meaning. I’m checking the existing status guidance so the recommendation does not overstate that.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-15 14:27:23 +0800</div>
+<pre>I’ve got enough for the review. No edits were made.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-15 14:29:26 +0800</div>
+<pre>**Findings**
+
+1. **High: `status: checker_backed` adds an ungoverned status concept.**
+   The plan requires `owner_scope_bindings` entries to carry `status: checker_backed` and has the checker reject entries without it ([plan:200](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:200), [plan:653](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:653)). This conflicts with TP004 status guidance, which explicitly says not to introduce new status taxonomy/fields without a separate governed value-set change ([STATUS-USAGE.md:3](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/STATUS-USAGE.md:3), [STATUS-USAGE.md:103](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/STATUS-USAGE.md:103)). The root split already carries the meaning: `owner_scope_bindings` can mean checker-backed, while `provisional_owner_scope_notes` means non-formal. I would remove the `status` field rather than create a new status-like token.
+
+2. **Medium: provisional owner-scope handling is directionally right but wording mislabels some boundaries.**
+   The plan says broad owners such as `motion`, `hal`, and `magazine` remain provisional ([plan:146](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:146), [plan:191](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:191)), but the replacement block also moves `tool_management -&gt; tool_edge` and `zero_offset -&gt; frame_axis_component` into provisional notes ([plan:380](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:380)). `tool_management` is already a registered owner with TP002 evidence ([OWNER-REGISTRY.md:62](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:62)), so wording like “after TP002 ownership evidence is linked” is misleading. If these pairs are deferred, say they are deferred as descriptor owner/scope pairs, not because the owner boundary lacks evidence.
+
+3. **Medium: proposed checker logic under-validates the object-scope contract documented by `OBJECT-SCOPES.md`.**
+   Current docs say every allowed scope should resolve to an `object_scopes[]` entry ([OBJECT-SCOPES.md:184](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:184)). The plan’s parser only checks `allowed_scopes` against `VS060003` tokens, not against the `object_scopes` records or `value_id` consistency ([plan:633](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:633)). Either add that check, or narrow the plan/docs wording so it does not imply full object-scope record validation.
+
+4. **Low: one Chinese projection example is not reader-facing Chinese prose.**
+   The sample note says “broad motion owner 仍是候选” ([plan:435](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs/superpowers/plans/2026-06-15-parameter-descriptor-binding-guardrails.md:435)). Technical tokens can stay English, but prose should be Chinese on the Chinese reader path. This is small, but it is exactly the kind of projection drift TP004 has been trying to avoid.
+
+**Assessment**
+
+The plan does preserve the minimal descriptor schema scope: it stays on `parameter_id`, `owner`, `scope`, and `semantic_name`, and does not add value/unit/access/activation/persistence fields ([PARAMETER-DESCRIPTORS.md:19](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:19), [PARAMETER-DESCRIPTORS.md:153](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:153)). The main risk is terminology sprawl around `status: checker_backed` and misleading provisional-owner wording.
+
+**Recommendation: revise plan.**
+Do not block the slice; the core direction is sound. Revise before implementation to remove the new status field, clarify that only the first checker-backed pair is being admitted, avoid calling registered/evidence-backed owners “provisional owners,” and align checker behavior with the object-scope validation claims.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:360-383|note=[TP004 minimal descriptor boundary and concept sprawl preference]
+rollout_summaries/2026-06-11T08-21-47-Diri-tp004_parameter_descriptor_governance_discussion_pack.md:15-39|note=[prior parameter descriptor narrowing and user scope preference]
+rollout_summaries/2026-06-12T00-08-42-b4gd-tp004_parameter_descriptor_i18n_governance.md:47-75|note=[descriptor owner scope and i18n projection context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb5c5-ec24-73c3-9701-7096ca3f4efc
+019eb928-d99d-75b3-ad64-0b7fb9fe35d5
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

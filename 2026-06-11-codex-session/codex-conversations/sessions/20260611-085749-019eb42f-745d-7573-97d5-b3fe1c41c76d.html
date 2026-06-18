@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read-only review in /home/iaar/workspace/ccmix-wp/metanc_drafts. Task: Boundary review for current...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>Read-only review in /home/iaar/workspace/ccmix-wp/metanc_drafts. Task: Boundary review for current...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb42f-745d-7573-97d5-b3fe1c41c76d</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-11 08:57:49 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/11/rollout-2026-06-11T08-57-49-019eb42f-745d-7573-97d5-b3fe1c41c76d.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:57:49 +0800</div>
+<pre>Read-only review in /home/iaar/workspace/ccmix-wp/metanc_drafts.
+
+Task: Boundary review for current TP004 terminology discussion.
+
+We are trying to decide if the next stage after governance concepts (term/value/value set/owner/status/schema-field binding) should be described as &quot;grammar + topology&quot; or as &quot;Access Definition Structure and Module Binding&quot;.
+
+Please inspect current TP004 docs and judge whether this phrasing keeps TP004 at the right boundary:
+- TP004 owns parameter/runtime access model, access definitions, validation sets, status/value-set governance, owner-token binding, Siemens-style compatibility syntax boundaries.
+- TP004 should stop at module access layer: expression -&gt; access family -&gt; semantic descriptor -&gt; owner/module -&gt; read/write/metadata/dispatch capabilities and diagnostics.
+- TP004 should not specify internal module implementation: TP002 tooling storage/API internals, TP003 PLC runtime execution, motion control internals, zero_offset storage internals.
+
+Files to inspect:
+- TP004-parameter-system/openspec/README.md
+- TP004-parameter-system/openspec/DESIGN-BASELINE.md
+- TP004-parameter-system/openspec/OWNER-REGISTRY.md
+- TP004-parameter-system/openspec/access-definitions/README.md
+- TP004-parameter-system/openspec/validation-sets/case-schema.md
+- TP004-parameter-system/book/src/discussions/2026-06-10-parameter-owner-value-set-governance/session.md
+
+Answer:
+1. Does the proposed phrase risk expanding TP004 too far?
+2. What explicit boundary sentence should be used in future docs?
+3. Which terms should remain references only, not owned by TP004?
+4. What is the cleanest next discussion topic title?
+
+Do not edit files. Return findings first, concise.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:58:09 +0800</div>
+<pre>Using `openspec-explore` for this read-only boundary review, and I’ll also do a lightweight memory pass because this TP004 workspace has prior governance decisions that may affect the boundary wording.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 08:58:29 +0800</div>
+<pre>I’m reading the TP004 sources the user named plus the prior TP004 memory entry. The key thing I’m checking is whether the proposed wording describes TP004’s access contract surface or accidentally pulls module internals under TP004 ownership.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 08:58:39 +0800</div>
+<pre>The baseline already uses “grammar” in a very narrow way: EBNF is only a description aid for expression shape, while the durable object is the structured access definition. That makes “grammar + topology” the phrase most likely to be misunderstood as owning broader language/module architecture.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 08:58:55 +0800</div>
+<pre>I’ve got enough to form the boundary judgment, but I’m doing one focused term search now so the “reference-only” list is anchored in the actual TP004 vocabulary rather than guessing from the question.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-11 08:59:32 +0800</div>
+<pre>Findings first:
+
+1. Yes, **“grammar + topology” risks expanding TP004 too far**. `grammar` is already scoped as a light description aid, not the contract itself; `topology` is too broad and can sound like TP004 owns module structure or internal runtime architecture. The safer framing is **“Access Definition Structure and Owner/Module Access Binding”**.
+
+2. Boundary sentence to use:
+
+&gt; TP004 owns the access contract up to the module boundary: expression parsing, access-family matching, semantic descriptors, owner/module tokens, read/write/metadata capabilities, dispatch targets, and diagnostics; the owning module retains responsibility for internal storage, execution semantics, domain APIs, control behavior, and persistence implementation.
+
+3. Reference-only terms, not TP004-owned: `tool_management`, `plc_runtime`, `zero_offset`, `motion.axis`, `motion`, `hal`, `magazine`, plus their domain internals such as tool table storage/API behavior, PLC runtime execution, motion-control behavior, HAL implementation, magazine/pocket behavior, and zero-offset/frame storage. TP004 may govern their owner tokens and access-definition references, but not their implementation semantics.
+
+4. Cleanest next topic title:
+
+**TP004 Access Definition Structure And Owner/Module Access Binding**
+
+Supporting basis: the current docs already say TP004 owns parameter/runtime access, definitions, validation, owner-token governance, and Siemens-style access patterns, while explicitly excluding HMI pages, PLC runtime execution semantics, and tooling domain behavior ([README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:6), [README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:23)). The baseline also says EBNF should not replace structured access-definition fields ([DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:274)) and that domain invariants remain at owner APIs ([DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:506)). The owner registry confirms owner tokens reference topic boundaries instead of redefining owners locally ([OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:49)).
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:253-264|note=[confirmed prior TP004 preference for MetaNC-owned contracts and boundary model]
+MEMORY.md:260-265|note=[confirmed durable vocabulary and non-parameter boundary distinctions]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6d14-a2f1-7d62-82ef-4cc7879838d9
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

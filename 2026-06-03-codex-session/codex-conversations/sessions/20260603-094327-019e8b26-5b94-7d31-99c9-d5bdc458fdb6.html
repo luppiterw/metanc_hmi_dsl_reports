@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你在 /home/iaar/workspace/ccmix-wp/metanc_drafts 仓库中做只读架构审查。不要编辑文件。重点从长期维护角度审查本轮新增 value_set binding...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你在 /home/iaar/workspace/ccmix-wp/metanc_drafts 仓库中做只读架构审查。不要编辑文件。重点从长期维护角度审查本轮新增 value_set binding...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8b26-5b94-7d31-99c9-d5bdc458fdb6</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 09:43:27 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T09-43-27-019e8b26-5b94-7d31-99c9-d5bdc458fdb6.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:43:27 +0800</div>
+<pre>你在 /home/iaar/workspace/ccmix-wp/metanc_drafts 仓库中做只读架构审查。不要编辑文件。重点从长期维护角度审查本轮新增 value_set binding 机制：VALUE-SETS.md、SCHEMA-FIELDS.md、USAGE-INDEX.generated.md、OpenSpec change docs。请找：哪些值被过度 enum 化导致未来维护很麻烦；哪些应该是 profile_owned/machine_configuration/extensible 而不是 frozen/near-formal；profile_owned_value_set_id 是否遗漏现有 profile-owned set；binding 机制是否会因为术语扩展而 drift；USAGE-INDEX 是否足以支持以后改值时检索关联项。输出具体问题，按严重度排序，带 file:line。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:44:45 +0800</div>
+<pre>我会保持只读，只做文件检索和审查。先快速拉一下这个仓库的既有治理记忆，再定位本轮 value_set binding 相关文件和行号。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:45:12 +0800</div>
+<pre>工作区里已经有未提交修改，我只会读取它们。接下来我会看当前 diff 和几份源文档本身，重点对比“值集定义、字段绑定、生成索引、OpenSpec 约束”之间是否形成可维护闭环。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:45:47 +0800</div>
+<pre>目前看到新增内容把不少“示例值/夹具值/当前机型值”提升成了 value_set。为了避免误报，我会继续用行号查看具体定义，并抽查 checker/usage index 是否真的能反查到值集和字段来源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 09:46:19 +0800</div>
+<pre>我已经确认 OpenSpec 文档把 `profile_owned` 目标必须指向 `openness: profile_owned` 写成了规范要求。现在会列出实际 `openness`、`profile_value_sets` 和 usage index 的反向引用，检查规范和资产是否自洽。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 09:46:45 +0800</div>
+<pre>到这里已经有几类风险浮出来：示例字符串被当成受治理枚举、机床实例数据被列进全局 seed、以及 usage index 的来源粒度可能不足。再补一轮检查生成器输出格式和 checker 的扫描范围，确认这些是不是机制性问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 09:47:28 +0800</div>
+<pre>我还需要确认一个关键细节：profile-owned 的取值在实际引用里是否解析到了 profile 声明，还是被全局 seed 抢先匹配。这个会直接影响 `profile_owned` 机制能不能防漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-03 09:50:34 +0800</div>
+<pre>**Findings**
+1. High — `profile_owned` 解析被全局 seed 抢先吞掉。`resolved_axis_value/tool_reference_value/edge_reference_value/frame_reference_value` 在全局 `values` 里列了 `X/Z/10/1/25`，同时又在 `profile_value_sets` 里给同样 token 分配 profile-specific `value_id`。但 checker 先查全局值，只有全局缺失才查 profile 值，所以 profile-owned 声明实际不会被引用。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:609`, `TP004-parameter-system/openspec/VALUE-SETS.md:1105`, `tools/check_parameter_value_sets.py:575`, `TP004-parameter-system/openspec/USAGE-INDEX.generated.md:2097`。长期看，这会把 profile 扩展伪装成全局 enum，后续改某个 profile 值时 impact index 找不到真正关联项。
+
+2. High — 机床配置值被 enum 化了。`tool=10`、`edge=1`、`frame=1/25`、resolved axis `X/Z` 是机床/fixture/profile 实例数据，不是稳定值域概念；但当前被做成 `profile_owned` value set 和全局 seed。更糟的是 `profile_value_set.profile_id` 绑定到 `compatibility_profile_id`，没有 machine profile/machine configuration 维度。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:624`, `TP004-parameter-system/openspec/VALUE-SETS.md:646`, `TP004-parameter-system/openspec/SCHEMA-FIELDS.md:424`, `TP004-parameter-system/openspec/TERMS.md:189`。这些应归入 machine_configuration/machine_profile 或 validation fixture，不应成为全局治理枚举。
+
+3. High — meta enum 有双重事实源，会随术语扩展漂移。`value_status` / `value_set_openness` 在文档里作为 value set 定义，但 checker 同时硬编码 `ALLOWED_SET_STATUS`、`ALLOWED_VALUE_STATUS`、`ALLOWED_OPENNESS`。新增状态或开放性时必须同步改文档、schema、代码常量，否则绑定机制自己先漂移。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:131`, `TP004-parameter-system/openspec/VALUE-SETS.md:154`, `tools/check_parameter_value_sets.py:26`, `TP004-parameter-system/openspec/SCHEMA-FIELDS.md:436`。
+
+4. Medium — `profile_owned_value_set_id` 手工列表已不一致。它列了多个 profile-owned set，但遗漏当前同文件里 `openness: profile_owned` 的 `index_value_type`；而 `profile_value_set.value_set` 又绑定到这个列表。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:173`, `TP004-parameter-system/openspec/VALUE-SETS.md:878`, `TP004-parameter-system/openspec/SCHEMA-FIELDS.md:430`。要么 `index_value_type` 应改成 `extensible` schema vocabulary，要么该列表必须由 `openness: profile_owned` 自动派生，不能手维护。
+
+5. Medium — native pattern 和 supported form examples 被过度 enum 化。`native_view_pattern` 和 `supported_form_example` 把 `$TC_DP3[10,1]`、错误示例、占位示例等具体字符串都变成永久 `value_id`。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:754`, `TP004-parameter-system/openspec/VALUE-SETS.md:777`, `TP004-parameter-system/openspec/SCHEMA-FIELDS.md:94`, `TP004-parameter-system/openspec/SCHEMA-FIELDS.md:215`。这些更像 access definition / validation case 内容，后续每补一个示例都要改中心 value set，会很重。
+
+6. Medium — `descriptor_key` 把 schema 结构键重复成 value set，容易和 schema 字段漂移。`vendor/domain/scope/field/axis_ref/axis/tool/edge/frame/component` 是 descriptor map 的结构键，不是业务值域；以后新增 `unit/channel/spindle/...` 时需要同时改 schema 和 `descriptor_key`。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:482`, `TP004-parameter-system/openspec/SCHEMA-FIELDS.md:124`。
+
+7. Medium — `owner_reference` 提前复制了未来 module/owner registry。`motion/hal/magazine/plc_runtime` 被列成 TP004 value set 值，但文件末尾还承认 owner ID 可能应留给 module registry。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:428`, `TP004-parameter-system/openspec/VALUE-SETS.md:1180`。这类值更适合来自 module registry 或 machine configuration；否则 value set 会变成第二套 owner 注册表。
+
+8. Medium — `USAGE-INDEX` 还不足以支撑后续改值检索。生成器只输出文件、document id、YAML path，没有行号；扫描范围是 OpenSpec 源和 zh projection，不扫 en/book/docs_html；profile 声明的引用还出现大量 `&lt;document&gt;` 和重复 `values[0].status`。证据：`tools/check_parameter_value_sets.py:624`, `tools/check_parameter_value_sets.py:725`, `TP004-parameter-system/openspec/USAGE-INDEX.generated.md:327`, `TP004-parameter-system/openspec/USAGE-INDEX.generated.md:361`。作为 impact report，它能粗定位，但不够支持安全改值。
+
+9. Low — `diagnostic_stage` / `diagnostic_code` 现在 `formal + closed` 可能过早。OpenSpec 仍声明不实现完整 parser/resolver，但诊断阶段和代码已经冻结，未来新增 resolution/profile/config 阶段或细分错误都要走版本化扩展。证据：`TP004-parameter-system/openspec/VALUE-SETS.md:312`, `TP004-parameter-system/openspec/VALUE-SETS.md:343`, `openspec/changes/add-parameter-value-set-binding/design.md:21`。
+
+只读审查完成，未编辑文件，未运行会写入的验证命令。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[metanc_drafts governance scope used for review context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

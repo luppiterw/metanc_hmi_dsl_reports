@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>只读审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts` 的 docs/i18n/published surface 修复。重点看 `tools/chec...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>只读审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts` 的 docs/i18n/published surface 修复。重点看 `tools/chec...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8795-ecbd-7a73-8184-c753902454d7</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-02 17:06:50 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T17-06-50-019e8795-ecbd-7a73-8184-c753902454d7.jsonl</code></div>
+<div><b>Messages</b>: <code>15</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-02 17:06:50 +0800</div>
+<pre>只读审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts` 的 docs/i18n/published surface 修复。重点看 `tools/check_docs_i18n_sync.py`、`tools/build_docs_html.sh`、`docs_i18n/README.md`、`docs_i18n/{en,zh}/src/SUMMARY.md`、`book/src/SUMMARY.md`、`TP004-parameter-system/book/src/SUMMARY.md`、`docs_html` 当前输出。请不要修改文件。请检查 clean checkout 是否能 build；发布检查是否能防 stale HTML；中文页 include exception 是否合理且不会隐藏缺翻译；root/topic/en/zh navigation 是否都有新页；published HTML 是否包含新内容。返回 findings，按 High/Medium/Low 排序，给文件+行号，最后给 verdict。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-02 17:07:54 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check. I’ll keep this read-only in the working tree and use a temporary copy for any build/probe that would generate output.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-02 17:08:16 +0800</div>
+<pre>The checkout is dirty and includes the exact review targets, so I’m treating the working tree as the candidate surface and using `HEAD` only for the clean-checkout build question. Next I’m reading the target files with line numbers and then I’ll probe the published output without touching source files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-02 17:08:47 +0800</div>
+<pre>A first read shows the publish script removes `docs_html` before rebuilding and runs the sync check both before and after, which is the right shape for stale-output detection. I’m now checking whether the checks are strict enough and whether the current generated HTML actually lines up with the new navigation/content.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-02 17:09:14 +0800</div>
+<pre>The generated `docs_html` currently has the three new TP004 pages in both `en` and `zh`, and the visible mdBook TOC entries are present. The noisy search hit came from mdBook search indexes, so I’m switching to targeted checks on specific HTML pages and then building from a temporary copy.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-02 17:09:50 +0800</div>
+<pre>The focused sync checks pass in the working tree, including `--require-published-html`. I found only three `{{#include}}` uses in Chinese pages, all on the new registry-style TP004 pages; I’m reading those pages now to see whether that exception is documented and narrow enough.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-02 17:10:13 +0800</div>
+<pre>The Chinese include exception looks narrowly documented: the pages introduce registry/generated content in Chinese and then include the canonical structured record. I’m also testing two build paths in `/tmp`: a clean `HEAD` archive and a generated-output-free copy of the current working tree, so I can separate branch-current buildability from the candidate dirty-tree surface.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-02 17:11:22 +0800</div>
+<pre>The diff confirms this is a source change plus generated output, with `tools/check_docs_i18n_sync.py` currently untracked. I’m going to run two separate builds now: `HEAD` as a true clean checkout baseline, and a temp copy of the candidate tree with generated outputs removed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-02 17:12:03 +0800</div>
+<pre>The clean `HEAD` archive and candidate temp copy are prepared in `/tmp`. I’m also checking mdBook’s output-cleaning behavior because the script explicitly deletes `docs_html`, but not the standalone `book/html` or `TP004-parameter-system/book/html` outputs that the publish check also inspects.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-02 17:13:02 +0800</div>
+<pre>The candidate temp-copy build completed from no generated outputs, including root book, TP004 topic book, and both i18n books. The stale-file probe also showed mdBook removes extra files from `book/html` and `TP004-parameter-system/book/html`; I’m rerunning the `HEAD` clean checkout build separately because the first attempt raced the directory creation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-02 17:13:28 +0800</div>
+<pre>Because only `tools/build_docs_html.sh` is tracked at `HEAD`, a true clean checkout of `HEAD` does not contain the new checker or new pages. I’m running that baseline build now from the archive directory and keeping the candidate-build result separate in the final verdict.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-02 17:15:50 +0800</div>
+<pre>The tracked/untracked split matters for the clean-checkout question: the working tree build passes only because the temp copy includes untracked source/checker files. I’m checking whether those untracked dependencies are required by the modified publish script and navigation, because that is the main risk for reproducibility.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-02 17:17:44 +0800</div>
+<pre>One more check I’m running is the local test suite for the new checker modules. It writes only temporary test directories and should not touch the review checkout.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-02 17:18:29 +0800</div>
+<pre>The checker tests pass as well: `python3 -m unittest discover -s tools/tests` ran 16 tests successfully. I’m doing a last targeted stale-output probe for the i18n build directories because those are copied into `docs_html`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / final_answer</h3>
+<div class="time">2026-06-02 17:20:46 +0800</div>
+<pre>**Findings**
+
+High: [tools/build_docs_html.sh](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/build_docs_html.sh:14) invokes `tools/check_docs_i18n_sync.py`, but the checker and the new TP004 source pages are currently untracked. The new nav entries in [book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/book/src/SUMMARY.md:24), [docs_i18n/en/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/en/src/SUMMARY.md:24), [docs_i18n/zh/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/SUMMARY.md:24), and [TP004-parameter-system/book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/SUMMARY.md:7) also point at untracked pages. A temp copy including untracked files builds cleanly; a clean `HEAD` checkout builds only the old surface. Verdict depends on adding all `??` files.
+
+Low: [docs_i18n/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/README.md:23) says the publish script builds only `docs_i18n/en` and `docs_i18n/zh`, but [tools/build_docs_html.sh](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/build_docs_html.sh:18) also builds root `book` and TP004’s topic book. The doc should match the actual publish/validation path.
+
+Low: The Chinese include exception is reasonable in the current tree: only the three TP004 registry/generated pages use `{{#include}}`, each after a Chinese intro. But the policy in [docs_i18n/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/README.md:8) is not enforced globally; [tools/check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:409) only checks allowlisted projection pairs, so future bare Chinese include wrappers outside that list could slip through.
+
+**Checks**
+
+Passed: `python3 tools/check_docs_i18n_sync.py`, `python3 tools/check_docs_i18n_sync.py --require-published-html`, `python3 tools/check_parameter_value_sets.py`, `python3 -m unittest discover -s tools/tests`.
+
+Candidate temp copy with generated outputs removed passed `./tools/build_docs_html.sh`. Current `docs_html` contains the new `value-sets`, `schema-fields`, and `usage-index` pages in both `en` and `zh`, with TOC entries and expected anchor content. The publish script deletes `docs_html` before rebuild, and mdBook removed stale probe files in the generated book dirs.
+
+**Verdict**
+
+Conditional pass. The implementation/build path is sound if all untracked checker/source files are included with the change; as tracked-state-only, it is not a reproducible clean-checkout repair.
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-4|note=[metanc_drafts docs publishing review context]
+MEMORY.md:49-50|note=[docs_html publish flow and zh projection context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

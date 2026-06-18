@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed923-9f22-7290-8f92-3a4ce9f396f6</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-18 13:10:50 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T13-10-50-019ed923-9f22-7290-8f92-3a4ce9f396f6.jsonl</code></div>
+<div><b>Messages</b>: <code>15</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 13:10:51 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-18&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 13:10:51 +0800</div>
+<pre>你在 /home/iaar/workspace/ccmix-wp/MetaNC 做只读架构审查。用户想先审查当前 HMI WorkOffset 集成，然后讨论后续 MetaNC NRT/RT 所有模块的组织方式、通信形式。请把当前实现抽象成可讨论的架构选项，不改文件。
+
+请读：
+- README.md
+- docs/dev/architecture.md 尤其 NRT/RT SDK/RT API Contract/HMI/WorkOffset/ProgramEngine 段落
+- nrt/work_offset/README.md / AGENTS.md
+- nrt/hmi/README.md / AGENTS.md
+- 当前 WorkOffset HMI docs：nrt/hmi/docs/project/work_offset/contract.md、delivery_plan.md
+- 当前实现关键处可用 rg 查 HMI_WORK_OFFSET_BACKEND、work_offset::work_offset、StoreBackedWorkOffsetRuntime
+
+问题：
+1. 当前 WorkOffset 集成模式属于哪种模块组织/通信形式？边界在哪里？
+2. 它适合作为哪些 NRT 模块之间的模式？不适合作为什么边界？特别是 NRT-&gt;RT、RT SDK、RT API Contract。
+3. 后续讨论 MetaNC 全模块组织时，建议采用哪几个分类维度和 2-3 个候选组织/通信方案？
+4. 找出当前文档或实现中可能误导未来架构决策的点，给文件/行号。
+
+输出： findings first，含文件行号；然后给一个简短讨论框架。不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 13:11:13 +0800</div>
+<pre>我会先按仓库要求和相关审查技能读上下文，然后只做只读检查；不会改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 13:11:43 +0800</div>
+<pre>Using `review-docs-comprehension` because this is a read-only architecture/doc review, and I’ll also do a quick memory pass for prior WorkOffset context before inspecting the live files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 13:12:32 +0800</div>
+<pre>我先做范围定位：根 README、architecture codemap、两个模块的 README/AGENTS，以及 WorkOffset HMI 当前计划/契约。随后再用符号搜索把实际边界和文档说法对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 13:12:57 +0800</div>
+<pre>我会补充使用 `superpowers:brainstorming`，因为你要把当前实现抽象成后续可讨论的组织/通信选项；这里会用于形成讨论框架，不会进入实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 13:14:04 +0800</div>
+<pre>模块约束里还有 HMI 的 “Read First” 和 WorkOffset 的文档首页入口，我会只读这些导航/状态页，避免因为只看计划页而误判模块职责。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 13:14:27 +0800</div>
+<pre>现在我转到当前 WorkOffset HMI 文档和代码符号，重点看实际调用链：HMI server adapter 怎么选 backend、real backend 如何包 `StoreBackedWorkOffsetRuntime`、以及是否有越过模块边界的通信。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 13:14:49 +0800</div>
+<pre>我已经能看到主模式：HMI 以资源/命令 facade 接本地 NRT domain runtime，不是网络服务或 RT 通信。接下来我会核对代码细节和找出会误导后续 RT/NRT 架构讨论的具体行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 13:15:21 +0800</div>
+<pre>一个初步风险已经浮出来：计划强调 real backend 不应把 unavailable 呈现成空表，但 adapter 在异常路径会发布 `wcs.offset.table=[]` 加诊断资源。这个不一定是运行 bug，但在架构讨论里容易被误读成“空 projection 就是失败语义”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 13:17:37 +0800</div>
+<pre>我还会查一下 story/status 文档里是否仍把 WorkOffset 混到 tooling 路径或 mock 状态，因为这类文字最容易影响“全模块组织方式”的后续判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 13:18:14 +0800</div>
+<pre>我会再做一轮边界验证：确认 HMI 公共头是否泄漏 WorkOffset 头、真实 bridge 是否只在私有目标中链接、以及 story/status 中哪些表述已经落后于实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 13:18:26 +0800</div>
+<pre>我会取一下 memory 引用行号；最终会注明这些是先前上下文辅助，当前判断仍以刚读到的 live checkout 文件为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 13:19:30 +0800</div>
+<pre>我发现还有一个更直接的文档风险：产品数据字典把 `wcs.offset.table` 标成 `read_write`，但 WorkOffset V1 的实际写入路径是命令 facade，不是资源直写。我会把这类“容易让组织方式走偏”的点放到 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-18 13:21:29 +0800</div>
+<pre>**Findings**
+
+1. 当前 WorkOffset 集成属于 **NRT 内部 domain module + HMI server facade/adapter** 模式，不是 RT 通信模式。`nrt/work_offset` owns 真值、snapshot、axis/profile、active state、PersistenceStore 和 accepted write semantics；HMI owns `wcs.offset.table` resource facade、`wcs.commands.*` command facade、UI 状态、mock backend 和 server adapter。见 [architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:250):250-273、[work_offset README](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/README.md:20):20-32、[contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:22):22-29、[delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:51):51-54。
+
+2. 实现边界是：HMI 公共侧依赖 C++17 `WorkOffsetBackend` facade；real backend 通过私有 C++20 bridge 链接 `work_offset::work_offset`，再调用 `StoreBackedWorkOffsetRuntime` over `PersistenceStore/SQLite`。这是一种 **同进程私有链接 + typed API adapter**，不是网络服务、不是 direct DB、不是 RT SDK。见 [CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/CMakeLists.txt:111):111-157、[work_offset_backend.h](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/include/hmi/extensions/work_offset/work_offset_backend.h:72):72-88、[real_work_offset_backend_factory.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/real_work_offset_backend_factory.cpp:99):99-113、[work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:384):384-527。
+
+3. 这个模式适合 NRT 管理/配置/投影类模块之间复用：Tooling Management、WorkOffset、参数表、日志/诊断资源、部分 program workspace。共同特征是：HMI 需要资源投影和显式命令，domain module 保持真值和校验，mock/real backend 可并存，revision guard 可处理本地并发。它不适合作为 NRT-&gt;RT、RT SDK、RT API Contract 的组织/通信模式；这些边界已被 architecture 约束为 scheduler -&gt; `/rt-sdk` -&gt; backend protocol -&gt; RT runtime，且 `/rt-api-contract` 是 RT 与 SDK 间唯一共享 contract package。见 [architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:131):131-179、[architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:202):202-212、[architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:224):224-226。
+
+4. 可能误导：story pack 仍把 `wcs.offset.table` / `wcs.commands.*` 放在 `story_product_tool_management_tables` 和 `integration_tooling_resource_adapter` 下，容易让后续架构讨论误以为 WorkOffset 是 tooling 子功能。实际 WorkOffset server plan 明确说 WorkOffset extension separate from tooling、not tooling subfeature。见 [traceability_matrix.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/traceability_matrix.md:10):10、[interface_integration.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/acceptance_reference/story_pack/interface_integration.md:55):55-63、[server_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/server_plan.md:3):3-5。
+
+5. 可能误导：data dictionary 把 `wcs.offset.table` 和 legacy `tooling.wcs.table` 标为 `read_write`，但当前 V1 语义是 read resource + command-mediated writes；cell edit 走 `wcs.commands.set_offset`，activation 走 `wcs.commands.activate`。如果全模块设计沿用 `read_write table` 作为跨模块写边界，会绕开 domain command/revision guard。见 [data_dictionary.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/data_dictionary.md:248):248-249、[contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:71):71-78、[contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:280):280-308。
+
+6. 可能误导：`row_key` 文档说是 UI-only，不能作为 WorkOffset selector；但 real backend 的 fallback matcher 也接受 `candidate.row_key`。这可以作为兼容防御存在，但不应被抽象成“UI identity 可进入 domain selector”。见 [contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:142):142-145、[contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/contract.md:205):205-206、[work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:304):304-314。
+
+7. 可能误导：backend unavailable 的文档目标是“不把 unavailable 当成 accepted empty real table”，但 adapter 异常路径会发布 `wcs.offset.table=[]` 加 `wcs.offset.table.diagnostic`。这应在架构讨论中定义为 failure envelope，不应把空 table 当作 domain projection 的正常状态。见 [delivery_plan.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/delivery_plan.md:240):240-245、[work_offset_runtime_extension_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_runtime_extension_adapter.cpp:81):81-90、[smoke_report.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/project/work_offset/smoke_report.md:210):210-211。
+
+**讨论框架**
+
+建议按 5 个维度讨论全模块组织：truth owner、timing/safety class、通信拓扑、状态一致性/持久化、部署/构建边界。
+
+候选方案：
+1. **NRT domain library + HMI facade**：当前 WorkOffset/Tooling 形态。适合管理数据、operator workflow、local persistence、mock/real 并行。
+2. **NRT service/event boundary**：domain 作为独立服务或明确进程边界，HMI/ProgramEngine 通过 typed request/event 交互。适合多进程、多写者、强审计和长期扩展，但成本更高。
+3. **RT-bound SDK contract path**：NRT execution/scheduler 通过 RT SDK 和 RT API Contract 访问 RT runtime。适合 motion/PLC/HAL/telemetry，不允许复用 WorkOffset 的同进程私有 bridge 作为 RT 边界。
+
+只读审查完成；没有修改文件，也没有跑构建/测试。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:39-90|note=[prior WorkOffset integration context and current-state workflow hints]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a82d-7e82-945f-115cbe6e03a3
+019ec898-99ca-7a93-9357-c18b4e56049e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

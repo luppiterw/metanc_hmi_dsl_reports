@@ -1,0 +1,2040 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下现在的文档进度</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下现在的文档进度</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed822-8990-7680-8681-fcd2ee47a0d0</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-18 08:30:02 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T08-30-02-019ed822-8990-7680-8681-fcd2ee47a0d0.jsonl</code></div>
+<div><b>Messages</b>: <code>223</code></div>
+<div><b>User prompts</b>: <code>19</code></div>
+<div><b>Synthetic events</b>: <code>10</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 08:30:25 +0800</div>
+<pre>看一下现在的文档进度</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 08:31:26 +0800</div>
+<pre>我先查当前仓库和已有记忆里的文档发布线索，再用实际文件状态校准，避免只按上次印象回答。刚才记忆里指向的 Superpowers skill 路径已经失效，我会先定位实际路径，然后继续看 repo。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 08:31:40 +0800</div>
+<pre>仓库现在在 `main...origin/main`，工作区状态输出没有列出改动，先按干净工作区处理。接下来我会看书籍导航、近期讨论包、OpenSpec 状态和 HTML 构建产物时间，给你一个“已落/未落/风险”的进度判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 08:32:03 +0800</div>
+<pre>Using `openspec-explore` next because this is a current-state/doc-progress audit rather than an implementation change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 08:32:25 +0800</div>
+<pre>我读到 OpenSpec 当前没有 active changes，这意味着文档变更应该都已经归档/落地到常规目录，不是停在变更草案里。现在重点看各 TP 的书籍目录和最新 6 月 17 日的 TP004 收口包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 08:33:26 +0800</div>
+<pre>导航上看，TP004 已经是最完整的一支：有 baseline、术语、状态/值集合/owner/object/schema/descriptor、访问定义、验证集合和连续讨论包。TP001/TP005 目前明显更像入口占位，TP002/TP003 有基线和 gap matrix，但没有像 TP004 那样展开到可执行验证集。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 08:34:00 +0800</div>
+<pre>最新报告里说 6 月 17 日已经做到“Parameter Descriptor initial closure”，但我不会只引用报告；我会跑只读校验，确认当前 published HTML、i18n 投影和 OpenSpec 状态没有回退。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 08:36:35 +0800</div>
+<pre>三项关键只读校验都过了：i18n published HTML、参数值集合绑定、OpenSpec 严格校验。现在可以比较明确地说：当前文档不是半成品草案状态，而是 6 月 17 日 TP004 描述符治理做过一次初步收口，剩下的是下一批 narrow slices。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-18 08:37:22 +0800</div>
+<pre>现在文档进度是：**TP004 参数描述符这一轮已经到“初步收口”状态**，不是停在草案里。
+
+我实际检查了当前仓库：
+
+- `main == origin/main`，工作区干净。
+- `openspec list/status` 都显示 **No active changes**。
+- 最新提交是 `9cf9296 docs: add TP004 descriptor closure discussion pack`。
+- `docs_html/`、`docs_i18n/site/`、`book/html/` 都是 2026-06-17 14:54 左右生成的发布产物。
+- 校验通过：
+  - `python3 tools/check_docs_i18n_sync.py --require-published-html`
+  - `python3 tools/check_parameter_value_sets.py`
+  - `openspec validate --all --strict`
+
+各 TP 当前状态：
+
+- **TP004 Parameter System**：最完整。已有 baseline、术语、status/value-set/owner/object/schema/parameter descriptor、访问定义、验证集合、连续 discussion packs。6 月 17 日报告明确写了 `Parameter Descriptor Initial Closure`，当前最小合同是 `parameter_id + owner + scope + semantic_name`，已 checker-backed 的 owner/scope 是 `motion.axis -&gt; axis` 和 `tool_management -&gt; tool_edge`。
+- **TP003 PLC**：已有 baseline、terms、S000 gap matrix 和 PLC language planning 讨论包，但还没像 TP004 那样展开成完整验证集。
+- **TP002 Tooling Management**：已有 baseline、terms、S000 gap matrix，属于已经补过基础文档，但还不是 TP004 那种治理闭环。
+- **TP001 HMI**：有 design baseline 和 evidence，偏基础入口。
+- **TP005 Configuration System**：基本还是入口/占位状态，未展开。
+
+剩余重点不是“继续补 TP004 描述符基础文档”，而是进入下一批窄 slice。当前文档自己推荐的下一个方向是 **Parameter Instance Binding**，同时明确 deferred：semantic path grammar、runtime registry/API、machine-profile axis alias schema、formal value/access、activation/persistence 等。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:454-527|note=[TP004 current-state closure, validation path, next narrow slice]
+MEMORY.md:363-386|note=[metanc_drafts docs_html and i18n publishing context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec89a-58ce-7150-8b75-064670002e44
+019ecddc-867c-7463-83a0-5f4a4e458a36
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 09:28:49 +0800</div>
+<pre>TP01-TP04现在是完成了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 09:29:11 +0800</div>
+<pre>我会按当前仓库里的 topic registry、书籍目录和 OpenSpec 状态来回答，不把“某个 slice 收口”误说成整个 TP 完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-18 09:29:32 +0800</div>
+<pre>不是。更准确地说：**TP001-TP004 都没有被标记为“整个 TP 完成”**。
+
+当前状态是：
+
+- **TP001 HMI**：只到 `as-built baseline started`，有 baseline/evidence，未完成。
+- **TP002 Tooling Management**：`as-built baseline seeded`，基础文档已补，不等于 TP 完成。
+- **TP003 PLC**：`seed domain baseline`，有 baseline/gap matrix/语言规划讨论，未完成。
+- **TP004 Parameter System**：进度最高，但 registry 仍是 `active design baseline`。完成的是 **Parameter Descriptor 这一窄 slice 的初步收口**，不是 TP004 全部完成。
+
+关键区别：`openspec` 当前没有 active changes，表示当前变更都归档/清空了；它不表示 TP001-TP004 整体完成。TP004 文档里也明确写了，descriptor closure **不声明 TP004 complete as a whole**。
+
+所以结论：**TP001-TP003 是基线/种子阶段；TP004 是局部 slice 初步闭环，但整体仍未完成。**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:511-523|note=[slice-local completion and current TP004 validation context]
+MEMORY.md:516-521|note=[topic registry and baseline publishing state]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+019ec89a-58ce-7150-8b75-064670002e44
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 09:44:34 +0800</div>
+<pre>开多个ap=gent审查一下，没问题继续</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 09:44:38 +0800</div>
+<pre>开多个agent审查一下，没问题继续</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 09:44:59 +0800</div>
+<pre>我会先并行做三类审查：topic 状态是否夸大、TP004 收口边界是否自洽、i18n/导航/发布产物是否一致。审查没挡路的问题后，再继续推进下一个窄 slice；如果发现实质问题，先修文档边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 09:46:50 +0800</div>
+<pre>审查 agents 已经发出去。等它们返回时，我先做不重叠的准备工作：定位下一步 `Parameter Instance Binding` 应该落在哪些源文件、校验器和测试里，先不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 09:47:36 +0800</div>
+<pre>我看到下一步的落点比较清楚：先做 `Parameter Instance Binding`，而且要先围绕 `frame_axis_component` 定义绑定规则，不直接提升 `zero_offset -&gt; frame_axis_component`。我先等审查结果收齐，确认没有边界问题再动文件。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:15:15 +0800</div>
+<pre>可以 继续</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 10:15:38 +0800</div>
+<pre>我会把已经完成的 `add-parameter-instance-binding` 按 OpenSpec 流程继续归档，并在归档后重新跑验证。先读归档规则，避免把 active change 和 topic-local artifacts 处理乱。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 10:16:03 +0800</div>
+<pre>我会按你这句“继续”理解为：把已完成的 change 归档，不停在 active change。这里有 delta spec，所以先检查是否需要同步到主 specs；如果没有现有主 specs，我会按本仓库“root openspec 仅管控”的边界谨慎处理，不乱引入根级能力目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 10:16:14 +0800</div>
+<pre>确认了：root `openspec/` 说明只用于控制面，不能把 topic specs 同步成 root normative specs。因此这个 change 的 delta spec 应保留为流程记录，归档时不做 root specs sync。现在执行归档移动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 10:16:47 +0800</div>
+<pre>归档前检查确认没有同名归档目录；下一步会移动到 `openspec/changes/archive/2026-06-18-add-parameter-instance-binding/`，然后重新跑全套验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 10:16:54 +0800</div>
+<pre>同名归档目录不存在。现在移动 active change 到 archive。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 10:17:09 +0800</div>
+<pre>Change 已归档。现在跑 `openspec list/status` 和完整验证，确保 active changes 清空、归档后 docs/checker 仍通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 10:17:17 +0800</div>
+<pre>归档后的验证通过，active changes 已清空。接下来我会再跑 `git diff --check` 和状态汇总，然后如果没有问题就给你收口说明；是否 commit/push 我会看当前请求是否隐含需要，若没明确我先不推。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 10:17:32 +0800</div>
+<pre>归档后的 `openspec list` 已经是空，`openspec validate --all --strict` 也没有待验证项。现在做最后的 diff 检查和本地提交准备；我先不 push，除非你明确要推远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 10:17:59 +0800</div>
+<pre>归档和验证已经完成；现在我把这批本地变更做成一个本地 commit。按刚才边界，先不 push 远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 10:18:18 +0800</div>
+<pre>文件已 stage。提交前我再看 staged diff 摘要，确认没有漏掉生成 HTML 之类无需跟踪的产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 10:18:30 +0800</div>
+<pre>Staged 内容只包含源文档、投影、OpenSpec 归档和工具测试，没有把 `docs_html` 这类生成目录纳入 git。现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 10:18:46 +0800</div>
+<pre>本地 commit 已创建。提交后再跑状态和关键验证，确认 commit 没留下未提交内容；如果干净，我会给出结果和下一步边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-18 10:19:10 +0800</div>
+<pre>继续完了，已本地提交：
+
+`a2d538e docs: add TP004 parameter instance binding`
+
+做了这些：
+
+- 归档 OpenSpec change 到 `openspec/changes/archive/2026-06-18-add-parameter-instance-binding/`
+- 保留 root `openspec/` 只做控制面，没有把 topic spec 同步成根级 normative spec
+- 新增 TP004 `PARAMETER-INSTANCE-BINDINGS.md`
+- 更新中英文 reader 页、导航和本地 HTML 发布产物
+- 提交后 `openspec list` 已无 active changes
+
+验证通过：
+
+- `python3 -m unittest discover -s tools/tests`：84 tests OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `openspec validate --all --strict`
+- `git diff --check`
+
+当前状态：工作区干净，`main` 比 `origin/main` ahead 1，还没 push。</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:27:35 +0800</div>
+<pre>看一下下一步计划或者剩余未完成内容</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 10:28:00 +0800</div>
+<pre>我先按当前仓库状态查，不按上轮记忆直接推断：看 active changes、TP004 当前状态页、新增 instance binding 页，以及各 TP registry 状态，然后给你剩余项和建议下一步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 10:28:16 +0800</div>
+<pre>当前没有 active OpenSpec change，`main` 本地 ahead 1。现在我会看 TP004 的 current-state 和刚落的 binding 文档，把“已完成/剩余/下一步”按实际页面列清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-18 10:28:42 +0800</div>
+<pre>当前状态：
+
+- `openspec list`：没有 active changes。
+- 本地 `main` 比 `origin/main` ahead 1：`a2d538e docs: add TP004 parameter instance binding`，还没 push。
+- TP004 已完成的最近一段是：`Parameter Descriptor` 最小契约 + `Parameter Instance Binding` 第一版 checker-backed 规则。
+- 但 TP004 整体仍未完成。
+
+剩余未完成内容按优先级看：
+
+1. **更新状态页**
+   `parameter-descriptor-status.md` 里仍写着下一步是定义 `Parameter Instance Binding`，但这一步刚完成了。下一步应先把状态页改成“已完成 instance binding 第一版，下一步进入 frame_axis_component evidence”。
+
+2. **frame_axis_component 绑定证据切片**
+   现在 binding 规则已能校验：
+   `for_parameter_id`、`scope`、`instance_keys`、`instance_source`。
+   下一步应拿 `frame_axis_component` 做真实证据页/样例，但先不提升 `zero_offset -&gt; frame_axis_component`。
+
+3. **zero_offset -&gt; frame_axis_component owner/scope promotion**
+   等 frame_axis_component 绑定证据稳定后，再单独开 change，把它从 `provisional_owner_scope_notes` 提升到 checker-backed `owner_scope_bindings`。
+
+4. **后续大项继续暂缓**
+   runtime registry/API、semantic path grammar、formal `parameter_descriptor.value/access`、activation/persistence、machine-profile axis alias schema 都还没做，不建议现在混进下一步。
+
+我建议下一步最窄动作是：**开一个状态页修正 + frame_axis_component binding evidence 的小 change**，不碰 runtime、不碰 zero_offset promotion。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:541-544|note=[TP004 next-slice order and deferred boundaries]
+MEMORY.md:560-565|note=[avoid overclaiming slice completion]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:39:18 +0800</div>
+<pre>你这个建议具体是做什么，说的有点抽象</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 10:39:40 +0800</div>
+<pre>我把这个建议具体化成一个很小的 OpenSpec/doc slice，不直接写代码到运行时，也不提升 `zero_offset`。下面按“要改哪些文件、加什么内容、验收条件”说清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-18 10:39:58 +0800</div>
+<pre>具体就是做一个很小的“过渡切片”，名字可以叫：
+
+`document-frame-axis-component-binding-evidence`
+
+它不是实现 runtime，也不是马上把 `zero_offset -&gt; frame_axis_component` 变成正式 checker-backed。它只做三件事：
+
+1. **把状态页改准确**
+   现在状态页还写“下一步是定义 `Parameter Instance Binding`”，但这一步已经做完了。
+   要改成：
+   - `Parameter Instance Binding v1` 已完成；
+   - 下一步是收集/固化 `frame_axis_component` 的绑定证据；
+   - `zero_offset -&gt; frame_axis_component` 仍未提升。
+
+2. **把 frame_axis_component 的候选绑定写清楚**
+   在 `PARAMETER-INSTANCE-BINDINGS.md` 里新增一节，大概说明：
+
+   ```text
+   candidate binding:
+     owner: zero_offset
+     scope: frame_axis_component
+     instance_keys:
+       frame
+       axis
+       component
+     instance_source: zero_offset.frames
+   ```
+
+   这里重点是说明：
+   - `frame_axis_component` 需要三个实例 key：`frame`、`axis`、`component`
+   - 来源是 `zero_offset.frames`
+   - 这只是 candidate evidence，不是 checker-backed descriptor
+
+3. **明确下一步提升需要什么条件**
+   写清楚要提升 `zero_offset -&gt; frame_axis_component`，至少还缺：
+   - 一个正式 `zero_offset` Parameter Descriptor，例如 `zero_offset.frame_axis_translation`
+   - owner/scope pair 从 `provisional_owner_scope_notes` 移到 `owner_scope_bindings`
+   - 对应 checker 测试：提升前拒绝、提升后接受
+   - 中文/英文 reader 页同步
+
+换句话说，这一步的产物不是“代码功能”，而是把下一刀切小：
+
+```text
+已完成:
+  descriptor identity
+  owner/scope checker
+  instance binding checker
+
+下一步:
+  frame_axis_component evidence
+
+再下一步:
+  promote zero_offset -&gt; frame_axis_component
+```
+
+我不建议现在直接做 promotion，因为那会把 descriptor、zero_offset owner 边界、frame/axis/component 实例规则混在一个变更里，后面审查会很难判断到底是哪一层出了问题。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:45:08 +0800</div>
+<pre>这部分是和什么TP有关，我有点没明白</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 10:45:28 +0800</div>
+<pre>这里我不再继续推进文件，先把 TP 归属讲清楚。这个点容易混淆，因为名字里有 `zero_offset`，但当前做的是“参数系统如何描述它”，不是 HMI 或 WorkOffset runtime 本体。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-18 10:45:33 +0800</div>
+<pre>这部分**主要属于 TP004：Parameter System / Runtime Access**。
+
+更具体地拆：
+
+- **TP004 负责的部分**
+  - `Parameter Descriptor`：一个参数怎么被定义。
+  - `Object Scope`：这个参数是按什么对象展开，比如 `axis`、`tool_edge`、`frame_axis_component`。
+  - `Parameter Instance Binding`：一个参数定义怎么绑定到具体实例，比如某个 frame、axis、component。
+  - `zero_offset -&gt; frame_axis_component` 是否能成为 checker-backed owner/scope pair。
+
+- **不是 TP001 HMI**
+  - HMI 以后可能会用这些定义来展示/编辑零偏。
+  - 但当前这个文档切片不做页面、不做交互、不做 HMI 集成。
+
+- **不是 TP002 Tooling Management**
+  - TP002 对应的是 `tool_management -&gt; tool_edge`，也就是刀具/刀刃那条线。
+  - 这条已经作为前一个例子完成了。
+
+- **不是 TP003 PLC**
+  - PLC runtime 符号、执行语义、PLC 访问边界不在这一步里。
+
+- **可能未来会碰到 TP005 Configuration**
+  - 因为 `frame_axis_component` 里面有 `axis`，而轴别名、轴配置、machine profile 这类东西更像 TP005。
+  - 但现在只是先在 TP004 里把参数绑定规则说清楚，不进入 TP005。
+
+所以一句话：
+
+**`frame_axis_component binding evidence` 是 TP004 的参数系统文档工作；它为后续零偏/WorkOffset/HMI 使用做参数描述基础，但当前不属于 TP001 HMI，也不直接实现 WorkOffset。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 10:51:18 +0800</div>
+<pre>给个详细设计</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 10:51:36 +0800</div>
+<pre>我会把这当成“设计稿”而不是马上落文件实现；先用 brainstorming skill 约束一下范围，避免把 TP004 设计又扩成 TP001/TP005/runtime。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-18 10:54:16 +0800</div>
+<pre>下面这个“详细设计”是针对**下一小步 TP004 切片**：把 `frame_axis_component` 的实例绑定证据讲清楚，但**先不把 `zero_offset -&gt; frame_axis_component` 提升为正式 checker-backed owner/scope**。
+
+**目标**
+
+把现在已经完成的 `Parameter Instance Binding v1` 用到 `frame_axis_component` 上，形成一份可审查的证据页，回答三个问题：
+
+- `frame_axis_component` 到底绑定什么实例？
+- 它为什么适合 `zero_offset`？
+- 还缺什么条件，才能把 `zero_offset -&gt; frame_axis_component` 正式放进 `owner_scope_bindings`？
+
+这一步仍然属于 **TP004 参数系统设计**，不是 TP001/TP002/TP003 的完成项。
+
+**当前基础**
+
+现在已经有三层东西：
+
+- `Parameter Descriptor`：定义一个参数是什么，比如 `motion.axis.max_velocity`。
+- `Object Scope`：定义参数挂在哪类对象上，比如 `axis`、`tool_edge`、`frame_axis_component`。
+- `Parameter Instance Binding`：定义一个参数描述符如何绑定到具体配置实例，比如某个 axis slot。
+
+`frame_axis_component` 现在已经作为 object scope 存在：
+
+```text
+scope: frame_axis_component
+instance_keys: [frame, axis, component]
+instance_source: zero_offset.frames
+example: frame_1.x.tr
+```
+
+但 `zero_offset -&gt; frame_axis_component` 还只是 provisional，不能说已经完成。
+
+**设计边界**
+
+这一步只做 TP004 文档和规则边界，不碰运行时。
+
+会做：
+
+- 更新 TP004 状态页，说明 `Parameter Instance Binding v1` 已完成。
+- 增加 `frame_axis_component` 绑定证据说明。
+- 明确 `zero_offset -&gt; frame_axis_component` 仍未正式提升。
+- 加 guardrail，防止文档误读成“zero_offset 已完成”。
+- 保持中英文 reader 页面一致。
+
+不会做：
+
+- 不增加真实 `zero_offset` parameter descriptor。
+- 不把 `zero_offset -&gt; frame_axis_component` 加入 `owner_scope_bindings`。
+- 不定义 runtime registry/API。
+- 不定义 WorkOffset 写入、持久化、激活流程。
+- 不定义 machine profile 里的 axis alias 解析。
+- 不处理 `parameter_descriptor.value/access/semantic path`。
+
+**文档结构**
+
+我建议最小改动，不另开太多页面：
+
+- `TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md`
+  增加一节：`Frame Axis Component Candidate Evidence`
+
+- `TP004-parameter-system/book/src/parameter-instance-bindings.md`
+  同步增加 reader 版本说明。
+
+- `docs_i18n/en/src/TP004-parameter-system/parameter-instance-bindings.md`
+  英文 reader 页面同步。
+
+- `docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md`
+  中文 reader 页面写成真正中文，不只做 include。
+
+- `TP004-parameter-system/book/src/parameter-descriptor-status.md`
+  更新 next slices，把“先定义 Parameter Instance Binding”改成“下一步审查 frame_axis_component 证据”。
+
+**核心内容**
+
+新增证据节不直接声明正式 binding，而是声明候选形状：
+
+```text
+candidate owner/scope:
+  owner: zero_offset
+  scope: frame_axis_component
+
+scope shape:
+  instance_keys:
+    - frame
+    - axis
+    - component
+  instance_source: zero_offset.frames
+
+example instance intent:
+  frame: frame_1
+  axis: x
+  component: tr
+```
+
+这里重点是说明：
+
+- `frame` 表示坐标系或偏置组。
+- `axis` 表示该 frame 下的轴维度。
+- `component` 表示偏置分量，比如 translation / rotation component。
+- 这个三元组能表达 WorkOffset/ZeroOffset 类参数的实例位置。
+- 但当前还没有把它绑定到正式 `parameter_descriptor`，所以不能进入 checker-backed owner/scope。
+
+**提升条件**
+
+这页会明确写出以后要正式提升，需要满足这些条件：
+
+- `zero_offset` owner 的 topic 边界被确认。
+- 至少一个真实 `zero_offset.*` parameter descriptor 被定义。
+- 该 descriptor 的 `scope` 使用 `frame_axis_component`。
+- `owner_scope_bindings` 明确加入 `zero_offset -&gt; frame_axis_component`。
+- checker 测试接受该 owner/scope pair。
+- 文档说明 `frame/axis/component` 的实例来源，不只是名字形状。
+
+**Guardrail 设计**
+
+为了避免过度完成声明，这一步要保留三个限制：
+
+- `zero_offset -&gt; frame_axis_component` 仍然列在 provisional notes。
+- checker 仍然拒绝未正式登记的 `zero_offset` descriptor。
+- 状态页只能说“binding evidence documented”，不能说“zero_offset complete”。
+
+如果加测试，我会加一个很小的 regression test：
+
+```text
+zero_offset descriptor using frame_axis_component is still rejected
+until owner_scope_bindings promotes zero_offset -&gt; frame_axis_component
+```
+
+这能防止后续误把候选证据当正式完成。
+
+**验收标准**
+
+这一步完成后，应该能明确说：
+
+- TP004 的 `Parameter Instance Binding v1` 已有实际候选应用对象。
+- `frame_axis_component` 的实例键和来源已经解释清楚。
+- `zero_offset -&gt; frame_axis_component` 的未完成原因已经具体化。
+- TP004 状态页的下一步不再停留在抽象建议。
+- 没有扩大到 TP001/TP005/runtime。
+
+验证命令保持这一组：
+
+```bash
+python3 -m unittest discover -s tools/tests
+python3 tools/check_parameter_value_sets.py
+python3 tools/check_docs_i18n_sync.py --require-published-html
+openspec validate --all --strict
+```
+
+我的建议是下一步就按这个设计开一个很小的 OpenSpec change，名字可以是：
+
+```text
+document-frame-axis-component-binding-evidence
+```
+
+这一步做完之后，才进入下一层：讨论是否正式提升 `zero_offset -&gt; frame_axis_component`。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:541-544|note=[TP004 next-slice order]
+MEMORY.md:560-565|note=[slice completion boundary]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 11:02:25 +0800</div>
+<pre>处理一下，然后开多agent审查</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:02:43 +0800</div>
+<pre>我会先按刚才的 TP004 小切片落地：建一个小的 OpenSpec change，补 `frame_axis_component` 绑定证据和状态页，然后跑验证并用多个 agent 分别审查边界、文档一致性和 checker/测试风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 11:02:58 +0800</div>
+<pre>我已经确认工作树当前干净、在 `main` 且本地领先 1 个提交；也读了本地 OpenSpec apply 规则。接下来会先收敛文件范围，避免 generated HTML 干扰，再做最小文档/checker 改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 11:03:22 +0800</div>
+<pre>检索结果里 generated HTML 太多，我会改用排除输出目录的读取方式。刚看到一个重要点：`zero_offset -&gt; frame_axis_component` 仍被拒绝的 regression test 已经存在，所以这次重点会放在证据文档和状态页，不重复造测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 11:03:40 +0800</div>
+<pre>OpenSpec 现在没有 active change，所以我会先创建一个短 change：`document-frame-axis-component-binding-evidence`。这个 change 只承载本次证据化切片，实施完再按任务状态收口，不把 TP004 整体完成状态扩大化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 11:03:56 +0800</div>
+<pre>我已建好 change 框架。接下来先补 proposal/design/tasks，再直接 apply 实施；因为这次是文档证据切片，文件写入会集中在 TP004 绑定页、中文投影、状态页和 tasks 标记。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 11:04:18 +0800</div>
+<pre>我会按 OpenSpec 的 artifact 顺序补齐：proposal 说明为什么现在只做证据化，design 固定边界和验收，specs 给这一页的要求，tasks 列出实际改动。这样后面审查时能看出这是一个受控小切片，不是直接提升 zero_offset。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 11:04:33 +0800</div>
+<pre>我正在按本地 `openspec-propose` / `openspec-apply-change` 工作流处理：先生成这个 change 的 proposal/design/spec/tasks，再落到 TP004 文档。刚才确认根 `openspec/specs` 不存在，这个仓库的规范内容主要在 topic-local `TP004-parameter-system/openspec/`，所以本 change 的 specs 会描述文档能力而不是引入运行时接口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 11:04:51 +0800</div>
+<pre>我发现上一个切片已经有 `zero_offset` provisional 拒绝测试，所以这次不会再碰 checker 逻辑。现在要写的 OpenSpec spec 也会收窄到“证据页必须明确候选形状和非提升边界”，避免把文档证据误变成 schema 行为。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 11:05:30 +0800</div>
+<pre>Change 的 proposal/design/spec/tasks 已经补齐。现在我会先跑一次 OpenSpec validate，看 artifact 本身有没有格式问题，再进入 TP004 正文修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 11:05:40 +0800</div>
+<pre>OpenSpec change 验证通过。我会把 1.2 标记完成，然后开始改 TP004 源文档和中文页面；这一步不会改变 checker，也不会提升 `zero_offset -&gt; frame_axis_component`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 11:06:11 +0800</div>
+<pre>Using change: `document-frame-axis-component-binding-evidence`。我会按这个 change 执行；如果要切到别的 change，可以直接指定名字。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 11:06:24 +0800</div>
+<pre>OpenSpec apply 状态现在是 15 项任务里 2 项已完成。正在处理任务 2.x 和 3.x：源证据、非提升边界、状态页路线图、中文投影。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-18 11:06:44 +0800</div>
+<pre>我正在把新增内容放在现有 `PARAMETER-INSTANCE-BINDINGS.md` 里，而不是新开页面；这样 root/English reader 的 include 路径会自动带到新证据。中文 projection 需要手写同步，i18n 检查也会补上关键文本。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-18 11:06:57 +0800</div>
+<pre>我会避免在证据节里放一个会被 checker 当成正式 `parameter_instance_binding` 的 YAML 顶层记录。证据会用 `text` fence 和“candidate”措辞表达，这样它是审查材料，不会偷偷改变验证输入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-18 11:07:17 +0800</div>
+<pre>我还会补一层 published-page 检查，因为现在 `parameter-instance-bindings` 是关键读者页。这样不仅源文档和中文投影会过结构同步，也能确认最终 HTML 页面里确实带上了 `frame_axis_component` 证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-18 11:07:32 +0800</div>
+<pre>我准备做一次集中 patch：英文源页加候选证据、状态页改“下一步”，中文页同步翻译，并把 i18n/published 检查补上 `parameter-instance-bindings` 关键字。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-18 11:08:43 +0800</div>
+<pre>核心文档改动已经完成：新增的是候选证据和 guardrail，没有新增正式 YAML binding。接下来我会检查渲染源和 i18n 结构是否同步，再按任务清单逐项标记。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-18 11:09:00 +0800</div>
+<pre>检查时发现英文源页尾部有一段“intended next use”重复，而且一行缩进不干净。我会先修掉这个小问题，再继续跑验证，避免把噪声带进审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-18 11:09:07 +0800</div>
+<pre>源页重复段已清理。我现在把已完成的文档任务标记掉，然后先运行 docs/i18n 和 checker 的轻量验证，看是否需要补细节。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-18 11:09:22 +0800</div>
+<pre>文档和投影任务已标记完成。下一步进入验证阶段：OpenSpec validate、单测、TP004 checker、i18n 检查、docs build、published HTML 检查、diff whitespace。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-18 11:09:29 +0800</div>
+<pre>轻量验证都通过了：OpenSpec、i18n 源结构、TP004 checker、84 个工具单测都 OK。现在我会标记这些验证项，然后 rebuild docs，最后检查 published HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-18 11:09:40 +0800</div>
+<pre>开始重建文档 HTML。这个步骤会更新 ignored/generated 输出目录，目的是让 published-page 检查能确认最终 reader 页面确实包含新增证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-18 11:09:55 +0800</div>
+<pre>Docs build 本身生成成功，但最后的 published-page 检查失败在我新增的 required text：HTML 里 Markdown 把 `-&gt;` 转义了，所以精确字符串没命中。我会把检查改成不依赖 HTML 转义形式的稳定关键词组合，然后重跑构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-18 11:10:05 +0800</div>
+<pre>与其把 required text 放宽，我会在检查器里对 HTML 做 `html.unescape` 后再匹配。这样 source 仍然要求原始 `zero_offset -&gt; frame_axis_component`，published HTML 也能正确识别转义后的同一文本。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-18 11:10:14 +0800</div>
+<pre>已改成对 HTML 内容 unescape 后匹配 required text。现在重跑 docs build 和 published HTML 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-18 11:10:30 +0800</div>
+<pre>文档构建和 published-page 检查现在通过。接下来单独重跑 `--require-published-html`、`git diff --check`，然后把验证任务标记完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-18 11:10:41 +0800</div>
+<pre>所有本地验证已经通过，工作树只剩预期文件改动和新 OpenSpec change。现在我会更新任务清单的验证项，再开多个 agent 审查这次改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-18 11:10:50 +0800</div>
+<pre>我会并行开 3 个审查 agent：一个看 TP004 边界是否被误提升，一个看 i18n/reader/published 检查是否合理，一个看 OpenSpec/tasks 和验证覆盖是否闭合。与此同时我会自己查看 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-18 11:11:33 +0800</div>
+<pre>审查 agents 已经在跑。我这边先做主线自查：看完整 diff、确认没有新增正式 YAML `zero_offset` binding、确认 OpenSpec 任务和验证状态闭合。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-18 11:12:24 +0800</div>
+<pre>自查 diff 里没有把 `zero_offset` 放进正式 YAML `owner_scope_bindings`，新增的候选形状也用了 `text` fence，不会被 checker 当成正式 binding 输入。现在等三个审查 agent 回来；如果他们指出问题我会直接修。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 12:48:06 +0800</div>
+<pre>继续看一下一步内容</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 12:48:31 +0800</div>
+<pre>我先看当前 change、TP004 状态页和候选证据页，确认“下一步”到底是归档当前切片，还是继续进入 `zero_offset -&gt; frame_axis_component` promotion。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-18 12:48:58 +0800</div>
+<pre>下一步我建议分两层：
+
+**先收口当前切片**
+
+当前 `document-frame-axis-component-binding-evidence` 已经是 `15/15` complete，但还没 archive，也没 commit。工作树还有这批文档改动。
+
+最直接下一步：
+
+1. archive 这个 OpenSpec change。
+2. 重新跑一次验证。
+3. commit 当前批次。
+4. 如果你要，我再 push。
+
+**然后进入真正下一内容**
+
+下一块内容不是继续扩 `Parameter Instance Binding`，而是做：
+
+`zero_offset -&gt; frame_axis_component` 是否可以正式 promotion。
+
+也就是从现在的“候选证据”进入“是否提升为 checker-backed owner/scope pair”的判断。
+
+这个切片要回答：
+
+- 是否已经有足够来源证据支持 `zero_offset` 拥有 `frame_axis_component`？
+- 是否要新增真实 `zero_offset.*` Parameter Descriptor？
+- 是否把 `zero_offset -&gt; frame_axis_component` 加入 `OBJECT-SCOPES.md` 的 `owner_scope_bindings`？
+- checker 是否应该从“拒绝 zero_offset provisional binding”改成“接受正式提升后的 descriptor”？
+- `frame`、`axis`、`component` 的具体值来源是否只说明来源，还是要等 TP005/configuration slice 再解析？
+
+我建议下一步 change 名字：
+
+```text
+review-zero-offset-frame-axis-component-promotion
+```
+
+先做 review/promotion 判定，不急着扩大到 runtime/API/value/access。
+如果判定证据足够，再在同一个小 change 里正式提升；如果不够，就只输出缺口清单。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:541-544|note=[TP004 next-slice sequence]
+MEMORY.md:564-564|note=[small verifiable slice preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ed281-8af4-7e8d-3ad4-4e0973
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 12:49:28 +0800</div>
+<pre>这部分还是矫正对吧</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-18 12:49:44 +0800</div>
+<pre>对，这部分本质上还是**矫正/收口**，不是新功能展开。
+
+准确说分两件事：
+
+- 当前刚做完的 `frame_axis_component` evidence：是在矫正路线图，把之前抽象的“下一步做 binding”具体落成“已有 binding，下一步审查 zero_offset promotion 证据”。
+- 下一步 `review-zero-offset-frame-axis-component-promotion`：也是矫正性质，目的是判断 `zero_offset -&gt; frame_axis_component` 能不能从 provisional 变成 checker-backed。
+
+它不是 runtime、不是 API、不是 HMI、不是 TP005 配置 schema。
+真正的新设计扩展要等这个 owner/scope 边界矫正完以后再做。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 12:55:04 +0800</div>
+<pre>给个详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 12:55:41 +0800</div>
+<pre>我先把现有 zero-offset 访问定义和 validation set 看一下，计划里会把“能否提升”的判定条件写具体，而不是只写一个抽象 promotion。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-18 12:56:16 +0800</div>
+<pre>详细计划我建议这样走，仍然保持“矫正切片”，不扩到 runtime/API。
+
+**阶段 0：先收口当前 change**
+
+- archive `document-frame-axis-component-binding-evidence`
+- 重跑验证
+- commit 当前批次
+- 这一步目标是把“候选证据页”定稿，不把未归档 change 带进下一轮
+
+**阶段 1：开新 change 做 promotion 审查**
+
+建议 change 名：
+
+```text
+review-zero-offset-frame-axis-component-promotion
+```
+
+目标不是直接开发新能力，而是判断：
+
+```text
+zero_offset -&gt; frame_axis_component
+```
+
+能不能从 `provisional_owner_scope_notes` 提升到 checker-backed `owner_scope_bindings`。
+
+**阶段 2：证据盘点**
+
+检查三类现有证据：
+
+- `OBJECT-SCOPES.md`
+  已有 `frame_axis_component`，实例键是 `frame / axis / component`，来源是 `zero_offset.frames`。
+
+- Siemens zero-offset access definition
+  `$P_UIFR[frame,axis,component]` 已经映射到 `owner: zero_offset` 和 `scope: frame_axis_component`。
+
+- zero-offset validation set
+  已有 `$P_UIFR[1,X,TR]`、`$P_UIFR[25,Z,TR]` 等 valid/invalid/access/dispatch 用例。
+
+这个阶段输出一个明确判断：证据是否足以支撑 promotion。
+
+**阶段 3：如果证据足够，做最小提升**
+
+只做这几件事：
+
+- 在 `OBJECT-SCOPES.md` 里把：
+
+```yaml
+owner: zero_offset
+allowed_scopes:
+  - frame_axis_component
+```
+
+加入 `owner_scope_bindings`。
+
+- 从 `provisional_owner_scope_notes` 中移除或改写 `zero_offset -&gt; frame_axis_component`，说明已提升。
+
+- 新增一个最小 `zero_offset.*` Parameter Descriptor 示例，比如：
+
+```yaml
+parameter_descriptor:
+  parameter_id: zero_offset.frame_axis_component
+  owner: zero_offset
+  scope: frame_axis_component
+  semantic_name: frame_axis_component
+```
+
+命名可以再斟酌，重点是不要把 `frame=1/X/TR` 这种实例值塞进 descriptor identity。
+
+**阶段 4：更新 checker 测试**
+
+当前已有测试在确认：
+
+```text
+zero_offset -&gt; frame_axis_component is not checker-backed
+```
+
+promotion 后要把这个测试改成两类：
+
+- 接受正式提升后的 `zero_offset` descriptor。
+- 继续拒绝没有登记 owner/scope pair 的其他 provisional pair。
+
+也就是说 checker 不是放松，而是从“拒绝 zero_offset”改为“只接受已经登记的 zero_offset”。
+
+**阶段 5：同步文档状态**
+
+要更新：
+
+- `PARAMETER-INSTANCE-BINDINGS.md`
+  从“candidate evidence”更新为“promotion accepted by separate change”。
+
+- `parameter-descriptor-status.md`
+  把 recommended next slice 从“review evidence”改成下一层待办。
+
+- 中文 reader 页面同步真实中文说明。
+
+- i18n/published HTML 检查补关键文本，避免 reader 页面落后。
+
+**阶段 6：明确仍然不做的内容**
+
+这轮即使 promotion 成功，也不做：
+
+- runtime registry/API
+- HMI WorkOffset 接口
+- `parameter_descriptor.value`
+- `parameter_descriptor.access`
+- semantic path grammar
+- machine profile axis alias schema
+- frame/axis/component 具体值解析
+
+这些继续留给后续切片，尤其 axis alias / machine profile 更偏 TP005/configuration。
+
+**阶段 7：验证**
+
+完整验证路径：
+
+```bash
+openspec validate review-zero-offset-frame-axis-component-promotion --strict
+python3 -m unittest discover -s tools/tests
+python3 tools/check_parameter_value_sets.py
+python3 tools/check_docs_i18n_sync.py
+./tools/build_docs_html.sh
+python3 tools/check_docs_i18n_sync.py --require-published-html
+git diff --check
+```
+
+**最终交付物**
+
+这个切片完成后，应该能明确说：
+
+- `zero_offset -&gt; frame_axis_component` 是否正式 checker-backed。
+- 如果正式提升，checker 已接受对应 descriptor。
+- 如果不提升，缺口被记录清楚。
+- TP004 仍然没有扩大到 runtime/API/TP005。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:541-544|note=[TP004 narrow next-slice sequence]
+MEMORY.md:564-564|note=[bounded verifiable slice preference]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 13:05:06 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 13:08:04 +0800</div>
+<pre>我会按刚才计划处理：先把已完成的 evidence change 归档并确认验证，再开 promotion 审查/提升的小 change，按证据是否足够来做最小提升和测试更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 13:08:27 +0800</div>
+<pre>当前 change 完成且 artifact/tasks 都是 done。我会按已指定名字直接 archive，不再让你重复选择；这个仓库没有根 `openspec/specs/`，之前的 TP004 change 也是把 delta spec 随 change 一起归档，所以这次也按同样方式处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 13:09:01 +0800</div>
+<pre>我会先移动归档目录，然后马上跑一次 `openspec list` 确认 active change 清空。之后创建新的 `review-zero-offset-frame-axis-component-promotion` change。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 13:09:16 +0800</div>
+<pre>已归档 evidence change。现在创建 promotion 审查 change，并补 proposal/design/spec/tasks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 13:09:46 +0800</div>
+<pre>新 change 已创建。接下来我会先补齐 proposal/design/spec/tasks，然后实施最小 promotion：`OBJECT-SCOPES.md` owner/scope 提升、增加最小 `zero_offset` descriptor、调整测试和 reader/i18n 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 13:09:59 +0800</div>
+<pre>证据足够做最小 promotion：已有 access definition 和 validation set 都指向 `owner: zero_offset` / `scope: frame_axis_component`，且 object scope 已定义三元实例键。我会把这个结论写进 change 的设计和 spec，再改源文档与测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 13:11:00 +0800</div>
+<pre>promotion change 的 proposal/design/spec/tasks 已补齐。我先跑 OpenSpec validate，再开始改源文档和测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 13:11:48 +0800</div>
+<pre>OpenSpec validate 通过。现在我会把 1.2 标记完成，并实施 promotion：OBJECT-SCOPES、PARAMETER-DESCRIPTORS、绑定证据页、状态页、中文投影和测试会一起改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 13:12:13 +0800</div>
+<pre>Using change: `review-zero-offset-frame-axis-component-promotion`。我接下来会按这个 change 执行；如果要切换 change，可以直接指定别的名字。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 13:12:22 +0800</div>
+<pre>我会做一个较大的但集中 patch：正式移动 `zero_offset -&gt; frame_axis_component` 到 `owner_scope_bindings`、添加 descriptor 示例、同步中文页和测试。保持 descriptor ID 不含 `1/X/TR` 这类实例值。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 13:12:32 +0800</div>
+<pre>我会先确认 checker 是如何从文档里的 YAML fence 收集 `parameter_descriptor`，避免新增示例时破坏现有解析。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 13:13:02 +0800</div>
+<pre>我会先把数据面改完再跑测试：`zero_offset` 会从 provisional note 移到正式 `owner_scope_bindings`，descriptor 页会增加一个不含实例值的 `zero_offset.frame_axis_component` 示例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-18 13:13:37 +0800</div>
+<pre>owner/scope 已提升到正式绑定。接下来添加最小 `zero_offset.frame_axis_component` descriptor 示例和中文投影。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-18 13:14:02 +0800</div>
+<pre>descriptor 示例已加入，并明确不含 `frame=1/X/TR` 实例值。现在更新绑定证据页和状态页，把它们从“候选待审查”改为“已由单独 change 提升，但 runtime/profile 仍暂缓”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-18 13:14:58 +0800</div>
+<pre>这次 patch 因为状态页的匹配上下文顺序不对没有应用。我会拆成更小 patch，先处理绑定页，再处理状态页和中文页，降低冲突面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-18 13:15:23 +0800</div>
+<pre>我确认了状态页当前文本。现在分两步 patch：先把绑定证据页改成已提升，再把状态页的 current-backed 列表和路线图更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-18 13:16:02 +0800</div>
+<pre>绑定证据页已经改成 promotion evidence。接下来更新状态页：把 `zero_offset -&gt; frame_axis_component` 加入当前 checker-backed 列表，从 provisional 列表移除，并更新下一步为 configuration/profile value resolution。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-18 13:17:54 +0800</div>
+<pre>状态页已同步。接下来更新测试：原来拒绝 zero_offset 的用例改为接受；保留 provisional notes 被忽略的测试，确保 checker 还是只认 `owner_scope_bindings`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-18 13:18:45 +0800</div>
+<pre>测试已改成正式接受 zero_offset/frame_axis_component。现在更新 i18n checker required text，把新增 descriptor 和已提升边界纳入源/HTML检查；然后跑工具测试看是否还缺 usage index 更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-18 13:19:37 +0800</div>
+<pre>单测已通过，checker 提示 usage index 需要更新，这是预期的，因为新增了正式 zero_offset descriptor YAML。接下来更新 usage index，并增强 i18n/published required text。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-18 13:19:49 +0800</div>
+<pre>usage index 已更新。现在我会给 i18n/published 检查补更精确的文本：`zero_offset.frame_axis_component` 和 promotion evidence/提升证据，保证 reader 页不会又落后。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-18 13:20:48 +0800</div>
+<pre>我先补了 topic book published checks。还需要同步 root book、英文 i18n、中文 i18n 的同类 published checks，避免只有一个 reader surface 被保护。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-18 13:21:46 +0800</div>
+<pre>我看到了多处 published check 还没补同样关键词。现在统一更新 root/en/zh 的 object scopes、descriptor、binding、status required text。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-18 13:22:38 +0800</div>
+<pre>published checks 已统一补强。现在我会先跑 i18n 和 checker，预期可能还要同步 projection 结构或修正文案。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-18 13:22:52 +0800</div>
+<pre>OpenSpec、单测、checker、i18n 源结构都已通过。接下来把已完成任务标记掉，然后重建 docs HTML 和 published checks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-18 13:23:12 +0800</div>
+<pre>任务清单已更新到验证前半段完成。现在构建 docs 并检查 published HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-18 13:23:34 +0800</div>
+<pre>docs build 通过。现在做 published HTML、diff whitespace、OpenSpec 状态和最终 git 状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-18 13:23:41 +0800</div>
+<pre>最终检查通过，OpenSpec 状态 complete。还有两个验证任务在 tasks 里需要标记：docs build 和 published/whitespace。之后我会看 diff，确认没有遗漏或意外扩散。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-18 13:23:58 +0800</div>
+<pre>所有 tasks 已标记完成。现在我做最终 diff 自查：重点看 `zero_offset` 是否只做 owner/scope promotion，没有引入 runtime/API/profile 解析。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-18 13:24:34 +0800</div>
+<pre>自查结果符合预期：正式提升只发生在 `owner_scope_bindings` 和最小 descriptor 示例；runtime/API/profile 解析仍保持 deferred。接下来我会再跑一次最终全量验证，然后把新的 promotion change 也归档，避免留下 active OpenSpec change。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-06-18 13:24:50 +0800</div>
+<pre>全量验证再次通过，promotion change complete。现在归档这个 change，然后确认 active changes 清空。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-06-18 13:25:04 +0800</div>
+<pre>promotion change 已归档。最后我会检查 active change、git status 和归档目录，确保收口干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / final_answer</h3>
+<div class="time">2026-06-18 13:25:22 +0800</div>
+<pre>已处理完。
+
+做了两步：
+
+1. 归档已完成的 `document-frame-axis-component-binding-evidence`。
+2. 新开并完成/归档 `review-zero-offset-frame-axis-component-promotion`。
+
+结果是：`zero_offset -&gt; frame_axis_component` 已从 provisional 提升为 checker-backed owner/scope pair。
+
+关键改动：
+- `OBJECT-SCOPES.md`：加入正式 `zero_offset -&gt; frame_axis_component` 的 `owner_scope_bindings`，并从 provisional notes 移除。
+- `PARAMETER-DESCRIPTORS.md`：新增最小 descriptor 示例 `zero_offset.frame_axis_component`，明确不包含 `frame=1`、`axis=X`、`component=TR` 实例值。
+- `PARAMETER-INSTANCE-BINDINGS.md`：从候选证据改为 promotion evidence，同时保留 runtime/API/profile 解析 deferred。
+- 中文 reader 页面同步。
+- 测试从“拒绝 zero_offset provisional binding”改成“接受正式 promoted binding”，同时保留 provisional notes 不被 checker 接受的测试。
+- `USAGE-INDEX.generated.md` 已更新。
+- 两个 OpenSpec change 都已归档，当前 `openspec list --json` 为空。
+
+验证已通过：
+- `openspec validate review-zero-offset-frame-axis-component-promotion --strict`
+- `python3 -m unittest discover -s tools/tests`，84 tests OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前还有未提交改动，主要是 TP004 文档、测试、i18n checker 和两个归档 change 目录。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 13:32:44 +0800</div>
+<pre>本次没有审查的东西了是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-18 13:33:05 +0800</div>
+<pre>不是。严格说：
+
+- 上一个 `frame_axis_component evidence` 切片已经开过 3 个 agent 审查，并处理了反馈。
+- 刚才这个 `zero_offset -&gt; frame_axis_component promotion` 切片还没有再开新的多 agent 审查。
+- 我已经做了本地自查和完整验证，但这不等于多 agent 审查。
+
+所以当前状态应表述为：
+
+`验证通过，尚未做本轮 promotion 专项多 agent 审查。`
+
+建议 commit 前补一轮，重点审三块：
+- 是否误把 runtime/API/profile 解析带进来了。
+- `zero_offset -&gt; frame_axis_component` promotion 是否证据足够、边界清楚。
+- i18n/reader/usage-index/tests 是否一致。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 13:33:27 +0800</div>
+<pre>开多agent审查一下，罗列一下问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 13:36:46 +0800</div>
+<pre>我会开 3 个并行审查 agent，分别看 promotion 边界、测试/checker 逻辑、i18n/reader/归档一致性。它们只读不改；我会汇总问题清单，按阻塞程度列出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 13:38:44 +0800</div>
+<pre>第一个边界审查 agent 已启动。我继续开测试/checker 和 i18n/reader 两个专项审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 13:42:31 +0800</div>
+<pre>第二个测试/checker 审查 agent 已启动。现在开 reader/i18n/归档一致性审查，同时我这边先做一遍本地快速扫描准备汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 13:43:46 +0800</div>
+<pre>三个审查 agent 都在跑。我先自查可能风险点：查所有 `zero_offset -&gt; frame_axis_component`、`provisional`、`candidate evidence` 的残留，区分历史讨论包和当前 active reader 页面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 13:45:41 +0800</div>
+<pre>我本地扫描到一个需要注意的点：历史 discussion pack 里仍然记录旧状态“zero_offset 仍被拒绝/暂缓”。这可能是历史记录，不一定要改；我等 agent 判断它是不是问题，再一起汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 13:49:43 +0800</div>
+<pre>三个 agent 还没全部返回。我会继续等，同时不做修改，避免在审查过程中移动目标。</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 14:04:26 +0800</div>
+<pre>ok 处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 14:05:26 +0800</div>
+<pre>我会直接修这三处：给前一个 evidence 归档 change 加“已被后续 promotion change 取代/接续”的归档说明，避免读者以为这是最终状态；同时修状态页中英文列表标点。然后重跑验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 14:06:36 +0800</div>
+<pre>我会在 evidence archive 的三个 artifact 顶部加短说明：它记录的是先前证据切片的当时状态，已由同日 promotion archive 接续。这样保留历史决策，又不会误导最终状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 14:07:33 +0800</div>
+<pre>已修复 archive 注记和列表标点。现在重跑文档/i18n/checker/单测/whitespace，确认没有新问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 14:08:08 +0800</div>
+<pre>验证都通过。为了确认 published HTML 也带上标点修复，我会再跑一次 docs build；之后看最终 diff/status。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 14:08:23 +0800</div>
+<pre>docs build 也通过。最后确认 status/diff，确保审查指出的问题已不再是未处理状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-18 14:08:35 +0800</div>
+<pre>已处理审查问题。
+
+修复内容：
+- 给 `2026-06-18-document-frame-axis-component-binding-evidence` 归档里的 `proposal.md`、`design.md`、`spec.md` 增加了 archive note，说明它是 evidence-only 前置状态，后续已由 `2026-06-18-review-zero-offset-frame-axis-component-promotion` 接续并正式提升。
+- 修正了中英文状态页 checker-backed owner/scope 列表的标点：
+  - `motion.axis -&gt; axis`;
+  - `tool_management -&gt; tool_edge`;
+  - `zero_offset -&gt; frame_axis_component`.
+
+重新验证已通过：
+- `openspec validate --all --strict`
+- `python3 -m unittest discover -s tools/tests`，84 tests OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前还未 commit，工作树保持这些已修复的未提交改动。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 14:09:16 +0800</div>
+<pre>commit+push，然后落一下今天的report和session保留再commit+push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 14:10:25 +0800</div>
+<pre>我会按两段处理：先把当前 `zero_offset -&gt; frame_axis_component` promotion 这一批已验证改动单独 commit+push；然后新增今天的 TP004 report/session 讨论包，重新构建/验证，再第二次 commit+push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 14:12:29 +0800</div>
+<pre>我先把当前已经验证过的 TP004 变更单独提交并推送，然后再补今天的 report/session 包。第二个提交前我会按现有 discussion-pack 结构检查导航和中英文投影，避免只落源文件没有进入可读文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 14:12:40 +0800</div>
+<pre>当前本地已经比远端多 1 个提交；这次提交会叠在它后面，一起推送到 `origin/main`。现在开始暂存并提交当前 TP004 变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 14:12:59 +0800</div>
+<pre>第一个提交已生成：`aeefb69 docs: promote zero offset frame-axis scope`。我接着推送；如果远端或网络拦截，会按实际错误处理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 14:13:17 +0800</div>
+<pre>推送完成。现在进入第二部分：我先看现有 `TP004` discussion-pack 的目录、`SUMMARY.md`、中英文投影和索引写法，然后按同一结构补今天的 report/session。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 14:13:34 +0800</div>
+<pre>结构里已经有 `README/report/session` 源文件、topic book 投影、`docs_i18n` 中英文投影，以及月度索引。接下来我读最近一次 `2026-06-17` 和日包流程，直接复用它的形状。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 14:13:47 +0800</div>
+<pre>最近一次日包确认了写法：源目录保留英文结论，中文页单独写中文，不把英文 include 过去。我接下来会新增 `2026-06-18-zero-offset-frame-axis-component-promotion`，并同步四套导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 14:14:03 +0800</div>
+<pre>我已经确认英文 `docs_i18n/en` 仍然走 include，中文 `docs_i18n/zh` 是本地化正文。下一步是一次性新增源包、topic book 包装页、root book/双语导航和中文正文。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 14:14:19 +0800</div>
+<pre>我还需要对齐中文 `report/session` 的粒度，避免它只是英文直译。先读一下 6 月 17 日中文报告和会话记录，再开始补文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 14:14:34 +0800</div>
+<pre>我没有看到自动生成脚本，所以这里按现有文件布局做受控补丁：新增 18 日包，英语侧用 include，中文侧写可读中文，同时把四个 `SUMMARY.md` 和 6 月索引都挂上入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 14:15:09 +0800</div>
+<pre>我开始落文件了。先创建对应目录，再用补丁新增正文和导航入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 14:15:18 +0800</div>
+<pre>目录已建好。下面的补丁会新增源 README/report/session、topic book 包装页、root book/英文 include 页，以及中文本地化页面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-18 14:16:59 +0800</div>
+<pre>正文和包装页已经落下。接下来把 6 月索引和三套 Summary 都接入新日包，保持页面能从导航进入。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 14:17:26 +0800</div>
+<pre>处理结束之后给我生成今天的-简短总结列表</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 14:17:46 +0800</div>
+<pre>收到，结束时我会给你一份可直接复制的今日简短总结列表，用 `-` 平铺，不做嵌套。现在先把新日包跑完验证并提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 14:18:07 +0800</div>
+<pre>新增入口已经能被 `rg` 找到，当前只有日包相关改动。现在跑验证：先并行跑 OpenSpec、单测、参数 checker、文档构建和 diff whitespace；构建完成后再跑带 published HTML 的 i18n 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 14:18:21 +0800</div>
+<pre>基础验证和 HTML 构建都通过了。现在补跑 `--require-published-html`，确认刚生成的发布页也覆盖到新日包和已有关键页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 14:18:35 +0800</div>
+<pre>发布页检查通过。接下来我看一下最终 diff 范围，只提交日包源、投影和导航，不把生成的 HTML 输出混进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 14:18:48 +0800</div>
+<pre>最终 diff 范围符合预期：只有日包、投影和导航。现在暂存第二批变更，提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 14:19:04 +0800</div>
+<pre>第二个提交已生成：`3acccb5 docs: add TP004 zero offset daily pack`。现在推送并做最终状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 14:19:16 +0800</div>
+<pre>第二次推送完成。我最后检查一次 `main` 与远端状态，并把今天的简短总结整理成平铺列表给你。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-18 14:19:44 +0800</div>
+<pre>处理完了，两个 commit 都已 push 到 `origin/main`：
+
+- `aeefb69` `docs: promote zero offset frame-axis scope`
+- `3acccb5` `docs: add TP004 zero offset daily pack`
+
+今天的 report/session 已落在：
+- [report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-18-zero-offset-frame-axis-component-promotion/report.md)
+- [session.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-18-zero-offset-frame-axis-component-promotion/session.md)
+
+验证已通过：`openspec validate --all --strict`、84 个 unittest、参数 checker、i18n published HTML 检查、docs HTML 构建、`git diff --check`。最终 `main...origin/main` 干净，`openspec list --json` 为 `{&quot;changes&quot;:[]}`。
+
+今天的简短总结列表：
+
+- TP004 已将 `zero_offset -&gt; frame_axis_component` 提升为 checker-backed owner/scope pair。
+- `zero_offset.frame_axis_component` minimal descriptor 现在被 checker 接受。
+- 当前 checker-backed owner/scope pair 为 `motion.axis -&gt; axis`、`tool_management -&gt; tool_edge`、`zero_offset -&gt; frame_axis_component`。
+- 本次没有扩展 descriptor contract，仍只保留 `parameter_id`、`owner`、`scope`、`semantic_name`。
+- 具体 `frame`、`axis`、`component` 取值解析仍暂缓，下一步应进入 configuration / machine-profile-owned 切片。
+- 两个 OpenSpec change 已归档，当前没有 active changes。
+- 多 agent 审查发现的 archive wording 和列表标点问题已修正。
+- 今天的 TP004 report/session 日结包已落源文件、topic book、root book、英文投影和中文可读页面，并已提交推送。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:528-540|note=[TP004 discussion-pack publishing pattern]
+MEMORY.md:502-502|note=[report session commit push expectation]
+MEMORY.md:523-523|note=[TP004 validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ec893-a01e-7e92-bfb9-4816e46ef544
+019ecddc-867c-7463-83a0-5f4a4e458a36
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 09:44:35 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 09:50:24 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed867-ff4d-7b53-9c87-0b6ed33676c8&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\nNo blocking issues found.\n\nI verified the scoped files and published output read-only:\n\n- `python3 tools/check_docs_i18n_sync.py --require-published-html` passed.\n- `docs_i18n/en/src/SUMMARY.md` and `docs_i18n/zh/src/SUMMARY.md` both include TP001-TP004 nav and the 2026-06-17 TP004 closure entries.\n- The 2026-06-17 Chinese pages are not thin wrappers; they contain visible Chinese prose in `index.md`, `session.md`, and `report.md`.\n- The relative links in the 2026-06-17 source pages resolve to the expected local targets.\n- `docs_html/` contains the matching English and Chinese published pages, and `diff -qr docs_i18n/site docs_html` reported no differences.\n- I did not edit files; `git status --short` was clean.\n\nResidual risk is limited to checks outside this scope, such as browser-level visual review or links beyond the requested TP004/nav surface.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 09:51:57 +0800</div>
+<pre>收到第一个审查结果：i18n/发布面没有 blocking 问题，中文页不是空壳，`docs_i18n/site` 和 `docs_html` 一致。我还在等另外两个审查结果；如果也干净，就按当前文档指向继续开 `Parameter Instance Binding` 窄变更。</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 09:51:59 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed867-a35c-71d2-b156-57fe45a2980e&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No blocking issues found.\n\nI reviewed the requested `metanc_drafts` docs and their rendered include targets inside the same repo. The status wording is consistent:\n\n- `openspec/TOPICS.md` marks TP001-TP004 as baseline/active-baseline states, not complete states.\n- TP001 says as-built HMI baseline and explicitly avoids claiming real controller adapters are complete.\n- TP002 says as-built baseline seed / evidence draft, with follow-up backfill work still draft.\n- TP003 says seed baseline / evidence draft, with active baseline and language/buildtime work still next-step planning.\n- TP004’s “Initial Closure” wording is scoped to the current descriptor-governance slice and explicitly says it does not declare TP004 complete as a whole.\n\nPotentially sensitive wording like “Initial Closure” is already bounded by nearby lines such as [TP004 parameter status](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:58) and the discussion pack scope at [index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/discussions/2026-06-17-parameter-descriptor-initial-closure/index.md:6). No edits made.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 09:52:06 +0800</div>
+<pre>第二个审查也通过：TP001-TP004 的状态没有被写成整体完成，`Initial Closure` 的措辞已经有边界说明。还剩 TP004 内部一致性审查，等它回来后我再进入实际变更。</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 09:52:29 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed867-c70e-7fe2-8e73-68a66613a6b9&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No blocking issues. The closure boundary does not overclaim TP004 completion: the current-state page explicitly limits closure to descriptor governance and excludes instance binding, runtime values, semantic paths, registry/API work, and later owner/scope promotions.\n\nTwo low-severity consistency notes:\n\n- **Low:** Next-slice guidance diverges slightly. The closure report says the next narrow entry point is `Parameter Instance Binding` ([report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-17-parameter-descriptor-initial-closure/report.md:64)), but the current-state page’s “Recommended Next Slices” omits that and lists owner/scope promotion, `semantic_name` checks, semantic path, and axis-alias work instead ([parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:107)). This is not a completion overclaim, but it can steer the next slice ambiguously.\n\n- **Low:** `motion.axis -&gt; axis` is documented as checker-backed ([parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:45), [OBJECT-SCOPES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OBJECT-SCOPES.md:136)), while `motion.axis` remains an `unassigned_owner_tokens` entry whose topic boundary is not frozen ([owner-registry.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/owner-registry.md:90), [owner-registry.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/owner-registry.md:98)). The checker model allows this, but the docs do not make that distinction obvious.\n\nNo files were edited.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 09:52:53 +0800</div>
+<pre>三个审查都回来了：没有 blocking 问题，但有两个低级一致性点。我的处理顺序会是：先把当前状态页的“下一步”指向和 `motion.axis` checker-backed 但 owner 未冻结的区别补清楚，再用 OpenSpec 开一个独立的 `Parameter Instance Binding` 窄变更，而不是直接把 `zero_offset` 提升进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 09:53:45 +0800</div>
+<pre>我先处理审查反馈里的两个小问题，这属于边界澄清，不改变契约：`Recommended Next Slices` 增加 `Parameter Instance Binding` 的优先入口；`motion.axis` 补一句说明“可被 checker 使用”不等于 owner/topic 边界已经冻结。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 09:54:11 +0800</div>
+<pre>我已经读完处理 code-review feedback 的规则：这两个点都技术成立，且不会扩大契约。现在开始用最小文档补丁处理它们，然后再开 OpenSpec 变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 09:54:31 +0800</div>
+<pre>我准备直接补源页和 reader projections，因为审查点涉及源书、root book projection、英文 projection、中文 projection。先不碰生成的 `docs_html`，等源内容和校验过后统一 rebuild。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 09:54:49 +0800</div>
+<pre>我现在先改 canonical 源页和中文 reader 页；英文/root reader 这两个状态页是 include wrapper，会随源页一起更新。Owner registry 需要同时改 canonical 源和中文 reader 文案。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-18 09:55:08 +0800</div>
+<pre>设计边界我按现有文档里的下一步来执行：这次不做 runtime registry、semantic path、value/access，也不直接提升 `zero_offset -&gt; frame_axis_component`。只定义一个可校验的 `Parameter Instance Binding` 记录形状，让它能引用已存在 descriptor、匹配 scope、匹配 instance key/source，并保留 promotion 到后续 change。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-18 09:55:12 +0800</div>
+<pre>现在开始改文件：先是纯文档澄清，把审查反馈消掉；随后创建 OpenSpec 变更并按 TDD 加 checker 规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-18 09:55:46 +0800</div>
+<pre>文档澄清补丁已落。下一步创建 `Parameter Instance Binding` 的 OpenSpec change；我会按本仓库现有 change 结构生成 proposal/design/tasks，再实施。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-18 09:55:53 +0800</div>
+<pre>Using change: `add-parameter-instance-binding`. This is a new TP004 slice; if you want a different name, tell me before I archive/commit it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-18 09:56:09 +0800</div>
+<pre>变更骨架已经创建。现在我读取 OpenSpec 给出的 artifact 指令和现有 schema，再填 proposal/design/tasks，保持它只覆盖 instance binding 的最小校验规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-18 09:56:17 +0800</div>
+<pre>OpenSpec 提示了一个现有配置里无效 artifact rule 的 warning，但 change 创建和 schema 状态正常；我会继续用合法的 proposal/design/specs/tasks 路径。现在先写 proposal，然后再按依赖写 design/spec/tasks。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-18 09:56:24 +0800</div>
+<pre>我会写一个新 capability：`parameter-instance-binding`。它只定义绑定记录的最小字段和校验场景，不修改已有 descriptor capability；这能让归档时边界清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-18 09:57:03 +0800</div>
+<pre>OpenSpec artifacts 已写好。现在先校验 proposal 严格模式，如果 schema 需要补字段或格式，我会先修变更文档再写实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-18 09:57:09 +0800</div>
+<pre>Proposal 严格校验通过。现在标记 setup task 完成，然后进入实现；实现部分我会先写失败测试，确认它们确实因为缺少 binding 校验而失败，再写 checker 和文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-18 09:57:25 +0800</div>
+<pre>现在做 TDD 红灯阶段：我会在参数校验测试里先加 binding 的期望行为，跑定向测试看它失败，再实现最小代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-18 09:57:44 +0800</div>
+<pre>我已经进入实现前的红灯阶段，正在看现有 descriptor 测试和 checker 结构。下一步会加 `parameter_instance_binding` 的失败测试，先证明当前 checker 不支持，再写最小实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-18 09:57:57 +0800</div>
+<pre>我已经看清 checker 入口：`validate_parameter_descriptors` 现在只管 descriptor；这次会新增一个并列的 `validate_parameter_instance_bindings`，并把新源文件纳入结构化文档扫描和主校验。先加测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-18 09:58:04 +0800</div>
+<pre>Test insertion point is right after existing descriptor provisional tests. I’ll add a helper dataset inside tests so the new behavior is isolated and does not depend on future source docs yet.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-18 09:58:18 +0800</div>
+<pre>我现在在红灯测试里加五类失败条件：有效绑定、未知 descriptor、scope mismatch、缺失 instance key、instance source mismatch。之后会跑定向 unittest，确认当前代码确实失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-18 09:59:17 +0800</div>
+<pre>我发现 `instance_key` 单数不适合后续 `frame_axis_component` 这种组合实例，容易把下一步做窄之后又返工。现在把变更设计收紧为 `instance_keys` 映射：它必须和 object scope 声明的 key 集合完全匹配，这仍然不引入 runtime value。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-18 09:59:43 +0800</div>
+<pre>我已把字段从单数 `instance_key` 调整成 `instance_keys` 映射，原因是 `frame_axis_component` 天然有 `frame/axis/component` 三个 key。接下来按这个契约写失败测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-18 10:00:17 +0800</div>
+<pre>红灯测试已写。现在跑定向测试，预期失败点应该是 `validate_parameter_instance_bindings` 还不存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-18 10:00:35 +0800</div>
+<pre>红灯符合预期：五个测试都因为 checker 还没有 `validate_parameter_instance_bindings` 而失败。现在写最小实现和新文档源文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-18 10:00:45 +0800</div>
+<pre>实现会涉及 `check_docs_i18n_sync.py` 的 projection list，因为新增了一个 canonical TP004 source page。先 patch checker 和文档源，再跑红绿。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-18 10:01:20 +0800</div>
+<pre>最小 checker 实现已加。现在重新跑刚才的红灯测试，确认它们变绿；如果有错误，会按错误收窄修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-18 10:01:32 +0800</div>
+<pre>定向 binding 测试现在通过。下一步把真实源文档、root/book/i18n 导航和中文 reader 页补上，再跑完整校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-18 10:02:16 +0800</div>
+<pre>新 binding 源页和 reader 页已加。接下来把导航、专题首页和 projection checker 纳入这页，保证 published HTML 会有入口且中文页不是薄 include。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-18 10:02:54 +0800</div>
+<pre>导航和中文投影检查规则已更新。现在需要保证主 checker 能从真实新文档加载 binding，并且 usage index 包含新结构化来源；我会先跑定向测试和 parameter checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-18 10:03:12 +0800</div>
+<pre>真实源页校验暴露了一个小问题：同一文档里“最小形状”和“示例”用了相同 YAML `binding_id`，checker 按真实结构化块读取后判 duplicate。这个反馈是合理的，我会把第一个块改成非 YAML 示例，让只有正式示例参与结构化校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-18 10:03:20 +0800</div>
+<pre>我会改成 ` ```text ` 只是展示形状，保留后面的 ` ```yaml ` 作为唯一结构化样例；中文页同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-06-18 10:03:34 +0800</div>
+<pre>Duplicate YAML 问题已修。现在重新跑参数 checker 和 i18n source check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-06-18 10:03:42 +0800</div>
+<pre>现在只剩 Usage Index stale，这是预期：新增了结构化 YAML 来源后生成索引需要刷新。我会运行项目自带 `--update` 生成器，不手工编辑生成文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-06-18 10:03:56 +0800</div>
+<pre>Usage Index 已按生成器刷新。接下来跑源级参数和 i18n 检查，再跑完整 unittest，确认没有因为新增页破坏现有规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-06-18 10:04:22 +0800</div>
+<pre>源级校验和完整 unittest 已通过：参数 checker、i18n source check、83 个工具测试都绿。现在我会刷新发布 HTML，并跑 published HTML 检查、OpenSpec 严格校验和 diff check，然后再更新任务清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-06-18 10:04:51 +0800</div>
+<pre>OpenSpec 已识别 artifacts 完整，但任务清单还没按实际实现更新。我看到 task 里写的是 “missing instance key”，而测试目前覆盖的是 key mismatch；我会补一个缺失/空 `instance_keys` 的测试，避免任务和测试覆盖不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-06-18 10:05:02 +0800</div>
+<pre>补了 missing `instance_keys` 测试。先跑这组定向测试，再继续发布构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-06-18 10:05:14 +0800</div>
+<pre>定向测试六项通过。现在刷新发布 HTML；这是生成产物更新，不手工修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-06-18 10:05:29 +0800</div>
+<pre>HTML 发布产物已重建，构建过程没有 mdBook include error。现在跑最终完整验证，包括 published HTML、OpenSpec 严格校验和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-06-18 10:05:36 +0800</div>
+<pre>最终验证通过：84 个 unittest、参数 checker、published HTML i18n、OpenSpec strict、diff check 都干净。现在我会把 OpenSpec 任务清单勾到已完成，并再跑一次变更状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-06-18 10:05:59 +0800</div>
+<pre>任务清单已同步到完成状态。再做一次状态/差异检查，确认没有遗漏生成产物或意外文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-06-18 10:06:21 +0800</div>
+<pre>当前变更状态正常：OpenSpec `add-parameter-instance-binding` 已显示 complete，发布产物里也出现了中英文 `parameter-instance-bindings.html`。我还会在最终回答前重跑一组 fresh verification，因为刚刚更新过 tasks 清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-06-18 10:06:35 +0800</div>
+<pre>Fresh verification 通过。接下来我会关闭几个 subagent 会话，避免后台资源挂着，然后给你简要汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / final_answer</h3>
+<div class="time">2026-06-18 10:07:00 +0800</div>
+<pre>已继续处理完。
+
+3 个 agent 审查结论：没有 blocking 问题。发现的两个低风险一致性点我已经修掉：
+
+- 当前状态页补清楚：下一步优先是 `Parameter Instance Binding`，不是继续泛化 TP004。
+- Owner registry 补清楚：`motion.axis -&gt; axis` 可被 checker 接受，不等于 `motion.axis` 的 topic owner 边界已经冻结。
+
+然后我继续落了一个新的窄 slice：`add-parameter-instance-binding`。
+
+主要内容：
+
+- 新增 `TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md`
+- 新增 root/en/zh 读者页和导航入口
+- 新增 checker：校验 `parameter_instance_binding`
+- 新增测试覆盖：valid binding、未知 descriptor、scope mismatch、缺失/错误 `instance_keys`、`instance_source` mismatch
+- 重建了 `docs_html`，中英文 HTML 里已有 `parameter-instance-bindings.html`
+- `zero_offset -&gt; frame_axis_component` 仍保持 provisional，没有提升
+
+验证已通过：
+
+- `python3 -m unittest discover -s tools/tests`：84 tests OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `openspec validate add-parameter-instance-binding --strict`
+- `git diff --check`
+
+当前只是本地改动，尚未 commit。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:539-544|note=[TP004 next slice boundary and Parameter Instance Binding direction]
+MEMORY.md:496-512|note=[multi-agent review and slice-local completion preferences]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecddc-867c-7463-83a0-5f4a4e458a36
+019ed281-9af4-7c02-84ea-e8d3ad4e0973
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 11:12:55 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed8b5-c800-7471-b80e-93248ee60305&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No blocking issues found.\n\nThe change keeps `zero_offset -&gt; frame_axis_component` provisional, not promoted. The key boundary language is explicit in [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:68), [PARAMETER-INSTANCE-BINDINGS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md:122), and the Chinese projection at [parameter-instance-bindings.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md:117).\n\nThe checker diff only adds required projection/published-page text checks for the binding page and HTML unescaping for published HTML checks; it does not alter owner/scope acceptance rules. See [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:103) and [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:736).\n\nNo files modified.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:13:12 +0800</div>
+<pre>第一个审查 agent 回来了，结论是没有阻塞问题：它确认没有把 `zero_offset -&gt; frame_axis_component` 提升为正式 checker-backed pair，相关 guardrail 文案和检查器改动都在预期范围内。我继续等另外两个审查结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 11:13:59 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed8b6-0a0b-7752-898a-85ea54853fb8&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No blocking issues found.\n\nThe OpenSpec artifacts match the implementation: the spec requires candidate `frame_axis_component` evidence, explicit non-promotion of `zero_offset -&gt; frame_axis_component`, and a roadmap update; the diff implements those in `PARAMETER-INSTANCE-BINDINGS.md`, the status page, and the Chinese projection. The design’s non-goals also hold: no real `zero_offset.*` descriptor, no `owner_scope_bindings` promotion, and no runtime/API/schema expansion.\n\nValidation closure looks acceptable. I ran:\n\n- `openspec validate document-frame-axis-component-binding-evidence --strict`\n- `python3 -m unittest discover -s tools/tests` (`84` tests)\n- `python3 tools/check_parameter_value_sets.py`\n- `python3 tools/check_docs_i18n_sync.py`\n- `python3 tools/check_docs_i18n_sync.py --require-published-html`\n- `git diff --check`\n\nAll passed. I did not run `./tools/build_docs_html.sh` during review because the request was not to modify files; the published-HTML check already passes against the current generated trees.\n\nArchive concern: none blocking. The active change is complete in `openspec list --json` with `15/15` tasks complete, so it appears archive-ready from validation/task state, assuming the intended ignored generated HTML state is kept or rebuilt before final packaging.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:14:14 +0800</div>
+<pre>第二个审查 agent 也回来了，无阻塞；它还独立跑了 OpenSpec、84 个单测、TP004 checker、i18n、published HTML 和 diff check，全部通过。现在只剩 i18n/reader 专项审查 agent 的结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-7">
+<h3>Event 7 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 11:14:49 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed8b5-e86a-75d2-9155-fa6b666474da&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No blocking issues found.\n\nFinding: [docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md:145) keeps the old “apply binding rules first, then consider promotion” next-use sentence and then adds the new “review evidence for promotion” sentence at line 148. The English source now only has the new wording at [TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md:155). This is also present in published Chinese HTML at [docs_html/zh/TP004-parameter-system/parameter-instance-bindings.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/parameter-instance-bindings.html:292), so readers see a stale extra step.\n\nValidation checked: `python3 tools/check_docs_i18n_sync.py`, `python3 tools/check_docs_i18n_sync.py --require-published-html`, and `git diff --check` all passed. Include/nav paths and published-page required text matching looked okay.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:15:09 +0800</div>
+<pre>第三个审查 agent 找到一个非阻塞但该修的问题：中文 reader 页还残留了一句旧的“先应用 binding 规则再考虑提升”，英文源页已经改成“审查候选证据是否足够”。我现在把中文旧句删掉并重建/重验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 11:15:24 +0800</div>
+<pre>中文残留旧句已删除。现在重跑 i18n、构建和 published HTML 检查，再做最终状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 11:15:31 +0800</div>
+<pre>源结构和 whitespace 已通过。接下来重建 docs HTML，让 published Chinese 页面也移除那句旧话，然后跑完整最终验证一遍。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 11:15:50 +0800</div>
+<pre>Docs HTML 已重建并通过 published-page 检查。现在我跑最终一组验证并确认 OpenSpec 任务状态、工作树状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 11:16:03 +0800</div>
+<pre>最终验证都通过，OpenSpec change 也显示 complete。现在我再看一次最终 diff 和 status，确认没有意外生成文件被纳入跟踪，然后收尾。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-18 11:16:37 +0800</div>
+<pre>已处理完，并开了 3 个 agent 审查。
+
+这次做的是 TP004 小切片：给 `frame_axis_component` 增加候选绑定证据，但没有把 `zero_offset -&gt; frame_axis_component` 提升为 checker-backed owner/scope。
+
+主要改动：
+- 在 [PARAMETER-INSTANCE-BINDINGS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-INSTANCE-BINDINGS.md:99) 增加 `Frame Axis Component Candidate Evidence`。
+- 在 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:65) 更新当前状态和下一步路线图。
+- 在 [parameter-instance-bindings.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-instance-bindings.md:94) 同步中文 reader 页面。
+- 在 [check_docs_i18n_sync.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_docs_i18n_sync.py:109) 增加 `parameter-instance-bindings` 的 required text / published HTML 覆盖，并修正 HTML `-&gt;` 转义匹配。
+
+审查结果：
+- Agent 1：确认没有误提升 `zero_offset -&gt; frame_axis_component`。
+- Agent 2：确认 OpenSpec/spec/tasks/验证闭合，无阻塞。
+- Agent 3：发现中文 reader 残留一句旧路线图，我已修掉并重建验证。
+
+验证已通过：
+- `openspec validate document-frame-axis-component-binding-evidence --strict`
+- `python3 -m unittest discover -s tools/tests`，84 tests OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前状态：change `document-frame-axis-component-binding-evidence` 已 complete，但还没 archive/commit。工作树有 5 个已修改文件和 1 个新 OpenSpec change 目录。</pre>
+</article>
+</section>
+<section class="turn event" id="event-8">
+<h3>Event 8 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 13:52:31 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed93b-606c-74f1-9b20-22fdc392b495&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;- Medium: [proposal.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/proposal.md:18), [design.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/design.md:18), [spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/specs/frame-axis-component-binding-evidence/spec.md:18): the archived evidence change still says `zero_offset -&gt; frame_axis_component` remains provisional / not promoted / checker-rejected, while the current promotion diff makes it checker-backed. If these archive files are committed with the promotion, they leave stale contradictory boundary text in the uncommitted diff.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 13:53:01 +0800</div>
+<pre>边界审查 agent 返回一个中等问题：刚归档的 evidence change 里仍然写“zero_offset 仍 provisional / rejected”，而同一批未提交 diff 又包含 promotion，放在一起提交会让归档文本和当前状态冲突。我继续等另外两个审查结果，再统一决定是修 archive 注记还是拆提交。</pre>
+</article>
+</section>
+<section class="turn event" id="event-9">
+<h3>Event 9 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 13:55:21 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed940-adf0-7a20-a7be-2b0772f3cec6&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;- High: [openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/specs/frame-axis-component-binding-evidence/spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/specs/frame-axis-component-binding-evidence/spec.md:18) is no longer consistent with the final archived implementation. It still requires the docs to state that `zero_offset -&gt; frame_axis_component` “does not promote” and “remains provisional until a later change explicitly promotes it”, but the later archived promotion and current docs now do promote it into `owner_scope_bindings`. The stale archived requirement misrepresents the final state.\n\n- Medium: [openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/proposal.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/proposal.md:18) and [design.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/design.md:18) still say `zero_offset -&gt; frame_axis_component` remains provisional/rejected and that checker behavior is unchanged. In the same uncommitted snapshot, [tools/tests/test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1796) now accepts the real zero-offset binding, so the archived change artifacts do not accurately reflect the final two-change archive state.\n\n- Low: [TP004-parameter-system/book/src/parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:47) has a punctuation/list consistency issue: the `tool_management -&gt; tool_edge` bullet ends with `.`, while the surrounding semicolon-separated list uses `;` and then adds `zero_offset -&gt; frame_axis_component`. The Chinese projection has the same issue at [docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:47).\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 13:56:20 +0800</div>
+<pre>第二个 reader/archive 审查 agent 也指出同一类问题，并补了一个低级别标点问题。现在还有测试/checker agent 未返回；目前已知问题主要是“同一批提交里 evidence archive 与 promotion archive 状态冲突”，外加状态页列表标点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 13:59:31 +0800</div>
+<pre>最后一个测试/checker agent 还没回来。我先不修改，继续等一轮；如果它超时仍未返回，我会基于已返回的问题给你列表。</pre>
+</article>
+</section>
+<section class="turn event" id="event-10">
+<h3>Event 10 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-18 14:02:55 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019ed93d-3561-7921-95a2-ca5a07ea2286&quot;,&quot;status&quot;:&quot;shutdown&quot;}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-18 14:03:45 +0800</div>
+<pre>审查结果如下，当前有 3 个问题：
+
+- **High**：`document-frame-axis-component-binding-evidence` 的归档 spec 仍说 `zero_offset -&gt; frame_axis_component` 不提升、仍 provisional，和后面 promotion 后的最终状态冲突。
+  位置：`openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/specs/frame-axis-component-binding-evidence/spec.md:18`
+
+- **Medium**：同一个 evidence 归档 change 的 `proposal.md` / `design.md` 也还写着 “仍 provisional / rejected / checker unchanged”。如果和 promotion 一起提交，会造成同一批归档里前后矛盾。
+  位置：
+  - `openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/proposal.md:18`
+  - `openspec/changes/archive/2026-06-18-document-frame-axis-component-binding-evidence/design.md:18`
+
+- **Low**：状态页 checker-backed owner/scope 列表标点不一致。现在 `tool_management -&gt; tool_edge` 还是句号，但后面又加了 `zero_offset -&gt; frame_axis_component`。中文页同样有这个小问题。
+  位置：
+  - `TP004-parameter-system/book/src/parameter-descriptor-status.md:47`
+  - `docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md:47`
+
+第三个 checker/test agent 长时间未返回，我已关闭；前两个 agent 的问题高度重合，重点就是：**两个 change 在同一批未提交 diff 里归档时，前一个 evidence archive 的“未提升”表述需要补一个后续提升说明，或者拆成两个提交**。</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

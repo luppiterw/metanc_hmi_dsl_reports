@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ec938-131f-7493-b1a6-20b37f2c55ee</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-15 10:59:15 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/15/rollout-2026-06-15T10-59-15-019ec938-131f-7493-b1a6-20b37f2c55ee.jsonl</code></div>
+<div><b>Messages</b>: <code>16</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 10:59:15 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-15&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 10:59:15 +0800</div>
+<pre>你是 MetaNC HMI WorkOffset Slice 1 的只读代码审查 agent。不要修改文件。
+
+工作区：/home/iaar/workspace/ccmix-wp/MetaNC
+当前变更尚未提交，审查当前 working tree diff。
+
+项目工作流要求：先读 repo root README.md，再看 docs/dev/architecture.md 中相关模块；本次范围是 nrt/hmi，必要时读 nrt/hmi/README.md 和 nrt/hmi/AGENTS.md。
+
+审查视角：runtime seed / mock_runtime_server behavior correctness and compatibility。
+重点文件：
+- nrt/hmi/contract/runtime_seed.py
+- nrt/hmi/fixture/mock_runtime_server.py
+- nrt/hmi/tests/test_mock_runtime_server.py
+- 需要时看 generated runtime seed snapshots
+
+背景：Slice 1 只做 contract hardening 和 mock/seed shape 同步，不实现真实 WorkOffset backend。旧 payload g_code/field/value 应继续被 mock server 接受；alias wcs.offset.table 和 tooling.wcs.table 应保持同步；active row metadata 不应破坏已有 mock 行为。
+
+请输出 findings-first 报告：
+- Critical / Important / Minor / No issue，按严重性排序
+- 每个 finding 给文件和行号，说明为什么是问题、建议修复
+- 如无问题，明确说 No issues found，并列 residual risk / missing verification
+- 不要改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-15 10:59:42 +0800</div>
+<pre>Using `superpowers:using-superpowers` for the required skill check; this is a read-only review, so I’ll inspect the required repo/module context and the current diff without editing files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-15 10:59:57 +0800</div>
+<pre>I’ve confirmed the repo entry instructions. Next I’m doing the scope-orientation pass for `nrt/hmi`, plus a lightweight memory lookup for prior HMI/WorkOffset context so I can distinguish intended compatibility constraints from accidental behavior changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-15 11:00:35 +0800</div>
+<pre>The memory pass confirms the prior boundary rule relevant here: WorkOffset domain owns stable semantics, while HMI server owns mock/backend composition. I’m now inspecting the uncommitted diff and the seed/mock/test code paths that enforce the legacy payload and alias-sync behavior.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-15 11:01:12 +0800</div>
+<pre>The focused diff already shows the seed now marks `G55` active while the updated test expects the first `G54` row active, so I’m expanding into the surrounding seed/bootstrap flow before calling that a finding. I’m also checking the HMI module’s “read first” docs to make sure the review matches local contracts.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-15 11:01:45 +0800</div>
+<pre>The module docs confirm this slice is in the simulator/runtime contract layer, not the real backend path. I’m reading the current file line numbers now, especially initialization ordering and command dispatch, because the active-row semantics depend on whether `wcs.active` is set before or after resource alias normalization.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-15 11:02:23 +0800</div>
+<pre>The initialization path overwrites the seed’s active marker from `wcs.active`, so that part is internally consistent despite the hardcoded `G55` in the seed helper. I’m checking the generated/snapshot contracts and the retained interface YAML next for mismatches in row shape or command payload expectations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-15 11:05:57 +0800</div>
+<pre>The retained interface and generated snapshots add the new row metadata consistently, but I see a possible mismatch between the exported seed (`wcs.active` is `55`) and the live server’s activation parsing for extended WCS codes. I’m running the focused mock tests without bytecode writes to separate real failures from static review concerns.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-15 11:06:29 +0800</div>
+<pre>The focused tests pass, so the review is about contract/behavior gaps rather than an obvious failing unit. I’m checking the WorkOffset docs added in this diff because they may define how `selector`/`target_ref` are supposed to map onto mock commands.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-15 11:06:56 +0800</div>
+<pre>The added docs explicitly say mock/server compatibility should keep `g_code`-only activation and `g_code`/`field`/`value` set-offset working, while newer fields are metadata hardening. I’m doing one last static pass for edge cases the focused tests don’t cover, especially extended selectors like `G54.1P1` and malformed/partial table writes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-15 11:07:36 +0800</div>
+<pre>The static pass found that the legacy payloads are preserved, but the newly declared selector/target metadata is not actually honored by the mock command paths. I’m checking whether that is already covered by tests; if not, that will be an Important finding because it can silently report accepted while changing the wrong row or no row.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-15 11:08:00 +0800</div>
+<pre>The quick probe confirms the gap: selector-only activation leaves the mock on `G54`, and target-ref-only set-offset reports accepted without changing `G55`. I’ll verify whether there are any additional regressions around extended codes and then produce the findings-first report without touching the tree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-15 11:08:51 +0800</div>
+<pre>One more compatibility wrinkle surfaced: generated static seed snapshots can carry a different active row from the live mock server bootstrap because the server normalizes from `wcs.active` only when that property exists. I’m checking whether `wcs.active` is in the runtime plan before deciding whether that is a separate finding.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-15 11:09:03 +0800</div>
+<pre>I hit an import-path typo during an exploratory check, corrected the lookup source, and have enough evidence now. I’ll include the passing focused test command and the residual gaps in the report.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / final_answer</h3>
+<div class="time">2026-06-15 11:10:21 +0800</div>
+<pre>**Important**
+
+1. [mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:1012): `wcs.commands.activate` ignores the newly declared `selector`, and `wcs.commands.set_offset` ignores `target_ref` / `axis_id`.
+
+   The retained contract now exposes these fields, and the WorkOffset docs say `selector` should be preferred over `g_code`, while `target_ref` should identify the row for edits. The mock still defaults missing `g_code` to `G54`, so `{&quot;selector&quot;: &quot;G55&quot;}` is accepted but activates `G54`; `{&quot;target_ref&quot;: &quot;g55&quot;, ...}` is accepted but updates no row. That makes new-contract payloads silently wrong while tests only cover legacy payloads.
+
+   Suggested fix: resolve activation from `selector or g_code`; resolve edits from `target_ref` first, then legacy `g_code`; validate `field` exists in `component_axis_ids`; reject `axis_id` mismatches instead of accepting a no-op. Add mock tests for selector-only activation, target-ref edits, and axis-id mismatch.
+
+2. [runtime_seed.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/contract/runtime_seed.py:392): generated runtime seed marks `G55` active, but the live mock server normalizes initial active state to `G54`.
+
+   `_mock_wcs_rows()` hardcodes `active_code=&quot;G55&quot;`, so generated Web/QML seed snapshots show `G55.active = true`. `MockRuntimeServer.__init__` immediately syncs aliases before any `wcs.active` property exists, and `_sync_wcs_offset_resource_aliases()` defaults to `G54` at [mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:2259). This violates the seed/mock shape sync goal and can make static seed mode differ from server-backed mode.
+
+   Suggested fix: use one source of truth for initial active row. Either make the seed active default `G54`, or ensure `wcs.active=55` is present before server alias normalization and update tests accordingly.
+
+3. [mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:1014): active WCS identity is reduced to digits, which breaks extended selectors like `G54.1P1`.
+
+   The seed includes `G54.1P1` / `G54.1P2`, but activating `G54.1P1` stores `5411`; later active-row normalization compares against `G5411`, so no row becomes active. With active-row metadata now part of the row contract, accepted activation must not leave the table with no active row.
+
+   Suggested fix: track active by row identity/selector string instead of numeric digit extraction, or map extended selectors explicitly.
+
+**Verification**
+
+Ran focused read-only checks:
+
+`env PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_mock_runtime_server tests.test_pipeline.PipelineTests.test_runtime_plan_collects_used_bindings_and_local_state tests.test_tooling_contract_docs.ToolingContractDocsTests.test_wcs_offset_resource_has_legacy_tooling_alias tests.test_tooling_contract_docs.ToolingContractDocsTests.test_wcs_commands_keep_legacy_payloads_and_revision_metadata`
+
+Result: passed, 19 tests. I also ran exploratory probes confirming the selector/target-ref issues above. No files were modified.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:78-82|note=[work_offset HMI boundary and mock ownership context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb545-cef2-7971-8ca7-7d8b3e0a4d49
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

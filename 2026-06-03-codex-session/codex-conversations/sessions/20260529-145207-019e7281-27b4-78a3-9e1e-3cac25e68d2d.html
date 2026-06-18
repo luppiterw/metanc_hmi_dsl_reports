@@ -1,0 +1,2386 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7281-27b4-78a3-9e1e-3cac25e68d2d</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-29 14:52:07 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T14-52-07-019e7281-27b4-78a3-9e1e-3cac25e68d2d.jsonl</code></div>
+<div><b>Messages</b>: <code>278</code></div>
+<div><b>User prompts</b>: <code>24</code></div>
+<div><b>Synthetic events</b>: <code>20</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:14:03 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/mirror-ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-03&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:14:03 +0800</div>
+<pre>开多个agent review一下plc相关文档和代码</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:14:16 +0800</div>
+<pre>我会先按仓库规则重新做一次 PLC 范围定位，再并行开几个 review agent：一个看 runtime/code contract，一个看测试和 CMake 集成，一个看文档/spec 一致性。开始前我会确认当前分支和工作区，避免把已有改动混在一起。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:14:35 +0800</div>
+<pre>仓库根规则已确认，当前在 `feat/plc`，工作区目前看起来干净但本地比远端领先 1 个提交。接下来我会读 `rt/plc` 本地说明和相关 spec 索引，然后把范围交给多个 agent 分别审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:15:04 +0800</div>
+<pre>我也会用 `review-docs-comprehension` skill 约束文档审查口径：文档 agent 只报会影响首次阅读理解的问题，不把实现正确性和文档结构混在一起。代码侧会按缺陷优先审查，不做泛泛总结。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:15:19 +0800</div>
+<pre>现在分工是：我本地做状态和验证抽查；三个 agent 并行做独立审查，分别盯 runtime 代码契约、测试/CMake 覆盖、文档/spec 可读性和状态一致性。每个 agent 都是只读审查，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:15:29 +0800</div>
+<pre>spawn 工具提示 fork 场景不能覆盖 agent 类型/推理参数，我改成不 fork、把审查上下文写进任务说明里。这样 agent 仍然是独立读当前工作区，结果更容易对比。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 08:16:24 +0800</div>
+<pre>agent 已经在跑。我本地先做不重叠的抽查：确认最近 PLC 提交内容、Story-44 关联文件、docs 索引和当前验证入口，等 agent 返回后再合并结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 08:16:51 +0800</div>
+<pre>本地抽查看到最近提交就是 `29c3fca3 test(plc): freeze runtime command contract`，新增了 Story-44 的 runtime contract 测试和对应文档状态更新。现在我会跑当前验证入口，避免只靠静态审查判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 08:17:03 +0800</div>
+<pre>配置、docs policy lint、diff whitespace 都通过了。我继续构建 PLC 测试并跑 Story-44 与相关 runtime 回归，期间等 agent 的独立结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 08:17:41 +0800</div>
+<pre>`book build` 已通过，PLC 全量构建还在编译中。等构建完成后我会跑 `ctest`，同时收集 agent 的问题清单；如果发现具体缺陷，会先把证据落到文件行号上再汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 08:18:25 +0800</div>
+<pre>构建已经过了核心库和前半段测试目标，仍在继续。为了避免等 agent 时空转，我会继续看 Story-44 测试本身是否有可疑“测试冻结了偶然实现”的点。</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:25:32 +0800</div>
+<pre>修一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:25:51 +0800</div>
+<pre>我会直接修这轮 review 里列出的代码和文档问题，先处理两个 runtime 高风险，再补 Story-44 测试覆盖和状态文档同步。文档改动会按项目的 `write-docs` 规则走。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:26:10 +0800</div>
+<pre>我先把实现点收敛成四块：`Framework::shutdown()` 异常兜底、`CommandExecutor` scan guard 并发保护、Story-44 枚举/矩阵覆盖增强、状态文档同步。开始改代码前我会读相关 helper/test fixture，尽量把测试补在现有 Story-19/44 附近。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:26:30 +0800</div>
+<pre>我准备先落两个行为修复：shutdown 中的 pre-backend cleanup 会改成可记录失败且不中断后续 backend shutdown；scan guard 会改成原子占用，保证并发 scan 返回 `ExecutorBusy`。随后补回归测试，最后再处理文档状态漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:26:50 +0800</div>
+<pre>几个问题相互影响：`CommandExecutor` 改成原子 guard 后会影响可复制性；`RuntimeSimulationSession` 要在 boot 后重建 catalog/executor，最好把 executor 变成 `unique_ptr`，避免 stale descriptor。这个改动面仍然局限在 PLC runtime harness。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:27:01 +0800</div>
+<pre>我会用 `apply_patch` 做手工改动，避免把代码结构改乱。先改 runtime 代码，然后再补测试和 docs；中途如果编译暴露接口影响，再按现有测试修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 08:27:27 +0800</div>
+<pre>我会把 shutdown 的 `drain()` / `write_outputs()` 也当作 shutdown phase failure 记录：先记录第一条失败，但继续 stop behaviors、释放 ownership、清状态、关闭所有 backend，最后如已有失败再抛出。这能保持现有 Story-19 lifecycle failure 语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 08:27:34 +0800</div>
+<pre>开始修改：`CommandExecutor` 增加 `atomic_bool` CAS guard；`RuntimeSimulationSession` 改成每次 boot 后以当前 descriptor 重建 command executor；`Framework::shutdown()` 捕获 cleanup 异常并继续关闭。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 08:27:42 +0800</div>
+<pre>`CommandExecutor` 头文件已经改为原子 guard。接下来改 guard 逻辑，保证 `RunCycles` 和 `StepOnce` 都用 compare-exchange 进入临界区。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 08:27:56 +0800</div>
+<pre>scan guard 改完了。现在改 session：executor 需要在 boot 成功后绑定当前 descriptor 的 catalog，因此我会把成员改为 `unique_ptr&lt;CommandExecutor&gt;`，并让 `command_executor()` 在未 boot 时也按当前路径懒初始化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 08:28:15 +0800</div>
+<pre>session 现在会在 boot 后重建 command executor。下一步改 shutdown 异常路径，并补 Story-19 对 `drain()` / `write_outputs()` 抛异常的回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 08:28:29 +0800</div>
+<pre>shutdown cleanup 现在会记录失败并继续走完整关闭路径。接下来补测试：Story-19 加 `drain` 和 `write_outputs` 抛异常仍关闭所有 backend；Story-28 加真实双线程 busy 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-03 08:29:02 +0800</div>
+<pre>Story-19 已加 shutdown cleanup 失败回归。现在我会补一个真实双线程 `ExecutorBusy` 测试，验证第二个 scan 请求不会在第一个 scan 未完成时进入执行路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-03 08:29:19 +0800</div>
+<pre>并发测试已补。接下来处理 Story-44 两个测试覆盖问题：给命令枚举增加 count sentinel，并把矩阵成功结果也断言 message、payload kind、至少一条稳定 line。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-03 08:29:27 +0800</div>
+<pre>加了 `RuntimeCommandKind::kCount` sentinel。现在所有 switch 必须显式跳过它，否则编译会提醒；我会更新 runtime_command/command_executor 和 Story-44 清单断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-03 08:29:42 +0800</div>
+<pre>我会先查所有 `RuntimeCommandKind` switch，确保 `kCount` 不会触发未处理编译错误，然后补 Story-44 的 expected contract 结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-03 08:29:49 +0800</div>
+<pre>`kCount` 的实现 switch 已处理。Story-44 还需要显式确认 all_command_kinds 数量等于 `kCount`，并且矩阵对成功结果检查 message、payload kind、稳定 line。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-03 08:30:25 +0800</div>
+<pre>Story-44 的 expected contract 已扩展。接下来把 command inventory 数量断言和矩阵断言补上；同时注意 `SendNrtMessage` 的稳定 line 用的是 `operator.clear_faults`，和 valid command 保持一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-03 08:30:37 +0800</div>
+<pre>现在要处理 pre-boot virtual signal 契约。review 说当前 `ExecutionFailed` 模糊，我会改成更明确的 `InvalidRuntimeState`：未 boot 时 virtual signal 没有 runtime value，和 scan command 一样属于 runtime state 不满足。同步更新 Story-44 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-03 08:30:45 +0800</div>
+<pre>我发现 Story-28 文档原本允许 virtual observation 出 `execution-failed`，但 Story-44 是要冻结更清晰的 local runtime contract。这里我会把“未 boot 的 virtual 读”收窄为 `InvalidRuntimeState`，保留运行后缺值仍是 execution failure。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-03 08:30:55 +0800</div>
+<pre>pre-boot virtual observation 已改为 runtime-state rejection。接下来更新 Story-44 的 expected contract 和明确测试断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-03 08:31:12 +0800</div>
+<pre>接下来补 stale catalog 的回归。这个需要在测试里复制一份 machine.yaml 到 `/tmp`，在 session 构造后、boot 前替换内容，确认 command catalog 跟 boot 后 descriptor 一致。我会在 Story-30 session tests 加这个边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-03 08:31:18 +0800</div>
+<pre>我会新增一个临时 descriptor 测试：初始有 `old_input`，session 构造后文件改成 `new_input`，boot 后 `SetDigitalInput(new_input)` 应该 OK，`old_input` 应该 unknown。这样能证明 catalog 不再停留在构造时。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-03 08:32:07 +0800</div>
+<pre>实现修复已经落了一轮。下一步我会先做一次目标编译/回归，看看接口改动有没有连锁问题；之后再改文档状态入口，避免 docs 先写错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-03 08:32:45 +0800</div>
+<pre>目标编译已通过。现在我会跑这 4 个目标测试，验证刚补的行为断言；如果有细节不匹配，会按测试暴露的实际 contract 修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-03 08:32:51 +0800</div>
+<pre>两个测试细节需要调整：临时 machine YAML 的空列表格式不符合当前 parser；Story-44 矩阵里某些命令会改变状态，`state=RUNNING` 这条 line 不适合作为全部运行态稳定 line。我会收窄这些断言到真正稳定的输出行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-03 08:33:00 +0800</div>
+<pre>临时 YAML 已改成当前 parser 接受的空 block 风格。Story-44 的稳定 line 我会改为 state-independent：`StepOnce` 用 `completed_scans=1`，`GetState/GetSnapshot` 用 `paused=false` 等，不再假设前置命令后 state line 保持 RUNNING。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-03 08:33:11 +0800</div>
+<pre>测试断言修正后我会重新编译并跑这 4 个相关测试。若通过，再继续改文档状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-03 08:33:36 +0800</div>
+<pre>Story-44 还有一个矩阵细节：`ListBehaviors` / `GetDispatch` 在 stopped 状态是合法读取但没有运行态行为/调度行，所以不能用同一条 running line 覆盖所有状态。我会把稳定行断言改成 state-aware。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-03 08:33:49 +0800</div>
+<pre>我会重新跑 Story-44 单测，确认矩阵稳定行不再误伤 stopped 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-03 08:33:55 +0800</div>
+<pre>编译通过。我注意到 line 318 稍长，后面会让格式/`diff --check`兜底；先跑 Story-44。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-06-03 08:34:08 +0800</div>
+<pre>Story-44 失败只剩 `GetDispatch` 的稳定行不匹配；这是测试期望写得过细，不是实现失败。我会查现有 dispatch 测试/输出，改成当前 demo descriptor 的真实稳定行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-06-03 08:34:15 +0800</div>
+<pre>现有 Story-32 已显示 demo dispatch line 带类型后缀：`dispatch.0=start_latch (DemoStartLatchBehavior)`。我会按这个稳定格式更新 Story-44。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-06-03 08:34:26 +0800</div>
+<pre>我会重新构建并跑四个重点测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-06-03 08:34:34 +0800</div>
+<pre>构建和 whitespace 检查通过。我继续跑重点回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-06-03 08:34:49 +0800</div>
+<pre>Story-44 又暴露一个矩阵断言写得不够 state-aware：paused 状态下 `GetState/GetSnapshot` 自然是 `paused=true`。我会把这两个命令的稳定行改成按 runtime state 判断 `state=STOPPED/RUNNING`，避免和 pause 位冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-06-03 08:35:00 +0800</div>
+<pre>再跑 Story-44，看矩阵是否稳定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-06-03 08:35:22 +0800</div>
+<pre>Story-44 通过了。接下来我会更新文档入口：Current Capabilities、Next Roadmap、Implementation Readiness、Stories Index，以及 Story-44 plan/readiness，统一成 “Slice 01 implemented，后续 Slice 02-07 planned”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-06-03 08:35:28 +0800</div>
+<pre>文档会做小范围同步：入口状态不再说 Story-44 全 planned；plan/readiness 标成历史和当前下一步；Implementation Readiness 把 source expansion 移到 Story-44 后。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-06-03 08:35:56 +0800</div>
+<pre>`CURRENT-CAPABILITIES` 和 roadmap 已同步。现在更新 Implementation Readiness，把 Story-44 Slice 01 纳入 baseline，并把 next candidate 改成 Slice 02 deterministic replay。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-06-03 08:36:27 +0800</div>
+<pre>Implementation Readiness 已更新。接下来更新 Stories index 和 Story-44 自己的 plan/readiness 文案。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-06-03 08:36:36 +0800</div>
+<pre>Stories index 现在标为 active。Story-44 顶层 status 还是 planned，和 Slice 01 implemented 不冲突但容易误读；我会改成 active，并把设计页说明改成 plan 包含已完成和剩余项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-06-03 08:36:47 +0800</div>
+<pre>现在更新 Story-44 implementation plan：Patch 1/2 标完成，Patch 3 是下一步，Preferred order 标明从 Slice 02 继续。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-06-03 08:37:10 +0800</div>
+<pre>我会快速检查刚改的 plan 表格列数，避免 markdown 表头和分隔符不一致。然后更新 readiness review。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / commentary</h3>
+<div class="time">2026-06-03 08:37:18 +0800</div>
+<pre>plan 表头确实少了一个分隔列，我马上修掉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 45 / commentary</h3>
+<div class="time">2026-06-03 08:37:26 +0800</div>
+<pre>现在更新 readiness review，把它标成 pre-Slice-01 历史，并声明当前下一步是 Slice 02。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 46 / commentary</h3>
+<div class="time">2026-06-03 08:37:38 +0800</div>
+<pre>文档状态改完了。接下来我会更新 SPEC-135 文案，让它反映更强的矩阵覆盖和 pre-boot virtual observation 明确拒绝。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 47 / commentary</h3>
+<div class="time">2026-06-03 08:37:46 +0800</div>
+<pre>SLICE 文案已经大体对齐，我只会小改 validation 描述：现在 Story-44 会枚举绑定到 `RuntimeCommandKind::kCount`，矩阵也检查 payload kind 和稳定 line。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 48 / commentary</h3>
+<div class="time">2026-06-03 08:38:14 +0800</div>
+<pre>文档更新完成。现在我会跑相关测试、全量 PLC 测试和 docs lint/build，先从 targeted regression 开始。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 49 / commentary</h3>
+<div class="time">2026-06-03 08:38:22 +0800</div>
+<pre>重点测试、docs policy、diff check 都通过了。接下来跑全量 PLC build/ctest 和 book build；如果都通过，再做 diff/status 汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 50 / commentary</h3>
+<div class="time">2026-06-03 08:38:57 +0800</div>
+<pre>全量构建和 book build 通过。现在跑全量 CTest，并同时看下当前 diff/状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 51 / commentary</h3>
+<div class="time">2026-06-03 08:39:10 +0800</div>
+<pre>全量 82 个 PLC 测试通过。现在我还会做最后的 docs lint、diff check、`git status --branch`，并检查是否有需要格式修整的长行或文档表格问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 52 / final_answer</h3>
+<div class="time">2026-06-03 08:39:39 +0800</div>
+<pre>已修完 review 里列的问题，当前是未提交的本地改动。
+
+主要改动：
+- `Framework::shutdown()` 现在会捕获 `nrt.drain()` / `io.write_outputs()` 的异常，继续关闭所有 backend，最后再抛出首个 shutdown failure。
+- `CommandExecutor` 的 scan guard 改成 `atomic_bool` CAS，补了真实并发 `ExecutorBusy` 测试。
+- `RuntimeSimulationSession` boot 后会按实际加载的 descriptor 重建 command catalog/executor，避免构造后 descriptor 变化导致 catalog 过期。
+- pre-boot virtual signal observation 改成明确的 `InvalidRuntimeState`。
+- Story-44 contract test 加强：命令清单绑定 `RuntimeCommandKind::kCount`，矩阵检查 status/code/message/payload kind/代表性 line。
+- PLC 文档状态已同步为 Story-44 Slice 01 implemented，Story-44 active，下一步 Slice 02 deterministic replay。
+
+验证已通过：
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，82/82 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+当前工作区还有这些修改未提交，分支仍是 `feat/plc`，本地比 `origin/feat/plc` ahead 1。&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime workflow and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:50:12 +0800</div>
+<pre>开多个agent review一下plc相关文档和代码</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:50:35 +0800</div>
+<pre>我会按当前未提交改动做一轮新的并行 review：代码侧重点看刚修过的 shutdown、并发 scan guard、session catalog、Story-44 contract；文档侧用 `review-docs-comprehension` 口径看状态和阅读顺序一致性。先重新确认仓库规则、PLC 范围和当前工作区状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:50:44 +0800</div>
+<pre>当前范围确认完毕：`rt/plc` 没有额外 AGENTS，工作区有 20 个 PLC 相关未提交文件。接下来我会开 4 个 agent 并行审查：runtime correctness、contract/test coverage、docs comprehension、CMake/validation regression。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:50:52 +0800</div>
+<pre>我会先把 agent 启动起来，自己本地继续做不重叠的 diff 审查和验证抽查；等 agent 回来后合并问题清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:51:51 +0800</div>
+<pre>4 个 agent 已启动。我本地开始看未提交 diff 的关键路径，尤其是 `RuntimeSimulationSession` 重建 executor 后是否留下旧引用风险，以及 shutdown cleanup 是否和 Story-19 现有语义一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:53:31 +0800</div>
+<pre>我会把现有未提交的 PLC runtime 代码改动和文档改动分开审查：先收敛几个 agent 的独立结论，再做一次本地交叉检查，最后给你按严重程度排列的问题清单。文档可读性这部分我会按项目里的 docs review 规则看，不直接改文件。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:06:41 +0800</div>
+<pre>可以 处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:06:55 +0800</div>
+<pre>我会按刚才 3 个 review 点直接修：先让 session 内的 executor 地址稳定，再把 Story-30 临时文件改成唯一路径，最后把 Story-44 的空输出 contract 也纳入断言。修完会跑 PLC targeted tests 和 docs/build 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:07:27 +0800</div>
+<pre>读完相关接口后，修法会尽量小：保留 `CommandExecutor` 作为 session 的值成员，通过 setter 刷新 `RuntimeSignalCatalog`，这样已有引用不会失效；测试里的临时 descriptor 改成带 PID/地址的唯一路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:07:58 +0800</div>
+<pre>我还会补一个显式回归：先拿到 `CommandExecutor&amp;`，shutdown/reboot 后继续用同一个引用执行 scan。这样这个生命周期问题以后不会再靠人工 review 才发现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 09:08:51 +0800</div>
+<pre>接下来开始改文件，范围只在 `rt/plc` 的 runtime session、command executor 和对应测试里，不碰其它模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 09:09:07 +0800</div>
+<pre>session 生命周期修完了：executor 又回到稳定地址，boot 后只刷新 catalog。现在补两个测试侧修复：唯一临时路径和空 lines/payload contract。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 09:09:52 +0800</div>
+<pre>我注意到刚才临时路径函数用“函数地址”做后缀不够稳妥，准备改成原子创建唯一临时目录的方式。这样并发进程不会抢同一个文件，测试结束也会清理目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 09:10:11 +0800</div>
+<pre>临时文件现在在唯一目录下，并用 RAII 清理。下一步我会先格式/编译检查，可能会有少量 C++ 头文件或初始化顺序问题要补。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 09:10:37 +0800</div>
+<pre>当前补丁看起来语义上闭合了。我准备先跑 targeted build/test，优先验证这几个直接相关的 Story-19/28/30/44；如果编译暴露 API 影响，再回头收窄修正。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 09:11:23 +0800</div>
+<pre>PLC build 还在跑，已经编过 core、session 和 Story-30 相关目标，暂时没有编译错误。我继续等完整 build 结果，然后跑 targeted ctest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 09:11:42 +0800</div>
+<pre>完整 PLC build 已通过。现在跑 targeted ctest，覆盖这次修复直接影响的 Story-19/28/30/44。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 09:11:55 +0800</div>
+<pre>targeted tests 通过。接下来跑全量 PLC ctest，然后再走 docs lint、diff check、book build，确保这次代码修复没有破坏文档/仓库校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-03 09:12:06 +0800</div>
+<pre>全量 PLC ctest 82/82 通过。现在跑文档策略 lint、`git diff --check -- rt/plc` 和 book build，确认文档改动与 patch 没有格式问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-03 09:12:14 +0800</div>
+<pre>docs policy lint 和 diff check 都通过了。最后跑 `book build`，这是这类 PLC/docs 变更的完整文档生成门。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-03 09:12:36 +0800</div>
+<pre>所有验证门都过了。我再看一眼最终 diff 和工作树，确保只修了 review 中的 PLC 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / final_answer</h3>
+<div class="time">2026-06-03 09:13:06 +0800</div>
+<pre>处理完了，3 个 review 点都已修：
+
+- `RuntimeSimulationSession` 不再重建 `CommandExecutor`，而是保持 executor 地址稳定，通过 `CommandExecutor::set_signal_catalog()` 在 boot 后刷新 catalog；Story-30 现在覆盖“缓存的 `CommandExecutor&amp;` 跨 shutdown/reboot 仍可用”。
+- Story-30 的临时 machine yaml 改成唯一临时目录 + RAII 清理，避免并发测试抢同一个 `/tmp` 文件。
+- Story-44 contract matrix 增加空 lines 断言，stopped 下 `ListBehaviors` / `GetDispatch` 这类空结果不会再漏检。
+
+验证都过了：
+
+- `cmake --build /tmp/metanc_plc_build`
+- targeted `ctest`：Story-19/28/30/44，4/4 passed
+- full PLC `ctest`：82/82 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+当前改动还没提交，工作树仍保留这批 PLC runtime/docs 未提交修改。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime workflow and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:13:15 +0800</div>
+<pre>开多个agent review一下plc相关文档和代码</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:13:30 +0800</div>
+<pre>我会再跑一轮独立 review，不改文件：按 AGENTS 要求先确认 repo/module context，然后把 runtime correctness、test coverage、docs comprehension、validation/build integration 分给不同 agent；我本地并行做最终归并。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:14:28 +0800</div>
+<pre>这轮 review 会用 `review-docs-comprehension` 做文档可读性检查，同时代码侧按 review stance 看 bug、回归和测试缺口。先补一遍当前仓库/模块 orientation，再发 agent。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:14:46 +0800</div>
+<pre>orientation 完成：`rt/plc` 只有模块 README，没有模块 AGENTS。现在我会启动 4 个 explorer，分别看代码生命周期/并发、contract 覆盖、文档一致性和验证集成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 09:15:08 +0800</div>
+<pre>刚才 fork 参数和 agent 类型组合被工具拒绝了，没有实际启动。我改成非 fork 的独立 explorer，把任务上下文放进 prompt 里重新发。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 09:15:18 +0800</div>
+<pre>4 个 explorer 已经启动：Confucius 看 runtime 代码，Locke 看测试/contract，Schrodinger 看文档可读性，Hooke 看验证集成。我这边继续做本地交叉检查，避免只等 agent。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 09:16:29 +0800</div>
+<pre>本地交叉检查目前没有看到明显的代码回退：executor 地址稳定化、scan guard、shutdown cleanup 都能对上现有测试语义。我还在核对几个边界点，包括 `set_signal_catalog()` 的调用时机、shutdown failure 记录顺序，以及 Story-44 空输出断言是否足够明确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 09:16:59 +0800</div>
+<pre>本地边界核对还在进行。一个我重点看的点是 `set_signal_catalog()` 现在是 public API，但它主要是 session 内部刷新用；我会等 agent 结果一起判断这是实际问题还是可接受的 PLC-local helper。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 09:20:50 +0800</div>
+<pre>第一轮等待超时，agent 还没收敛。我不重复启动，继续本地看几个具体文件/行号，稍后再等一次结果。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:41:17 +0800</div>
+<pre>可以 处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:41:33 +0800</div>
+<pre>我会直接修这 5 个点。关键选择是并发策略：我会让 `CommandExecutor::execute()` 使用非阻塞执行锁，scan 进行中或其它命令正在执行时返回 `ExecutorBusy`，这样既避免 backend 数据竞争，也保留现有 scan busy 语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:41:42 +0800</div>
+<pre>先改 runtime 代码：执行级别加一个 atomic busy guard；`set_signal_catalog()` 移到 private，并让 `RuntimeSimulationSession` 作为 friend 只用于内部 boot catalog refresh。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:42:00 +0800</div>
+<pre>runtime 层已加整体执行锁。接下来修 Story-28 并发测试：用 bounded wait helper，避免回归时无限挂；同时新增 scan 运行中非 scan 命令返回 busy 的覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 09:42:10 +0800</div>
+<pre>测试里我要补 `&lt;chrono&gt;`，再写一个小的 bounded wait；线程结束用 release 标志保证不会因为断言路径卡住。并发时非 scan 的 `SetDigitalInput` 也会验证为 busy。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 09:42:39 +0800</div>
+<pre>并发测试已改成有界等待，并覆盖 scan 运行中 `SetDigitalInput` 也返回 busy。下一步修两个文档低优先级点：Story-44 targeted validation 加 Story-19，Story-28 command 表补漏项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 09:42:49 +0800</div>
+<pre>Story-28 表确实漏了两个已经在 Story-28/44 测试中的命令。我会按现有 terminal spelling 补 `di &lt;name&gt;` 和 `virtuals`，并把 Story-44 Patch 2 validation 加 Story-19。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 09:43:03 +0800</div>
+<pre>文档两个低优先级点已补。现在我会先看 diff，确认 public setter 已隐藏、并发测试不会卡死、命令表和 validation 文案正确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 09:43:34 +0800</div>
+<pre>diff 检查看起来符合预期：`set_signal_catalog()` 已经不是 public，Story-28 并发测试有 timeout 路径，并且非 scan 并发命令会被测到 busy。现在开始编译和 targeted tests，先让 C++ 类型/并发改动过一遍。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 09:43:54 +0800</div>
+<pre>检索结果提醒了一点：`CommandExecutor` 已经因为 atomic 成员不可复制，但测试用的是 C++17 prvalue 返回，之前 build 已证明这个模式没问题。现在我跑完整 build，重点看新增 `friend` 和整体 busy guard 是否影响 Story-28/30/44。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 09:44:51 +0800</div>
+<pre>build 进行到 Story-30 之后还正常，只有 CMake 输出了已有的 clock skew warning；我会等完整 build 结束，再跑 targeted tests。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 09:45:02 +0800</div>
+<pre>完整 build 已通过。现在跑 targeted ctest，包含这次涉及的 Story-19/28/30/44 以及 public facade/adapter contract baseline 相关项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-03 09:45:29 +0800</div>
+<pre>targeted tests 6/6 通过。为了覆盖整体标签和无意影响，我现在跑 full PLC ctest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-03 09:45:47 +0800</div>
+<pre>全量 PLC ctest 82/82 通过。现在跑 docs policy、diff check 和 book build，确认文档修复和全仓 docs 生成都没问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-03 09:46:00 +0800</div>
+<pre>docs lint 和 diff check 通过。最后跑 `book build`，然后我会做一次最终状态和 diff 统计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-03 09:47:11 +0800</div>
+<pre>所有验证都过了。我再抓最终状态，确认工作树只剩这批 PLC 修改，然后给你总结。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-03 09:47:41 +0800</div>
+<pre>最终状态确认：只有 PLC 相关未提交修改；20 个文件是这批 Story-44/runtime 修复累计结果。准备给你简短总结和验证清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-06-03 09:47:48 +0800</div>
+<pre>处理完了，5 个 review 点都已修：
+
+- `CommandExecutor::execute()` 现在用非阻塞整体执行锁，scan 运行时其它命令也会返回 `ExecutorBusy`，避免 `SimIoHalBackend` 等 backend map 的并发读写。
+- `set_signal_catalog()` 已从 public API 移到 private，只允许 `RuntimeSimulationSession` 内部刷新 catalog。
+- Story-28 并发测试改成 bounded wait，避免回归时无限挂住；同时补了 scan 运行中 `SetDigitalInput` 返回 busy 的覆盖。
+- Story-44 Patch 2 validation 文案补上 Story-19。
+- Story-28 runtime command table 补齐 `GetDigitalInput` 和 `ListVirtualSignals`。
+
+验证全部通过：
+
+- `cmake --build /tmp/metanc_plc_build`
+- targeted `ctest`：6/6 passed
+- full PLC `ctest`：82/82 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+构建过程中 CMake 输出过短暂 `Clock skew detected` warning，但 build 最终完成且后续全量测试/docs 都通过。当前还未提交，工作树保留 PLC 相关修改。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime workflow and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 09:48:05 +0800</div>
+<pre>&lt;codex_internal_context source=&quot;goal&quot;&gt;
+Continue working toward the active thread goal.
+
+The objective below is user-provided data. Treat it as the task to pursue, not as higher-priority instructions.
+
+&lt;objective&gt;
+开多个agent检查文档和代码问题，直至没有问题
+&lt;/objective&gt;
+
+Continuation behavior:
+- This goal persists across turns. Ending this turn does not require shrinking the objective to what fits now.
+- Keep the full objective intact. If it cannot be finished now, make concrete progress toward the real requested end state, leave the goal active, and do not redefine success around a smaller or easier task.
+- Temporary rough edges are acceptable while the work is moving in the right direction. Completion still requires the requested end state to be true and verified.
+
+Budget:
+- Tokens used: 0
+- Token budget: none
+- Tokens remaining: unbounded
+
+Work from evidence:
+Use the current worktree and external state as authoritative. Previous conversation context can help locate relevant work, but inspect the current state before relying on it. Improve, replace, or remove existing work as needed to satisfy the actual objective.
+
+Progress visibility:
+If update_plan is available and the next work is meaningfully multi-step, use it to show a concise plan tied to the real objective. Keep the plan current as steps complete or the next best action changes. Skip planning overhead for trivial one-step progress, and do not treat a plan update as a substitute for doing the work.
+
+Fidelity:
+- Optimize each turn for movement toward the requested end state, not for the smallest stable-looking subset or easiest passing change.
+- Do not substitute a narrower, safer, smaller, merely compatible, or easier-to-test solution because it is more likely to pass current tests.
+- Treat alignment as movement toward the requested end state. An edit is aligned only if it makes the requested final state more true; useful-looking behavior that preserves a different end state is misaligned.
+
+Completion audit:
+Before deciding that the goal is achieved, treat completion as unproven and verify it against the actual current state:
+- Derive concrete requirements from the objective and any referenced files, plans, specifications, issues, or user instructions.
+- Preserve the original scope; do not redefine success around the work that already exists.
+- For every explicit requirement, numbered item, named artifact, command, test, gate, invariant, and deliverable, identify the authoritative evidence that would prove it, then inspect the relevant current-state sources: files, command output, test results, PR state, rendered artifacts, runtime behavior, or other authoritative evidence.
+- For each item, determine whether the evidence proves completion, contradicts completion, shows incomplete work, is too weak or indirect to verify completion, or is missing.
+- Match the verification scope to the requirement&#x27;s scope; do not use a narrow check to support a broad claim.
+- Treat tests, manifests, verifiers, green checks, and search results as evidence only after confirming they cover the relevant requirement.
+- Treat uncertain or indirect evidence as not achieved; gather stronger evidence or continue the work.
+- The audit must prove completion, not merely fail to find obvious remaining work.
+
+Do not rely on intent, partial progress, memory of earlier work, or a plausible final answer as proof of completion. Marking the goal complete is a claim that the full objective has been finished and can withstand requirement-by-requirement scrutiny. Only mark the goal achieved when current evidence proves every requirement has been satisfied and no required work remains. If the evidence is incomplete, weak, indirect, merely consistent with completion, or leaves any requirement missing, incomplete, or unverified, keep working instead of marking the goal complete. If the objective is achieved, call update_goal with status &quot;complete&quot; so usage accounting is preserved. If the achieved goal has a token budget, report the final consumed token budget to the user after update_goal succeeds.
+
+Blocked audit:
+- Do not call update_goal with status &quot;blocked&quot; the first time a blocker appears.
+- Only use status &quot;blocked&quot; when the same blocking condition has repeated for at least three consecutive goal turns, counting the original/user-triggered turn and any automatic goal continuations.
+- If the user resumes a goal that was previously marked &quot;blocked&quot;, treat the resumed run as a fresh blocked audit. If the same blocking condition then repeats for at least three consecutive resumed goal turns, call update_goal with status &quot;blocked&quot; again.
+- Use status &quot;blocked&quot; only when you are truly at an impasse and cannot make meaningful progress without user input or an external-state change.
+- Once the blocked threshold is satisfied, do not keep reporting that you are still blocked while leaving the goal active; call update_goal with status &quot;blocked&quot;.
+- Never use status &quot;blocked&quot; merely because the work is hard, slow, uncertain, incomplete, or would benefit from clarification.
+
+Do not call update_goal unless the goal is complete or the strict blocked audit above is satisfied. Do not mark a goal complete merely because the budget is nearly exhausted or because you are stopping work.
+
+&lt;/codex_internal_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:48:37 +0800</div>
+<pre>我会继续按“多 agent review 到无问题”为目标推进：先刷新当前工作树和模块上下文，再开新一轮独立 agent 审查。上一轮修过的问题不能当作已证明无问题，我会让 agent 重新基于当前文件看。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:49:06 +0800</div>
+<pre>先做 current-state audit：我会重新读根 README、架构文档、PLC README/AGENTS 情况和当前 diff/status，然后再分派 agent。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:49:49 +0800</div>
+<pre>文档部分我会继续按 `review-docs-comprehension` 的规则做 first-time-reader 检查；代码部分按 code review stance，看 bug、回归、测试缺口。现在先把当前 diff/status 拉齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 09:50:57 +0800</div>
+<pre>current-state 已确认：仍然只在 `rt/plc` 范围内，模块下没有额外 AGENTS。现在开新一轮 agent，分别看 runtime 代码、测试覆盖、文档一致性、验证/构建集成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 09:52:47 +0800</div>
+<pre>4 个 agent 已启动。等待他们的同时，我本地继续做一轮交叉检查，重点看新引入的 overall busy guard 是否会改变递归/并发语义、以及 docs 是否还有过度声明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 09:54:04 +0800</div>
+<pre>本地先不改文件，先看当前代码 diff 和关键文件上下文，避免重复修或误判。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 09:57:48 +0800</div>
+<pre>本地看到一个可能的语义变化：以前 reentrant scan busy 消息是 `&quot;scan command is already executing&quot;`，现在因为整体 execution guard 先触发，nested execute 的消息会变成 `&quot;runtime command is already executing&quot;`。当前测试只看 status/code，不看 message；我会等 agent，但本地判断这不一定是 bug，除非 Story-44 要冻结 ExecutorBusy message。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 10:17:48 +0800</div>
+<pre>commit+push</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:18:10 +0800</div>
+<pre>我会先确认当前改动范围和分支状态，再按 PLC runtime/story-44 这一批变更做一个单独提交，然后 push 当前分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 10:19:12 +0800</div>
+<pre>我先做最后的工作区确认和轻量检查，然后把当前 PLC runtime/doc 变更提交并推送到当前分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 10:19:20 +0800</div>
+<pre>工作区只剩 `rt/plc` 范围内的 20 个修改文件，`git diff --check` 通过。我现在 staging 这些变更并创建提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 10:19:26 +0800</div>
+<pre>已暂存 PLC runtime 和文档变更。下一步提交，提交信息会聚焦这次 runtime contract hardening。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 10:19:30 +0800</div>
+<pre>提交已创建为 `86d9c23a`。我先确认本地/远端状态，再推送当前分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 10:19:35 +0800</div>
+<pre>当前分支 `feat/plc` 比远端领先 2 个提交，其中包含刚刚的新提交。我现在推送到 `origin/feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 10:19:46 +0800</div>
+<pre>推送成功。最后我确认一下分支和工作区是否干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-03 10:19:51 +0800</div>
+<pre>已提交并推送到 `origin/feat/plc`。
+
+提交：
+`86d9c23a feat(plc): harden runtime contract verification`
+
+当前状态：
+`feat/plc` 已与 `origin/feat/plc` 对齐，工作区干净。验证过 `git diff --check -- rt/plc` 通过；前面完整 PLC 测试和文档构建也已通过。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 15:30:46 +0800</div>
+<pre>拉取一下远程的feat/work-offset 分支，然后切换过去，我们一起读一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 15:31:01 +0800</div>
+<pre>我先确认工作区是否干净，再抓取远程 `feat/work-offset` 并切换过去；切过去后我会按仓库要求先读根 README 和架构索引，再定位这个分支涉及的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 15:31:09 +0800</div>
+<pre>工作区干净，可以安全切分支。我现在从远程抓取目标分支。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 15:31:23 +0800</div>
+<pre>远程分支已经抓到本地。我检查一下本地是否已有同名分支，然后切过去并设置跟踪。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 15:31:31 +0800</div>
+<pre>本地还没有 `feat/work-offset`，远程存在。我现在创建本地跟踪分支并切换。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 15:31:41 +0800</div>
+<pre>已经切到 `feat/work-offset`。接下来按仓库流程读根 README 和架构 codemap，先弄清这个分支的模块边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 15:31:58 +0800</div>
+<pre>根 README 显示这个分支的主模块就是 `nrt/work_offset`，架构 codemap 把它归在 NRT 侧并连接 parser/kernel/HMI 等上层。接下来我读模块入口和本模块的工作说明，同时刷新一下 `origin/main`，方便看这个分支相对主线的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 15:32:14 +0800</div>
+<pre>模块 README 确认 `nrt/work_offset` 是 840D 零偏模块，当前边界包括快照、可设零偏、HMI 视图、抑制状态、CLI、SQLite 持久化。我继续读模块 AGENTS，并看分支相对 `origin/main` 的提交和文件范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 15:32:35 +0800</div>
+<pre>这个分支不是单纯一个小补丁：相对 `origin/main` 有 6 个提交，新增了完整 `nrt/work_offset`，同时还夹带了 HMI、tooling、docker/workflow 文档和生成物变更。我先继续读 WorkOffset 的核心规格，方便我们后面判断主线是不是要拆分或清理范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-06-03 15:32:57 +0800</div>
+<pre>已拉取并切换到远程分支：
+
+`feat/work-offset` 跟踪 `origin/feat/work-offset`，当前工作区干净。
+
+我已经按仓库要求读了：
+[README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md)、[docs/dev/architecture.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/dev/architecture.md)、[nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md)、[nrt/work_offset/AGENTS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/AGENTS.md)。
+
+初步看法：
+
+- 这个分支核心是新增 `nrt/work_offset`，定位为 Siemens 840D 零偏模块。
+- 当前能力包括快照校验/导入导出、`G54-G57` 和配置启用的 `G505-G599` 可设零偏、HMI 视图数据、`G500/G53/G153/SUPA` 抑制语义、CLI、PersistenceStore、SQLite 后端。
+- 文档明确说本模块不做 HMI 页面、不做网络接口、不做实时安全矩阵 ABI、不做 rotation/scale/mirror 直接写入完成态。
+- 相对 `origin/main` 有 6 个提交，但 diff 不只包含 `nrt/work_offset`，还夹带了不少 `nrt/hmi`、`nrt/tooling_management`、workflow/docker/docs 变更。这个后面需要重点判断是否应该拆分或清理 PR 范围。
+
+我建议下一步先读三块：`nrt/work_offset` 的接口注册表、核心实现 `domain.cpp`，以及测试覆盖，这样可以判断这个模块现在是“规格先行的可合入模块”还是还混着生成/迁移噪音。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 15:34:20 +0800</div>
+<pre>还夹带了不少 nrt/hmi、nrt/tooling_management、workflow/docker/docs 变更 这部分变更给我看一下改了什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 15:34:41 +0800</div>
+<pre>我先按范围把这些“夹带”变更拆出来看：`nrt/hmi`、`nrt/tooling_management`、`.github/workflows`、`docker`、仓库级 docs/README/book 配置。会先读对应模块说明，再用 diff/stat 和关键文件 diff 归类。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 15:35:02 +0800</div>
+<pre>我读到的 HMI 说明里，HMI 这边本来就是生成式 DSL 包，很多改动可能是生成输出同步或命名迁移。现在我按目录统计和重点 diff 看具体内容，而不是只看文件名。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 15:35:26 +0800</div>
+<pre>数量级上，`nrt/hmi` 是最大块：170 个文件、约 1.1 万行新增、4.5 万行删除，明显不是 WorkOffset 模块本身的小接线。我要重点看它删掉/替换了哪些 HMI surface，再看 tooling adapter 和 workflow/docker 的具体语义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 15:35:50 +0800</div>
+<pre>从定义层看，HMI 变更主要是“退回/缩窄”而不是接入新 WorkOffset：删掉了 REF POINT 子模式、Magazine V2、tool-offset 详细编辑/创建/移动等契约，`Work Offset` 文案和资源也改回/改成 `Zero Offset` / `tooling.wcs.table`。我再看服务端和 tooling_management adapter，确认是不是把真实后端路径也撤掉了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 15:36:05 +0800</div>
+<pre>服务端也确认了：这批 HMI 改动删除了真实 `tooling_management` 后端的一大批 tool-offset/magazine 命令和合同测试，保留更基础的 tool table 和少数 upsert/set_offset 命令。继续看 `nrt/tooling_management`，它是否同步撤掉了 HMI adapter envelope 字段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 15:36:21 +0800</div>
+<pre>`tooling_management` 的变化是去掉 adapter 层 `expected_revision` 乐观并发保护和相关诊断/测试，这和 HMI 删 `expected_revision` 字段是一致的，但属于真实行为回退。最后看仓库级和 workflow/docker 变更的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 15:36:36 +0800</div>
+<pre>仓库级变更主要是 WorkOffset 注册和 Docker workflow 的 token 策略；HMI/tooling 这两块更像是把之前已经做过的一批 tooling/HMI 能力撤回到更基础状态。我补一下记忆引用的精确行号，然后给你汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-03 15:37:14 +0800</div>
+<pre>我看的是 `git diff origin/main..HEAD` 里 WorkOffset 之外的变更。
+
+**结论**
+这批“夹带”变更主要不是给 `nrt/work_offset` 做接线，而是在回退/缩窄之前的 HMI tooling、magazine、REF POINT 和 adapter 能力。风险点比较明显：它会撤掉已经存在的一些 HMI/tooling surface。
+
+**nrt/hmi**
+规模最大：`170 files changed, 11470 insertions, 45659 deletions`。
+
+主要改动：
+
+- 删除 HMI 的 `tool_offset` 项目文档目录：`nrt/hmi/docs/project/tool_offset/*` 大量删除。
+- 删除 `manual_reference_return_story_breakdown.md`，同时从 story catalog 里撤掉 REF POINT 细节。
+- `definition/interfaces.machine.yaml` 删除：
+  - `tooling.magazine.table`
+  - `wcs.offset.table`，回到/保留 `tooling.wcs.table`
+  - `axis.*.reference_state`
+  - `jog.commands.set_submode`
+  - `jog.commands.start_reference_return`
+  - `jog.commands.stop_reference_return`
+  - 一大批 tool offset CRUD / magazine V2 命令，如 create/add-edge/remove/update/move/assign/unload/refresh。
+- `definition/ui.structure.yaml` 删除：
+  - Tool Management / Magazine / Tool detail 的大量页面状态和 footer 操作。
+  - REF POINT 的 `+/-` reference-return 按钮逻辑。
+  - `Work Offset` 文案改成 `Zero Offset`，资源绑定从 `wcs.offset.table` 改到 `tooling.wcs.table`。
+- HMI server 删除真实 tooling 后端的大量能力：
+  - 删除 `tool_offset_contract_parity_test`
+  - 删除 magazine projection 和 magazine 命令处理
+  - 删除 tool-offset create/edit/remove/add-edge 等适配命令
+  - 删除 `expected_revision` 参数解析
+- 删除多组 smoke/ui scenario：
+  - `tool_offset_strict_runtime.js`
+  - `ui_tool_offset_basic_workflow.js`
+  - `ui_work_offset_binding.js`
+  - `soft_panel_reference_return.js`
+  - 对应 web scenario JSON
+
+这块看起来像把之前已推进的 HMI tooling/magazine/REF POINT slice 回滚到更基础的 mock/harness 表格状态。
+
+**nrt/tooling_management**
+规模小一些：`10 files changed, 25 insertions, 210 deletions`。
+
+主要改动：
+
+- `adapter.cpp` 删除 adapter envelope 的 `expected_revision` 乐观并发检查。
+- 删除诊断码 `adapter-revision-mismatch`。
+- 删除对应测试：
+  - revision mismatch 不变更 domain/audit 的测试
+  - store-backed adapter mismatch 不保存的测试
+- 文档从“命令可带 `expected_revision` 并由 adapter 拒绝旧 revision”改成“以后 HMI-oriented edit API 可能再包装 expected_revision”。
+
+这是行为降级，不只是文档清理。
+
+**workflow/docker/docs**
+规模较小：`9 files changed, 102 insertions, 49 deletions`。
+
+主要改动：
+
+- 根 [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md) 改成 WorkOffset 优先的仓库说明，新增 WorkOffset build/test 和阅读顺序。
+- [bookshelf.toml](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/bookshelf.toml) 注册 `work-offset` book。
+- [docs/nrt/index.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/nrt/index.md) 加 Work Offset / WCS 链接。
+- [.gitignore](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.gitignore) 加 `.fusion-build/` 和 WorkOffset 本地构建/测试产物。
+- Docker workflow 把 `rock-orocos` 从 public 改成 private：
+  - 新增 `ROCK_OROCOS_TOKEN` 必需检查。
+  - checkout `OptimalCNC/rock-orocos` 时使用 token。
+  - 删除 `docker/test_public_rock_orocos_workflow.py`。
+  - `Dockerfile.orocos-rock` 会复制到 `_rock-orocos/Dockerfile.metanc` 后再作为 build context 内 Dockerfile 使用。
+
+**我的判断**
+仓库级 WorkOffset 注册是合理相关变更；但 `nrt/hmi` 和 `nrt/tooling_management` 这两块不像是 WorkOffset 分支必须带的内容，尤其是删除 magazine、REF POINT、tool-offset strict runtime、adapter revision guard。这些最好单独审查，不能默认作为 WorkOffset PR 的附带改动合进去。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:173-223|note=[prior HMI tooling magazine and REF POINT context used to compare rollback-like changes]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e7197-734c-7792-aa80-a5c7f0d6c25c
+019e4d73-8a73-7882-9f4c-e8eeaf52ef0f
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 15:43:53 +0800</div>
+<pre>你把main也从远程更新下来再重新检查一下，我感觉你检查的是以前的main版本</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 15:44:29 +0800</div>
+<pre>你说得对，刚才我用的是本地的 `origin/main` 引用；显式 `git fetch origin main` 可能只刷新 `FETCH_HEAD`，不一定更新 remote-tracking `origin/main`。我现在先记录当前引用，再执行完整 `git fetch origin`，然后按新的 `origin/main` 重新检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 15:44:39 +0800</div>
+<pre>当前工作区干净，`origin/main` 旧引用是 `0cf25a30`。我现在完整抓取远端所有引用，确保 `origin/main` 更新到最新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 15:45:03 +0800</div>
+<pre>完整抓取后远端只显示 `discovery-skill` 更新，`origin/main` 没有变化提示。我再确认 `origin/main` hash，并重新按最新引用做 WorkOffset 之外的 diff。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 15:45:21 +0800</div>
+<pre>确认了一点：本地 `main` 确实还停在更旧的 `cadd9a60`，但我刚才 diff 用的是 `origin/main=0cf25a30`，也就是远端 main 的当前引用。为了消除歧义，我现在把本地 `main` 也 fast-forward 到远端，然后再重跑统计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 15:45:43 +0800</div>
+<pre>本地 `main` 已更新到远端 `origin/main`。我现在重新检查非 `nrt/work_offset` 的 diff 和关键范围，基准使用更新后的 `main`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-03 15:46:11 +0800</div>
+<pre>你判断得对：本地 `main` 之前确实是旧的。
+
+我刚刚已经把本地 `main` 从远程 fast-forward 了：
+
+- 旧本地 `main`: `cadd9a60`
+- 最新 `origin/main`: `0cf25a30`
+- 更新后本地 `main`: `0cf25a30`
+- 当前分支: `feat/work-offset` at `ae9094b2`
+
+重新用更新后的 `main..HEAD` 检查，结果和上一轮一致：
+
+`nrt/work_offset` 之外仍然有：
+
+```text
+189 files changed, 11597 insertions(+), 45918 deletions(-)
+```
+
+所以结论不变：这条 `feat/work-offset` 分支相对最新远程 main，仍然夹带了大量非 WorkOffset 变更，主要是：
+
+- `nrt/hmi`: 大规模删除/缩窄 HMI tooling、magazine、REF POINT、tool-offset strict runtime 相关能力和测试。
+- `nrt/tooling_management`: 删除 adapter envelope 的 `expected_revision` 乐观并发保护和相关测试/文档。
+- `.github/docker/docs/README/bookshelf`: WorkOffset 注册 + Docker workflow token 策略变更。
+
+补充一句：我上一轮实际用的是 `origin/main`，不是旧的本地 `main`；但你指出的问题成立，因为本地 `main` 本身确实落后。现在已经同步，重新检查后没有改变判断。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:02:52 +0800</div>
+<pre>- nrt/hmi: 大规模删除/缩窄 HMI tooling、magazine、REF POINT、tool-offset strict runtime 相关能力和测试。
+  - nrt/tooling_management: 删除 adapter envelope 的 expected_revision 乐观并发保护和相关测试/文档。
+  - .github/docker/docs/README/bookshelf: WorkOffset 注册 + Docker workflow token 策略变更。我去服务器看了一下，没看到你说的这些啊</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:03:18 +0800</div>
+<pre>我来把这个分歧查清楚。关键可能不是“这些文件在 WorkOffset 提交里被改了”，而是 `feat/work-offset` 的分叉点早于 main 上的 HMI/tooling 提交，所以按 PR 基准看会显示成删除/回退；我现在验证 merge-base 和每个提交实际触碰的路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:03:40 +0800</div>
+<pre>我确认到原因了：我前面用了 `git diff main..HEAD` 的“两点 diff”，它是在比较两个分支 tip，会把 main 上但当前分支缺少的 HMI/tooling 提交显示成“被删除/回退”。PR/服务器通常看的应该是 `main...HEAD` 三点 diff，也就是从 merge-base 到当前分支的实际改动。我现在用正确的三点 diff 重新列。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-03 16:04:03 +0800</div>
+<pre>你是对的，服务器看到的是准的。我刚才的判断有问题。
+
+原因是我用了 `git diff main..HEAD`，这是比较两个分支 tip；因为 `feat/work-offset` 的分叉点在 `main` 的 HMI/Docker 更新之前，所以它会把 `main` 上已有、但这个分支历史里没有的内容显示成“删除/回退”。这不是 PR 实际改动。
+
+我重新用 PR 语义的三点 diff 检查了：
+
+```bash
+git diff main...HEAD
+```
+
+结果是：
+
+```text
+97 files changed, 10807 insertions(+), 15 deletions(-)
+```
+
+实际改动范围只有：
+
+- `nrt/work_offset/**`：新增 WorkOffset 模块、代码、文档、测试、fixture。
+- `.gitignore`：新增 WorkOffset 构建/测试产物 ignore。
+- `README.md`
+- `bookshelf.toml`
+- `docs/nrt/index.md`
+
+没有实际改 `nrt/hmi`、`nrt/tooling_management`、`.github/workflows`、`docker`。
+
+分叉点是：
+
+```text
+6903a85d feat: very first rt and rt sdk part (#36)
+```
+
+当前 `main` 在它之后还有：
+
+```text
+ef33234f feat(hmi): integrate tooling magazine workflows (#38)
+0cf25a30 ci: adapt Docker build for public rock-orocos (#41)
+```
+
+所以我前面说“夹带了 HMI/tooling/docker 回退”是错误解读。正确结论：这个分支实际是 WorkOffset 新模块 + 仓库文档/书架注册。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:05:22 +0800</div>
+<pre>&lt;codex_internal_context source=&quot;goal&quot;&gt;
+Continue working toward the active thread goal.
+
+The objective below is user-provided data. Treat it as the task to pursue, not as higher-priority instructions.
+
+&lt;objective&gt;
+看一下现在work_offset什么情况，完成度如何，开多个agent检查，不要修改本地文件，只出报告
+&lt;/objective&gt;
+
+Continuation behavior:
+- This goal persists across turns. Ending this turn does not require shrinking the objective to what fits now.
+- Keep the full objective intact. If it cannot be finished now, make concrete progress toward the real requested end state, leave the goal active, and do not redefine success around a smaller or easier task.
+- Temporary rough edges are acceptable while the work is moving in the right direction. Completion still requires the requested end state to be true and verified.
+
+Budget:
+- Tokens used: 0
+- Token budget: none
+- Tokens remaining: unbounded
+
+Work from evidence:
+Use the current worktree and external state as authoritative. Previous conversation context can help locate relevant work, but inspect the current state before relying on it. Improve, replace, or remove existing work as needed to satisfy the actual objective.
+
+Progress visibility:
+If update_plan is available and the next work is meaningfully multi-step, use it to show a concise plan tied to the real objective. Keep the plan current as steps complete or the next best action changes. Skip planning overhead for trivial one-step progress, and do not treat a plan update as a substitute for doing the work.
+
+Fidelity:
+- Optimize each turn for movement toward the requested end state, not for the smallest stable-looking subset or easiest passing change.
+- Do not substitute a narrower, safer, smaller, merely compatible, or easier-to-test solution because it is more likely to pass current tests.
+- Treat alignment as movement toward the requested end state. An edit is aligned only if it makes the requested final state more true; useful-looking behavior that preserves a different end state is misaligned.
+
+Completion audit:
+Before deciding that the goal is achieved, treat completion as unproven and verify it against the actual current state:
+- Derive concrete requirements from the objective and any referenced files, plans, specifications, issues, or user instructions.
+- Preserve the original scope; do not redefine success around the work that already exists.
+- For every explicit requirement, numbered item, named artifact, command, test, gate, invariant, and deliverable, identify the authoritative evidence that would prove it, then inspect the relevant current-state sources: files, command output, test results, PR state, rendered artifacts, runtime behavior, or other authoritative evidence.
+- For each item, determine whether the evidence proves completion, contradicts completion, shows incomplete work, is too weak or indirect to verify completion, or is missing.
+- Match the verification scope to the requirement&#x27;s scope; do not use a narrow check to support a broad claim.
+- Treat tests, manifests, verifiers, green checks, and search results as evidence only after confirming they cover the relevant requirement.
+- Treat uncertain or indirect evidence as not achieved; gather stronger evidence or continue the work.
+- The audit must prove completion, not merely fail to find obvious remaining work.
+
+Do not rely on intent, partial progress, memory of earlier work, or a plausible final answer as proof of completion. Marking the goal complete is a claim that the full objective has been finished and can withstand requirement-by-requirement scrutiny. Only mark the goal achieved when current evidence proves every requirement has been satisfied and no required work remains. If the evidence is incomplete, weak, indirect, merely consistent with completion, or leaves any requirement missing, incomplete, or unverified, keep working instead of marking the goal complete. If the objective is achieved, call update_goal with status &quot;complete&quot; so usage accounting is preserved. If the achieved goal has a token budget, report the final consumed token budget to the user after update_goal succeeds.
+
+Blocked audit:
+- Do not call update_goal with status &quot;blocked&quot; the first time a blocker appears.
+- Only use status &quot;blocked&quot; when the same blocking condition has repeated for at least three consecutive goal turns, counting the original/user-triggered turn and any automatic goal continuations.
+- If the user resumes a goal that was previously marked &quot;blocked&quot;, treat the resumed run as a fresh blocked audit. If the same blocking condition then repeats for at least three consecutive resumed goal turns, call update_goal with status &quot;blocked&quot; again.
+- Use status &quot;blocked&quot; only when you are truly at an impasse and cannot make meaningful progress without user input or an external-state change.
+- Once the blocked threshold is satisfied, do not keep reporting that you are still blocked while leaving the goal active; call update_goal with status &quot;blocked&quot;.
+- Never use status &quot;blocked&quot; merely because the work is hard, slow, uncertain, incomplete, or would benefit from clarification.
+
+Do not call update_goal unless the goal is complete or the strict blocked audit above is satisfied. Do not mark a goal complete merely because the budget is nearly exhausted or because you are stopping work.
+
+&lt;/codex_internal_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:05:42 +0800</div>
+<pre>我会只做只读检查，不改任何文件。先确认分支/工作区和 WorkOffset 范围，再启动多个 reviewer 分别看代码实现、文档规格、测试/构建覆盖和集成边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:05:53 +0800</div>
+<pre>我使用本地多 agent 工具来并行审查，因为你的要求是“开多个 agent 检查”。先发现可用的子 agent 工具，然后分派只读任务。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 16:06:51 +0800</div>
+<pre>三个 reviewer 已经并行启动：代码实现、文档规格、测试/构建覆盖。我本地同时做基线确认和模块快速读，不会修改任何文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 16:07:01 +0800</div>
+<pre>基线确认完成：正确 PR 范围是 97 个文件，基本全在 `nrt/work_offset`，另有根 README、bookshelf、docs/nrt、.gitignore 注册项。我继续读接口/实现和状态文档，等 reviewer 返回。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 16:07:18 +0800</div>
+<pre>我先读几个最能代表完成度的入口：公开头文件、实现状态、接口注册表、测试 README 和主要测试用例。这样可以把 reviewer 的结论和本地证据对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 16:07:39 +0800</div>
+<pre>我开始只读/非仓库写入验证：`diff --check`、WorkOffset CMake 配置/构建/CTest 放到 `/tmp`，以及 docs policy lint。构建会写 `/tmp/metanc_work_offset_report_build`，不改仓库文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 16:08:01 +0800</div>
+<pre>CMake 配置在裸环境里没过，缺 `nlohmann_json` 的 CMake package。这个不是源码失败，是依赖发现失败；我会尝试只读定位已有 vcpkg/toolchain，不下载依赖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 16:08:33 +0800</div>
+<pre>本机已有 vcpkg 里安装过 `nlohmann-json`。我用现有 vcpkg 包路径继续配置，避免下载或改仓库；如果缺其它包，也会按证据记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 16:08:50 +0800</div>
+<pre>SQLite 的 vcpkg package 存在，但 config 名称可能在 toolchain 才能正确暴露。我现在用现有 vcpkg toolchain 配置，不联网、不安装。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 16:09:21 +0800</div>
+<pre>用 vcpkg toolchain 配置通过了，依赖从本机 vcpkg 缓存恢复到 `/tmp` 构建目录。现在继续构建和 CTest；我不会运行会写仓库输出目录的文档构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 16:10:40 +0800</div>
+<pre>构建通过。现在跑 WorkOffset CTest，并同时做一些接口/命令清单搜索用于报告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-03 16:11:10 +0800</div>
+<pre>WorkOffset 本地构建通过，但完整 CTest 现在有 1 个失败：真实 SQLite 保存/读取测试失败，失败点是加载出的快照和原快照不相等。我先定位它是测试环境残留还是实现问题，再等 agent 结果汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-03 16:11:51 +0800</div>
+<pre>CTest 的失败不是旧数据库残留：测试开头会删掉 `/tmp/.../work_offset_sqlite_persistence_test.sqlite3`。我继续只读定位 SQLite round-trip 为什么快照不等，同时等待三个 agent 的报告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-03 16:12:32 +0800</div>
+<pre>我在定位失败点时看到一个强信号：SQLite 保存时会规范化 `scope` 和 `snapshot_revision`，而测试拿加载后的快照和原始 fixture 直接比较。先不改文件，继续收集 reviewer 结论和文档/测试覆盖证据。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:19:36 +0800</div>
+<pre>CTest失败的用例是什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-03 16:19:50 +0800</div>
+<pre>失败的是这个 CTest 用例：
+
+`SQLitePersistenceStore.SavesLoadsAndQueriesAuditInRealDatabase`
+
+位置：
+[work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:330)
+
+失败点：
+[work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:351)
+
+断言是：
+
+```cpp
+EXPECT_EQ(loaded.snapshot-&gt;snapshot, snapshot);
+```
+
+也就是：测试把 `basic_xyzac.snapshot.json` 存进真实 SQLite 数据库后再读出来，期望读回来的 `WorkOffsetSnapshot` 和原始 snapshot 完全相等，但实际不相等。
+
+CTest 结果是：
+
+```text
+31/32 passed
+FAILED: 28 - SQLitePersistenceStore.SavesLoadsAndQueriesAuditInRealDatabase
+```
+
+这个失败发生在 audit append 之前，所以问题集中在 SQLite snapshot save/load round-trip。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:20:11 +0800</div>
+<pre>这个可能是什么问题</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-03 16:20:35 +0800</div>
+<pre>最可能原因是 **SQLite 保存时把 snapshot 转成 canonical JSON，canonical 序列化会重新排序 `offsets`，但测试拿它和原始 fixture 加载出来的对象做了严格 `operator==` 比较**。
+
+证据：
+
+- `snapshot_to_json()` 里明确按 `wcs_id` 排序：
+  [snapshot_json.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/snapshot_json.cpp:457)
+
+- SQLite 保存时写的是 canonical JSON：
+  [sqlite_persistence_store.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/sqlite_persistence_store.cpp:627)
+
+- 原始 fixture 的 `offsets` 顺序是：
+  `g54, g55, g56, g57, g505`
+
+- canonical 排序后会变成字典序：
+  `g505, g54, g55, g56, g57`
+
+`WorkOffsetSnapshot` 的默认 `operator==` 对 `std::vector` 是顺序敏感的，所以即使内容相同，只要 `offsets` 顺序不同，`EXPECT_EQ(loaded.snapshot-&gt;snapshot, snapshot)` 就会失败。
+
+所以这更像是 **测试断言和 canonical storage 行为不一致**，不一定是 SQLite 丢数据。合理修法通常有两个方向：
+
+1. 测试比较 canonical JSON：
+   `snapshot_to_canonical_json(loaded.snapshot-&gt;snapshot) == snapshot_to_canonical_json(snapshot)`
+
+2. 或者先把 expected snapshot 也 canonical round-trip 一遍，再比较对象。
+
+也需要顺手确认一下：模块是否要求“内存快照顺序保留导入顺序”，还是“快照边界统一 canonical 排序”。从当前文档看，更像后者。</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:22:20 +0800</div>
+<pre>那提供给hmi的接口怎么样呢</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:22:52 +0800</div>
+<pre>我看一下 WorkOffset 给 HMI 的契约文档和实际 API：重点是 `query_work_offset_view`、`query_frame_detail`、CLI/registry 里标的 HMI surfaces，以及有没有真正接到 `nrt/hmi`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-03 16:23:16 +0800</div>
+<pre>现在 WorkOffset 给 HMI 的接口状态是：**WorkOffset 侧的 HMI 投影契约已经做出来了，但还没有真正接入现有 `nrt/hmi` server/client。**
+
+具体看：
+
+1. WorkOffset 提供的 HMI 主入口是 `query_work_offset_view`
+   - 支持 `active | overview | base | settable_table | details`
+   - 返回 `WorkOffsetViewResult`
+   - 里面有 `axis_group`、`rows`、`navigation`、`editable_capabilities`、`snapshot_revision`
+   - `details` 支持 `prev_target / next_target`，HMI 不需要自己猜 WO+/WO-
+
+2. 细节下钻接口是 `query_frame_detail`
+   - 输入 `target_ref`
+   - 支持类似 `g505`、`settable:g505`、`G505`
+   - 返回单个 frame 的分量明细和 AxisGroup
+
+3. HMI 可调用的写接口也定义了
+   - `select_settable_zero_offset`
+   - `set_frame_component`
+   - `clear_work_offset`
+   - `apply_suppression_command`
+   - 规则是 HMI 使用 `axis_id` 和 `target_ref`，不能直接写 SQLite 表，也不能把外部行写回 WorkOffset。
+
+4. 数据模型对 HMI 是比较友好的
+   - `WorkOffsetViewRow` 有 `row_id / row_kind / label / selector / owner_module / source_kind / editable / active / values / diagnostics / revision`
+   - 外部数据行如 DRF、TOFF、machine actual、tool reference 会以不可编辑行 + `external-provider-unavailable` 诊断稳定返回。
+
+5. 但现有 `nrt/hmi` 还没接这个模块
+   - 当前 HMI DSL 还是 `res://tooling.wcs.table`
+   - 搜索没看到 HMI server 调用 `work_offset::query_work_offset_view` 或链接 `nrt/work_offset`
+   - 所以现在是“WorkOffset 为 HMI server 提供了强类型接口/投影”，不是“真实 HMI 已经消费 WorkOffset”。
+
+我的判断：HMI-facing contract 完成度约 60-70%。作为后端投影 API 已经可用；但要进入真实 HMI，还需要做 HMI server adapter，把 `query_work_offset_view` 映射到当前 HMI resource/command surface，或者替换现有 `tooling.wcs.table` 资源流。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:25:48 +0800</div>
+<pre>HMI server adapter这个应该不是work_offset模块需要去做的吧，应该是hmi server去做的吧</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-03 16:26:02 +0800</div>
+<pre>对，这个判断是对的。
+
+`HMI server adapter` 不应该放在 `nrt/work_offset` 里做。更合理的 ownership 是：
+
+- `nrt/work_offset` 负责：
+  - 提供强类型领域 API
+  - 提供 HMI 可消费的投影数据结构，比如 `query_work_offset_view`
+  - 定义 HMI server 应该怎么调用、哪些字段稳定、哪些行不可编辑
+  - 禁止 HMI 直接读写 SQLite 表
+
+- `nrt/hmi/server` 负责：
+  - 把 HMI 自己的 resource/command surface 映射到 WorkOffset API
+  - 决定 REST/WebSocket/RuntimeStore 里怎么发布这些数据
+  - 处理 HMI session、transport、client resource names
+  - 连接 mock backend / real backend / store-backed backend
+
+所以对 `work_offset` 当前完成度的评估应改成：
+
+“WorkOffset 已经提供 HMI server 所需的后端契约和投影 API；真实 HMI server adapter 未实现，但那是 `nrt/hmi/server` 的后续集成工作，不应算作 WorkOffset 模块内部未完成。”
+
+WorkOffset 这边真正还需要关注的是：
+- HMI contract 文档不要写成“已经接入 HMI server”，而应写成“供 HMI server 绑定使用”。
+- `query_work_offset_view` / `query_frame_detail` 的字段、诊断、导航、可编辑标记要稳定。
+- 用测试证明这些 HMI 投影形状稳定。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:26:25 +0800</div>
+<pre>那你扫一下功能集，对于对标西门子840D的work offset相关功能，api这块是否足够</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:26:47 +0800</div>
+<pre>我按“840D Work Offset 功能面”来扫，不看 HMI adapter 归属问题，重点判断 WorkOffset 自己暴露的 API 是否覆盖 840D 零偏页面/程序语义的核心需求。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:27:11 +0800</div>
+<pre>我还会对照实际 `domain.cpp` 的关键路径，确认 API 是否只是文档写了，还是行为实现了。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-03 16:27:44 +0800</div>
+<pre>结论：**作为 840D Work Offset 的第一阶段后端 API，基本够用；作为完整 840D 对标，还不够。**
+
+够用的部分：
+
+- HMI 读页面数据：`query_work_offset_view` 覆盖 `Active / Overview / Base / Settable / Details`。
+- 明细页：`query_frame_detail` 支持按 `g505 / G505 / settable:g505` 查。
+- 可设零偏：`G54-G57`、`G505-G599` 有选择 API。
+- 轴组/轴身份：`AxisGroup / AxisDescriptor / axis_id` 这套比直接用显示文本可靠。
+- 分量模型：能表达 `coarse_translation / fine_translation / rotation / scale / mirror`。
+- 写入：粗调/精调可写，rotation/scale/mirror 稳定拒绝。
+- 抑制：有 `G500/G53/G153/SUPA` 模式和 `resolve_coordinate_context`。
+- 持久化：有 `PersistenceStore` 和 SQLite 后端接口。
+
+不够的部分：
+
+- 外部数据只是占位：DRF、machine actual、TOFF、tool reference、programmed WO、cycle reference 目前只能返回 unavailable，没有 provider/injection API。
+- `TRANS/ATRANS/ROT/SCALE/MIRROR` 可编程坐标框架生命周期没有真正 API，只是边界说明。
+- `G500` API 目前看缺少明确解除/恢复路径，容易 sticky。
+- Siemens profile range 在文档里有，但实现/API 还没严格把配置范围作为一等校验能力用起来。
+- `clear_work_offset.clear_scope` 太松，未知 scope 可能被接受；对真实 HMI 操作不够严。
+- 没有 HMI resource/command adapter，这应归 `nrt/hmi/server`，但 WorkOffset 可以提供更明确的 adapter-facing DTO/schema。
+- 没有真正 840D 参数/MD 数据映射，比如 G505-G599 启用策略、基础框架数量、通道/轴组来源等。
+
+所以我会这样定性：
+
+**当前 API 足够支撑“840D Work Offset 页面投影 + 可设零偏选择 + 粗/精调维护 + 抑制语义”的 core slice。**
+
+但如果目标是“完整对标 Siemens 840D Work Offset”，下一批 API 应该补：
+
+1. 外部层 provider 输入 API。
+2. G500 解除/恢复语义。
+3. programmable frame lifecycle API。
+4. Siemens profile/range/MD 配置校验 API。
+5. 更严格的 clear/edit command contract。
+6. HMI adapter-facing schema examples，但实现 adapter 仍放 HMI server。</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:27:46 +0800</div>
+<pre>现在work offset这块有接口使用文档吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:28:00 +0800</div>
+<pre>我查一下 WorkOffset 现有 docs/integration 和 README，确认哪些已经是接口使用文档、覆盖到什么程度。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-03 16:28:18 +0800</div>
+<pre>有，而且已经不止一份。当前 `nrt/work_offset/docs/integration/` 下有一套接口使用文档：
+
+- [集成指南](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/index.md)
+  按使用场景告诉你先读哪份，比如 C++ 模块、HMI server、parser/kernel、CLI、SQLite。
+
+- [操作参考](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/operation-reference.md)
+  列所有操作：`query_work_offset_view`、`set_frame_component`、`select_settable_zero_offset`、`apply_suppression_command` 等，并映射到 C++ / Runtime / CLI。
+
+- [C++ API 参考](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/cpp-core-api.md)
+  有头文件、CMake link target、结果语义、查询/写入方法、最小 C++ 示例。
+
+- [HMI WorkOffset 视图契约](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-work-offset-views.md)
+  专门说明 HMI 应怎么用 `query_work_offset_view`，包括请求、响应、五种 view、行结构、编辑动作。
+
+- [HMI 服务端契约](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-contract.md)
+  说明 HMI server 必须调用哪些强类型操作，以及不能直接读写 SQLite 表。
+
+- [CLI 参考](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/cli-reference.md)
+
+- [PersistenceStore 契约](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/persistence-store-contract.md)
+
+- [Parser / Pipeline 集成](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/pipeline-integration.md)
+
+我的评价：有接口使用文档，结构也比较完整。缺点是还偏“参考手册/契约说明”，少一些真实接入 cookbook，比如“HMI server adapter 如何把当前 `tooling.wcs.table` 迁到 `query_work_offset_view`”这种一步步示例。不过这类 cookbook 应该可以放在 HMI server 侧或 cross-module integration 里。</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:28:25 +0800</div>
+<pre>生成一下可读的html文档我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:28:44 +0800</div>
+<pre>我来生成当前仓库的 HTML 文档站点，优先用仓库定义的 `book build`。生成物会是本地静态 HTML，不改源码文件。</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:28:47 +0800</div>
+<pre>你可以整个MetaNC的文档一起出也行，你看哪种合适</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:29:08 +0800</div>
+<pre>那我建议直接生成整个 MetaNC 文档站点，因为 WorkOffset 已经注册到 bookshelf 里，整站能看到它在全局导航里的位置。先跑 docs lint，再 `book build`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:29:49 +0800</div>
+<pre>我已经把整个 MetaNC bookshelf 站点生成出来了。现在补一个路径确认，避免给你一个打不开的入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-03 16:30:06 +0800</div>
+<pre>已生成整个 MetaNC HTML 文档站点。
+
+入口文件：
+[.mdbook/site/index.html](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.mdbook/site/index.html)
+
+Work Offset 单独入口：
+[.mdbook/site/nrt/work_offset/docs/index.html](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.mdbook/site/nrt/work_offset/docs/index.html)
+
+我也先跑了文档检查和构建：`python3 .mdbook/lint_docs_policy.py` 通过，`book build` 成功。构建输出包含 8 本书，其中 Work Offset 是 51 页。</pre>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:32:53 +0800</div>
+<pre>ok 总结现在的问题，按优先级来</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:33:10 +0800</div>
+<pre>我会按刚才生成文档和前面 review 的结论来归纳，同时快速确认一下当前分支状态，避免把已经变化的东西当成问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:33:29 +0800</div>
+<pre>当前分支是干净的 `feat/work-offset`。我再看一下 Work Offset 的实现/文档状态和相对 `main` 的差异，这样优先级会按真实缺口排，不只按印象排。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 16:33:44 +0800</div>
+<pre>文档里的实现状态把“已声明能力”和“不声明能力”分得比较清楚，但优先级还需要结合代码验证结果。现在我会再查一下是否有现成构建目录和测试结果，能复核就复核。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 16:34:11 +0800</div>
+<pre>我还会按仓库要求补读根 README、架构 codemap 和 Work Offset 模块说明，确保这个问题列表按模块边界来组织。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 16:34:55 +0800</div>
+<pre>优先级的第一层我会按“会不会阻断合并/验证”排，第二层才是“功能完善度”。我现在看 SQLite 失败点相关测试和 HMI/API 契约细节，给你一个可执行的问题清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 16:35:13 +0800</div>
+<pre>现有文档和代码都指向一个重点：Work Offset 本体已经成型，真正的问题集中在“验证失败/集成落地/非目标能力边界”。我先尝试用 Linux 本地 CMake 快速复核测试，如果依赖不齐就把它列成验证环境问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 16:35:37 +0800</div>
+<pre>本地模块没有 Linux preset，CMake 依赖走 vcpkg 包。为了不改仓库结构，我会先用临时 build 目录和已有 vcpkg toolchain 尝试一次 configure。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 16:35:47 +0800</div>
+<pre>configure 过了。我继续 build/ctest，确认之前看到的 SQLite 失败是不是当前源码仍然存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 16:36:24 +0800</div>
+<pre>复核结果：当前 32 个 WorkOffset CTest 里 31 个通过，唯一失败仍是 SQLite 持久化回读等价性。这个是最高优先级，我再看一下结构比较和 SQLite 存取实现，给你更准的问题描述。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 16:37:22 +0800</div>
+<pre>SQLite 失败点很明确：`save_snapshot()` 写入前会通过 `snapshot_to_canonical_json()` 规范化输出，而这个函数会对 `offsets` 按 `wcs_id` 排序；测试再拿回读结构和原始 fixture 结构做全量 `operator==`，因此只要原始 fixture 顺序不是同一顺序就会失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-03 16:38:12 +0800</div>
+<pre>当前优先级我会这样排：
+
+**P0 合并阻断**
+1. WorkOffset 测试不是全绿。当前我本地复核是 `31/32` 通过，唯一失败：
+`SQLitePersistenceStore.SavesLoadsAndQueriesAuditInRealDatabase`
+
+失败原因基本明确：SQLite 保存时用 [snapshot_to_canonical_json](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/snapshot_json.cpp:457) 把 `offsets` 按 `wcs_id` 字符串排序，回读后测试在 [work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:351) 直接和原始 fixture 做结构等价比较。`g505` 按字符串会排到 `g54` 前面，所以回读结构和原始顺序不同。
+
+建议先修这个。要决定的是：规范 JSON 是否应该用 840D 数值顺序，还是测试比较前也规范化。
+
+**P1 可用性阻断**
+2. HMI server adapter 还没落地。WorkOffset 已有 HMI 契约和视图模型，但真正给 HMI 服务端调用的 adapter/API route/websocket binding 不在这个模块里。这个应该在 `nrt/hmi/server` 做，不应该让 `nrt/work_offset` 承担页面或服务端职责。
+
+3. Parser/kernel/program engine 还只是契约级对接。WorkOffset 支持 `NormalizedGcodeEvent` 和 `G54/G505/G500/G53/G153/SUPA` 语义，但实际程序执行链路里还没有把 parser/kernel 的真实事件接进来。现在更像 WorkOffset 模块自测通过，不是完整执行管线已接通。
+
+4. 外部数据行还没有 provider。840D 页面里的 machine actual value、DRF、tool reference、TOFF、programmed frame、cycle reference 等现在能稳定展示为 unavailable，但还没有接实际数据来源。这会影响 HMI 页面“像 840D 一样完整显示”的程度。
+
+**P2 840D 深度功能缺口**
+5. rotation/scale/mirror 目前是稳定拒绝，不是实现写入。文档里也声明了 `frame-component-pending-write`。这对第一阶段是合理边界，但如果要更完整对标 840D，后面要拆专门 slice。
+
+6. 可编程坐标框架生命周期、TCP、动态零偏、探测循环自动计算都还不是当前实现目标。现在 WorkOffset 更偏“可设零偏 + 视图 + 抑制上下文 + 持久化”。
+
+7. `G500/G53/G153/SUPA` 的精确抑制范围还缺真实控制器/手册数据固化。当前模块能区分模式和 suppressed layer source，但严格 840D 行为还需要证据补齐。
+
+**P3 工程完整性**
+8. 本地 Linux 构建没有 preset。我用显式 vcpkg toolchain 能 configure/build/test，但 [CMakePresets.json](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/CMakePresets.json:1) 现在主要是 Windows VS/clang-cl。后续 CI/agent 验证会更希望有 Linux preset 或仓库级验证脚本。
+
+9. 文档站点本身已经能生成，`python3 .mdbook/lint_docs_policy.py` 和 `book build` 都通过。但实现状态文档现在写 SQLite supported，实际测试还红，所以 P0 修完前，这个状态容易显得过于乐观。</pre>
+</article>
+</section>
+<section class="turn" id="turn-24">
+<h2>Turn 24</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 16:39:27 +0800</div>
+<pre>ok 切回我的plc分支</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:39:40 +0800</div>
+<pre>我先确认当前工作区是否干净，并列一下本地/远程里带 `plc` 的分支，再切到最匹配的那个。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:39:50 +0800</div>
+<pre>工作区是干净的，PLC 分支就是本地 `feat/plc`，并且有对应远程 `origin/feat/plc`。我现在切过去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 16:40:00 +0800</div>
+<pre>已切到 `feat/plc`，我再做一次状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-03 16:40:08 +0800</div>
+<pre>已切回 `feat/plc`。
+
+当前状态：`feat/plc` 跟踪 `origin/feat/plc`，分支是干净的。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:18:25 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8ad6-1463-79f0-9c8d-b40ec025efaa&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;- Medium: [rt/plc/tests/story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:121), [rt/plc/include/metanc/plc/runtime_command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/runtime_command.hpp:15), [rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md:25): Story-44’s command inventory is manually duplicated in `all_command_kinds()` and is not tied to `RuntimeCommandKind`, so a new runtime command can be added without entering the Story-44 state matrix while the test still passes.\n\n- Medium: [rt/plc/tests/story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:486), [rt/plc/tests/story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:489), [rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SPEC-135.md:28): The Story-44 state matrix only asserts status/code for most command-state combinations, but the documented freeze includes message, `lines`, and typed payload behavior; those can drift for successful matrix cases without this matrix failing.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:18:40 +0800</div>
+<pre>Tesla 先返回了两个中等问题，都是 Story-44 测试覆盖质量问题：命令枚举清单是手写复制，新增命令可能漏进矩阵；矩阵主要冻结 status/code，对成功路径的 message/lines/payload 覆盖不够。我会继续等另外两个 agent，同时本地核对这两个问题是否成立。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:19:28 +0800</div>
+<pre>Tesla 的第一个问题基本成立：当前 `RuntimeCommandKind` 没有哨兵/枚举范围 API，测试里的 `all_command_kinds()` 是独立手写清单。第二个问题也成立一部分：测试分散冻结了关键成功 payload，但矩阵本身对所有成功组合只查 status/code，和 SPEC 的“result-fields preserved”不完全同强度。</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:19:58 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8ad6-4365-70a2-8b43-f8798be8e7a7&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. Location: [CURRENT-CAPABILITIES.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/CURRENT-CAPABILITIES.md:15), [NEXT-ROADMAP.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/NEXT-ROADMAP.md:5), [IMPLEMENTATION-READINESS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/IMPLEMENTATION-READINESS.md:11), [INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/INDEX.md:51)  \nProblem: The status entry points still present the implemented baseline as only through Story-43 and Story-44 as wholly planned, while Story-44 Slice 01 is marked implemented in [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/STORY.md:75) and [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SLICE.md:4).  \nReader effect: A first-time reader concludes the runtime contract freeze has not landed and may plan duplicate Slice 01 work.  \nConcrete fix: Update current-status wording to say: Story-44 Slice 01 is implemented; Story-44 remains open with Slices 02-07 planned. Add this to the capability/status snapshot and the Stories index row.\n\n2. Location: [IMPLEMENTATION-PLAN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/IMPLEMENTATION-PLAN.md:29), [READINESS-REVIEW.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/READINESS-REVIEW.md:38)  \nProblem: Story-44’s own plan still says to add Story-44 docs and then freeze runtime contracts, and the readiness review says implementation can start with Slice 01. That conflicts with Slice 01’s implemented status.  \nReader effect: The next actionable step is unclear; the reader may treat historical entry criteria as current instructions.  \nConcrete fix: Mark Patch 1 and Patch 2 / Slice 01 as complete, label the readiness review as pre-Slice-01 history, and state that the next implementation slice is Slice 02 deterministic replay.\n\n3. Location: [IMPLEMENTATION-READINESS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/IMPLEMENTATION-READINESS.md:81), compared with [NEXT-ROADMAP.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/NEXT-ROADMAP.md:41)  \nProblem: Implementation Readiness says that after Story-43 the next bounded PLC-local story can choose a source expansion, while Next Roadmap says Story-44 runtime verification hardening is priority 1 before further integration.  \nReader effect: A reader following the readiness page can choose source expansion work before the documented runtime-hardening gate.  \nConcrete fix: Make Story-44 the current next/active candidate in Implementation Readiness, and move source expansion back under deferred or post-Story-44 candidates.\n\nNo files were edited.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:20:12 +0800</div>
+<pre>文档 agent 给了 3 个可读性/状态一致性问题，主要是状态入口还停在 Story-43 或把 Story-44 当成全 planned。这个和刚完成的 Slice-01 状态更新确实不一致，我会在最终清单里分开列出“代码/测试风险”和“文档状态漂移”。</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:20:35 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8ad5-e1cd-7242-94f4-361d33270b8e&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. **High** - [rt/plc/src/framework.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/framework.cpp:807)  \n   Concrete problem: `Framework::shutdown()` switches to `SHUTTING_DOWN`, then calls virtual runtime cleanup methods directly, including `backends().nrt.drain()` and `backends().io.write_outputs()`, before the guarded backend shutdown wrappers run. If either throws, shutdown exits early, may leave the framework stuck in `SHUTTING_DOWN`, and may skip remaining backend shutdowns.  \n   Expected behavior: shutdown should attempt all backend cleanup, report stable lifecycle errors, and leave the framework in a well-defined stopped state.  \n   Suggested fix: wrap all virtual cleanup calls in the same failure-recording path used for backend shutdown, and use a final state transition/cleanup path that cannot be bypassed by an exception. Add Story-44 lifecycle fault-injection tests for `drain()` and `write_outputs()` failures.\n\n2. **High** - [rt/plc/include/metanc/plc/command_executor.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/command_executor.hpp:65)  \n   Concrete problem: `scan_command_active_` is a plain `bool`; `execute_run_cycles()` and `run_one_scan()` check/set it without locking or atomics at [command_executor.cpp:231](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:231) and [command_executor.cpp:631](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:631). Concurrent adapter calls can data-race and both enter the scan path, violating the `ExecutorBusy` contract.  \n   Expected behavior: one executor should run at most one scan command at a time; concurrent/reentrant scan requests should reliably return `error/executor-busy`.  \n   Suggested fix: replace the guard with an `std::atomic_flag`/CAS guard or a mutex-protected critical section, and add a two-thread contract test through `LocalRuntimeAdapter` or `CommandExecutor`.\n\n3. **Medium** - [rt/plc/src/runtime_simulation_session.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:20)  \n   Concrete problem: `RuntimeSignalCatalog` is parsed once in the session constructor, but `boot()` reparses `machine_yaml` later for the framework at [runtime_simulation_session.cpp:43](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:43). If the descriptor file changes between construction and boot/reboot, command validation can use stale signal names while the framework runs a different descriptor.  \n   Expected behavior: command validation should reflect the same descriptor instance that booted the runtime.  \n   Suggested fix: parse once and share that descriptor/catalog with framework boot, or rebuild the catalog/executor during successful boot. Add a temp-file test that changes the descriptor between adapter construction and boot.\n\n4. **Medium** - [rt/plc/src/command_executor.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:480)  \n   Concrete problem: pre-boot virtual-signal reads return generic `ExecutionFailed` because the descriptor-derived catalog knows the signal but `Framework::snapshot()` has no initialized virtual values yet. Story-44 freezes this at [story44_runtime_contract_tests.cpp:406](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:406), which risks locking in an ambiguous adapter contract.  \n   Expected behavior: pre-boot virtual observations should either be rejected as `InvalidRuntimeState` or return descriptor/default state consistently with other pre-boot observations.  \n   Suggested fix: choose an explicit pre-boot virtual-signal contract and update both `GetVirtualSignal`/`ListVirtualSignals` and Story-44 tests accordingly.\n\nScope note: `rt/plc/include/metanc/plc/command_result.hpp` does not exist in this checkout; `CommandResult` is defined in `runtime_command.hpp`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:20:57 +0800</div>
+<pre>代码 agent 也返回了 4 个问题，其中两个是高优先级运行时风险：shutdown 异常路径可能卡在 `SHUTTING_DOWN`，以及 scan guard 用普通 `bool` 存在线程竞争。我会先本地复核这些行，再给你一份按严重程度排序的 review 结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-03 08:21:38 +0800</div>
+<pre>**Findings**
+
+1. **High**: [framework.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/framework.cpp:807)
+   `Framework::shutdown()` 进入 `SHUTTING_DOWN` 后直接调用 `backends().nrt.drain()`、`backends().io.write_outputs()` 等清理逻辑，没有走现有的失败记录/兜底路径。任一调用抛异常时，可能卡在 `SHUTTING_DOWN`，并跳过后续 backend shutdown。建议把这些 cleanup 包进同一套 failure-recording 路径，并保证最终状态可落到 `STOPPED`。
+
+2. **High**: [command_executor.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/command_executor.hpp:65), [command_executor.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:231)
+   `scan_command_active_` 是普通 `bool`，`RunCycles` / `StepOnce` 并发调用会 data race，也可能两个 scan 同时进入，破坏 `ExecutorBusy` 契约。建议改成 `atomic_flag`/CAS 或 mutex，并补一个双线程 contract test。
+
+3. **Medium**: [runtime_simulation_session.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:20)
+   `RuntimeSignalCatalog` 在 session 构造时解析一次，但 `boot()` 又用同一路径重新让 framework 解析 descriptor。文件在构造和 boot/reboot 之间变化时，命令校验和实际 runtime descriptor 会不一致。建议 parse once 共享给 boot，或 boot 成功后重建 catalog/executor。
+
+4. **Medium**: [command_executor.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:480), [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:406)
+   pre-boot virtual signal 读现在被 Story-44 冻结成 `ExecutionFailed`，原因是 catalog 知道信号但 framework snapshot 还没有值。这个契约语义偏模糊。建议明确选择：pre-boot virtual observation 要么 `InvalidRuntimeState`，要么返回 descriptor/default 状态，然后同步更新实现和 Story-44 测试。
+
+5. **Medium**: [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:121), [runtime_command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/runtime_command.hpp:15)
+   Story-44 的命令清单是测试内手写复制的 `all_command_kinds()`，没有和 `RuntimeCommandKind` 绑定。未来新增 command 时，矩阵可能漏测但测试仍通过。建议增加枚举 sentinel/range API，或至少用 compile-time count 断言绑定清单完整性。
+
+6. **Medium**: [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:486)
+   Story-44 状态矩阵多数成功组合只断言 `status/code`，而 SPEC-135 写的是冻结 `status/code/message/lines` 和 typed payload sidecar。建议给矩阵加每个 command kind 的 expected message、payload kind、关键 line presence。
+
+7. **Docs Medium**: [CURRENT-CAPABILITIES.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/CURRENT-CAPABILITIES.md:15), [NEXT-ROADMAP.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/NEXT-ROADMAP.md:5), [IMPLEMENTATION-READINESS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/IMPLEMENTATION-READINESS.md:11), [INDEX.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/INDEX.md:51)
+   文档入口还说 baseline 到 Story-43、Story-44 planned，但 Story-44 Slice 01 已 implemented。建议统一为：Story-44 Slice 01 implemented，Story-44 overall 仍 open，Slice 02-07 planned。
+
+8. **Docs Medium**: [IMPLEMENTATION-PLAN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/IMPLEMENTATION-PLAN.md:29), [READINESS-REVIEW.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/READINESS-REVIEW.md:38)
+   Story-44 自己的 plan/readiness 仍像 Slice 01 尚未开始。建议标注 Patch 1/2 或 Slice 01 已完成，下一步明确指向 Slice 02 deterministic replay。
+
+**Validation**
+
+已跑：
+- `cmake -S rt/plc -B /tmp/metanc_plc_build`
+- `cmake --build /tmp/metanc_plc_build`
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`，82/82 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt/plc`
+- `book build`
+
+没有改文件。当前审查结论是：测试和 docs 现状能通过，但上面两个 High 是实际 runtime 风险，建议下一步先处理。&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime review workflow and validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:53:57 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8af6-9a2a-79c0-9bf7-22e0ed0b85a5&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nI reviewed the uncommitted changes under `rt/plc/docs` and `rt/plc/README.md` only, after reading root `README.md`, `docs/dev/architecture.md`, and `rt/plc/README.md`. There is no `rt/plc/AGENTS.md`.\n\nThe Story-44 status chain is consistent across the requested files: Story-44 is active, Slice 01 is implemented, and Slice 02 deterministic replay is next/planned. Slice 02 through Slice 07 remain marked planned/not-started in their slice/spec/invariant docs, so the current wording does not overclaim implemented runtime verification work beyond Slice 01.\n\nResidual documentation risks: I did not edit files or run docs/build validation. The main remaining risk is future drift between docs and actual tests until the planned Story-44 capability matrix check exists.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:54:14 +0800</div>
+<pre>文档 agent 已经返回：没有发现当前 Story-44/Slice-01 状态链的文档一致性问题。我现在继续等 runtime 代码、测试覆盖和验证集成三个 agent，同时做一遍本地的重点风险核对。</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:54:53 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8af6-716b-7613-a43e-a07578f79ae6&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Medium: `rt/plc/tests/story44_runtime_contract_tests.cpp:634` - rows with `expected.stable_line == \&quot;\&quot;` skip line assertions entirely, so Story-44 still does not fully lock line coverage for successful empty-line results such as stopped `ListBehaviors` / `GetDispatch`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:55:10 +0800</div>
+<pre>测试覆盖 agent 提了一个候选问题：Story-44 矩阵里 `stable_line == &quot;&quot;` 的成功结果不会断言“输出必须为空”。我在核对这是否只是代表性行检查的有意边界，还是会让 stopped 状态下的 list/dispatch 结果漂移漏检。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:55:10 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8af6-4aa5-7781-98be-d3d943947d04&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Finding**\n- Medium: [rt/plc/src/runtime_simulation_session.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:46)\n  Concrete problem: `boot()` calls `rebuild_command_executor()`, which resets the `std::unique_ptr&lt;CommandExecutor&gt;` after `command_executor()` may already have returned a reference. Any caller that caches `CommandExecutor&amp;` across boot/reboot now holds a dangling reference. This is a regression from the previous in-place member, and the public API still exposes a reference with no invalidation contract.\n  Expected behavior: a `CommandExecutor&amp;` returned by `RuntimeSimulationSession::command_executor()` should remain valid for the session lifetime, or the API must not expose a cacheable reference.\n  Suggested fix: keep the executor object at a stable address and update its catalog in place, for example add a `CommandExecutor::set_signal_catalog(RuntimeSignalCatalog)` method and call it after boot instead of rebuilding the executor. Also add a Story-30 regression test that obtains `CommandExecutor&amp;`, performs shutdown/reboot, then uses the same reference successfully.\n\nFocused validation run: the named targets built and passed: Story-19, Story-28, Story-30, and Story-44 runtime tests. Residual gap: current tests do not cover a cached `CommandExecutor&amp;` across session reboot.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:55:17 +0800</div>
+<pre>runtime agent 又提了一个更实质的问题：`RuntimeSimulationSession::command_executor()` 返回引用，但现在 `boot()` 会重建 `unique_ptr`，旧引用会悬空。这是从值成员改成指针后引入的 API 生命周期回退，我会把它列为主要发现。</pre>
+</article>
+</section>
+<section class="turn event" id="event-7">
+<h3>Event 7 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 08:55:28 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8af6-d954-76b2-9902-8dd27a9e30e0&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Medium - [rt/plc/tests/story30_runtime_simulation_session_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story30_runtime_simulation_session_tests.cpp:70):70: `temp_path()` always writes `metanc_plc_story30_catalog_boot_machine.yaml` under the shared temp directory, and the changed test rewrites that same file at lines 214-225. Because this test is included in both `plc_adapter_contract_baseline` and `plc_command_result_payload_baseline` labels, concurrent validation of those label gates can race and fail with `machine descriptor is empty`. Suggested fix: make the test path unique per process/test run, for example by using a temporary directory or appending the PID/thread-safe unique suffix, and clean it up after the test.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:55:56 +0800</div>
+<pre>四个 agent 都回来了：文档一致性没有发现问题，代码/验证侧有 3 个候选点，其中两个是实际风险，一个偏测试覆盖边界。我会先关闭 agent，然后整理成 review 结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-03 08:56:50 +0800</div>
+<pre>发现 3 个问题，建议修：
+
+1. **Medium** [runtime_simulation_session.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/runtime_simulation_session.cpp:46)
+`boot()` 会 `rebuild_command_executor()` 重置 `unique_ptr`，但 `command_executor()` 对外返回 `CommandExecutor&amp;`。调用方如果缓存这个引用并跨 shutdown/reboot 使用，现在会悬空。建议保持 executor 地址稳定，给 `CommandExecutor` 增加 catalog 更新接口，或改 API 明确不允许缓存；同时补 Story-30 回归测试。
+
+2. **Medium** [story30_runtime_simulation_session_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story30_runtime_simulation_session_tests.cpp:70)
+新增测试使用固定 `/tmp/metanc_plc_story30_catalog_boot_machine.yaml`，并在测试中重写同一个文件。并发跑 label gate 或多个 build/test 进程时可能互相截断/覆盖，导致 descriptor 空文件或错读。建议使用唯一临时目录/文件名，并在测试结束清理。
+
+3. **Low/Medium** [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:634)
+`expected.stable_line == &quot;&quot;` 的成功结果会跳过 line 断言，所以 stopped 状态下 `ListBehaviors` / `GetDispatch` 这类“应该为空”的输出没有被锁住。建议给 ExpectedContract 加一个 `expect_empty_lines` 或直接检查 payload list/order 为空。
+
+文档 agent 没发现 Story-44 状态链问题：当前文档一致表达为 Slice 01 已实现，Story-44 active，Slice 02 deterministic replay 是下一步。四个 agent 已关闭；这轮没有改文件。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime workflow and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-8">
+<h3>Event 8 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 09:20:50 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b0c-7142-7373-ab6b-54b6f46f283a&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nI reviewed the uncommitted `rt/plc/docs` changes for first-time-reader comprehension issues around Story-44 status, capability/readiness/roadmap wording, the story index, and the Story-44 STORY/PLAN/READINESS/Slice01/SPEC-135 pages. I did not find validated redundancy, contradictions, or overclaims. The status reads consistently as: Story-44 is active, Slice 01 is implemented, and Slices 02-07 remain planned.\n\nNo files were edited. `git diff --check -- rt/plc/docs` was clean; I did not run a full `book build`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:21:06 +0800</div>
+<pre>文档 agent 已返回无发现，状态链也确认一致：Story-44 active、Slice 01 implemented、Slices 02-07 planned。我继续等代码和验证侧 agent。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:21:45 +0800</div>
+<pre>我发现一个值得本地再核对的边界：session 会在 boot 后刷新 command catalog，但如果 boot 前已经通过旧 catalog 预置过输入，后续 descriptor 改了，Sim IO 是否会清掉旧状态要看 backend 初始化逻辑。我先查一下，避免漏掉跨 boot 的状态漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 09:22:56 +0800</div>
+<pre>Sim IO 初始化看起来没有额外的 catalog 清理语义，但这次测试只验证 command catalog 与 boot-time descriptor 对齐，不声称清理旧 backend map；这个不构成当前补丁的回归发现。现在继续收 agent 结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-9">
+<h3>Event 9 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 09:22:58 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b0c-7057-7170-b64f-d1ba57597a6e&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**High**: [rt/plc/src/command_executor.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:246) only guards overlapping scan commands. Non-scan commands can still run concurrently with a scan and touch unsynchronized backend state, for example `SetDigitalInput` mutates `SimIoHalBackend::physical_inputs_` while `read_inputs()` iterates it at [rt/plc/src/sim_backends.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/sim_backends.cpp:158). Risk: data race/UB, mid-scan input changes, torn observations, or crashes once a local adapter/transport issues commands from more than one thread. Suggested fix: serialize `CommandExecutor::execute()` as a whole with a mutex, or explicitly reject every command while a scan is active and add tests for `SetDigitalInput`, observations, and `SendNrtMessage` during an in-flight scan.\n\n**Medium**: [rt/plc/include/metanc/plc/command_executor.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/command_executor.hpp:28) exposes `set_signal_catalog()` on the adapter-facing `CommandExecutor`. Risk: any caller with `RuntimeSimulationSession::command_executor()` can replace the descriptor-derived catalog and make command validation diverge from the booted framework, accepting nonexistent signals or rejecting valid ones. Suggested fix: keep catalog refresh internal to `RuntimeSimulationSession`, for example by making the setter private with `RuntimeSimulationSession` as a friend, or by storing the catalog behind a session-owned internal reference that adapters cannot mutate.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:23:54 +0800</div>
+<pre>runtime agent 返回两个有效候选：一个是高优先级并发问题，scan guard 只挡 scan-vs-scan，但非 scan 命令仍可能和 scan 并发访问无锁 backend map；另一个是 `set_signal_catalog()` 暴露到 public API。我要等测试/验证 agent 再统一排序。</pre>
+</article>
+</section>
+<section class="turn event" id="event-10">
+<h3>Event 10 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 09:25:19 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b0c-716d-7d10-8266-31e753b83ee9&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;- **Medium** - [story28_runtime_command_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story28_runtime_command_tests.cpp:288): the new concurrent scan test uses unbounded spin waits at lines 288-303 and then joins at line 310. If the guard regresses and the second `StepOnce` enters the scan callback, the test deadlocks instead of failing; CMake has no timeout on this target, and it is included in the baseline labels at [CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/CMakeLists.txt:1142).\n\n- **Low** - [IMPLEMENTATION-PLAN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/IMPLEMENTATION-PLAN.md:31): the patch-specific validation list for the completed runtime contract freeze omits Story-19, but this diff changes shutdown cleanup behavior in [framework.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/framework.cpp:828) and adds Story-19 lifecycle tests at [story19_backend_lifecycle_diagnostics_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story19_backend_lifecycle_diagnostics_tests.cpp:592). The later full `ctest` gate covers it, but the targeted validation guidance is incomplete for the touched files.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:25:25 +0800</div>
+<pre>验证 agent 也返回了：Story-28 并发测试有死锁式失败风险，Story-44 plan 的 targeted validation 没列 Story-19。前者是测试可靠性问题，后者是文档验证清单的小缺口。</pre>
+</article>
+</section>
+<section class="turn event" id="event-11">
+<h3>Event 11 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 09:28:06 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b0c-7108-7780-a81d-d5507942968f&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n- **Medium**: Story-44’s contract-freeze coverage does not actually freeze full result line compatibility. `ExpectedContract` stores only one `stable_line`, and the matrix only checks that single line or emptiness, so secondary lines can drift without failing despite the validation text claiming line compatibility across the matrix. See [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:108), [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:647), and [SLICE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/SLICE-01-runtime-contract-freeze/SLICE.md:40).\n\n- **Low**: Story-28’s runtime command set doc is stale: it declares `RuntimeCommandKind` as the canonical runtime contract, but the table omits current commands `GetDigitalInput` and `ListVirtualSignals`, both covered by the Story-44 inventory. See [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:76), [STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:81), and [story44_runtime_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story44_runtime_contract_tests.cpp:131).\n\nResidual risk: targeted tests passed for Story-19, Story-28, Story-30, and Story-44, but I did not run the full PLC suite or docs build.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:28:17 +0800</div>
+<pre>所有 agent 都回来了。我会关闭这些 agent，然后把发现去重：并发数据竞争和 public setter 是代码问题；测试死锁风险是验证可靠性；Story-44 “full line compatibility” 需要判断文档是否过claim。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:28:40 +0800</div>
+<pre>我会把 agent 发现做一次 false-positive 过滤：Story-44 “full line compatibility” 这个点我倾向不列为主要问题，因为当前文档实际写的是 representative line compatibility，不是完整 lines 冻结；其它几个点更实。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-03 09:29:25 +0800</div>
+<pre>发现 5 个问题，按优先级：
+
+1. **High** [command_executor.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/command_executor.cpp:246)
+当前只防止 scan-vs-scan 并发。非 scan 命令仍可在 scan callback 运行时执行，比如 `SetDigitalInput` 会写 `SimIoHalBackend::physical_inputs_`，同时 `read_inputs()` 可能正在迭代它 [sim_backends.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/src/sim_backends.cpp:158)。这是数据竞争/UB 风险。建议序列化整个 `CommandExecutor::execute()`，或明确规定 scan active 时所有命令都返回 busy，并补 SetDI/observation/NRT during scan 测试。
+
+2. **Medium** [command_executor.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/include/metanc/plc/command_executor.hpp:28)
+`set_signal_catalog()` 暴露在 adapter-facing `CommandExecutor` public API 上，外部拿到 `RuntimeSimulationSession::command_executor()` 后可替换 descriptor-derived catalog，让命令校验和 booted framework 分叉。建议改成 session 内部可用：private + `friend RuntimeSimulationSession`，或改成 session-owned 内部刷新机制。
+
+3. **Medium** [story28_runtime_command_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/tests/story28_runtime_command_tests.cpp:288)
+新增并发 scan 测试使用无界 spin wait。如果 guard 回归导致第二个 `StepOnce` 也进入 callback，测试会挂住而不是失败；该目标还在 baseline labels 里 [CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/CMakeLists.txt:1142)。建议用 bounded wait / condition variable / timeout fail。
+
+4. **Low** [IMPLEMENTATION-PLAN.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-44-runtime-verification-hardening/IMPLEMENTATION-PLAN.md:31)
+Patch 2 validation 没列 Story-19，但这批实现实际改了 shutdown cleanup 并加了 Story-19 lifecycle 测试。建议把 Story-19 加进 targeted validation 文案。
+
+5. **Low** [STORY-28 STORY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:81)
+Story-28 说 `RuntimeCommandKind` 是 runtime contract，但表里漏了当前已有的 `GetDigitalInput` 和 `ListVirtualSignals`。建议补齐或明确该表是历史 slice baseline，不是当前完整 command inventory。
+
+文档一致性 agent 对 Story-44 当前状态链无发现：`active` / Slice 01 implemented / Slices 02-07 planned 是一致的。已关闭全部 4 个 agent；这轮没有改文件。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime workflow and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-12">
+<h3>Event 12 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 09:57:48 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b2d-3a8d-7aa2-a689-fe2ddfdf4a1f&quot;,&quot;status&quot;:{&quot;errored&quot;:&quot;stream disconnected before completion: Concurrency limit exceeded for user, please retry later&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 09:59:36 +0800</div>
+<pre>runtime agent 因并发额度断线了，不算有效 review。我会继续等另外三个 agent，同时本地补看 runtime 代码；如果其它 agent 都干净，稍后再单独重试 runtime agent，不能把这轮当作“无问题”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 09:59:41 +0800</div>
+<pre>我先收剩余 agent 结果；runtime 那一路之后单独补跑，避免并发额度再断。</pre>
+</article>
+</section>
+<section class="turn event" id="event-13">
+<h3>Event 13 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 10:02:02 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b2d-3bba-7552-b082-85bb2bbbd529&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nResidual risk: validation passed for CMake configure/build, targeted PLC contract tests, full `ctest` 82/82, `git diff --check -- rt/plc`, docs policy lint, and `book build`. I did not validate under sanitizer/TSAN or CI runner timing, so concurrency regressions outside the current deterministic test path remain possible.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:02:25 +0800</div>
+<pre>验证/集成 agent 已返回无发现，但明确没覆盖 sanitizer/TSAN。还剩测试覆盖和文档两个 agent；runtime agent 断线后我会单独补跑，直到这一轮 runtime 审查也有有效结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-14">
+<h3>Event 14 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 10:02:27 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b2d-3b81-7ae0-87be-2ba8cfaf8a76&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. `rt/plc/docs/spec/STORIES/STORY-28-runtime-command-primitive-layer/STORY.md:91` and `:94` document terminal spellings that are not supported by `metanc_plc_sim`.\n\n`di &lt;name&gt;` is listed as the terminal spelling for `GetDigitalInput`, and `virtuals` is listed for `ListVirtualSignals`. But the current simulator command docs only list `di &lt;name&gt; &lt;true|false&gt;` for setting DI and no `virtuals` command, and the simulator dispatch only handles `di` as a 3-token setter plus `virtual &lt;name&gt;` as the virtual-signal reader.\n\nReader effect: a first-time reader will try `di part_present` or `virtuals` in the REPL and get a usage/unknown-command error, despite the Story-28 table saying these are terminal spellings.\n\nFix: change those terminal-spelling cells to “not exposed directly in terminal REPL” or document the actual terminal path, such as `inputs` for listing DI and `snapshot` for virtual-signal listing, unless the intent is to add matching REPL commands.\n\nConfidence: 4  \nImpact: 3\n\nI did not edit files. I also checked `git diff --check -- rt/plc/docs`; it reported no whitespace errors.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:02:49 +0800</div>
+<pre>文档 agent 找到一个实际问题：我补 Story-28 表时把非 REPL 直接命令写成了 terminal spelling。这个要修，应该标成不直接暴露，或者指向已有 `inputs`/`snapshot` 视图。</pre>
+</article>
+</section>
+<section class="turn event" id="event-15">
+<h3>Event 15 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 10:03:28 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b2d-3b3d-70a3-beb0-8d0602da71af&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nResidual risk: concurrency coverage is bounded to the current local `CommandExecutor` test harness, not a production threaded runtime. Validated with PLC configure/build, targeted Story-19/28/30/32/33/35/44 tests, full PLC CTest `82/82`, docs policy lint, `git diff --check -- rt/plc`, and `book build`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:03:41 +0800</div>
+<pre>测试 coverage agent 也无发现。现在先修 Story-28 表的 terminal spelling，然后补跑 docs checks。之后我还会单独补一个 runtime agent，因为原 runtime agent 没有有效完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 10:03:54 +0800</div>
+<pre>我现在改 Story-28 表格，只改文档：`GetDigitalInput` 和 `ListVirtualSignals` 不再伪装成 REPL 直接命令，改成通过已有 `inputs` / `snapshot` 视图可观察。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 10:04:11 +0800</div>
+<pre>Story-28 表格已修。现在我会补跑文档相关 gate，并单独重试 runtime 代码 agent；如果 runtime agent 再无发现，再做最终 validation audit。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 10:04:24 +0800</div>
+<pre>docs diff check 和 docs policy lint 通过。现在补一个单独 runtime explorer，避免之前 runtime 断线导致 review 证据不完整。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 10:04:39 +0800</div>
+<pre>runtime explorer 已单独启动。等待期间我本地再跑一次完整验证，因为刚才文档又改了一处。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 10:05:02 +0800</div>
+<pre>`book build` 通过。代码没有再改，但为了目标里的“直至没有问题”，最后会在 runtime agent 结果回来后再跑一遍 targeted/full PLC tests 或确认之前测试仍覆盖当前代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 10:09:11 +0800</div>
+<pre>runtime agent 还没完成，我不会把目标标记为完成。先继续等；如果仍超时，我会在本地补更强的 runtime audit，但仍需要一个有效 agent 结果。</pre>
+</article>
+</section>
+<section class="turn event" id="event-16">
+<h3>Event 16 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 10:11:40 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b39-989c-7071-89fc-01395f18ad67&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nValidated `rt/plc` runtime code review against the requested areas. Checks passed:\n\n- `git diff --check` on touched runtime/test files\n- `cmake -S rt/plc -B /tmp/metanc_plc_review_build`\n- `cmake --build /tmp/metanc_plc_review_build`\n- `ctest --test-dir /tmp/metanc_plc_review_build --output-on-failure` passed `82/82`\n\nResidual risk: review was limited strictly to `rt/plc` code and local PLC simulation/runtime tests. It does not validate docs changes, non-PLC integration, or production hardware/realtime backend behavior beyond the existing simulated contracts.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:11:58 +0800</div>
+<pre>runtime 补审查已经完成且无发现，并且它自己重新 configure/build/full ctest 82/82。还差一件事：刚才文档 agent 找到的问题已经修了，但需要对修后的文档再做一次有效 agent 复查，才能说“直至没有问题”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 10:12:09 +0800</div>
+<pre>我会单独补一个文档复查 agent，范围只看修后的 Story-28/Story-44/docs 状态链。这个通过后，再做最终本地 validation 和目标完成审计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 10:12:36 +0800</div>
+<pre>文档复查 agent 已启动。我同时做最终本地 validation：全量 PLC ctest、docs lint、diff check 和 book build 都需要基于当前文件再跑一遍。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 10:12:49 +0800</div>
+<pre>当前全量 PLC ctest、diff check、docs policy lint 都通过。还在等文档复查 agent；如果它无发现，再补一次 `book build` 已经过了但可以作为当前证据使用。</pre>
+</article>
+</section>
+<section class="turn event" id="event-17">
+<h3>Event 17 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 10:16:29 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8b40-b8d5-7461-86cc-0075a796308c&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nResidual risk: I did not run the full PLC test suite or `book build`; this was a docs comprehension review with targeted validation. I did run `git diff --check -- rt/plc/docs`, inspected the uncommitted diffs, checked the Story-44 status chain across the requested docs, and verified Story-28 terminal spellings against `rt/plc/src/plc_sim_main.cpp`.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 10:16:37 +0800</div>
+<pre>文档复查也无发现，并且它验证了 Story-28 terminal spelling 对 `plc_sim_main.cpp` 的一致性。现在我关闭 agent，做最终完成审计和状态确认；如果证据齐全，就标记目标完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 10:16:53 +0800</div>
+<pre>最终 audit 我会核对：多 agent 审查是否覆盖代码/文档/验证、发现是否已修、当前验证门是否通过、工作树范围是否仍是 PLC。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-03 10:17:35 +0800</div>
+<pre>已完成“多 agent 检查文档和代码问题，直至没有问题”。
+
+本轮闭环结果：
+
+- runtime 代码复查 agent：无发现；它单独跑了 `/tmp/metanc_plc_review_build` 的 configure/build/full ctest，`82/82` 通过。
+- 测试覆盖 agent：无发现。
+- 验证/集成 agent：无发现。
+- 文档复查 agent：先发现 Story-28 terminal spelling 表述错误，我已修正；修后再次复查无发现。
+
+我本地最终验证也全部通过：
+
+- `ctest --test-dir /tmp/metanc_plc_build --output-on-failure`：82/82 passed
+- `git diff --check -- rt/plc`
+- `python3 .mdbook/lint_docs_policy.py`
+- `book build`
+
+当前工作树仍是未提交状态，范围都在 `rt/plc` 相关 20 个文件。目标已标记完成；本轮目标用量：54786 tokens，耗时约 29 分 47 秒。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:229-270|note=[PLC runtime workflow and validation path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e5cac-04c2-7921-9212-92d2c63e270c
+019e62e0-cc85-7a02-9002-2e54d3981b8c
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-18">
+<h3>Event 18 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 16:12:34 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8c84-c45a-7321-91a2-05d47e81250a&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Read-only review only. Scope used: current worktree on `feat/work-offset`, bounded by `git diff main...HEAD`.\n\n**Implemented**\n`nrt/work_offset` is a new phase-1 WorkOffset module. It implements snapshot validation/export/import, 840D settable frame records, active WCS state, Active/Overview/Base/Settable/Details projections, coarse/fine writes, clear, `G54`...`G57` and `G505`...`G599` selection, `G500/G53/G153/SUPA` suppression handling, parser/kernel normalized block handling, CLI file mode, backend-neutral persistence, and optional SQLite persistence. Evidence: [domain.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/domain.h:31), [domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:184), [persistence_store.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/persistence_store.h:84), [sqlite_persistence_store.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/sqlite_persistence_store.h:13), [cli.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/cli.cpp:316), [IMPLEMENTATION-STATUS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/IMPLEMENTATION-STATUS.md:7).\n\n**API Shape**\nPublic C++ shape is mostly value-type contracts plus a process-local domain store:\n`foundation.h` defines revisions, diagnostics, records, snapshots, requests, view payloads, and coordinate context types ([foundation.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/foundation.h:21)). `WorkOffsetDomainStore` owns in-memory behavior for one snapshot/scope ([domain.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/domain.h:47)). JSON conversion is free functions over `nlohmann::json` ([snapshot_json.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/snapshot_json.h:19)). Persistence is a virtual `PersistenceStore` plus `StoreBackedWorkOffsetRuntime` wrapper ([persistence_store.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/persistence_store.h:84)). SQLite is a PIMPL backend ([sqlite_persistence_store.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/sqlite_persistence_store.h:13)). CLI exposes `CliResult cli_run(argv)` ([cli.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/cli.h:13)).\n\n**Completion Level**\nThis looks like a broad “core gate” baseline, not a production-complete controller integration. Tests cover Siemens 840D views, mutations, parser/kernel block handling, file-mode CLI rejection safety, store-backed runtime, and SQLite save/load/audit ([work_offset_sinumerik_840d_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_sinumerik_840d_tests.cpp:124), [work_offset_pipeline_contract_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_pipeline_contract_tests.cpp:31), [work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:194)). Explicit non-goals remain HMI frontend, network transports, service persistence, RT-safe matrix ABI, programmable frame lifecycle, probing cycles, authorization, and long-term audit retention ([KNOWN-LIMITATIONS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/KNOWN-LIMITATIONS.md:30)).\n\n**Risks / Bugs**\n1. Store-backed import can rewind or fork revision history. `StoreBackedWorkOffsetRuntime::import_snapshot_replace` builds the domain store from the imported snapshot itself instead of loading current persisted state, so the committed revision becomes imported `snapshot_revision + 1`, not persisted current revision + 1 ([persistence_store.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/persistence_store.cpp:224), [domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:460)).\n\n2. Snapshot save and audit append are not atomic. `save_accepted_snapshot` writes the snapshot, then appends audit; if append fails, the API returns rejected after durable state already changed ([persistence_store.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/persistence_store.cpp:355)). SQLite has separate statements, no transaction wrapping both operations ([sqlite_persistence_store.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/sqlite_persistence_store.cpp:591), [sqlite_persistence_store.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/sqlite_persistence_store.cpp:691)).\n\n3. CLI cannot pass negative offset values normally. The parser treats a value beginning with `-` as another flag, so `--value -1.25` becomes `--value true` and later fails in `std::stod` ([cli.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/cli.cpp:92), [cli.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/cli.cpp:797)).\n\n4. `G500` appears sticky with no clear path. `apply_suppression_command` rejects `None`, sets `settable_wcs_enabled=false` for `G500`, and `select_settable_zero_offset` does not re-enable or clear `suppression_mode`; once applied, normal selection may remain suppressed indefinitely ([domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1177), [domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1193), [domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1160)).\n\n5. Siemens configured range is not enforced. Selection hard-codes `G505`...`G599` and only checks whether a row exists; `profile.siemens_settable_range` is not consulted. `upsert_work_offset` similarly validates axes/units but not selector/index/range policy ([domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:36), [domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1125), [domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1218)).\n\n6. `clear_work_offset` accepts unknown `clear_scope` values as successful mutations that only advance revision/source. There is no reject branch for invalid scope strings ([domain.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/domain.cpp:1100)).\n\n7. Snapshot parse errors become CLI internal errors, not structured validation rejections. Unknown JSON fields throw in `snapshot_from_json`, while `snapshot validate` catches only at the top and returns `internal_error` exit 3 ([snapshot_json.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/snapshot_json.cpp:81), [cli.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/cli.cpp:592), [cli.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/cli.cpp:893)).\n\n**Missing Behavior**\nReal external data providers, real HMI pages, network/service persistence, RT-safe output, programmable frame lifecycle, TCP/dynamic offsets, direct rotation/scale/mirror writes, and authorization/audit retention are intentionally not done yet. I did not run builds/tests because the request was read-only and tests would create build/output files in the workspace.&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:13:02 +0800</div>
+<pre>代码 reviewer 已返回，提出几个实现风险；我本地验证也发现完整 CTest 不是全绿，SQLite round-trip 测试失败。现在我等另外两个 reviewer，同时确认这个失败是否影响“当前完成度”的判断。</pre>
+</article>
+</section>
+<section class="turn event" id="event-19">
+<h3>Event 19 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 16:14:52 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8c85-14b9-74e3-93c0-dfcf4d08796c&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. Full WorkOffset validation is not complete in this read-only pass. The module requires a fresh configure/build/CTest run before claiming acceptance, but there is no existing configured build tree or `CTestTestfile.cmake`, and creating one would violate “Do not edit/create files.” The gate explicitly requires fresh configure, CTest, and docs lint: [ACCEPTANCE-GATE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/ACCEPTANCE-GATE.md:63), [IMPLEMENTATION-STATUS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/IMPLEMENTATION-STATUS.md:3).\n\n2. Some required invalid fixtures are not covered by current test references. The acceptance gate requires `duplicate_wcs_id`, `missing_g54`, `active_unknown`, and `unknown_top_field` fixtures to be validated, but code/tests only reference `duplicate_wcs_id`; `missing_g54`, `active_unknown`, and `unknown_top_field` appear unused outside docs. See required list: [ACCEPTANCE-GATE.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/ACCEPTANCE-GATE.md:22); actual duplicate-only persistence reference: [work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:31).\n\n3. CLI SQLite store-target coverage is missing. The CLI implements `--store-kind sqlite --store-target` paths, and docs require SQLite CLI support, but tests cover file-mode CLI plus direct `SQLitePersistenceStore`, not CLI-through-SQLite. Relevant implementation starts at [cli.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/src/cli.cpp:333); direct SQLite backend test is [work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:329); file-mode CLI case uses temp input/output only: [work_offset_acceptance_case_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_acceptance_case_tests.cpp:249).\n\n4. Presets can give partial validation. `WORK_OFFSET_ENABLE_SQLITE` defaults `OFF` and the checked-in presets do not turn it on, while the documented gate requires SQLite enabled. That means preset-based validation can skip `sqlite_persistence_store.cpp` and its conditional SQLite test unless the user overrides the option. See [CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/CMakeLists.txt:18), [CMakePresets.json](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/CMakePresets.json:16), [IMPLEMENTATION-STATUS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/IMPLEMENTATION-STATUS.md:33).\n\n5. Minor flake risk: the acceptance runner and SQLite test use fixed temp names under temp/build directories. Normal single CTest execution should be stable, but concurrent runs sharing the same build dir or temp dir can collide. See [work_offset_acceptance_case_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_acceptance_case_tests.cpp:249) and [work_offset_persistence_store_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/work_offset_persistence_store_tests.cpp:331).\n\n**Coverage / Completion**\n\nStatic coverage looks broadly complete for the declared Siemens 840D/local persistence scope: CMake registers four test executables under `BUILD_TESTING`, including 840D behavior, JSON acceptance cases, persistence, and parser/kernel contract tests: [CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/CMakeLists.txt:70). The test plan matches that scope: [test/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/README.md:7). The module status marks snapshot, HMI projection, frame commands, selector behavior, suppression, CLI, PersistenceStore, SQLite, and parser/kernel contract as implemented, with network/RT/HMI UI and rotation/scale/mirror writes out of scope: [IMPLEMENTATION-STATUS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/IMPLEMENTATION-STATUS.md:7).\n\nCompletion level: implementation appears structurally complete for the documented phase, but validation is not complete in this pass because full CMake build and CTest could not be run read-only.\n\n**Commands Run**\n\n- `pwd` -&gt; confirmed `/home/iaar/workspace/mirror-ccmix-wp/MetaNC`.\n- `git status --short --branch` -&gt; `feat/work-offset...origin/feat/work-offset`; no changes shown.\n- `git diff --stat -- nrt/work_offset` -&gt; no output.\n- Read root `README.md`, `docs/dev/architecture.md`, `nrt/work_offset/README.md`, `nrt/work_offset/AGENTS.md`.\n- `python3 .mdbook/lint_docs_policy.py` -&gt; `repo docs policy lint passed`.\n- `command -v cmake ctest ninja python3 book mdbook vcpkg` -&gt; all present; vcpkg at `/home/iaar/workspace/github/vcpkg/vcpkg`.\n- `find ... CMakeCache.txt/CTestTestfile.cmake/compile_commands.json` -&gt; no existing configured build/test tree found.\n- Static inspection via `rg`, `find`, `sed`, `nl` over tests, fixtures, CMake, vcpkg, `package.xml`, specs, CLI, and SQLite backend.&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:15:16 +0800</div>
+<pre>测试 reviewer 已返回：静态看覆盖面广，但它没有创建构建目录，所以没有跑完整测试。我这边已经在 `/tmp` 做了构建/CTest，发现 1 个真实失败；我继续把这个失败定位清楚，报告里会明确区分“功能已实现”和“验证未通过”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:15:49 +0800</div>
+<pre>我现在只差文档 reviewer 的返回。与此同时我确认工作区没有被改动；构建和测试只在 `/tmp` 下产生验证文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 16:15:58 +0800</div>
+<pre>工作区仍干净。验收标准里确实要求 4 个 invalid fixture、CLI SQLite store target、CTest 全部通过；当前证据显示这些地方至少有缺口。等文档 reviewer 后我出完整报告。</pre>
+</article>
+</section>
+<section class="turn event" id="event-20">
+<h3>Event 20 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-03 16:16:40 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8c84-e771-7f62-ba90-44239faaa957&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Read-only review completed on current worktree `feat/work-offset`. I did not edit or create files, and I did not run builds/tests because CMake/CTest would create build artifacts.\n\n**What Is Specified**\n`nrt/work_offset` is specified as a Siemens 840D NRT WorkOffset module: snapshot validation/import/export, `G54`...`G57` plus profile-enabled `G505`...`G599`, active WCS state, `G500/G53/G153/SUPA` suppression, CLI/HMI/parser-kernel registry operations, `PersistenceStore`, and SQLite as the only current local backend. See [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md:17), [nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md:3), and [nrt/work_offset/docs/spec/INTERFACE-REGISTRY.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/INTERFACE-REGISTRY.md:14).\n\nThe intended boundary is also clear: no HMI page/front-end state machine, no network transport, no hard-real-time ABI, no PostgreSQL/service backend, no programmable-frame lifecycle, and no direct rotation/scale/mirror writes. See [nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md:27), [BASELINE-DECISIONS.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/BASELINE-DECISIONS.md:48), and [compatibility-and-versioning.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/compatibility-and-versioning.md:19).\n\n**Current Claimed Status**\nThe docs claim the core WorkOffset surfaces are implemented: domain queries/commands, HMI projection rows, normalized block handling, CLI file mode, `PersistenceStore`, optional SQLite backend, and parser/kernel contract tests. That claim is reflected in CMake: static library, CLI executable, optional SQLite source, and four test executables are registered in [nrt/work_offset/CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/CMakeLists.txt:33). Public headers expose the matching API names in [domain.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/domain.h:47) and [persistence_store.h](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/include/work_offset/persistence_store.h:84).\n\n**Consistency Issues / Gaps**\n1. WorkOffset is registered in root README, bookshelf, and `docs/nrt/index.md`, but not in the architecture codemap’s NRT module list. The codemap lists `/nrt/gcode_parser`, `/nrt/nc_kernel`, `/nrt/tooling_management`, `/nrt/hmi`, `/nrt/program_engine`, etc., but has no `/nrt/work_offset` entry in the NRT section. Compare [docs/dev/architecture.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/dev/architecture.md:209), [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md:13), [bookshelf.toml](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/bookshelf.toml:66), and [docs/nrt/index.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/nrt/index.md:7). This is the main registration contradiction.\n\n2. Repo NRT getting-started still says NRT packages are built together as ROS 2 packages, but WorkOffset’s current recommended path is standalone CMake with `WORK_OFFSET_WITH_AMENT=OFF`, especially from Windows. Compare [docs/nrt/getting_started/index.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/docs/nrt/getting_started/index.md:6) with [README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/README.md:30) and [nrt/work_offset/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/README.md:50). That can mislead first-time builders.\n\n3. Several specs cite `D:\\tmp\\840D_wcs\\*.png` as screenshot evidence, but those evidence files are not present under the current WorkOffset docs tree. See [SINUMERIK-840D-BEHAVIOR.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/SINUMERIK-840D-BEHAVIOR.md:5) and [hmi-work-offset-views.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-work-offset-views.md:3). This is an evidence-packaging gap, not necessarily an implementation gap.\n\n4. Some wording says “parser/kernel integration” is implemented, but the current repo has no `nrt/nc_kernel` directory, and static search found only WorkOffset-owned contract tests plus limited parser/HMI mock references. The safer reading is “WorkOffset provides and tests the parser/kernel contract,” not “adjacent parser/kernel modules are integrated.” See [SPEC-011.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/docs/spec/STORIES/STORY-03-external-surfaces/SLICE-01-cli-hmi-and-pipeline-contract/SPEC-011.md:15), [nrt/work_offset/test/README.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/work_offset/test/README.md:12), and [nrt/gcode_parser/src/machine_profile.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/nrt/gcode_parser/src/machine_profile.cpp:29).\n\n**Overclaim Assessment**\nMostly not overclaiming implementation inside `nrt/work_offset`: the main “implemented” claims map to public headers, CMake targets, source files, and test inventory. The overclaim risk is in cross-module wording: “HMI 服务端” and “parser/kernel integration” can read as completed integration in external modules, while the stronger evidence is WorkOffset-side contracts/projections/tests. The docs should phrase those as “provided contract for HMI server/parser/kernel consumers” unless actual downstream wiring is also added.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 16:17:00 +0800</div>
+<pre>三个 reviewer 都完成了，我已经交叉核对过本地证据。最后做收尾：关闭 agent、更新计划和目标状态，然后给你报告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 16:17:09 +0800</div>
+<pre>收尾确认：本地仓库文件没有改动；报告会说明只在 `/tmp` 里做了构建验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-03 16:19:19 +0800</div>
+<pre>**WorkOffset 状态报告**
+
+按 PR 语义重新确认范围：`git diff main...HEAD`。实际变更是 `nrt/work_offset` 新模块 + 根 README / bookshelf / docs/nrt / gitignore 注册项，没有改 HMI/tooling 代码。工作区保持干净；我没有修改本地文件。验证构建只写到了 `/tmp/metanc_work_offset_report_build_vcpkg`。
+
+结论：`work_offset` 已经是一个较完整的 phase-1 / core baseline，但还不能算“验收完成”。主要原因是我实际跑了完整 CTest，结果 `31/32` 通过，SQLite 持久化 round-trip 测试失败。
+
+已实现能力：
+- Siemens 840D WorkOffset 快照校验、导入、导出。
+- `G54-G57` 和配置启用的 `G505-G599` 可设零偏记录。
+- Active / Overview / Base / Settable / Details 视图投影。
+- 粗调/精调写入与清除；rotation/scale/mirror 稳定拒绝。
+- `G500/G53/G153/SUPA` 抑制语义。
+- parser/kernel normalized block 合同测试。
+- CLI 文件模式。
+- `PersistenceStore`、`StoreBackedWorkOffsetRuntime`、可选 SQLite 后端。
+
+验证结果：
+- `git diff --check -- .gitignore README.md bookshelf.toml docs/nrt/index.md nrt/work_offset`：通过。
+- `python3 .mdbook/lint_docs_policy.py`：通过。
+- CMake configure/build with vcpkg + SQLite：通过。
+- `ctest --test-dir /tmp/metanc_work_offset_report_build_vcpkg --output-on-failure`：失败，`31/32` 通过。
+- 失败测试：`SQLitePersistenceStore.SavesLoadsAndQueriesAuditInRealDatabase`，失败点是 `loaded.snapshot-&gt;snapshot == snapshot` 不成立。
+
+主要问题：
+1. SQLite 后端当前测试不全绿，这是最高优先级。
+2. 验收标准要求 4 个 invalid fixture，但测试目前只实际引用 `duplicate_wcs_id`；`missing_g54`、`active_unknown`、`unknown_top_field` 没被覆盖。
+3. 文档要求 CLI SQLite store target，但测试只覆盖 direct SQLite backend 和 CLI file mode，缺 CLI-through-SQLite 测试。
+4. `WORK_OFFSET_ENABLE_SQLITE` 默认 OFF，presets 也没打开，容易跑出“不含 SQLite”的半套验证。
+5. 代码 reviewer 提出几个潜在行为风险：store-backed import 可能回退 revision、snapshot 保存和 audit append 非原子、CLI 负数参数解析可能失败、`G500` 抑制可能 sticky、profile 的 Siemens range 没严格参与选择/upsert 校验、`clear_scope` 未知值可能被接受。
+6. 文档集成上，WorkOffset 已注册 README/bookshelf/docs/nrt，但 `docs/dev/architecture.md` 的 NRT codemap 还没有 WorkOffset 条目。
+7. 若干文档引用 `D:\tmp\840D_wcs\*.png` 作为证据，但当前 repo 内没看到对应 evidence pack。
+
+完成度判断：代码和文档结构大约是 70-80% 的 phase-1 baseline。核心域模型和大多数声明能力已经落地，但因为完整测试不通过、验收覆盖有缺口，不能称为 ready-to-merge 的完成状态。
+
+本轮目标已完成。用量：`80485` tokens，耗时约 `13` 分钟。</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing the current uncommitted workspace at /home/iaar/workspace/ccmix-wp/metanc_drafts....</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing the current uncommitted workspace at /home/iaar/workspace/ccmix-wp/metanc_drafts....</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb0d3-af95-7f50-ad7a-bcd0c176ddcf</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-10 17:18:43 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/10/rollout-2026-06-10T17-18-43-019eb0d3-af95-7f50-ad7a-bcd0c176ddcf.jsonl</code></div>
+<div><b>Messages</b>: <code>13</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-10 17:18:43 +0800</div>
+<pre>You are reviewing the current uncommitted workspace at /home/iaar/workspace/ccmix-wp/metanc_drafts. Do a read-only targeted review focused only on Chinese reader-facing TP004 content quality and terminology consistency.
+
+Context: Recent uncommitted changes added/adjusted TP004 parameter-system docs, including owner registry/status/value-set binding, reader projections, validation-set pages, and Chinese translations. The user previously complained that the Chinese version missed translations and terminology was confusing. We recently tried to normalize: owner / 所有者, owner token / 所有者 token, Semantic Descriptor / 语义描述符, fixture / 测试夹具, compatibility profile / 兼容配置档.
+
+Your scope:
+- Inspect docs_i18n/zh/src/TP004-parameter-system and, when useful, compare against docs_i18n/en/src/TP004-parameter-system or TP004-parameter-system/book/src.
+- Look for untranslated English prose in reader-facing Chinese pages, inconsistent terminology, confusing direct includes, missing links, or Chinese pages that no longer preserve important structure from the English/source pages.
+- Exclude historical discussion logs unless the issue affects current navigation or reader-facing pages badly; do not rewrite history just for terminology.
+- Do not edit files. Do not revert anything.
+
+Please run lightweight commands as needed. Return findings first, ordered by severity, with relative file paths and line numbers. If no issues, say that explicitly and list residual risks/checks you performed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-10 17:19:09 +0800</div>
+<pre>Using `superpowers:using-superpowers` as required by the session rules. I’ll keep this read-only and focus on reader-facing Chinese TP004 pages, comparing English/source only where it helps identify drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-10 17:19:31 +0800</div>
+<pre>I have the changed-file map now. Next I’m scanning the Chinese TP004 tree for reader-visible English prose and then comparing the highest-signal pages against the English/source versions for structure loss or terminology drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-10 17:19:55 +0800</div>
+<pre>The broad scans turned up several candidate areas, including newly added owner/status pages and validation/access definition pages. I’m narrowing those to reader-facing problems rather than expected code/YAML tokens or historical discussion artifacts.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-10 17:20:32 +0800</div>
+<pre>A likely terminology issue is already visible: the newer normalization says “所有者”, but some Chinese reader pages still use “Owner 注册表” and “归属方”. I’m checking whether that is isolated or part of a broader consistency problem before I rank it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-10 17:20:53 +0800</div>
+<pre>I’m checking page-by-page structure now, not just keyword hits. The main target is whether a Chinese reader can follow the current TP004 pages without jumping through English labels or ambiguous translations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-10 17:21:13 +0800</div>
+<pre>One important pattern emerged: several Chinese “reader” pages are still naked mdBook includes. I’m checking whether those are approved registry projections with a Chinese lead-in or just raw source includes, because that changes severity.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-10 17:21:38 +0800</div>
+<pre>The include-only concern is limited: the registry pages I saw do have short Chinese intros before canonical includes, which matches the prior projection rule. I’m now comparing the newer owner/status/validation pages for missed structural content and link quality.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-10 17:22:49 +0800</div>
+<pre>The owner registry also has cross-topic reader links, so I’m verifying whether those targets exist in the Chinese tree. Broken cross-topic links are in scope because they affect the current reader page.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-10 17:22:59 +0800</div>
+<pre>Those cross-topic links resolve. I’m doing one more structured scan for English sentences outside code fences, which helps separate legitimate tokens from prose that a Chinese reader will actually see.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-10 17:23:19 +0800</div>
+<pre>I found one structural drift beyond terminology: the Chinese validation case schema appears to omit a value-set binding paragraph that exists in the English/source page. I’m verifying the source copy so I can cite the correct contrast without overstating it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-10 17:23:54 +0800</div>
+<pre>I’m doing a final lightweight link check over the current Chinese TP004 Markdown files. This is read-only and should catch any new reader-facing `.md` links that point to pages not present in the Chinese book tree.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-10 17:24:52 +0800</div>
+<pre>**Findings**
+
+1. Medium - `docs_i18n/zh/src/TP004-parameter-system/validation-sets/case-schema.md:32`
+   The Chinese page omits the enum/value-set binding paragraph that exists in `docs_i18n/en/src/TP004-parameter-system/validation-sets/case-schema.md:38`. Readers lose the rule that `expect_error.stage` and `expect_error.code` resolve through schema-field bindings to governed value sets.
+
+2. Medium - `docs_i18n/zh/src/TP004-parameter-system/access-definitions/metanc/index.md:10`
+   The MetaNC native access page still has core table labels and prose in English: `Descriptor`, `Owner`, `Dispatch`, `MetaNC owner module`, `MetaNC owner API`, plus `owner-backed target` at line 82. These are reader-facing design terms and should follow the normalized Chinese/bilingual style.
+
+3. Low - `docs_i18n/zh/src/TP004-parameter-system/access-definitions/index.md:161`
+   Owner terminology is inconsistent: this page uses `owner / 归属方` at lines 161 and 171, while the current normalization is `owner / 所有者`. The same visible inconsistency appears in nav/title labels such as `docs_i18n/zh/src/SUMMARY.md:34`, `docs_i18n/zh/src/TP004-parameter-system/index.md:13`, and `docs_i18n/zh/src/TP004-parameter-system/owner-registry.md:1` as `Owner 注册表`.
+
+**Checks Performed**
+
+Read-only review only. I inspected the changed Chinese TP004 files, compared selected pages against English/source pages, scanned for include-only Chinese pages, untranslated markers, mixed English terminology, and ran a lightweight Markdown link existence check. No missing `.md` links were found in the Chinese TP004 tree. Historical discussion logs/assets produced some English hits, but I did not treat them as findings unless they affected current reader-facing navigation/pages.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:186-187|note=[reader-facing Chinese docs preference]
+MEMORY.md:201-203|note=[TP004 Chinese projection and validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

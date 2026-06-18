@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are reviewing OpenSpec/task/validation closure for change document-frame-axis-component-binding...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>You are reviewing OpenSpec/task/validation closure for change document-frame-axis-component-binding...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ed8b6-0a0b-7752-898a-85ea54853fb8</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-18 11:11:09 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/18/rollout-2026-06-18T11-11-09-019ed8b6-0a0b-7752-898a-85ea54853fb8.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-18 11:11:09 +0800</div>
+<pre>You are reviewing OpenSpec/task/validation closure for change document-frame-axis-component-binding-evidence in /home/iaar/workspace/ccmix-wp/metanc_drafts. Scope: inspect openspec/changes/document-frame-axis-component-binding-evidence, task checkboxes, and current git diff. Check whether the spec/design/tasks accurately match implementation, whether tests/checks are sufficient, and whether there are archive/validation concerns. Return findings with file/line references if any, or say no blocking issues. Do not modify files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-18 11:11:21 +0800</div>
+<pre>I’ll treat this as a code-review style closure check: first confirm the relevant OpenSpec artifacts and current diff, then compare task claims against implementation and validation evidence without editing anything.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-18 11:11:48 +0800</div>
+<pre>The change is entirely untracked OpenSpec plus five modified docs/checker files. I’m reading the proposal/design/tasks/spec alongside the actual diff now so the review can focus on claim-to-code mismatches rather than style.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-18 11:12:11 +0800</div>
+<pre>The declared scope is narrow and the implementation mostly matches that narrow story, but there are a few places where “published/root/English projections” and validation evidence need closer checking because they are claimed in tasks without appearing as direct source edits.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-18 11:12:32 +0800</div>
+<pre>I’m going to run only read-only validators now: OpenSpec validation, the documented checker/i18n tests, and whitespace diff check. I’m intentionally not running the docs rebuild because that would modify generated output.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-18 11:13:08 +0800</div>
+<pre>The validators all pass in the current workspace, including the published-HTML i18n check. I’m doing one last pass over the projection/include paths and archive shape, because those are the places most likely to create closure surprises after the local checks are green.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-18 11:13:56 +0800</div>
+<pre>No blocking issues found.
+
+The OpenSpec artifacts match the implementation: the spec requires candidate `frame_axis_component` evidence, explicit non-promotion of `zero_offset -&gt; frame_axis_component`, and a roadmap update; the diff implements those in `PARAMETER-INSTANCE-BINDINGS.md`, the status page, and the Chinese projection. The design’s non-goals also hold: no real `zero_offset.*` descriptor, no `owner_scope_bindings` promotion, and no runtime/API/schema expansion.
+
+Validation closure looks acceptable. I ran:
+
+- `openspec validate document-frame-axis-component-binding-evidence --strict`
+- `python3 -m unittest discover -s tools/tests` (`84` tests)
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `git diff --check`
+
+All passed. I did not run `./tools/build_docs_html.sh` during review because the request was not to modify files; the published-HTML check already passes against the current generated trees.
+
+Archive concern: none blocking. The active change is complete in `openspec list --json` with `15/15` tasks complete, so it appears archive-ready from validation/task state, assuming the intended ignored generated HTML state is kept or rebuilt before final packaging.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:539-542|note=[used TP004 slice boundary and next-slice context]
+MEMORY.md:562-564|note=[used validation and i18n closure risk reminders]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

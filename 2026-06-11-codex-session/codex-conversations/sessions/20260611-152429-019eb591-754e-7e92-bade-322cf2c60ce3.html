@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是文档审查 agent 4，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/a...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是文档审查 agent 4，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/a...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eb591-754e-7e92-bade-322cf2c60ce3</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-11 15:24:29 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/11/rollout-2026-06-11T15-24-29-019eb591-754e-7e92-bade-322cf2c60ce3.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:24:29 +0800</div>
+<pre>你是文档审查 agent 4，目标是审查 `/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md` 与 TP004 后续设计工作的连接。
+
+上下文：TP004 是 parameter-system/runtime access。此文件应帮助讨论典型用例、访问边界、模块 owner/access context/persistence/lifetime 等问题，但不能直接变成实现规范。用户觉得内容“差点意思”。
+
+请只读相关文件，不要修改文件。可参考 TP004 access-definitions README、DESIGN-BASELINE、owner/value-set 文档，但重点仍是 REFERENCE-NOTES.md。
+
+输出要求：
+- 3-6 个“对后续设计帮助不足或误导”的问题，按严重度排序。
+- 每个问题给具体章节/行号。
+- 每个问题给一句改进建议。
+- 最后给你建议的下一步讨论/文档切片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:25:02 +0800</div>
+<pre>我会按 `openspec-explore` 的只读审查方式处理：先补齐 TP004 access-definitions 的上下文，再把问题限定在 `REFERENCE-NOTES.md` 对后续设计讨论的帮助度上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 15:25:17 +0800</div>
+<pre>目前看到 TP004 有一个已完成的 value-set 变更，且 access-definitions 下正好有 Siemens 参考页和 MetaNC 占位页。我接下来会按行号读目标文件和少量基准/术语文件，避免把审查扩散成实现设计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 15:25:45 +0800</div>
+<pre>目标文件的主线目前偏向 `DEF/LUD/PUD/GUD` 概念整理，而 access-definitions README 的第一版切片是 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`。我会再读这三个访问族和 owner/value-set 入口，确认“差点意思”具体落在连接缺口而不是资料多少。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 15:26:03 +0800</div>
+<pre>owner registry 显示 `tool_management` 已有责任边界，而 `motion.axis`、`zero_offset` 仍是 unassigned token；这会影响 REFERENCE-NOTES 对 owner/access context/persistence 的讨论价值。最后我会把问题按“会误导设计决策”的风险排序。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-11 15:27:18 +0800</div>
+<pre>**问题**
+
+1. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:102) `Current Concept Groups` 说第一批只限 Siemens 用户变量，但当前 access first slice 实际是 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`，这些只在 `Open Verification List` 的 390-392 行被动列出。
+改进建议：增加一个“active access families bridge”表，把三个当前访问族逐项连到 source status、owner、access context、persistence/lifetime 设计问题。
+
+2. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:251) `GUD DEF Declaration Statement Attributes` 和 295-320 行 SQL-like analogy 过强，容易把 Siemens `DEF` 属性误读成 MetaNC schema/DSL 雏形。
+改进建议：把 SQL 类比改成“阅读提示 + 设计问题”，避免出现看起来像目标字段的 `SCOPE/TYPE/UNIT/...` 结构。
+
+3. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:172) `MetaNC Design Note` 提到 runtime/persistence 边界，337-343 行又提到 access context/owner，但没有连到 TP004 已治理的 Owner、Access Context、Activation Timing、Persistence Policy、Scoped Value Instance 等术语和值集合。
+改进建议：补一个非规范性的“MetaNC decision surface”表：Siemens clue -&gt; MetaNC concept/value-set -&gt; 仍需谁决策 -&gt; 不在本页决定什么。
+
+4. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:143) 最小示例主要证明 LUD/PUD/GUD 可见性和 `DEF` 语法，缺少 HMI/NC/main-run/diagnostics/restricted-service 等典型访问边界场景。
+改进建议：为当前三个访问族各加 1-2 个“discussion scenario”，只提出读写、上下文、owner、运行状态问题，不写成验证期望。
+
+5. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:378) `Open Verification List` 只有 required evidence，没有说明它阻塞哪个后续设计判断；这和 45-58 行 growth rule 的“why needed now”脱节。
+改进建议：给待核验项增加 `blocks / next artifact / promotion condition`，优先处理 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`。
+
+**建议下一步切片**
+
+做一个只服务讨论的 `REFERENCE-NOTES` 补充切片：`Active Access Family Bridge`。范围限定为 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 三行矩阵，每行只回答：外部证据状态、典型用例、MetaNC owner 问题、access context 问题、persistence/lifetime 问题、当前不决定什么。这样能连接后续设计，但不会变成实现规范。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:251-265|note=[used TP004 MetaNC-owned parameter-system design preference]
+MEMORY.md:170-203|note=[used TP004 value-set governance and docs context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6d14-a2f1-7d62-82ef-4cc7879838d9
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

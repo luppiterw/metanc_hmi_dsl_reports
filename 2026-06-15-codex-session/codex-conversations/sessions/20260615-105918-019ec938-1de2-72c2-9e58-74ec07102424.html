@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>只读分析任务。背景：用户要明天开会严肃定后续开发计划，目标是 2026-08-30 出一个能跑版本：基础参数配置（拓扑写死）、连续跑完叶轮加工全部 6 道工序、连续不断跑一天以上、采集数据做验证。请...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>只读分析任务。背景：用户要明天开会严肃定后续开发计划，目标是 2026-08-30 出一个能跑版本：基础参数配置（拓扑写死）、连续跑完叶轮加工全部 6 道工序、连续不断跑一天以上、采集数据做验证。请...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ec938-1de2-72c2-9e58-74ec07102424</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-15 10:59:18 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/15/rollout-2026-06-15T10-59-18-019ec938-1de2-72c2-9e58-74ec07102424.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-15 10:59:18 +0800</div>
+<pre>只读分析任务。背景：用户要明天开会严肃定后续开发计划，目标是 2026-08-30 出一个能跑版本：基础参数配置（拓扑写死）、连续跑完叶轮加工全部 6 道工序、连续不断跑一天以上、采集数据做验证。请在 /home/iaar/workspace/ccmix-wp/MetaNC 中梳理当前仓库状态和与目标相关的实现模块。
+
+要求：
+1. 先查看 git remote/branch/log/status，注意不要修改文件，不要 fetch（父线程已经在 fetch）。
+2. 梳理与目标相关的模块：rt、rt-sdk、rt-api-contract、nrt/hmi、nrt/work_offset、nrt/tooling_management、nrt/gcode_parser、nrt/program_engine、nrt/dev 等；重点说明每个模块当前职责、对 8.30 目标的作用、明显缺口/风险。
+3. 检查 docs/README/CMake/test 线索，给出可以引用的文件路径。
+4. 输出中文简洁报告：remote/branch 状态、模块地图、当前能力、缺口、建议的集成主线。不要改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-15 10:59:29 +0800</div>
+<pre>我会按只读方式做仓库勘察：先确认当前分支/remote/log/status，再沿目标相关模块、文档和测试入口梳理证据。不会执行 fetch 或写文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-15 11:00:50 +0800</div>
+<pre>我用了当前记忆快速定位了几个容易混淆的边界：HMI/tooling、work_offset、PLC/rt-sdk 之前都有讨论痕迹，但这次会以 `/home/iaar/workspace/ccmix-wp/MetaNC` 当前 checkout 为准重新核对。下一步先取 git 状态和目录入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-15 11:01:49 +0800</div>
+<pre>当前 checkout 在 `feat/hmi-work-offset-table`，HEAD 与 `origin/main/main` 同为 `3b1a3858`，但工作区已有 HMI 相关未提交改动和 `nrt/hmi/docs/project/work_offset/` 未跟踪目录。我会把这些视为现状输入，不做修改，也不会把它们当作已合入主线能力。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-15 11:02:31 +0800</div>
+<pre>初步目录显示 `rt`/`rt-sdk`/`rt-api-contract` 已在当前主线附近，`nrt/program_engine` 主要是规格文档，`nrt/gcode_parser` 和 tooling/work_offset 是代码化模块。现在我转向关键 README、CMake 和测试清单，避免被全文搜索的噪声淹没。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-15 11:04:10 +0800</div>
+<pre>从文件清单看，8.30 目标需要的“连续加工链路”还不是单个模块能闭合：RT 有自动/运动/模拟核心，SDK 有连接和自动执行示例，G-code parser 有执行契约，HMI 有程序工作区/运行时 mock，program_engine 目前偏设计规格。我会再读各模块入口文件来确认职责和缺口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-15 11:05:30 +0800</div>
+<pre>`nrt/dev/check.sh` 目前只覆盖 `gcode_parser`，说明仓库还没有一个统一的 NRT 集成验证脚本；各模块有自己的 CMake/测试入口。这对“连续跑一天”的系统级验收是明显缺口，我会在报告里单独列出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-15 11:06:01 +0800</div>
+<pre>我还需要补一轮“能不能串成 6 道工序”的证据：RT 自动执行、SDK automatic 示例、parser 执行流，以及 HMI 的 active-slot/prepare_execute 目前如何分层。读完这批就收敛成会议用中文报告。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-15 11:07:20 +0800</div>
+<pre>**只读结论**
+
+已按只读方式检查 `/home/iaar/workspace/ccmix-wp/MetaNC`，未 `fetch`、未改文件、未运行构建测试。
+
+**Git 状态**
+
+- remote：`origin git@github.com:OptimalCNC/MetaNC.git`
+- 当前分支：`feat/hmi-work-offset-table`
+- HEAD：`3b1a3858 feat(nrt/work_offset): add WorkOffset domain module`
+- HEAD 同时是 `origin/main` / `main`
+- 本地工作区不干净：已有 HMI 相关未提交修改，且有未跟踪目录 `nrt/hmi/docs/project/work_offset/`
+- 相关远端分支：`origin/feat/rt-base`、`origin/feat/plc`、`origin/feat/gcode_parser`、`origin/feat/draft-program-engine`、`origin/feat/tooling_management`、`origin/feat/hmi`
+
+**模块地图**
+
+| 模块 | 当前职责 | 对 2026-08-30 目标的作用 | 缺口/风险 |
+|---|---|---|---|
+| `rt/` | 实时控制核心、Orocos 集成、仿真部署、运动/轴组/自动执行 | 最终“连续跑”的实时执行端；已有 `XYZAC + SP0` 仿真、自动执行、轨迹缓冲设计 | 自动执行仍偏切片化；长轨迹连续补料、6 道工序级调度、24h soak 证据未见闭环 |
+| `rt-sdk/` | 用户态连接 RT 的 SDK，当前生产后端是 OPC UA | NRT/program/HMI 到 RT 的稳定控制入口；已有 quick-start、manual、automatic 示例 | 目前示例是单次手动/自动动作，不是完整 NC 程序执行器；历史本地验证曾有 OPC UA 连接失败风险，需重新端到端确认 |
+| `rt-api-contract/` | RT 与 SDK 共享 wire contract | 必须承载拓扑、模式、自动命令、状态等跨边界契约 | 合同还偏底层命令/状态；加工工艺、程序行、工序、采集数据 schema 不在这里 |
+| `nrt/gcode_parser` | G-code 解析、lowering、ExecutionSession、执行接口 | 把叶轮 6 道工序程序转成规范化运动/换刀/等待等命令 | 需要绑定真实 runtime adapter 到 RT SDK；对目标工艺用到的 G/M/宏/变量覆盖要做程序清单验证 |
+| `nrt/program_engine` | 目前主要是规格文档：长生命周期 NRT daemon、session 模型、HMI 客户端边界 | 应成为“连续跑完程序”的 NRT 编排主线 | 代码实现不足；parser、work_offset、tooling、RT SDK、数据采集尚未形成可运行 daemon |
+| `nrt/hmi` | HMI DSL、Web/QML、server、mock runtime、程序工作区、运行时资源 | 操作员入口：配置、加载程序、prepare_execute、cycle_start、监视状态 | server 仍明确标注 real CNC/PLC/controller-backed adapters pending；当前工作区还有未提交 work_offset HMI 改动 |
+| `nrt/tooling_management` | 刀具真值模型、刀补、刀库、寿命/可用性、SQLite、adapter/CLI | 6 道工序的刀具/刀补/刀库基础数据来源 | HMI 可接 tooling backend，但与程序执行/换刀/RT 的闭环仍需集成；真实服务化/多进程边界未定 |
+| `nrt/work_offset` | 零偏/WCS 真值模型、HMI 视图、SQLite、G54/G500 等管线契约 | 基础参数配置的重要组成，拓扑写死时可先固化 profile/默认快照 | rotation/scale/mirror 最终运动矩阵 ABI、实时侧视图、传输绑定、HMI 页面仍未完全闭合 |
+| `nrt/dev` | 当前只有 `check.sh gcode_parser` | 可作为局部质量入口 | 没有全系统集成/长跑验证入口，8.30 风险较大 |
+
+**当前能力**
+
+- RT 侧已有可构建/测试的 CMake 工程入口：[rt/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/rt/CMakeLists.txt)，CI 使用 `cmake --preset dev` 和 `ctest --preset dev`：[.github/workflows/rt.yml](/home/iaar/workspace/ccmix-wp/MetaNC/.github/workflows/rt.yml)
+- SDK 已有连接、拓扑、手动运动、自动执行示例：[rt-sdk/how-to-guide/automatic_execution.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/how-to-guide/automatic_execution.cpp)，quick-start 文档：[rt-sdk/docs/src/quick-start.md](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/docs/src/quick-start.md)
+- runtime Docker 目标已文档化为默认仿真入口 `optimalcnc/metanc-rt:latest`：[docs/dev/rt-runtime-docker-image.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/rt-runtime-docker-image.md)
+- NRT 包有 colcon CI：[.github/workflows/nrt.yml](/home/iaar/workspace/ccmix-wp/MetaNC/.github/workflows/nrt.yml)
+- G-code parser 有 `ExecutionSession` 公共执行入口：[nrt/gcode_parser/docs/acceptance_reference/gcode_execution_flow_control/api_and_lifecycle.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/gcode_parser/docs/acceptance_reference/gcode_execution_flow_control/api_and_lifecycle.md)
+- tooling/work_offset 已是相对成熟的领域库，带 SQLite 和测试入口：[nrt/tooling_management/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/tooling_management/CMakeLists.txt)、[nrt/work_offset/CMakeLists.txt](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/CMakeLists.txt)
+- HMI server 已有 REST/WebSocket、程序工作区、工具偏置 backend 边界：[nrt/hmi/server/README.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/README.md)
+
+**核心缺口**
+
+1. 没有看到“叶轮 6 道工序”的项目级程序、工艺数据、验收脚本或一键运行链路。
+2. `program_engine` 仍偏规格，不足以承担 8.30 主执行 daemon。
+3. G-code parser 到 RT SDK 的 runtime adapter 是关键缺失：现在 parser 能产生命令，SDK 能发底层命令，但中间未闭合成连续程序执行。
+4. 基础参数配置可先拓扑写死，但需要一个明确 bootstrap 包：轴组/主轴/刀具/刀补/零偏/程序目录/采集项。
+5. “连续不断跑一天以上”目前没有 soak test、数据采集 schema、故障恢复策略和报告产物。
+6. HMI 现有能力适合作操作面板和 mock/server harness，但真实 controller-backed adapter 仍是待办。
+
+**建议集成主线**
+
+主线不要先扩太多功能，建议定一个“可跑版本”纵向闭环：
+
+1. 固定目标机型：`XYZAC + SP0` 或会议指定拓扑，冻结 topology/profile。
+2. 固化基础数据包：`tooling_management` SQLite + `work_offset` SQLite + HMI runtime seed。
+3. 选定叶轮 6 道工序的最小 G-code 子集，先用 `gcode_parser` 跑通过覆盖矩阵。
+4. 实作最小 `program_engine`：读取 HMI active program -&gt; `ExecutionSession` -&gt; RT SDK adapter -&gt; 监视完成/失败。
+5. RT SDK adapter 第一版只支持目标程序需要的命令族：G0/G1、必要 G2/G3/G4、换刀/主轴/进给保持按实际程序裁剪。
+6. 做一个 `integration/impeller_smoke` 脚本：启动 RT runtime Docker、加载基础数据、连续跑 6 道工序、导出日志。
+7. 最后扩成 `soak_24h`：重复运行或长轨迹运行，采集 RT SDK process data、program session events、HMI/server logs、tool/work_offset revisions，输出验证报告。
+
+会议上建议把 8.30 版本定义成“仿真/台架可连续运行并可采集证据”，不要承诺完整生产语义；真正风险在 `program_engine + parser runtime adapter + RT SDK 自动执行长跑` 这条线。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:78-83|note=[used prior work_offset and HMI boundary notes as orientation before current checkout verification]
+MEMORY.md:223-230|note=[used prior PLC and runtime direction notes to avoid conflating runtime implementation with planning docs]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eb545-cef2-7971-8ca7-7d8b3e0a4d49
+019eb5dc-a2e9-7611-8947-35f66ed5a559
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

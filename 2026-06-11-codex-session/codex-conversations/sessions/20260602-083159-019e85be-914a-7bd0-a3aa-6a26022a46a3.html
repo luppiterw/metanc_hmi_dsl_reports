@@ -1,0 +1,5998 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下现在的参数相关的draft情况</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下现在的参数相关的draft情况</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e85be-914a-7bd0-a3aa-6a26022a46a3</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-02 08:31:59 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/02/rollout-2026-06-02T08-31-59-019e85be-914a-7bd0-a3aa-6a26022a46a3.jsonl</code></div>
+<div><b>Messages</b>: <code>276</code></div>
+<div><b>User prompts</b>: <code>60</code></div>
+<div><b>Synthetic events</b>: <code>7</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 07:57:44 +0800</div>
+<pre>看一下现在的参数相关的draft情况</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 07:58:04 +0800</div>
+<pre>我先按 OpenSpec/探索方式看，不会改文件。重点会核对 TP004 参数系统的当前文件、导航、最近 report/session、checker 状态和 git 状态，然后给你一个“现在草稿到哪一步了”的整理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 07:58:24 +0800</div>
+<pre>我已经确认当前在 `main`，本地和 `origin/main` 同步到昨天的 `31bf3ae`。接下来我会看 TP004 的目录、最近的 session/report、导航和当前 OpenSpec 状态，整理成“草稿有哪些、完成到什么程度、下一步该看哪里”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 07:58:45 +0800</div>
+<pre>我会再读一下核心治理文件本身，避免只根据昨天的 report 总结。重点看 `DESIGN-BASELINE`、`VALUE-SETS`、`SCHEMA-FIELDS`、`OWNER-REGISTRY`、`STATUS-USAGE`、access definitions 和 validation sets 的当前内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 07:59:01 +0800</div>
+<pre>目前我看到了核心状态：OpenSpec 变更 `add-parameter-value-set-binding` 标记 complete，TP004 已经有 baseline、terms、status、value sets、owner registry、schema fields、usage index、access definitions 和 validation sets。还要补充确认当前 checker 运行状态和 published docs 是否最新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-11 07:59:39 +0800</div>
+<pre>现在参数相关 draft 的状态是：**TP004 已经从“讨论草稿”进入了一个比较完整的第一版治理基线**，不是零散笔记了。
+
+当前仓库状态：
+
+```text
+branch: main
+HEAD/origin/main: 31bf3ae docs: harden TP004 owner and value-set governance
+working tree: clean
+OpenSpec change: add-parameter-value-set-binding = complete, 52/52 tasks
+```
+
+我刚跑了现状检查：
+
+```text
+python3 -m unittest discover -s tools/tests        # 64 tests OK
+python3 tools/check_parameter_value_sets.py        # passed
+python3 tools/check_docs_i18n_sync.py --require-published-html  # passed
+```
+
+**现在已有内容**
+
+核心源在：
+
+```text
+TP004-parameter-system/openspec/
+```
+
+主要文件：
+
+- `DESIGN-BASELINE.md`：参数系统 / runtime access 的架构基线。
+- `TERMS.md`：术语注册表。
+- `STATUS-USAGE.md`：状态字段如何复用，避免乱造 `ready`、`implemented`、`api-aligned` 这类状态。
+- `VALUE-SETS.md`：受治理 value set/value item 定义。
+- `OWNER-REGISTRY.md`：`VS010023 / owner_reference` 的 owner 边界注册表。
+- `SCHEMA-FIELDS.md`：schema 字段绑定到 value set。
+- `USAGE-INDEX.generated.md`：生成型反向索引。
+- `access-definitions/`：访问结构化定义。
+- `validation-sets/`：验证集合和 case schema。
+
+**现在已经基本定下来的部分**
+
+- `value_set_id` 是 value set 的稳定身份，比如 `VS070007`。
+- value item 有独立 `value_id`，例如 `VS010023.I001`。
+- `value_key` / `token` 是可读和使用层面的名字，不是稳定身份。
+- `owner` 不再另搞 `owner_id`、`owner_token`、`owner_value_id`；owner token 本身由 `VS010023 / owner_reference` 治理。
+- owner 边界通过 `OWNER-REGISTRY.md` 解释，包括：
+  - `primary_topic`
+  - `referenced_by_topics`
+  - `responsibility`
+  - `non_responsibility`
+  - `evidence`
+- status 不再乱扩展；先复用已有 term/value/value-set/access-form 状态体系。
+
+**当前 first slice 覆盖**
+
+现在已经有三类 Siemens-style 访问族作为第一批样例：
+
+```text
+$TC_DP3[tool,edge]
+$MA_MAX_AX_VELO[axis_ref]
+$P_UIFR[frame,axis,component]
+```
+
+它们用于证明几件事：
+
+- 原生表达和 MetaNC 语义描述符分离。
+- access definition 能描述 shape、descriptor、access contract、dispatch。
+- validation set 能验证 parse / match / shape / descriptor / access / dispatch。
+- owner、dispatch target、profile-owned selector 等都能绑定到 value set。
+
+**发布状态**
+
+读者页面也已经生成：
+
+```text
+docs_html/en/TP004-parameter-system/
+docs_html/zh/TP004-parameter-system/
+TP004-parameter-system/book/html/
+book/html/TP004-parameter-system/
+```
+
+中英文都有这些页面：
+
+```text
+index.html
+status-usage.html
+value-sets.html
+owner-registry.html
+schema-fields.html
+usage-index.html
+```
+
+**最近一次 session/report**
+
+最新记录在：
+
+```text
+TP004-parameter-system/book/src/discussions/2026-06-10-parameter-owner-value-set-governance/session.md
+TP004-parameter-system/book/src/discussions/2026-06-10-parameter-owner-value-set-governance/report.md
+```
+
+这次主要记录了 owner/value-set/status/i18n/checker 的收口。
+
+**我的判断**
+
+参数系统 draft 当前完成度大概可以理解为：
+
+```text
+概念基线       已建立
+术语治理       已建立
+value set 机制 已建立
+schema 绑定    已建立
+owner 注册表   第一版建立
+访问定义样例   第一批建立
+验证集合       第一批建立
+发布页面       已生成并通过检查
+实现接口/API   还没有进入详细实现设计
+```
+
+下一步如果继续讨论，我建议不要再继续泛泛补术语，而是进入 **“访问定义如何落到真实模块/API”** 这一层：比如 `$TC_DP3` 到 TP002 tooling management 的真实 API 怎么 dispatch，`motion.axis` 和 `zero_offset` 这些 unassigned owner token 什么时候注册，以及 parameter runtime access 的读写权限/缓存/生效时机如何连接实现。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:170-203|note=[TP004 value-set hardening workflow and validation context]
+MEMORY.md:253-274|note=[parameter-system design direction and glossary boundary guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:26:36 +0800</div>
+<pre>除了我们早前确定的term/ value/value set/owner/status这些定义，目前还有必要的讨论定义吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:26:56 +0800</div>
+<pre>我会把这个当成继续讨论，不改文件。先快速对照当前 TP004 的术语/value-set/schema/owner 文档，判断哪些“定义”已经够用，哪些还应该补成独立概念。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 08:27:29 +0800</div>
+<pre>有，但我建议分两类看：**治理类概念先不要再扩张太多**，但**进入实现前还需要补几组运行语义定义**。
+
+已经比较够用的治理类：
+
+| 类别 | 当前状态 |
+|---|---|
+| term / term_id | 已有 |
+| value / value_id | 已有 |
+| value set / value_set_id | 已有 |
+| schema field binding | 已有，但还可以继续细化用法 |
+| owner / owner_reference | 已有第一版 |
+| status / openness | 已有复用规则 |
+| usage index | 已有生成型反向索引 |
+
+接下来真正需要讨论的，不是再造一堆类似概念，而是这些：
+
+| 需要讨论 | 为什么必要 |
+|---|---|
+| Access Definition 的最终结构 | 这是参数、系统变量、领域表格、runtime state 进入实现的核心契约。 |
+| Access Contract / Access Policy | 要明确谁能读写、在哪些 machine state 下能写、何时生效。 |
+| Dispatch Target / Owner API 对齐 | owner 只说明“谁负责”，还没说明“调哪个 API、什么操作语义”。 |
+| Scope / Scoped Instance | machine、channel、axis、tool_edge、frame_axis_component 这些实例关系要更清楚。 |
+| Profile / Machine Configuration 边界 | `compatibility_profile`、`machine_configuration`、`profile_owned` 后面会影响解析和兼容。 |
+| Runtime Value Slot / Realtime Binding | 如果要进入 runtime 实现，需要定义快路径、普通路径、缓存、生效、revision 等。 |
+| Native Expression / Language View | Siemens-style 表达和 MetaNC 原生路径如何共存、互相映射，还需要继续收口。 |
+| Validation Case 语义 | 现在有结构，但后面要明确哪些 case 会变成真实测试，哪些只是文档证据。 |
+
+一句话：**term/value/value set/owner/status 是治理底座，下一步该讨论的是 access definition 到 runtime/owner API 的执行语义。**
+
+我建议下一轮优先讨论这 3 个：
+
+1. **Access Definition 最小 schema 是否冻结**
+   - `native_view`
+   - `shape`
+   - `semantics`
+   - `descriptor_map`
+   - `access_contract`
+   - `dispatch`
+   - `validation`
+
+2. **Owner dispatch 怎么落到真实模块**
+   - 例如 `$TC_DP3[tool,edge]`
+   - owner 是 `tool_management`
+   - dispatch target 是 `cutting_edge_field`
+   - 但真实 TP002 API 还没对齐。
+
+3. **Runtime access 的读写模型**
+   - normal path vs realtime path
+   - read/write/authorize/resolve/dispatch
+   - activation timing / persistence policy / machine-state guard
+
+也就是说，不建议现在继续发明“meta 层定义”；应该开始把这些定义压到真实访问链路上。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:170-203|note=[TP004 value-set binding and docs governance context]
+MEMORY.md:253-274|note=[parameter-system direction and boundary model guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:36:54 +0800</div>
+<pre>你说的治理类概念具体指的是什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:37:12 +0800</div>
+<pre>我这里说的“治理类概念”不是新的功能模块，而是用来约束文档/Schema/枚举/引用不要漂移的一层元定义。我先按 explore 方式把它讲清楚，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 08:37:34 +0800</div>
+<pre>我说的“治理类概念”，指的是**用来管理其它概念、字段、枚举值、引用关系的元规则**，不是参数系统真正执行业务的对象。
+
+简单说：
+
+```text
+业务/运行概念：参数、刀具表、轴、PLC 符号、runtime state
+治理类概念：term、value set、value id、owner registry、status、schema-field binding
+```
+
+它们的作用是防止后续内容多了以后 drift。
+
+**具体包括这些**
+
+| 治理类概念 | 管什么 | 解决什么问题 |
+|---|---|---|
+| `term` / `term_id` | 概念名和定义 | 防止同一个概念换名字后失控，比如 Access Definition / 访问结构化定义。 |
+| `value_set` / `value_set_id` | 一组受治理取值 | 防止 enum 散落在各处，比如 `visibility_level`、`profile_dependency`。 |
+| `value` / `value_id` | value set 里的单个取值 | 防止 `compatibility_profile` 这种值改名后找不到历史引用。 |
+| `schema_field_binding` | 某个 schema 字段绑定哪个 value set | 防止字段自己偷偷写 enum，比如 `semantics.kind` 必须绑定 `access_entry_kind`。 |
+| `owner_reference` / owner registry | owner token 的合法性和边界解释 | 防止 `tool_management`、`plc_runtime` 这种 owner 各处自说自话。 |
+| `status` / `openness` | 成熟度和可扩展规则 | 防止随便发明 `ready`、`implemented`、`api-aligned`。 |
+| `usage index` | 反向索引 | 防止 term/value/schema field 被引用后无法追踪。 |
+
+**它们不是在描述“机器怎么运行”**
+
+比如：
+
+```yaml
+semantics:
+  kind: domain_table_field
+  scope: tool_edge
+  sharing_model: shared_owner
+  visibility: diagnostic
+```
+
+这里真正的业务语义是“这是一个刀具刀刃字段”。
+而治理类概念负责回答：
+
+```text
+kind 允许哪些值？
+domain_table_field 这个值是谁定义的？
+scope 字段绑定哪个 value set？
+tool_edge 这个值以后改名怎么办？
+shared_owner 是不是正式值？
+这些值在哪里被用了？
+```
+
+所以治理类概念更像“规则、索引、身份证系统”。
+
+**为什么我说不要继续扩太多**
+
+因为现在这层已经够支撑第一版了。再继续往这里加概念，容易变成“为了管理而管理”。
+
+下一步更需要讨论的是运行语义类概念，例如：
+
+```text
+Access Definition 到底怎么执行
+Access Contract 怎么授权
+Dispatch 怎么调用 owner API
+Runtime Value Slot 怎么读写
+Scope Instance 怎么绑定 machine/channel/axis/tool
+```
+
+这些才是参数系统真正落实现时会卡住的部分。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:45:59 +0800</div>
+<pre>所以我们之前几天的概念元定义基本差不多了，下面应该从元定义(类似于token）到grammar的层级是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 08:46:15 +0800</div>
+<pre>是的，大方向就是这样：
+
+```text
+元定义 / 治理层
+  term
+  value set
+  value
+  owner
+  status
+  schema-field binding
+        ↓
+结构语法 / grammar 层
+  access definition grammar
+  native expression grammar
+  schema shape
+  validation case shape
+        ↓
+语义解析层
+  descriptor_map
+  scope resolution
+  profile resolution
+  owner dispatch
+        ↓
+运行执行层
+  access policy
+  runtime value slot
+  realtime binding
+  owner API
+```
+
+但我会稍微修正一下：**下一步不是直接做通用 grammar，而是先做“Access Definition Grammar / 访问定义语法”这层。**
+
+因为现在我们已经定义了：
+
+```text
+哪些 token 合法
+哪些 enum/value set 合法
+字段怎么绑定
+owner 怎么解释
+status 怎么用
+```
+
+但还没充分定义：
+
+```text
+一个 access definition 文件到底长什么样
+native_view / shape / semantics / descriptor_map / access_contract / dispatch 各自怎么组合
+哪些字段必填
+哪些字段互斥
+哪些字段只是说明
+哪些字段未来会变成机器 schema
+```
+
+所以顺序我建议是：
+
+1. **Access Definition Grammar**
+   - 先定义我们自己的结构描述语法。
+   - 不是 Siemens 语法，而是 MetaNC 用来描述访问族的 YAML/Markdown schema。
+
+2. **Native Expression Grammar**
+   - 再定义 `$TC_DP3[tool,edge]`、`$MA_...` 这类外部表达如何 parse。
+   - Siemens-style 只是其中一个 native view。
+
+3. **Descriptor / Resolution Grammar**
+   - 定义 parse 后如何变成 MetaNC semantic descriptor。
+   - 例如 `tool=10, edge=1, field=DP3, owner=tool_management`。
+
+4. **Validation Grammar**
+   - 定义 valid/invalid/access/dispatch case 的结构。
+   - 后续可以直接变成测试。
+
+一句话：**元定义层已经基本成型，下一层应该做 access-definition grammar，而不是马上做 PLC/Siemens 的完整语言 grammar。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:50:52 +0800</div>
+<pre>类似于词法？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 08:51:09 +0800</div>
+<pre>有点像，但不完全等同。
+
+你现在说的这层更像：
+
+```text
+元定义层 ≈ 词表 / 类型系统 / 符号表
+grammar 层 ≈ 语法结构
+parser 层 ≈ 解析器
+semantic layer ≈ 语义分析
+runtime layer ≈ 执行
+```
+
+如果类比编译器：
+
+| 我们现在的东西 | 编译器类比 |
+|---|---|
+| `term` | 语言规范里的概念定义 |
+| `value_set` | token category / enum domain |
+| `value` / `token` | 具体 token 或关键字 |
+| `schema_field_binding` | 某个语法字段允许哪些 token |
+| `owner_reference` | 符号表里的外部模块引用 |
+| `status` | 规范生命周期标记，不是语言 token |
+| `usage_index` | cross-reference index |
+
+所以它**有一部分像词法层**，比如：
+
+```text
+kind 可以是 parameter / domain_table_field / signal
+visibility 可以是 public / diagnostic / private
+profile_dependency 可以是 none / compatibility_profile / machine_configuration
+```
+
+这些确实像“受控 token”。
+
+但它又比词法更高一层，因为它还定义：
+
+```text
+这个 token 属于哪个 value set
+这个 value set 绑定到哪个 schema field
+这个 value 有没有稳定 value_id
+这个 value 是否 formal
+这个 token 被哪些文件使用
+```
+
+这不是传统 lexer 做的事，更像：
+
+```text
+受治理词表 + schema 元模型 + 引用索引
+```
+
+真正的“词法”会在下一层，比如：
+
+```text
+$TC_DP3[10,1]
+```
+
+词法可能拆成：
+
+```text
+DOLLAR        $
+IDENT         TC_DP3
+LBRACKET      [
+INTEGER       10
+COMMA         ,
+INTEGER       1
+RBRACKET      ]
+```
+
+然后 grammar 层再说：
+
+```text
+native_expression =
+  &quot;$&quot; family &quot;_&quot; field &quot;[&quot; index_list &quot;]&quot;
+```
+
+所以准确说：
+
+**我们前几天做的不是 lexer，而是“受治理 token/enum/术语的元定义层”；下一步才会进入 grammar/lexer 能直接用的语言结构层。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:52:44 +0800</div>
+<pre>我们的参数系统最多拆解到模块访问层，即具体的参数读写可能是通过哪些形式去访问吧；至于你说的这些，本质上还是语法结构吧</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 08:53:05 +0800</div>
+<pre>对，你这个边界判断是对的。
+
+TP004 参数系统不应该一路拆到“真正运行时执行器怎么调度、PLC 怎么执行、运动控制怎么落地”。它最多应该拆到：
+
+```text
+某个外部/内部访问形式
+  → 被解析成哪个访问族
+  → 绑定到哪个语义对象
+  → 由哪个 owner/module 负责
+  → 允许哪些 read/write/dispatch 形式
+  → 需要什么上下文和权限
+```
+
+也就是你说的 **模块访问层**。
+
+我前面说的 `runtime value slot / realtime binding / owner API`，严格说不应该在 TP004 里深入展开，只能作为边界引用或接口要求。否则 TP004 会膨胀成 runtime 实现设计。
+
+更准确的分层应该是：
+
+```text
+1. 治理层
+   term / value set / owner / status / schema binding
+
+2. 访问描述语法层
+   access definition 的结构
+   native expression 的结构
+   validation case 的结构
+
+3. 模块访问层
+   这个访问最终归哪个 owner
+   支持 read/write/metadata/dispatch 哪些操作
+   需要什么 access context
+   需要什么 profile / machine configuration
+   出错时返回什么 diagnostic stage/code
+
+4. 模块内部实现层
+   TP002 tooling_management 怎么存刀具
+   TP003 PLC runtime 怎么维护符号
+   motion 怎么管理轴参数
+   zero_offset 怎么落表
+```
+
+TP004 应该止步于第 3 层，第 4 层只做 evidence / owner boundary / gap 引用。
+
+所以这里要改一下我们后续讨论的重心：
+
+**不是讨论 runtime 执行语义，而是讨论 access definition grammar + module access contract。**
+
+可以理解为：
+
+```text
+参数系统负责说明“怎么表达、怎么解析、怎么路由、谁负责、允许什么访问”；
+具体模块负责说明“收到访问后内部怎么实现”。
+```
+
+例如 `$TC_DP3[10,1]`：
+
+```text
+TP004 负责：
+- 这是 Siemens-style native expression
+- shape 是 tool, edge 两个 index
+- semantic descriptor 是 tool=10, edge=1, field=DP3
+- owner 是 tool_management
+- dispatch target 是 cutting_edge_field
+- read/write 需要哪些 context/guard
+- 失败时诊断是 parse/match/shape/descriptor/access/dispatch 哪一层
+
+TP002 负责：
+- tool_management 里 cutting_edge_field 具体怎么读写
+- tool snapshot 怎么存
+- edge offset 数据结构是什么
+- 是否已有真实 API
+```
+
+所以你说“本质上还是语法结构”基本对，但要补一句：
+
+**它不只是字符串 grammar，而是“访问描述语法”：包括表达式结构、schema 结构、语义映射结构和模块访问契约结构。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:55:39 +0800</div>
+<pre>约等于grammar+拓扑结构对吧</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 08:55:52 +0800</div>
+<pre>对，比较准确。
+
+TP004 下一层可以理解成：
+
+```text
+grammar + topology
+```
+
+但这里的 grammar 不是只指 `$TC_DP3[10,1]` 这种字符串语法，而是更宽一点：
+
+```text
+1. 表达式 grammar
+   $TC_DP3[tool,edge]
+   $MA_MAX_AX_VELO[axis_ref]
+   tool/{tool}/edge/{edge}/dp3
+
+2. 定义文件 grammar
+   native_view
+   shape
+   semantics
+   descriptor_map
+   access_contract
+   dispatch
+   validation
+
+3. 验证用例 grammar
+   valid
+   invalid
+   access
+   dispatch
+   expect
+   expect_error
+```
+
+topology 则是说明它们之间怎么连：
+
+```text
+native expression
+   ↓ parse / match
+access family
+   ↓ shape
+descriptor
+   ↓ owner + target
+module access contract
+   ↓
+owner module
+```
+
+也就是：
+
+```text
+表达长什么样  = grammar
+谁连到谁      = topology
+哪里负责      = ownership topology
+哪些路径合法  = access topology
+```
+
+一个例子：
+
+```text
+$TC_DP3[10,1]
+   ↓
+family: siemens.tool.dp3
+   ↓
+shape: tool:int, edge:int
+   ↓
+descriptor: tool=10, edge=1, field=DP3
+   ↓
+owner: tool_management
+   ↓
+dispatch_target: cutting_edge_field
+```
+
+所以更完整地说：
+
+**TP004 的下一层不是“运行时实现”，而是“访问描述 grammar + 模块访问 topology”。**
+
+这个说法我觉得可以作为下一阶段标题。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:56:10 +0800</div>
+<pre>你确定我这种描述合适吗，没问题？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:56:22 +0800</div>
+<pre>我会按 explore 口径把这个命名本身校准一下：核心不是挑词，而是确认这个词能不能准确约束后续文档边界，不把 TP004 拉到运行时实现里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 08:56:42 +0800</div>
+<pre>你的描述**大方向没问题**，但我建议不要正式写成“grammar + topology”这么短，因为它容易有两个歧义：
+
+1. **grammar 容易被理解成纯字符串语法**
+   - 比如只是在说 `$TC_DP3[10,1]` 怎么 parse。
+   - 但我们实际还包括 access definition 文件结构、validation case 结构、schema shape。
+
+2. **topology 容易被理解成系统部署拓扑或运行时架构**
+   - 比如模块怎么部署、线程怎么跑、runtime 怎么调度。
+   - 但我们这里实际说的是“访问关系拓扑”：表达式、语义对象、owner、dispatch target、module boundary 之间怎么连。
+
+所以作为口头理解：
+
+```text
+约等于 grammar + topology
+```
+
+可以。
+
+但作为正式文档标题，我建议写得更准确一点：
+
+```text
+Access Description Grammar + Module Access Topology
+访问描述语法 + 模块访问拓扑
+```
+
+或者更稳一点：
+
+```text
+Access Definition Structure and Module Binding
+访问定义结构与模块绑定
+```
+
+我更推荐第二个，原因是它不容易被误解成我们要做编译器 grammar，也不容易被误解成 runtime topology。
+
+可以这样定义：
+
+```text
+TP004 下一阶段关注：
+访问定义结构与模块绑定。
+
+它描述：
+- 一个访问形式如何被结构化描述；
+- 原生表达如何映射到 MetaNC 语义对象；
+- 访问族如何绑定 owner；
+- owner 如何暴露模块访问能力；
+- read/write/metadata/dispatch 的边界在哪里；
+- 哪些语义属于 TP004，哪些下沉到 TP002/TP003/motion/zero_offset 等模块。
+```
+
+如果你想保留你说的表达，可以写成：
+
+```text
+非正式理解：grammar + topology。
+正式命名：Access Definition Structure and Module Binding。
+```
+
+这个我觉得最稳。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 08:56:43 +0800</div>
+<pre>你开几个agent审视一下我们的沟通定义，我担心有些描述不准确</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:57:08 +0800</div>
+<pre>我会用两个技能：`openspec-explore` 用来保持这是定义校准而不是实现，`dispatching-parallel-agents` 用来开多个独立审查视角。先快速把相关记忆和当前 TP004 文档锚点给 agents，再让他们只读审查“grammar + topology / 访问定义结构与模块绑定”这些表述是否准确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 08:57:20 +0800</div>
+<pre>我会分三路审查，不让 agents 改文件：一个看术语/命名准确性，一个看 TP004 边界是否会误导到 runtime 实现，一个用编译器/grammar 类比视角专门挑“grammar + topology”这个说法的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 08:58:22 +0800</div>
+<pre>三个审查已经开了。我这边同步做一个快速交叉检查，看当前文档里已有的正式术语更支持哪种命名。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 08:58:33 +0800</div>
+<pre>我自己的快速检查倾向是：当前文档已有正式术语 `Access Description Grammar` 和 `Access Definition`，所以“grammar”不是错；但“topology”不是现有术语，正式使用时最好换成 `module binding` / `binding graph`。我等三个 agent 回来后再给你校准结论。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:08:08 +0800</div>
+<pre>我觉得用你的建议没问题，但是要有个详细的对照解释</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 09:08:33 +0800</div>
+<pre>可以。建议这样对照记录：
+
+| 口头说法 | 正式说法 | 含义 | 为什么这样改 |
+|---|---|---|---|
+| grammar + topology | Access Definition Structure and Owner/Dispatch Contracts | 访问表达、定义文件结构，以及它如何绑定 owner、access contract、dispatch target。 | 避免把 grammar 误解成 lexer/parser，把 topology 误解成 runtime/module topology。 |
+| grammar | Access Definition Structure | `native_view`、`shape`、`semantics`、`descriptor_map`、`access_contract`、`dispatch`、`validation` 这些定义块如何组织。 | 我们不是在定义完整语言语法，而是在定义访问结构化定义的文档/schema 结构。 |
+| expression grammar | Native Expression Pattern | `$TC_DP3[tool,edge]`、`$MA_MAX_AX_VELO[axis_ref]` 这类用户可见表达形状。 | 限定在表达式形状，不扩大成完整 Siemens/PLC 语言 grammar。 |
+| topology | Owner/Dispatch Contracts | 表达式解析后连接到哪个 owner、哪个 dispatch target、需要什么 access policy。 | 避免让人以为 TP004 定义模块部署拓扑或 runtime 架构。 |
+| module binding | Owner Binding / Owner-Module Access Contract | `owner: tool_management`、`dispatch.target: cutting_edge_field` 这种模块边界绑定。 | owner 是 TP004 的受治理 token，module 内部实现不归 TP004。 |
+| runtime behavior | Access Contract Boundary | TP004 只说明 read/write/guard/diagnostic/dispatch 边界，不说明 owner 模块内部怎么执行。 | 防止 TP004 下沉到 TP002/TP003/motion/zero_offset 的实现细节。 |
+| token / enum | Governed Value / Value Set Binding | `kind=domain_table_field`、`visibility=public` 这类值必须属于 value set，并绑定 schema field。 | 这是前几天确定的治理层，不是 lexer token。 |
+| parser | Parse/Match Stage | validation 中的 `parse`、`match` 只是诊断阶段，不代表 TP004 要实现 parser。 | 保留诊断语义，避免进入编译器实现。 |
+| semantic analysis | Descriptor Mapping / Semantic Descriptor | 原生表达解析后映射为 MetaNC 语义描述，例如 `tool=10, edge=1, field=DP3`。 | 这里是 TP004 的核心：表达式到 MetaNC 语义对象的映射。 |
+| topology graph | Binding Graph / Access Binding Graph | expression → access family → descriptor → owner → dispatch target。 | 可以作为解释图，但正式标题不建议只叫 topology。 |
+
+一句话总结：
+
+```text
+“grammar + topology” 是讨论时的粗略类比；
+正式应表述为“访问结构化定义结构与 Owner/分发契约”，
+其中 grammar 对应定义结构，topology 对应 owner/dispatch/access binding。
+```
+
+可以再加一个边界图：
+
+```text
+Governance Layer
+term / value set / value / owner / status / schema-field binding
+        ↓
+Access Definition Structure
+native_view / shape / semantics / descriptor_map / access_contract / dispatch / validation
+        ↓
+Owner/Dispatch Contracts
+owner token / dispatch target / access context / guard / diagnostic
+        ↓
+Owner Module Boundary
+tool_management / plc_runtime / motion.axis / zero_offset / hal / magazine
+        ↓
+Module-owned Implementation
+storage / execution / domain API / control behavior / persistence
+```
+
+TP004 到 **Owner Module Boundary** 为止；再往下只是引用，不归 TP004 定义。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:13:33 +0800</div>
+<pre>我现在有个疑虑，就是你搞一堆这种边缘设计，对于我们来定模块、模块边界、具体的参数访问交互等等，意义何在</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 09:14:05 +0800</div>
+<pre>你的疑虑是对的：**如果这些定义一直停在 term/value set/owner/status 这种元层，那对模块边界和具体参数访问交互的直接价值很有限。**
+
+它们的意义不是“设计系统”，而是给后面的具体设计提供约束：
+
+```text
+没有治理层：
+  每个文档都自己写 owner/status/enum/字段名
+  后面模块边界会 drift
+
+有治理层：
+  具体访问一落地，就能问清楚：
+  - 这个值是谁的？
+  - 这个字段允许哪些取值？
+  - 这个访问属于哪个 owner？
+  - 这个 dispatch target 是否定义过？
+  - 这个 status 是不是乱造的？
+```
+
+但你说得关键：**它不能替代模块边界设计。**
+
+接下来应该停止继续扩“边缘元定义”，转向具体访问交互：
+
+```text
+模块边界
+  ↓
+模块拥有的数据
+  ↓
+对外访问形式
+  ↓
+read/write/metadata/dispatch 交互
+  ↓
+诊断和权限
+```
+
+举例 `$TC_DP3[10,1]`：
+
+```text
+元定义只能帮我们确认：
+- owner token = tool_management 合法
+- dispatch target = cutting_edge_field 合法
+- kind = domain_table_field 合法
+- status 不要乱造
+- validation case 字段能绑定 value set
+
+但真正重要的问题是：
+- TP002 tooling_management 到底有没有 cutting_edge_field 读写接口？
+- 读 DP3 需要 tool + edge 还是 tool_id + edge_no？
+- 写入是否允许？
+- 哪些 context 能写？
+- tool 不存在返回什么？
+- edge 不存在返回什么？
+- 这是立即生效还是 owner_defined？
+```
+
+所以结论是：
+
+**前几天做的东西只应该作为“防漂移基础设施”，现在必须进入“具体模块访问契约”。**
+
+我建议下一步别再扩概念，而是做一个很具体的矩阵：
+
+| Access family | Owner | Data boundary | Read | Write | Dispatch target | Gap |
+|---|---|---|---|---|---|---|
+| `$TC_DP3[tool,edge]` | `tool_management` | tool edge field | TBD | TBD | `cutting_edge_field` | 对齐 TP002 API |
+| `$MA_MAX_AX_VELO[axis_ref]` | `motion.axis` | axis motion parameter | TBD | TBD | `max_velocity` | owner 未注册 |
+| `$P_UIFR[frame,axis,component]` | `zero_offset` | zero offset table | TBD | TBD | `frame_component` | owner 未注册 |
+
+这个矩阵比继续讨论“grammar/topology”更有价值。
+
+我建议后续设一条规则：
+
+```text
+没有具体 access family 驱动，就不新增元定义。
+```
+
+也就是：只有当 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 这种具体访问在落地时遇到重复问题，才补 term/value set/status/owner 字段。
+
+下一步标题可以更务实：
+
+```text
+TP004 Concrete Module Access Contracts
+TP004 具体模块访问契约
+```
+
+目标不是再定义抽象层，而是把 3 个访问族真正打到模块边界上。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:18:09 +0800</div>
+<pre>我的个人经验是，这种一次性从上至下设计成的整体框架，必然会有考虑不周的情形，不管你是人类还是ai，因为人类世界的既有内容分类本就不是非此即彼，必然会有交集、冲突，所以我觉得定义基础元语义后，开始设计一些典型用例更为合适</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:18:25 +0800</div>
+<pre>我同意这个方向，但我会先把它校准成可执行的工作方式：不再继续自顶向下补框架，而是用典型用例反推哪些定义必须保留、哪些要放松。先查一下当前 validation/access examples，看看已有样例是否能直接作为用例驱动入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 09:19:42 +0800</div>
+<pre>我同意，而且这应该成为 TP004 下一步的原则：**元语义只做最低限度的稳定锚点，真正的结构从典型用例里长出来。**
+
+现在不适合继续自上而下扩展一堆分类。更合理的路线是：
+
+```text
+基础元语义
+  -&gt; 典型访问用例
+  -&gt; 展开访问链路
+  -&gt; 暴露交集/冲突/例外
+  -&gt; 必要时回填 term / value set / owner / status / schema
+```
+
+也就是说，我们不要先追求“完美 ontology”，而是用场景验证这些概念到底有没有用。
+
+我建议第一批用例这样选：
+
+| 用例 | 主要验证点 |
+|---|---|
+| HMI 读取 `$TC_DP3[tool,edge]` | domain table field、tool_management owner、只读访问、selector 解析 |
+| 服务/API 修改轴参数 `$MA_MAX_AX_VELO[axis]` | parameter、motion/axis owner 缺口、写权限、配置依赖 |
+| NC 程序访问 `$P_UIFR[frame,axis,component]` | zero offset/frame 结构、native expression 到 semantic descriptor 的映射 |
+| PLC 访问 runtime state / symbol | TP004 访问契约 vs TP003 执行语义边界 |
+| 无效访问案例 | selector 不存在、owner 未定义、权限不足、profile 不匹配、dispatch target 不可用 |
+
+每个用例不需要写成长篇设计，而是固定回答几件事：
+
+| 项 | 说明 |
+|---|---|
+| 表达式 | 用户/系统看到的访问形式 |
+| 场景 | 谁在什么上下文里访问 |
+| owner | 这个访问最终归哪个模块负责 |
+| TP004 负责 | 解析、匹配、描述符、权限、诊断、分发契约 |
+| owner 模块负责 | 存储、真实业务语义、执行、副作用、持久化 |
+| 触碰的定义 | term / value set / owner / status / schema |
+| 暴露的问题 | 当前定义不够、冲突、重复、边界不清的地方 |
+
+这样做的意义会更直接：不是为了维护一堆“边缘设计”，而是让每个概念都必须能解释一个真实访问链路。解释不了，就删、改、降级为候选。
+
+下一步我建议先从 `$TC_DP3[10,1]` 的完整读路径开始，因为它有 TP002/tooling_management 的真实 owner 证据，最适合作为第一个用例切片。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:170-203|note=[TP004 value-set governance and docs workflow context]
+MEMORY.md:253-274|note=[parameter-system design direction and boundary caution]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e85be-914a-7bd0-a3aa-6a26022a46a3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:24:11 +0800</div>
+<pre>还有我们之前说过的EBNF，你觉得适合吗，在我们下一步的过程中，适合用来做表达形式吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:24:23 +0800</div>
+<pre>我会按探索模式处理：先把现有文档里 EBNF/grammar 的定位找出来，再判断它在“用例切片”阶段应该承担什么角色。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 09:24:34 +0800</div>
+<pre>我会只读检查 TP004 现有表达方式的定义，避免凭印象回答。重点看 `TERMS`、`access-definitions` 和有没有 EBNF 示例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 09:24:50 +0800</div>
+<pre>现有文档其实已经把 EBNF 放在一个很窄的位置：只作为表达式形状和文档组织的说明辅助，不承载 owner、权限、分发、profile 这些语义。这个定位我认为是对的，下一步不要扩大它的职责。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 09:25:04 +0800</div>
+<pre>我再取一下行号，方便把结论指到现有文本，不把它说成新的口头判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-11 09:25:34 +0800</div>
+<pre>适合，但只能当**表达形式的辅助记法**，不适合作为下一步的主设计载体。
+
+我建议这样定：
+
+| 层级 | 是否适合 EBNF | 原因 |
+|---|---:|---|
+| 原生表达语法 | 适合 | 描述 `$TC_DP3[10,1]`、`$MA_MAX_AX_VELO[AX1]` 这种文本形状 |
+| 下标/选择器结构 | 部分适合 | 能表达“几个 index、逗号、可选项”，但类型/范围还得放结构化字段 |
+| 用例切片 | 不适合作为主格式 | 用例需要 actor、context、owner、读写、错误、dispatch，EBNF 表达不了 |
+| 语义映射 | 不适合 | `tool=10, edge=1, owner=tool_management` 应该放 descriptor_map |
+| 权限/生效/持久化 | 不适合 | 这些是 access contract，不是语法 |
+| 模块边界 | 不适合 | owner、dispatch target、responsibility 不能靠 EBNF 表达 |
+
+现有文档里的定位其实是对的：[DESIGN-BASELINE.md](&lt;/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:280&gt;) 已经写了 EBNF 只作为 expression shape 和文档组织的辅助；[TERMS.md](&lt;/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:154&gt;) 也把 EBNF 限定为轻量描述工具，不替代自然语言、结构化字段和验证集合。
+
+下一步我建议的形式是：
+
+```text
+用例切片
+  -&gt; 给出用户表达式
+  -&gt; 用少量 EBNF 描述表达式外形
+  -&gt; 用 shape 描述 index 类型/含义
+  -&gt; 用 descriptor_map 描述语义映射
+  -&gt; 用 access_contract 描述权限/上下文/生效
+  -&gt; 用 dispatch 描述 owner 模块边界
+  -&gt; 用 validation cases 证明正例/反例
+```
+
+比如 `$TC_DP3[10,1]` 可以这样理解：
+
+```ebnf
+tool-data-expression =
+    &quot;$TC_&quot; , tool-field , &quot;[&quot; , tool-index , &quot;,&quot; , edge-index , &quot;]&quot; ;
+```
+
+但这只说明文本长什么样。真正有价值的是后面的结构化内容：
+
+```yaml
+shape:
+  indexes:
+    - name: tool
+      type: integer
+    - name: edge
+      type: integer
+
+descriptor_map:
+  owner: tool_management
+  canonical_path: &quot;tool/{tool}/edge/{edge}/dp3&quot;
+
+access_contract:
+  readable: true
+  writable: true
+```
+
+所以结论是：**EBNF 可以保留，但它应该服务于用例，不应该主导用例。** 我们下一步做典型用例时，每个用例最多配一小段 EBNF，用来说明“表达式外壳”；真正的设计结果仍然应该落在 access definition、descriptor、owner/dispatch、validation 这些结构上。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:27:03 +0800</div>
+<pre>那接下来你会用哪种表达方式来作为主要的叙述手段呢</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:27:16 +0800</div>
+<pre>我继续按探索模式回答。这里的关键不是选一种“漂亮格式”，而是选一种能把模块边界、访问链路和冲突暴露出来的叙述方式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 09:27:46 +0800</div>
+<pre>我会把**“典型用例切片 + 访问链路表”**作为主要叙述手段。
+
+不是先写大 schema，也不是先写 EBNF，而是每个场景都按同一种结构展开：
+
+```text
+场景
+  -&gt; 用户表达式
+  -&gt; 访问链路
+  -&gt; TP004 负责什么
+  -&gt; owner 模块负责什么
+  -&gt; 涉及的 term / value set / owner / status
+  -&gt; 正例 / 反例 / 诊断结果
+```
+
+主格式大概是这种：
+
+| 层 | 表达方式 | 作用 |
+|---|---|---|
+| 1. 用例叙述 | 短自然语言 | 说明谁在什么场景访问什么 |
+| 2. 访问链路 | ASCII flow 或步骤表 | 暴露 parse、match、descriptor、access、dispatch |
+| 3. 契约表 | Markdown 表格 | 说明 owner、context、read/write、边界 |
+| 4. 结构化片段 | YAML | 固化 access definition 的核心字段 |
+| 5. EBNF | 小段可选 | 只描述表达式外形 |
+| 6. validation cases | YAML/表格 | 证明这个用例能通过或正确失败 |
+
+也就是说，主叙述不是：
+
+```text
+EBNF-first
+schema-first
+ontology-first
+```
+
+而是：
+
+```text
+case-first / access-chain-first
+```
+
+例如 `$TC_DP3[10,1]` 这一类，我会这样写：
+
+```text
+HMI diagnostics reads Siemens-style tool cutting-edge field `$TC_DP3[10,1]`.
+
+Expression
+  -&gt; parse as Siemens-style tool data expression
+  -&gt; match access family `siemens.tool.dp3`
+  -&gt; resolve descriptor `{ owner: tool_management, tool: 10, edge: 1, field: DP3 }`
+  -&gt; check read permission for HMI diagnostics context
+  -&gt; dispatch to tool_management read operation
+```
+
+然后配一个表：
+
+| 项 | 内容 |
+|---|---|
+| native expression | `$TC_DP3[10,1]` |
+| access family | `siemens.tool.dp3` |
+| kind | `domain_table_field` |
+| owner | `tool_management` |
+| TP004 owns | expression parse, family match, descriptor, access check, dispatch contract |
+| owner module owns | real tool table model, value lookup, write side effects, persistence |
+| valid case | `$TC_DP3[10,1]` |
+| invalid cases | `$TC_DP3[10]`, `$TC_DP3[T10,D1]`, `$TC_XXX[10,1]` |
+
+最后再补很小的 EBNF：
+
+```ebnf
+tool-dp3-expression =
+    &quot;$TC_DP3&quot; , &quot;[&quot; , tool-index , &quot;,&quot; , edge-index , &quot;]&quot; ;
+```
+
+所以我的推荐是：**主要用“用例切片 + 访问链路”讲清楚问题，用表格和 YAML 固化契约，用 EBNF 辅助描述表达式外壳。** 这会比单纯写 schema 或 grammar 更适合我们现在这个阶段。</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:43:39 +0800</div>
+<pre>鉴于西门子庞大的参数系统，我觉得有必要再回忆一下我们之前讨论过西门子的参数系统包含了哪些模块，表达方式以及访问方式等等，包括并不限于权限管理等等，你罗列一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:43:53 +0800</div>
+<pre>我会把它当成一次范围回忆和分类整理，不做官方 Siemens 完整手册式断言；先查一下当前 TP004 文档里已经落下来的 Siemens-style 分类和例子，再结合我们前面讨论过的访问模型归纳。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 09:44:10 +0800</div>
+<pre>这个问题依赖我们之前的上下文，我会补一眼记忆索引和当前 TP004 的 Siemens compatibility 文档，然后按“模块/表达/访问/权限/生命周期”来罗列，尽量区分已落文档和仍是讨论性分类。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 09:44:19 +0800</div>
+<pre>文档当前明确的第一批 Siemens-style 访问族只有三类：刀具 `$TC_DP3`、轴机床数据 `$MA_MAX_AX_VELO`、零偏 `$P_UIFR`。你要的“庞大系统回忆”我会把它作为候选分类框架，而不是声称这些都已经被 MetaNC 确认支持。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-11 09:44:44 +0800</div>
+<pre>可以。先说明边界：下面是**我们用于建模 Siemens-style 参数/变量体系的回忆性分类**，不是说 MetaNC 已经要完整复制 Siemens 840D，也不是说每一项都已确认支持。当前文档里明确落下来的 reference family 只有 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 这几类。
+
+**一、数据/模块大类**
+
+| 类别 | 典型内容 | MetaNC 视角 |
+|---|---|---|
+| Machine Data 机床数据 | 机床级、通道级、轴级配置参数 | governed parameter |
+| Setting Data 设定数据 | 运行中可调的设定值、工艺设定 | parameter / runtime-config |
+| Tool Data 刀具数据 | 刀具、刀沿、补偿、磨损、寿命 | domain table |
+| Zero Offset / Frame 零偏/坐标系 | G54/G55 类 frame、平移/旋转/缩放分量 | domain table |
+| R 参数 / Program Variables | R 参数、局部变量、程序变量 | runtime symbol / program variable |
+| System Variables 系统变量 | `$` 开头的系统访问视图 | external language view |
+| Channel / Axis / Spindle State | 通道状态、轴位置、主轴状态 | runtime state |
+| PLC / NC Interface | PLC 变量、NC/PLC 通信区、信号交换 | symbol / signal / runtime state |
+| Alarm / Diagnostic Data | 报警、诊断、状态字 | runtime state / diagnostic view |
+| Protection / Access Level | 保护级、用户权限、写保护 | access policy |
+| Machine Configuration / Option | 轴配置、通道配置、选件、profile | machine configuration / compatibility profile |
+
+**二、表达方式**
+
+| 表达方式 | 例子 | 说明 |
+|---|---|---|
+| `$` 系统变量 | `$TC_DP3[10,1]` | 用户/HMI/程序看到的 Siemens-style native expression |
+| 下标访问 | `[tool,edge]`, `[axis]`, `[frame,axis,component]` | 表达对象实例或结构维度 |
+| 变量族前缀 | `$MA_`, `$MC_`, `$MN_`, `$TC_`, `$P_` 等 | 不能直接等同 MetaNC owner，只能作为 native family 线索 |
+| 语义 descriptor | `owner=tool_management, tool=10, edge=1` | MetaNC 自己的解释层 |
+| canonical path | `axis/x/motion/max_velocity` | MetaNC 内部稳定路径，不一定给用户直接看 |
+| alias/import view | Siemens-style 名称映射到 MetaNC contract | 兼容层，不是存储模型 |
+
+**三、访问方式**
+
+| 访问来源 | 典型行为 | 需要建模的问题 |
+|---|---|---|
+| HMI | 浏览、读写、诊断、参数页面 | 可见性、权限、单位、显示名、错误提示 |
+| NC 程序 | 读系统变量、写部分变量、参与加工逻辑 | 上下文、实时性、生效时机、是否允许写 |
+| PLC | 读写接口变量、状态交互、扫描周期访问 | scan 安全性、绑定、权限、确定性 |
+| NRT/API | 工具、服务、导入导出、远程配置 | access policy、审计、事务、持久化 |
+| RT 内核 | 快速访问预绑定值 | 不能走字符串查找，需要 binding/fast slot |
+| Import/Export | 兼容 Siemens 参数文件或表格 | native 表达保留、descriptor 映射、缺失项诊断 |
+
+**四、权限/保护维度**
+
+| 维度 | 说明 |
+|---|---|
+| read/write | 是否可读、可写，是否只允许诊断读 |
+| context | HMI、NRT API、NC preprocess、NC main run、PLC scan、RT task 等 |
+| protection level | 用户等级、厂商等级、服务权限、机床制造商权限 |
+| machine state guard | 急停、加工中、复位、通道运行、轴使能等状态限制 |
+| visibility | public、diagnostic、private |
+| owner authorization | 最终 owner 模块是否接受这个操作 |
+| profile/config dependency | 某些表达是否取决于机床配置或兼容 profile |
+| write side effect | 写入是否触发生效、重算、同步、复位要求 |
+
+**五、生效和持久化**
+
+| 维度 | 例子 |
+|---|---|
+| immediate | 写入后立即生效 |
+| next scan / next cycle | 下一 PLC scan 或控制周期生效 |
+| channel reset | 通道复位后生效 |
+| axis disable/enable | 轴重新使能后生效 |
+| reboot / power cycle | 重启后生效 |
+| volatile | 不持久化 |
+| saved/profile-backed | 保存到 profile、机床配置或参数文件 |
+| owner-defined | 由 tool/motion/zero-offset 等 owner 模块决定 |
+
+**六、我们当前最关心的建模切分**
+
+```text
+Siemens-style expression
+  -&gt; parse
+  -&gt; match access family
+  -&gt; resolve index shape
+  -&gt; build MetaNC descriptor
+  -&gt; check access policy
+  -&gt; dispatch to owner module
+  -&gt; owner module executes real read/write
+```
+
+所以 Siemens 庞大系统不能直接变成一个巨型参数表。更合理的是拆成这些 MetaNC 抽象：
+
+| Siemens 视角 | MetaNC 抽象 |
+|---|---|
+| `$MA_...` 机床/轴/通道参数 | parameter |
+| `$TC_...` 刀具表 | domain table |
+| `$P_UIFR...` 零偏/frame | domain table |
+| 位置、模式、主轴状态 | runtime state |
+| PLC/NC 变量 | runtime symbol |
+| IO/接口信号 | signal / HAL namespace |
+| 用户等级/保护级 | access policy |
+| 参数文件/profile | persistence/profile |
+| Siemens 名称 | native expression / alias view |
+
+我建议下一步做用例切片时，不要按 Siemens 全目录铺开，而是按**差异最大、最能暴露边界的类型**选样本：一个机床参数、一个刀具表字段、一个零偏字段、一个 runtime state、一个 PLC/NC symbol、一个权限受限写入。这样能最快验证我们的 TP004 模型是不是够用。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:46:47 +0800</div>
+<pre>我看到通道这块，我记得之前讨论过西门子的多通道的执行问题，似乎他们是通过程序来隔离的？然后就是他们有没有在便量里面体现这种多通道形式？如果没有在变量语法里体现，他们是如何映射到具体变量、如何持久化（比如通道1 2都有$A[0],他们是如何管理的，如何本地持久化的，如何备份恢复的等等问题）</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:47:02 +0800</div>
+<pre>我会把这个问题分成两层查：一层是我们本地 TP004 已经讨论过的 channel-local/scope 模型，另一层用 Siemens 官方资料核对“语法里是否显式带通道”和“多通道如何由上下文解析”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 09:47:24 +0800</div>
+<pre>我先取本地术语里 channel-local、sharing、link variable 相关段落，再用外部资料核对 Siemens 的语法/通道模型。这个点如果只凭记忆容易把“通道本地变量”和“跨通道通信变量”混在一起。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 09:47:32 +0800</div>
+<pre>本地基线已经给出一个很关键的答案：同一个 `$MC_...` 定义可以有多个 channel-scoped value instance，具体通道不是一定写在变量名里，而是从当前 ProgramSession、HMI 选中通道或 API 显式 target 得到。接下来我查 Siemens 资料来避免把这个当成 MetaNC 自己的想象。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 09:48:08 +0800</div>
+<pre>外部搜索这次没有拿到可靠的 Siemens 官方页面，我不会把网上零散二手材料当依据。下面我会基于我们已落的 TP004 基线回答，并把 Siemens 细节标成“需要后续用官方手册核验”的部分。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-11 09:48:42 +0800</div>
+<pre>是的，这里你抓到的是一个关键问题：**多通道不一定体现在变量文本语法里，很多时候体现在访问上下文、执行上下文、对象 scope 和持久化实例上。**
+
+按我们当前 TP004 基线，可以这样理解。
+
+**1. 程序执行隔离**
+
+Siemens 多通道更接近：
+
+```text
+channel ~= 独立 NC 执行上下文
+program session ~= 某个通道里正在运行的程序实例
+channel-local variable ~= 类似 thread-local data
+```
+
+所以通道隔离不一定靠变量名隔离，而是靠“当前程序属于哪个 channel”来决定变量解析到哪个实例。
+
+例如同一个表达式：
+
+```text
+$MC_...
+```
+
+在 channel 1 的程序里访问，解析到：
+
+```text
+($MC_..., channel=1)
+```
+
+在 channel 2 的程序里访问，解析到：
+
+```text
+($MC_..., channel=2)
+```
+
+变量文本可以一样，但 resolved value instance 不一样。
+
+**2. 变量语法里是否体现通道**
+
+大致分三类：
+
+| 类型 | 变量语法是否显式带 channel | 解析方式 |
+|---|---|---|
+| 通道本地数据 | 通常不一定显式写 channel | 从当前 ProgramSession / 当前 channel 得到 |
+| HMI/API/诊断访问 | 可以外部显式选择 channel | UI 或 API request 里带 target channel |
+| 跨通道通信变量 | 语法或变量族本身表示共享/链接语义 | 例如 link-style 变量，而不是偷写对方 local 变量 |
+
+所以不是简单地说“变量名里有没有 channel 参数”。更准确是：
+
+```text
+native expression + access context -&gt; scoped value instance
+```
+
+**3. `$A[0]` 这种问题怎么理解**
+
+如果假设存在一个通道局部的 `$A[0]`，那么 channel 1 和 channel 2 里的 `$A[0]` 不应被建模成两个无关变量名：
+
+```text
+错误建模：
+  channel1.$A[0]
+  channel2.$A[0]
+```
+
+更合适的是：
+
+```text
+access family:
+  name: $A[index]
+  object_scope: channel
+  sharing_model: local
+
+value instances:
+  ($A[0], channel=1)
+  ($A[0], channel=2)
+```
+
+也就是说：
+
+```text
+$A[0]
+  + 当前 channel=1
+  -&gt; channel 1 的 $A[0]
+
+$A[0]
+  + 当前 channel=2
+  -&gt; channel 2 的 $A[0]
+```
+
+**4. 它们如何映射到具体变量**
+
+解析链路应该是：
+
+```text
+native expression
+  -&gt; access family match
+  -&gt; index shape resolve
+  -&gt; access context supplies channel
+  -&gt; scoped value instance
+  -&gt; owner/module dispatch
+```
+
+比如：
+
+```text
+$MC_ABC[0]
+  -&gt; family: channel machine data
+  -&gt; index: 0
+  -&gt; scope: channel
+  -&gt; context: channel=2
+  -&gt; instance: ($MC_ABC[0], channel=2)
+```
+
+这里 channel 是 descriptor/context 的一部分，不一定是表达式文本的一部分。
+
+**5. 如何防止跨通道误写**
+
+默认规则应该是：
+
+| 场景 | 默认规则 |
+|---|---|
+| 当前通道读写自己的 local 数据 | 允许，仍需权限/状态检查 |
+| 通道 1 普通程序直接写通道 2 local 数据 | 默认拒绝 |
+| 通道间协调 | 通过显式 channel coordination command |
+| 通道间数据交换 | 通过 global、link variable、owner-managed shared data |
+| HMI/API 维护目标通道 | 可以显式 target channel，但要走权限和机床状态检查 |
+
+这也是我们文档里已经落下来的方向：多通道更像多线程；local data 不允许被其他通道随便写，跨通道要用显式机制。
+
+**6. 持久化和备份恢复怎么建模**
+
+这里不能只看变量表达式，要看 value instance 的 key。
+
+一个合理持久化 key 应该包含：
+
+```text
+definition_id / canonical_path
+object_scope
+object_id
+index / selector
+profile or machine config
+```
+
+例如：
+
+```yaml
+entry: &quot;$A[index]&quot;
+scope: channel
+channel: 1
+index: 0
+value: ...
+
+entry: &quot;$A[index]&quot;
+scope: channel
+channel: 2
+index: 0
+value: ...
+```
+
+或者更 MetaNC 化：
+
+```text
+runtime/channel/1/A/0
+runtime/channel/2/A/0
+```
+
+备份恢复时也不能只保存 `$A[0]`，否则恢复时不知道是哪个通道。应该保存成：
+
+```text
+same definition, multiple scoped instances
+```
+
+**7. 对 TP004 的直接影响**
+
+我们下一步必须把“通道”作为典型用例之一，因为它能验证几个核心概念：
+
+| 需要验证的概念 | 为什么重要 |
+|---|---|
+| Object Scope | 同一变量族在 channel 1/2 有不同实例 |
+| Scoped Value Instance | `$A[0]` 不是唯一值，必须带 scope |
+| Access Context | 当前程序/HMI/API 决定 target channel |
+| Sharing Model | local/global/shared_owner/link 的差异 |
+| Access Policy | 普通程序不能越权写其他 channel |
+| Persistence Policy | 持久化 key 必须包含 scope instance |
+| Import/Export | 备份恢复必须保留 channel 维度 |
+
+我建议之后专门加一个用例切片：
+
+```text
+Use case: channel-local variable access
+
+Program in channel 1 reads `$A[0]`.
+Program in channel 2 reads `$A[0]`.
+They resolve to different scoped value instances.
+A direct write from channel 1 to channel 2 local `$A[0]` is rejected.
+HMI diagnostics may read channel 2 `$A[0]` only when target channel and permission are explicit.
+Backup stores both instances under the same definition with different channel scopes.
+```
+
+这个用例非常关键，因为它能防止我们把系统误设计成“变量名唯一”的扁平表。</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:51:22 +0800</div>
+<pre>你还是没有明确说明西门子的这种多通道局部变量是如何持久化的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:52:09 +0800</div>
+<pre>你说得对，我刚才回答的是 MetaNC 应该如何建模，没有把 Siemens 自己“到底怎么持久化”讲清楚。这个不能靠猜，我会重新核 Siemens 资料；如果查不到官方证据，我会明确标成未确认，而不是把推断说成事实。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 09:53:05 +0800</div>
+<pre>我会再尝试通过本地网络工具查官方或可引用资料；如果网络/搜索还是拿不到，我会把结论分成“可确认的设计事实”和“Siemens 具体实现待手册确认”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 09:53:30 +0800</div>
+<pre>搜索结果很差，我会用可抓取的网页代理直接搜/取 Siemens 相关文档。目标是找到“R 参数、GUD/LUD/PUD、archive/backup、channel-specific”这些关键词的出处。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 09:54:10 +0800</div>
+<pre>这次拿到 Siemens 官方支持页了，关键点很明确：LUD/PUD 是生命周期型、非持久；GUD 可以是 NCK 或 channel-global，定义在 GUD block，关机重启后保留，并且有 GUD 保存相关机床数据。现在我用这个来纠正前面回答。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-11 09:54:29 +0800</div>
+<pre>你说得对，前面我没有明确回答 Siemens 自己怎么持久化。根据 Siemens 官方 Job Planning 资料，可以更准确地说：
+
+**结论：Siemens 里“通道局部变量”不是都按同一种方式持久化。要分 LUD/PUD/GUD。**
+
+| 类型 | 作用域 | 生命周期/持久化 |
+|---|---|---|
+| `LUD` Local User Data | 定义它的子程序内部 | 调用程序时创建，程序结束或 NC reset 时删除；不作为持久变量保存 |
+| `PUD` Program-global User Data | 主程序及其子程序 | 主程序启动时创建，主程序结束或 NC reset 时删除；不作为持久变量保存 |
+| `GUD` Global User Data | NCK-global 或 channel-global | 定义在 GUD data block 中，shutdown/restart 后保留 |
+
+所以如果你问的是“多通道局部变量如何持久化”，答案不是“每个通道的局部变量都持久化”，而是：
+
+```text
+LUD/PUD: 程序生命周期变量，不持久化
+CHAN GUD: 通道全局用户数据，可以按通道范围存在，并随 GUD 机制持久保留
+NCK GUD: NCK 全局用户数据，跨通道/全局，并随 GUD 机制持久保留
+```
+
+Siemens 的 GUD 定义语法里有 `&lt;range&gt;`：
+
+```text
+DEF &lt;range&gt; ... &lt;name&gt; = &lt;init_value&gt;
+```
+
+其中：
+
+```text
+NCK  -&gt; NC-global user variable
+CHAN -&gt; Channel-global user variable
+```
+
+也就是说，真正“可持久化的通道相关用户变量”更像是：
+
+```text
+DEF CHAN REAL STROM_1
+```
+
+而不是 LUD/PUD。
+
+持久化/保存相关也不是靠变量名本身，而是靠 GUD 机制和 NCK 数据管理。Siemens 文档里还列了相关机床数据，例如：
+
+```text
+$MN_GUD_AREA_SAVE_TAB    Additional save for GUD blocks
+$MN_MM_NUM_GUD_NAMES_CHAN Number of channel-specific GUD names
+$MN_MM_GUD_VALUES_MEM     Memory location for global GUD values
+```
+
+这说明 channel-specific GUD 的值是被 GUD value memory / GUD block 保存机制管理的，而不是靠 `$A[0]` 这种表达式文本直接决定持久化。
+
+对我们建模的修正是：
+
+| Siemens 概念 | MetaNC 应该怎么建模 |
+|---|---|
+| LUD | program-local runtime slot，非持久 |
+| PUD | program-session/global slot，随主程序生命周期，非持久 |
+| `DEF CHAN ...` GUD | channel-scoped persistent value instance |
+| `DEF NCK ...` GUD | machine/NCK-scoped persistent value instance |
+| R 参数 | 需要单独核实：可能有 channel 维度和保存策略，不能和 GUD 混为一类 |
+| `$MC_...` 机床数据 | channel-scoped machine data，不等同用户变量 GUD |
+
+所以如果举你说的“通道 1/2 都有 `$A[0]`”这种例子，严格说需要先确认 `$A[0]` 对应的是哪类 Siemens 变量：
+
+```text
+如果是 LUD/PUD:
+  channel/program 执行期创建，结束/reset 删除，不做普通持久化
+
+如果是 CHAN GUD:
+  同一 GUD 定义在每个 channel 有 scoped value instance
+  值由 GUD 保存/恢复机制管理
+
+如果是 channel machine data:
+  它属于机床/通道配置数据，走 machine data archive/backup 机制，不是用户变量 GUD
+
+如果是 link/cross-channel variable:
+  它属于通信/共享机制，要另看其专门的保存策略，不能默认持久化
+```
+
+因此我们后续不能笼统写“channel-local variable 持久化”。更准确的建模字段应该拆成：
+
+```yaml
+scope: channel | program | nck | machine
+lifetime: program_call | main_program | nc_runtime | persistent
+persistence_policy: none | gud_retained | machine_data_archive | owner_defined
+```
+
+这样才能区分 Siemens 里这几种完全不同的东西。
+资料依据：Siemens Support，`SINUMERIK 840D sl / 828D Job Planning - Definition of user variables (DEF)`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 09:55:52 +0800</div>
+<pre>感觉西门子这个分的还是很细的，我们之前的参数直接一套访问，似乎缺少了这样的隔离，虽然好处是可以任意访问，但是坏处也是任意访问，所以我们总结一下西门子的这些参数形式和访问方式，然后进一步讨论才更合适是不是</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 09:56:11 +0800</div>
+<pre>我会继续按探索方式梳理。这个点已经从“怎么访问变量”上升到“访问必须被 scope/lifetime/persistence/权限隔离”，所以总结时我会避免把 Siemens 全部压成一个表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 09:56:54 +0800</div>
+<pre>是的，我觉得应该先做这一步。否则我们现在的“统一访问”容易变成：
+
+```text
+所有东西都能被一个入口访问
+```
+
+这在工程上太危险。更合理的目标应该是：
+
+```text
+统一入口，但不是任意访问；
+统一解析，但必须保留 scope / lifetime / persistence / permission / owner 隔离。
+```
+
+Siemens 这套细分至少提醒我们：**变量/参数不是只按语法分，而是按作用域、生命周期、持久化、访问上下文、权限等级共同分。**
+
+我建议先整理一张“Siemens-style 参数/变量访问隔离矩阵”：
+
+| Siemens 形式 | 典型表达 | Scope | 生命周期 | 持久化 | 访问方式 | 权限/保护 | MetaNC 映射 |
+|---|---|---|---|---|---|---|---|
+| Machine Data | `$MN_`, `$MC_`, `$MA_` | machine/channel/axis | 配置长期存在 | machine archive | HMI/NC/API | access level/state guard | parameter |
+| Setting Data | `$SN_`, `$SC_`, `$SA_` 等候选 | machine/channel/axis | 运行设定 | 可能持久/配置相关 | HMI/NC/API | access policy | parameter/runtime config |
+| Tool Data | `$TC_...` | tool/edge | domain-owned | tool table archive | HMI/NC/API | owner policy | domain table |
+| Zero Offset/Frame | `$P_UIFR[...]` | frame/channel/axis/component | domain-owned | offset/frame archive | HMI/NC/API | owner policy | domain table |
+| GUD NCK | `DEF NCK ...` | NCK global | 长期 | retained after restart | part program/OPI | APRP/APWP/APRB/APWB | persistent scoped value |
+| GUD CHAN | `DEF CHAN ...` | channel global | 长期 | retained after restart | part program/OPI | APRP/APWP/APRB/APWB | channel-scoped persistent value |
+| PUD | `DEF ...` in main program | main program tree | 主程序生命周期 | 不持久 | program/subprogram | program scope | program-session slot |
+| LUD | `DEF ...` in subprogram | local subprogram | 子程序生命周期 | 不持久 | local program | local scope | program-local slot |
+| R 参数 | `R...` | 需核实 channel/global 细节 | 需核实 | 需核实 | NC program/HMI | 需核实 | candidate runtime/program value |
+| Runtime State | `$A...`, `$AC...` 等候选 | channel/axis/runtime | 当前状态 | 通常不持久 | NC/HMI/PLC/API | context/state guard | runtime state |
+| PLC/NC interface | PLC signals/interface vars | PLC/NC boundary | runtime | owner-defined | PLC/NC/HMI | interlock/policy | signal/interface |
+| Link/cross-channel vars | `$A_DLB/$A_DLW/...` 候选 | cross-channel link | runtime/shared | 需核实 | program coordination | explicit mechanism | link variable |
+
+其中 Siemens 官方 `DEF` 资料已经能确认一部分：`LUD`/`PUD` 是程序生命周期变量，结束或 NC reset 后删除；`GUD` 可以是 `NCK` 或 `CHAN` 范围，并在 shutdown/restart 后保留，还带 part program / OPI 读写保护等级。来源：Siemens Support `SINUMERIK 840D sl / 828D Job Planning - Definition of user variables (DEF)`
+https://support.industry.siemens.com/cs/mdm/70265038?c=44782643595&amp;lc=en-BY
+
+我觉得下一步不该继续泛泛讨论“parameter schema”，而是先做这个总结矩阵，然后从矩阵里挑用例切片。重点不是复制 Siemens，而是把这些隔离维度吸收到 MetaNC：
+
+```yaml
+scope: machine | channel | axis | tool | program | nck | link
+lifetime: persistent | nc_runtime | main_program | subprogram_call | scan
+persistence_policy: machine_archive | gud_retained | domain_table_archive | none | owner_defined
+access_context: hmi | nrt_api | nc_program | plc_scan | diagnostics | import_export
+sharing_model: local | global | shared_owner | link
+owner: motion | tool_management | zero_offset | plc_runtime | ...
+```
+
+这样我们的“统一访问”才会变成受控访问，而不是一个万能后门。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 10:05:17 +0800</div>
+<pre>感觉你又给我加了一堆元定义，什么lifetime persistence_policy access_context sharing_model等等。。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 10:05:33 +0800</div>
+<pre>你这个质疑是对的。刚才那一组不应该马上被当成“新增元定义”，更准确应该叫**观察维度**，用来分析 Siemens 的分类，而不是立刻塞进 MetaNC schema。
+
+我们应该先降级处理：
+
+```text
+不要新增 enum
+不要新增 schema 字段
+不要冻结术语
+先做 Siemens 访问形式观察表
+```
+
+也就是说，下一步先只回答几个朴素问题：
+
+| 问题 | 目的 |
+|---|---|
+| 这个东西是谁定义的？ | 程序、系统、机床制造商、用户、模块 |
+| 在哪里能看到/访问？ | 当前程序、当前通道、所有通道、HMI、OPI/API |
+| 活多久？ | 子程序结束、主程序结束、NC reset、重启后仍在 |
+| 怎么保存？ | 不保存、GUD 保存、机床数据 archive、domain table archive |
+| 谁能读写？ | NC 程序、HMI、OPI/API、PLC、服务权限 |
+| 能不能跨通道访问？ | 不能、通过 global、通过 link、通过 owner/API |
+| 出错时怎么拒绝？ | 不可见、权限不足、状态不允许、scope 不匹配 |
+
+这些先只是自然语言列，不是 `lifetime:`、`scope:` 这种 schema 字段。
+
+所以我建议下一步文档/讨论用这种形式：
+
+| Siemens 形式 | 朴素说明 | 可见范围 | 保存方式 | 访问限制 | 对 MetaNC 的启发 |
+|---|---|---|---|---|---|
+| LUD | 子程序里的局部变量 | 定义它的子程序 | 不保存 | 其他程序不可见 | 不能把所有变量都放进统一全局表 |
+| PUD | 主程序级变量 | 主程序及子程序 | 不保存 | 随主程序生命周期 | 需要 program session 概念 |
+| CHAN GUD | 通道全局用户数据 | 某个通道范围 | GUD 机制保存 | 有读写保护等级 | 通道持久值需要实例隔离 |
+| NCK GUD | NCK 全局用户数据 | 所有程序/通道 | GUD 机制保存 | 有读写保护等级 | 全局共享值要有权限边界 |
+
+等这个表跑过几个真实例子后，再决定哪些观察维度值得提升成正式字段。现在直接加一堆字段，确实会把设计搞重，也容易自创概念。</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 10:12:02 +0800</div>
+<pre>有没有可能有那种图形表达，不管是包图还是泳道图还是什么、或者是自己创造的某种拓扑或者组态图，方便直观理解各个参数的访问、访问边界、方式等等</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 10:12:20 +0800</div>
+<pre>我会用 `openspec-explore` 和 `superpowers:brainstorming` 来回答这个设计表达问题；这里先讨论表达法，不落文档也不新增 schema。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 10:12:45 +0800</div>
+<pre>有，而且我觉得这一步很有必要。我们现在的问题不是“缺一个字段”，而是**缺一个能直观看出访问边界的图形语言**。否则表格越写越像 schema，容易又回到你刚才担心的“新增一堆元定义”。
+
+我建议用三类图，不急着发明复杂体系。
+
+**1. 访问泳道图：看一次访问跨过哪些边界**
+
+适合描述 `$TC_DP3[10,1]`、`CHAN GUD`、`LUD/PUD` 这种单个用例。
+
+```text
+NC Program / HMI       Access Layer        Owner / Scope        Storage
+      |                     |                   |                   |
+      |  $TC_DP3[10,1]      |                   |                   |
+      |--------------------&gt;| parse/match       |                   |
+      |                     | descriptor        |                   |
+      |                     | access check      |                   |
+      |                     |------------------&gt;| tool_management   |
+      |                     |                   |------------------&gt;|
+      |                     |                   | tool table value  |
+```
+
+它能直观看出：谁发起、谁解析、谁做权限、谁真正拥有数据、最后有没有持久化。
+
+**2. 分层包图：看数据类型属于哪个隔离域**
+
+适合整理 Siemens-style 大分类，避免“所有东西都是参数”。
+
+```text
+Parameter / Runtime Access View
+├─ Machine / Axis / Channel Parameters
+│  ├─ $MN_...
+│  ├─ $MC_...
+│  └─ $MA_...
+├─ Domain Tables
+│  ├─ $TC_...        tool table
+│  └─ $P_UIFR...     frame / zero offset
+├─ Program Variables
+│  ├─ LUD            subprogram local
+│  └─ PUD            main-program scope
+├─ Persistent User Data
+│  ├─ NCK GUD
+│  └─ CHAN GUD
+├─ Runtime State / Signals
+└─ Cross-channel Link / Coordination
+```
+
+这类图不是 schema，只是让人先看清楚“这些东西不在同一个盒子里”。
+
+**3. Scope/持久化拓扑图：看同名表达如何映射到不同实例**
+
+适合你刚才问的“通道 1/2 都有同名变量怎么办”。
+
+```text
+Definition: CHAN GUD / MY_VAR
+        |
+        +-- instance: channel 1 / MY_VAR  -&gt; retained GUD value
+        |
+        +-- instance: channel 2 / MY_VAR  -&gt; retained GUD value
+
+Definition: LUD / TEMP
+        |
+        +-- program call instance only -&gt; deleted at program end/reset
+```
+
+它能把“表达名”和“具体值实例”分开，不用立刻引入一堆正式字段。
+
+我更推荐我们下一步采用一个组合格式：
+
+```text
+每个典型用例 =
+  一张访问泳道图
+  + 一张边界说明表
+  + 必要时一张 scope/instance 拓扑图
+  + 最后才是少量表达式/EBNF/YAML
+```
+
+比如第一个 Siemens 用户变量用例可以画成：
+
+```text
+Case: CHAN GUD read from channel 1 program
+
+Part Program CH1     Siemens-style View     Scope Resolver       GUD Store
+      |                    |                     |                  |
+      |  MY_VAR            |                     |                  |
+      |-------------------&gt;| user variable       |                  |
+      |                    | range=CHAN          |                  |
+      |                    |--------------------&gt;| channel=1        |
+      |                    |                     |-----------------&gt;|
+      |                    |                     | CH1/MY_VAR value |
+```
+
+这样比直接写：
+
+```yaml
+scope:
+lifetime:
+persistence_policy:
+```
+
+更容易讨论，因为图先表达事实，字段后面再从反复出现的事实里提炼。我的建议是：**先用图形语言做观察和沟通，暂时不把图里的词升级为 schema。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 10:18:24 +0800</div>
+<pre>你不要光用我推荐的图形方式去表达，你自己有什么建议吗，或者有什么更合适的方式</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 10:19:10 +0800</div>
+<pre>有。我不建议直接用标准 UML 包图/泳道图作为主表达。它们能画，但容易把问题画得很“软件架构化”，反而看不出 Siemens 这种变量体系的细粒度隔离。
+
+我更推荐一个自定义的组合：**访问地图 + 访问追踪 + 边界卡片 + 分类决策树**。
+
+**1. 访问地图：看它“住在哪”**
+
+用于总览 Siemens-style 数据分布，不讨论字段，只看隔离域。
+
+```text
+Siemens-style Access Atlas
+├─ Program Lifetime
+│  ├─ LUD        子程序局部，结束删除
+│  └─ PUD        主程序范围，结束删除
+├─ Persistent User Data
+│  ├─ NCK GUD    NCK 全局，重启保留
+│  └─ CHAN GUD   通道全局，重启保留
+├─ Machine Configuration
+│  ├─ $MN_       机床级
+│  ├─ $MC_       通道级
+│  └─ $MA_       轴级
+├─ Domain Tables
+│  ├─ $TC_       刀具/刀沿
+│  └─ $P_UIFR    零偏/frame
+├─ Runtime State / Signals
+└─ Cross-channel Link / Coordination
+```
+
+这个图解决“它属于哪个世界”。
+
+**2. 访问追踪：看一次访问怎么走**
+
+这是我最推荐的主表达。它从一个具体表达式出发，追踪到最终 owner/value。
+
+```text
+Expression
+  -&gt; visible in this context?
+  -&gt; resolve scope
+  -&gt; resolve instance
+  -&gt; check permission/state
+  -&gt; dispatch owner
+  -&gt; read/write value
+  -&gt; persist or discard?
+```
+
+比如：
+
+```text
+DEF CHAN REAL MY_VAR
+
+CH1 program reads MY_VAR
+  -&gt; user variable lookup
+  -&gt; GUD range = CHAN
+  -&gt; current channel = CH1
+  -&gt; instance = CH1/MY_VAR
+  -&gt; check part-program read right
+  -&gt; read retained GUD value
+```
+
+这个比画大框架更有用，因为它能暴露“同名变量为什么不是同一个值”。
+
+**3. 边界卡片：每类变量一张**
+
+不要写成 schema，只写人能读懂的事实卡。
+
+```text
+CHAN GUD
+
+定义方式:
+  DEF CHAN ...
+
+可见范围:
+  当前通道范围内的 part program / OPI，受权限控制
+
+生命周期:
+  不是程序调用生命周期
+
+保存:
+  GUD 机制保存，shutdown/restart 后保留
+
+访问边界:
+  不是普通 LUD/PUD
+  不是 NCK 全局
+  跨通道访问需要明确机制或外部 target
+```
+
+这个适合后面做文档，人读起来比 enum 表舒服。
+
+**4. 分类决策树：遇到一个变量怎么判断**
+
+这个对 Siemens 很有用，因为很多东西看起来都像“变量”。
+
+```text
+看到一个访问对象
+├─ 是 DEF 定义的吗？
+│  ├─ 定义在程序里？
+│  │  ├─ 主程序 -&gt; PUD
+│  │  └─ 子程序 -&gt; LUD
+│  └─ 定义在 GUD block？
+│     ├─ DEF NCK  -&gt; NCK GUD
+│     └─ DEF CHAN -&gt; CHAN GUD
+├─ 是 $ 系统变量吗？
+│  ├─ $MN/$MC/$MA -&gt; machine data
+│  ├─ $TC        -&gt; tool/domain table
+│  └─ $P_UIFR    -&gt; frame/domain table
+└─ 是通信/状态类？
+   ├─ link/cross-channel
+   └─ runtime state/signal
+```
+
+我的建议是：**不要先画 UML，而是先建立“访问追踪图”作为主语言。**
+
+原因很直接：我们现在最怕的不是分类不漂亮，而是把不同生命周期、不同 scope、不同权限的数据都接到一个万能访问入口上。访问追踪图能逼着每个例子回答：
+
+```text
+谁在访问？
+在哪里可见？
+解析到哪个实例？
+谁允许？
+谁执行？
+值会不会保存？
+```
+
+所以最合适的表达方式不是单一图形，而是：
+
+```text
+总体看：访问地图
+单例看：访问追踪
+分类看：决策树
+沉淀看：边界卡片
+```
+
+后续如果要落文档，我建议每个典型 Siemens 形式都用这四件套里的两到三个，不要每次都全画。第一个最值得做的是 `LUD / PUD / NCK GUD / CHAN GUD`，因为它最能暴露“统一访问不能等于任意访问”。</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 10:26:04 +0800</div>
+<pre>所以前期用你推荐的，后期稳定后出更多的人类可读图形，你觉得ok吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 10:26:16 +0800</div>
+<pre>可以，而且这是更合理的节奏。
+
+前期先用我推荐的这套偏“分析型”的表达：
+
+```text
+访问地图
+访问追踪
+分类决策树
+边界卡片
+```
+
+它们的目标不是好看，而是帮我们把问题拆清楚：
+
+```text
+它属于哪类？
+谁能看到？
+从哪里解析 scope？
+最终访问哪个实例？
+谁负责权限？
+谁负责读写？
+是否持久化？
+```
+
+等这些关系稳定后，再转成人类可读的图形文档：
+
+| 阶段 | 表达方式 | 目的 |
+|---|---|---|
+| 前期讨论 | 访问追踪、边界卡片、决策树 | 发现边界、冲突、例外 |
+| 中期整理 | 矩阵表 + 简化拓扑图 | 对齐术语、沉淀分类 |
+| 后期发布 | 漂亮的包图、泳道图、拓扑图、mdBook 页面 | 给实现者/评审者/新人阅读 |
+
+这个顺序能避免我们一开始为了图好看而把分类画死。现在最重要的是让图能暴露问题，而不是让图像最终规范。
+
+我建议下一步就从这一组开始：
+
+```text
+LUD / PUD / NCK GUD / CHAN GUD
+```
+
+因为它们能最直接验证：
+
+```text
+同样是“变量”，为什么作用域、生命周期、持久化、权限完全不同。
+```
+
+先用访问追踪和边界卡片把它们画清楚，后面再考虑做发布级图形。</pre>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 10:34:54 +0800</div>
+<pre>ok，我同意这个表达方式的设计，我们开始正式讨论</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 10:35:26 +0800</div>
+<pre>我会把这当成正式设计讨论的起点，但仍保持“先观察、后抽象”的方式：先不新增 schema，不冻结术语，先用访问追踪和边界卡片把 Siemens-style 形式拆清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 10:35:55 +0800</div>
+<pre>好，那我们正式讨论时先定一个工作边界：
+
+```text
+目标：
+  总结 Siemens-style 参数/变量形式和访问方式，
+  用它来校验 MetaNC 的参数/运行时访问模型，
+  但不直接复制 Siemens，也不马上新增 MetaNC schema 字段。
+```
+
+我建议第一轮就聚焦 **“用户变量与通道隔离”**，因为它最能暴露“统一访问不能等于任意访问”。
+
+**第一轮对象**
+
+```text
+LUD
+PUD
+NCK GUD
+CHAN GUD
+```
+
+**采用表达方式**
+
+每一类用四块描述：
+
+```text
+1. 访问地图：它属于哪个隔离域
+2. 边界卡片：它能被谁看到、活多久、怎么保存
+3. 访问追踪：一次读/写如何解析到具体值
+4. 决策问题：它对 MetaNC 暴露了什么设计约束
+```
+
+先来第一组总览：
+
+```text
+User Variables / 用户变量
+├─ Program-lifetime
+│  ├─ LUD
+│  │  └─ 子程序局部；调用时创建；结束/reset 删除
+│  └─ PUD
+│     └─ 主程序范围；主程序启动创建；结束/reset 删除
+└─ Retained GUD
+   ├─ NCK GUD
+   │  └─ NCK 全局；GUD block 定义；重启后保留
+   └─ CHAN GUD
+      └─ 通道全局；GUD block 定义；重启后保留
+```
+
+第一张边界卡片可以这样写：
+
+```text
+LUD / Local User Data
+
+定义位置：
+  子程序/part program 内部 DEF 定义
+
+可见范围：
+  只在定义它的程序内部可见
+
+生命周期：
+  程序调用时创建
+  程序结束或 NC reset 时删除
+
+持久化：
+  不持久化
+
+访问边界：
+  其他程序不可见
+  不能作为全局参数暴露
+  不应该进入长期 parameter catalog
+
+对 MetaNC 的启发：
+  这类东西属于 program-local runtime slot，
+  不是 parameter，
+  也不是 persistent registry entry。
+```
+
+对应访问追踪：
+
+```text
+SUB2 reads VAR2
+
+Program SUB2
+  -&gt; local variable lookup
+  -&gt; definition found in SUB2
+  -&gt; create/read SUB2 call-frame slot
+  -&gt; value exists only during this call/reset window
+  -&gt; no persistent write-back
+
+SUB3 reads VAR2
+
+Program SUB3
+  -&gt; local variable lookup
+  -&gt; no definition in SUB3
+  -&gt; parent/subprogram visibility does not include SUB2 local
+  -&gt; reject: variable not known / not visible
+```
+
+这个例子带来的第一个设计约束是：
+
+```text
+MetaNC 的统一访问层不能把所有“能被表达式访问的东西”都注册成长期参数。
+有些访问对象只在程序调用栈里存在，只能由 runtime symbol table 管。
+```
+
+如果这个方向没问题，下一步我们继续做 `PUD`，然后做 `NCK GUD / CHAN GUD`，最后把四者合成一张“用户变量隔离矩阵”。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:253-274|note=[parameter-system boundary model and anti flat-table guidance]
+MEMORY.md:216-229|note=[parameter-system terminology lineage and Siemens 840D context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6d14-a2f1-7d62-82ef-4cc7879838d9
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-24">
+<h2>Turn 24</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 10:55:13 +0800</div>
+<pre>NCK是什么便量</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 10:55:24 +0800</div>
+<pre>`NCK` 不是变量名，它是 Siemens/SINUMERIK 里的一个范围/控制内核概念，通常可理解为 **Numerical Control Kernel，数控内核**。
+
+在刚才的 `DEF NCK ...` 里：
+
+```text
+DEF NCK REAL ZEIT_1 = 12
+```
+
+`NCK` 的意思不是“定义一个叫 NCK 的变量”，而是：
+
+```text
+这个 GUD 是 NC 内核范围的全局用户数据
+```
+
+也就是它的可见范围比 `CHAN` 更大。
+
+对比一下：
+
+| 写法 | 含义 |
+|---|---|
+| `DEF NCK ...` | NCK-global GUD，NC 内核范围全局，通常可跨通道访问 |
+| `DEF CHAN ...` | Channel-global GUD，通道范围全局，只属于某个通道范围 |
+| `DEF ...` 在主程序 | PUD，主程序及其子程序范围 |
+| `DEF ...` 在子程序 | LUD，子程序局部范围 |
+
+所以简单说：
+
+```text
+NCK = 数控内核范围
+CHAN = 通道范围
+```
+
+在 MetaNC 里不要把 `NCK` 当变量类型，而应该把它看成 Siemens-style 的一个**作用域范围**。</pre>
+</article>
+</section>
+<section class="turn" id="turn-25">
+<h2>Turn 25</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:00:08 +0800</div>
+<pre>你这些名词缩写有术语表对照吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:00:25 +0800</div>
+<pre>我会先查当前 TP004 文档里有没有现成的缩写/术语对照；如果没有，我会明确区分“已有 MetaNC 术语表”和“缺 Siemens-style 缩写对照表”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:00:41 +0800</div>
+<pre>目前**没有一张专门的 Siemens-style 缩写术语对照表**。
+
+现在仓库里有的是 MetaNC 自己的规范术语表：
+
+```text
+TP004-parameter-system/openspec/TERMS.md
+```
+
+它管的是 `Access Definition`、`Owner`、`Runtime Symbol Table`、`Scoped Value Instance` 这类 MetaNC 概念；但 `NCK / CHAN / GUD / LUD / PUD / OPI / APRP / APWP` 这种 Siemens 缩写，目前还没有集中对照表。之前文档里只是零散提到过 `GUD/LUD/PUD-like`，不够。
+
+当前讨论里先临时对照如下：
+
+| 缩写 | 英文展开 | 中文理解 | 当前用途 |
+|---|---|---|---|
+| `NCK` | Numerical Control Kernel | 数控内核 | `DEF NCK` 表示 NCK 全局范围 |
+| `CHAN` | Channel | 通道 | `DEF CHAN` 表示通道范围 |
+| `GUD` | Global User Data | 全局用户数据 | GUD block 定义，重启后保留 |
+| `LUD` | Local User Data | 局部用户数据 | 子程序局部，程序结束/reset 删除 |
+| `PUD` | Program-global User Data | 程序全局用户数据 | 主程序及其子程序范围，程序结束/reset 删除 |
+| `OPI` | Operator Panel Interface | 操作面板接口 | Siemens 文档里用于 HMI/外部操作访问权限 |
+| `APRP` | Access Part-program Read Protection | 程序读保护等级 | GUD 由 part program 读取的权限 |
+| `APWP` | Access Part-program Write Protection | 程序写保护等级 | GUD 由 part program 写入的权限 |
+| `APRB` | Access OPI Read Protection | OPI 读保护等级 | GUD 由 OPI 读取的权限 |
+| `APWB` | Access OPI Write Protection | OPI 写保护等级 | GUD 由 OPI 写入的权限 |
+| `DEF` | Define | 定义命令 | 定义 LUD/PUD/GUD 用户变量 |
+| `NC` | Numerical Control | 数控 | 数控系统/数控执行环境 |
+
+这个表应该后续单独落成一个**Siemens-style 缩写对照/外部术语表**，但我建议它不要混进 MetaNC 的正式 `TERMS.md` 主表里。更合适是：
+
+```text
+SIEMENS-GLOSSARY.md
+```
+
+或者放在 Siemens compatibility 目录下：
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/GLOSSARY.md
+```
+
+定位是：
+
+```text
+解释外部 Siemens 缩写
+帮助阅读和兼容分析
+不直接成为 MetaNC schema 字段来源
+```
+
+这样可以避免把 Siemens 的名词体系直接绑进 MetaNC 核心模型。</pre>
+</article>
+</section>
+<section class="turn" id="turn-26">
+<h2>Turn 26</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:03:13 +0800</div>
+<pre>我觉得需要一个SIMENS的术语表，不光是缩写，你觉得呢</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 11:03:32 +0800</div>
+<pre>我同意，而且我觉得这次应该补的是 **Siemens-style 外部术语表**，不只是缩写表。
+
+原因很明确：我们接下来要大量讨论 Siemens 的参数、变量、通道、GUD、机床数据、权限、OPI、archive 等概念。如果没有一个外部术语表，后面很容易把 Siemens 概念误当成 MetaNC 概念，或者把两者混用。
+
+我建议它和 MetaNC `TERMS.md` 分开：
+
+```text
+MetaNC TERMS.md
+  -&gt; MetaNC 自己的规范概念
+
+Siemens Glossary
+  -&gt; Siemens/SINUMERIK 外部概念、缩写、表达形式、和 MetaNC 的对应关系
+```
+
+建议文件定位：
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/GLOSSARY.md
+```
+
+内容结构可以是：
+
+| 字段 | 作用 |
+|---|---|
+| Siemens term | Siemens 原词，比如 `GUD`, `Machine Data`, `OPI` |
+| Expansion | 缩写展开，如果有 |
+| 中文名 | 方便中文讨论 |
+| Siemens meaning | Siemens 语境下的含义 |
+| Typical expression | 典型表达，比如 `DEF CHAN ...`, `$MA_...` |
+| Persistence/lifetime note | 是否持久、生命周期如何 |
+| Access note | 谁能访问、权限在哪里体现 |
+| MetaNC interpretation | MetaNC 里应如何理解 |
+| Status | confirmed / needs verification / discussion-only |
+| Source | Siemens 官方文档或待核验来源 |
+
+重点是最后三列：
+
+```text
+MetaNC interpretation
+Status
+Source
+```
+
+它能防止我们把外部概念直接变成内部 schema。
+
+例如：
+
+| Siemens term | 中文 | Siemens meaning | MetaNC interpretation |
+|---|---|---|---|
+| `NCK` | 数控内核 | NC kernel 范围 | external scope concept, not a variable |
+| `CHAN` | 通道 | channel 范围 | external scope concept |
+| `LUD` | 局部用户数据 | 子程序局部，结束/reset 删除 | program-local runtime slot |
+| `PUD` | 程序全局用户数据 | 主程序范围，结束/reset 删除 | program-session slot |
+| `GUD` | 全局用户数据 | GUD block 定义，可重启保留 | persistent user-defined scoped value |
+| `OPI` | 操作面板接口 | HMI/外部操作接口 | external access context, not direct MetaNC owner |
+| `Machine Data` | 机床数据 | 系统配置参数 | candidate parameter family |
+| `Tool Data` | 刀具数据 | 刀具/刀沿数据 | domain table |
+| `System Variable` | 系统变量 | `$` 访问视图 | native expression / external language view |
+
+这个表不是要把 Siemens 变成 MetaNC 的核心，而是作为“翻译层”。后续我们每讨论一个 Siemens 用例，都先问：
+
+```text
+这个 Siemens 词在 Siemens 里是什么意思？
+它在 MetaNC 里应该映射成什么？
+它是不是已经有官方来源确认？
+它有没有不能照搬的地方？
+```
+
+所以我建议下一步先建这个 glossary，然后再继续 `LUD/PUD/GUD` 的正式用例切片。</pre>
+</article>
+</section>
+<section class="turn" id="turn-27">
+<h2>Turn 27</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:03:47 +0800</div>
+<pre>可以 详细规划一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:04:06 +0800</div>
+<pre>我会先把这个当成文档设计计划，不直接改文件。重点是规划 Siemens 外部术语表怎么服务后续用例切片，同时避免它污染 MetaNC 核心术语体系。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:04:40 +0800</div>
+<pre>可以。我的建议是把它规划成一个**外部术语翻译层**，先服务讨论和用例切片，不进入 MetaNC 核心 schema。
+
+**目标**
+
+建立一份 Siemens/SINUMERIK 术语表，用来回答三件事：
+
+```text
+1. Siemens 原词是什么意思？
+2. 它在 Siemens 里怎么表达、怎么访问、怎么保存、怎么受限？
+3. MetaNC 讨论时应该把它理解成什么，而不是误当成什么？
+```
+
+**文件位置**
+
+推荐放这里：
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/GLOSSARY.md
+```
+
+原因：
+
+```text
+它属于 Siemens compatibility / external language view
+不是 MetaNC 核心 TERMS.md
+不应该污染 MetaNC 自有术语体系
+```
+
+以后如果内容变多，可以拆成：
+
+```text
+access-definitions/siemens/
+  GLOSSARY.md
+  USER-VARIABLES.md
+  MACHINE-DATA.md
+  ACCESS-RIGHTS.md
+  CHANNEL-MODEL.md
+```
+
+第一阶段先不拆，先一份 `GLOSSARY.md` 足够。
+
+**文档结构**
+
+```text
+# Siemens-style Glossary
+
+## Purpose
+说明这是外部术语表，不是 MetaNC 核心术语表。
+
+## Reading Rules
+说明 confirmed / needs verification / discussion-only 的含义。
+
+## Term Table
+主表。
+
+## Abbreviation Table
+缩写快速查找。
+
+## Expression Families
+列 `$MN_`, `$MC_`, `$MA_`, `$TC_`, `$P_...` 等表达族。
+
+## Access And Persistence Notes
+总结 LUD/PUD/GUD、权限、通道、保存机制。
+
+## Mapping Rules For MetaNC
+说明哪些能映射为 parameter，哪些是 domain table，哪些是 runtime symbol。
+
+## Open Questions
+记录 R 参数、link variable、runtime state 等待核验项。
+```
+
+**主表字段**
+
+先用人类可读字段，不做 schema：
+
+| 字段 | 说明 |
+|---|---|
+| Siemens term | Siemens 原词 |
+| Expansion | 缩写展开，没有就空 |
+| 中文名 | 中文讨论名 |
+| Siemens meaning | Siemens 语境下的含义 |
+| Typical expression | 典型表达 |
+| Visibility / scope note | 可见范围说明 |
+| Lifetime / persistence note | 生命周期/保存说明 |
+| Access note | 访问限制、权限、上下文 |
+| MetaNC interpretation | MetaNC 中应如何理解 |
+| Not this | 避免误解 |
+| Status | confirmed / needs verification / discussion-only |
+| Source | 官方资料或待核验说明 |
+
+这里的 `Visibility / scope note` 等只是表格列，不是 MetaNC 字段。
+
+**第一批术语**
+
+第一批先覆盖我们马上要讨论的内容：
+
+| 类别 | 术语 |
+|---|---|
+| 用户变量 | `LUD`, `PUD`, `GUD`, `DEF` |
+| GUD 范围 | `NCK`, `CHAN` |
+| 访问接口 | `OPI`, part program |
+| GUD 权限 | `APRP`, `APWP`, `APRB`, `APWB` |
+| 数据类型 | `INT`, `REAL`, `BOOL`, `CHAR`, `STRING`, `AXIS`, `FRAME` |
+| 系统变量/参数族 | `$MN_`, `$MC_`, `$MA_`, `$TC_`, `$P_UIFR` |
+| 通道/范围 | channel, axis, NCK-global, channel-global |
+| 待核验 | R parameters, `$A_...`, link variables, alarm/diagnostic variables |
+
+**状态规则**
+
+```text
+confirmed
+  已有 Siemens 官方资料或我们能引用的明确来源。
+
+needs verification
+  术语大概率正确，但还没找到足够来源，不能作为规范依据。
+
+discussion-only
+  只是我们讨论中的类比或中间说法，不能写进正式定义。
+```
+
+**示例条目**
+
+```markdown
+| Siemens term | Expansion | 中文名 | Siemens meaning | Typical expression | Visibility / scope note | Lifetime / persistence note | Access note | MetaNC interpretation | Not this | Status | Source |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| GUD | Global User Data | 全局用户数据 | Defined in GUD data blocks; can be NCK-global or channel-global. | `DEF NCK ...`, `DEF CHAN ...` | NCK or channel range. | Retained after shutdown/restart. | Can define protection levels for part program and OPI read/write. | Persistent user-defined scoped value. | Not the same as LUD/PUD or ordinary machine data. | confirmed | Siemens Job Planning DEF |
+```
+
+**和 MetaNC TERMS.md 的关系**
+
+规则要写清楚：
+
+```text
+Siemens Glossary:
+  解释外部概念，允许使用 Siemens 原词。
+
+MetaNC TERMS.md:
+  只放 MetaNC 自己的规范概念。
+
+映射方式:
+  Siemens term -&gt; MetaNC interpretation
+  不是 Siemens term -&gt; MetaNC term 直接等同
+```
+
+比如：
+
+```text
+GUD -&gt; persistent user-defined scoped value
+LUD -&gt; program-local runtime slot
+$TC_ -&gt; domain table access family
+$MA_ -&gt; parameter access family candidate
+OPI -&gt; external access context, not owner
+```
+
+**和后续用例切片的关系**
+
+每个用例切片开始时先引用 glossary：
+
+```text
+Case: CHAN GUD read from part program
+
+Referenced Siemens terms:
+  - DEF
+  - GUD
+  - CHAN
+  - APRP/APWP
+  - part program
+
+Then:
+  Access trace
+  Boundary card
+  MetaNC design constraint
+```
+
+这样术语表不是孤立文档，而是后续用例的前置索引。
+
+**实施顺序**
+
+1. 建 `GLOSSARY.md` 骨架。
+2. 先填 confirmed 的 DEF/LUD/PUD/GUD/NCK/CHAN/OPI/APR*。
+3. 把 Siemens 官方 DEF 页面作为第一条 source。
+4. 把 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 这些已在 TP004 中使用的表达族补进去。
+5. 把 R 参数、`$A_`、link variable、报警/诊断类标成 `needs verification`，不要硬写结论。
+6. 在 `access-definitions/siemens/README.md` 加链接。
+7. 后面每做一个用例切片，就顺手补 glossary，而不是一次性补全 Siemens 世界。
+
+一句话总结：**先建 Siemens 外部术语表作为“翻译层”，用 confirmed/needs verification 控制可信度，再让每个访问用例反向校验和补全它。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-28">
+<h2>Turn 28</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:08:53 +0800</div>
+<pre>我同意你的目录结构设计，可以考虑一下先落那些东西</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:09:12 +0800</div>
+<pre>我先按探索/规划来处理，不直接写文件。重点是把第一批内容控制小，先服务后续讨论，不把 Siemens 术语一次性铺满。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:09:42 +0800</div>
+<pre>我建议第一批只落**能支撑马上讨论 LUD/PUD/GUD 和通道隔离的内容**，不要把 Siemens 全系统一次性展开。
+
+**第一批落这些**
+
+| 优先级 | 内容 | 原因 |
+|---|---|---|
+| P0 | `GLOSSARY.md` 的 purpose / rules | 先声明它是外部术语表，不是 MetaNC 核心术语 |
+| P0 | `LUD`, `PUD`, `GUD`, `NCK`, `CHAN`, `DEF` | 这是接下来讨论用户变量隔离的基础 |
+| P0 | `OPI`, `APRP`, `APWP`, `APRB`, `APWB` | GUD 权限必须一起解释，否则访问边界不完整 |
+| P0 | confirmed / needs verification / discussion-only 状态规则 | 防止把未核验 Siemens 细节写死 |
+| P1 | `$MN_`, `$MC_`, `$MA_`, `$TC_`, `$P_UIFR` | 这些已经和 TP004 第一批访问族有关 |
+| P1 | `Machine Data`, `Tool Data`, `Zero Offset / Frame`, `System Variable` | 解释表达族背后的 Siemens 数据类别 |
+| P2 | `R parameter`, `$A_...`, link variables, alarm/diagnostic variables | 先列为待核验，不展开结论 |
+
+**第一版目录**
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/
+  README.md
+  GLOSSARY.md
+  tool.md
+  axis-machine-data.md
+  zero-offset.md
+```
+
+暂时不要拆 `USER-VARIABLES.md`、`CHANNEL-MODEL.md`。等 `GLOSSARY.md` 变长或者用例切片稳定后再拆。
+
+**第一版 `GLOSSARY.md` 结构**
+
+```text
+# Siemens-style Glossary
+
+## Purpose
+说明本页解释 Siemens/SINUMERIK 外部术语。
+
+## Boundary
+说明这些术语不是 MetaNC 核心术语，不直接生成 schema/enum。
+
+## Status Rules
+confirmed / needs verification / discussion-only。
+
+## Core User-Variable Terms
+LUD / PUD / GUD / DEF。
+
+## Scope And Range Terms
+NCK / CHAN / channel。
+
+## Access And Protection Terms
+OPI / APRP / APWP / APRB / APWB。
+
+## Siemens-style Expression Families
+$MN_ / $MC_ / $MA_ / $TC_ / $P_UIFR。
+
+## Mapping Notes For MetaNC
+说明只做解释和映射，不等同照搬。
+
+## Open Verification List
+R parameters / $A_ / link variables / alarm variables。
+```
+
+**第一批条目示例**
+
+```text
+LUD
+  Siemens meaning:
+    Local user data defined in a part program that is not the main program.
+  Lifetime:
+    Created when the part program is called; deleted at program end or NC reset.
+  MetaNC interpretation:
+    Program-local runtime slot.
+  Not this:
+    Not a persistent parameter.
+
+PUD
+  Siemens meaning:
+    Program-global user data defined in the main program.
+  Lifetime:
+    Created when main program starts; deleted at program end or NC reset.
+  MetaNC interpretation:
+    Program-session slot.
+  Not this:
+    Not NCK-global persistent data.
+
+GUD
+  Siemens meaning:
+    Global user data defined in GUD data blocks.
+  Lifetime:
+    Retained after shutdown/restart.
+  MetaNC interpretation:
+    Persistent user-defined scoped value.
+  Not this:
+    Not ordinary machine data; not LUD/PUD.
+
+NCK
+  Siemens meaning:
+    Numerical Control Kernel range.
+  MetaNC interpretation:
+    External Siemens scope/range concept.
+  Not this:
+    Not a variable name.
+
+CHAN
+  Siemens meaning:
+    Channel range for GUD.
+  MetaNC interpretation:
+    External Siemens channel-scope concept.
+  Not this:
+    Not a standalone value type.
+```
+
+**引用规则**
+
+第一版只引用一条已经核到的 Siemens 官方页面：
+
+```text
+Siemens Support:
+SINUMERIK 840D sl / 828D Job Planning
+Definition of user variables (DEF)
+https://support.industry.siemens.com/cs/mdm/70265038?c=44782643595&amp;lc=en-BY
+```
+
+`$MN_/$MC_/$MA_/$TC_/$P_UIFR` 这部分如果没有新官方来源，先标成：
+
+```text
+status: needs verification
+source: TP004 current Siemens-style examples / pending Siemens official source
+```
+
+**完成标准**
+
+第一版完成后应该能支持这三个问题：
+
+```text
+1. 读者看到 NCK/CHAN/GUD/LUD/PUD 知道是什么意思。
+2. 读者知道哪些 Siemens 术语是 confirmed，哪些只是待核验。
+3. 后续 LUD/PUD/GUD 用例切片可以引用这份 glossary，而不用每次重新解释。
+```
+
+**不做的事**
+
+```text
+不新增 MetaNC TERMS.md 条目
+不新增 value set
+不新增 schema 字段
+不声称完整覆盖 Siemens
+不把 R/$A/link/alarm 细节写成 confirmed
+```
+
+我建议下一步就按这个 P0/P1 范围落 `GLOSSARY.md`，然后再回来继续正式讨论 `LUD -&gt; PUD -&gt; GUD NCK -&gt; GUD CHAN` 四个用例。</pre>
+</article>
+</section>
+<section class="turn" id="turn-29">
+<h2>Turn 29</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:11:46 +0800</div>
+<pre>1.你这些优先级是怎么定义的
+2.这些缩写是西门子官方还是你自己瞎想的
+3.官方来源和非官方来源（比如各类资料网站或者你自己妄想的）是不是应该也要标记一下，甚至于最好有出处地址？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:12:09 +0800</div>
+<pre>你这个追问很关键。我会先把“优先级”和“可信来源等级”分开说明，并重新核一下 Siemens 官方 DEF 页面，避免把我的规划优先级误说成事实等级。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:12:45 +0800</div>
+<pre>你这三个问题都对，我前面的规划要补清楚。
+
+**1. P0/P1/P2 不是事实优先级**
+
+我说的 P0/P1/P2 只是**落文档顺序优先级**，不是 Siemens 官方重要性，也不是 MetaNC 规范等级。
+
+建议改名，避免误解：
+
+| 原叫法 | 建议改名 | 含义 |
+|---|---|---|
+| P0 | `first-pass` | 第一批必须落，因为马上要讨论用例 |
+| P1 | `near-term` | 很快会用到，但可以稍后补来源 |
+| P2 | `backlog` | 先占位，必须核验后才能展开 |
+
+它只回答：
+
+```text
+我们先写哪些，后写哪些
+```
+
+不回答：
+
+```text
+哪个更官方
+哪个更重要
+哪个更稳定
+```
+
+**2. 哪些缩写是 Siemens 官方资料里出现的**
+
+这批可以算有 Siemens 官方来源支撑，来自 Siemens Support 的 `Definition of user variables (DEF)` 页面：
+
+| 缩写/词 | 是否官方来源出现 | 说明 |
+|---|---:|---|
+| `DEF` | 是 | Siemens 页面写明是定义 GUD/PUD/LUD 用户变量的命令 |
+| `LUD` | 是 | Local user variables |
+| `PUD` | 是 | Program-global user variables |
+| `GUD` | 是 | Global user variables |
+| `NCK` | 是 | GUD 的 range：NC-global user variable |
+| `CHAN` | 是 | GUD 的 range：Channel-global user variable |
+| `OPI` | 是 | GUD access rights 里出现，OPI read/write |
+| `APRP` | 是 | Part program read protection |
+| `APWP` | 是 | Part program write protection |
+| `APRB` | 是 | OPI read protection |
+| `APWB` | 是 | OPI write protection |
+| `SYNR` / `SYNW` / `SYNRW` | 是 | GUD 的 preprocessing stop |
+| `INT`, `REAL`, `BOOL`, `CHAR`, `STRING`, `AXIS`, `FRAME` | 是 | DEF 支持的数据类型 |
+| `PHU`, `LLI`, `ULI` | 是 | 物理单位、上下限属性 |
+| `$MN_` | 是 | 该页面的 supplementary conditions 里列出相关 machine data identifier |
+
+这批可以在 glossary 标成：
+
+```text
+source_level: official
+verification_status: confirmed
+source_url: Siemens Support DEF page
+```
+
+**3. 哪些不是已经确认的官方来源**
+
+这些目前只能算我们 TP004 已有例子或待核验项，不能标 confirmed：
+
+| 词/表达 | 当前状态 | 原因 |
+|---|---|---|
+| `$TC_DP3` | TP004 已用例子，但需 Siemens source 继续核验 | 当前文档有，但这轮没有重新核官方 |
+| `$MA_MAX_AX_VELO` | TP004 已用例子，但需 Siemens source 继续核验 | 同上 |
+| `$P_UIFR` | TP004 已用例子，但需 Siemens source 继续核验 | 同上 |
+| `R parameter` | needs verification | 还没核官方语义/持久化 |
+| `$A_...` | needs verification | 还没核官方分类 |
+| `$A_DLB/$A_DLW/$A_DLD/$A_DLR` | needs verification | 我们之前作为 Siemens-like link examples 提到，但应补来源 |
+| alarm/diagnostic variables | needs verification | 还没核官方表达族 |
+| Machine Data 全族 `$MN_/$MC_/$MA_` | partial | `$MN_` 在 DEF 页面出现；`$MC_/$MA_` 还应补官方来源 |
+
+不能混写成同一个可信等级。
+
+**4. 来源标记应该单独设计**
+
+我建议 glossary 每条至少有两个来源字段：
+
+| 字段 | 用途 |
+|---|---|
+| `source_level` | official / vendor-adjacent / third-party / project-inferred / discussion-only |
+| `verification_status` | confirmed / partial / needs verification / rejected |
+| `source_url` | 具体 URL |
+| `source_note` | 说明这个来源支持了什么，不支持什么 |
+
+这样能区分：
+
+```text
+Siemens 官方说过
+第三方资料说过
+我们项目文档里用过
+只是我推断的
+只是讨论占位
+```
+
+**5. 建议的来源等级**
+
+```text
+official
+  Siemens Support / Siemens manual / Siemens documentation page
+
+vendor-adjacent
+  机床厂商、SINUMERIK training material、授权集成商资料
+
+third-party
+  论坛、资料站、博客、PDF 镜像站
+
+project-inferred
+  我们从 TP004 当前设计或 MetaNC 需求推导出的解释
+
+discussion-only
+  当前讨论中的假设或候选说法
+```
+
+`official` 才能作为 confirmed 的主要依据。`third-party` 和 `project-inferred` 不能单独把条目标成 confirmed。
+
+**6. 第一版应该怎么改**
+
+第一版不要写“P0/P1/P2”，改成：
+
+```text
+First pass: official-confirmed user-variable terms
+  DEF, LUD, PUD, GUD, NCK, CHAN, OPI, APRP/APWP/APRB/APWB,
+  SYNR/SYNW/SYNRW, INT/REAL/BOOL/CHAR/STRING/AXIS/FRAME,
+  PHU/LLI/ULI
+
+Second pass: TP004 referenced Siemens-style access families
+  $TC_DP3, $MA_MAX_AX_VELO, $P_UIFR
+  status = needs verification or partial until official source is attached
+
+Backlog: open verification terms
+  R parameters, $A_..., link variables, alarm/diagnostic variables
+```
+
+这个更严谨。第一版先只落官方 DEF 页面能支撑的内容，其他最多列在 open verification，不写死。</pre>
+</article>
+</section>
+<section class="turn" id="turn-30">
+<h2>Turn 30</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:13:43 +0800</div>
+<pre>这种解释我觉得可以，那下一步具体做什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:14:00 +0800</div>
+<pre>我会继续按 OpenSpec explore 处理：这一步先把“做什么”和“做到什么程度”定清楚，再决定是否落文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:14:15 +0800</div>
+<pre>下一步建议做一件很具体的事：**先落 Siemens Glossary 第一版，只收官方 DEF 页面已经能支撑的术语，然后用它开启 LUD/PUD/GUD 用例切片。**
+
+具体顺序：
+
+1. 建 `GLOSSARY.md`
+
+位置：
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/GLOSSARY.md
+```
+
+第一版只写：
+
+```text
+Purpose
+Boundary
+Source/verification rules
+Official-confirmed user-variable terms
+Open verification list
+```
+
+2. 第一批 confirmed 条目
+
+只放 Siemens 官方 DEF 页面能支撑的：
+
+```text
+DEF
+LUD
+PUD
+GUD
+NCK
+CHAN
+OPI
+APRP
+APWP
+APRB
+APWB
+SYNR
+SYNW
+SYNRW
+INT / REAL / BOOL / CHAR / STRING / AXIS / FRAME
+PHU / LLI / ULI
+```
+
+每条都带：
+
+```text
+source_level: official
+verification_status: confirmed
+source_url: Siemens Support DEF page
+```
+
+3. 第一批 open verification 条目
+
+只列名字，不展开结论：
+
+```text
+$TC_DP3
+$MA_MAX_AX_VELO
+$P_UIFR
+R parameters
+$A_...
+link variables
+alarm/diagnostic variables
+$MC_ / $MA_ / $MN_ family details
+```
+
+状态写：
+
+```text
+needs verification
+```
+
+4. 在 Siemens README 加一个链接
+
+```text
+See GLOSSARY.md for Siemens/SINUMERIK external terms and source levels.
+```
+
+5. 回到正式用例切片
+
+从这四个开始：
+
+```text
+LUD
+PUD
+NCK GUD
+CHAN GUD
+```
+
+每个用：
+
+```text
+访问地图
+边界卡片
+访问追踪
+对 MetaNC 的设计约束
+```
+
+我建议现在就先做第 1-4 步，生成一个小而严谨的 glossary。做完后我们再继续讨论 `LUD` 用例，不然每次都会被缩写和来源问题打断。</pre>
+</article>
+</section>
+<section class="turn" id="turn-31">
+<h2>Turn 31</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:15:28 +0800</div>
+<pre>ok</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:15:52 +0800</div>
+<pre>我按刚才确认的范围落第一版：只加入 Siemens 外部术语表和入口链接，不碰 MetaNC `TERMS.md`、value sets 或 schema。先检查现有目录和中英文文档投影方式，再补最小变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 11:16:32 +0800</div>
+<pre>我会新增英文规范源和中文阅读页两份 glossary，并在 Siemens README/index 里加相对链接。随后跑现有文档同步/术语检查，确认没有破坏发布链路。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 11:16:53 +0800</div>
+<pre>我已经确认入口位置：topic-local book 用 include 包装 `openspec` 源，中文站目前是独立中文页面。接下来会补三处：规范源 `GLOSSARY.md`、topic-local book wrapper、中文阅读页，并把导航和 README 链接接上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 11:17:10 +0800</div>
+<pre>我会同步加英文 i18n 页面，因为根目录双语站也有独立 `docs_i18n/en/src`，只改 topic-local book 不够。接下来补文件并更新三个 SUMMARY。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 11:17:59 +0800</div>
+<pre>我会把来源可信度写成表格规则，不把 `source_level` 这些列当 MetaNC schema；`NCK`、`OPI` 这类缩写如果官方页面只出现了 token 而没展开，我会标成“token confirmed, expansion needs verification”，避免过度确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 11:20:11 +0800</div>
+<pre>术语表文件已加好。现在我会把导航和 Siemens compatibility 入口页链接接上，确保读者能从 HTML 站点进入这页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-11 11:21:11 +0800</div>
+<pre>我会检查新增页面的相对链接和 i18n 同步规则是否需要把新 glossary 纳入校验脚本。现在先跑现有检查，看看实际失败点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-11 11:21:35 +0800</div>
+<pre>现有检查提示 usage index 过期，这是因为新增了一个规范源文件，生成索引会把结构化来源列表一起更新。我还会把新中文 glossary 纳入 i18n 同步检查，避免以后中英文页面漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-11 11:22:12 +0800</div>
+<pre>我发现 access-definitions 的目录结构示例也要加入 `GLOSSARY.md`，否则读者从上一级看不到新文件。然后把 sync 脚本加一对投影校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-11 11:22:44 +0800</div>
+<pre>我会更新 usage index，因为它是生成物，新增规范源后检查要求刷新；随后重新跑校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-11 11:23:10 +0800</div>
+<pre>索引已刷新。现在跑文档同步、value-set 检查和单元测试，确认这批文档改动没有破坏现有治理检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-11 11:23:42 +0800</div>
+<pre>现有检查通过，但它还没有强制检查新 glossary 的发布 HTML。我会把新页面加入 published-page 检查，然后重建 HTML，确保阅读入口真的可用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-11 11:23:57 +0800</div>
+<pre>我会补 published-page 检查项覆盖 topic book、英文站和中文站的 glossary 页面。随后跑构建生成最新 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-11 11:24:36 +0800</div>
+<pre>补 published-page 检查时上下文没有完全匹配，我会按当前文件实际结构分段插入，避免误改已有检查项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-11 11:24:59 +0800</div>
+<pre>我会只给 topic-local book 和双语 published pages 加检查；root `book/html` 不是本次改动的入口，避免引入不必要的导航变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-11 11:25:35 +0800</div>
+<pre>我现在重建 docs_html，让新增 glossary 进入可读 HTML，并用更新后的 published-page 检查验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-11 11:25:59 +0800</div>
+<pre>HTML 已重建并通过发布检查。我会再跑一次 value-set 检查和测试，并看一下最终变更清单，确认没有多余文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-06-11 11:26:28 +0800</div>
+<pre>已按确认范围落下第一版 Siemens 外部术语表，没有改 MetaNC `TERMS.md`、value set 或 schema。
+
+主要变更：
+
+- 新增规范源：[GLOSSARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/GLOSSARY.md)
+- 新增 topic book 包装页：[glossary.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/access-definitions/siemens/glossary.md)
+- 新增英文/中文阅读页：
+  - [en glossary](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/en/src/TP004-parameter-system/access-definitions/siemens/glossary.md)
+  - [zh glossary](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/glossary.md)
+- 在 Siemens compatibility 入口和 `SUMMARY.md` 导航里加了链接。
+- 更新了 `tools/check_docs_i18n_sync.py`，以后会检查 glossary 的中英文投影和发布 HTML。
+- 刷新了 `USAGE-INDEX.generated.md`。
+
+第一版内容只确认 Siemens 官方 `DEF` 页面支撑的术语：`DEF`、`LUD`、`PUD`、`GUD`、`NCK`、`CHAN`、`OPI`、`APRP/APWP/APRB/APWB`、`SYNR/SYNW/SYNRW`、DEF 数据类型和属性。`$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`、`R parameter`、`$A_...` 等都先列为待核验。
+
+已验证：
+
+```text
+./tools/build_docs_html.sh
+python3 tools/check_parameter_value_sets.py
+python3 -m unittest discover -s tools/tests
+```
+
+都通过。下一步可以正式从 `LUD -&gt; PUD -&gt; NCK GUD -&gt; CHAN GUD` 做访问追踪和边界卡片。</pre>
+</article>
+</section>
+<section class="turn" id="turn-32">
+<h2>Turn 32</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:40:10 +0800</div>
+<pre>ok 详细设计一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:40:24 +0800</div>
+<pre>我会先设计“LUD/PUD/GUD 用例切片”的文档结构和讨论顺序，不直接改文件。重点是让它复用刚落下的 Siemens Glossary，同时继续避免新增 MetaNC schema。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:41:21 +0800</div>
+<pre>下面我建议设计的是一个新的分析文档，不是 schema，不是 value set，不是正式实现规格。它的目的只是把 Siemens 用户变量这组概念拆清楚，作为后续 MetaNC 参数/运行时访问模型的输入。
+
+**建议文档**
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/USER-VARIABLE-SLICES.md
+```
+
+中文阅读页后续对应：
+
+```text
+docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/user-variable-slices.md
+```
+
+**文档定位**
+
+一句话：
+
+```text
+用 LUD / PUD / NCK GUD / CHAN GUD 四个 Siemens 用户变量用例，观察作用域、生命周期、持久化、权限和访问边界，避免 MetaNC 统一访问退化成任意访问。
+```
+
+**总体结构**
+
+```text
+# Siemens User Variable Access Slices
+
+## Purpose
+为什么做这些 slice。
+
+## Source Basis
+引用 GLOSSARY.md 和 Siemens DEF 官方来源。
+
+## Non-goals
+不新增 MetaNC schema。
+不定义完整 Siemens 用户变量系统。
+不覆盖 R 参数、$A、link variables。
+
+## Slice Format
+说明每个 slice 都用：
+  - glossary references
+  - boundary card
+  - access map
+  - access trace
+  - MetaNC design constraints
+  - open questions
+
+## Slice 1: LUD
+## Slice 2: PUD
+## Slice 3: NCK GUD
+## Slice 4: CHAN GUD
+
+## Comparison Matrix
+四者对照。
+
+## Design Pressure On MetaNC
+从四个 slice 得出的设计约束。
+
+## Open Verification List
+后续要查证的问题。
+```
+
+**每个 slice 的固定格式**
+
+1. Glossary references
+
+```text
+Referenced Siemens terms:
+  - LUD
+  - DEF
+```
+
+2. Boundary card
+
+```text
+LUD / Local User Data
+
+Defined by:
+  DEF inside a part program that is not the main program.
+
+Visible to:
+  Only the defining part program.
+
+Created:
+  When the part program is called.
+
+Deleted:
+  At part-program end or NC reset.
+
+Retained after restart:
+  No.
+
+Access protection:
+  By program visibility/lifetime, not GUD access-right attributes.
+
+MetaNC interpretation:
+  program-local runtime slot.
+
+Not this:
+  Not a persistent parameter.
+  Not a registry-wide access entry.
+```
+
+3. Access map
+
+```text
+Program Lifetime Domain
+├─ MAIN program
+│  └─ PUD candidate area
+└─ SUB2 call frame
+   └─ LUD VAR2
+```
+
+4. Access trace
+
+```text
+SUB2 reads VAR2
+
+SUB2 program
+  -&gt; local symbol lookup
+  -&gt; VAR2 definition found in SUB2
+  -&gt; resolve to SUB2 call-frame slot
+  -&gt; read value
+  -&gt; no persistent write-back
+```
+
+5. Negative trace
+
+```text
+SUB3 reads VAR2
+
+SUB3 program
+  -&gt; local symbol lookup
+  -&gt; no VAR2 definition in SUB3
+  -&gt; SUB2 LUD is not visible
+  -&gt; reject as unknown/not visible
+```
+
+6. MetaNC design constraints
+
+```text
+- Unified access must not imply global visibility.
+- Program-local symbols should stay in runtime symbol/call-frame storage.
+- LUD-like values should not enter persistent parameter catalog.
+- Diagnostics may inspect them only through explicit runtime/session tooling, not ordinary parameter lookup.
+```
+
+**四个 slice 的重点**
+
+| Slice | 重点问题 |
+|---|---|
+| LUD | 局部可见、调用生命周期、不持久 |
+| PUD | 主程序范围、对子程序可见性受规则/机床数据影响、不持久 |
+| NCK GUD | NCK 全局、重启保留、带 part program/OPI 权限 |
+| CHAN GUD | 通道全局、每个通道实例隔离、重启保留、带权限 |
+
+**最终对照矩阵**
+
+文档最后应该有一张人类可读矩阵：
+
+| Form | Defined where | Visible where | Lifetime | Retained | Access control | MetaNC interpretation |
+|---|---|---|---|---|---|---|
+| LUD | subprogram | defining program | call/reset | no | program visibility | program-local runtime slot |
+| PUD | main program | main + eligible subprograms | main program/reset | no | program visibility + machine data | program-session slot |
+| NCK GUD | GUD block | NCK/global | retained | yes | APRP/APWP/APRB/APWB | persistent NCK-scoped value |
+| CHAN GUD | GUD block | channel | retained | yes | APRP/APWP/APRB/APWB | persistent channel-scoped value |
+
+**对 MetaNC 的设计压力**
+
+这一节很重要，避免文档只是在讲 Siemens：
+
+```text
+1. 访问入口可以统一，但解析结果必须带边界。
+2. 可见性不是 UI 字段，而是执行上下文和 scope 的组合结果。
+3. 持久化不是变量名决定的，而是变量类别/owner/存储机制决定的。
+4. program-local / program-session / persistent scoped value 不能混成一种 parameter。
+5. HMI/API 想访问局部运行时值，必须显式 target session/channel/program frame。
+6. 兼容层只能保留 Siemens 表达，不能把 Siemens 内部分类直接变成 MetaNC schema。
+```
+
+**落地顺序**
+
+我建议分两步落，不要一次写太满：
+
+1. 第一版只落 `LUD` 和 `PUD` 两个 slice，加四者对照矩阵的空壳。
+2. 你确认风格后，再补 `NCK GUD` 和 `CHAN GUD`，因为这两个涉及持久化和权限，细节更容易写重。
+
+不过如果你想一次性推进，也可以第一版四个都写，但 `NCK GUD / CHAN GUD` 只写 Siemens DEF 页面已确认内容，其他标 open question。</pre>
+</article>
+</section>
+<section class="turn" id="turn-33">
+<h2>Turn 33</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:46:05 +0800</div>
+<pre>我有点没太理解你这块具体是要落什么，或者说目的是什么，又对西门子的这种概念进行了矩阵可读拆解？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 11:46:26 +0800</div>
+<pre>是的，你可以把它理解成：**对 Siemens 用户变量概念做一次“可读拆解”，不是做 MetaNC 设计定稿。**
+
+目的不是新增一套东西，而是解决现在这个问题：
+
+```text
+Siemens 里 LUD / PUD / GUD / NCK / CHAN 这些东西看起来都像“变量”，
+但它们的可见范围、生命周期、持久化、权限完全不同。
+如果我们不先拆清楚，后面讨论 MetaNC 统一访问时就容易把它们混成一种“参数”。
+```
+
+所以这个文档要落的东西很具体：
+
+**1. 把 Siemens 概念拆成人能读懂的卡片**
+
+例如：
+
+```text
+LUD
+  是什么：子程序局部用户变量
+  谁能看到：定义它的程序
+  什么时候存在：程序调用期间
+  是否持久化：否
+  权限靠什么隔离：程序作用域
+  MetaNC 暂时怎么理解：program-local runtime slot
+```
+
+这不是 schema，只是解释卡片。
+
+**2. 把访问过程画出来**
+
+例如：
+
+```text
+SUB2 reads VAR2
+  -&gt; 在 SUB2 局部符号里查找
+  -&gt; 找到 VAR2
+  -&gt; 读 SUB2 调用帧里的值
+
+SUB3 reads VAR2
+  -&gt; 在 SUB3 局部符号里查找
+  -&gt; 找不到
+  -&gt; 不能访问 SUB2 的 LUD
+```
+
+这样我们能直观看到“统一访问层不能绕过程序局部作用域”。
+
+**3. 做一个对照矩阵**
+
+比如：
+
+| Siemens 形式 | 可见范围 | 生命周期 | 是否持久化 | 权限/隔离方式 | MetaNC 暂时理解 |
+|---|---|---|---|---|---|
+| LUD | 定义它的程序 | 程序调用期间 | 否 | 程序局部作用域 | program-local runtime slot |
+| PUD | 主程序/子程序 | 主程序期间 | 否 | 程序范围规则 | program-session slot |
+| NCK GUD | NCK 全局 | 长期 | 是 | GUD 权限等级 | persistent NCK-scoped value |
+| CHAN GUD | 通道范围 | 长期 | 是 | GUD 权限等级 + 通道范围 | persistent channel-scoped value |
+
+这个矩阵的作用是：**帮助我们看差异，不是直接变成字段。**
+
+**4. 提炼对 MetaNC 的设计提醒**
+
+比如：
+
+```text
+统一访问不能等于任意访问。
+程序局部变量不能进入长期参数目录。
+持久化不能靠变量名判断，要看变量类别/owner。
+HMI/API 如果要看运行时局部变量，必须显式指定 session/channel/program frame。
+```
+
+这些是设计约束，不是 schema。
+
+所以这份文档的价值是：
+
+```text
+Siemens glossary 只是解释词；
+user-variable slices 解释这些词如何实际影响访问边界。
+```
+
+如果只做 glossary，我们知道 `LUD` 是什么；
+但做 slice 后，我们知道：
+
+```text
+为什么 LUD 不能被普通参数系统随便访问；
+为什么 CHAN GUD 需要通道实例隔离；
+为什么 NCK GUD 和 PUD 不能混成一种 global variable。
+```
+
+一句话：**它是 Siemens 用户变量访问边界的读书笔记 + 设计约束提取，不是 MetaNC 元定义扩展。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-34">
+<h2>Turn 34</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:48:55 +0800</div>
+<pre>我不希望simemns glossary这个扩散化</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 11:49:13 +0800</div>
+<pre>明白。那我们应该把 `Siemens Glossary` 严格收窄，不能让它变成一个不断扩张的 Siemens 百科。
+
+我建议改成这个原则：
+
+```text
+Siemens Glossary 只解释当前 TP004 正在使用或即将使用的外部术语。
+不主动扩展 Siemens 全体系。
+不因为“以后可能用到”就收词。
+不做 Siemens 知识库。
+```
+
+也就是说它的作用只限于：
+
+```text
+当前讨论里出现一个 Siemens 词
+  -&gt; 先在 glossary 里给出来源、含义、可信度
+  -&gt; 然后再进入用例拆解
+```
+
+而不是：
+
+```text
+看到 Siemens 系统很大
+  -&gt; 开始收集所有 Siemens 术语
+```
+
+针对刚才的 `USER-VARIABLE-SLICES.md`，我也建议收窄：
+
+```text
+不新建一个大而全的 Siemens user-variable 文档。
+只在当前 discussion 或一个小文档里做 LUD/PUD/GUD 的访问边界分析。
+等真正需要沉淀时，再决定是否落成正式文档。
+```
+
+更具体地说，下一步可以改成：
+
+**保留：**
+
+```text
+GLOSSARY.md
+  只保留 DEF 页面支撑的术语
+  只作为当前 LUD/PUD/GUD 讨论的引用表
+```
+
+**不要做：**
+
+```text
+USER-VARIABLE-SLICES.md 这种可能继续扩张的专题文档
+MACHINE-DATA.md
+CHANNEL-MODEL.md
+ACCESS-RIGHTS.md
+Siemens 全分类矩阵
+```
+
+**改成讨论内小切片：**
+
+```text
+当前只讨论 LUD/PUD/GUD 这一个问题：
+  - 它们怎么定义
+  - 谁能访问
+  - 是否持久化
+  - 对 MetaNC 统一访问有什么警示
+```
+
+如果后面要落文档，也只落到一个很小的 section，例如：
+
+```text
+GLOSSARY.md
+  ## Current Analysis Notes
+  - LUD/PUD/GUD are not one generic variable kind.
+  - LUD/PUD are lifecycle-bound.
+  - GUD is retained and can be NCK/CHAN scoped.
+```
+
+或者放在当天 discussion report，不进入长期规范目录。
+
+我建议现在就按这个边界继续：**不扩 Siemens Glossary，只用它支撑当前 LUD/PUD/GUD 讨论。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-35">
+<h2>Turn 35</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:50:36 +0800</div>
+<pre>我觉得也不是不做这些扩张，只是不要无限制的去把参考维度展开，否则无止境了，西门子的这些更适合以概念+总结+示例的形式，</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 11:50:52 +0800</div>
+<pre>对，这个边界更准确：**不是不扩展，而是不能按 Siemens 全体系无限展开；应该按“概念 + 总结 + 示例”收敛。**
+
+我建议把 Siemens 相关内容控制成三层：
+
+```text
+1. Concept / 概念
+   只解释当前讨论真正需要的 Siemens 术语。
+
+2. Summary / 总结
+   提炼它对访问边界、持久化、权限、scope 的启发。
+
+3. Example / 示例
+   给一两个具体访问例子，证明这个概念为什么重要。
+```
+
+不要做：
+
+```text
+术语百科
+完整 Siemens 参数目录
+所有变量族枚举
+所有权限机制展开
+所有机床数据补全
+```
+
+比如 `LUD/PUD/GUD` 这一组就应该这样写：
+
+```text
+Concept:
+  LUD/PUD/GUD 是 Siemens 用户变量的三类，不是同一种变量。
+
+Summary:
+  LUD/PUD 随程序生命周期存在，不持久化；
+  GUD 在 data block 定义，支持 NCK/CHAN 范围，重启后保留；
+  GUD 还可以带 part program / OPI 访问保护。
+
+Example:
+  SUB2 里的 LUD VAR2 不能被 SUB3 访问；
+  DEF CHAN REAL STROM_1 表示通道范围的 GUD；
+  DEF NCK REAL ZEIT_1 表示 NCK 范围的 GUD。
+```
+
+这就够了。它不需要继续扩展成：
+
+```text
+所有 GUD block 类型
+所有 machine data
+所有 access-right attribute
+所有 channel 语义
+所有 archive 机制
+```
+
+除非后续某个具体用例必须用到。
+
+所以我建议后续 Siemens 内容采用一个硬规则：
+
+```text
+每次只在“当前用例所需”的范围内扩展 glossary；
+每个扩展必须包含：
+  - 为什么现在需要它
+  - 官方/非官方来源等级
+  - 一句总结
+  - 一个最小示例
+  - 对 MetaNC 的一句启发
+```
+
+这样它不会失控，同时又不会牺牲必要的参考价值。</pre>
+</article>
+</section>
+<section class="turn" id="turn-36">
+<h2>Turn 36</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 11:51:00 +0800</div>
+<pre>你给个详细的文档计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 11:51:09 +0800</div>
+<pre>我会给一个收敛版文档计划：既允许 Siemens 参考继续增长，又用“概念+总结+示例”限制边界。这里先不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 11:51:33 +0800</div>
+<pre>建议把 Siemens 参考内容规划成一个**受控参考区**，不是 glossary 无限扩张，也不是完全不沉淀。
+
+**总原则**
+
+```text
+只记录当前 TP004 讨论/用例需要的 Siemens 概念。
+每个概念必须用“概念 + 总结 + 示例 + MetaNC 启发”收敛。
+不做 Siemens 全量目录，不追求完整复刻。
+```
+
+**目录结构**
+
+保持现在目录，不急着拆很多文件：
+
+```text
+TP004-parameter-system/openspec/access-definitions/siemens/
+  README.md
+  GLOSSARY.md
+  tool.md
+  axis-machine-data.md
+  zero-offset.md
+```
+
+暂时不新增：
+
+```text
+USER-VARIABLES.md
+CHANNEL-MODEL.md
+MACHINE-DATA.md
+ACCESS-RIGHTS.md
+```
+
+后续如果某一类内容超过 `GLOSSARY.md` 可读容量，再拆。
+
+**GLOSSARY.md 调整方向**
+
+把它从“术语表”升级成**受控 Siemens 参考笔记**，结构改成：
+
+```text
+# Siemens-style Reference Notes
+
+## Purpose
+说明本页只服务 TP004 兼容讨论。
+
+## Boundary
+说明不是 Siemens encyclopedia，不做全量覆盖。
+
+## Source And Verification Rules
+保留官方/非官方/推断/讨论占位的来源等级。
+
+## Current Concept Groups
+当前只放真正需要的概念组。
+
+### User Variables: LUD / PUD / GUD
+- Concept
+- Summary
+- Minimal examples
+- MetaNC design note
+- Term table
+
+### Access Rights For GUD
+- Concept
+- Summary
+- Minimal examples
+- MetaNC design note
+- Term table
+
+### Range Terms: NCK / CHAN
+- Concept
+- Summary
+- Minimal examples
+- MetaNC design note
+- Term table
+
+## Open Verification List
+只列正在讨论但未核验的词。
+```
+
+**每个概念组固定模板**
+
+```markdown
+## &lt;Concept Group&gt;
+
+### Concept
+一句话解释 Siemens 概念是什么。
+
+### Summary
+3-5 条总结，只写对访问边界有影响的内容。
+
+### Minimal Examples
+最多 2-3 个例子。
+
+### MetaNC Design Note
+1-3 条：这个概念提醒 MetaNC 设计要注意什么。
+
+### Terms
+小表格，列具体缩写/术语、来源、核验状态。
+```
+
+**第一批要落的概念组**
+
+只做这三个：
+
+| 概念组 | 为什么现在需要 |
+|---|---|
+| User Variables: `LUD` / `PUD` / `GUD` | 当前正在讨论变量隔离、生命周期、持久化 |
+| Range Terms: `NCK` / `CHAN` | GUD 是否全局/通道范围必须说明 |
+| GUD Access Rights: `APRP` / `APWP` / `APRB` / `APWB` | 说明 Siemens 不是任意访问，GUD 有读写保护 |
+
+**第一批不展开的内容**
+
+这些只放在 open verification，不写概念组：
+
+```text
+R parameters
+$A_...
+$A_DLB/$A_DLW/$A_DLD/$A_DLR
+alarm/diagnostic variables
+$MC_/$MA_/$MN_ full family semantics
+tool/zero-offset exact Siemens catalog details
+```
+
+**第一批示例**
+
+用 Siemens 官方 DEF 页面已经确认的例子即可：
+
+```text
+LUD:
+  SUB2 中 DEF INT VAR2
+  SUB3 访问 VAR2 报不可见
+
+PUD:
+  MAIN 中 DEF INT VAR1
+  MAIN/SUB2/SUB3 可读写 VAR1，具体子程序可见性受机床数据影响
+
+CHAN GUD:
+  DEF CHAN REAL STROM_1
+
+NCK GUD:
+  DEF NCK REAL ZEIT_1=12
+
+GUD access rights:
+  DEF NCK REAL ... APWP 3 APRP 3 APWB 0 APRB 2
+```
+
+**MetaNC 提炼规则**
+
+每个 Siemens 概念组最后必须回答：
+
+```text
+这个概念对 MetaNC 统一访问有什么限制？
+```
+
+例如：
+
+```text
+LUD/PUD/GUD 不是一种 generic variable。
+LUD/PUD 不应进入持久参数目录。
+GUD 是 persistent scoped value，但仍受 range 和权限控制。
+NCK/CHAN 是外部范围概念，不是变量类型。
+OPI/part program 是访问上下文，不是 owner。
+```
+
+**来源规则**
+
+每条 Siemens 事实必须带来源等级：
+
+```text
+official
+vendor-adjacent
+third-party
+project-inferred
+discussion-only
+```
+
+并且必须带状态：
+
+```text
+confirmed
+partial
+needs verification
+rejected
+```
+
+**文档增长规则**
+
+以后每次新增 Siemens 概念，必须满足其中一个条件：
+
+```text
+1. 当前用例必须用到；
+2. 当前 glossary 里已有术语无法解释；
+3. 当前 MetaNC 边界判断需要这个概念支撑。
+```
+
+否则不收。
+
+新增条目还必须包含：
+
+```text
+为什么现在需要
+来源等级
+核验状态
+最小示例
+MetaNC design note
+```
+
+**落地步骤**
+
+1. 把当前 `GLOSSARY.md` 重构成 `Reference Notes` 风格。
+2. 保留现有 confirmed 表，但移到对应概念组下面。
+3. 新增三组概念说明：User Variables、Range Terms、GUD Access Rights。
+4. 保留 open verification list，但删掉泛化表达，明确“只有用例需要时才展开”。
+5. 中文页同步调整。
+6. 更新检查脚本 required_texts，避免它只检查表格 token，不检查新结构。
+7. 重建 `docs_html`。
+
+**完成后的效果**
+
+读者不是看到一张越来越长的术语表，而是看到：
+
+```text
+Siemens 有哪些当前相关概念
+这些概念为什么影响访问边界
+最小示例是什么
+MetaNC 应该吸收什么设计约束
+哪些还没核验
+```
+
+这比纯 glossary 更适合后续讨论，也能避免无止境扩张。</pre>
+</article>
+</section>
+<section class="turn" id="turn-37">
+<h2>Turn 37</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 12:44:59 +0800</div>
+<pre>ok</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 12:45:16 +0800</div>
+<pre>我按你确认的收敛版计划执行：把现有 `GLOSSARY.md` 从长表格型调整成“概念组 + 总结 + 最小示例 + MetaNC 启发”，不新增新的 Siemens 专题文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 12:45:26 +0800</div>
+<pre>我会先重写规范源，然后同步中文阅读页和检查脚本；这只是文档重构，仍不碰 MetaNC terms/value sets/schema。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 12:45:48 +0800</div>
+<pre>我会把现有长表格保留为证据，但按概念组重新组织：先讲 LUD/PUD/GUD 的概念、总结、示例和设计提醒，再给术语表。这样不会变成 Siemens 百科。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 12:48:02 +0800</div>
+<pre>规范源已经改成参考笔记结构。现在同步中文页，避免中文站还保留旧的长术语表结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 12:48:11 +0800</div>
+<pre>中文页会保持比英文更面向阅读，但结构完全对齐：当前概念组、概念、总结、最小示例、设计提醒、术语和待核验列表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 12:50:36 +0800</div>
+<pre>我先把刚才的 Siemens 参考笔记改动收尾，重点检查同步规则里有没有还在引用旧的 “Glossary/术语表” 标题，然后重新生成可读 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-11 12:50:48 +0800</div>
+<pre>同步检查里还保留了旧标题，这会让新页面发布后被误判。我会把检查条件改到新的 “Reference Notes/参考笔记” 命名，同时保持来源、核验状态和待核验清单这些约束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-11 12:51:07 +0800</div>
+<pre>我还看到导航和 Siemens 目录入口仍显示“术语表/Glossary”。这不影响文件路径，但会影响读者理解边界，所以我一起改成“参考笔记/Reference Notes”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-11 12:51:32 +0800</div>
+<pre>检查脚本已经改到新标题。接下来我会同步导航和目录入口的显示名，避免用户看到“术语表”时误以为这是开放扩展的 Siemens 词库。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-11 12:51:44 +0800</div>
+<pre>我也会把源目录 README 的描述从 “external terms” 调整成“参考笔记”，这样源文档和发布页面的边界说法一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-11 12:52:12 +0800</div>
+<pre>现在我会做一次结构检查，重点看 SUMMARY 层级有没有被这次命名调整破坏，以及 include wrapper 是否还能正确发布同一份源内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-11 12:52:40 +0800</div>
+<pre>刚才的检查发现 TP004 独立 book 的 SUMMARY 缩进被旧改动牵连了：`Access Definitions` 现在挂到了 `Usage Index` 下面。我会先修这个目录层级，再继续生成 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-11 12:52:46 +0800</div>
+<pre>我会按 root i18n SUMMARY 的结构把独立 book 目录改回：Access Definitions 是 TP004 一级条目，Siemens 参考笔记是 Siemens Compatibility 的子项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-11 12:52:57 +0800</div>
+<pre>目录层级已修正。我开始跑生成和校验；如果 docs_html 仍是旧内容，构建会刷新它。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-11 12:53:06 +0800</div>
+<pre>同步检查失败在一个很窄的位置：检查脚本要求中文页出现旧短语 `MetaNC term、value set、owner`，而新文档改成了更明确的 `term ID / owner token` 边界表述。我先按失败点追踪，而不是直接放宽检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-11 12:53:19 +0800</div>
+<pre>这个失败我按 `systematic-debugging` 处理：根因不是内容丢失，而是检查脚本还绑着旧短语。我会把检查项改成新文档里实际要保护的边界语句。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-11 12:53:24 +0800</div>
+<pre>根因确认：投影检查项是旧文案依赖。新边界已经在中文页第 19 行明确存在，所以我把 required_texts 绑定到这条更稳定的边界说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-11 12:53:31 +0800</div>
+<pre>现在重新跑同步检查和 HTML 构建。这里会同时覆盖 topic book、英文站和中文站的发布产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-11 12:53:38 +0800</div>
+<pre>源到中文投影已经通过。接下来刷新 `docs_html` 和 TP004 的独立 HTML，以便你可以直接打开最新版本阅读。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-11 12:53:48 +0800</div>
+<pre>HTML 已重新生成。我继续跑发布页存在性检查、value-set 绑定检查和工具单元测试，确认这次改动没有破坏既有治理链路。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-11 12:54:01 +0800</div>
+<pre>核心校验都通过了。我最后看一下差异范围和新生成页面里的关键标题，确保最终汇报可以准确落点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-11 12:54:15 +0800</div>
+<pre>最后那个 search index 探测用错了路径，不影响已完成的页面存在性检查。我不基于它做结论；我再补一轮实际文件和 diff 检查，确认改动范围清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-11 12:54:27 +0800</div>
+<pre>我已按 `verification-before-completion` 做了 fresh verification；现在只补一个路径定位和状态汇总，不再改内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / final_answer</h3>
+<div class="time">2026-06-11 12:54:51 +0800</div>
+<pre>已处理：把 Siemens glossary 改成受控的 `Siemens-style Reference Notes / 参考笔记`，重点是“概念 + 总结 + 最小示例 + MetaNC 设计提醒”，避免扩散成 Siemens 百科。
+
+主要落点：
+- 源文档：[GLOSSARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/GLOSSARY.md:1)
+- 中文阅读页：[glossary.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/access-definitions/siemens/glossary.md:1)
+- 已更新导航和同步检查规则。
+- 已重新生成 HTML，可看：
+  [中文 HTML](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/glossary.html)
+  [英文 HTML](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/en/TP004-parameter-system/access-definitions/siemens/glossary.html)
+
+验证已通过：
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，64 tests OK
+- `git diff --check`
+
+这次没有 commit/push。</pre>
+</article>
+</section>
+<section class="turn" id="turn-38">
+<h2>Turn 38</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:03:19 +0800</div>
+<pre>列了几个OPI之类的术语是什么意思，看的有点抽象</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 13:03:38 +0800</div>
+<pre>我先对照刚才落下的参考笔记看一下这些缩写在文档里的位置和上下文，然后给你一个更白话的解释。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 13:04:04 +0800</div>
+<pre>这些术语确实写得抽象了。白话说，它们不是 MetaNC 的核心概念，而是 Siemens 在 `DEF ... GUD` 变量定义里附带的一组“访问属性”。
+
+可以这样理解：
+
+| 术语 | 白话含义 |
+|---|---|
+| `OPI` | 外部操作/接口侧访问者。可以先理解成 HMI、操作界面或外部接口来读写 GUD 的访问上下文。当前只确认它在 Siemens 来源里作为 GUD 访问权限上下文出现，完整展开还没单独核验。 |
+| `APRP` | part program 读 GUD 时的保护等级。 |
+| `APWP` | part program 写 GUD 时的保护等级。 |
+| `APRB` | OPI 读 GUD 时的保护等级。 |
+| `APWB` | OPI 写 GUD 时的保护等级。 |
+| `SYNR` | 读这个 GUD 时需要预处理停止。 |
+| `SYNW` | 写这个 GUD 时需要预处理停止。 |
+| `SYNRW` | 读写这个 GUD 时都需要预处理停止。 |
+| `PHU` | 物理单位属性。 |
+| `LLI` | 下限属性。 |
+| `ULI` | 上限属性。 |
+
+核心不是记缩写，而是看这个结构：
+
+```text
+DEF NCK REAL PHU 13 LLI 10 APWP 3 APRP 3 APWB 0 APRB 2 ZEIT_1=12
+```
+
+意思接近：
+
+```text
+定义一个 NCK 范围的 REAL 型 GUD 变量 ZEIT_1
+它有物理单位、下限、初始值
+part program 读/写它有一套权限等级
+OPI 读/写它有另一套权限等级
+```
+
+所以这里真正对 MetaNC 有用的启发是：同一个变量，可能要区分“谁在访问”：NC 程序访问、HMI/接口访问、诊断访问、配置访问等。它不等于 owner，也不等于 value set，只是外部兼容参考里的访问上下文和访问属性。
+
+我建议把文档里这一节改成“GUD 变量定义属性”而不是一上来列缩写表，并先给上面这种白话解释。</pre>
+</article>
+</section>
+<section class="turn" id="turn-39">
+<h2>Turn 39</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:05:07 +0800</div>
+<pre>什么意思，这些是西门子类似于自己的语法定义吗？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 13:05:29 +0800</div>
+<pre>是的，基本可以这么理解：这些是 Siemens/SINUMERIK 在 NC 程序/用户变量定义里的自有语法 token 和属性 token。
+
+更准确分三层：
+
+| 类型 | 例子 | 含义 |
+|---|---|---|
+| 语句关键字 | `DEF` | Siemens 用来定义用户变量的声明语句。 |
+| 类型 / 范围 token | `REAL`、`INT`、`NCK`、`CHAN` | 说明变量类型、变量属于 NC 全局还是通道范围。 |
+| 声明属性 token | `PHU`、`LLI`、`APRP`、`APWB`、`SYNR` | 附加在变量定义上的单位、上下限、访问保护、预处理停止等属性。 |
+
+比如：
+
+```text
+DEF NCK REAL PHU 13 LLI 10 APWP 3 APRP 3 APWB 0 APRB 2 ZEIT_1=12
+```
+
+可以粗略读成：
+
+```text
+定义一个 NCK 范围的 REAL 变量 ZEIT_1
+附带物理单位、下限、初始值
+并且规定程序访问和 OPI 访问时的读写保护等级
+```
+
+所以它们不是 MetaNC 的术语，也不是我们自己的 enum。它们是 Siemens 兼容层要识别的外部语法/属性。
+
+但有一点要分开：`APRP/APWP/APRB/APWB` 这种是会出现在声明里的属性 token；`OPI` 更像 Siemens 文档里描述的一类访问上下文，不一定是这个声明里单独出现的语法片段。当前文档里把它们放一起，确实容易看得抽象，应该改成“Siemens GUD 声明语法属性”，而不是直接叫一堆术语。</pre>
+</article>
+</section>
+<section class="turn" id="turn-40">
+<h2>Turn 40</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:05:29 +0800</div>
+<pre>看着像类似SQL语句之类的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 13:05:54 +0800</div>
+<pre>对，可以类比成一种“声明语句 DSL”，有点像 SQL 的 `CREATE TABLE ...`，但对象不是数据库表，而是 NC 里的用户变量。
+
+比如 SQL：
+
+```sql
+CREATE TABLE t (
+  x REAL NOT NULL CHECK (x &gt;= 10)
+);
+```
+
+Siemens 这个类似：
+
+```text
+DEF NCK REAL PHU 13 LLI 10 APWP 3 APRP 3 APWB 0 APRB 2 ZEIT_1=12
+```
+
+可以类比理解为：
+
+```text
+CREATE VARIABLE ZEIT_1
+  SCOPE NCK
+  TYPE REAL
+  UNIT PHU 13
+  LOWER_LIMIT 10
+  PROGRAM_WRITE_PROTECTION 3
+  PROGRAM_READ_PROTECTION 3
+  OPI_WRITE_PROTECTION 0
+  OPI_READ_PROTECTION 2
+  DEFAULT 12
+```
+
+所以你这个直觉是对的：它不是“普通参数名列表”，而是一套 Siemens NC 语言里的变量声明/定义语法。
+
+对 MetaNC 的启发就是：我们不能只设计“读写一个参数路径”，还要考虑有些东西是通过声明语句创建出来的，声明里同时带了 scope、type、权限、单位、上下限、持久化等元信息。</pre>
+</article>
+</section>
+<section class="turn" id="turn-41">
+<h2>Turn 41</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:06:16 +0800</div>
+<pre>可以，完善一下落一下文档</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 13:06:33 +0800</div>
+<pre>我会把这一节从“术语缩写表”改成“Siemens GUD 声明语句 / DSL 类比”，用 SQL 类比先解释结构，再把 `OPI/APRP/...` 放到属性分组里。之后重新生成 HTML 并跑同步检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 13:06:35 +0800</div>
+<pre>我会使用 `verification-before-completion` 做收尾校验；现在先按现有文档结构改源文档和中文发布源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 13:06:52 +0800</div>
+<pre>我先定位当前 `GUD Access Rights` 段落，改动会控制在 Siemens 参考笔记这一页和对应中文页面，不动 MetaNC term/value set/owner 定义。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 13:07:26 +0800</div>
+<pre>我会把原来的 `GUD Access Rights And Preprocessing Stops` 改成更直观的 `GUD DEF Declaration Statement Attributes`：先说明它像 SQL `CREATE ...` 一样是声明语句，再按 scope/type/metadata/access/timing 分组解释 token。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 13:08:59 +0800</div>
+<pre>内容已改成声明语句解释。接下来检查同步规则是否还覆盖关键文本；如果旧检查只看 `APRP/OPI` 仍可通过，我会补上 `SQL 类比` 和 `声明语句` 作为发布保护点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 13:09:08 +0800</div>
+<pre>同步规则还没保护这次新增的“SQL 类比 / 声明语句”读者解释。我会补到检查项里，避免以后文档生成时这段被误删。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-11 13:09:18 +0800</div>
+<pre>文档和同步保护点都改完了。现在重新生成 HTML，并做完整校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-11 13:09:26 +0800</div>
+<pre>源同步检查已通过。我继续构建发布 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-11 13:09:42 +0800</div>
+<pre>HTML 已刷新。接下来跑发布页检查、value-set 检查、工具测试和 diff 空白检查，作为收尾证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-11 13:09:54 +0800</div>
+<pre>校验通过了。我最后确认 HTML 里新段落确实可见，并看一下当前 diff 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-11 13:10:04 +0800</div>
+<pre>已完善并重新生成 HTML。
+
+这次把 `OPI/APRP/...` 那段改成了更直观的“GUD DEF 声明语句属性”，明确说明它类似 SQL `CREATE ...` 这种声明 DSL，而不是一堆孤立术语。中文页现在有：
+
+- `GUD DEF 声明语句属性`
+- `SQL 类比`
+- `CREATE VARIABLE ZEIT_1 ...`
+- `最小阅读指南`
+- `属性分组`，把 `OPI`、`APRP/APWP`、`APRB/APWB`、`SYNR/SYNW/SYNRW`、`PHU/LLI/ULI` 分组解释
+
+可直接看：
+[中文 HTML](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/glossary.html)
+
+验证已通过：
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，64 tests OK
+- `git diff --check`</pre>
+</article>
+</section>
+<section class="turn" id="turn-42">
+<h2>Turn 42</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:39:05 +0800</div>
+<pre>大致看完了，你对于这份simens/GLOSSARY.md的内容，自己的理解是什么呢</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 13:39:20 +0800</div>
+<pre>我先按当前文件本身再过一遍，不按记忆回答；重点看它到底是在定义 Siemens 事实、还是在给 TP004 做兼容参考边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 13:39:40 +0800</div>
+<pre>我的理解是：这份 `siemens/GLOSSARY.md` 不是“术语表”，更像是 TP004 的 Siemens 兼容参考卡片集。
+
+它现在承担三个作用：
+
+1. **把 Siemens 的外部概念先放在隔离区**
+   比如 `LUD/PUD/GUD/NCK/CHAN/OPI/APRP` 这些东西，先说明“这是 Siemens 那边的概念或语法 token”，但不直接变成 MetaNC 的 term、value set、owner 或 schema 字段。
+
+2. **提醒我们 Siemens 参数/变量体系不是单纯的路径读写**
+   尤其是 GUD 这块，它更像一套声明 DSL：
+   ```text
+   DEF NCK REAL ... ZEIT_1=12
+   ```
+   这里同时包含 scope、type、单位、上下限、权限、访问上下文、初始值。它说明 MetaNC 参数系统如果只做“路径 -&gt; 值”的访问模型，会漏掉声明、生命周期、持久化、权限上下文这些层。
+
+3. **给 MetaNC 后续设计提供边界问题，而不是直接给答案**
+   例如：
+   - LUD/PUD 应该更接近程序运行时状态，不是持久参数。
+   - GUD 可以接近持久 scoped value，但必须先明确 range 和访问规则。
+   - `OPI` / `part program` 是访问上下文，不是 owner。
+   - `APRP/APWP/...` 是 Siemens 外部权限属性，不应直接变成 MetaNC permission enum。
+
+我觉得这份文档目前最大的价值是：它把“兼容 Siemens 表达”与“MetaNC 自己的语义模型”分开了。也就是说，后面我们讨论 TP004 时，不会因为看到 `$P_...`、`GUD`、`OPI` 这些词，就下意识把它们硬塞进 MetaNC 核心模型。
+
+但它也还有一个明显限制：目前只核验了 Siemens `DEF/GUD` 这一小块，`$TC_DP3`、`$MA_`、`$MC_`、`$P_UIFR`、R 参数、`$A_...` 这些仍在待核验区。所以它现在不是 Siemens 参数系统全图，只是第一张“用户变量/声明语句”参考片。</pre>
+</article>
+</section>
+<section class="turn" id="turn-43">
+<h2>Turn 43</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:41:29 +0800</div>
+<pre>那关于这份文档的内容呢，你自己觉得它的结构、格式等等是否足够</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 13:41:42 +0800</div>
+<pre>我会按 `openspec-explore` 的方式回答：先判断这份文档现在是否“够用”，再指出不够的地方和下一步应该怎么收敛。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 13:42:05 +0800</div>
+<pre>我觉得它**作为第一版“受控参考笔记”是够用的**，但还不适合作为长期稳定的 Siemens 兼容资料结构。
+
+现在结构的优点是：
+
+- 边界清楚：明确不是 Siemens 百科，也不生成 MetaNC term/value set/owner/schema。
+- 证据意识有了：每个概念带 `source_level`、`verification_status`。
+- 读者路径比之前好：先讲 LUD/PUD/GUD，再讲 NCK/CHAN，再讲 GUD `DEF` 声明语句属性。
+- 对 MetaNC 的作用明确：每节都有 `MetaNC Design Note`，避免直接照搬 Siemens。
+- 待核验区是必要的：把 `$TC_DP3`、`$MA_`、`$P_UIFR`、R 参数、`$A_...` 这些先隔离起来。
+
+但我认为它还有几个结构问题：
+
+1. **文件名叫 `GLOSSARY.md`，但内容已经不是 glossary**
+   现在更像 `REFERENCE-NOTES.md` 或 `SIEMENS-CONCEPT-NOTES.md`。继续叫 glossary 会误导读者，以为里面应该是完整术语对照表。
+
+2. **中英混排太重**
+   源文档双语可以保留，但现在每段英文后跟中文，阅读上比较长。对源文档还行；如果继续扩展，最好源文档偏英文/结构化，中文读者页做完整中文解释。
+
+3. **“概念组”和“token 表”还混在一起**
+   例如 `LUD/PUD/GUD` 是概念，`APRP/APWP` 是声明属性 token，`INT/REAL` 是类型 token，层级不同。现在虽然已经分组，但还可以更明确地分成：
+   ```text
+   Siemens concept
+     -&gt; syntax form
+     -&gt; token groups
+     -&gt; access/persistence implication
+     -&gt; MetaNC mapping question
+   ```
+
+4. **来源模型还太单薄**
+   目前主要靠一个 Siemens DEF 页面。作为第一版可以，但一旦进入 `$MA_/$MC_/$TC_/$P_`，需要按来源建小型 source registry，否则每个条目都塞 URL 会乱。
+
+5. **缺少“怎么使用本页”的决策流程**
+   现在有 Purpose，但还缺一个更操作化的流程，比如：
+   ```text
+   遇到 Siemens-style 表达
+     -&gt; 先查是否 confirmed
+     -&gt; 如果是声明语句，拆 syntax/token/context
+     -&gt; 如果是变量访问，拆 scope/owner/persistence/access context
+     -&gt; 未确认则进入 Open Verification List
+   ```
+
+我的判断：**这份文档目前能支撑讨论，不建议继续大规模扩展；下一步应该先微调结构，而不是继续加术语。**
+
+我会建议把它定位成：
+
+```text
+Siemens Compatibility Concept Notes
+不是术语库
+不是 schema
+不是 MetaNC 规范
+而是：Siemens 兼容输入 -&gt; MetaNC 设计问题 的中间解释层
+```
+
+如果要继续完善，我建议只做三件事：改名、加“使用流程”、把 concept/token/source 三层分得更清楚。</pre>
+</article>
+</section>
+<section class="turn" id="turn-44">
+<h2>Turn 44</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:45:32 +0800</div>
+<pre>1.同意
+2.我看你其它文档也是中英文混排的？
+3.你这个是不是扩展一下又多出来一堆概念了
+4.来源模型你准备怎么扩展
+5.同意</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 13:45:58 +0800</div>
+<pre>我的判断如下：
+
+1. **改名同意**
+   `GLOSSARY.md` 不准确。更合适的是 `REFERENCE-NOTES.md` 或 `CONCEPT-NOTES.md`。我倾向 `REFERENCE-NOTES.md`，因为它强调“参考笔记”，不是术语规范。
+
+2. **中英文混排**
+   是的，其他文档也有混排，这是当前 drafts 的既有风格。问题不是“混排本身”，而是这份文档如果继续扩展，双语重复会让篇幅膨胀很快。
+
+   我的建议是：现在不改全局风格，也不拆语言源。只对这份文档做轻量约束：
+   - 英文保留短句和结构字段；
+   - 中文负责解释性表达；
+   - 不做大段中英重复；
+   - 中文 HTML 仍保持人类可读。
+
+3. **不应该再扩出一堆新概念**
+   对，这点要收住。我的意思不是新增一堆治理概念，而是把已有内容分层表达清楚。
+
+   不新增新的 MetaNC 元定义，只用普通文档结构区分：
+   ```text
+   concept: LUD/PUD/GUD 这种外部概念
+   syntax: DEF ... 这种外部语法形式
+   token group: APRP/APWP 这种语法属性 token
+   mapping question: 它给 MetaNC 带来的设计问题
+   ```
+   这些只是章节组织，不进入 term/value set/owner/schema。
+
+4. **来源模型怎么扩展**
+   我不建议现在建复杂 source registry。先做一个很小的 `Sources` 表即可，字段固定：
+
+   ```text
+   source_id
+   source_level
+   title
+   url
+   supports
+   notes
+   ```
+
+   当前只有：
+   ```text
+   SIEMENS-DEF-70265038
+   ```
+
+   后面如果补 `$MA_`、`$MC_`、`$TC_`、`$P_UIFR`，就只新增 source row，然后条目引用 `source_id`。不为 source 再搞 value set 或 term ID。
+
+5. **加使用流程同意**
+   这个最有价值。应该补一个很短的流程：
+
+   ```text
+   遇到 Siemens-style 表达
+     -&gt; 判断是声明语句还是访问表达式
+     -&gt; 查 confirmed / partial / needs verification
+     -&gt; 拆 scope / type / access context / persistence
+     -&gt; 写出 MetaNC mapping question
+     -&gt; 未核验进入 Open Verification List
+   ```
+
+所以我建议下一步只做一个小整理，不扩内容：**改名 + 加使用流程 + 简化双语重复 + 加轻量 Sources 表说明 + 明确“不新增 MetaNC 元定义”。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-45">
+<h2>Turn 45</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:48:00 +0800</div>
+<pre>1.REFERENCE-NOTES
+2.中英混排风格没关系，重点是内容，你不要刻意为了风格整洁而忽视最重要的内容性
+3.ok
+4.我是问你这个sources 表怎么来的，不是说你要做什么
+5.你写个示例看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 13:48:18 +0800</div>
+<pre>我按讨论态处理，不改文件；这里重点回答 `Sources` 表的来源依据，并给你一个它在文档里应该长什么样的示例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 13:48:38 +0800</div>
+<pre>1. `REFERENCE-NOTES` 没问题。路径我建议最后是：
+   `siemens/REFERENCE-NOTES.md`
+   旧的 `GLOSSARY.md` 可以删掉或短期保留跳转，但长期不建议两个都存在。
+
+2. 中英混排我接受你的判断。重点不应该为了形式整洁损失内容密度。后面我只控制“不要废话重复”，不强行拆语言。
+
+3. ok，后面只做文档结构分层，不新增 MetaNC 元定义。
+
+4. `Sources` 表不是凭空设计的，它来自一个很朴素的需求：**每条 Siemens 参考结论必须能追到证据来源，但又不能把 URL 和证据说明散落到每个段落里。**
+
+它的来源逻辑是：
+
+```text
+Siemens 概念 / token / 语法判断
+        │
+        ▼
+需要说明：这是哪里来的？
+        │
+        ├─ 官方 Siemens 文档？
+        ├─ 机床厂 / 培训资料？
+        ├─ 第三方资料？
+        ├─ 项目推断？
+        └─ 只是当前讨论占位？
+        │
+        ▼
+所以需要 source_level + source_id
+```
+
+也就是说，`Sources` 表不是一种新治理模型，而是文档引用的“参考文献表 + 证据索引”。它类似论文里的 reference list，或者代码注释里统一列 external references。
+
+5. 示例我会这样写：
+
+```markdown
+## Sources / 来源
+
+Sources are evidence records for Siemens-style reference notes. They do not
+define MetaNC terms, value sets, owners, or schema fields.
+
+来源只用于支撑 Siemens-style 参考笔记中的外部事实判断；它们不定义 MetaNC term、
+value set、owner 或 schema field。
+
+| Source ID | Level | Title | URL / Path | Supports | Notes |
+|---|---|---|---|---|---|
+| `SIEMENS-DEF-70265038` | `official` | Siemens DEF command reference | `https://support.industry.siemens.com/.../70265038` | `DEF`, `LUD`, `PUD`, `GUD`, `NCK`, `CHAN`, GUD access attributes, DEF data types | Current primary source for GUD declaration examples. |
+| `PROJECT-TP004-TOOL-DP3` | `project-inferred` | TP004 Siemens tool access draft | `access-definitions/siemens/tool.md` | `$TC_DP3[tool,edge]` reference family | Not Siemens evidence; only records that TP004 currently uses this expression family. |
+```
+
+然后条目里不要再贴长 URL，只引用：
+
+```markdown
+| Siemens term | Meaning | Source |
+|---|---|---|
+| `GUD` | Global user data retained across shutdown/restart. | `SIEMENS-DEF-70265038` |
+```
+
+这套东西的关键约束是：`official` 才能支撑“Siemens 是这么定义的”；`project-inferred` 只能说明“我们当前讨论里用到了这个表达”，不能拿来证明 Siemens 事实。</pre>
+</article>
+</section>
+<section class="turn" id="turn-46">
+<h2>Turn 46</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 13:49:47 +0800</div>
+<pre>不要保留旧的GLOSSARRY</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 13:50:15 +0800</div>
+<pre>我会把旧的 `GLOSSARY.md` 彻底改名为 `REFERENCE-NOTES.md`，并更新所有 include、导航、同步检查和 HTML 发布校验，不保留跳转文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 13:50:50 +0800</div>
+<pre>我会避开已生成 HTML 目录来做重命名检查，先改源文件和导航，再重新生成发布页；最终仓库里不留 `GLOSSARY.md` 源文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 13:51:31 +0800</div>
+<pre>我会把页面路径也一起改掉，不只是源文件名：`GLOSSARY.md`、`glossary.md`、`glossary.html` 都会替换为 `REFERENCE-NOTES.md`、`reference-notes.md`、`reference-notes.html`，避免旧名字继续出现在阅读入口里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 13:51:50 +0800</div>
+<pre>源文件已经改名。接下来我移动 book/i18n 页面文件并更新所有链接和检查规则，确保不会继续生成 `glossary.html`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 13:51:59 +0800</div>
+<pre>文件移动完成。我现在更新 include 路径、SUMMARY 链接、README 说明和同步脚本里的源/目标/html 路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 13:52:09 +0800</div>
+<pre>我会用补丁批量替换这些引用，保留历史 discussion 里“not just a glossary”的普通说明不动，因为那不是旧文件入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-11 13:52:57 +0800</div>
+<pre>引用已经换到 `reference-notes`。我会重新生成 usage index，让结构化源清单也不再指向旧 `GLOSSARY.md`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-11 13:53:05 +0800</div>
+<pre>源树里旧文件名已经不存在，只剩生成索引的旧路径。我现在刷新索引和 docs_html。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-11 13:53:16 +0800</div>
+<pre>索引已刷新。接下来先跑同步检查，再构建 HTML；如果旧 `glossary.html` 是历史残留，我会在构建后确认是否需要清理。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-11 13:53:25 +0800</div>
+<pre>同步检查通过。我开始重新生成 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-11 13:53:41 +0800</div>
+<pre>HTML 已生成。我会检查是否还有旧的 `glossary.html` 发布残留；如果存在，因为你明确不要保留旧 GLOSSARY，我会清理这些生成残留再复查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-11 13:53:53 +0800</div>
+<pre>发布目录里也没有旧 `glossary` 残留了。接下来跑完整校验和最终状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-11 13:54:09 +0800</div>
+<pre>校验通过。我最后做一次全局源文件名扫描和 diff 范围确认，确保旧 `GLOSSARY` 没被保留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / final_answer</h3>
+<div class="time">2026-06-11 13:54:23 +0800</div>
+<pre>已按你的要求处理：不保留旧 `GLOSSARY`。
+
+现在改成：
+- 源文件：`TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md`
+- topic book 页面：`TP004-parameter-system/book/src/access-definitions/siemens/reference-notes.md`
+- i18n 页面：`docs_i18n/.../siemens/reference-notes.md`
+- HTML 页面：`docs_html/zh/TP004-parameter-system/access-definitions/siemens/reference-notes.html`
+
+我也确认过：
+- 源树里没有 `GLOSSARY.md`
+- 源树里没有 `glossary.md`
+- 发布目录里没有 `glossary.html`
+- 所有导航和校验规则都改成 `reference-notes`
+
+验证通过：
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，64 tests OK
+- `git diff --check`</pre>
+</article>
+</section>
+<section class="turn" id="turn-47">
+<h2>Turn 47</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:22:33 +0800</div>
+<pre>感觉差点意思，你总结一下现在这部分的内容，我总觉得有点哪里怪怪的，但是说不上来具体的问题，你开多个agent审查一下这个文件</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:22:46 +0800</div>
+<pre>我会先把当前 `REFERENCE-NOTES.md` 的内容压缩成一张结构图，然后开几个独立 agent 分别从“读者理解、结构边界、来源证据、与 TP004 后续设计的连接”四个角度审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 15:23:14 +0800</div>
+<pre>我先把文件本身和相关入口再读一遍，避免 agent 审查拿到的是我脑子里的旧版本。然后我会给每个 agent 独立的审查角度，不让它们互相影响。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 15:23:36 +0800</div>
+<pre>我先给我的当前总结，避免只等 agent：这份 `REFERENCE-NOTES.md` 现在是一份“Siemens 兼容输入的解释层”，不是 MetaNC 规范。它主要讲三件事：Siemens 用户变量的生命周期差异、GUD 的范围差异、以及 `DEF ...` 声明语句里混合了类型/范围/权限/约束/访问上下文这些信息。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 15:24:01 +0800</div>
+<pre>当前会话的 agent 数量已满，是前面遗留的旧 agent 占着槽。我会先关闭这些旧 agent，再重新开新的审查 agent。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 15:24:29 +0800</div>
+<pre>旧 agent 已关闭。我现在重新开四个审查 agent，分别看读者理解、结构边界、证据模型、TP004 设计连接。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 15:24:52 +0800</div>
+<pre>agent 已经在并行审查。我这边先做本地快速总结，不改文件：我怀疑“怪”的核心不是单个术语，而是这份文档夹在三种身份之间：术语表、来源表、设计启发笔记；读者不知道应该按哪种方式阅读。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-11 15:25:02 +0800</div>
+<pre>我本地读完的初步判断：开头的 Purpose/Boundary/Growth Rule 像治理文档，正文像概念笔记，末尾 Mapping Rules 又像用法规范；三种写法混在一页里，会让“这份文档到底用来做什么”不够锋利。等 agent 回来后我会合并判断。</pre>
+</article>
+</section>
+<section class="turn" id="turn-48">
+<h2>Turn 48</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:31:57 +0800</div>
+<pre>1.你说的很对，感觉像拼凑的一个文档
+你建议怎么修改呢</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:32:05 +0800</div>
+<pre>我会先给一个重构方案，不直接动文件。重点是把它从“拼凑的内容集合”改成“有阅读路径的兼容输入分析笔记”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 15:32:31 +0800</div>
+<pre>我建议不是小修，而是**重排结构，减少重复，保留内容核心**。目标是让它从“拼凑文档”变成：
+
+&gt; Siemens-style 输入如何触发 MetaNC 参数系统设计问题的分析笔记。
+
+我建议这么改。
+
+**第一步：把开头压短**
+
+现在开头的 Purpose / Boundary / Growth Rule / Source Rules 太像治理文档。保留必要内容即可：
+
+```text
+# Siemens-style Reference Notes
+
+This note is an analysis aid for Siemens-style access and declaration forms.
+It records external Siemens concepts only when they affect TP004 access design.
+
+It does not define MetaNC terms, value sets, owners, schemas, parser targets, or runtime behavior.
+```
+
+然后马上给一个“怎么用”：
+
+```text
+How to use this note:
+1. Start from a Siemens-style expression or declaration.
+2. Identify whether it is an access expression or declaration statement.
+3. Check evidence status.
+4. Extract only the design clue: scope, lifetime, persistence, access context, owner question, validation question.
+5. Move unresolved items to verification backlog.
+```
+
+这样读者一开始就知道怎么读。
+
+**第二步：把 Sources 表改成 claim 级别**
+
+不要一个 source row 支撑一堆东西。改成：
+
+```text
+| Source ID | Level | Locator | Supports claim | Status | Used by |
+|---|---|---|---|---|---|
+| SIEMENS-DEF-70265038 | official | Siemens DEF command page | `DEF` defines user variables. | confirmed | DEF declaration |
+| SIEMENS-DEF-70265038 | official | Siemens DEF command page | GUD can be NCK-global or channel-global. | confirmed | GUD range |
+| SIEMENS-DEF-70265038 | official | Siemens DEF command page | GUD declaration supports access protection tokens. | confirmed | GUD attributes |
+```
+
+重点是：**official/confirmed 只证明 Siemens 事实，不证明 MetaNC 映射。**
+
+**第三步：用一个“当前范围”替代 Current Concept Groups**
+
+现在 `Current Concept Groups` 像容器但没起作用。改成：
+
+```text
+## Current Scope
+
+This note currently covers only:
+- Siemens user variables: LUD / PUD / GUD
+- GUD range tokens: NCK / CHAN
+- GUD DEF declaration attributes
+
+It does not yet cover:
+- $TC_DP3
+- $MA_ / $MC_ / $MN_
+- $P_UIFR
+- R parameters
+- $A_ runtime/link variables
+```
+
+这样读者不会误以为 `$TC_DP3` 已经被这份文档解释了。
+
+**第四步：正文按“设计问题”组织，而不是按术语组织**
+
+不要每节都 `Concept / Summary / Terms`，这会像术语表。改成：
+
+```text
+## Siemens User Variables Affect Lifetime And Persistence
+
+Siemens clue:
+- LUD / PUD / GUD are not the same kind of storage.
+
+Design problem for MetaNC:
+- Is this program-local runtime state?
+- Is this program-session state?
+- Is this persistent scoped value?
+
+What this note does not decide:
+- MetaNC storage API
+- runtime symbol table implementation
+- persistence backend
+```
+
+也就是说，每节都回答：
+
+```text
+Siemens clue
+MetaNC design problem
+Not decided here
+Evidence
+```
+
+**第五步：去掉或弱化 SQL 类比**
+
+SQL 类比帮助理解，但太显眼，像在暗示 MetaNC 要做 `CREATE VARIABLE` DSL。建议改成普通 token walkthrough：
+
+```text
+DEF NCK REAL PHU 13 LLI 10 APWP 3 APRP 3 APWB 0 APRB 2 ZEIT_1=12
+
+Token reading:
+- DEF: declaration form
+- NCK: GUD range
+- REAL: value type token
+- PHU / LLI: metadata and constraint attributes
+- APWP / APRP: part-program access protection
+- APWB / APRB: OPI access protection
+- ZEIT_1=12: name and initial value
+```
+
+如果保留 SQL 类比，放到附录，并明确：
+
+```text
+Not MetaNC syntax, not IR, not schema, not parser target.
+```
+
+**第六步：新增关键桥接表**
+
+这是最重要的修复。补一个：
+
+```text
+## Active Access Family Bridge
+
+| Family | Current source status | Why TP004 cares | MetaNC question | Not decided here |
+|---|---|---|---|---|
+| `$TC_DP3[tool,edge]` | needs verification | Tool edge field access looks like indexed domain data. | Is this owner-backed domain table access? Who owns dispatch? | Tool table storage/API semantics. |
+| `$MA_MAX_AX_VELO[axis]` | needs verification | Axis machine data uses axis-indexed access. | How does native axis selector map to MetaNC axis scope? | Motion controller behavior. |
+| `$P_UIFR[frame,axis,component]` | needs verification | Frame access encodes multiple dimensions. | Is this domain-table style access or structured parameter access? | Frame storage implementation. |
+```
+
+这张表会把 GUD/DEF 参考和当前 TP004 访问定义接起来。
+
+**第七步：Open Verification List 改成 backlog，不放太多**
+
+保留当前真正相关的：
+
+```text
+$TC_DP3
+$MA_MAX_AX_VELO
+$P_UIFR
+$MN_ / $MC_ / $MA_ family
+R parameter
+$A_...
+```
+
+但加列：
+
+```text
+Blocks
+Next artifact
+Promotion condition
+```
+
+例如：
+
+```text
+| Item | Status | Blocks | Next artifact | Promotion condition |
+|---|---|---|---|---|
+| $TC_DP3 | needs verification | Siemens tool access family confidence | tool.md | official source for meaning and index semantics |
+```
+
+这样 backlog 不只是堆词。
+
+**最终结构建议**
+
+```text
+# Siemens-style Reference Notes
+
+1. Purpose And Boundary
+2. How To Use This Note
+3. Evidence Claims And Source Status
+4. Current Scope
+5. Siemens Clues And MetaNC Design Questions
+   5.1 User Variables: Lifetime And Persistence
+   5.2 GUD Range: Scoped Value Instances
+   5.3 GUD DEF Declaration: Declaration Attributes
+6. Token Inventory
+7. Active Access Family Bridge
+8. Deferred Verification Backlog
+```
+
+我的建议是：**先做这次结构重排，不新增 Siemens 内容。**
+把现有内容重新摆正，尤其补上 `Active Access Family Bridge`，这份文档就会从“拼贴资料”变成真正服务 TP004 讨论的参考笔记。</pre>
+</article>
+</section>
+<section class="turn" id="turn-49">
+<h2>Turn 49</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:33:48 +0800</div>
+<pre>ok，感觉可以，做一版我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:34:10 +0800</div>
+<pre>我会按刚才定的方向直接重构一版：不新增 Siemens 内容，重点重排主线、弱化 SQL 类比、拆清 source claim、补 active access family bridge。完成后会重新生成 HTML 给你看。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 15:34:20 +0800</div>
+<pre>我先读一遍当前同步检查对这页的硬性要求，避免重构后破坏发布链路。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 15:34:29 +0800</div>
+<pre>我会把英文源重写成更清楚的结构，然后同步中文页。重构后会把检查里的旧“SQL 类比”要求换成新的 `Active Access Family Bridge` 和 `Token Reading`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 15:36:13 +0800</div>
+<pre>英文源已经重写。现在我同步中文页，保持中文可读，不做生硬逐段重复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 15:37:40 +0800</div>
+<pre>中文页已同步。现在我更新检查规则里的旧锚点：不再要求 `SQL 类比`，改为保护新的 `当前访问族桥接`、`MetaNC 决策面` 和 `待核验 Backlog`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 15:38:00 +0800</div>
+<pre>重构主体完成。我会先跑投影检查，预期如果有缺失文本，会按检查结果补齐，而不是放宽约束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-11 15:38:12 +0800</div>
+<pre>现在检查源到中文投影和关键文本保护。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-11 15:38:21 +0800</div>
+<pre>检查失败是预期内的硬约束问题：我们把状态名改成了 `claim_status`，但投影检查还要求旧 `verification_status`；同时边界句里缺少原来的 MetaNC 元定义组合短语。我会按新设计修检查和边界句。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-11 15:38:54 +0800</div>
+<pre>边界句和检查项已对齐新结构。我重新跑同步检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-11 15:39:09 +0800</div>
+<pre>同步检查通过。接下来刷新 usage index 和 HTML 发布产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-11 15:39:21 +0800</div>
+<pre>我会重新生成索引和 HTML，然后跑完整校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-11 15:42:18 +0800</div>
+<pre>索引刷新通过，旧的 `SQL/Open Verification/verification_status` 等结构锚点已经清掉。我开始构建 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-11 15:43:27 +0800</div>
+<pre>HTML 已生成。我跑发布页检查、value-set 检查、单元测试和 diff 空白检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-11 15:43:40 +0800</div>
+<pre>校验通过。我最后确认中文 HTML 里新结构可见，并检查没有旧 glossary/SQL 锚点残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-11 15:43:48 +0800</div>
+<pre>新结构在 HTML 中已确认。`git diff --stat` 不显示未跟踪的新文件内容，这是因为它们还没加入索引；我会用 `git diff --no-index` 不合适，这里改用文件行数和路径说明即可。现在更新计划并给你阅读入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / final_answer</h3>
+<div class="time">2026-06-11 15:44:03 +0800</div>
+<pre>已按“不是拼凑资料，而是兼容输入分析笔记”的方向重做了一版。
+
+现在结构变成：
+
+```text
+1. 如何使用本页
+2. 证据声明与来源状态
+3. 当前范围
+4. Siemens 线索与 MetaNC 设计问题
+5. Token 清单
+6. 当前访问族桥接
+7. MetaNC 决策面
+8. 待核验 Backlog
+```
+
+这版的核心变化：
+- 去掉了 `SQL 类比`，改成更克制的 token reading，避免误导成 MetaNC DSL。
+- `Sources` 改成 claim 级别，`official/confirmed` 只覆盖 Siemens claim，不覆盖 MetaNC 映射判断。
+- 增加了 `当前访问族桥接`，把 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 和 TP004 当前设计问题接起来。
+- 增加了 `MetaNC 决策面`，明确 Siemens clue 只提出问题，不决定 MetaNC field/enum/owner/runtime。
+- `Open Verification List` 改成 `待核验 Backlog`，加了 blocks / next artifact / promotion condition。
+
+可直接看新版中文 HTML：
+[reference-notes.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/reference-notes.html)
+
+源文件：
+[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:1)
+
+验证已通过：
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，64 tests OK
+- `git diff --check`</pre>
+</article>
+</section>
+<section class="turn" id="turn-50">
+<h2>Turn 50</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:50:33 +0800</div>
+<pre>你总结一下新内容</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 15:50:54 +0800</div>
+<pre>新版 `REFERENCE-NOTES.md` 现在不是术语表，而是 **Siemens-style 输入到 MetaNC 设计问题的分析笔记**。
+
+它的主线是：
+
+```text
+Siemens-style input
+  -&gt; evidence claim
+  -&gt; Siemens clue
+  -&gt; MetaNC design question
+  -&gt; access definition / backlog
+```
+
+主要内容：
+
+1. **如何使用本页**
+   从一个 Siemens-style 表达或声明出发，判断它是访问表达式还是声明语句，然后只提取对 MetaNC 有用的设计压力：scope、lifetime、persistence、access context、owner、validation、diagnostics。
+
+2. **证据声明与来源状态**
+   把来源拆成小 claim。`official/confirmed` 只证明 Siemens 事实，不证明 MetaNC 映射判断。
+
+3. **当前范围**
+   当前只覆盖 `LUD/PUD/GUD`、`NCK/CHAN`、GUD `DEF` 声明属性。`$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 仍未确认 Siemens 真实语义。
+
+4. **Siemens 线索与 MetaNC 设计问题**
+   - `LUD/PUD/GUD` 提醒我们区分程序局部状态、程序会话状态、持久 scoped value。
+   - `NCK/CHAN` 提醒我们区分 machine-wide value 和 channel-scoped value instance。
+   - GUD `DEF` 声明属性提醒我们区分声明 metadata、access policy、validation constraint、initial value。
+
+5. **Token 清单**
+   统一列出 `DEF/LUD/PUD/GUD/NCK/CHAN/OPI/APRP/APWP/APRB/APWB/SYNR/...` 等 token，并区分 Siemens claim 与 MetaNC interpretation。
+
+6. **当前访问族桥接**
+   把当前 TP004 三个访问族接到设计问题：
+   - `$TC_DP3[tool,edge]`：是否是 owner-backed domain-table access？
+   - `$MA_MAX_AX_VELO[axis]`：axis selector 如何映射到 MetaNC axis scope？
+   - `$P_UIFR[frame,axis,component]`：是 domain-table、structured parameter，还是 frame owner contract？
+
+7. **MetaNC 决策面**
+   Siemens clue 只提出问题，不直接决定 MetaNC enum、owner、schema 或 runtime implementation。
+
+8. **待核验 Backlog**
+   把 `$TC_DP3`、`$MA_`、`$MC_`、`$P_UIFR`、R parameter、`$A_...` 等放入待核验，并标明阻塞什么、下一步对应哪个 artifact、什么条件下可升级。</pre>
+</article>
+</section>
+<section class="turn" id="turn-51">
+<h2>Turn 51</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:54:28 +0800</div>
+<pre>我看到现在LUD PUD GUD 怎么感觉比之前少了个参数范围定义</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:54:49 +0800</div>
+<pre>我看一下新版里 LUD/PUD/GUD 那段具体保留了哪些信息。你这个感觉大概率是对的：重构时把“范围/有效域”压缩成了设计问题，可能少了一个显式定义表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 15:55:18 +0800</div>
+<pre>是的，你这个感觉是对的。新版重构时把主线理顺了，但把 `LUD/PUD/GUD` 原来比较直观的“有效范围 / 生命周期 / 持久化范围”压缩掉了，现在只剩几句线索和设计问题，所以读起来会少一层定义。
+
+应该补回一张明确表，放在 **“用户变量影响生命周期和持久化”** 下面：
+
+```text
+| Siemens category | 定义位置 / 范围 | 可见性 | 生命周期 | 持久化 | MetaNC 设计线索 |
+|---|---|---|---|---|---|
+| LUD | 非主程序的 part program 内定义 | 定义它的局部程序范围 | 程序/调用过程内 | 不持久 | program-local runtime state |
+| PUD | 作为 main program 的 part program 内定义 | 主程序及其调用链相关范围 | 主程序会话 | 不持久 | program-session state |
+| GUD | GUD data block 中定义 | NCK-global 或 channel-global | 跨程序 | shutdown/restart 后保留 | persistent scoped value |
+```
+
+现在文档里有这些信息，但散在：
+- `LUD/PUD/GUD` 的 bullet；
+- 最小示例；
+- MetaNC design question；
+- token 清单。
+
+问题是**没有一个集中表告诉读者：这三者到底按什么范围区分**。
+
+我建议补一个小节叫：
+
+```text
+Siemens Range / Lifetime Summary
+Siemens 范围与生命周期摘要
+```
+
+重点不是新增概念，而是把这三个维度重新摆出来：
+
+```text
+definition scope
+visibility
+lifetime
+persistence
+MetaNC clue
+```
+
+这样就不会只像“设计问题”，而是先有清楚的 Siemens-side 范围定义，再进入 MetaNC 映射讨论。</pre>
+</article>
+</section>
+<section class="turn" id="turn-52">
+<h2>Turn 52</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:56:36 +0800</div>
+<pre>不是，除了LUD PUD GUD，我记得之前有个什么来着，有点遗忘了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:56:52 +0800</div>
+<pre>我先在现有文档里搜一下 LUD/PUD/GUD 周边和之前保留过的 Siemens 范围词，避免凭印象答错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 15:57:20 +0800</div>
+<pre>你可能记的是 **`$MN_ / $MC_ / $MA_` 这一组**，不是 `LUD/PUD/GUD`。
+
+它们大概是 Siemens 机床数据的范围前缀：
+
+| 前缀 | 大致含义 | 范围 |
+|---|---|---|
+| `$MN_` | Machine data | 机床 / NCK 全局 |
+| `$MC_` | Channel machine data | 通道级 |
+| `$MA_` | Axis machine data | 轴级 |
+
+这组和 `LUD/PUD/GUD` 不是同一层：
+
+```text
+LUD / PUD / GUD
+  -&gt; 用户变量类别，偏程序变量 / 用户数据 / 生命周期
+
+$MN_ / $MC_ / $MA_
+  -&gt; 机床数据变量族，偏 machine/channel/axis 范围参数
+```
+
+另外还有一组你也可能想到：
+
+```text
+NCK / CHAN
+```
+
+这是 **GUD 定义里的 range token**，比如：
+
+```text
+DEF NCK REAL ZEIT_1=12
+DEF CHAN REAL STROM_1
+```
+
+所以现在应该补回的不是一个东西，而是把 Siemens 范围层次分清：
+
+```text
+用户变量类别: LUD / PUD / GUD
+GUD range:   NCK / CHAN
+机床数据族:  $MN_ / $MC_ / $MA_
+程序变量:    R parameter
+运行时变量:  $A_...
+```
+
+你说“除了 LUD/PUD/GUD 还有个什么”，我判断最可能是 `$MN_ / $MC_ / $MA_`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-53">
+<h2>Turn 53</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:57:55 +0800</div>
+<pre>所以你关于这块没有删减东西是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 15:58:11 +0800</div>
+<pre>不是完全没有删减。**内容没有被刻意删除，但有些东西被压缩/移动了**，所以你会感觉少了。
+
+具体说：
+
+- `LUD/PUD/GUD` 还在。
+- `NCK/CHAN` 还在。
+- `OPI/APRP/APWP/APRB/APWB/SYNR/SYNW/SYNRW` 还在。
+- `PHU/LLI/ULI`、`INT/REAL/...` 还在。
+- `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 还在。
+- `$MN_/$MC_/$MA_`、`R parameter`、`$A_...` 也还在 backlog。
+
+但有两类信息变弱了：
+
+1. **`LUD/PUD/GUD` 的范围/生命周期解释被压缩了**
+   原来更像定义表，现在变成了设计问题段落和 token 清单。这个应该补回一张摘要表。
+
+2. **`$MN_/$MC_/$MA_` 这类 Siemens 范围前缀只在 backlog**
+   现在没有正文解释，因为我们还没有 official source 支撑，只把它们作为待核验项保留。这不是删除，但读者会觉得不明显。
+
+所以准确说：**没有把之前讨论过的这些项从文档体系里删掉，但重构后有些从正文降级成 backlog，有些定义从显式解释变成了压缩摘要。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-54">
+<h2>Turn 54</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:58:26 +0800</div>
+<pre>LUD / PUD / NCK GUD / CHAN GUD 之前好像这样描述过</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 15:58:44 +0800</div>
+<pre>对，你记得是对的。更准确的表达应该是：
+
+```text
+LUD
+PUD
+NCK GUD
+CHAN GUD
+```
+
+而不是只写：
+
+```text
+LUD / PUD / GUD
+```
+
+因为 `GUD` 下面还要按 range 再分：
+
+| 类别 | 含义 | 范围/实例 |
+|---|---|---|
+| `LUD` | Local User Data | 当前局部程序范围 |
+| `PUD` | Program-global User Data | 主程序 / 程序会话范围 |
+| `NCK GUD` | NCK-global GUD | NC / machine 级全局保留数据 |
+| `CHAN GUD` | Channel-global GUD | 通道级保留数据，每个 channel 可有独立实例 |
+
+所以问题就在这里：新版把 `GUD` 写成了一个总类，然后另开一节讲 `NCK/CHAN` range token。结构上没错，但读者会感觉少了以前那个直接的“参数范围分类”。
+
+我建议补回一个明确表，标题可以是：
+
+```text
+Siemens User Data Range Summary
+```
+
+中文：
+
+```text
+Siemens 用户数据范围摘要
+```
+
+核心就是把 `LUD / PUD / NCK GUD / CHAN GUD` 作为四个可读分类摆出来。这样比现在的 `LUD/PUD/GUD` + `NCK/CHAN` 分开讲更直观。</pre>
+</article>
+</section>
+<section class="turn" id="turn-55">
+<h2>Turn 55</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 15:59:12 +0800</div>
+<pre>NCK CHAN不会和LUD/PUD组合吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 15:59:56 +0800</div>
+<pre>一般不组合。
+
+更准确是两层：
+
+| 层级 | 取值 |
+|---|---|
+| 用户数据类别 | `LUD`、`PUD`、`GUD` |
+| GUD 的范围 | `NCK GUD`、`CHAN GUD` |
+
+也就是说：
+
+```text
+LUD
+PUD
+GUD
+  -&gt; NCK GUD
+  -&gt; CHAN GUD
+```
+
+不是：
+
+```text
+NCK LUD
+CHAN LUD
+NCK PUD
+CHAN PUD
+```
+
+区别在于：
+
+- `LUD/PUD` 的范围来自程序上下文：局部程序、主程序/程序会话。
+- `NCK/CHAN` 是 GUD 声明里的显式 range token，用来说明这个 GUD 是 NC 全局还是通道级。
+- LUD/PUD 当然会运行在某个 channel 的程序执行环境里，但这属于执行上下文，不是声明语法里的 `CHAN LUD`。
+
+所以文档里应该写成：
+
+```text
+Siemens user data categories:
+- LUD
+- PUD
+- GUD
+
+GUD range variants:
+- NCK GUD
+- CHAN GUD
+```
+
+你之前记的 `LUD / PUD / NCK GUD / CHAN GUD` 是更适合人读的摘要方式。</pre>
+</article>
+</section>
+<section class="turn" id="turn-56">
+<h2>Turn 56</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 16:00:58 +0800</div>
+<pre>1.你说的一般不组合还是说完全不组合、还是某些情况下可能组合
+2.你这种catgory和range分开的方式我能接受，但是就会需要满足1里面说的，能不能组合</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 16:01:48 +0800</div>
+<pre>我的判断要分清两个问题：
+
+1. **在 Siemens `DEF` 用户变量声明语法里：不组合。**
+   也就是不要写成：
+
+```text
+NCK LUD
+CHAN LUD
+NCK PUD
+CHAN PUD
+```
+
+当前应理解为：
+
+```text
+LUD
+PUD
+GUD
+  -&gt; NCK GUD
+  -&gt; CHAN GUD
+```
+
+2. **在运行时执行上下文里：LUD/PUD 可能属于某个通道的程序执行环境。**
+   但这不是 `CHAN LUD` 这种声明分类，而是“这个程序在哪个 channel 上运行”的上下文问题。
+
+所以更严谨的说法是：
+
+```text
+NCK / CHAN 是 GUD 的声明 range token。
+LUD / PUD 的范围来自程序定义位置和程序调用上下文。
+LUD/PUD 可以发生在某个 channel 的执行环境中，但不因此变成 CHAN LUD / NCK PUD。
+```
+
+文档里可以这样写：
+
+```text
+User data categories:
+- LUD
+- PUD
+- GUD
+
+GUD range variants:
+- NCK GUD
+- CHAN GUD
+
+Do not model as:
+- NCK LUD
+- CHAN LUD
+- NCK PUD
+- CHAN PUD
+```
+
+但我不会写成“Siemens 全体系绝对不存在任何相关组合”，因为这需要更完整的官方语法来源。我们当前可以确定的是：**在本页已核验的 `DEF` / GUD 讨论范围内，不组合。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-57">
+<h2>Turn 57</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 16:04:02 +0800</div>
+<pre>ok 那你的建议是？</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 16:04:19 +0800</div>
+<pre>我的建议是：**保留 category / range 两层模型，但在文档里显式写清“组合规则”。**
+
+也就是不要只写：
+
+```text
+LUD / PUD / GUD
+NCK / CHAN
+```
+
+而是改成：
+
+```text
+User data category:
+- LUD
+- PUD
+- GUD
+
+GUD range:
+- NCK GUD
+- CHAN GUD
+
+Composition rule:
+- NCK / CHAN only qualify GUD in the currently documented DEF/GUD scope.
+- Do not derive NCK LUD, CHAN LUD, NCK PUD, or CHAN PUD from this note.
+- LUD/PUD may still execute inside a channel context, but that is runtime context, not declaration range.
+```
+
+这样有几个好处：
+
+1. **保留结构清晰**
+   `LUD/PUD/GUD` 是类别，`NCK/CHAN` 是 GUD range。后面如果 Siemens 资料补充更多 range，也能扩。
+
+2. **避免误组合**
+   读者不会看到 category/range 两张表后自动推导出 `CHAN PUD` 这种东西。
+
+3. **不做过度断言**
+   我们只说“当前已核验的 DEF/GUD 范围内不组合”，不声称 Siemens 全体系绝对不存在其他相关上下文。
+
+我建议在 `REFERENCE-NOTES.md` 的 `Current Scope` 后面补一个小节：
+
+```text
+## User Data Category And Range Composition
+
+| Layer | Values | Applies to | Composition rule |
+|---|---|---|---|
+| User data category | LUD, PUD, GUD | Siemens user data category | Base category. |
+| GUD range | NCK, CHAN | GUD only in current DEF/GUD scope | Produces NCK GUD or CHAN GUD. |
+
+Do not derive:
+- NCK LUD
+- CHAN LUD
+- NCK PUD
+- CHAN PUD
+```
+
+中文：
+
+```text
+不要从本页推出：
+- NCK LUD
+- CHAN LUD
+- NCK PUD
+- CHAN PUD
+```
+
+这块建议马上补，因为它正好解释你刚才的疑问，也能防止后面设计 `scope` 的时候乱组合。</pre>
+</article>
+</section>
+<section class="turn" id="turn-58">
+<h2>Turn 58</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 16:06:26 +0800</div>
+<pre>ok 按照你的建议处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 16:06:49 +0800</div>
+<pre>我会在 `Current Scope` 后面补一个明确的 composition rule 小节：把 `LUD/PUD/GUD` 和 `NCK/CHAN` 的层级、可组合关系、不可推导项写清楚，然后更新中文页和同步检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 16:06:57 +0800</div>
+<pre>我会插入一个短小的“User Data Category And Range Composition”小节，不新建概念，只把可组合和不可组合规则写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 16:07:31 +0800</div>
+<pre>组合规则已补。现在跑同步检查和发布构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 16:07:54 +0800</div>
+<pre>同步检查通过。我重新生成 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 16:08:13 +0800</div>
+<pre>HTML 已刷新。我做完整校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 16:08:27 +0800</div>
+<pre>校验通过。我确认新版 HTML 里这段可见。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-11 16:08:42 +0800</div>
+<pre>已补上组合规则，并重新生成 HTML。
+
+新增小节：`用户数据类别与范围组合`
+
+里面明确写了：
+
+```text
+User data category:
+- LUD
+- PUD
+- GUD
+
+GUD range:
+- NCK
+- CHAN
+```
+
+组合规则：
+
+```text
+NCK / CHAN 当前只限定 GUD
+=&gt; NCK GUD
+=&gt; CHAN GUD
+```
+
+并明确不要从本页推出：
+
+```text
+NCK LUD
+CHAN LUD
+NCK PUD
+CHAN PUD
+```
+
+同时补了一句关键边界：
+
+```text
+LUD/PUD 仍可能在某个 channel runtime context 中执行，
+但那是执行上下文，不是 CHAN LUD 或 CHAN PUD 这种声明范围。
+```
+
+中文 HTML 已更新：
+[reference-notes.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/reference-notes.html)
+
+验证通过：
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，64 tests OK
+- `git diff --check`</pre>
+</article>
+</section>
+<section class="turn" id="turn-59">
+<h2>Turn 59</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 16:09:31 +0800</div>
+<pre>Token Inventory / Token 清单
+这里的Source列里的SIEMENS-DEF-70265038这种是什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 16:09:48 +0800</div>
+<pre>`SIEMENS-DEF-70265038` 是我们给 Siemens 官方来源起的 **source_id**，不是 Siemens token，也不是 MetaNC term/value id。
+
+它对应这条来源：
+
+```text
+Siemens DEF command page
+https://support.industry.siemens.com/cs/mdm/70265038?c=44782643595&amp;lc=en-BY
+```
+
+命名含义大概是：
+
+```text
+SIEMENS      来源方
+DEF          来源主题
+70265038     Siemens 页面 / 文档 ID
+```
+
+在 `Token Inventory` 里的作用是：说明这一行 token 的 Siemens 事实依据来自哪里。
+
+比如：
+
+```text
+| Token | Siemens claim | Source |
+|---|---|---|
+| DEF | 定义 Siemens 用户变量。 | SIEMENS-DEF-70265038 |
+```
+
+意思是：
+
+```text
+DEF 这个 Siemens claim 的证据来自 Siemens DEF command page。
+```
+
+它不代表：
+
+```text
+不是 value_set_id
+不是 term_id
+不是 schema id
+不是 Siemens 语法 token
+不是 MetaNC 内部编号
+```
+
+如果你觉得这个缩写看起来又像我们自己造的 ID，我建议把表头从 `Source` 改成更明确的：
+
+```text
+Evidence source
+```
+
+并在 Sources 表前加一句：
+
+```text
+Source ID is a local citation label used only inside this note.
+```
+
+中文：
+
+```text
+Source ID 是本页内部使用的引用标签，只用于追踪证据来源。
+```</pre>
+</article>
+</section>
+<section class="turn" id="turn-60">
+<h2>Turn 60</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-11 16:14:48 +0800</div>
+<pre>这个你不应该加个链接吗，我看的莫名其妙</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 16:15:02 +0800</div>
+<pre>对，这里应该可点击。`Source ID` 只是引用标签，但 Token 清单里只放裸 ID 会让读者断线。我会把 Source 列改成链接到本文 Sources 小节的 source row，并在 Sources 表里保留外部 URL。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 16:15:13 +0800</div>
+<pre>我会把 Source ID 变成 Markdown 链接，并给 Sources 表加锚点。这样读者在 Token 清单点击就能跳到来源说明，来源说明再有外部 Siemens URL。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-11 16:15:41 +0800</div>
+<pre>我已经把 source ID 改成页内链接，并把 `Siemens DEF command page` 改成外部 Siemens 链接。现在检查渲染和同步规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-11 16:16:02 +0800</div>
+<pre>链接已经补上：`SIEMENS-DEF-70265038` 现在是页内锚点链接，`Siemens DEF command page` 是外部 Siemens 链接。我接着重新生成 HTML 并确认渲染后可点击。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-11 16:17:17 +0800</div>
+<pre>我会把这个 source token 做成可跳转引用：表格里的 `SIEMENS-DEF-70265038` 跳到本页 Sources 定义，同时 Sources 里再链到 Siemens 原始页面。现在我重新生成 HTML 并跑一遍校验，避免只改了 Markdown 没同步到可读版本。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-11 16:17:48 +0800</div>
+<pre>链接已经在生成后的中文 HTML 里确认了：`Token Inventory` 的 Source 列会跳回本页证据定义区，证据表里的 Siemens 页面也会跳到外部原始链接。我再看一下变更范围，确认没有额外漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-11 16:18:10 +0800</div>
+<pre>已处理。现在 `SIEMENS-DEF-70265038` 不再是裸 token：
+
+- `Token Inventory` 的 Source 列会链接到本页的 source 定义区。
+- source 定义区里的 `Siemens DEF command page` 会链接到 Siemens 原始页面。
+- 已重新生成 `docs_html`，中文页面在这里：[reference-notes.html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/siemens/reference-notes.html)
+
+相关源文件：
+[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:49)
+
+验证已跑过：docs build、i18n published HTML sync、parameter value-set check、64 个 tools 单测、`git diff --check` 都通过。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 08:59:31 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb42f-b114-70d3-b487-aeba6572b7e9&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No edits made.\n\n**Findings**\n\n1. **Lexer-like**\n   Governed value sets and schema-field bindings: short labels like `domain_table`, `tool_management`, `shape`, `dispatch`, `owner_defined` are controlled tokens/enum values. This is closest to lexical/token governance, not an actual lexer.\n\n2. **Grammar-like**\n   `Native Expression`, `native_view.pattern`, `shape.indexes`, and access-family forms such as `$TC_DP3[tool,edge]`. These define accepted expression/document shapes: parse, match, index count/type, accepted forms.\n\n3. **Semantic-analysis-like**\n   `Descriptor Mapping`, `Semantic Descriptor`, `Access Contract`, `Diagnostic Stage`, fixtures, validation expectations, and resolver behavior. This is where parsed forms become MetaNC meaning: owner, target kind, canonical path, scope, permissions, guards, profile-dependent resolution, and dispatch validity.\n\n4. **Topology-like**\n   `Runtime Symbol Table -&gt; Binding Resolver -&gt; Parameter fast slot / Signal / Runtime state / Domain-table operation`, plus `Owner`, `Object Scope`, `Sharing Model`, `Profile Dependency`, `Canonical Path`, and dispatch owner/target. This is not grammar; it is the binding/ownership/resolution graph of runtime-access targets.\n\n**Is “grammar + topology” valid?**\n\nAs a conversational shorthand, yes, but it is imprecise. It works if you mean: “one layer defines acceptable structural forms, another defines how those forms connect to owners, scopes, profiles, and runtime targets.”\n\nFor spec language, I would prefer:\n\n- Chinese: **结构化 Schema + 绑定图**\n- English: **structural schema + binding graph**\n\nA slightly more reader-friendly version:\n\n- Chinese: **表达结构 + 语义绑定图**\n- English: **expression structure + semantic binding graph**\n\n**Risk Of Calling It Grammar**\n\nCalling the whole layer “grammar” can mislead people into thinking TP004 is defining a full language grammar or parser implementation. It also hides the semantic parts: descriptor mapping, access policy, profile dependency, owner dispatch, and runtime binding are not grammar rules. The current docs already separate syntax/document structure from semantic rules and validation evidence, so overusing “grammar” would blur that boundary.\n\nRecommended phrase:\n\n**CN:** “这一层不是单纯语法，而是访问表达的结构化 Schema 与语义绑定图。”  \n**EN:** “This layer is not just grammar; it is the structural schema and semantic binding graph for access expressions.”\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:59:39 +0800</div>
+<pre>第一个 agent 的结论和我本地判断一致：`grammar + topology` 可以口头用，但正式文档更建议“结构化 Schema + 绑定图”或“表达结构 + 语义绑定图”。我继续等另外两路，尤其看边界审查是否认为会把 TP004 拉得太深。</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 08:59:41 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb42f-745d-7573-97d5-b3fe1c41c76d&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;Findings first:\n\n1. Yes, **“grammar + topology” risks expanding TP004 too far**. `grammar` is already scoped as a light description aid, not the contract itself; `topology` is too broad and can sound like TP004 owns module structure or internal runtime architecture. The safer framing is **“Access Definition Structure and Owner/Module Access Binding”**.\n\n2. Boundary sentence to use:\n\n&gt; TP004 owns the access contract up to the module boundary: expression parsing, access-family matching, semantic descriptors, owner/module tokens, read/write/metadata capabilities, dispatch targets, and diagnostics; the owning module retains responsibility for internal storage, execution semantics, domain APIs, control behavior, and persistence implementation.\n\n3. Reference-only terms, not TP004-owned: `tool_management`, `plc_runtime`, `zero_offset`, `motion.axis`, `motion`, `hal`, `magazine`, plus their domain internals such as tool table storage/API behavior, PLC runtime execution, motion-control behavior, HAL implementation, magazine/pocket behavior, and zero-offset/frame storage. TP004 may govern their owner tokens and access-definition references, but not their implementation semantics.\n\n4. Cleanest next topic title:\n\n**TP004 Access Definition Structure And Owner/Module Access Binding**\n\nSupporting basis: the current docs already say TP004 owns parameter/runtime access, definitions, validation, owner-token governance, and Siemens-style access patterns, while explicitly excluding HMI pages, PLC runtime execution semantics, and tooling domain behavior ([README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:6), [README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:23)). The baseline also says EBNF should not replace structured access-definition fields ([DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:274)) and that domain invariants remain at owner APIs ([DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:506)). The owner registry confirms owner tokens reference topic boundaries instead of redefining owners locally ([OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:49)).\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 08:59:52 +0800</div>
+<pre>第二个 agent 明确指出 `topology` 正式使用风险偏高，会让人误以为 TP004 拥有模块结构或 runtime 架构。它推荐“Access Definition Structure And Owner/Module Access Binding”。还剩术语命名审查一路，我等完后给你最终校准。</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 09:00:04 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb42f-2eda-7eb3-b9e9-4e248fe1aa1b&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;1. Yes, `grammar + topology` is acceptable as informal shorthand, but only if “grammar” means `Access Description Grammar`, not lexer/parser work, and “topology” means owner/dispatch/access-contract relationships, not runtime module topology. The docs already use `Access Description Grammar` for document/expression shape and validation flow ([DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:274), [TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:154)).\n\n2. `Access Definition Structure and Module Binding` is close, but not precise enough as formal wording. `Access Definition Structure` fits the current model. `Module Binding` is the weak half: TP004’s governed terms are `Owner`, `Access Contract`, `Descriptor Mapping`, and `dispatch`, while module ownership is mediated through owner tokens and topic boundaries ([TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:147), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:3), [OWNER-REGISTRY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/OWNER-REGISTRY.md:109)).\n\n3. Recommended formal wording: `Access Definition Structure and Owner/Dispatch Contracts` / `访问结构化定义结构与 Owner/分发契约`. If you want to preserve the “module” idea: `Access Definition Structure and Owner-Module Access Contracts` / `访问结构化定义结构与 Owner/模块访问契约`. This keeps the boundary on expression shape, semantic descriptor mapping, owner binding, read/write policy, and dispatch, matching the access-definition block model ([access-definitions/README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/README.md:200)).\n\n4. Avoid formal titles containing `parser`, `lexer`, `compiler`, `runtime binding`, `realtime binding`, `execution topology`, `module runtime topology`, `storage binding`, or `backend implementation`. Those imply implementation/compiler/runtime ownership, while TP004 explicitly stays at access contracts and excludes runtime string resolution, storage flattening, and domain execution internals ([README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/README.md:23), [DESIGN-BASELINE.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/DESIGN-BASELINE.md:652)).\n\nNo files edited.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-11 09:00:26 +0800</div>
+<pre>三个 agent 的结论基本一致：**你的“grammar + topology”作为口头理解没问题，但不适合直接作为正式定义标题。**
+
+原因是：
+
+- `grammar` 容易让人以为我们要做 lexer/parser/compiler。
+- `topology` 容易让人以为 TP004 要定义 runtime/module topology。
+- 实际上我们要定义的是：访问表达和定义文件的结构，以及它如何绑定到 owner、dispatch、access contract。
+
+我建议最终这样定：
+
+```text
+口头简称：
+grammar + topology
+
+正式标题：
+Access Definition Structure and Owner/Dispatch Contracts
+访问结构化定义结构与 Owner/分发契约
+```
+
+如果你觉得 `Owner/Dispatch Contracts` 太抽象，也可以用稍微平实一点的：
+
+```text
+Access Definition Structure and Owner-Module Access Contracts
+访问结构化定义结构与 Owner/模块访问契约
+```
+
+我更推荐第一版：
+
+```text
+访问结构化定义结构与 Owner/分发契约
+```
+
+因为它刚好卡住 TP004 的边界：
+
+```text
+TP004 负责：
+- expression / native_view 长什么样
+- access family 怎么 match
+- shape/index 怎么定义
+- descriptor_map 怎么映射
+- access_contract 怎么声明
+- owner token 怎么绑定
+- dispatch target 怎么说明
+- validation case 怎么证明
+
+TP004 不负责：
+- tool_management 内部怎么存刀具
+- PLC runtime 怎么执行
+- motion 怎么控制轴
+- zero_offset 怎么落表
+- HAL/magazine 内部实现
+```
+
+可以作为下一阶段边界句：
+
+```text
+TP004 owns the access contract up to the module boundary:
+expression parsing, access-family matching, semantic descriptors,
+owner tokens, access policy, dispatch targets, and diagnostics.
+
+The owning module retains responsibility for internal storage,
+execution semantics, domain APIs, control behavior, and persistence implementation.
+```
+
+中文：
+
+```text
+TP004 负责定义到模块边界为止的访问契约：
+表达解析、访问族匹配、语义描述符、owner token、访问策略、分发目标和诊断。
+
+具体 owner 模块仍负责内部存储、执行语义、领域 API、控制行为和持久化实现。
+```
+
+所以结论：**你说的方向是对的，但正式表达建议从“grammar + topology”收敛为“访问结构化定义结构与 Owner/分发契约”。**</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 15:25:34 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb591-748a-74c2-9672-116f66bfde98&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;1. **最严重：读者很难判断“这页到底要帮我做哪一步判断”**  \n   行 10-25、401-415。目的和映射规则说的是“四个问题”和“case slice 引用本页”，但没有给出一个从 Siemens 输入到 MetaNC 边界判断的完整走读。  \n   建议：在开头加一个 5-8 行的“使用路径”：看到 `DEF NCK REAL ...` -&gt; 识别 Siemens 概念 -&gt; 判断哪些只是兼容输入 -&gt; 哪些进入 MetaNC 设计讨论。\n\n2. **核心解释太像术语库，少了“兼容输入如何改变 MetaNC 设计问题”的主线**  \n   行 102-190、192-249、251-354。每组都有 Concept/Summary/Terms，但读者读完更像在背 Siemens 词条，而不是理解这些词条为什么影响 MetaNC 的 owner、scope、permission、persistence 建模。  \n   建议：每个概念组前或后增加一句“它改变的 MetaNC 问题是……”，例如 LUD/PUD/GUD 组明确落到“不能把所有访问目标都建成 persistent parameter”。\n\n3. **“不是 MetaNC X”反复出现，但正向替代物不够清楚**  \n   行 32-34、267-272、283-284、337-343、403-407。文档反复说不是 term、不是 schema field、不是 permission enum、不是 owner，但读者会卡在“那它现在是什么、下一步该怎么处理”。  \n   建议：增加一个小表：`Siemens artifact` / `This page records it as` / `MetaNC follow-up artifact`，把“参考笔记、设计提醒、未来规范项”的层级分清。\n\n4. **SQL-like 类比有帮助，但可能误导为 MetaNC 想要 SQL 化声明模型**  \n   行 255-263、295-320。类比很醒目，且比真实 Siemens 语句更易读，读者可能把它当成目标 IR 或未来 schema 草案。虽然行 297-299 有免责声明，但不够强。  \n   建议：把免责声明改成更具体的限制，例如“仅用于人工阅读 token 角色；不是 MetaNC syntax、IR、schema、parser target”。\n\n5. **双语排版增加了“怪怪的”感觉，读者连续性被打断**  \n   全文多处，例如行 3-8、27-41、274-293。英文段落和中文段落逐块重复，且中文中夹杂大量 `range`、`owner`、`value set`、`timing behavior`，读起来像草稿拼接。  \n   建议：若这是给中文读者看的审查材料，改成中文主文 + 英文术语保留；若是双语发布页，拆成语言切换页或让每节只保留一套主叙述。\n\n6. **Open Verification List 放在末尾，容易让读者误以为前面所有 Siemens 事实都已经充分闭合**  \n   行 378-399。待核验项很重要，尤其 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 看起来才像实际 TP004 access family，但它们直到末尾才出现。  \n   建议：在开头 Boundary 或 Current Concept Groups 处提前声明“当前正文只覆盖 GUD/DEF；tool data、machine data、frame 等实际访问族仍在待核验区”。\n\n**总判断：**这份文档现在最像“Siemens 术语摘录 + MetaNC 防误用注释”，但还不够像“兼容输入分析指南”。它需要更强的读者路径：从一个 Siemens-style 输入出发，解释它触发哪些 MetaNC 设计问题、哪些不能直接映射、下一份规范应该接住什么。&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:25:53 +0800</div>
+<pre>第一个 agent 的判断和我本地感受一致：问题不是信息缺失，而是主线不够像“兼容输入分析指南”。我继续等其他三个 agent，重点看它们是否指出同一个根因还是不同问题。</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 15:26:52 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb591-74cd-7ae1-b51a-ade680e19d41&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;只读审查完成，结构性问题如下。\n\n1. **概念组容器没有真正生效**  \n位置：[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:102) 行 102-111、192、251、355、378、401。`Current Concept Groups` 看起来是上层容器，但后续概念组都是同级 `##`，导致“当前概念组”和全局章节混在同一层。  \n建议：要么把后续概念组降为其子章节，要么把行 102 改成“Current Scope”之类的普通说明段。\n\n2. **文件名是参考笔记，但内容混入治理规则和 MetaNC 映射规则**  \n位置：[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:43) 行 43-95、401-415。`Growth Rule`、`Source And Verification Rules`、`Mapping Rules For MetaNC` 已经像维护规范/映射规范，不完全像 Siemens compatibility reference notes。  \n建议：保留简短边界说明，把增长规则和 MetaNC 映射治理移到单独的 README 或 MetaNC mapping note。\n\n3. **GUD/DEF/属性层级重复交叉**  \n位置：[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:183) 行 183-190、192-249、251-353、355-376。`DEF` 出现在 User Variables 术语表，又被扩成 GUD DEF 声明；`NCK/CHAN` 在 Range Terms 和 DEF 声明中重复；`PHU/LLI/ULI` 在 Attribute Groups 和 DEF token 表中重复。  \n建议：固定一个“声明语法/Token Inventory”表作为唯一词条来源，概念章节只引用它。\n\n4. **SQL 类比引入了额外建模层**  \n位置：[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:295) 行 295-320。`CREATE VARIABLE` 类比有助读性，但它引入了非 Siemens、非 MetaNC 的第三种抽象，容易让参考笔记变成设计教程。  \n建议：删除或移到附录，正文只保留一条 Siemens-style 声明的逐 token 注释。\n\n5. **待核验列表扩散成未来百科入口**  \n位置：[REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:378) 行 378-400。前文行 104-109 声明第一批限制在用户变量，但待核验列表加入 tool data、machine data、runtime/link variable、alarm/diagnostic 等多个家族。  \n建议：只保留当前示例已直接碰到的待核验项，其余移到独立 backlog。\n\n**建议新大纲**\n1. Purpose And Boundary  \n2. Evidence Levels And Sources  \n3. Current Scope: User Variables Only  \n4. Concept: LUD / PUD / GUD  \n5. Concept: GUD Range Tokens `NCK` / `CHAN`  \n6. Concept: GUD `DEF` Declaration Syntax  \n7. Token Inventory: Data Types, Attributes, Access Tokens  \n8. MetaNC Compatibility Implications  \n9. Deferred Verification Backlog\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:27:00 +0800</div>
+<pre>第二个 agent 指出了更结构化的问题：这页现在像“规则 + 笔记 + backlog”的混合体，而且 token 重复出现。这个解释了你说的“差点意思”：读者会感觉内容都有用，但层级不稳。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 15:27:18 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb591-754e-7e92-bade-322cf2c60ce3&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**问题**\n\n1. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:102) `Current Concept Groups` 说第一批只限 Siemens 用户变量，但当前 access first slice 实际是 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`，这些只在 `Open Verification List` 的 390-392 行被动列出。  \n改进建议：增加一个“active access families bridge”表，把三个当前访问族逐项连到 source status、owner、access context、persistence/lifetime 设计问题。\n\n2. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:251) `GUD DEF Declaration Statement Attributes` 和 295-320 行 SQL-like analogy 过强，容易把 Siemens `DEF` 属性误读成 MetaNC schema/DSL 雏形。  \n改进建议：把 SQL 类比改成“阅读提示 + 设计问题”，避免出现看起来像目标字段的 `SCOPE/TYPE/UNIT/...` 结构。\n\n3. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:172) `MetaNC Design Note` 提到 runtime/persistence 边界，337-343 行又提到 access context/owner，但没有连到 TP004 已治理的 Owner、Access Context、Activation Timing、Persistence Policy、Scoped Value Instance 等术语和值集合。  \n改进建议：补一个非规范性的“MetaNC decision surface”表：Siemens clue -&gt; MetaNC concept/value-set -&gt; 仍需谁决策 -&gt; 不在本页决定什么。\n\n4. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:143) 最小示例主要证明 LUD/PUD/GUD 可见性和 `DEF` 语法，缺少 HMI/NC/main-run/diagnostics/restricted-service 等典型访问边界场景。  \n改进建议：为当前三个访问族各加 1-2 个“discussion scenario”，只提出读写、上下文、owner、运行状态问题，不写成验证期望。\n\n5. [REFERENCE-NOTES.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:378) `Open Verification List` 只有 required evidence，没有说明它阻塞哪个后续设计判断；这和 45-58 行 growth rule 的“why needed now”脱节。  \n改进建议：给待核验项增加 `blocks / next artifact / promotion condition`，优先处理 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`。\n\n**建议下一步切片**\n\n做一个只服务讨论的 `REFERENCE-NOTES` 补充切片：`Active Access Family Bridge`。范围限定为 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR` 三行矩阵，每行只回答：外部证据状态、典型用例、MetaNC owner 问题、access context 问题、persistence/lifetime 问题、当前不决定什么。这样能连接后续设计，但不会变成实现规范。\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:27:24 +0800</div>
+<pre>第三个返回的重点是“当前讨论目标和正文焦点错位”：正文讲 GUD/DEF，但 TP004 当前第一批访问族是 `$TC_DP3/$MA_MAX_AX_VELO/$P_UIFR`。这很关键，说明文档虽然内容正确，但没有接住当前最急的参数访问讨论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-11 15:30:26 +0800</div>
+<pre>证据模型 agent 还没返回；我再等一轮。如果它继续超时，我会先用前三个结果给你合并结论，并标注证据模型这一路待补。</pre>
+</article>
+</section>
+<section class="turn event" id="event-7">
+<h3>Event 7 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-11 15:30:41 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019eb591-751e-75b3-9d1d-e55edc5aaa67&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**证据/来源问题**\n\n1. [REFERENCE-NOTES.md:96](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:96)-[100](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:100)  \n   `Sources` 表只有一个 Siemens source_id，却支撑了全文大量 `official/confirmed` 断言；`Supports` 粒度太粗，无法判断每个正文说法是否真的被该页面直接支持。  \n   建议：把 `Supports` 拆成更小的 claim/locator，例如 “LUD/PUD/GUD lifetime”, “GUD access tokens”, “DEF data types”，并加章节锚点或页面段落说明。\n\n2. [REFERENCE-NOTES.md:185](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:185)-[190](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:190), [347](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:347)-[353](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:353)  \n   行内同时包含 Siemens meaning 和 MetaNC interpretation，但整行标成 `official/confirmed`，容易把项目映射判断也读成 Siemens 官方事实。  \n   建议：`official/confirmed` 只覆盖 Siemens meaning；MetaNC interpretation 另标 `project-inferred` 或明确写成 “mapping note, not source-verified”。\n\n3. [REFERENCE-NOTES.md:124](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:124)-[140](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:140)  \n   LUD/PUD/GUD 的 lifetime、visibility、persistence 结论写得像已确认事实，但 Sources 表没有单独说明这些细节由哪段 Siemens 文档支持。  \n   建议：为 lifetime/persistence 增加独立 source claim；补不上证据前把相关 status 降为 `partial`。\n\n4. [REFERENCE-NOTES.md:196](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:196)-[205](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:205), [248](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:248)-[249](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:249)  \n   `NCK` 正文说 “confirmed source identifies NC-global”，术语表却标 `partial`；`CHAN` 则是 `confirmed`。读者不清楚 partial 指 token、语义还是 abbreviation expansion。  \n   建议：拆清楚 “token usage confirmed” 和 “expansion/name needs source”，不要让同一术语的正文和表格状态相互打架。\n\n5. [REFERENCE-NOTES.md:349](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:349)-[351](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:351)  \n   Access context 行把 `OPI` partial 和 protection tokens confirmed 混在一个 verification_status 单元里；后面的 OPI protection 又直接 confirmed，状态模型不一致。  \n   建议：拆成 “token appears”, “token meaning”, “caller context interpretation” 三类最小行，保证每行只有一个 verification_status。\n\n6. [REFERENCE-NOTES.md:367](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:367)-[376](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/access-definitions/siemens/REFERENCE-NOTES.md:376)  \n   DEF data type 表把 `CHAR` 的 ASCII、`FRAME` 的 static coordinate transformation 等具体含义标为 `confirmed`，但 Sources 表只笼统写 “DEF data types”。  \n   建议：没有逐项来源定位前，具体语义用 `partial`；只把 token 出现在 DEF syntax 中标为 `confirmed`。\n\n**最小 Sources 模型建议**\n\n保留现有三层，不引入新治理概念：\n\n`Source ID | Source level | Locator | Supports claim | Claim status | Used by`\n\n其中 `Supports claim` 必须是一句可核验的小断言，`Claim status` 只描述这句断言，`Used by` 填正文小节或术语行。MetaNC mapping note 不进入 `official/confirmed`，只写成 `project-inferred` 设计提醒。\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-11 15:30:54 +0800</div>
+<pre>四个审查结果齐了。我会把它们合并成“现在内容总结 + 为什么怪 + 怎么改”的结论，先不动文件，方便你判断方向。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-11 15:31:17 +0800</div>
+<pre>**当前内容总结**
+
+`REFERENCE-NOTES.md` 现在大概有四块：
+
+1. **文件边界和维护规则**
+   说明它不是 Siemens 百科，不创建 MetaNC term/value set/owner/schema，只记录 TP004 需要的 Siemens 兼容参考。
+
+2. **来源和核验状态**
+   定义 `source_level`、`verification_status`，目前主要只有一个 Siemens DEF 页面作为官方来源。
+
+3. **正文概念**
+   主要讲 Siemens 用户变量：
+   - `LUD/PUD/GUD` 的生命周期、可见性、持久化差异；
+   - `NCK/CHAN` 作为 GUD range token；
+   - `DEF ...` 声明语句里混合 scope/type/unit/limit/access protection/timing 等 token。
+
+4. **待核验和 MetaNC 映射提醒**
+   `$TC_DP3`、`$MA_`、`$P_UIFR` 等先放待核验；最后提醒这些 Siemens 概念只是兼容输入，不直接变成 MetaNC 规范项。
+
+**为什么你会觉得怪**
+
+我认为核心问题有三个：
+
+1. **它现在不像一份“参考笔记”，更像三种文件混在一起**
+   里面同时有维护规则、术语解释、来源表、MetaNC 映射规则、未来 backlog。每一块都合理，但放在一起导致阅读主线不稳。
+
+2. **它没有直接服务当前 TP004 的第一批访问族**
+   当前实际讨论的 Siemens-style access families 是 `$TC_DP3`、`$MA_MAX_AX_VELO`、`$P_UIFR`，但正文大篇幅讲 GUD/DEF，三个访问族只在待核验列表里出现。也就是说，它讲了一个有价值的例子，但没有接住当前最需要讨论的参数访问切片。
+
+3. **来源状态和 MetaNC 设计判断混在同一张表里**
+   有些行同时写 Siemens meaning 和 MetaNC interpretation，但整行标 `official/confirmed`，容易误读成“MetaNC 映射也被 Siemens 官方支撑”。这需要拆开：Siemens 事实是一层，MetaNC 设计提醒是另一层。
+
+**我建议的调整方向**
+
+不要继续往里堆术语。应该把它重构成“兼容输入分析指南”：
+
+```text
+1. Purpose And Boundary
+2. How To Use This Note
+3. Evidence And Source Claims
+4. Current Scope: GUD/DEF User Variables
+5. Siemens Concept Notes
+6. Token Inventory
+7. Active Access Family Bridge
+8. MetaNC Decision Surface
+9. Deferred Verification Backlog
+```
+
+最关键新增两个小表：
+
+```text
+Active Access Family Bridge
+$TC_DP3 / $MA_MAX_AX_VELO / $P_UIFR
+-&gt; 当前证据状态
+-&gt; 触发的 MetaNC owner/access context/persistence/lifetime 问题
+-&gt; 当前不决定什么
+```
+
+以及：
+
+```text
+Siemens clue -&gt; MetaNC decision surface
+LUD/PUD/GUD -&gt; runtime state vs persistent scoped value
+NCK/CHAN -&gt; machine/channel scoped instance
+APRP/APWP/OPI -&gt; access context and permission model
+DEF attributes -&gt; declaration metadata, not schema fields yet
+```
+
+我的结论：这份文档不是“错”，而是**焦点偏了**。它现在更像“Siemens GUD/DEF 术语摘录 + 防误用注释”；我们真正需要的是“Siemens-style 访问表达如何转化为 TP004 设计问题”。</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

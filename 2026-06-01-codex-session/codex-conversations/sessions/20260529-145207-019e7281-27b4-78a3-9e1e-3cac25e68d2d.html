@@ -1,0 +1,2304 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>检查一下下一步计划</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>检查一下下一步计划</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e7281-27b4-78a3-9e1e-3cac25e68d2d</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-05-29 14:52:07 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/mirror-ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/05/29/rollout-2026-05-29T14-52-07-019e7281-27b4-78a3-9e1e-3cac25e68d2d.jsonl</code></div>
+<div><b>Messages</b>: <code>215</code></div>
+<div><b>User prompts</b>: <code>20</code></div>
+<div><b>Synthetic events</b>: <code>8</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 08:34:13 +0800</div>
+<pre>检查一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 08:34:40 +0800</div>
+<pre>我先按当前 `feat/plc` 的文档和提交状态复核一下，不改文件。重点看 baseline/readiness/design 三个源头是否一致指向同一个 next plan。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 08:35:46 +0800</div>
+<pre>我先把当前分支状态和 rt-sdk 现有计划页重新核一下，避免沿着上一个“next”的惯性直接开工。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 08:36:11 +0800</div>
+<pre>分支是干净且已和 `origin/feat/plc` 对齐，最新提交停在 command completion placeholder。接下来我重点核对计划页里“下一片”的判定和边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-01 08:37:19 +0800</div>
+<pre>检查结果：当前计划方向是对的，下一步不该直接写 live adapter 代码，而是先落一个 **live simulation adapter design gate**。
+
+当前状态：
+- 分支干净并同步：`feat/plc...origin/feat/plc`
+- 最新提交：`82936696 feat(rt-sdk): add command completion placeholders`
+- placeholder baseline 已覆盖 logs、command receipt、topology revision、command completion。
+- 文档明确下一片是 `live simulation adapter design`，但同时要求先澄清 endpoint 稳定性和 runtime state-source ownership。
+
+下一步计划建议：
+
+1. 新增设计页
+   创建 `rt-sdk/docs/src/concepts/simulation-live-adapter-design.md`，专门定义 live sim adapter 的边界、生命周期、状态来源、命令映射、日志/诊断来源。
+
+2. 明确不做代码实现
+   这一片只做设计收口，不改 C++ 源码，不引入 `/rt-sdk` 到 `/rt/plc` 的直接链接，不选 JSON/socket/WebSocket/protobuf 等 wire format。
+
+3. 必须回答 5 个决策点
+   - `profile:&lt;name&gt;` 继续保持 backend-private，还是未来成为公开 endpoint grammar。
+   - live state 由谁拥有：runtime session、SDK backend cache，还是外部 simulator process。
+   - `CommandReceipt.command_id` 到 live completion tracking 的映射。
+   - topology/state/diagnostics/logs/params 的 live source 分工。
+   - PLC `LocalRuntimeAdapter` 只作为 backend-private evidence，不能泄漏到 public SDK API。
+
+4. 更新导航和现有计划页
+   修改：
+   - `rt-sdk/docs/src/SUMMARY.md`
+   - `rt-sdk/docs/src/concepts/index.md`
+   - `rt-sdk/docs/src/concepts/simulation-backend-design.md`
+   - `rt-sdk/docs/src/concepts/simulation-backend-readiness.md`
+   - `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+   - 可能补一小段到 `plc-local-facade-mapping.md`
+
+5. 验证
+   跑：
+   ```bash
+   python3 .mdbook/lint_docs_policy.py
+   git diff --check -- rt-sdk
+   book build
+   ```
+
+我建议下一步就按这个设计 gate 执行，提交信息可以是：
+
+```text
+docs(rt-sdk): design live simulation adapter boundary
+```
+
+这个计划的关键点是：先把“怎么接 live runtime”讲清楚，再进入实现。否则现在直接写 adapter 很容易把 PLC 本地 facade、endpoint grammar、runtime state ownership 混到 public SDK 里。</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 08:46:48 +0800</div>
+<pre>详细计划一下我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 08:47:02 +0800</div>
+<pre>我用 `superpowers:writing-plans` 来把这一步拆成可执行计划；这次先给你看方案，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-01 08:47:43 +0800</div>
+<pre>详细计划如下。这个 slice 我建议定义为 **docs-only design gate**，先把 live simulation adapter 的边界讲清楚，不碰 C++ 实现。
+
+**目标**
+
+新增并串联一份 `RT SDK live simulation adapter` 设计文档，回答“下一步怎么从 placeholder sim backend 走向真实 runtime/session 适配”，同时防止 `/rt-sdk` 直接耦合 `/rt/plc`。
+
+**不做范围**
+
+- 不改 `rt-sdk/include` / `rt-sdk/src`。
+- 不新增测试 target。
+- 不引入 socket、JSON、WebSocket、protobuf、OPC UA 等协议选择。
+- 不把 `RuntimeCommand`、`CommandResult`、`LocalRuntimeAdapter` 暴露成 public SDK API。
+- 不把 `profile:&lt;name&gt;` 直接宣布为稳定 public endpoint grammar。
+
+**文件计划**
+
+Create:
+- `rt-sdk/docs/src/concepts/simulation-live-adapter-design.md`
+
+Modify:
+- `rt-sdk/docs/src/SUMMARY.md`
+- `rt-sdk/docs/src/concepts/index.md`
+- `rt-sdk/docs/src/concepts/simulation-backend-design.md`
+- `rt-sdk/docs/src/concepts/simulation-backend-readiness.md`
+- `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+- `rt-sdk/docs/src/concepts/plc-local-facade-mapping.md`
+
+**新增设计页结构**
+
+`simulation-live-adapter-design.md` 建议包含这些章节：
+
+1. `Status`
+   - 说明这是 live adapter 的设计 gate，不是实现 patch。
+   - 当前 placeholder baseline 已经包括 topology、state placeholder、diagnostics placeholder、params placeholder、logs placeholder、command receipts、topology revision、command completion。
+
+2. `Design Goal`
+   - 目标：让 `ConnectConfig.backend = sim` 未来可以接到 live simulation runtime/session。
+   - public SDK 仍只暴露 `Machine`、resource handles、`CommandReceipt`、completion/status DTO。
+
+3. `Boundary`
+   - Public RT SDK owns：API shape、result envelopes、resource object model。
+   - Simulation backend owns：backend-private session lifecycle、runtime handshake、DTO mapping。
+   - Runtime target owns：boot、scan execution、simulated I/O、motion/PLC behavior。
+   - 明确 `/rt-sdk` 不直接 link `/rt/plc` implementation target。
+
+4. `Endpoint Policy`
+   - 当前 `profile:&lt;name&gt;` 保持 backend-private。
+   - live adapter 设计可以描述 endpoint 需要表达的事实：profile name、runtime target、timeout、optional fixture path。
+   - 但不在这个 slice 选定 public URI grammar。
+
+5. `Session Lifecycle`
+   - `connect(config)` 内部阶段：
+     - validate config
+     - resolve backend-private profile
+     - create or attach runtime session
+     - handshake
+     - seed public `Machine` view
+   - disconnect/lifetime 暂不新增 public API，只记录未来需要。
+
+6. `Runtime State Source Ownership`
+   - 明确 live state source 由 runtime/session 拥有。
+   - SDK backend 可以维护 snapshot/cache，但不是 authoritative source。
+   - `ResourceHandle` 仍是 public view，不变成 live mutable runtime object。
+
+7. `Command Lifecycle`
+   - public command -&gt; backend-private dispatch -&gt; runtime command/session -&gt; public `CommandReceipt`
+   - accepted command gets `command_id`
+   - future live completion reads map runtime command lifecycle to `CommandCompletion`
+   - command-driven state transitions 通过 state/logs/diagnostics/completion 观察，不塞进 receipt。
+
+8. `Observation Mapping`
+   - topology -&gt; `Machine::topology()` / `ResourceInfo`
+   - topology invalidation -&gt; revision guards / handle revisions
+   - runtime state -&gt; resource `state()` / future `control_status()`
+   - diagnostics -&gt; resource diagnostics / machine logs / backend diagnostics
+   - params -&gt; future metadata/read/write/apply/store/load
+   - logs -&gt; future runtime log source or backend diagnostic source
+
+9. `Failure Model`
+   - config/profile errors -&gt; `ConnectResult`
+   - command guard failures -&gt; `CommandReceipt` rejection
+   - read failures -&gt; read API envelope
+   - channel/runtime crash -&gt; backend unavailable / SDK exception only if outside normal contract
+
+10. `Implementation Readiness Checklist`
+   - endpoint policy accepted
+   - runtime state source owner accepted
+   - command id/completion mapping accepted
+   - topology invalidation source accepted
+   - log/diagnostic source model accepted
+   - build boundary still excludes direct PLC linkage
+
+**现有文档更新计划**
+
+1. `SUMMARY.md`
+   - 在 `Simulation Backend Design` 后加入：
+     - `Simulation Live Adapter Design`
+
+2. `concepts/index.md`
+   - 增加一行，说明该页用于理解 placeholder backend 之后的 live adapter 边界。
+
+3. `simulation-backend-design.md`
+   - 当前页保留为总体 sim backend 设计。
+   - 增加一段指向 live adapter design：placeholder baseline 之后的 runtime/session lifecycle 由新页定义。
+
+4. `simulation-backend-readiness.md`
+   - 把“next planned slice is live simulation adapter design”改成更具体：
+     - 当前下一步是 landing design gate。
+     - 设计 gate 完成后，才进入 implementation candidate。
+   - `Still Blocked` 保留，但把每个 blocker 链接到新设计页的决策点。
+
+5. `simulation-baseline-closeout.md`
+   - `Next Slice Decision` 加上新设计页链接。
+   - `Exit Criteria` 改成更清楚的 checklist，说明设计 gate 要关闭哪些问题。
+
+6. `plc-local-facade-mapping.md`
+   - 加一小段：`LocalRuntimeAdapter` 只能作为 backend-private adapter evidence。
+   - 明确 live adapter 也不能让 SDK public API 依赖 PLC-local command names、payload lines 或 YAML option structs。
+
+**验证计划**
+
+执行：
+
+```bash
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt-sdk
+book build
+```
+
+如果只改这些文档，不需要跑 C++ test suite；除非顺手碰到 PLC mapping 的代码引用或 CMake 边界。
+
+**完成标准**
+
+- 新设计页能独立回答 live adapter 怎么接、谁 owns state、命令生命周期怎么映射。
+- 所有现有 plan/readiness/closeout 页不再只说“下一步是 live adapter design”，而是链接到具体设计 gate。
+- 文档没有暗示当前 placeholder 已经有 runtime boot、live state、live logs、live completion tracking。
+- `/rt-sdk` 和 `/rt/plc` 的边界在文档里仍然是硬约束。
+
+你确认后，我就按这个计划落文档，然后跑 docs 验证。</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 08:59:21 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 08:59:35 +0800</div>
+<pre>我开始落这个 docs-only design gate。先按现有文档结构补新概念页，再把 readiness/closeout/index/SUMMARY 串起来，最后跑文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 08:59:46 +0800</div>
+<pre>我用 `superpowers:executing-plans` 和项目的 `write-docs` 规则执行刚才的计划。计划本身没有发现阻塞点；这个 slice 会只改 `rt-sdk/docs` 下的文档导航和概念页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 08:59:53 +0800</div>
+<pre>这里会写到 endpoint/state ownership 这类取舍，我补看一下项目的 decision-record 规则，避免把关键决策只散落在正文里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 09:00:08 +0800</div>
+<pre>我不会新建单独的 decision sidecar，这一轮先把取舍和被拒方案直接写进新的设计页，保持变更小且可读。现在开始改文档文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 09:01:01 +0800</div>
+<pre>新设计页已经加上了。接下来把它接入概念目录和原来的 readiness/closeout 页面，避免读者还停在“下一步待定”的状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 09:01:53 +0800</div>
+<pre>文档链路已接好。我现在先做一次本地检查，重点看链接、行宽/尾随空白和 bookshelf 策略是否通过。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 09:02:08 +0800</div>
+<pre>初步检查过了：docs policy lint 和 `git diff --check -- rt-sdk` 都是绿的。还剩 `book build` 以及最终 diff/status 核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 09:02:14 +0800</div>
+<pre>`book build` 正在跑，已经开始构建多个 book。等它结束后我会检查生成结果和工作区变更范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 09:02:53 +0800</div>
+<pre>文档构建已通过。现在做最后的状态和变更范围检查，确认没有生成物或无关文件混进来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 09:03:08 +0800</div>
+<pre>变更范围只在 `rt-sdk/docs/src` 下，符合计划。注意新设计页还没被 `git diff --stat` 统计到，因为它是 untracked；我会先 staged 再做一次 staged diff/check，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 09:05:15 +0800</div>
+<pre>Staged diff 干净，新页也已纳入提交范围。现在提交这个 docs gate，然后推到 `origin/feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 09:05:33 +0800</div>
+<pre>提交已经生成，push 正在进行。我会等远端确认后再给你收口和下一步建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-01 09:05:47 +0800</div>
+<pre>已按计划落完并推送。
+
+本次提交：`c938caa0 docs(rt-sdk): design live simulation adapter boundary`
+
+主要变更：
+- 新增 [simulation-live-adapter-design.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/docs/src/concepts/simulation-live-adapter-design.md)，明确 live simulation adapter 的 endpoint policy、session lifecycle、runtime state ownership、command lifecycle、observation mapping、failure model 和 PLC local facade 边界。
+- 更新 `SUMMARY.md`、concept index、backend design、readiness、baseline closeout、PLC facade mapping，把下一步从“待设计”收束到这份 design gate。
+- 保持 docs-only，没有改 C++ 源码。
+
+验证已通过：
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+当前分支干净并同步：`feat/plc...origin/feat/plc`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 09:13:34 +0800</div>
+<pre>详细计划一下我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 09:13:51 +0800</div>
+<pre>我用 `superpowers:writing-plans` 来把 design gate 之后的下一步实现拆成 patch 计划；先核一下当前 `rt-sdk` 源码结构和测试命名，计划会按实际文件落点写。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 09:14:21 +0800</div>
+<pre>源码结构看完了。下一片应当是内部 live adapter boundary 的“骨架+契约测试”，仍然不接 PLC 实现，先把生命周期和能力探测的接口定住。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-01 09:16:19 +0800</div>
+<pre>下一步我建议做 **RT SDK 内部 live simulation adapter boundary**。这是 design gate 后的第一片代码，但仍然不接 PLC 实现，只把内部边界、生命周期结果和能力描述先定住。
+
+**目标**
+
+把现在 `SimBackend::connect()` 里直接 `parse profile -&gt; open_in_memory_simulation_channel -&gt; make_machine` 的流程，抽出一个私有 adapter/session 层。这样后面接真实 runtime/session 时，有清晰落点，不会把 PLC 类型或 runtime lifecycle 混进 public SDK。
+
+**范围**
+
+Create:
+- `rt-sdk/src/sim_live_adapter.hpp`
+- `rt-sdk/src/sim_live_adapter.cpp`
+- `rt-sdk/tests/sim_live_adapter_tests.cpp`
+
+Modify:
+- `rt-sdk/CMakeLists.txt`
+- `rt-sdk/src/sim_backend.cpp`
+- `rt-sdk/src/machine_factory.hpp`
+- `rt-sdk/src/machine.cpp`
+- `rt-sdk/docs/src/concepts/simulation-live-adapter-design.md`
+- `rt-sdk/docs/src/concepts/simulation-backend-readiness.md`
+- `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+
+**核心设计**
+
+新增私有结构，大致表达：
+
+```cpp
+enum class SimLiveAdapterStage {
+  open_session,
+  handshake,
+  seed_machine_view,
+};
+
+struct SimLiveSessionCapabilities {
+  bool topology_snapshots = true;
+  bool command_receipts = true;
+  bool command_completion = true;
+  bool live_resource_state = false;
+  bool live_diagnostics = false;
+  bool live_logs = false;
+  bool live_parameters = false;
+};
+
+struct SimLiveSession {
+  SimulationProfile profile;
+  MachineTopology topology;
+  SimLiveSessionCapabilities capabilities;
+  std::shared_ptr&lt;CommandCompletionState&gt; command_completion;
+};
+
+struct SimLiveAdapterOpenResult {
+  bool ok = false;
+  std::optional&lt;SimLiveSession&gt; session;
+  std::optional&lt;ConnectError&gt; error;
+  SimLiveAdapterStage stage = SimLiveAdapterStage::open_session;
+};
+```
+
+当前实现仍然包装 `open_in_memory_simulation_channel()`，不会 boot runtime。关键是让 `SimBackend` 以后只依赖这个私有 adapter boundary。
+
+**实现步骤**
+
+1. 加内部 adapter 文件
+   `sim_live_adapter.cpp` 先只支持已解析的 `SimulationProfile`。
+   `profile:demo` / `profile:empty-machine` 继续走当前 in-memory channel，返回 topology、capabilities、shared command completion state。
+
+2. 接入 `SimBackend`
+   `SimBackend::connect()` 从直接打开 channel 改成：
+   - parse endpoint
+   - `open_sim_live_adapter_session(profile)`
+   - session 成功后 `make_machine(MachineStateConfig{...})`
+
+3. 让 command completion state 从 session 传给 Machine
+   修改 `MachineStateConfig` 增加 private `std::shared_ptr&lt;CommandCompletionState&gt;`。
+   `MachineAccess::make()` 优先使用 session 提供的 completion state，没有则保留默认创建。
+   这样 public behavior 不变，但 ownership 从 Machine 内部硬编码，往 backend/session source 靠近一步。
+
+4. 加契约测试
+   新增 `metanc_rt_sdk_sim_live_adapter_tests`，覆盖：
+   - demo session 能返回 profile name、topology revision、axes group。
+   - empty-machine session 返回空 topology。
+   - capabilities 明确：有 topology/receipt/completion，但没有 live state/logs/params。
+   - session 提供非空 command completion state。
+   - adapter 不暴露 PLC 类型，不需要 `/rt/plc` include 或 link。
+
+5. 保持现有行为不变
+   现有这些测试必须继续通过：
+   - sim backend connect
+   - command receipt placeholder
+   - command completion placeholder
+   - topology revision placeholder
+   - public header boundary
+
+6. 更新文档
+   在 live adapter design 里补一节 “First Source Boundary”，说明已实现的是私有 adapter/session skeleton，不是 runtime boot。
+   readiness/closeout 里把下一步从 “add internal live adapter boundary” 更新成后续更窄的 “runtime state snapshot source contract”。
+
+**验证命令**
+
+```bash
+cmake -S rt-sdk -B /tmp/metanc_rt_sdk_build
+cmake --build /tmp/metanc_rt_sdk_build
+ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt-sdk
+book build
+```
+
+**完成标准**
+
+- public SDK header 不新增 live adapter API。
+- `/rt-sdk` 仍不 link `/rt/plc`。
+- `SimBackend` 不再直接拼 placeholder channel，而是通过私有 adapter/session boundary。
+- command completion state 可以由 session 注入 Machine。
+- 所有现有 placeholder 行为不变。
+
+建议提交名：
+
+```text
+feat(rt-sdk): add live simulation adapter boundary
+```</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 09:22:02 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 09:22:21 +0800</div>
+<pre>我开始执行这片代码。按 TDD 走：先加内部 adapter 的契约测试并确认失败，再补私有实现、接入 `SimBackend`，最后跑完整 rt-sdk 和文档验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 09:22:28 +0800</div>
+<pre>我用 `superpowers:executing-plans` 和 `superpowers:test-driven-development` 执行这片。当前分支干净同步，计划没有阻塞；先写测试再实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 09:23:03 +0800</div>
+<pre>RED 测试已写好，现在配置/构建这个新增测试，预期会因为 `sim_live_adapter.hpp` 不存在而失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 09:23:32 +0800</div>
+<pre>RED 已确认：测试因为缺少内部 adapter 头失败，符合预期。现在补最小私有实现并把它编进库里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 09:23:49 +0800</div>
+<pre>内部 adapter 骨架已加。下一步把测试跑绿，再把 `SimBackend` 和 `Machine` 的 completion state 注入接起来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 09:24:12 +0800</div>
+<pre>新 adapter 的单测已绿。现在做接入层：让 `SimBackend` 通过这个 adapter 创建 session，并让 `MachineStateConfig` 接收 session 注入的 command completion state。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 09:24:31 +0800</div>
+<pre>接入改动已完成。现在跑构建和现有命令完成测试，重点看注入 completion state 后 public 行为是否完全保持。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 09:24:54 +0800</div>
+<pre>全量 rt-sdk 构建已通过。接下来跑 ctest；如果全绿，再补文档状态页，把这次“内部 boundary”从计划变成已实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 09:25:05 +0800</div>
+<pre>rt-sdk 11 个测试全绿。现在更新 live adapter 设计和 readiness/closeout，把已落地的私有 adapter skeleton 和下一片实现入口写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 09:25:35 +0800</div>
+<pre>文档状态已更新。现在检查是否还需要 README 或 CMake/test inventory 同步，然后跑格式/差异检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 09:26:01 +0800</div>
+<pre>差异检查发现文档还有两处需要同步：baseline 的 validated contracts 还没列新测试，README/整体 design 还停在“before live adapter”的旧说法。我先补这些小同步，再跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 09:26:49 +0800</div>
+<pre>同步补完了。现在跑源码/文档验证，并检查 public header boundary 是否仍然证明没有泄漏内部 adapter API。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-01 09:27:04 +0800</div>
+<pre>构建、docs lint 和 diff check 都通过了。继续跑全量 `ctest` 和 `book build`，然后做最终 diff 审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-01 09:27:12 +0800</div>
+<pre>`ctest` 已全绿，`book build` 还在构建剩余 book。等构建完成后我会审一下 staged 范围并提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-01 09:27:29 +0800</div>
+<pre>`book build` 也通过。现在做最终代码审查：看 diff/stat、公开头扫描和 git 状态，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-01 09:27:52 +0800</div>
+<pre>最终审查里确认内部 adapter 没进 public include，只有 `src` 和测试引用。现在我再看一遍新增文件内容，补上 staging，然后提交前做 staged diff/check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-01 09:28:20 +0800</div>
+<pre>新增文件内容和边界扫描看起来一致：`SimLive*` 只在 `src` 和内部测试里出现，public include 没有引用。接下来我会按完成分支流程做最终 staged 检查、提交和推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-01 09:28:29 +0800</div>
+<pre>我用 `superpowers:finishing-a-development-branch` 收尾；这里按你前面连续 `可以/do/next` 的模式，直接完成 commit + push，不再停在选项菜单。验证已经全绿。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-01 09:28:51 +0800</div>
+<pre>Staged 范围和 check 都正常。现在提交并推送到 `origin/feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-01 09:29:12 +0800</div>
+<pre>提交已生成，push 正在进行；等远端确认后我再给最终状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / final_answer</h3>
+<div class="time">2026-06-01 09:29:30 +0800</div>
+<pre>已完成并推送。
+
+提交：`dc6d6795 feat(rt-sdk): add live simulation adapter boundary`
+
+做了这些：
+- 新增内部 `sim_live_adapter` session skeleton，不进 public SDK headers。
+- `SimBackend` 改为通过 private live-adapter boundary 打开已知 simulation profile。
+- `MachineStateConfig` 支持注入 session-owned `CommandCompletionState`，现有 command completion 行为保持不变。
+- 新增 `metanc_rt_sdk_sim_live_adapter_tests`，覆盖 demo/empty-machine session、capabilities、completion state。
+- 更新 README 和 RT SDK 设计/ready/closeout 文档，把当前状态推进到 “private live adapter boundary present”，下一片变成 runtime state snapshot source contract。
+
+验证已通过：
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`，11/11 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+当前分支干净并同步：`feat/plc...origin/feat/plc`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 09:36:43 +0800</div>
+<pre>详细计划一下我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 09:37:09 +0800</div>
+<pre>我用 `superpowers:writing-plans` 来拆下一片实现计划。先核一下最新代码/文档里的“下一步”表述，计划会以当前 `dc6d6795` 后的状态为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 09:37:34 +0800</div>
+<pre>当前分支干净同步，最新是 live adapter boundary。下一片按文档里的 next slice，应是 **runtime state snapshot source contract**，不是直接接 PLC runtime。我要再看一下 resource/state DTO 现在的落点，确保计划能直接转成 patch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 09:37:43 +0800</div>
+<pre>已确认内存里的旧 next-slice 信息已经过时，当前仓库文档才是准线。这个计划会继续保持小步：先抽“snapshot source”私有接口，把当前 placeholder DTO 迁进去，不打开真正 live runtime。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-01 09:38:07 +0800</div>
+<pre>下一片建议做 **runtime state snapshot source contract**。这是 `dc6d6795` 之后最自然的代码片：把现在散在 `Machine` 里的 placeholder state/diagnostics/topology 读法，收束到 live adapter session 后面的私有 snapshot source。仍然不接 PLC、不做 live state mutation。
+
+**目标**
+
+新增一个内部 `SimRuntimeSnapshotSource`，作为 live adapter session 的 authoritative snapshot source 占位。当前实现仍返回已有 placeholder DTO，但以后真实 runtime/session 只需要替换这个 source，而不是继续把 state 逻辑塞在 `Machine` 里。
+
+**范围**
+
+Create:
+- `rt-sdk/src/sim_runtime_snapshot.hpp`
+- `rt-sdk/src/sim_runtime_snapshot.cpp`
+- `rt-sdk/tests/sim_runtime_snapshot_tests.cpp`
+
+Modify:
+- `rt-sdk/CMakeLists.txt`
+- `rt-sdk/src/sim_live_adapter.hpp`
+- `rt-sdk/src/sim_live_adapter.cpp`
+- `rt-sdk/src/machine_factory.hpp`
+- `rt-sdk/src/machine.cpp`
+- `rt-sdk/docs/src/concepts/simulation-live-adapter-design.md`
+- `rt-sdk/docs/src/concepts/simulation-backend-readiness.md`
+- `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+- `rt-sdk/README.md`
+
+**核心设计**
+
+新增私有 snapshot source，大致结构：
+
+```cpp
+struct SimRuntimeSnapshot {
+  MachineTopology topology;
+};
+
+class SimRuntimeSnapshotSource {
+ public:
+  explicit SimRuntimeSnapshotSource(MachineTopology topology);
+
+  [[nodiscard]] MachineTopology topology() const;
+
+  [[nodiscard]] AxisState axis_state(const AxisInfo&amp; axis) const;
+  [[nodiscard]] AxesGroupState axes_group_state(
+      const AxesGroupInfo&amp; axes_group) const;
+  [[nodiscard]] SpindleState spindle_state(const SpindleInfo&amp; spindle) const;
+  [[nodiscard]] IoBankState io_bank_state(const IoBankInfo&amp; io_bank) const;
+
+  [[nodiscard]] AxisDiagnostics axis_diagnostics(const AxisInfo&amp; axis) const;
+  [[nodiscard]] AxesGroupDiagnostics axes_group_diagnostics(
+      const AxesGroupInfo&amp; axes_group) const;
+  [[nodiscard]] SpindleDiagnostics spindle_diagnostics(
+      const SpindleInfo&amp; spindle) const;
+  [[nodiscard]] IoBankDiagnostics io_bank_diagnostics(
+      const IoBankInfo&amp; io_bank) const;
+};
+```
+
+`SimLiveSession` 增加：
+
+```cpp
+std::shared_ptr&lt;SimRuntimeSnapshotSource&gt; snapshots;
+```
+
+`MachineStateConfig` 增加 private source 指针。`Machine` lookup 成功时，不再直接调用本地 `placeholder_state_for_*`，而是从 snapshot source 取 state/diagnostics。
+
+**关键边界**
+
+- Public headers 不变。
+- `SimRuntimeSnapshotSource` 只在 `rt-sdk/src` 内部可见。
+- 当前 source 仍然是 placeholder，不轮询、不订阅、不接 PLC。
+- `Machine::topology()` 仍返回 snapshot copy。
+- Resource handles 仍是 lookup-time captured DTO，不变成 mutable runtime handles。
+
+**TDD 步骤**
+
+1. 写 failing test
+   新增 `sim_runtime_snapshot_tests.cpp`，覆盖：
+   - demo topology source 返回 revision 1 和 axes/group/spindle/io。
+   - axis state 保持 disabled、zero velocity。
+   - axes group state positions 数量等于 `axis_ids.size()`。
+   - IO bank vector 尺寸等于 topology count。
+   - diagnostics 非 faulted 且 active lists 为空。
+   - capabilities 不声明 live resource state。
+
+2. 构建确认 RED
+   预期失败原因：`sim_runtime_snapshot.hpp` 不存在。
+
+3. 实现 `sim_runtime_snapshot`
+   把 `Machine` 里当前的 placeholder state/diagnostics helper 逻辑搬到 source 中。
+
+4. 接入 live adapter
+   `open_sim_live_adapter_session()` 创建 `std::make_shared&lt;SimRuntimeSnapshotSource&gt;(channel.topology)`。
+   session 里 topology 可以继续保留一份，或从 source 读出 seed topology。建议短期保留，减少改动。
+
+5. 接入 Machine
+   `Machine::State` 增加 `std::shared_ptr&lt;const SimRuntimeSnapshotSource&gt; snapshots`。
+   `MachineAccess::make()` 注入 source。
+   `axis()` / `axes_group()` / `spindle()` / `io_bank()` 用 source 读 state/diagnostics。
+   默认 `Machine` 没 source 时继续返回原来的 unavailable/empty 行为。
+
+6. 更新 existing contract tests
+   `sim_backend_contract_tests` 不需要大改，只要现有 placeholder 行为继续过。
+   `sim_live_adapter_tests` 增加断言：session snapshots 非空，source topology 与 session topology 一致。
+
+7. 文档更新
+   - live adapter design：把 first source boundary 改为包含 snapshot source。
+   - readiness：当前 baseline 加 `runtime snapshot source placeholder`。
+   - closeout：validated contracts 加新测试。
+   - README：说明 current state/diagnostics 现在来自 private snapshot source placeholder。
+
+**验证**
+
+```bash
+cmake -S rt-sdk -B /tmp/metanc_rt_sdk_build
+cmake --build /tmp/metanc_rt_sdk_build
+ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt-sdk
+book build
+```
+
+**完成标准**
+
+- 新增 `metanc_rt_sdk_sim_runtime_snapshot_tests`。
+- `ctest` 从 11 个变成 12 个并全部通过。
+- public SDK headers 无新增类型。
+- `/rt-sdk` 仍不 link `/rt/plc`。
+- `Machine` 的 resource state/diagnostics 读取路径已经经过 private snapshot source。
+- 文档下一片推进到更窄的 `runtime topology invalidation source` 或 `live command lifecycle tracker`。
+
+建议提交名：
+
+```text
+feat(rt-sdk): add simulation runtime snapshot source
+```
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:223-253|note=[checked older rt-sdk baseline guidance and identified stale next-slice context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 09:43:53 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 09:44:12 +0800</div>
+<pre>我开始执行这片 runtime snapshot source。按 TDD：先加 `sim_runtime_snapshot` 的内部契约测试并确认 RED，再迁移当前 placeholder state/diagnostics 到私有 source，最后全量验证、提交、推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 09:44:18 +0800</div>
+<pre>我用 `superpowers:executing-plans` 和 `superpowers:test-driven-development` 执行。当前分支干净同步，先写 failing test。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 09:45:05 +0800</div>
+<pre>RED 测试已写好。现在构建新测试目标，预期会因为 `sim_runtime_snapshot.hpp` 不存在而失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 09:45:19 +0800</div>
+<pre>RED 已确认：新测试因为缺少 snapshot source 头失败。现在补最小实现，把当前 placeholder state/diagnostics 的生成逻辑迁到私有 source。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 09:45:45 +0800</div>
+<pre>snapshot source 已加。现在先让新测试单独跑绿，然后接入 live adapter 和 Machine。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 09:46:16 +0800</div>
+<pre>新 source 单测已绿。下一步把它接到 `SimLiveSession` 和 `MachineState`，让 resource state/diagnostics 走同一条私有 snapshot source。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 09:46:35 +0800</div>
+<pre>session/source 注入已接了一半。现在改 `Machine`：删除本地 placeholder 生成函数，lookup 时改用 snapshot source。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 09:47:04 +0800</div>
+<pre>`Machine` 已改成从 snapshot source 取 state/diagnostics。我需要补一个兜底：如果未来有测试/工厂没传 source，就从 topology 创建默认 source，避免内部构造出半初始化 Machine。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 09:47:30 +0800</div>
+<pre>接入点还差默认 source 兜底和 live adapter 测试断言。我先检查 `make_machine` 的调用面，保证不会留下空 snapshot 指针。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 09:47:39 +0800</div>
+<pre>有一个内部测试直接 `make_machine`，所以需要 fallback 创建 snapshot source。也顺手给 live adapter 测试加上 session snapshots 非空和 topology 一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 09:47:54 +0800</div>
+<pre>兜底和 live adapter 测试已补。现在构建全量 rt-sdk，预期如果 include/namespace 有问题会暴露出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 09:48:16 +0800</div>
+<pre>构建已通过。现在跑 `ctest`，确认迁移到 snapshot source 后现有 placeholder 行为没有变化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-01 09:48:28 +0800</div>
+<pre>rt-sdk 12 个测试全绿。接下来更新文档和 README，把 snapshot source 标为当前 baseline，并把下一片收窄到 topology invalidation 或 command lifecycle tracker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-01 09:49:38 +0800</div>
+<pre>文档已同步。现在跑格式/文档检查和 public header 扫描，确认新内部 source 没有泄漏到 public API。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-01 09:49:54 +0800</div>
+<pre>检查通过，内部类型只在 `src` 和内部测试里出现。接下来跑全量构建、ctest、book build 做最终验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-01 09:50:01 +0800</div>
+<pre>rt-sdk 构建已通过，`book build` 还在跑。等它结束后跑最终 `ctest` 或复核已有结果，并准备提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-01 09:50:33 +0800</div>
+<pre>全量验证通过。现在做最终 diff 审查，确认变更范围只在 rt-sdk，且新文件都纳入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-01 09:50:58 +0800</div>
+<pre>代码审查确认 `Machine` 现在通过内部 snapshot source 读 state/diagnostics，且 public headers 没增加新类型。还剩 staged 检查、提交和推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-01 09:51:12 +0800</div>
+<pre>我用 finishing 分支流程收尾；测试和文档验证已经全过。按当前工作流继续 commit + push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-01 09:51:45 +0800</div>
+<pre>Staged diff 干净，范围符合计划。现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-01 09:52:05 +0800</div>
+<pre>提交已生成，push 正在进行。等远端确认后我检查最终分支状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / final_answer</h3>
+<div class="time">2026-06-01 09:52:29 +0800</div>
+<pre>已完成并推送。
+
+提交：`06037bd0 feat(rt-sdk): add simulation runtime snapshot source`
+
+主要变更：
+- 新增内部 `SimRuntimeSnapshotSource`，作为 simulation session 后面的私有 snapshot source。
+- `Machine` 的 resource state/diagnostics 读取改为经过 snapshot source，不再在 `machine.cpp` 里直接生成 placeholder DTO。
+- `SimLiveSession` 现在持有 snapshot source，并继续保持 public SDK headers 不变。
+- 新增 `metanc_rt_sdk_sim_runtime_snapshot_tests`，`ctest` 现在是 12 个测试。
+- 更新 README 和 RT SDK 设计/readiness/closeout 文档，把当前 baseline 推进到 “runtime snapshot source placeholder present”。
+
+验证已通过：
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`，12/12 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+当前分支干净并同步：`feat/plc...origin/feat/plc`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 09:53:47 +0800</div>
+<pre>详细计划一下我看看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 09:54:16 +0800</div>
+<pre>我先按当前仓库状态核一下 next-slice 文档和最新提交，再给你一个可以直接执行的下一片计划。不会改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 09:54:49 +0800</div>
+<pre>下一片我会优先规划 `runtime topology invalidation source`，因为它仍然是 read-path/snapshot 内部收口，不会过早打开 command queue 或 PLC runtime。先再读一下当前 topology/source/lookup 的代码，计划要能直接转成 patch。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-01 09:55:45 +0800</div>
+<pre>下一片建议做 **runtime topology invalidation source**。这比 command lifecycle tracker 更稳，因为它继续在 read-path 和 snapshot source 内部收口，不打开命令队列、不碰 PLC runtime。
+
+**目标**
+
+让 `SimRuntimeSnapshotSource` 成为 topology revision 的来源，而不是 `Machine` 只持有一份固定 topology copy。当前实现仍然是 placeholder，但要把“未来 live topology 变化”的入口定住：source 能报告当前 revision，`Machine::topology()` 从 source 读，lookup guard 用 source 当前 revision 判断 stale。
+
+**范围**
+
+Create:
+- 不需要新模块，复用 `sim_runtime_snapshot`
+
+Modify:
+- `rt-sdk/src/sim_runtime_snapshot.hpp`
+- `rt-sdk/src/sim_runtime_snapshot.cpp`
+- `rt-sdk/src/machine.cpp`
+- `rt-sdk/src/machine_factory.hpp`
+- `rt-sdk/src/sim_live_adapter.cpp`
+- `rt-sdk/tests/sim_runtime_snapshot_tests.cpp`
+- `rt-sdk/tests/topology_revision_placeholder_tests.cpp`
+- `rt-sdk/tests/sim_live_adapter_tests.cpp`
+- `rt-sdk/docs/src/concepts/simulation-live-adapter-design.md`
+- `rt-sdk/docs/src/concepts/simulation-backend-readiness.md`
+- `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+- `rt-sdk/README.md`
+
+**核心设计**
+
+给 `SimRuntimeSnapshotSource` 增加明确 revision/read API：
+
+```cpp
+class SimRuntimeSnapshotSource {
+ public:
+  explicit SimRuntimeSnapshotSource(MachineTopology topology);
+
+  [[nodiscard]] MachineTopology topology() const;
+  [[nodiscard]] std::uint64_t topology_revision() const;
+
+  void replace_topology_for_test(MachineTopology topology);
+};
+```
+
+说明：
+- `topology_revision()` 是未来 live source 的正式入口。
+- `replace_topology_for_test()` 只放在 internal header，供内部契约测试模拟 topology change；不是 public SDK API。
+- 当前不加订阅、不自动刷新 handle，不做 mutable handle。
+
+`Machine` 内部调整：
+- `Machine::topology()` 改成 `state_-&gt;snapshots-&gt;topology()`。
+- `topology_guard_error()` 入参改成 current revision，而不是固定 `MachineTopology&amp;`。
+- lookup 时先读取 `const MachineTopology topology = state_-&gt;snapshots-&gt;topology();`
+- 查找资源、创建 handle、handle revision 都基于这份当前 snapshot。
+- 旧 handle 仍保持 lookup-time captured revision，不自动更新。
+
+**TDD 步骤**
+
+1. 更新 `sim_runtime_snapshot_tests.cpp`
+   新增测试：
+   - `topology_revision()` 初始返回 topology revision。
+   - `replace_topology_for_test()` 替换 revision 后，`topology_revision()` 和 `topology()` 都返回新 revision。
+   - 替换 topology 后，resource state shape 跟随新 topology，比如 axes group `axis_ids.size()` 改变后 positions size 也改变。
+
+2. 先跑 RED
+   预期失败：`topology_revision()` / `replace_topology_for_test()` 不存在。
+
+3. 实现 snapshot source revision API
+   在 `sim_runtime_snapshot.hpp/cpp` 添加两个方法。
+   这是最小实现，不加线程锁，不引入 observer。
+
+4. 更新 `Machine` lookup 路径
+   把固定 `state_-&gt;topology` 的读取改成从 `state_-&gt;snapshots` 当前 snapshot 读取。
+   `state_-&gt;topology` 可以短期保留作为 seed/fallback，但 lookup 不再依赖它。
+
+5. 增强 topology revision 测试
+   在 `topology_revision_placeholder_tests.cpp` 或新增 internal-focused 测试中验证：
+   - Machine 通过 injected snapshot source 看到 updated topology revision。
+   - 用旧 revision guard lookup 时返回 `topology_changed`。
+   - 新 revision guard lookup 成功并返回新 captured revision。
+   - 已经拿到的 handle revision 不变。
+
+6. 文档更新
+   - README：说明 topology revision 现在来自 private snapshot source placeholder。
+   - live adapter design：标记 runtime topology invalidation source 已有 placeholder entrance。
+   - readiness/closeout：Validated Contracts 加强到 topology invalidation source；下一片推荐转向 `live command lifecycle tracker`。
+
+**验证**
+
+```bash
+cmake -S rt-sdk -B /tmp/metanc_rt_sdk_build
+cmake --build /tmp/metanc_rt_sdk_build
+ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt-sdk
+book build
+```
+
+**完成标准**
+
+- `SimRuntimeSnapshotSource` 明确提供 current topology revision。
+- `Machine::topology()` 和 lookup guard 都从 snapshot source 读当前 topology。
+- 内部测试能模拟 topology revision change。
+- 旧 handle 仍捕获旧 revision，不自动刷新。
+- public headers 不变，`/rt-sdk` 不 link `/rt/plc`。
+- `ctest` 仍全绿，测试数可以保持 12，也可以在现有 test target 内增加 cases。
+- 文档下一片推进到 `live command lifecycle tracker`。
+
+建议提交名：
+
+```text
+feat(rt-sdk): route topology revision through snapshot source
+```
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:223-248|note=[used older rt-sdk baseline workflow and validation guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 09:55:54 +0800</div>
+<pre>ok 做一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 09:56:18 +0800</div>
+<pre>我开始按这片计划执行。先走 TDD：补 snapshot source 的 revision/change 测试并确认 RED，再改实现和 Machine lookup 路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 09:56:40 +0800</div>
+<pre>我用执行计划/TDD流程继续。当前是正常 repo checkout，不额外创建 worktree，因为这条 `feat/plc` 线前面已经在当前分支连续提交并推送；先在当前干净分支上做这片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 09:56:54 +0800</div>
+<pre>隔离检查完成：这是普通 checkout，但分支干净同步，按当前连续工作流在 `feat/plc` 原地执行。现在补 RED 测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 09:57:19 +0800</div>
+<pre>snapshot source 的 RED 测试已加，现在构建目标，预期缺少 `topology_revision()` / `replace_topology_for_test()`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 09:57:43 +0800</div>
+<pre>RED 已确认。现在实现 source revision API，保持它只在内部头里可见。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 09:57:57 +0800</div>
+<pre>source revision API 已实现。先跑新测试到 green，然后把 Machine 的 topology/lookup guard 路径改成从 source 读当前 snapshot。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 09:58:23 +0800</div>
+<pre>新 source 测试已 green。接下来改 `Machine::topology()` 和 lookup，让它们读取 snapshot source 当前 topology/revision；然后加一个内部 Machine 注入测试验证 topology change。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 09:58:55 +0800</div>
+<pre>我需要先写一个会失败的 Machine 注入测试，证明 lookup guard 要读 source 当前 revision，而不是旧 `state_-&gt;topology`。然后再改实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 09:59:19 +0800</div>
+<pre>Machine 层 RED 测试已加。这里测试需要内部头，CMake 目标要加 `src` include；先跑构建看预期失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 09:59:40 +0800</div>
+<pre>当前失败是测试目标没加内部 include，不是目标行为失败。我先补这个测试目标的 `src` include，再确认它因为旧 topology 路径而失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 10:00:24 +0800</div>
+<pre>RED 现在是正确的：Machine 仍读旧 topology。接下来改 Machine lookup/topology，统一走 snapshot source 当前 snapshot。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 10:01:04 +0800</div>
+<pre>Machine read-path 已改为从 snapshot source 获取当前 topology。现在跑 targeted tests，确认 topology revision 用例回绿，并看命令 receipt 是否因仍读旧 topology 需要同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-01 10:01:54 +0800</div>
+<pre>并行跑同一个 CMake build dir 触发了构建产物竞争，`libmetanc_rt_sdk.a` 被同时写坏了；这是工具使用问题，不是代码失败。我先按调试流程处理，后续同一个 build dir 的构建改成串行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-01 10:02:18 +0800</div>
+<pre>我已经确认刚才的构建错误根因是并行写同一个 CMake build dir，而不是代码问题。接下来同一 build dir 都串行跑，先把 Machine topology 路径修完再验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-01 10:02:45 +0800</div>
+<pre>Machine topology revision 测试回绿。现在我同步把 command receipt 的资源存在性检查也改为当前 snapshot topology，避免后面拓扑变更时命令路径仍看旧 topology。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-01 10:03:02 +0800</div>
+<pre>命令存在性检查也已对齐当前 snapshot topology。现在串行跑相关目标和全量 ctest。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-01 10:03:48 +0800</div>
+<pre>代码测试全绿。现在更新 README 和 RT SDK docs：把 topology revision source 标成当前 baseline，并把下一片推进到 live command lifecycle tracker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-01 10:04:42 +0800</div>
+<pre>文档状态已更新。现在跑文档检查、diff check 和全量构建/测试，全部串行避免之前的 build dir 竞争。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-01 10:05:43 +0800</div>
+<pre>代码和文档基础验证全过。现在跑 `book build`，再做最终 diff 审查和提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-01 10:06:12 +0800</div>
+<pre>`book build` 通过。现在做最终 diff/status 检查，确认无关文件和 public header 边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-01 10:06:28 +0800</div>
+<pre>Diff 范围符合预期，新 internal API 没进 public headers。现在准备提交：先 staged check，再 commit/push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-01 10:06:57 +0800</div>
+<pre>Staged diff 干净。现在提交并推送到 `origin/feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-01 10:07:23 +0800</div>
+<pre>提交已生成，push 正在进行；等远端确认后我做最终状态检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / final_answer</h3>
+<div class="time">2026-06-01 10:07:56 +0800</div>
+<pre>已完成并推送。
+
+提交：`68b84de2 feat(rt-sdk): route topology revision through snapshot source`
+
+主要变更：
+- `SimRuntimeSnapshotSource` 新增 `topology_revision()` 和内部测试用 `replace_topology_for_test()`。
+- `Machine::topology()`、resource lookup guard、handle revision 捕获都改为读取 snapshot source 的当前 topology。
+- command receipt 的资源存在性检查也改为读取当前 snapshot topology。
+- 增强 topology revision 测试，覆盖 source revision 变化、旧 guard 失败、新 guard 成功、旧 handle revision 不变。
+- 更新 README 和 RT SDK design/readiness/closeout 文档，下一片推进到 `live command lifecycle tracker`。
+
+验证已通过：
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`，12/12 通过
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+当前分支干净并同步：`feat/plc...origin/feat/plc`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 10:09:04 +0800</div>
+<pre>看一下现在的项目状态</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 10:09:41 +0800</div>
+<pre>我先看当前分支、工作区、最近提交，以及 rt-sdk 文档里记录的下一片状态；不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-01 10:10:08 +0800</div>
+<pre>当前项目状态：
+
+- 分支：`feat/plc`
+- 远端同步：已同步 `origin/feat/plc`
+- 工作区：干净，无未提交变更
+- 最新提交：`68b84de2 feat(rt-sdk): route topology revision through snapshot source`
+
+最近这一轮 RT SDK 进度：
+- 已完成 command receipt placeholder。
+- 已完成 topology revision placeholder。
+- 已完成 command completion placeholder。
+- 已完成 live simulation adapter private boundary。
+- 已完成 runtime snapshot source placeholder。
+- 已完成 topology revision 读 current snapshot source，而不是固定 `Machine` seed topology。
+
+当前 RT SDK baseline 文档记录的状态：
+- `profile:&lt;name&gt;` 仍是 backend-private simulation endpoint。
+- `Machine::topology()`、resource state、diagnostics、topology revision 都走 private snapshot source。
+- guarded lookup 会基于当前 snapshot-source revision 判断 `topology_changed`。
+- resource handles 仍捕获 lookup-time revision，不自动刷新。
+- 没有 PLC/runtime boot。
+- 没有 live logs、live parameters、state polling/subscription。
+- 没有 command queue 或 live completion tracking。
+- `/rt-sdk` 仍不直接 link `/rt/plc`。
+
+当前测试覆盖记录：
+- RT SDK 当前有 12 个测试目标。
+- 最新一轮已验证过：`ctest` 12/12 通过，`book build` 通过，docs policy lint 通过，`git diff --check -- rt-sdk` 通过。
+
+下一步推荐：
+- 文档现在明确下一片是 **live command lifecycle tracker**。
+- 这会把当前“accepted command id -&gt; immediate completed placeholder”推进成内部 lifecycle source/tracker，但仍应保持 backend-private，不暴露 PLC 类型，也不打开真实 runtime command queue。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:223-253|note=[checked older rt-sdk workflow guidance and noted stale next-slice memory]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 10:10:33 +0800</div>
+<pre>这个具体是在做什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-01 10:11:05 +0800</div>
+<pre>具体是在做 **RT SDK 的仿真后端骨架**，不是在做 PLC 本体，也不是在做真实机床控制。
+
+简单说：
+我们在给 `/rt-sdk` 做一层用户态 SDK，让上层程序以后可以这样用：
+
+```cpp
+auto result = Machine::connect({ .backend = Sim, .endpoint = &quot;profile:demo&quot; });
+auto machine = *result.machine;
+
+auto topology = machine.topology();
+auto axis = machine.axis(0);
+auto state = axis.value-&gt;state();
+
+auto receipt = machine.axes_group_servo_on(0);
+auto done = machine.commands().status(*receipt.command_id);
+```
+
+但现在这些东西还都是 **placeholder/skeleton**：
+
+- `profile:demo` 会返回一个假的 demo machine。
+- `topology()` 返回内置拓扑：轴、轴组、主轴、IO bank。
+- `state()` / `diagnostics()` 返回静态占位状态，比如 disabled、zero position、no faults。
+- `logs()` 返回空日志页。
+- power command 会返回 `CommandReceipt` 和 `command_id`。
+- `commands().status(id)` 现在直接返回 immediate completed。
+- topology revision guard 会检查当前 snapshot source 的 revision，旧 revision 会返回 `topology_changed`。
+
+这条线的核心目标是：**先把 SDK 公开 API 和后端边界做稳，再接真实 runtime/PLC**。
+
+所以现在做的不是：
+
+- 不启动 PLC runtime。
+- 不跑真实 scan cycle。
+- 不控制 HAL、servo、IO、motion。
+- 不做真实 command queue。
+- 不让 `/rt-sdk` 直接 include/link `/rt/plc`。
+- 不把 `RuntimeCommand`、`CommandResult`、`LocalRuntimeAdapter` 暴露给 SDK 用户。
+
+为什么要这样分几片做：
+如果直接把 PLC runtime 接进 SDK，很容易把内部 PLC 类型、临时命令格式、测试 harness 泄漏成 public API。现在这些 slice 是在把边界钉住：SDK 用户只看 `Machine`、resource handle、state/diagnostics DTO、`CommandReceipt`、`CommandCompletion`；真实 runtime 将来只藏在 backend 里面。
+
+下一步的 `live command lifecycle tracker` 就是把现在“命令一接受就立即 completed”的占位逻辑，改成内部有一个 command lifecycle source/tracker，为以后真实 runtime command queue 做准备。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 10:14:25 +0800</div>
+<pre>ok 做一下计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 10:14:57 +0800</div>
+<pre>我来把下一片 `live command lifecycle tracker` 拆成可执行计划。先核一下当前 command completion 的代码落点，确保计划不是空泛设计。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 10:15:17 +0800</div>
+<pre>当前 completion 只是 `next_command_id` 计数加 immediate completed。计划会先引入内部 lifecycle tracker，把“分配 id”和“状态查询”从 public DTO 结构里拆出来，但仍返回 immediate completed 占位。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-01 10:15:59 +0800</div>
+<pre>可以。下一片我建议做 **live command lifecycle tracker 的内部骨架**，目标是把现在的 `next_command_id + immediate completed` 从 public DTO 状态里抽出来，放到 backend-private tracker 里。行为先不大改，仍然 immediate completed，但结构上为后面 running/failed/canceled 做准备。
+
+**目标**
+
+把命令生命周期从：
+
+```cpp
+CommandCompletionState {
+  CommandId next_command_id = 1;
+}
+```
+
+升级成内部 tracker：
+
+```cpp
+class SimCommandLifecycleTracker {
+ public:
+  CommandId allocate_accepted();
+  ReadResult&lt;CommandCompletion&gt; status(CommandId id) const;
+};
+```
+
+`Machine` 以后只通过 tracker 分配 command id、读取 command completion。这样下一步要接 runtime command queue 时，不需要改 public SDK API。
+
+**范围**
+
+Create:
+- `rt-sdk/src/sim_command_lifecycle.hpp`
+- `rt-sdk/src/sim_command_lifecycle.cpp`
+- `rt-sdk/tests/sim_command_lifecycle_tests.cpp`
+
+Modify:
+- `rt-sdk/CMakeLists.txt`
+- `rt-sdk/include/metanc/rt_sdk/command.hpp`
+- `rt-sdk/src/command.cpp`
+- `rt-sdk/src/machine_factory.hpp`
+- `rt-sdk/src/machine.cpp`
+- `rt-sdk/src/sim_live_adapter.hpp`
+- `rt-sdk/src/sim_live_adapter.cpp`
+- `rt-sdk/tests/command_completion_placeholder_tests.cpp`
+- `rt-sdk/tests/command_receipt_placeholder_tests.cpp`
+- `rt-sdk/docs/src/concepts/simulation-live-adapter-design.md`
+- `rt-sdk/docs/src/concepts/simulation-backend-readiness.md`
+- `rt-sdk/docs/src/concepts/simulation-baseline-closeout.md`
+- `rt-sdk/README.md`
+
+**核心设计**
+
+1. Public API 保持不变
+   `CommandReceipt`、`CommandCompletion`、`MachineCommandApi::status()` 都不改 public shape。
+
+2. `CommandCompletionState` 缩小职责
+   当前它暴露 `next_command_id`，这其实是内部实现细节。计划改成持有内部 tracker：
+
+   ```cpp
+   struct CommandCompletionState {
+     std::shared_ptr&lt;internal::SimCommandLifecycleTracker&gt; tracker;
+   };
+   ```
+
+   或者如果 public header 不适合 include internal 类型，就保留 opaque private helper：
+   - 更稳的做法：`CommandCompletionState` 只保留 public header 可见最小状态，但不再由 `Machine` 直接递增。
+   - 内部 tracker 存在于 `Machine::State`，`MachineCommandApi` 通过 shared state 读 tracker。
+
+   我建议走第二种：少改 public header 语义，避免 internal include 泄漏。
+
+3. 新内部 tracker 行为
+   当前 placeholder tracker：
+   - `allocate_accepted()` 返回递增 command id。
+   - 记录该 id 存在。
+   - `status(id)`：
+     - `id == 0` 或不存在：`ReadErrorCode::unknown_path`
+     - 已存在：`CommandCompletionStatus::completed`
+   - 不改变 resource state。
+   - 不暴露 runtime command names。
+
+4. `SimLiveSession` 持有 tracker
+   当前 `SimLiveSession` 有 `command_completion`。下一片让 session 持有：
+
+   ```cpp
+   std::shared_ptr&lt;SimCommandLifecycleTracker&gt; commands;
+   ```
+
+   `MachineStateConfig` 注入这个 tracker。
+
+5. `Machine` 分配 id 改为 tracker
+   当前：
+
+   ```cpp
+   return accepted_receipt(state_-&gt;command_completion-&gt;next_command_id++);
+   ```
+
+   改为：
+
+   ```cpp
+   return accepted_receipt(state_-&gt;commands-&gt;allocate_accepted());
+   ```
+
+   `Machine::commands()` 返回的 API 使用同一个 tracker 查询 status。
+
+**TDD 计划**
+
+1. 新增 `sim_command_lifecycle_tests.cpp`
+   覆盖：
+   - 新 tracker 第一个 accepted id 是 1。
+   - 连续 allocate id 递增。
+   - allocated id status 是 `completed`。
+   - id 0 返回 `unknown_path`。
+   - 未分配 id 返回 `unknown_path`。
+   - completed status 不带 failure reason。
+
+2. RED
+   构建 `metanc_rt_sdk_sim_command_lifecycle_tests`，预期失败：`sim_command_lifecycle.hpp` 不存在。
+
+3. GREEN
+   实现 tracker 最小代码：
+   - `CommandId next_command_id_ = 1`
+   - `std::set&lt;CommandId&gt; accepted_ids_`
+   - `allocate_accepted()`
+   - `status(id)`
+
+4. 接入 `Machine`
+   - `Machine::State` 增加 `std::shared_ptr&lt;SimCommandLifecycleTracker&gt; commands`
+   - `MachineAccess::make()` 没传 tracker 时创建默认 tracker
+   - power service accepted receipt 从 tracker 分配 id
+   - `MachineCommandApi::status()` 读取 tracker
+
+5. 更新现有测试
+   - `command_completion_placeholder_tests` 继续期望 immediate completed。
+   - 增加一个测试：`MachineCommandApi` 在 command 分配前取出，后续仍能看到新 command id。
+   - `command_receipt_placeholder_tests` 继续检查 id 递增。
+   - `sim_live_adapter_tests` 检查 session command tracker 非空。
+
+6. 文档更新
+   - baseline：`command lifecycle tracker` 加入 current baseline。
+   - readiness：当前 command completion 已由 private tracker 支撑，但仍 immediate completed。
+   - live adapter design：说明 tracker 是 backend-private，未来接 runtime queue。
+   - README：说明 accepted command ids 由 private lifecycle tracker 分配。
+
+**验证**
+
+```bash
+cmake -S rt-sdk -B /tmp/metanc_rt_sdk_build
+cmake --build /tmp/metanc_rt_sdk_build
+ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure
+python3 .mdbook/lint_docs_policy.py
+git diff --check -- rt-sdk
+book build
+```
+
+注意：同一个 CMake build dir 不并行跑两个 build 命令，避免之前 `libmetanc_rt_sdk.a` 竞争写坏。
+
+**完成标准**
+
+- 新增 `metanc_rt_sdk_sim_command_lifecycle_tests`。
+- `ctest` 从 12 个变成 13 个并全部通过。
+- public SDK command API 不变。
+- accepted command id 由 private tracker 分配。
+- command status 由 private tracker 返回。
+- 仍然不接 PLC、不启动 runtime、不做真实 queue。
+- 文档下一片可以推进到：
+  - command lifecycle states beyond immediate completed，或
+  - backend diagnostic/log source model。
+
+建议提交名：
+
+```text
+feat(rt-sdk): add simulation command lifecycle tracker
+```
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:223-248|note=[used rt-sdk baseline workflow and validation guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 10:16:48 +0800</div>
+<pre>ok</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 10:17:21 +0800</div>
+<pre>收到，我按这片 `simulation command lifecycle tracker` 执行。先写内部 tracker 的 failing test，然后再实现和接入 `Machine`/`SimLiveSession`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 10:19:19 +0800</div>
+<pre>我继续执行刚才已确认的那片：先把 command lifecycle tracker 的内部测试落下，再接实现和集成，最后串一次构建、测试、文档校验、提交和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 10:19:37 +0800</div>
+<pre>现状确认了：工作树干净，命令完成现在还只是 `next_command_id` 计数器，live adapter 把这个状态直接塞进 machine。接下来我会把这个计数器替换成内部 tracker，同时保持现有 public command API 的调用方式不变。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 10:19:53 +0800</div>
+<pre>我会按 TDD 的节奏处理这次改动：先增加内部 tracker 测试并让它在缺实现时失败，再补实现和集成，避免只做表面改名。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 10:20:24 +0800</div>
+<pre>测试目标和测试文件已经加上，下一步先单独配置/构建这个目标，确认它因为缺少新内部头而失败，这样能证明测试确实覆盖了新边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 10:20:50 +0800</div>
+<pre>RED 验证是预期失败：新测试现在因为 `sim_command_lifecycle.hpp` 不存在而编不过。现在我补最小实现，并把 machine/live adapter 里的命令状态来源改成这个 tracker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 10:22:31 +0800</div>
+<pre>实现已经接入：receipt 分配和 status 查询现在都经由同一个 tracker；`CommandCompletionState` 只保留一个 opaque tracker 指针供已有 `MachineCommandApi` 共享。现在先跑新目标，修编译层面的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 10:23:40 +0800</div>
+<pre>新测试已经通过。趁现在还在小范围内，我会把刚才的公开头再收紧一下：不让 `CommandLifecycleTracker` 这个内部支撑类型出现在 public header，只保留 `CommandCompletionState` 的 opaque 前置声明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 10:24:19 +0800</div>
+<pre>边界已经收紧：public header 只暴露 `CommandCompletionState` 这个既有状态名，不暴露 tracker 类名；边界测试也加了禁漏词。现在我会重新跑新目标和 public header 边界测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 10:24:53 +0800</div>
+<pre>两个关键测试已经过了：新 tracker 行为和 public header 防泄漏都成立。接下来我更新计划文档/README，把“命令完成仍立即完成，但状态源已变成 backend-private lifecycle tracker”这件事写清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 10:26:54 +0800</div>
+<pre>文档已经同步到当前事实：tracker 已经存在，但仍只是 immediate completion placeholder。现在我会做一次格式/搜索检查，确认没有旧的 `next_command_id` 语义残留或文档说法冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 10:27:10 +0800</div>
+<pre>搜索检查发现还有一处 `simulation-backend-design.md` 把 live command lifecycle tracker 说成“下一步”。我会一起改掉，并顺手补一个缺的 `&lt;utility&gt;` include，避免依赖传递 include。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-01 10:27:30 +0800</div>
+<pre>代码和文档语义已对齐。现在进入完整验证：先全量构建和 CTest，再做 docs policy、diff check、book build；这些我会串行跑，避免之前同一 build 目录并发构建的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-01 10:28:05 +0800</div>
+<pre>全量 RT SDK 构建和 13 个测试都通过。现在继续跑文档校验和静态 diff 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-01 10:28:36 +0800</div>
+<pre>验证都通过了。我会最后检查 diff 和 git 状态，确认只包含这次 RT SDK tracker 相关变更，然后提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-01 10:29:00 +0800</div>
+<pre>最后检查显示变更集中在 `rt-sdk` 的 tracker、接线测试和对应文档。现在我会 stage、复核暂存内容，然后提交并推到 `origin/feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-01 10:29:32 +0800</div>
+<pre>提交已生成，本地分支领先 1 个提交。现在推送到远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-06-01 10:30:08 +0800</div>
+<pre>已完成并推送。
+
+这次落了 RT SDK 的 private command lifecycle tracker：
+- 新增 `sim_command_lifecycle.hpp/.cpp` 和 `metanc_rt_sdk_sim_command_lifecycle_tests`
+- `CommandReceipt` 的 accepted id 现在由 backend-private tracker 分配
+- `machine.commands().status(id)` 委托 tracker 查询，当前仍保持 immediate `completed` placeholder
+- public header 不暴露 `CommandLifecycleTracker`，并在 public header boundary test 里加了禁漏检查
+- 更新 RT SDK README 和 simulation 相关设计/进度文档，把下一步改成“command lifecycle states beyond immediate completion”
+
+验证已过：
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`：13/13 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+提交并推送：
+`077f8ebf feat(rt-sdk): add simulation command lifecycle tracker`
+
+当前分支干净：`feat/plc` 已同步 `origin/feat/plc`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:223-248|note=[used prior rt-sdk planning preference and slice context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 10:33:26 +0800</div>
+<pre>ok 做一下计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 10:33:49 +0800</div>
+<pre>我先按计划类工作来处理：用 writing-plans 的流程，把当前 `rt-sdk` 状态和文档里的下一步重新对齐，再给一份可直接执行的详细切片计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 10:34:15 +0800</div>
+<pre>我会把这个计划落成一个可执行的计划文档，而不是只在聊天里列提纲。先按仓库要求重新过一遍根 README、架构 codemap 和 `rt-sdk` 模块入口，再把下一片收敛到“command lifecycle states beyond immediate completion”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 10:34:38 +0800</div>
+<pre>`docs/superpowers/plans` 目录还不存在；我会创建它并写入一份 dated plan。刚才顺手看到 README 有一句重复的 “ids whose ids”，计划里会把这个作为文档收口步骤一起修掉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 10:35:24 +0800</div>
+<pre>我现在会创建计划目录并写入计划文件。这个计划只覆盖下一片：内部 tracker 支持 accepted/running/failed/canceled/timed_out 等状态，但 public SDK 仍不暴露 runtime/PLC 类型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 10:37:30 +0800</div>
+<pre>计划文件已经创建。我再快速扫一下计划内容和 git 状态，确认没有格式问题或范围外改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-01 10:37:55 +0800</div>
+<pre>计划已写好并保存到：
+
+`docs/superpowers/plans/2026-06-01-rt-sdk-command-lifecycle-states.md`
+
+这片计划目标是：把刚做完的 RT SDK command lifecycle tracker 从“只记录 accepted id 且立即 completed”推进到内部支持 `accepted/running/completed/failed/canceled/timed_out` 状态，但 public SDK API 和当前 profile placeholder 行为保持不变。计划里包含 TDD 步骤、具体代码片段、验证命令、文档更新、提交和 push 流程。
+
+执行方式两种：
+
+1. **Subagent-Driven（推荐）**：按任务分片执行，每片后 review。
+2. **Inline Execution**：我在当前会话按计划一步步执行，带检查点。
+
+你说 `可以` / `do` 的话，我就按 Inline Execution 直接做。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:223-248|note=[used rt-sdk simulation baseline and planning workflow context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 10:39:12 +0800</div>
+<pre>do</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 10:39:37 +0800</div>
+<pre>我开始按刚写的计划执行，走 Inline Execution：先按 TDD 改 tracker 测试并确认失败，再补实现、保住现有 public placeholder 行为，最后做文档、全量验证、提交和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 10:39:59 +0800</div>
+<pre>计划审核下来没有阻塞点；我会继续在当前干净的 `feat/plc` 工作区执行，范围控制在 `rt-sdk` 和这份计划文档关联的变更。先做 Task 1 的 failing tests。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 10:40:38 +0800</div>
+<pre>Task 1 的测试已写入。现在按计划运行 focused build，预期会因为新方法不存在而编译失败。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 10:40:56 +0800</div>
+<pre>RED 结果符合预期：测试因为 lifecycle transition 方法不存在而失败。现在进入 Task 2，补内部 records 和 transition 实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 10:41:52 +0800</div>
+<pre>Task 2 实现已补上：tracker 现在用记录表保存状态，并提供内部 transition 方法。先跑 focused lifecycle build 和 test。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 10:42:21 +0800</div>
+<pre>Focused build 通过了，但测试代码有 `[[nodiscard]]` warning；而且旧的 `unallocated` 测试还把 `allocate_accepted()` 当作 completed placeholder。这里我会按新语义修测试：transition 返回值直接断言，旧 completed 用新的 `allocate_completed_placeholder()`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 10:42:50 +0800</div>
+<pre>Task 2 focused test 已通过。下一步保护 public 行为：simulation profile 的 power-service receipt 仍然应读回 completed placeholder，所以 machine 里要用 completed allocation，并加一条回归测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 10:44:10 +0800</div>
+<pre>Public command completion placeholder 行为已经保住。现在 Task 4：把新内部 lifecycle record 和 transition 方法加入 public header 防泄漏测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 10:44:58 +0800</div>
+<pre>边界测试通过。接下来 Task 5 更新 RT SDK 文档，把“内部已能表示状态，但当前 profile 仍直接 completed，下一步接执行源”写清楚，并修掉 README 的重复措辞。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 10:46:17 +0800</div>
+<pre>README 那段换行和计划里不完全一致，我先按实际文件精确替换，再继续改其他文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 10:47:11 +0800</div>
+<pre>文档已更新到新事实，但我注意到 README 还有 “ids whose ids” 的残余语法问题。我先修这句，然后跑 docs policy、diff check 和 book build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 10:47:37 +0800</div>
+<pre>docs policy 和 diff check 已通过，残留搜索没有命中。现在跑 `book build`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-01 10:48:00 +0800</div>
+<pre>Task 5 完成，文档构建也通过。现在进入最终验证：全量 RT SDK build、CTest、diff 复核，然后提交和 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-01 10:49:22 +0800</div>
+<pre>全量构建和 13 个 RT SDK 测试都通过。最后我会复核 diff、确认 `.mdbook/site` 没进状态，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-01 10:49:48 +0800</div>
+<pre>Diff 复核看起来只在 RT SDK 范围内，`.mdbook/site` 没有进入 git 状态。按 executing-plans 流程，收尾前我会用 finishing-a-development-branch 做最后的集成检查，然后提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-01 10:50:08 +0800</div>
+<pre>收尾检查发现计划文件落在 `docs/superpowers/`，这个目录被 `.gitignore` 忽略，所以它会保留为本地执行说明，不会进提交。实际提交只包含 `rt-sdk` 代码、测试和文档变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-01 10:50:50 +0800</div>
+<pre>提交已生成，本地领先 1 个提交。现在推送到远端 `feat/plc`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-01 10:51:27 +0800</div>
+<pre>远端已同步，git 工作树干净；只有计划文件在被忽略的 `docs/superpowers/` 下面作为本地执行记录存在，不影响提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-06-01 10:51:31 +0800</div>
+<pre>已按计划完成并推送。
+
+这次提交做了：
+- `CommandLifecycleTracker` 从单纯 id 集合升级为 lifecycle record 表。
+- 内部支持 `accepted/running/completed/failed/canceled/timed_out` 状态，以及 failed reason。
+- `Machine` 当前 profile placeholder 仍用 `allocate_completed_placeholder()`，所以 public 行为保持 immediate completed。
+- 加了 lifecycle 状态测试、public placeholder 回归测试、public header 防泄漏 token。
+- 更新 RT SDK README 和 simulation 相关文档，把下一步收敛为 `command execution source`。
+
+验证已通过：
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`：13/13 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+提交并推送：
+`3abae500 feat(rt-sdk): add command lifecycle states`
+
+当前分支：`feat/plc` 已同步 `origin/feat/plc`。计划文件保留在被忽略的 `docs/superpowers/` 本地目录，不在提交内。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 16:37:26 +0800</div>
+<pre>ok 做一下计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 16:37:34 +0800</div>
+<pre>多开几个agent审查一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 16:37:59 +0800</div>
+<pre>我会按“多 agent 审查”来做：先确认当前分支和审查范围，然后把代码/测试/文档一致性拆给几个独立 reviewer 并行看，最后汇总成可执行结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 16:39:15 +0800</div>
+<pre>技能文件路径看起来已经被缓存清理了，我会改用可用的 multi-agent 工具发现能力来开 reviewer。当前分支是干净的 `feat/plc`，审查目标就是刚推上的 RT SDK command lifecycle states 这一片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 16:40:10 +0800</div>
+<pre>刚才带 `fork_context` 的 agent 创建参数不兼容，我改成给每个 reviewer 明确传入审查上下文。会分三路：代码正确性、测试/验证覆盖、文档与边界一致性。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 16:41:35 +0800</div>
+<pre>Agents 已经分三路跑起来了：代码正确性、测试覆盖、文档/边界一致性。我这边同步做一轮本地审查，不改文件，主要看最近提交的 diff 是否有明显问题，等 agent 结果回来再汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 16:43:05 +0800</div>
+<pre>我本地这轮初查没有看到直接的代码级阻塞，主要关注点是文档里一处风险表述可能还偏旧：它说 tracker 仅限 id allocation + immediate completed placeholders，但现在内部已经支持多状态。等文档 reviewer 回来后我会一起判断是否需要修。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 17:01:08 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:01:41 +0800</div>
+<pre>我来直接处理这几个 review 点：先按 receiving-code-review 流程核对反馈是否成立，然后补测试/文档，跑 targeted 和全量验证，最后提交并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 17:03:07 +0800</div>
+<pre>我核对过 4 条反馈，都成立，且都可以用小补丁解决：补 header 扫描范围、加强 completed-placeholder 回归测试、加强 tracker 状态持久化测试、修正文档风险表述。先改测试和文档，再跑 targeted/full 验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 17:05:42 +0800</div>
+<pre>我会先扩展 `command_completion_placeholder_tests`：用现有 standalone-axis helper 或新增一个小 helper，让 axes group、standalone axis、spindle 三条 accepted path 都读回 completed。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 17:06:33 +0800</div>
+<pre>完成第一条测试补强。接着给 lifecycle tests 加 status readback，确保 transition 结果被持久化，不只是返回值看起来正确。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 17:09:37 +0800</div>
+<pre>生命周期读回断言已补。现在处理边界扫描和 closeout 风险表述：把 `parameters.hpp` 加入 public header 扫描，并把风险描述改成“内部状态能力存在，但 connected profiles 仍 completed”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 17:10:14 +0800</div>
+<pre>四条 review 点都已处理。现在跑 targeted 测试：command completion、lifecycle、public header boundary，然后全量验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 17:11:48 +0800</div>
+<pre>Targeted build 暴露了一个 CMake include 问题：`command_completion_placeholder_tests` 现在需要 `src` include 路径来访问 `machine_factory.hpp`。我会按已有 receipt/topology 测试的方式给这个 target 加 private src include，再重跑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 17:14:14 +0800</div>
+<pre>Targeted tests 已通过。现在做全量 RT SDK build、CTest、docs policy、diff check、book build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 17:15:23 +0800</div>
+<pre>验证都通过了。我会最后复核 diff，然后提交这组 review follow-up 并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 17:15:33 +0800</div>
+<pre>Diff 复核通过。现在提交 review 修复并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-01 17:17:34 +0800</div>
+<pre>已处理并推送 review follow-up。
+
+修复内容：
+- `command_completion_placeholder_tests` 增加 standalone axis 和 spindle accepted path 的 completed-placeholder 回归覆盖。
+- `sim_command_lifecycle_tests` 增加 `mark_*()` 后的 `status(id)` 读回断言，确认状态被持久化。
+- `public_header_boundary_tests` 把 `parameters.hpp` 纳入 public header 扫描。
+- `simulation-baseline-closeout.md` 修正 tracker 风险表述，区分内部多状态能力和 connected profiles 仍直接 completed。
+- `CMakeLists.txt` 给 command completion placeholder test 加了 `src` include 路径。
+
+验证已通过：
+- targeted CTest：`public_header_boundary` / `sim_command_lifecycle` / `command_completion_placeholder`
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`：13/13 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- rt-sdk`
+- `book build`
+
+提交并推送：
+`af74a7b7 test(rt-sdk): cover command lifecycle review gaps`
+
+当前 `feat/plc` 已同步 `origin/feat/plc`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 17:26:05 +0800</div>
+<pre>多开几个agent审查一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:26:31 +0800</div>
+<pre>我会再开几路 reviewer，这次目标是最新 `HEAD`（包含 `af74a7b7` 的 review follow-up），重点看 follow-up 有没有漏补、有没有新引入问题。先确认一下技能说明和当前状态，然后分派。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 17:26:41 +0800</div>
+<pre>当前分支干净且已同步远端。我会开 4 个 agent：代码正确性、测试覆盖、文档/边界、以及构建/CMake 集成，互不改文件，只给 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 17:29:12 +0800</div>
+<pre>4 个 reviewer 已经开好。我本地同步做轻量交叉检查，不改文件，等它们完成后汇总 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 17:30:01 +0800</div>
+<pre>本地交叉检查没有看到新的明显问题；文档里“runtime boot remains later / no real executor”这些表述和当前边界一致。现在等 reviewer 结果，回来后我会按 findings 优先级汇总。</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-01 19:13:40 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 19:14:05 +0800</div>
+<pre>我会直接修这三项 review 结论：隐藏 public header 里的 `CommandCompletionState`，让 public-header boundary 自动扫描所有 SDK public headers，并处理 `rt-sdk/build` preset 产物的 ignore 风险。先快速重新确认相关文件和记忆上下文，再改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-01 19:14:46 +0800</div>
+<pre>我会按 TDD 先把 public-header boundary test 改到能抓住 `CommandCompletionState` 泄漏，并自动发现所有 public headers；先跑一次看到它失败，然后再改 `MachineCommandApi` 的私有状态承载方式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-01 19:17:14 +0800</div>
+<pre>Boundary test 已改成自动扫描并禁止 `CommandCompletionState`。现在跑 targeted test，预期会失败，证明 test 抓住了当前泄漏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-01 19:17:24 +0800</div>
+<pre>RED 符合预期：public header boundary 现在能抓到 `CommandCompletionState` 泄漏。下一步把 `MachineCommandApi` 改为 public header 只持有 opaque `State`，内部 `State` 再持有 `CommandCompletionState`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-01 19:18:11 +0800</div>
+<pre>这里有个实现细节：public header 现在只暴露 `MachineCommandApi::State` 这个 nested opaque state，不再暴露 completion backing type；我先跑 targeted build，看是否还需要给内部 factory 加友元入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-01 19:19:16 +0800</div>
+<pre>编译失败点已确认：非成员 factory 不能访问 `MachineCommandApi` 私有 nested state。更干净的修法是让 public header 只 forward declare `MachineCommandApi::State`，把 State 定义放在 private header 里，然后由 friend `Machine` 在 `commands()` 内构造 API；这样不需要把 `CommandCompletionState` 或 factory 暴露到 public surface。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-01 19:19:31 +0800</div>
+<pre>同时处理了 `rt-sdk/build/` ignore 风险。现在重跑 targeted build/test，确认 public header boundary 通过且 command API 构造可编。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-01 19:20:57 +0800</div>
+<pre>Targeted tests 通过。接下来做全量验证：RT SDK build/CTest、docs policy、diff check、book build。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-01 19:22:08 +0800</div>
+<pre>全量验证通过。现在我会复核最终 diff，确认没有把内部类型泄漏回 public header，再提交推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-01 19:22:22 +0800</div>
+<pre>Diff 复核显示 public header 已不再出现 `CommandCompletionState`，只剩 boundary test 的禁漏 token。为了让自动扫描更耐用，我再把 header discovery 改成递归并排序，避免以后 public header 放到子目录时漏扫。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-01 19:22:35 +0800</div>
+<pre>最后小增强已加：header 扫描现在递归且排序。重新跑 targeted boundary，再做最终提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-01 19:23:25 +0800</div>
+<pre>验证全部通过。我会提交这组 boundary 修复并 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-01 19:24:26 +0800</div>
+<pre>已处理并推送。
+
+修复内容：
+- 从 public `command.hpp` 移除了 `CommandCompletionState` 暴露。
+- `MachineCommandApi` 现在只暴露 opaque nested `State`，内部 completion backing state 留在 private header/implementation。
+- public header boundary test 改为递归自动扫描 `rt-sdk/include/metanc/rt_sdk/**/*.hpp`，并加入 `CommandCompletionState` 禁漏 token。
+- `.gitignore` 增加 `/rt-sdk/build/`，覆盖 `cmake --preset dev` 的默认输出目录。
+
+验证已通过：
+- targeted public header boundary test
+- `cmake --build /tmp/metanc_rt_sdk_build`
+- `ctest --test-dir /tmp/metanc_rt_sdk_build --output-on-failure`：13/13 passed
+- `python3 .mdbook/lint_docs_policy.py`
+- `git diff --check -- .gitignore rt-sdk`
+- `book build`
+
+提交并推送：
+`5f555792 fix(rt-sdk): keep command lifecycle state private`
+
+当前 `feat/plc` 已同步 `origin/feat/plc`。</pre>
+</article>
+</section>
+<section>
+<h2>Session Events</h2>
+<section class="turn event" id="event-1">
+<h3>Event 1 / turn_aborted</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 16:37:29 +0800</div>
+<pre>&lt;turn_aborted&gt;
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+&lt;/turn_aborted&gt;</pre>
+</article>
+</section>
+<section class="turn event" id="event-2">
+<h3>Event 2 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 16:47:26 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8258-1d88-7cd2-b686-b9e51f4f72d6&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. **Medium** - [rt-sdk/tests/public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:41) omits `include/metanc/rt_sdk/parameters.hpp` from the public-header scan, even though [rt-sdk/include/metanc/rt_sdk.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/include/metanc/rt_sdk.hpp:7) exports it as part of the public SDK surface. That leaves one public header unguarded against the newly added private lifecycle tokens (`CommandLifecycleRecord`, `mark_running`, etc.) and the existing PLC/runtime leakage tokens. The current file does not appear to leak them, but the boundary test is not sufficient to prevent future leakage in all public headers.\n\n2. **Low** - [rt-sdk/docs/src/concepts/simulation-baseline-closeout.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/docs/src/concepts/simulation-baseline-closeout.md:77) still says tracker docs/tests keep the lifecycle tracker “limited to id allocation plus immediate completed placeholders.” That now conflicts with the same page’s later statement that the tracker can represent `accepted`, `running`, `completed`, `failed`, `canceled`, and `timed-out` states at lines 100-103. This weakens the intended message: internal tracker state support exists, but connected placeholder profiles still complete immediately.\n\n**Remaining Risks**\n\nI did not run tests or docs builds because this was a read-only review. I did not find remaining wording that incorrectly makes runtime/PLC boot, live executor behavior, stable public endpoint grammar, or public tracker APIs part of the current public contract; the reviewed docs consistently frame those as private or future work.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 16:48:30 +0800</div>
+<pre>文档/边界 reviewer 已先回来了，给了两个有效点：public header boundary 漏扫 `parameters.hpp`，以及 closeout 风险表述还停留在旧状态。我先等另外两个 reviewer 完成，再统一处理，避免来回改多次。</pre>
+</article>
+</section>
+<section class="turn event" id="event-3">
+<h3>Event 3 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 16:50:17 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8257-4746-7130-bc34-1bf56c4f9098&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;No findings.\n\nI reviewed `3abae500` against its parent for the requested `rt-sdk` files. The lifecycle tracker now stores records, unknown ids return the normal `ReadResult&lt;CommandCompletion&gt;` envelope, non-`failed` transitions clear `failure_reason`, and `Machine` power-service placeholders allocate completed placeholder records. The public `CommandCompletionState` incomplete type is only held behind `std::shared_ptr`, with use sites compiled against the private complete definition, so that part is safe.\n\nRemaining risks: I did not run build/tests because you requested read-only review. Also, `CommandLifecycleTracker` currently acts as a simple latest-state recorder; it does not enforce terminal-state transition legality. I did not flag that because I found no current contract requiring transition rejection in this placeholder slice.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 16:50:50 +0800</div>
+<pre>代码 reviewer 没有发现阻塞问题，只提醒 tracker 现在是 latest-state recorder，不校验 terminal transition；这和当前 placeholder contract 一致。还剩测试 reviewer，我继续等一下。</pre>
+</article>
+</section>
+<section class="turn event" id="event-4">
+<h3>Event 4 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 16:53:57 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8257-94c9-7452-900e-6a407151e5d9&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n- **Medium**: [command_completion_placeholder_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/command_completion_placeholder_tests.cpp:75) only guards completed placeholders for axes-group power calls. The implementation changed axes-group, standalone-axis, and spindle acceptance paths to `allocate_completed_placeholder()`, but a regression in `accept_axis_power()` or `accept_spindle_power()` back to `allocate_accepted()` would still pass. Add completion-status checks for accepted standalone axis commands, e.g. axis `7`, and spindle commands, e.g. spindle `0`.\n\n- **Low**: [sim_command_lifecycle_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/sim_command_lifecycle_tests.cpp:107) asserts the `mark_*()` return values but does not read back via `tracker.status(id)` after transitions. A broken update path that returns the requested status without persisting it would pass these tests while breaking the polling contract. Add post-transition `status()` assertions for running, completed, failed with reason, canceled, and timed_out.\n\n**Validation Notes**\n\nNo CTest registration or label issue found. The three focused tests are registered and passed, and full `rt-sdk` CTest passed: 13/13.\n\nCommands run:\n`cmake -S rt-sdk -B /tmp/metanc_rt_sdk_review_3abae500`\n`cmake --build /tmp/metanc_rt_sdk_review_3abae500 --parallel`\n`ctest --test-dir /tmp/metanc_rt_sdk_review_3abae500 -N -V`\ntargeted CTest for lifecycle/completion/header-boundary\nfull `ctest --test-dir /tmp/metanc_rt_sdk_review_3abae500 --output-on-failure`\n`git diff --check 3abae500^ 3abae500 -- rt-sdk`\n\nRemaining gaps: unknown-transition tests check failure shape but not “no side effect”; docs validation was not run under the read-only review constraint.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 16:55:09 +0800</div>
+<pre>三路 agent 都回来了。我会快速核对一下它们提到的行号，确保最终 review 里引用的是当前文件位置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-01 16:55:39 +0800</div>
+<pre>**Findings**
+- **Medium** [public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:41): public header boundary test omits `include/metanc/rt_sdk/parameters.hpp`, but `rt-sdk.hpp` exports it. Current file does not leak tracker internals, but the guard is incomplete for future public-header leakage.
+
+- **Medium** [command_completion_placeholder_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/command_completion_placeholder_tests.cpp:75): completed-placeholder regression test only covers axes-group power commands. `accept_axis_power()` and `accept_spindle_power()` were also changed to `allocate_completed_placeholder()`, but a regression there would pass. Add completion checks for standalone axis `7` and spindle `0`.
+
+- **Low** [sim_command_lifecycle_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/sim_command_lifecycle_tests.cpp:107): transition tests assert `mark_*()` return values but do not read back through `tracker.status(id)`. A broken implementation that returns the requested state without persisting it could pass. Add post-transition status reads for running/completed/failed/canceled/timed_out.
+
+- **Low** [simulation-baseline-closeout.md](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/docs/src/concepts/simulation-baseline-closeout.md:77): risk table still says tracker is limited to id allocation plus immediate completed placeholders, conflicting with later text saying it can represent multiple states. Wording should distinguish internal tracker capability from connected profiles still completing immediately.
+
+**No Code-Correctness Blocker**
+Reviewer A found no implementation bug in `CommandLifecycleTracker`: unknown ids use normal `ReadResult`, non-failed transitions clear `failure_reason`, `Machine` still returns completed placeholders, and the incomplete public `CommandCompletionState` use is safe via `shared_ptr`.
+
+**Validation Note**
+Reviewer B independently built and ran a separate review build, targeted CTests, full RT SDK CTest `13/13`, and `git diff --check` for the reviewed commit.</pre>
+</article>
+</section>
+<section class="turn event" id="event-5">
+<h3>Event 5 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 17:34:53 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8283-4229-7cc1-84c6-93282de9d372&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n1. **P1 / High**: [rt-sdk/include/metanc/rt_sdk/command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/include/metanc/rt_sdk/command.hpp:32) exposes `CommandCompletionState` in a public header and public constructor signature at lines 61-68. This makes the command completion backing state part of the public SDK surface, while the docs consistently describe the lifecycle tracker/state as backend-private. The boundary test also misses this because `CommandCompletionState` is not in its forbidden-token list.\n\n2. **P2 / Medium**: [rt-sdk/tests/public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:41) hard-codes the public header list instead of discovering all headers under `rt-sdk/include/metanc/rt_sdk`. The current list matches the existing public headers, but a future header can be added without being scanned, so the guard does not actually enforce “all public headers”.\n\n**Remaining Risks**\n\nDocs looked consistent on the main claims: internal tracker can model multiple states, connected placeholder profiles still return immediate completed placeholders, and the next slice is consistently “command execution source” / backend-private execution source. I did not find doc text that makes runtime boot, live executor, public endpoint grammar, or a public tracker API look available now.\n\nNo tests were run because this was a read-only review.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:35:09 +0800</div>
+<pre>文档/边界 reviewer 先回来了，指出两个边界问题，其中 `CommandCompletionState` 暴露为 public 构造参数这个点需要我再核对：它确实在 public header 中存在，但这是前一片为了 `MachineCommandApi` 内部状态共享留下的 public 壳。先等其余 reviewers 回来，我会区分“必须修”和“需要设计调整”的问题。</pre>
+</article>
+</section>
+<section class="turn event" id="event-6">
+<h3>Event 6 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 17:35:24 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8281-d98f-7490-8274-787c39cbe4bc&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\nNo findings. I did not find correctness bugs in the final state of `3abae500..af74a7b7` for the scoped RT SDK command lifecycle changes.\n\nChecked points:\n- Lifecycle status updates persist through `CommandLifecycleTracker::status()`.\n- `failure_reason` is cleared on non-`failed` transitions because all non-failed update paths pass `std::nullopt`.\n- Unknown/zero ids return normal `ReadResult` failures with `ReadErrorCode::unknown_path`.\n- `Machine` accepted axes-group, standalone-axis, and spindle power paths still allocate immediate `completed` placeholders.\n- Public headers keep lifecycle tracker internals private; `shared_ptr` to incomplete `CommandCompletionState` is safe here because construction/destruction logic lives out-of-line in the library implementation.\n\n**Remaining Risks**\n- `CommandLifecycleTracker` is not thread-safe. I am not reporting this as a bug because the current placeholder docs/tests do not appear to promise concurrent access, but a future live/runtime-backed command path will need synchronization or single-thread ownership.\n- The tracker currently allows arbitrary terminal-state rewrites, such as `failed -&gt; completed`. That matches its current internal placeholder role, but a real execution source should define allowed transition rules before exposing non-immediate lifecycle semantics.\n- I did not run the RT SDK test suite; this was a read-only code review plus diff/header/path inspection. `git diff --check` on the scoped source files was clean.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:36:29 +0800</div>
+<pre>代码 reviewer 无 correctness finding，只列了未来风险：线程安全和 terminal transition 规则。这两个目前不违反 placeholder contract。还剩测试和构建 reviewer。</pre>
+</article>
+</section>
+<section class="turn event" id="event-7">
+<h3>Event 7 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 17:36:42 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8283-99c9-7fd1-9c3b-7a28e396b752&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n- Low: [rt-sdk/CMakePresets.json](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/CMakePresets.json:14) sets the default preset build dir to `${sourceDir}/build`, but [.gitignore](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/.gitignore:6) only ignores the repo-root `/build`. Running `cmake --preset dev` from `rt-sdk` will create untracked generated files under `rt-sdk/build`. `.mdbook/site/` is ignored correctly, so the mdBook output path is covered.\n\nNo findings in [rt-sdk/CMakeLists.txt](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/CMakeLists.txt:26): `metanc_rt_sdk` only exposes `include` publicly, and tests that need private headers add `src` as `PRIVATE`.\n\n**Validation Run**\n\n- `cmake -S rt-sdk -B /tmp/metanc_rt_sdk_review_build -DMETANC_RT_SDK_BUILD_TESTS=ON`: passed.\n- `cmake --build /tmp/metanc_rt_sdk_review_build`: passed.\n- `ctest --test-dir /tmp/metanc_rt_sdk_review_build --output-on-failure`: passed, 13/13 tests.\n- `python3 .mdbook/lint_docs_policy.py`: passed.\n- `book build --dest-dir /tmp/metanc_book_review_af74a7b7`: passed, 8 books built.\n- `git diff --check`: passed.\n- `git status --short`: clean after validation.\n\nI did not modify files.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:36:48 +0800</div>
+<pre>构建 reviewer 也回来了：当前 CMake/test/docs 都过，只指出一个已有的 `rt-sdk/build` preset ignore 风险。还剩测试覆盖 reviewer。</pre>
+</article>
+</section>
+<section class="turn event" id="event-8">
+<h3>Event 8 / subagent_notification</h3>
+<article class="msg user">
+<h3>Event</h3>
+<div class="time">2026-06-01 17:39:58 +0800</div>
+<pre>&lt;subagent_notification&gt;
+{&quot;agent_path&quot;:&quot;019e8282-d715-7d62-a251-f47b348828f3&quot;,&quot;status&quot;:{&quot;completed&quot;:&quot;**Findings**\n\n- P2 Medium: [rt-sdk/tests/public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:51) omits `CommandCompletionState` from the forbidden public-header tokens. The public header currently exposes that internal lifecycle type via [rt-sdk/include/metanc/rt_sdk/command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/include/metanc/rt_sdk/command.hpp:32) and the public `MachineCommandApi` constructor at line 61. So the boundary test passes while a backend-private completion state type remains part of the public header surface, giving false confidence that lifecycle internals are hidden.\n\n**Remaining Test Gaps**\n\n- `sim_command_lifecycle_tests.cpp` covers accepted/running/completed/failed/canceled/timed_out and checks each `mark_*` return plus readback. It does not assert `failure_reason` is absent for non-failed statuses in the generic `expect_status()` path.\n- Unknown transitions cover an unallocated positive id for all `mark_*`; zero-id transition calls are not separately covered.\n- Completed-placeholder coverage includes axes group, standalone axis, and spindle, but only one representative power method per kind in `command_completion_placeholder_tests.cpp`; receipt tests cover the broader method set.\n- CMake target include dirs, test registration, and labels look correct. I verified with `cmake -S rt-sdk -B /tmp/metanc_rt_sdk_review_build`, `cmake --build /tmp/metanc_rt_sdk_review_build`, and `ctest --test-dir /tmp/metanc_rt_sdk_review_build --output-on-failure`: all 13 RT SDK tests passed.\n\n&quot;}}
+&lt;/subagent_notification&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-01 17:40:50 +0800</div>
+<pre>所有 reviewer 都完成了。我会核对一下 `CommandCompletionState` 这个 finding 的真实边界影响，再给你结论：哪些是需要改的、哪些是设计取舍或低风险遗留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-01 17:41:10 +0800</div>
+<pre>**Findings**
+- **High** [command.hpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/include/metanc/rt_sdk/command.hpp:32): `CommandCompletionState` is still forward-declared in the public header and appears in the public `MachineCommandApi` constructor signature. That conflicts with the docs’ “backend-private lifecycle state/tracker” boundary. This is not a runtime correctness bug, but it is a public API boundary leak. The next fix should hide this behind an internal constructor/factory or pimpl pattern so public headers expose only `MachineCommandApi::status(...)`.
+
+- **Medium** [public_header_boundary_tests.cpp](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/tests/public_header_boundary_tests.cpp:41): the boundary test hard-codes the public header list. It currently covers all 7 headers, but a future public header can be added without being scanned. Better to discover `rt-sdk/include/metanc/rt_sdk/*.hpp` automatically.
+
+- **Low** [CMakePresets.json](/home/iaar/workspace/mirror-ccmix-wp/MetaNC/rt-sdk/CMakePresets.json:14): `cmake --preset dev` writes to `rt-sdk/build`, but root `.gitignore` only ignores `/build`. This can create untracked generated files. Add `/rt-sdk/build/` or change the preset output to a root/temp ignored path.
+
+**No Further Code Correctness Findings**
+- Lifecycle transitions persist and clear `failure_reason` on non-failed states.
+- Unknown ids use normal `ReadResult` failure envelopes.
+- axes-group, standalone-axis, and spindle accepted paths still return completed placeholders.
+- Current tracker is not thread-safe and allows terminal-state rewrites, but reviewers treated both as future execution-source design decisions, not current contract bugs.
+
+**Validation From Reviewers**
+- Separate clean build passed.
+- Full RT SDK CTest passed: 13/13.
+- docs policy passed.
+- `book build` passed.
+- `git diff --check` passed.
+- Review build left no working-tree changes.</pre>
+</article>
+</section>
+</section>
+</main>
+</body>
+</html>

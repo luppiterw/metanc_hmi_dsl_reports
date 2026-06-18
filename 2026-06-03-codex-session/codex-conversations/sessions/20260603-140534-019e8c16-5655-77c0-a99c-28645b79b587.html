@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>只读审查当前工作区 /home/iaar/workspace/ccmix-wp/metanc_drafts 的文档发布与中英投影，不要改文件。重点检查 docs_i18n/zh/src/TP004-...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>只读审查当前工作区 /home/iaar/workspace/ccmix-wp/metanc_drafts 的文档发布与中英投影，不要改文件。重点检查 docs_i18n/zh/src/TP004-...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8c16-5655-77c0-a99c-28645b79b587</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 14:05:34 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T14-05-34-019e8c16-5655-77c0-a99c-28645b79b587.jsonl</code></div>
+<div><b>Messages</b>: <code>19</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 14:05:34 +0800</div>
+<pre>只读审查当前工作区 /home/iaar/workspace/ccmix-wp/metanc_drafts 的文档发布与中英投影，不要改文件。重点检查 docs_i18n/zh/src/TP004-parameter-system、docs_i18n/en/src/TP004-parameter-system、docs_html、docs_i18n/site，以及 TP004 access-definition/validation 文档中 value-set binding 说明。目标：找中文遗漏翻译、旧 value_set/value 术语残留、published HTML 未刷新、SUMMARY/链接/包含页问题。请给出按严重程度排序的 findings，包含文件路径和行号；没有问题也明确说。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 14:05:51 +0800</div>
+<pre>我会按只读方式做这次审查：先确认当前树和相关发布结构，再对中英源文档、已发布 HTML、SUMMARY/链接以及 value-set binding 术语做交叉检查。不会改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 14:06:09 +0800</div>
+<pre>我看到工作区里 TP004 源文档和发布输出都有未提交改动，所以审查会把“源文档是否同步到 `docs_i18n/site`/`docs_html`”作为单独风险点，而不是假设发布目录已经重建。接下来会直接比对关键源文件、HTML 输出和导航清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 14:06:51 +0800</div>
+<pre>导航清单本身看起来已把 TP004 的值集合、schema 字段、访问定义、验证集合和 2026-06-02 讨论包挂进去。现在我会收窄到两类高风险：中英源文件是否真正成对更新，以及发布 HTML 是否仍停留在旧源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 14:07:53 +0800</div>
+<pre>一个关键结构点：英文 `docs_i18n/en/src/TP004-parameter-system/...` 多数是 `{{#include ...}}` 投影到 `TP004-parameter-system/book/src/...`，中文则是实际翻译内容。因此我会把英文投影源也纳入检查，避免只看 `docs_i18n/en/src` 的一行 include 而漏掉真实英文内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 14:08:33 +0800</div>
+<pre>目前还没有动文件。我已经确认英文投影链是 `docs_i18n/en/src -&gt; TP004-parameter-system/book/src -&gt; TP004-parameter-system/openspec`，接下来会用这个链路和中文实际文件逐项核对，而不是只做字符串搜索。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 14:08:59 +0800</div>
+<pre>我发现上一轮术语搜索扫进了 mdBook 的搜索索引 JS，噪声很大；我会改用仅限 Markdown 和 HTML 正文文件的检查，避免把索引里的拼接文本当作页面内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-03 14:09:15 +0800</div>
+<pre>我已经把发布目录和源目录都纳入同一轮检查；`docs_html` 和 `docs_i18n/site` 当前确实包含新增的 TP004 value-set binding 内容。接下来重点会转向残留术语和中文投影质量，因为这些更可能是当前未提交源改动里的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-03 14:09:45 +0800</div>
+<pre>我会再做一轮只读的“人工可读中文页”搜索，排除代码块和 schema 字段后看哪些英文短语出现在中文正文里；这类残留通常比机器字段名更值得报。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-03 14:10:34 +0800</div>
+<pre>我还会跑一个现有的只读同步检查脚本（如果它只报告不写入），用来补充手工审查；同时继续手工核对，因为这次问题包含翻译质量和发布投影，不完全是脚本能覆盖的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-03 14:11:30 +0800</div>
+<pre>同步检查脚本通过了，`docs_i18n/site` 与 `docs_html` 二进制/文本递归一致，说明发布根和 staging 根没有漂移。剩余 findings 会集中在中文投影里的路径上下文和未翻译术语，而不是发布目录未刷新的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-03 14:12:00 +0800</div>
+<pre>我在区分“刻意保留的代码/API 术语”和“中文页面正文里不该直接出现的英文句子”。比如 `profile_value_sets` 这类字段名不算问题，但中文导读句里的 `value-set registry` 或投影后不成立的 `../SCHEMA-FIELDS.md` 路径更值得报。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-03 14:12:35 +0800</div>
+<pre>我会再做一个 Markdown 链接存在性检查的只读脚本，输出只用于审查。它不会写入工作区。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-03 14:13:32 +0800</div>
+<pre>我发现一个比普通翻译残留更实质的问题：术语表里 “Value Set ID” 的示例仍把 `access_entry_kind` 当成 ID，但当前绑定模型已经把 `VS010004` 作为 `value_set_id`，`access_entry_kind` 只是 `value_set_key`。我会把这作为主要 finding 验证到发布 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-03 14:13:48 +0800</div>
+<pre>我会补跑一次修正后的链接解析检查，覆盖 `docs_i18n/zh/src/TP004-parameter-system` 和英文投影源中的相对 Markdown 链接，避免把 SUMMARY 之外的正文链接漏掉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-03 14:14:10 +0800</div>
+<pre>前两次快速链接脚本是我这边正则写得太紧导致自身报错，没有产生有效审查结果；我会用更简单的解析方式再跑一次，只检查相对 `.md` 目标是否存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-03 14:14:39 +0800</div>
+<pre>我还要取一下几处发布 HTML 的精确行号，用来把 finding 同时落到源文件和已发布页面，而不是只报源码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-03 14:15:22 +0800</div>
+<pre>我已经完成只读检查：没有改文件。现在整理为审查口径的 findings，先列实际问题，再列未发现问题和验证项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-06-03 14:16:54 +0800</div>
+<pre>只读审查完成，未改文件。
+
+**Findings**
+1. **High**: `Value Set ID` 术语仍把 `access_entry_kind` 当作 ID 示例，和当前 binding 模型冲突。
+   [TERMS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/TERMS.md:124)、[zh terms.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/baseline/terms.md:124)、[published zh HTML](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/baseline/terms.html:298) 都写着 `Example: access_entry_kind`。但 [VALUE-SETS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/VALUE-SETS.md:11) 明确区分稳定 `value_set_id` 和人可读 `value_set_key`，示例记录也是 `value_set_id: VS010004` / `value_set_key: access_entry_kind`。这会把旧的 key-as-id 语义带回规范术语表。
+
+2. **Medium**: 中文 access-definition 页里的 value-set binding 说明保留了 OpenSpec 相对路径，投影到 i18n/HTML 后路径语境不成立。
+   [access-definitions/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/access-definitions/index.md:133) 写 `../SCHEMA-FIELDS.md` 和 `../VALUE-SETS.md`，发布后也原样出现在 [docs_html](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_html/zh/TP004-parameter-system/access-definitions/index.html:292)。在中文书里对应页面是 `../schema-fields.md` / `../value-sets.md`，发布 HTML 应指向 `../schema-fields.html` / `../value-sets.html`；当前虽不是 Markdown 链接，但对读者是错误路径提示。
+
+3. **Low**: 中文读者入口仍有未翻译的人类正文短语。
+   [value-sets.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/value-sets.md:3) 有 `value-set registry`、`enum drift`；[usage-index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/usage-index.md:3) 有 `generated usage index`；[access-definitions/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/access-definitions/index.md:133) 有 `Enum-like schema`、`value sets`、`value identity`。字段名和 token 保留英文是合理的，但这些出现在中文说明句里，像遗漏翻译。
+
+**未发现问题**
+- 未发现 `docs_html` 未刷新：`docs_i18n/site` 与 `docs_html` 递归一致，关键 value-set binding 内容已出现在发布 HTML。
+- `docs_i18n/zh/src/SUMMARY.md` 和 `docs_i18n/en/src/SUMMARY.md` 已挂入 TP004 value sets、schema fields、usage index、access definitions、validation sets 和 2026-06-02 讨论包。
+- Markdown 相对链接检查通过；`tools/check_docs_i18n_sync.py` 通过。
+- 未发现精确的旧字段形式 `value_set:`、`value_set_id: access_entry_kind` 或 `value_set_id: target_entity_kind` 残留。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:49-50|note=[docs_html build and zh projection context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

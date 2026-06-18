@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是并行审查 agent D。请在 /home/iaar/workspace/ccmix-wp/metanc_drafts 中只读做一次“遗漏新东西”专项扫描。 范围：整个 TP004-parame...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是并行审查 agent D。请在 /home/iaar/workspace/ccmix-wp/metanc_drafts 中只读做一次“遗漏新东西”专项扫描。 范围：整个 TP004-parame...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019e8af0-32dd-7912-86c2-2ce3233fd2c9</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-03 08:44:18 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/03/rollout-2026-06-03T08-44-18-019e8af0-32dd-7912-86c2-2ce3233fd2c9.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-03 08:44:18 +0800</div>
+<pre>你是并行审查 agent D。请在 /home/iaar/workspace/ccmix-wp/metanc_drafts 中只读做一次“遗漏新东西”专项扫描。
+
+范围：整个 TP004-parameter-system/openspec/**、TP004-parameter-system/discussions/2026-06-02-parameter-value-set-binding/**、docs_i18n/en/src/TP004-parameter-system/**、docs_i18n/zh/src/TP004-parameter-system/**。
+
+目标：找出文档里新增/使用的结构化概念、YAML 字段、enum-like 值、状态词、profile/compatibility 概念，是否没有被 TERMS.md、VALUE-SETS.md、SCHEMA-FIELDS.md、USAGE-INDEX.generated.md 纳入治理。
+
+请特别关注：
+- native_view、supported_forms、fixtures、profile_value_sets、profile_id、profile_dependency、compatibility_profile_id、owner_reference、dispatch_target、access_form_status。
+- 非 fenced YAML prose 中反复出现但没有 term/value-set 的概念。
+- 中文/英文投影是否引入了 canonical 源没有的概念。
+
+只给 findings，按严重程度排序，包含文件:行号。不要修改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-03 08:44:31 +0800</div>
+<pre>我会按只读方式扫指定范围，先快速拉一下本仓库相关记忆，避免漏掉既有治理约定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-03 08:44:48 +0800</div>
+<pre>已确认范围文件列表和历史约定。接下来我会对治理锚点和投影文档做交叉检索，重点看新增字段/状态词是否只出现在讨论或投影里而没有落到 canonical 治理文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-03 08:45:19 +0800</div>
+<pre>治理锚点里这些重点项大多已经有字段/值集合绑定。我现在转向“新增但没被索引/绑定的字段和值”扫描，尤其查 YAML 键、表格状态词和中英文投影里的额外说法。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-03 08:45:42 +0800</div>
+<pre>初步看，最可能的缺口不是已绑定的叶子枚举，而是结构对象本身和投影新增的概念名。我会再看 canonical access-definition/validation 文档的具体行，确认哪些是重复出现且没有治理锚点的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-03 08:46:32 +0800</div>
+<pre>我已锁定几个候选缺口，会再补一轮针对 `USAGE-INDEX.generated.md` 和投影源的定位，避免把已经生成索引覆盖的东西误报。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-03 08:47:07 +0800</div>
+<pre>我还在只读核对候选项：现在重点是确认“已在 value set 中作为值出现，但概念本身是否缺 TERMS / 字段绑定”的边界，避免把值集合本身算成术语覆盖。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-03 08:50:19 +0800</div>
+<pre>P1 `profile_value_sets.profile_id` / `value_set` 没有 schema-field 绑定。`profile_value_sets` 被定义为 profile asset record，实际声明也使用了 `profile_id` 和 `value_set`，但 `SCHEMA-FIELDS.md` 只绑定了 validation fixture 的 `fixtures.profile`，没有绑定 profile-owned declaration 自身的字段，导致 profile 声明和 `compatibility_profile_id` / `value_set_id` 之间缺少同级治理锚点。
+TP004-parameter-system/openspec/VALUE-SETS.md:71, TP004-parameter-system/openspec/VALUE-SETS.md:806, TP004-parameter-system/openspec/SCHEMA-FIELDS.md:266
+
+P1 profile-owned symbolic tool reference 只治理到 `symbols.kind` / symbol 名称，未治理 resolved descriptor 结构。`fixtures.symbols.t.value`、`expect.descriptor.tool.symbol`、`expect.descriptor.tool.resolved_value` 是新增结构化字段，但 `SCHEMA-FIELDS.md` 只绑定了 `fixtures.symbols.name/kind`，没有覆盖 symbol 的值和期望 descriptor 的嵌套形状。
+TP004-parameter-system/openspec/validation-sets/siemens/tool-dp3.md:49, TP004-parameter-system/openspec/validation-sets/siemens/tool-dp3.md:60, TP004-parameter-system/openspec/SCHEMA-FIELDS.md:324
+
+P2 `native_view` 作为结构化块反复使用，但只治理了 `vendor` 和未实际使用的 `profile_dependency`；`pattern` / `examples` 没有 schema-field 绑定，也没有独立 TERMS 概念。
+TP004-parameter-system/openspec/access-definitions/README.md:143, TP004-parameter-system/openspec/access-definitions/README.md:198, TP004-parameter-system/openspec/access-definitions/siemens/tool.md:99, TP004-parameter-system/openspec/SCHEMA-FIELDS.md:86
+
+P2 `supported_forms` 块只治理了 `status`，没有治理 `form` 字段或 Supported Form 概念。状态值已进入 `access_form_status`，但 form/status 这组兼容性表述本身仍是未注册结构。
+TP004-parameter-system/openspec/access-definitions/siemens/tool.md:141, TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:127, TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:132, TP004-parameter-system/openspec/SCHEMA-FIELDS.md:188
+
+P2 `compatibility profile` / `machine profile` / `machine configuration` 已作为规则前提反复出现，但 TERMS 只有泛化的 `Profile`，没有把 compatibility profile 和 machine configuration 作为独立治理概念登记；VALUE-SETS 里也只是把它们挂到 `T070003` 下。
+TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:41, TP004-parameter-system/openspec/access-definitions/siemens/axis-machine-data.md:164, TP004-parameter-system/openspec/access-definitions/siemens/zero-offset.md:171, TP004-parameter-system/openspec/VALUE-SETS.md:783
+
+P3 `fixtures.frames` 被 case schema 声明并在 zero-offset 验证集合中使用，但没有对应 `validation_set.fixtures.frames` / `validation_case.fixtures.frames` 绑定；相邻的 `axis_map` 和 `components` 已绑定，frame 可用集合被漏掉。
+TP004-parameter-system/openspec/validation-sets/case-schema.md:80, TP004-parameter-system/openspec/validation-sets/siemens/zero-offset-user-frame-axis-component.md:29, TP004-parameter-system/openspec/SCHEMA-FIELDS.md:304
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:157-157|note=[confirmed TERMS as parameter-system glossary anchor]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

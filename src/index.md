@@ -35,6 +35,7 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-06-23` | HMI WorkOffset PR review-fix closure, large snapshot reduction, `feat/hmi` plus standalone sync, generated artifact verification, and report/docs refresh |
 | `2026-06-18` | Session bootstrap and Codex user-history export tooling |
 | `2026-06-16` | Session bootstrap and Codex user-history export tooling |
 | `2026-06-15` | Session bootstrap and Codex user-history export tooling |

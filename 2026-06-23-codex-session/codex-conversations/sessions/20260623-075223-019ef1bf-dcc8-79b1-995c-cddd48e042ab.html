@@ -1,0 +1,2502 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下现在的TP004状态</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下现在的TP004状态</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef1bf-dcc8-79b1-995c-cddd48e042ab</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-23 07:52:23 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/23/rollout-2026-06-23T07-52-23-019ef1bf-dcc8-79b1-995c-cddd48e042ab.jsonl</code></div>
+<div><b>Messages</b>: <code>265</code></div>
+<div><b>User prompts</b>: <code>29</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 07:52:30 +0800</div>
+<pre>看一下现在的TP004状态</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 07:52:48 +0800</div>
+<pre>我先查当前仓库状态和 TP004 相关记录，再用记忆里的近期 TP004 线索做对照，避免只凭上次印象判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 07:53:18 +0800</div>
+<pre>当前工作树是干净的，分支在 `main...origin/main`；文件列表里已经出现了 6 月 22 日的一批 TP004 归档和 discussion pack。接下来我看 active OpenSpec、最新提交和 TP004 状态页/日结页，判断“现在”到底是打开中、已归档，还是阶段收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 07:53:36 +0800</div>
+<pre>`openspec list --json` 当前是空，说明没有未归档的 change；最近 HEAD 已经是 `origin/main` 上的 `docs: add TP004 daily wrap-up`。我继续看 TP004 的 status/closure 文本，确认它记录的是哪一层“完成”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-23 07:54:16 +0800</div>
+<pre>以当前 checkout 看，TP004 现在是 **阶段收口，不是全 TP004 完成**。
+
+- 仓库干净：`main...origin/main`，无本地未提交改动。
+- 最新提交：`6396cea docs: add TP004 daily wrap-up`。
+- OpenSpec 当前无 active change：`openspec list --json` 返回 `{&quot;changes&quot;:[]}`。
+- 最新状态页在 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:1)，日结在 [2026-06-22-tp004-daily-wrap-up/report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-22-tp004-daily-wrap-up/report.md:1)。
+
+已收口的窄范围是 descriptor / zero-offset governance：最小 Parameter Descriptor、Instance Binding、`zero_offset -&gt; frame_axis_component`、`zero_offset_frames[]`、`configured_axes[]`、本地 source lookup、最小 `machine_profile` source envelope。
+
+还没收口的是：正式 `parameter_descriptor.value.*`、`parameter_descriptor.access`、semantic path grammar、更多 owner/scope promotion、runtime registry/API、active-profile 选择/加载、真实 machine config lookup。下一步按现有计划应从 P4 access 边界继续，除非先决定把 P3 value metadata 从讨论边界推进成正式 proposal。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:572-591|note=[recent TP004 zero offset promotion and daily pack context]
+MEMORY.md:663-670|note=[TP004 active changes empty and stage-local completion boundaries]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ed822-8990-7680-8681-fcd2ee47a0d0
+019eecb6-b3c0-7cd0-ad8a-0ec86a806a16
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 08:06:35 +0800</div>
+<pre>阶段还有哪些没完成的P</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 08:07:05 +0800</div>
+<pre>还没完成的主要是 **P4-P7**，另外 **P3 只完成了边界记录，没有进入正式 schema/proposal**。
+
+- **P3 `parameter_descriptor.value`**：已记录为“metadata only”的讨论边界；未完成正式 `parameter_descriptor.value.*` schema-field binding、checker 规则或定义集。
+- **P4 `parameter_descriptor.access`**：未开始/未完成。要单独讨论 access metadata，不能和 value 混在一起。
+- **P5 semantic path grammar**：未完成。还没定义路径 grammar / binding rules，也没有 checker slice。
+- **P6 owner/scope promotion**：未完成。后续只能一对一对、有证据、有 checker coverage 地推进。
+- **P7 runtime/API &amp; active-profile handoff**：未完成。当前仍明确路由到 runtime/configuration，不由 TP004 直接定义。
+
+所以当前阶段可理解为：**P0-P2 清理和 zero-offset/source-shape/machine-profile-source-envelope 这一段已收口；P3 是边界已落文档但未形式化；P4-P7 是后续未完成项。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 08:09:21 +0800</div>
+<pre>P3详细讨论一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 08:09:38 +0800</div>
+<pre>我会用 `openspec-explore` 来处理这个，因为你现在是在讨论 TP004 的下一段边界，不是直接落实现。先读一下本仓库这套 explore 规则，再看 P3 已有边界文档和相关治理资产。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 08:09:56 +0800</div>
+<pre>P3 现有结论很窄：它只允许讨论“值的元数据”，不能变成当前值、默认值、存储或读写行为。我再查 `value.type` / `unit_source` 这些现有资产的定义，看看能复用到什么程度。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 08:10:26 +0800</div>
+<pre>现有资产显示，`value.type` 和 `value.unit_source` 已经在 `access_definition.value.*` 里被治理过，但还没有绑定到 `parameter_descriptor.value.*`。我再看两个实际 Siemens 示例，确认它们表达的是“定义形态”还是“实例值”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-23 08:11:06 +0800</div>
+<pre>P3 我建议按一个很窄的问题讨论：**Parameter Descriptor 要不要开始声明“这个参数的值长什么样”，但不声明“这个参数现在是什么值”。**
+
+核心边界可以这样画：
+
+```text
+parameter_descriptor
+  identity:
+    parameter_id / owner / scope / semantic_name
+
+  value metadata candidate:
+    value.type
+    value.unit_source
+
+parameter_instance_binding
+  instance keys:
+    frame=G54 / axis=X / component=TR
+
+runtime/configuration
+  current value / storage / read-write / active profile lookup
+```
+
+**P3 要解决什么**
+P3 不是补 runtime value，而是补 descriptor 的“值形态元数据”。也就是说，`zero_offset.frame_axis_component` 这个参数定义，可以声明它的值大体是 `float`，单位来源由 component 决定；`motion.axis.max_velocity` 可以声明值大体是 `float`，单位来源由 controller 决定。
+
+这类信息对后续 UI、文档、校验、映射都有用，但它还不是读取值、写入值、默认值、当前值、持久化字段。
+
+**当前可用资产**
+仓库里已经有两套可以先评估复用的资产：
+
+- `VS020020 / access_value_type`
+  当前 token 有 `float`、`real`。问题是名字叫 `access_value_type`，历史上绑定在 `access_definition.value.type`，语义可能偏 access definition，不一定适合长期作为 descriptor value type。
+- `VS040013 / unit_source`
+  当前 token 有 `controller_defined`、`component_defined`、`controller/tool-type-defined`、`controller/profile-defined`。这套比较适合 P3，因为它不是具体工程单位，而是说明单位由谁定义。
+
+**我倾向的 P3 第一版**
+第一版只 formalize 两个可选字段：
+
+```yaml
+parameter_descriptor:
+  parameter_id: zero_offset.frame_axis_component
+  owner: zero_offset
+  scope: frame_axis_component
+  semantic_name: frame_axis_component
+  value:
+    type: float
+    unit_source: component_defined
+```
+
+以及：
+
+```yaml
+parameter_descriptor:
+  parameter_id: motion.axis.max_velocity
+  owner: motion.axis
+  scope: axis
+  semantic_name: max_velocity
+  value:
+    type: float
+    unit_source: controller_defined
+```
+
+注意这里用 `unit_source`，不要用 `unit`。`unit: mm`、`unit: degree`、`unit: mm/min` 这些会立刻碰到 component、axis type、controller profile 的差异，过早把 TP004 拉进完整单位系统。`unit_source` 只说“单位从哪里来”，边界更稳。
+
+**不建议第一版做的内容**
+第一版不应该加入：
+
+- `current_value`
+- `default_value`
+- `min` / `max`
+- `step`
+- `precision`
+- `readable` / `writable`
+- `storage`
+- `runtime_path`
+- owner 自动校验捷径
+- 真实单位枚举，如 `mm`、`deg`、`mm/min`
+
+这些东西不是都没价值，而是会把 P3 拖成 runtime/value/constraint/access 混合设计。特别是 `min/max/default`，看起来像 descriptor 元数据，但实际经常依赖机型、轴、profile、通道状态或 controller，所以不该在 P3 第一版冻结。
+
+**关键分歧**
+P3 真正需要决定的是这个：
+
+```text
+方案 A：继续只记录边界，不 formalize 字段
+方案 B：新增 parameter_descriptor.value.type + value.unit_source，并复用现有 value sets
+方案 C：先拆出专用 parameter_value_type，再 formalize descriptor value
+```
+
+我的判断：**B 最合适**。
+原因是现有证据已经够支持 `type` 和 `unit_source`，而且这两个字段不会触碰 runtime 行为。`access_value_type` 名字不完美，但第一版可以明确写成“临时复用现有候选 value set；如果后续名字/边界不合适，再单独拆 `parameter_value_type`”。不要为了命名洁癖先开一个新定义集。
+
+**P3 的完成标准**
+我认为 P3 formalization 做到这些就够了：
+
+- `PARAMETER-DESCRIPTORS.md` 记录 `parameter_descriptor.value` 是可选 metadata block。
+- `SCHEMA-FIELDS.md` 增加：
+  - `parameter_descriptor.value.type -&gt; VS020020 / access_value_type`
+  - `parameter_descriptor.value.unit_source -&gt; VS040013 / unit_source`
+- checker 只校验 token 是否来自对应 value set。
+- checker 继续禁止把它当 runtime value、默认值、存储值。
+- 示例覆盖 `motion.axis.max_velocity` 和 `zero_offset.frame_axis_component`。
+- 文档明确：P3 不处理 access，那是 P4；不处理 semantic path，那是 P5；不处理 runtime/API，那是 P7。
+
+一句话：**P3 可以推进，但只推进“值形态元数据”这两格：`type` 和 `unit_source`。不要碰真实值、真实单位、约束、默认值、读写能力。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 08:13:15 +0800</div>
+<pre>P3的详细计划给我看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 08:13:51 +0800</div>
+<pre>**P3 详细计划**
+
+目标：把 `parameter_descriptor.value` 从“讨论边界”推进到一个很小的正式 metadata block，但只描述值形态，不进入 runtime value。
+
+**P3 目标边界**
+- 新增可选 metadata block：`parameter_descriptor.value`
+- 第一版只放两个字段：
+  - `parameter_descriptor.value.type`
+  - `parameter_descriptor.value.unit_source`
+- 复用现有 value set：
+  - `value.type -&gt; VS020020 / access_value_type`
+  - `value.unit_source -&gt; VS040013 / unit_source`
+- 明确它不是当前值、默认值、存储值、读写接口、runtime path 或真实工程单位。
+
+**建议 Change 名称**
+`formalize-parameter-descriptor-value-metadata`
+
+**计划步骤**
+1. 建 P3 formalization proposal
+   - 说明为什么 P3 只 formalize value metadata。
+   - 写清楚不新增 runtime behavior。
+   - 写清楚先复用 `access_value_type`，暂不新建 `parameter_value_type`。
+
+2. 更新 `PARAMETER-DESCRIPTORS.md`
+   - 把 `optional_value` 从候选示例提升为正式可选 block。
+   - 示例一：`motion.axis.max_velocity`
+     ```yaml
+     value:
+       type: float
+       unit_source: controller_defined
+     ```
+   - 示例二：`zero_offset.frame_axis_component`
+     ```yaml
+     value:
+       type: float
+       unit_source: component_defined
+     ```
+
+3. 更新 `SCHEMA-FIELDS.md`
+   - 增加：
+     ```yaml
+     field_id: parameter_descriptor.value.type
+     path: parameter_descriptor.value.type
+     value_set_id: VS020020
+     value_set_key: access_value_type
+     required: false
+     owner: TP004
+     ```
+   - 增加：
+     ```yaml
+     field_id: parameter_descriptor.value.unit_source
+     path: parameter_descriptor.value.unit_source
+     value_set_id: VS040013
+     value_set_key: unit_source
+     required: false
+     owner: TP004
+     ```
+
+4. 更新 checker
+   - 允许 `parameter_descriptor.value` 出现。
+   - 校验 `value.type` token 必须来自 `VS020020`。
+   - 校验 `value.unit_source` token 必须来自 `VS040013`。
+   - 保持 `value` block 可选。
+   - 拒绝或至少不接受 `current_value`、`default_value`、`unit`、`min`、`max`、`readable`、`writable` 混入 descriptor value。
+
+5. 更新测试
+   - valid：`motion.axis.max_velocity` 带 `value.type=float`、`value.unit_source=controller_defined`。
+   - valid：`zero_offset.frame_axis_component` 带 `value.type=float`、`value.unit_source=component_defined`。
+   - invalid：未知 `value.type`。
+   - invalid：未知 `value.unit_source`。
+   - invalid：把 concrete runtime value 放进 `parameter_descriptor.value`。
+   - invalid：把真实单位如 `mm` 当成 `unit_source`。
+
+6. 更新索引和文档投影
+   - 刷新 `USAGE-INDEX.generated.md`。
+   - 更新 topic book、root book、英文/中文 i18n 页面。
+   - 中文页面要有真实中文说明，不只做 include wrapper。
+
+7. 记录 discussion pack
+   - 路径建议：
+     `TP004-parameter-system/discussions/YYYY-MM-DD-parameter-descriptor-value-metadata/`
+   - 内容包含：
+     - 为什么只做 `type` 和 `unit_source`
+     - 为什么不处理 default/min/max/unit/current value
+     - 为什么 P4 access 要单独讨论
+     - 为什么 P7 runtime/API 不在 P3 里处理
+
+8. 验证与归档
+   - `python3 -m unittest discover -s tools/tests`
+   - `python3 tools/check_parameter_value_sets.py`
+   - `python3 tools/check_docs_i18n_sync.py`
+   - `openspec validate formalize-parameter-descriptor-value-metadata --strict`
+   - `openspec validate --all --strict`
+   - `./tools/build_docs_html.sh`
+   - `python3 tools/check_docs_i18n_sync.py --require-published-html`
+   - `git diff --check`
+   - 完成后 archive change。
+
+**明确不做**
+- 不定义 `default_value`
+- 不定义 `current_value`
+- 不定义 `min/max/step/precision`
+- 不定义真实单位枚举，比如 `mm`、`deg`、`mm/min`
+- 不定义 readable/writable
+- 不定义 runtime read/write path
+- 不定义 active profile lookup
+- 不拆新 value set，除非 review 明确认为 `access_value_type` 名称会造成误导
+
+**P3 完成标准**
+- 读者能明确说出：`parameter_descriptor.value` 是值形态 metadata，不是参数当前值。
+- checker 能校验 `value.type` 和 `value.unit_source` 的 governed token。
+- 示例覆盖 motion axis 和 zero offset。
+- P4 access、P5 semantic path、P7 runtime/API 仍保持分离。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 08:48:13 +0800</div>
+<pre>可以，按照你的计划处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 08:48:33 +0800</div>
+<pre>我会把它作为一个正式 P3 slice 处理：先按 OpenSpec 形态落 proposal/spec/tasks，再改 TP004 源文档、checker 和测试，最后验证并归档。开始前我先读 apply-change 规则和现有相邻 archived change，避免格式和发布链路跑偏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 08:48:56 +0800</div>
+<pre>Using change: `formalize-parameter-descriptor-value-metadata`. There is no active change yet, so I’m going to create the proposal artifacts first, then apply them through the same task loop; override would be to stop me and name a different change before edits land.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 08:49:15 +0800</div>
+<pre>我现在要创建 `openspec/changes/formalize-parameter-descriptor-value-metadata` 下的 proposal/design/spec/tasks。这个 slice 会只触碰 value metadata，不把 P4/P7 的内容带进来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 08:49:38 +0800</div>
+<pre>change scaffold 已创建。我会读取 OpenSpec 对 proposal/design/tasks/spec 的生成要求，并参考相邻归档 change 的写法后再落文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 08:50:01 +0800</div>
+<pre>Proposal 形态清楚了。接下来我先把 change artifacts 补齐，然后进入 apply 阶段；实现会集中在 TP004 源文档、schema-field binding、checker/tests、投影文档和 discussion pack。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 08:50:24 +0800</div>
+<pre>我已经看到 checker 是通用 schema-field 扫描加 descriptor 专项校验的组合；P3 需要在两处配合：schema field 绑定负责 governed token，descriptor 专项校验负责禁止 runtime/default/unit/min/max 等混入。接下来我会定位 descriptor 校验函数并据此写测试。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 08:50:46 +0800</div>
+<pre>我定位到 `validate_parameter_descriptors()` 了，目前只禁止 `access.readable/writable`。P3 会在这里增加对 `value` block 的窄规则，同时让通用 schema scan 校验 `type/unit_source`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 08:51:07 +0800</div>
+<pre>接下来我会按任务清单推进：1) 补齐 OpenSpec artifacts；2) 改源文档和 checker；3) 刷新索引/投影；4) 跑验证；5) 如果都过，再归档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 08:51:28 +0800</div>
+<pre>我现在写 proposal/design/spec/tasks。文件内容会把 P3 锁定成 `value.type` 和 `value.unit_source`，并把 `default/current/min/max/unit/readable/writable` 明确排除。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 08:52:23 +0800</div>
+<pre>OpenSpec artifacts 已落地。我会跑 status/instructions 确认它进入可 apply 状态，然后按 tasks 逐项执行并同步勾选。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 08:52:49 +0800</div>
+<pre>## Implementing: `formalize-parameter-descriptor-value-metadata` (schema: `spec-driven`)
+
+Progress is 0/9 tasks complete. I’m starting with docs and schema bindings, then tests/checker, then generated projection and validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 08:53:25 +0800</div>
+<pre>Working on task 1.1 and 1.2 now: I’m updating the canonical TP004 source pages first, because the generated book and reader pages should follow those decisions rather than drive them.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-23 08:54:34 +0800</div>
+<pre>我需要先确认 source/book/docs_i18n 三套页面的投影关系。这样可以把 canonical 源文档改准，再用最小的同步改动更新阅读层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-23 08:55:36 +0800</div>
+<pre>Canonical 源文档是 `TP004-parameter-system/openspec/*`；standalone book 多数是 include wrapper，中文 reader 是手写可读投影。下一步我会只手改 canonical + 中文 reader，book/html 交给构建刷新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-23 08:56:31 +0800</div>
+<pre>我已经确认 en/root book 页面都是 include wrapper，中文 reader 才需要同步真实中文内容。现在开始实际 patch：先更新 Parameter Descriptor 和 Schema Fields 的 canonical 源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-23 08:57:44 +0800</div>
+<pre>我会继续最小化改动范围：canonical 英文源页改语义，中文 reader 页同步可读说明；`SCHEMA-FIELDS` 的中文页大概率是 registry include，可以按现有规则保持结构同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-23 08:58:07 +0800</div>
+<pre>我会把新 discussion pack 用今天的日期 `2026-06-23-parameter-descriptor-value-metadata`，避免继续混进 6 月 22 日的边界讨论记录。现在先改 canonical 文档和 checker 规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-23 08:58:29 +0800</div>
+<pre>我将新增的 6 月 23 日 pack 写成“formalization”而不是“boundary”，这样历史上 6 月 22 日的 P3 boundary 仍然保留原意。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-23 08:59:29 +0800</div>
+<pre>Tasks 1.1 和 1.2 的 canonical 内容已经更新。我会先勾掉这两项，然后继续 current-state 和 discussion pack。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-23 08:59:43 +0800</div>
+<pre>Working on task 1.3: I’m updating the status page from “P3 boundary only” to “P3 formalized as optional metadata”, and adding a new 2026-06-23 discussion pack with source/book/i18n navigation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-23 09:01:03 +0800</div>
+<pre>Current-state 和 source discussion pack 已经落下。我还需要把这个 pack 挂到 standalone book、aggregate book、英文/中文 reader 的导航和索引，否则构建后读者路径不可达。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-23 09:01:17 +0800</div>
+<pre>我会创建 book/root/en include wrappers，中文 reader 写真实中文落地页，再更新四个 SUMMARY 和 6 月索引。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-23 09:02:20 +0800</div>
+<pre>我正在补新 pack 的四套阅读入口：standalone topic book、root book、英文 reader 用 include 保持同步，中文 reader 写成可直接阅读的中文页，符合当前 i18n 检查风格。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-23 09:03:38 +0800</div>
+<pre>新 pack 文件已创建。现在更新四个 SUMMARY 和中英文 6 月索引，把它放到当前列表顶部。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-23 09:04:19 +0800</div>
+<pre>Task 1.3 的主要文档和导航已经补齐。我会标记完成，然后进入 checker 测试和实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-23 09:04:26 +0800</div>
+<pre>Working on tasks 2.1-2.3: I’m adding tests first for valid metadata and invalid runtime/value-like keys, then I’ll update `validate_parameter_descriptors()` to make them pass.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-23 09:05:18 +0800</div>
+<pre>Tests for P3 are in place. Now I’ll update the checker to reject the forbidden fields and preserve existing minimal descriptors.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-23 09:05:31 +0800</div>
+<pre>Checker boundary rule is now implemented. I’ll run the focused unit tests before marking the validation tasks complete; if anything fails, I’ll fix it before moving on.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-23 09:06:27 +0800</div>
+<pre>Focused P3 tests pass. I’ll mark 2.1-2.3 complete, then regenerate the usage index from the updated schema and descriptor examples.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-23 09:06:38 +0800</div>
+<pre>Working on task 3.1: regenerating the usage index now. This should also prove the two new schema-field bindings are discoverable by the existing scanner.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-06-23 09:06:46 +0800</div>
+<pre>Usage index regenerated cleanly. I’ll mark task 3.1 complete, then sync the generated/index projection and any required i18n pages before running the full validation stack.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-06-23 09:07:03 +0800</div>
+<pre>Task 3.2 now: I need to sync generated registry projection files and make sure the new discussion pack appears in English/Chinese reader indexes. I’ll inspect the changed file set first so I don’t miss a projection.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-06-23 09:07:29 +0800</div>
+<pre>Usage index now contains the new `parameter_descriptor.value.*` references. I’m checking which projection files are wrappers versus copied registry content, then I’ll sync only the generated-copy layer that actually needs it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-06-23 09:07:58 +0800</div>
+<pre>Projection layer looks mostly include-based; the changed canonical usage index is enough for book/en/zh usage pages. I’m doing a quick content check on the status page and new links, then I’ll mark 3.2 done and start full validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-06-23 09:08:32 +0800</div>
+<pre>The projection/navigation pass is coherent. I’ll mark 3.2 complete and then run the full validation stack.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-06-23 09:09:03 +0800</div>
+<pre>Working on task 3.3: I’ll run the validations in the same order as prior TP004 slices. First unit tests, checker, i18n source check, and OpenSpec strict validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-06-23 09:10:01 +0800</div>
+<pre>Unit tests, checker, source i18n, and change-level OpenSpec validation all pass. Next I’ll run `openspec validate --all --strict`, build docs, then published HTML i18n and whitespace checks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 38 / commentary</h3>
+<div class="time">2026-06-23 09:10:27 +0800</div>
+<pre>OpenSpec all-strict and whitespace checks pass. I’m building docs now; this regenerates ignored HTML output and runs published HTML i18n validation as part of the script.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 39 / commentary</h3>
+<div class="time">2026-06-23 09:10:44 +0800</div>
+<pre>Docs build and published HTML i18n validation pass. I’ll mark the final validation task complete, then inspect the diff before archiving the change.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 40 / commentary</h3>
+<div class="time">2026-06-23 09:11:06 +0800</div>
+<pre>All 9 implementation tasks are complete. I’m reviewing the diff now for accidental scope creep or generated-file churn before running archive.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 41 / commentary</h3>
+<div class="time">2026-06-23 09:12:39 +0800</div>
+<pre>Diff review looks scoped to P3: descriptor docs, schema binding, checker/tests, usage index, discussion pack, and navigation. Since the plan included archive, I’m reading the archive workflow rules before moving the completed OpenSpec change into `archive/`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 42 / commentary</h3>
+<div class="time">2026-06-23 09:13:10 +0800</div>
+<pre>Archive workflow has one extra check: this repo keeps delta specs under archived changes and currently has no root main specs, so there is nothing to sync into `openspec/specs/`. I’ll verify that, then move the completed change into today’s archive path.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 43 / commentary</h3>
+<div class="time">2026-06-23 09:13:35 +0800</div>
+<pre>Artifacts and all task boxes are complete. There is no root `openspec/specs/` tree in this workspace, so I’ll archive without a main-spec sync step, consistent with the existing archived TP004 changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 44 / commentary</h3>
+<div class="time">2026-06-23 09:13:53 +0800</div>
+<pre>Archive target creation is next. I’m checking for an existing same-day archive path before moving the change directory.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 45 / commentary</h3>
+<div class="time">2026-06-23 09:14:11 +0800</div>
+<pre>No existing archive target. I’m moving the completed change to `openspec/changes/archive/2026-06-23-formalize-parameter-descriptor-value-metadata/` now, then I’ll rerun the post-archive checks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 46 / commentary</h3>
+<div class="time">2026-06-23 09:14:25 +0800</div>
+<pre>The change is archived. I’ll rerun OpenSpec list/all validation, checker, i18n, and whitespace to confirm the post-archive state is clean.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 47 / commentary</h3>
+<div class="time">2026-06-23 09:14:39 +0800</div>
+<pre>Post-archive OpenSpec has no active changes; checker and whitespace still pass. I’ll run the final unit/i18n/doc build pass once more after archive to make sure no archive move affected publication checks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 48 / commentary</h3>
+<div class="time">2026-06-23 09:14:48 +0800</div>
+<pre>Unit tests and source i18n still pass after archive. I’m doing the final docs build now; this will refresh ignored HTML outputs and re-check published HTML.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 49 / commentary</h3>
+<div class="time">2026-06-23 09:15:07 +0800</div>
+<pre>Final docs build passes. I’ll collect the final status and summarize exactly what changed.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 50 / final_answer</h3>
+<div class="time">2026-06-23 09:15:36 +0800</div>
+<pre>已按 P3 计划处理完，change 也已归档。
+
+这次把 `parameter_descriptor.value` 从讨论边界推进成正式的可选 metadata block，只包含：
+
+- `parameter_descriptor.value.type -&gt; VS020020 / access_value_type`
+- `parameter_descriptor.value.unit_source -&gt; VS040013 / unit_source`
+
+同时明确拒绝 `current_value`、`default_value`、`unit`、`min/max`、`step`、`precision`、`readable/writable` 这类 runtime/value/access 混入。P4 access、P5 semantic path、P7 runtime/API 仍保持分离。
+
+主要落点：
+
+- 更新 [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:1)
+- 更新 [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:245)
+- 更新 checker 和测试：[check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/check_parameter_value_sets.py:30)、[test_check_parameter_value_sets.py](/home/iaar/workspace/ccmix-wp/metanc_drafts/tools/tests/test_check_parameter_value_sets.py:1840)
+- 新增 discussion pack：`TP004-parameter-system/discussions/2026-06-23-parameter-descriptor-value-metadata/`
+- OpenSpec 已归档到：`openspec/changes/archive/2026-06-23-formalize-parameter-descriptor-value-metadata/`
+
+验证已通过：
+
+- `python3 -m unittest discover -s tools/tests`：109 tests OK
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py`
+- `openspec validate formalize-parameter-descriptor-value-metadata --strict`
+- `openspec validate --all --strict`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前 `openspec list --json` 返回 `{&quot;changes&quot;:[]}`，没有 active change。未做 commit/push。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:640-640|note=[reused existing TP004 value metadata assets guidance]
+MEMORY.md:527-529|note=[prior parameter descriptor schema binding context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:16:49 +0800</div>
+<pre>P3处理结束了是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 09:17:05 +0800</div>
+<pre>是，**P3 已处理结束**。
+
+当前状态是：
+
+- `parameter_descriptor.value` 已正式化为可选 metadata block。
+- 已落两个字段：`value.type`、`value.unit_source`。
+- checker/tests/docs/i18n/HTML build 都已通过。
+- OpenSpec change 已归档到 `openspec/changes/archive/2026-06-23-formalize-parameter-descriptor-value-metadata/`。
+- `openspec list --json` 已是 `{&quot;changes&quot;:[]}`。
+
+但还有一点：**还没 commit/push**。所以准确说是：P3 本地实现和归档完成，等待提交发布。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:18:20 +0800</div>
+<pre>看一下剩余的P</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 09:18:45 +0800</div>
+<pre>我先按当前工作树确认，不只按刚才印象答；重点看 P3-P7 计划页、current-state 页和 OpenSpec active 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 09:18:57 +0800</div>
+<pre>剩余 P 现在是：
+
+- **P4 `parameter_descriptor.access`**：未处理。下一步应单独讨论 access metadata，不能和 P3 value 混在一起；非目标仍是 permission system、runtime API、UI enable/disable、直接恢复 `access.readable/writable`。
+- **P5 Semantic Path Grammar**：未处理。要讨论 path grammar 和 binding rules，但不能替代 `parameter_id`，也不做 runtime path resolver。
+- **P6 Owner/Scope Promotion**：未处理。只在有证据、真实 descriptor 示例和 checker coverage 时，一对一对提升。
+- **P7 Runtime/API And Active-Profile Handoff**：未处理。当前仍路由到 runtime/configuration；TP004 不定义 active-profile selection、profile loader、runtime registry/API。
+- **P3 后续余量**：主体已结束，但只正式化了 `value.type` 和 `value.unit_source`。更宽的 concrete unit、default、constraint、precision、min/max、runtime current value 都仍不属于 P3 当前完成范围，若要做必须另开后续 slice。
+
+当前 `openspec list --json` 是 `{&quot;changes&quot;:[]}`，没有 active change。工作树里有 P3 已完成但未 commit 的本地改动。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:19:19 +0800</div>
+<pre>更宽的 concrete unit、default、constraint、precision、min/max、runtime current value 都仍
+    不属于 P3 当前完成范围，若要做必须另开后续 slice。 这部分是不是目前没有计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 09:19:34 +0800</div>
+<pre>是，目前**没有正式计划**。
+
+现在已有的计划只到这个粒度：
+
+- P3 已完成：只做 `value.type`、`value.unit_source`
+- P4：`parameter_descriptor.access`
+- P5：semantic path grammar
+- P6：owner/scope promotion
+- P7：runtime/API &amp; active-profile handoff
+
+你提到的这批：
+
+- concrete unit
+- default
+- constraint
+- precision
+- min/max
+- runtime current value
+
+目前只是被明确列为 **deferred / non-goals**，没有单独 P 编号、没有 proposal、没有 tasks，也没有 checker 计划。
+
+如果后面要排，我建议不要打包成一个“大 P3 后续”，而是拆：
+
+- `value.unit` / concrete unit governance：单独一片
+- `default/min/max/precision/constraint`：单独一片，偏 descriptor value constraint metadata
+- `runtime current value`：不要放 TP004 descriptor，应该走 P7 或 runtime/configuration handoff
+
+当前最稳的下一步还是 **P4 access metadata**。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:20:01 +0800</div>
+<pre>你看看适合放到什么计划里，还是新列计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 09:20:27 +0800</div>
+<pre>我会按 explore 方式评估，不直接改文档。先对照当前 P3-P7 计划和 status 页，把这些 deferred 项逐个归类到“已有 P 内”“新 P”“不放 TP004 descriptor”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 09:20:58 +0800</div>
+<pre>我建议**新列计划**，不要塞进现有 P4-P7。
+
+归类上是这样：
+
+- **P4 access**：只放 `parameter_descriptor.access`，不放 value default/min/max。
+- **P5 semantic path**：只放 path grammar，不放 value constraint。
+- **P6 owner/scope promotion**：只放 owner/scope pair 提升。
+- **P7 runtime/API handoff**：可以覆盖 `runtime current value` 的归属问题，但不应把 current value 做成 descriptor 字段。
+
+更合适的新计划：
+
+- **P8 Value Unit Governance**
+  - 讨论 concrete unit，比如 `mm`、`deg`、`mm/min`。
+  - 前提是先决定 unit 是全局 value set、profile-owned value set，还是 owner/component/profile 派生。
+  - 这应接在 P3 之后，但不急于在 P4 前做。
+
+- **P9 Value Constraint Metadata**
+  - 讨论 `default`、`min`、`max`、`step`、`precision`、constraint language。
+  - 这比 unit 更危险，因为很多约束会依赖 machine profile、axis、component、controller state。
+  - 第一版只能做 metadata 边界，不应做 runtime enforcement。
+
+- **P7 扩展项：Runtime Current Value Handoff**
+  - `runtime current value` 不建议进入 P8/P9，也不建议作为 `parameter_descriptor.value.current_value`。
+  - 应放在 P7 里作为 runtime/configuration handoff：TP004 只描述 descriptor metadata，当前值由 runtime/owner storage/API 负责。
+
+推荐顺序我会排成：
+
+1. P4 access metadata
+2. P5 semantic path grammar
+3. P6 owner/scope promotion
+4. P7 runtime/API &amp; current-value handoff
+5. P8 concrete unit governance
+6. P9 value constraint metadata
+
+原因：先把 access/path/runtime 边界讲清楚，再做 unit 和 constraint，不然 `default/min/max` 很容易误读成 runtime storage 或实时校验规则。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:655-658|note=[prior narrow sequence deferred value metadata after access policy and semantic path]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:23:02 +0800</div>
+<pre>ok 按这个列入计划文档</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 09:23:31 +0800</div>
+<pre>我会把它落到现有稳定锚点 `2026-06-22-p3-p7-follow-up-plan`，并同步中文 reader 页面；不新开实现 change，因为这是计划文档更新，不是开始 P8/P9 实现。先确认相关投影文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 09:23:40 +0800</div>
+<pre>我会更新英文源 report、中文 reader report，并让 book/root/en include 继续自动引用。更新后跑 i18n/source check 和 docs build，确保计划页可发布。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 09:24:46 +0800</div>
+<pre>计划 report 已更新为 P3-P9。为了标题和导航不误导，我会同步 README/index/session 中的 P3-P7 字样，以及月索引和 SUMMARY 标题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 09:24:56 +0800</div>
+<pre>我找到了一批标题和摘要仍写 P3-P7。虽然目录名不改，页面可显示为 P3-P9；我会同步可见标题、summary、session 决策和 current-state 锚点。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 09:25:59 +0800</div>
+<pre>上一轮 patch 因中文 index 文本和预期不完全一致没有应用；我会拆成小 patch，逐个更新，避免误改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 09:26:09 +0800</div>
+<pre>我会先改源 README/session 和 book/zh index 这几处可见标题，再处理 SUMMARY/月索引/current-state 中的引用文字。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 09:26:44 +0800</div>
+<pre>核心页面已同步为 P3-P9。现在我会更新目录、月索引和 current-state 锚点，避免读者看到旧标题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 09:27:28 +0800</div>
+<pre>我会再扫一次旧的 P3-P7 可见文字。路径名保留旧 slug 是可以接受的，但页面标题和导航应显示 P3-P9。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 09:27:47 +0800</div>
+<pre>Plan text and i18n structure checks are clean. I’ll run the docs build so the published reader output stays consistent, then report the exact files touched.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 09:28:11 +0800</div>
+<pre>Docs build and published i18n pass. I’ll collect final status/diff summary now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-23 09:28:32 +0800</div>
+<pre>已把计划文档更新成 **P3-P9**，把你提到的两类后续项列进计划里：
+
+- **P8 Value Unit Governance**：具体工程单位治理，比如 `mm`、`deg`、`mm/min`，重点是决定 global / profile-owned / owner/component derived。
+- **P9 Value Constraint Metadata**：`default`、`min`、`max`、`step`、`precision`、constraint metadata，明确不做 runtime enforcement。
+- **P7** 也补了一条：runtime current value 归 runtime/configuration handoff，避免变成 `parameter_descriptor.value.current_value`。
+
+同步更新了：
+
+- `TP004-parameter-system/discussions/2026-06-22-p3-p7-follow-up-plan/report.md`
+- 对应中文 reader report/session/index
+- topic/root/en/zh `SUMMARY.md`
+- 6 月 discussion index
+- current-state 页里的计划锚点，从 P3-P7 改成 P3-P9
+
+验证已跑：
+
+- `python3 tools/check_docs_i18n_sync.py`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+都通过。当前这仍是未提交的本地改动，和刚才 P3 完成改动在同一批工作树里。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:658-658|note=[prior narrow sequential plan used to place P8 and P9 after existing boundaries]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:06:01 +0800</div>
+<pre>看一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:06:23 +0800</div>
+<pre>我先看当前工作树、P3-P9 计划页和 current-state 的推荐顺序，再给你一个“下一步该做什么”的直接判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 13:06:43 +0800</div>
+<pre>下一步计划按当前 P3-P9 顺序看，**应该先做 P4：`parameter_descriptor.access` metadata boundary**。
+
+当前状态：
+
+- P3 已完成本地实现和归档，但还没 commit/push。
+- P3-P9 计划文档已更新，本地未提交。
+- `openspec list --json` 是 `{&quot;changes&quot;:[]}`，没有 active change。
+
+推荐下一步分两段：
+
+1. **先收口当前本地改动**
+   - commit P3 formalization + P3-P9 plan update。
+   - push 到 `origin/main`。
+   - 这是必要的，否则后续 P4 会叠在未发布改动上，历史不好读。
+
+2. **再开 P4 discussion/proposal**
+   P4 目标只讨论 `parameter_descriptor.access`，不要实现权限系统或 runtime API。
+
+P4 建议边界：
+
+- 讨论 access 是 descriptor-level metadata、instance-level metadata，还是 runtime capability。
+- 评估现有资产：
+  - `VS020019 / access_capability`
+  - `VS010026 / access_context`
+  - `VS070001 / activation_timing`
+  - `VS070002 / persistence_policy`
+- 明确不直接恢复 `access.readable: true` / `access.writable: true`。
+- 产出一个 P4 discussion pack，先定边界；是否 formalize schema field 另开 change。
+
+所以最实际的下一步是：**commit+push 当前 P3/P3-P9 批次，然后进入 P4 access metadata 讨论。**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[existing TP004 follow-up planning anchor]
+MEMORY.md:706-739|note=[P4 order and P3 drift guardrail]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:13:27 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:13:59 +0800</div>
+<pre>我按这个执行：先把当前 P3 formalization + P3-P9 plan 批次重新验证、commit、push；推完后再把 P4 的起点单独列出来，不和这次提交混在一起。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 13:14:19 +0800</div>
+<pre>OpenSpec 没有 active change，当前 diff 是预期批次。现在跑提交前验证：tests、checker、i18n、OpenSpec、docs build、whitespace。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 13:14:31 +0800</div>
+<pre>Core checks pass. I’m running docs build now; it also checks published HTML i18n.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 13:14:45 +0800</div>
+<pre>All validations pass. I’ll stage the tracked and new files for this batch, then inspect staged diff before commit.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 13:15:10 +0800</div>
+<pre>Staging is done. I’ll inspect staged status/stat and then commit with a focused docs message.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 13:15:23 +0800</div>
+<pre>Staged diff matches the intended batch. I’m committing now as `docs: formalize TP004 value metadata`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 13:15:37 +0800</div>
+<pre>Commit `dac200c` is created. I’m checking status, then pushing `main` to origin.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 13:15:51 +0800</div>
+<pre>Local `main` is ahead by one commit. I’m pushing now, then I’ll verify `HEAD` equals `origin/main` and give the P4 starting point.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 13:16:09 +0800</div>
+<pre>Push succeeded. I’ll do a final repo state check and confirm there are no active OpenSpec changes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-23 13:16:24 +0800</div>
+<pre>已完成并推送。
+
+- Commit: `dac200c docs: formalize TP004 value metadata`
+- 已 push 到 `origin/main`
+- 当前状态：`main...origin/main`
+- OpenSpec active changes：`{&quot;changes&quot;:[]}`
+
+提交前验证已通过：
+
+- `python3 -m unittest discover -s tools/tests`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 tools/check_docs_i18n_sync.py`
+- `openspec validate --all --strict`
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+下一步就是 **P4 `parameter_descriptor.access` metadata boundary**。建议先做 discussion/proposal，不直接上 schema/checker：先判断 access 是 descriptor-level default、instance-level capability，还是 runtime capability，并评估 `access_capability`、`access_context`、`activation_timing`、`persistence_policy` 这些现有资产。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:20:23 +0800</div>
+<pre>看一下P4详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:20:47 +0800</div>
+<pre>我会按 explore 方式处理：不改文件，先对照现有 P3-P9 计划和 TP004 里已有 access 相关 value sets/schema fields，再给 P4 的可执行详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 13:21:55 +0800</div>
+<pre>我先按 OpenSpec 探索模式看 P4，不会改文件。重点核对当前计划文档和已有 access 相关定义，避免把 P4 又扩大成 runtime/API slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 13:22:06 +0800</div>
+<pre>已有计划里 P4 只是标题级边界，我现在补查它依赖的现有 access 定义：哪些已经是 access definition 的字段，哪些不能直接搬成 parameter descriptor 字段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 13:22:23 +0800</div>
+<pre>核对下来，P4 最敏感的点是命名：现有 `access_definition.access_contract.readable/writable` 用的是 `true/false` token，但 descriptor 侧已经明确拒绝把它们原样恢复成 `access.readable/access.writable`。所以 P4 应该先做边界包，再决定是否开形式化 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 13:22:35 +0800</div>
+<pre>我再确认一下记忆索引的行号，最终答复会把“为什么 P4 要先收窄”的依据标清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-23 13:23:34 +0800</div>
+<pre>**P4 详细计划**
+
+当前 repo 状态：`openspec list --json` 是 `{&quot;changes&quot;:[]}`，也就是 P4 还没有 active change。P4 目前的锚点在 [report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-22-p3-p7-follow-up-plan/report.md:48)，目标是把 `parameter_descriptor.access` 和 P3 的 `value` metadata 分开讨论。
+
+我建议 P4 按这个顺序走：
+
+- 先做 **P4 access boundary discussion pack**，不直接开 schema/checker 实现。
+- 明确四层边界：`access_definition` 是来源/证据，`parameter_descriptor.access` 是描述符级访问元数据，instance access 是具体实例能力，runtime access 是当前运行时允许/拒绝。
+- 盘点现有 access 资产：`access_definition.access_contract.activation_timing/persistence_policy/readable/writable/guards` 已有 schema-field 绑定，见 [SCHEMA-FIELDS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/SCHEMA-FIELDS.md:182)。
+- 明确不能直接恢复 `access.readable: true` / `access.writable: true`，这已经在当前 descriptor slice 被拒绝，见 [PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:183)。
+- 对四个候选 value set 做归位判断：`access_capability` 目前只是 `true/false` 且用于 access definition；`access_context` 更像 runtime/validation context；`activation_timing` 和 `persistence_policy` 更可能进入 descriptor 级 metadata。
+- P4 推荐先输出“边界决定”，而不是马上加 `parameter_descriptor.access.*` 字段。
+
+**推荐的 P4 决策目标**
+
+- `parameter_descriptor.access` 不表达实时可读/可写结果。
+- descriptor 侧最多表达 owner 声明的访问策略引用、激活时机、持久化语义。
+- Siemens / MetaNC native access definitions 作为证据来源，不直接变成 descriptor 字段。
+- `access_context` 留给 validation/runtime 场景，不在 P4 首轮塞进 descriptor。
+- `guards` 继续属于 access definition 或后续 runtime/API slice，不在 P4 做执行语义。
+
+**P4 产物**
+
+- 新 discussion pack：建议路径 `TP004-parameter-system/discussions/2026-06-23-p4-parameter-descriptor-access-boundary/`。
+- `report.md`：记录 access 四层边界、现有资产归位、候选字段是否推进。
+- `session.md`：保留这次讨论过程和结论。
+- 导航/中英文 reader projection：按现有 TP004 discussion pack 方式接入。
+- 暂不新增 checker 行为；除非讨论后决定开 P4 formalization change。
+
+**验收标准**
+
+- 读者能说清楚 P3 value metadata 和 P4 access metadata 的差别。
+- 文档不会把 `access.readable/access.writable` booleans 恢复进 descriptor。
+- 现有 access definition 被用作 evidence，不被误认为 descriptor schema。
+- 后续若要形式化字段，应另开 `formalize-parameter-descriptor-access-metadata` 这类 change。
+
+我建议下一步先落 P4 discussion pack，把边界写实，再决定是否进入字段形式化。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor and P3 boundary context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:28:40 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:29:03 +0800</div>
+<pre>我来把 P4 先按“discussion pack + 导航/投影 + 验证”的方式落到文档里，不开 runtime/API 或 checker 行为。先读一下适用的执行技能和现有 pack 模式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 13:29:29 +0800</div>
+<pre>当前没有 active OpenSpec change，所以这次我按 repo 里已有 TP004 discussion-pack 发布模式执行，不伪造一个 change。接下来会先对齐 P3 pack 的目录/导航结构，再补 P4 文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 13:29:57 +0800</div>
+<pre>我已经确认当前工作树是干净的。现在会复用 2026-06-23 P3 pack 的同一套目录和 wrapper 模式，新增 P4，不改现有 checker/schema 绑定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 13:30:21 +0800</div>
+<pre>我开始看导航和索引文件，先确认 P3 最近一次是怎么接入的，然后用同样方式补 P4，避免相对路径出错。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 13:30:37 +0800</div>
+<pre>我会新增源 discussion pack、topic/root book wrapper、英文/中文 i18n 页面和 2026-06 索引/SUMMARY 链接。内容只记录 P4 边界和候选字段归位，不改 `openspec/SCHEMA-FIELDS.md` 或 checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 13:31:16 +0800</div>
+<pre>我会同时看一下当前状态页是否已经有 P3/P4 计划入口；如果它已经承担“下一步状态”角色，P4 pack 也应该在那里留一个入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 13:31:40 +0800</div>
+<pre>P4 pack 只是讨论落点，但当前状态页已经是 TP004 后续入口。我会在状态页加一条“P4 已记录为边界讨论，但未正式化 descriptor 字段”的说明，并把推荐切片里的 P4 项指向新 pack。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 13:32:01 +0800</div>
+<pre>我现在补文件内容和导航；P4 会保持“边界记录”性质。之后会跑 docs/i18n/value-set/OpenSpec 验证，确认没有路径或投影问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 13:32:09 +0800</div>
+<pre>我需要创建/更新多处 Markdown。会用 patch 做可审查的小范围修改，避免脚本式重写把现有导航顺序打乱。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 13:33:26 +0800</div>
+<pre>P4 源包和投影页已加上。接下来更新索引/SUMMARY/current-state，保持 P4 位于 2026-06-23 P3 正式化之后。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 13:34:24 +0800</div>
+<pre>导航和英文 source current-state 已更新。中文 current-state 是独立读者页，不是 include，所以我还需要同步同一段中文状态说明，避免中英文读者面不一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 13:34:52 +0800</div>
+<pre>我先做一次快速一致性检查：新文件是否齐全、链接是否能被 rg 找到、有没有意外改到 schema/checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-23 13:35:14 +0800</div>
+<pre>快速检查显示新 pack 还是 untracked，所以 `git diff --stat` 只显示了已跟踪文件。接下来我会跑完整 status，再先做文档构建；如果 include 路径有错，构建会暴露出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-23 13:35:30 +0800</div>
+<pre>修改面现在集中在文档和导航，没有动 schema/checker 源。接下来跑验证栈：unit/value-set/i18n/OpenSpec 先并行，随后构建 published docs 再做发布树检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-23 13:35:37 +0800</div>
+<pre>第一轮验证通过。现在构建 HTML，并在构建后跑 published-html i18n 检查和 whitespace diff 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-23 13:35:57 +0800</div>
+<pre>构建没有 include 报错。接下来做发布 HTML 检查、whitespace 检查和最终 git diff 摘要。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-23 13:36:22 +0800</div>
+<pre>验证通过，当前只剩文档变更和新增 P4 pack 未提交。为了确认新 pack 内容没有漂移，我会再扫一遍 access 关键词和未跟踪文件内容，然后决定是否需要细调。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-23 13:37:09 +0800</div>
+<pre>新 pack 内容看起来保持在边界讨论内，没有把候选字段提升成 schema。还有一个细节：`git diff --check` 不覆盖 untracked 新文件，我会对新文件单独扫尾随空白，再做最终状态汇总。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-06-23 13:37:45 +0800</div>
+<pre>已处理 P4，先按边界讨论落文档，未把它推进成 schema/checker slice。
+
+主要变更：
+- 新增 P4 discussion pack：[README.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p4-parameter-descriptor-access-boundary/README.md:1)、[report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p4-parameter-descriptor-access-boundary/report.md:1)、[session.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p4-parameter-descriptor-access-boundary/session.md:1)
+- 更新 current-state，把 P4 标成 `parameter_descriptor.access` 的 access-boundary discussion，不新增正式 descriptor access 字段：[parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:121)
+- 补齐 topic/root/en/zh 导航和中文 reader 页面
+- 保持非目标：不恢复 `access.readable/access.writable`，不做 runtime/API、权限、UI enable/disable、checker/schema 变更
+
+验证已跑：
+- `python3 -m unittest discover -s tools/tests`：109 tests OK
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `openspec validate --all --strict`：No items found to validate
+- `./tools/build_docs_html.sh`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `git diff --check`：passed
+
+当前变更还没 commit/push。下一步可以直接提交这批 P4 文档变更。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor and P3 boundary context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:39:55 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:40:21 +0800</div>
+<pre>我按上一步的收口来处理：先复核当前 diff 和验证状态，再把 P4 文档变更 commit/push。提交前我会重新跑必要检查，避免拿上一轮结果当依据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 13:40:54 +0800</div>
+<pre>当前只有 P4 文档包和导航/状态页变更，没有看到无关文件。现在重新跑验证栈，验证通过后再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 13:41:00 +0800</div>
+<pre>核心检查通过。现在重新构建 docs HTML，并做 published-html 与 whitespace 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 13:41:22 +0800</div>
+<pre>HTML 构建正常，没有 include 路径报错。我做最后两个检查后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 13:41:42 +0800</div>
+<pre>验证栈已经重新跑完，未发现问题。现在我会把 P4 文档包和导航状态页一起 staged，查看 staged diff 后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 13:42:00 +0800</div>
+<pre>已 staged。提交前我会看 staged 文件列表和 diff 摘要，确认没有把生成 HTML 或无关文件带进去。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 13:42:07 +0800</div>
+<pre>Staged 内容只包含 P4 文档和导航，没有生成 HTML。现在提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 13:42:18 +0800</div>
+<pre>提交已创建。现在 push，然后检查 `HEAD == origin/main` 和工作树状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 13:42:36 +0800</div>
+<pre>push 完成。我做最后的远端同步和 clean-state 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-23 13:42:53 +0800</div>
+<pre>已处理并推送。
+
+提交：
+`4860071 docs: add TP004 P4 access boundary plan`
+
+这次落的是 P4 access-boundary 文档包和导航/current-state 更新，没有新增 schema/checker/runtime 行为。远端已同步：`HEAD == origin/main`，工作树干净，`openspec list --json` 仍是 `{&quot;changes&quot;:[]}`。
+
+验证重新跑过：
+- `python3 -m unittest discover -s tools/tests`：109 OK
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `openspec validate --all --strict`：No items found
+- `./tools/build_docs_html.sh`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `git diff --check`：passed</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:43:07 +0800</div>
+<pre>剩余的P所有详细计划列一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:43:38 +0800</div>
+<pre>我先按探索/计划口径查当前 repo 里的 P3-P9 锚点和刚落的 P4 状态，不改文件。然后把剩余 P 按可执行 slice 列清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 13:43:59 +0800</div>
+<pre>当前没有 active change。P3 已正式化，P4 已作为边界 discussion pack 落库；所以“剩余 P”我按 P5-P9 来列，先再核对 repo 里的计划锚点和状态页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 13:44:17 +0800</div>
+<pre>我还需要把 P8/P9 的完整段落读完，确保详细计划不漏掉非目标和验收口径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-23 13:45:12 +0800</div>
+<pre>按当前 repo 状态：P3 已正式化，P4 已落 access-boundary discussion pack；剩余主线按 [P3-P9 计划锚点](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-22-p3-p7-follow-up-plan/report.md:74) 应是 **P5-P9**。另外，若要把 P4 从“边界讨论”推进到字段正式化，应另列 **P4.1**，不混进 P5。
+
+**P5 Semantic Path Grammar**
+- 目标：定义 semantic path 的 grammar/binding 规则，但不替代 `parameter_id`。
+- 重点问题：固定 token vs 变量绑定；path 是否由 `owner/scope/semantic_name/instance_keys` 派生；唯一性在哪层检查；和 controller-native variable expression 的区别。
+- 建议产物：P5 grammar discussion pack。
+- 非目标：不做 enum-style path value set；不做 URL/file-path 命名；不替代 `parameter_id`；不做 runtime path resolver。
+- 验收：读者能说清 semantic path 用于 display/search/mapping/projection，不是 descriptor identity。
+- 下一步可执行：先落 grammar pack，再决定是否开 checker slice。
+
+**P6 Owner/Scope Promotion**
+- 目标：只在有真实 source evidence 时提升新的 `(owner, scope)` pair。
+- 重点问题：证据来源；owner token 归属哪个 topic；scope 是否已治理；是否有真实 descriptor example；是否冲突当前 checker-backed pairs。
+- 建议产物：每个 pair 单独一个 promotion discussion/change。
+- 非目标：不批量提升；不从 provisional notes 直接提升；不接受 placeholder owner；正式 acceptance 必须有 checker tests。
+- 验收：每个 accepted pair 有 evidence、descriptor example、checker coverage、usage-index refresh。
+- 下一步可执行：先选一个候选 pair，例如 current-state 里仍 provisional 的 `motion -&gt; ...`、`hal -&gt; machine`、`magazine -&gt; machine`，但必须先补证据。
+
+**P7 Runtime/API And Active-Profile Handoff**
+- 目标：明确 runtime/API、active-profile selection/loading 不属于当前 TP004 schema/checker，除非另开 runtime/configuration change。
+- 重点问题：TP004 是否只消费 external active-profile context；active-profile selection/loading 是否转 TP005/runtime/configuration；runtime current value 如何避免变成 `parameter_descriptor.value.current_value`。
+- 建议产物：TP004 handoff/backlog note，或单独 runtime/configuration proposal。
+- 非目标：不在 TP004 定 active-profile selection rule；不做 profile loader；不做 runtime registry/API；不做 descriptor-owned current-value storage；不做 persistence/import/export。
+- 验收：读者能看出 TP004 只是消费 runtime/configuration handoff，不拥有 active-profile 行为。
+- 下一步可执行：先落 handoff note，比直接开 runtime change 更稳。
+
+**P8 Value Unit Governance**
+- 目标：在 P3 value metadata 稳定后，讨论 concrete engineering unit 的治理位置。
+- 重点问题：具体单位是 global governed tokens、owner-owned tokens，还是 profile-owned tokens；`unit_source` 如何导出 concrete unit；第一批单位是否需要 `mm/deg/mm/min`；zero-offset 的 translation/rotation/scale/mirror 如何避免被压成一个 unit model。
+- 建议产物：P8 unit-governance discussion pack。
+- 非目标：不做 runtime unit conversion engine；不做 controller-state-dependent unit resolution；不做 default/min/max；不做 current-value storage；不改 P3 `value.unit_source` 语义。
+- 验收：读者能知道 concrete unit token 应在哪里治理，但不会误读成 runtime conversion rule。
+- 下一步可执行：先用 zero-offset component 差异做例子，决定 unit token 所属层级。
+
+**P9 Value Constraint Metadata**
+- 目标：在 unit governance 和 runtime handoff 清楚后，再讨论 descriptor-level constraint metadata。
+- 重点问题：哪些 constraint 是稳定 descriptor metadata，哪些依赖 machine profile、axis、component、controller state 或 owner runtime policy；`default/min/max/step/precision` 是独立字段还是 structured block；checker 只校验 metadata shape 还是更多。
+- 建议产物：P9 constraint-metadata discussion pack；若后续开 checker slice，只能校验 metadata shape，不能声称 runtime enforcement。
+- 非目标：不做 runtime constraint enforcement；不做 current-value storage；不做 write validation engine；不做 controller-state-dependent limit resolution；不做 UI validation。
+- 验收：读者能区分 descriptor constraint metadata、runtime write validation、live controller limits。
+- 下一步可执行：等 P8 单位边界清楚后再开，不建议提前做。
+
+**建议顺序**
+- P5 先做，因为 semantic path grammar 影响后续 mapping/projection，但不碰 runtime。
+- P6 只在有证据时穿插做，不要为了推进计划硬提 owner/scope。
+- P7 做 handoff note，避免 P8/P9 被 runtime current value 和 active profile 拖偏。
+- P8 再讨论 concrete unit。
+- P9 最后讨论 default/min/max/precision/constraint。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor context]
+MEMORY.md:706-709|note=[stable P3-P7 order and publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:45:25 +0800</div>
+<pre>意思是P5单做</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 13:45:38 +0800</div>
+<pre>是的，建议 **P5 单做**。
+
+原因很简单：P5 是 **Semantic Path Grammar**，它本质上是在定义“路径语法和绑定规则”，容易和 `parameter_id`、`semantic_name`、instance binding、runtime resolver 混在一起。单做可以把边界守住：
+
+- P5 只讨论 path grammar / binding rules；
+- 不替代 `parameter_id`；
+- 不把 path 做成 enum/value set；
+- 不做 runtime path resolver；
+- 不顺手做 P6 owner/scope promotion；
+- 不提前碰 P7 runtime/API；
+- 不带入 P8/P9 的 unit/constraint。
+
+我建议 P5 第一步只落一个 discussion pack：明确 semantic path 的用途、语法组成、变量绑定来源、唯一性检查位置、和 controller-native expression 的区别。等这个边界稳定后，再判断是否需要后续 checker slice。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 13:46:07 +0800</div>
+<pre>做一下P5的详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 13:46:37 +0800</div>
+<pre>我先按探索/计划口径处理 P5，不改文件。先核对当前 P3-P9 锚点、current-state 和已有 descriptor/path 相关文本，再给你一版可执行的 P5 详细计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 13:46:55 +0800</div>
+<pre>当前没有 active OpenSpec change。我会查已有 `semantic_path` / `canonical_path` / `native path` 用法，P5 计划要以这些现有边界为依据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 13:47:24 +0800</div>
+<pre>已有检索显示 P5 以前反复被标成“暂缓且必须和 descriptor identity 分开”。我再抓几个关键源页面的行号：descriptor 草案、scope 变量、以及现有 canonical path 示例。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 13:47:59 +0800</div>
+<pre>我已经拿到 P5 的核心约束：它只能做 grammar/binding 边界，不碰 identity/runtime。再补两个现有 canonical_path 示例行号，计划里会明确它们只是历史/证据，不是最终字段形态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-23 13:48:33 +0800</div>
+<pre>P5 建议仍然 **单独做 discussion pack**，不要直接开 checker/schema。它的目标是把 `semantic_path` 的语法和绑定规则讲清楚，但不把它变成新的 identity 或 runtime resolver。
+
+**P5 目标**
+- 定义 Semantic Path Grammar 的边界：它是 MetaNC 语义地址/展示/搜索/映射/投影用的 path。
+- 明确它和 `parameter_id` 的关系：`parameter_id` 仍是稳定 descriptor identity，semantic path 不能替代它。
+- 明确它和 `semantic_name` 的关系：`semantic_name` 是 owner/scope 内局部名，不等于 path grammar。
+- 明确它和 controller-native expression 的关系：`$TC_DP3[...]`、`$P_UIFR[...]`、`$MA_...` 仍是 native/language view，不是 semantic path grammar 本身。
+
+**P5 第一阶段产物**
+- 新增 discussion pack：`2026-06-23-p5-semantic-path-grammar-boundary`
+- `report.md`：记录 grammar 决策、候选形状、非目标、后续 formalization 条件。
+- `session.md`：记录为什么 P5 不替代 descriptor identity。
+- 接入 topic/root/en/zh 导航和 2026-06 index。
+- 更新 current-state：P5 已有 boundary discussion，但未正式化 schema/checker。
+
+**P5 要回答的问题**
+- path segment 哪些是固定 token，哪些是变量 binding？
+- 变量来源是 `scope.path_variables`、`instance_keys`、还是 descriptor 字段？
+- path 是声明式字段，还是由 `owner/scope/semantic_name/instance_keys` 派生？
+- 唯一性检查放在哪一层：descriptor、instance binding、projection，还是后续 runtime registry？
+- 旧文档里的 `canonical_path` 应如何迁移到 `semantic_path_template` 说法？
+- access-definition 里的 `descriptor_map.canonical_path` 是 evidence/source view，还是应被新 grammar 接管？
+
+**候选 grammar 方向**
+```yaml
+semantic_path_template:
+  template: axis.{axis_instance}.motion.max_velocity
+  variables:
+    axis_instance:
+      source: scope.path_variables
+      scope: axis
+```
+
+或零偏例子：
+```yaml
+semantic_path_template:
+  template: zero_offset.{frame}.{axis}.{component}
+  variables:
+    frame:
+      source: frame_axis_component.frame
+    axis:
+      source: frame_axis_component.axis
+    component:
+      source: frame_axis_component.component
+```
+
+这只是讨论候选，不在 P5 第一阶段变成正式 `parameter_descriptor.*` 字段。
+
+**明确非目标**
+- 不新增 enum-style path value set。
+- 不把 semantic path 做成 URL/file path/database key。
+- 不替代 `parameter_id`。
+- 不把 `semantic_path_template` 设为 required descriptor field。
+- 不做 runtime path resolver。
+- 不做 native expression parser。
+- 不做 P6 owner/scope promotion。
+- 不做 P7 runtime/API handoff。
+- 不处理 P8 unit 或 P9 constraint。
+
+**建议验收标准**
+- 读者能区分：`parameter_id` 是 identity，semantic path 是 semantic projection/search/mapping path。
+- 读者能区分：semantic path 不是 Siemens/native expression。
+- 读者能看懂固定 segment 和 variable binding 的来源。
+- 文档明确说明：P5 只是 grammar boundary，checker slice 若需要必须后开。
+- 旧 `canonical_path` 用法有归位说明，不再让人误读成最终字段名或 URL 路径。
+
+**后续 slice 判断**
+- P5 完成后，如果只需要说明边界，就结束。
+- 如果要正式化字段，再开 P5.1：`formalize-semantic-path-template-metadata`。
+- 如果要 checker，只能校验 template shape 和 variable binding，不做 runtime resolution。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:04:52 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:05:20 +0800</div>
+<pre>我按刚才的 P5 计划落一个 discussion pack，不做 schema/checker/runtime 变更。先复核执行技能、当前工作树和已有 P4/P3 pack 模式，然后按同样发布结构接入导航和验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 14:05:38 +0800</div>
+<pre>当前没有 active change，我会沿用 discussion-pack 发布模式；这不是 OpenSpec implementation change。先查工作树和 P4 pack 结构，确认从最新干净状态开始。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 14:05:59 +0800</div>
+<pre>工作树干净。接下来补 P5 源文档和各层 wrapper，内容会明确 `semantic_path_template` 只是候选 grammar，不新增正式 descriptor 字段。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 14:06:12 +0800</div>
+<pre>我开始创建 P5 pack 和 wrapper。P5 会记录旧 `canonical_path` 用法的归位：作为历史/证据，不作为本轮新字段或 URL/file-path 规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 14:06:29 +0800</div>
+<pre>目录已建好。现在写入 P5 源包、topic/root/en wrapper 和中文读者页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 14:07:55 +0800</div>
+<pre>P5 文档和 wrapper 已创建。现在更新 SUMMARY、2026-06 索引和 current-state，中英文都补入口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 14:09:19 +0800</div>
+<pre>P5 已接入导航和 current-state。现在先做静态核对，确认没有碰 schema/checker，也确认 P5 链接都能被索引找到。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 14:09:33 +0800</div>
+<pre>静态检查符合预期，只是新增文件尚未 tracked。现在跑验证栈；先跑 tests/value-set/i18n/OpenSpec，再构建 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 14:09:49 +0800</div>
+<pre>第一轮验证通过。现在构建 docs HTML；这一步能捕捉 wrapper include 相对路径错误。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 14:10:44 +0800</div>
+<pre>HTML 构建通过。再跑 published-html i18n、whitespace 和新文件尾随空白检查，然后看 diff 摘要。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 14:11:03 +0800</div>
+<pre>验证都通过。diff stat 只显示 tracked 文件；新 P5 文件还未纳入 git。我再查看完整状态和 staged 前文件清单，确认没有生成 HTML 被纳入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 14:11:15 +0800</div>
+<pre>变更范围符合 P5 文档 slice。现在准备 stage/commit/push；提交前会看 staged 列表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-23 14:11:36 +0800</div>
+<pre>已 staged。现在查看 staged diff 清单，确认没有把生成物或无关文件带入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-23 14:11:51 +0800</div>
+<pre>Staged 内容只包含 P5 文档和导航。现在提交并推送，然后做远端同步和 clean-state 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-23 14:12:08 +0800</div>
+<pre>提交已创建。现在 push 到远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-23 14:12:41 +0800</div>
+<pre>push 完成。最后确认本地/远端一致、工作树干净、没有 active changes。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / final_answer</h3>
+<div class="time">2026-06-23 14:13:03 +0800</div>
+<pre>P5 已按“单独 discussion pack”处理并推送。
+
+提交：
+`021d884 docs: add TP004 P5 semantic path plan`
+
+落地内容：
+- 新增 P5 pack：`2026-06-23-p5-semantic-path-grammar-boundary`
+- 明确 `semantic_path_template` 只是候选 grammar boundary
+- 明确不替代 `parameter_id`，不做 path value set、checker、runtime resolver、native parser
+- 更新 topic/root/en/zh 导航和 current-state
+
+验证已重新跑过：
+- `python3 -m unittest discover -s tools/tests`：109 OK
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `openspec validate --all --strict`：No items found
+- `./tools/build_docs_html.sh`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `git diff --check`：passed
+
+当前 `HEAD == origin/main`，工作树干净，`openspec list --json` 仍是 `{&quot;changes&quot;:[]}`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:18:14 +0800</div>
+<pre>看一下下一步计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:18:43 +0800</div>
+<pre>我先按探索模式看当前 repo 状态和 P3-P9 锚点，不改文件。重点确认 P5 已收口后，下一步是直接进 P6 还是先做候选证据筛选。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 14:19:02 +0800</div>
+<pre>工作树干净，没有 active OpenSpec change。现在读 P5/P6/P7 计划段和 current-state 的推荐切片，判断下一步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-23 14:19:31 +0800</div>
+<pre>下一步建议进 **P6，但不要直接 promotion**。先做 **P6 候选 owner/scope 证据筛选 pack**。
+
+原因：P6 的核心要求是“只在有 source evidence 时提升 `(owner, scope)` pair”。当前已 checker-backed 的只有：
+
+- `motion.axis -&gt; axis`
+- `tool_management -&gt; tool_edge`
+- `zero_offset -&gt; frame_axis_component`
+
+当前 provisional 里还有：
+
+- `motion -&gt; machine/channel/axis/spindle`
+- `hal -&gt; machine`
+- `magazine -&gt; machine`
+
+但计划里明确说不能“从 provisional notes 直接 promotion”，所以 P6 第一步应该是筛选，不是直接改 checker。
+
+**下一步 P6.0 计划**
+- 目标：列出每个 provisional owner/scope pair 的证据状态。
+- 输出：discussion pack，例如 `2026-06-23-p6-owner-scope-promotion-candidates`。
+- 内容：
+  - 当前 checker-backed pairs
+  - provisional candidates
+  - 每个 candidate 缺什么证据
+  - 哪些可以进入 P6.1 promotion
+  - 哪些继续保留 provisional
+- 非目标：
+  - 不新增 owner/scope binding
+  - 不改 checker
+  - 不刷新 usage index
+  - 不批量提升
+- 验收：
+  - 每个候选 pair 都有“可提升 / 暂缓 / 需要证据”的判断
+  - 后续 P6.1 只选一个 pair 做正式 promotion
+
+**我建议优先筛选顺序**
+- `motion -&gt; axis` / `motion -&gt; machine/channel/spindle`：风险较高，因为已有 `motion.axis -&gt; axis`，需要避免 owner 粒度倒退。
+- `hal -&gt; machine`：可能 scope 不够准，文档也提示 signal-level scope 可能需要 later scope token。
+- `magazine -&gt; machine`：更可能需要 magazine-owned object scopes，不能硬套 `machine`。
+
+结论：下一步先做 **P6.0 owner/scope promotion candidates evidence review**，不是 P6.1 正式 promotion。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:21:44 +0800</div>
+<pre>P6.0拆分依据列一下，P6.0 P6.1还会有P6.2等等吗，有的话一次性列出来</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:22:11 +0800</div>
+<pre>我按探索口径处理，不改文件。先复核 P6 在 repo 里的计划锚点、current-state 和现有 owner/scope 记录，再把拆分依据和 P6.x 一次列清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 14:22:42 +0800</div>
+<pre>当前工作树干净、无 active change。我会查 P6 计划和已有 owner/scope/provisional 数据，拆分要以这些实际规则为依据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 14:22:55 +0800</div>
+<pre>依据很清楚：P6 不能批量、不能从 provisional 直接提、正式 acceptance 必须有 checker/tests。现在给你按 P6.0 到 P6.n 的一次性拆分。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-23 14:23:16 +0800</div>
+<pre>是的，P6 不应该只拆成 P6.0 / P6.1；按现在文档约束，应该一次拆成 **P6.0 到 P6.4**，其中只有 P6.2 以后才可能真正 promotion。
+
+**拆分依据**
+- P6 计划明确要求：promotion 只能基于 source evidence，不能从 provisional notes 直接提升。
+- P6 非目标明确排除：no batch promotion、no placeholder owner tokens、no promotion from provisional notes alone。
+- P6 acceptance 明确要求：每个 accepted pair 要有 evidence、descriptor example、checker coverage、usage-index refresh。
+- 当前 provisional 里有多个性质不同的候选：`motion`、`hal`、`magazine` 风险不同，不能一锅端。
+- 当前已有 `motion.axis -&gt; axis`，所以 broad `motion -&gt; axis` 可能和已有 owner 粒度冲突，必须先审查。
+
+**P6.0 Owner/Scope Candidate Evidence Review**
+- 目标：只做候选筛选，不 promotion。
+- 范围：盘点当前 checker-backed pairs 和 provisional candidates。
+- 输出：每个候选标成 `ready / blocked / needs-evidence / reject-for-now`。
+- 不做：不改 `owner_scope_bindings`，不改 checker，不刷 usage index。
+- 验收：后续能明确选出一个 P6.1/P6.2 候选，或者明确全部暂缓。
+- 适合先做。
+
+**P6.1 Promotion Target Selection**
+- 目标：从 P6.0 结果里选一个 pair 作为正式 promotion 目标。
+- 范围：只选一个，不批量。
+- 输出：一个 promotion proposal / discussion，例如 `promote-hal-machine` 或 `promote-magazine-machine`，但前提是证据足够。
+- 不做：仍不改 checker，不正式接入。
+- 验收：目标 pair 有明确证据来源、owner 归属、scope 语义、descriptor example 草案。
+- 说明：如果 P6.0 已经能直接判定唯一 ready pair，P6.1 可以很薄，甚至合进 P6.2 的 proposal 前置章节；但逻辑上仍存在。
+
+**P6.2 Single Pair Formal Promotion**
+- 目标：正式提升一个 `(owner, scope)` pair。
+- 范围：只改一个 pair。
+- 典型工作：
+  - 从 `provisional_owner_scope_notes` 移到 `owner_scope_bindings`
+  - 补 minimal descriptor example
+  - 补 checker tests
+  - 更新 `USAGE-INDEX.generated.md`
+  - 更新 current-state / discussion pack / i18n projection
+- 不做：不处理其他 provisional pair，不顺手新增 scope token。
+- 验收：checker 接受新 pair，拒绝未提升 pair；验证栈通过。
+- 这是第一个真正 implementation slice。
+
+**P6.3 Rejected/Deferred Candidate Cleanup**
+- 目标：把 P6.0 里明确不该提升的候选写清楚，避免之后反复讨论。
+- 范围：例如 broad `motion -&gt; axis` 如果被判定会冲突 `motion.axis -&gt; axis`，应记录为什么暂缓或拒绝。
+- 输出：更新 provisional notes 或 discussion pack 的 decision table。
+- 不做：不删除有价值的 future candidate，除非证据明确无效。
+- 验收：读者能知道为什么某些 pair 不能现在 promotion。
+
+**P6.4 Additional Pair Loop**
+- 目标：对下一个 ready pair 重复 P6.1/P6.2。
+- 范围：每次一个 pair。
+- 输出：第二个、第三个 promotion slice。
+- 不做：仍不批量。
+- 验收：每个 pair 独立有 evidence、descriptor example、checker coverage、usage-index refresh。
+
+**建议实际执行顺序**
+- 先做 P6.0。
+- 如果没有 ready pair，停在 P6.0，下一步转 P7 handoff 或补证据。
+- 如果有唯一 ready pair，做 P6.1 + P6.2。
+- 如果有多个 ready pair，也只选一个进 P6.2，其余排队进 P6.4。
+- P6.3 可在 P6.0 后做，也可在 P6.2 后做，取决于是否有明显需要记录的 rejected/deferred 决策。
+
+**当前候选初判**
+- `motion -&gt; machine/channel/axis/spindle`：需要谨慎，尤其 `motion -&gt; axis` 可能与已有 `motion.axis -&gt; axis` 粒度冲突。
+- `hal -&gt; machine`：大概率需要更细的 signal-level scope，不宜直接提。
+- `magazine -&gt; machine`：可能需要 magazine-owned object scope，不宜直接套 `machine`。
+
+所以我建议下一步落 **P6.0**，它是必要的拆分依据记录，不然直接 P6.2 风险太高。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:26:26 +0800</div>
+<pre>落文档了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:26:52 +0800</div>
+<pre>我先快速确认一下当前 repo 里有没有 P6.0/P6.x 文档条目，避免只按聊天记忆回答。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 14:27:09 +0800</div>
+<pre>还没有。当前 repo 里只有原来的 P6 总计划锚点：
+
+- `TP004-parameter-system/discussions/2026-06-22-p3-p7-follow-up-plan/report.md` 里的 `P6: Owner/Scope Promotion`
+
+刚才我列的 **P6.0 / P6.1 / P6.2 / P6.3 / P6.4** 还只是聊天里的拆分方案，尚未落成文档。工作树现在是干净的。
+
+下一步可以把这个拆分落成一个 P6 planning pack，例如：
+
+`TP004-parameter-system/discussions/2026-06-23-p6-owner-scope-promotion-plan/`
+
+并接入 topic/root/en/zh 导航和 current-state。</pre>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:34:55 +0800</div>
+<pre>可以 处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:35:26 +0800</div>
+<pre>我来把 P6.0-P6.4 拆分落成一个 P6 planning discussion pack，并接入 topic/root/en/zh 导航和 current-state。先复核当前干净状态、P6 原计划锚点和验证要求，然后开始改文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 14:35:51 +0800</div>
+<pre>状态干净。现在读取 P6 原计划、现有 owner-scope 表、以及 P5 pack 的发布模式，随后补 P6 计划文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 14:36:03 +0800</div>
+<pre>我会新增 P6 plan pack，明确 P6.0-P6.4 是计划拆分，不做任何 owner/scope promotion 或 checker 改动。然后把 current-state 的 P6 下一步指向这个 pack。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 14:36:23 +0800</div>
+<pre>目录建好了。现在写 P6 源包、wrapper 和中文读者页。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 14:39:04 +0800</div>
+<pre>我继续把 P6 的计划包补到导航和当前状态页里，然后做一次文档/校验链路，确认没有误触 promotion/checker 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 14:39:19 +0800</div>
+<pre>当前新增的 P6 包已经在源树、根文档树、英文/中文发布树里生成了；还差 SUMMARY、2026-06 索引和 current-state 页把它串起来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 14:39:46 +0800</div>
+<pre>我会按现有 P4/P5 的发布形态同步四套导航：专题源书、根书、英文发布树、中文发布树；current-state 只记录 P6 拆分与 P6.0 范围，不改 accepted pair。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 14:40:16 +0800</div>
+<pre>接下来开始打补丁，主要是把 P6 放进目录和状态页的“下一步切片”锚点；这一步只改 Markdown。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 14:40:55 +0800</div>
+<pre>导航已经补上。现在把 current-state 页同步成“P6.0 先证据审查、P6.2 才可能单 pair promotion”的状态，避免后续误读成已经提升。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 14:41:31 +0800</div>
+<pre>进入验证前我先按 verification-before-completion 的要求重新确认校验清单，再跑本仓已有的文档和 checker 验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 14:41:49 +0800</div>
+<pre>我已经确认要用当前这轮新跑的结果作为依据。先检查新增文件清单和关键文本，再跑全量 docs/i18n/OpenSpec 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 14:42:12 +0800</div>
+<pre>关键文本检查能看到 P6.0-P6.4、`owner_scope_bindings` 非目标和导航入口都在。现在跑校验命令；构建 HTML 会单独放在下一步，因为发布 HTML 校验依赖它。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-23 14:42:22 +0800</div>
+<pre>基础校验通过；尾随空白搜索没有命中所以返回 1，这是 rg 的正常“无匹配”结果。下一步构建 docs HTML，并用 published-html 模式再查一次 i18n。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-23 14:42:52 +0800</div>
+<pre>发布 HTML 校验也过了。现在看一遍 diff，确认没有把 P6 做成正式 promotion 或触碰 checker/schema。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-23 14:43:09 +0800</div>
+<pre>我在 diff 里发现英文 current-state 的最后一项编号还没跟着 P6 插入一起顺到 9；先修这个小问题，再重跑相关校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-23 14:43:29 +0800</div>
+<pre>编号修正了。现在重跑变更后的文本检查和校验，确保这次结果是修正后的状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-23 14:43:45 +0800</div>
+<pre>基础验证重跑通过。为了保持 published HTML 同步，我再构建一次 HTML 并跑 published-html 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-23 14:44:01 +0800</div>
+<pre>HTML 构建完成；现在做 published-html 检查和最终 diff 审核。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-23 14:44:23 +0800</div>
+<pre>校验结果和 diff 范围都符合预期：只新增/串联 P6 文档，没有 checker/schema/source index 变更。现在准备按这些文件显式 stage、提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-23 14:44:40 +0800</div>
+<pre>文件已经 stage。提交前我再看 staged diff 名单和统计，确认没有漏掉新增包或多带生成 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-23 14:44:54 +0800</div>
+<pre>staged 范围正确，没有生成 HTML 入库。现在提交这次 P6 计划文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-23 14:45:09 +0800</div>
+<pre>提交已生成：`0f822fb`。现在推送到远端，然后确认本地和 `origin/main` 同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-23 14:45:43 +0800</div>
+<pre>推送完成。最后做状态、HEAD 对齐和 OpenSpec 空变更确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / final_answer</h3>
+<div class="time">2026-06-23 14:46:09 +0800</div>
+<pre>处理完了，P6 拆分已经落文档并推到 `main`。
+
+- Commit：`0f822fb docs: add TP004 P6 owner scope plan`
+- 主计划包：[report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p6-owner-scope-promotion-plan/report.md)
+- 已同步：专题源书、根书、英文发布树、中文发布树的 SUMMARY / 2026-06 索引 / current-state
+- P6 明确拆成 `P6.0` 到 `P6.4`，下一步可执行切片是 `P6.0 Candidate Evidence Review`
+- 本次没有提升任何 owner/scope pair，没有改 `owner_scope_bindings`，没有改 checker/schema/usage index
+
+验证已跑过：
+
+- `python3 -m unittest discover -s tools/tests`：109 tests OK
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `openspec validate --all --strict`：无 active items
+- `./tools/build_docs_html.sh`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `git diff --check`：passed
+- 当前 `HEAD == origin/main == 0f822fbd5b7ec5e67b5b119887000b15c6933839`，工作区干净
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:613-621|note=[TP004 P3-P7 planning anchor context]
+MEMORY.md:706-709|note=[stable P3-P7 order and topic-local publication shape]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-24">
+<h2>Turn 24</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:51:05 +0800</div>
+<pre>P6的分支是都还没有做是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:51:25 +0800</div>
+<pre>我先按仓库当前状态核一下，不按聊天记忆直接回答；重点看 P6 文档、active OpenSpec、以及是否有 checker/schema/pair promotion 变更。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 14:51:57 +0800</div>
+<pre>对，如果你说的是 P6 的执行分支/子切片：`P6.0` 到 `P6.4` 都还没开始执行。
+
+当前只完成了 P6 的计划落文档：
+
+- 已落：[P6 Owner/Scope Promotion Plan](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p6-owner-scope-promotion-plan/report.md:36)
+- `P6.0` 是下一步：candidate evidence review
+- 还没有改 `owner_scope_bindings`
+- 还没有 promotion 任何新 owner/scope pair
+- 还没有 checker/schema/usage-index 变更
+- `openspec list --json` 当前是 `{&quot;changes&quot;:[]}`
+- 工作区干净：`main...origin/main`
+
+所以准确说：P6 计划已完成并发布；P6.0-P6.4 的实际执行都还没做。</pre>
+</article>
+</section>
+<section class="turn" id="turn-25">
+<h2>Turn 25</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:56:23 +0800</div>
+<pre>xP6.0-6.4的详细计划有了吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:56:47 +0800</div>
+<pre>我再打开 P6 计划文档对应段落，确认不是只写了标题，而是每个子切片都有目标/产出/非目标/验收。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 14:57:01 +0800</div>
+<pre>有，P6.0-P6.4 的详细计划已经落文档了，不只是标题。
+
+位置：
+
+- 英文源文档：[report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p6-owner-scope-promotion-plan/report.md:36)
+- 中文发布页：[report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p6-owner-scope-promotion-plan/report.md:33)
+
+已写清楚：
+
+- `P6.0`：候选证据审查，给每个 provisional candidate 定状态；不改 `owner_scope_bindings`
+- `P6.1`：只选一个 promotion target；仍不改 checker
+- `P6.2`：正式提升一个 pair，才会改 `owner_scope_bindings`、checker tests、usage index、current-state
+- `P6.3`：清理/记录暂缓或拒绝的候选原因
+- `P6.4`：对后续 ready pair 重复 P6.1/P6.2，每次只处理一个 pair
+
+当前仓库状态干净：`main...origin/main`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-26">
+<h2>Turn 26</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 14:57:06 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 14:57:35 +0800</div>
+<pre>我按当前文档里的“下一步可执行切片”处理，也就是做 `P6.0 Candidate Evidence Review`，先不进入 P6.1/P6.2 的 target selection 或正式 promotion。先核当前状态和候选来源，再落成新的讨论包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 14:58:04 +0800</div>
+<pre>当前仓库干净、没有 active OpenSpec change。P6.0 的输入来源已经确认：`owner_scope_bindings` 只有三个已接受 pair，provisional candidates 是 `motion -&gt; machine/channel/axis/spindle`、`hal -&gt; machine`、`magazine -&gt; machine`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 14:58:43 +0800</div>
+<pre>我会新建一个独立的 `P6.0 Candidate Evidence Review` 日结包：只给候选 pair 定状态和证据缺口，不选 target、不改 checker、不刷新 usage index。然后把 current-state 的下一步从 P6.0 推到 P6.1。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 14:59:28 +0800</div>
+<pre>我会按计划执行 P6.0；这里使用 `executing-plans` 方式做，保证只完成证据审查这个切片，不把 P6.1/P6.2 混进来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 15:00:00 +0800</div>
+<pre>我已开始执行 P6.0。接下来会新增 `2026-06-23-p6-0-candidate-evidence-review` 包，并把原 P6 计划的 “Next Step” 从 P6.0 更新为 P6.1。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 15:02:16 +0800</div>
+<pre>P6.0 的判断我已经明确下来：没有任何 candidate 达到 `ready`，所以本切片会产出“暂停 P6.1/formal promotion”的结论，而不是硬选一个目标。现在开始落文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 15:04:03 +0800</div>
+<pre>P6.0 包已经新增。下一步补导航和 current-state，把“P6 已计划”推进成“P6.0 已完成、P6.1 暂停”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 15:04:21 +0800</div>
+<pre>我会同步四套 SUMMARY、六月索引、原 P6 计划的 next step，以及中英文 current-state。范围仍限 Markdown 文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 15:05:21 +0800</div>
+<pre>导航和原 P6 计划已串联。现在更新 current-state，让它记录 P6.0 的实际结论：没有 ready candidate，P6.1 暂停。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 15:06:02 +0800</div>
+<pre>current-state 已更新到 P6.0 完成态。现在需要检查新增页面、链接和文本一致性，然后跑验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 15:06:36 +0800</div>
+<pre>先做静态检查：新增文件清单、关键状态词、以及确认没有改 OpenSpec/checker 相关文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 15:06:53 +0800</div>
+<pre>静态检查显示只动了 P6.0 文档与导航/current-state，没有 OpenSpec 或 tools 变更。现在跑完整验证链。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-23 15:07:28 +0800</div>
+<pre>我会用当前这轮新跑的验证结果作为依据。开始并行跑单测、parameter checker、i18n、OpenSpec 和 diff 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-23 15:07:58 +0800</div>
+<pre>基础校验通过，尾随空白搜索无匹配返回 1。现在重建 HTML 并跑 published-html 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-23 15:09:08 +0800</div>
+<pre>HTML 构建成功。接下来检查 published HTML、diff 统计和 staged 前范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-23 15:09:40 +0800</div>
+<pre>published HTML 校验也过了。接下来我会把新增 P6.0 包和相关导航/status 文件显式 stage，提交并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-23 15:10:58 +0800</div>
+<pre>stage 前再确认一次：这次不包含生成 HTML，也不包含 `openspec/OBJECT-SCOPES.md` 或 tools 变更。现在执行 git add。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-23 15:11:27 +0800</div>
+<pre>文件已 stage。现在查看 staged 范围和统计，再提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-23 15:11:46 +0800</div>
+<pre>staged 范围符合预期：25 个 Markdown 文件，未带生成目录。现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-23 15:12:05 +0800</div>
+<pre>提交已生成：`64f3790`。现在推送远端并做最终状态确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-23 15:12:33 +0800</div>
+<pre>推送完成。最后确认本地/远端同步、OpenSpec 无 active change、工作区干净。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-23 15:12:53 +0800</div>
+<pre>P6.0 已经提交并推送，最终状态干净。整理结论给你。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / final_answer</h3>
+<div class="time">2026-06-23 15:13:01 +0800</div>
+<pre>处理完了，P6.0 已落文档并推送。
+
+- Commit：`64f3790 docs: add TP004 P6.0 evidence review`
+- 主报告：[report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p6-0-candidate-evidence-review/report.md)
+- 结论：当前没有 candidate ready，P6.1 target selection 暂停
+- 状态分类：
+  - `motion -&gt; machine`：`needs_evidence`
+  - `motion -&gt; channel`：`needs_evidence`
+  - `motion -&gt; axis`：`reject_for_now`
+  - `motion -&gt; spindle`：`needs_evidence`
+  - `hal -&gt; machine`：`blocked`
+  - `magazine -&gt; machine`：`blocked`
+- 本次没有改 `owner_scope_bindings`、checker、schema、usage index，也没有做 promotion
+
+验证已跑：
+
+- `python3 -m unittest discover -s tools/tests`：109 tests OK
+- `python3 tools/check_parameter_value_sets.py`：passed
+- `python3 tools/check_docs_i18n_sync.py`：passed
+- `openspec validate --all --strict`：无 active items
+- `./tools/build_docs_html.sh`：passed
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`：passed
+- `git diff --check`：passed
+
+当前 `HEAD == origin/main == 64f379021128c3f2b47742b74e6b7df7c9e64fdc`，工作区干净。</pre>
+</article>
+</section>
+<section class="turn" id="turn-27">
+<h2>Turn 27</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 15:13:55 +0800</div>
+<pre>下一步计划里把P6子项都列一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 15:14:26 +0800</div>
+<pre>我先确认“下一步计划”现在具体落在哪些页面，再把 P6.0-P6.4 作为子项补进去；这次应该是文档小改，不进入新的 promotion/checker 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 15:14:54 +0800</div>
+<pre>我会直接改 current-state 的 `Recommended Next Slices / 建议后续切片`，把 P6.0-P6.4 全部展开列入；不新建讨论包，也不改 checker/schema。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 15:15:43 +0800</div>
+<pre>P6 子项已补到中英文 current-state 的下一步计划里。现在跑轻量验证和构建检查，确认编号/中文发布页不会破。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 15:16:12 +0800</div>
+<pre>轻量检查已过。为了保持 TP004 文档提交标准，我再跑完整验证和 HTML 构建，然后提交推送这个小改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 15:16:32 +0800</div>
+<pre>继续用新跑结果作为依据。现在并行跑单测、parameter checker、i18n、OpenSpec 和 diff check。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 15:16:52 +0800</div>
+<pre>基础验证通过。现在构建发布 HTML，并检查 published-html 模式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 15:17:46 +0800</div>
+<pre>完整验证和 published HTML 检查都通过。现在提交这两处 current-state 文档更新并推送。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 15:18:36 +0800</div>
+<pre>staged 范围只有两处 current-state 页面。提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 15:19:08 +0800</div>
+<pre>提交已生成：`f42b048`。现在推送并确认远端同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 15:20:04 +0800</div>
+<pre>推送完成。最后确认工作区、HEAD 和 OpenSpec 状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-23 15:20:33 +0800</div>
+<pre>已处理并推送。
+
+这次把 P6 子项直接列进“下一步计划 / Recommended Next Slices”里了：
+
+- `P6.0 Candidate Evidence Review`：已完成，无 ready promotion target
+- `P6.1 Promotion Target Selection`：暂停，等候 source evidence / owner ownership / scope readiness / descriptor example
+- `P6.2 Single Pair Formal Promotion`：单 pair promotion，届时才改 checker、usage index、reader docs
+- `P6.3 Deferred Candidate Cleanup`：记录 deferred / blocked / rejected 原因
+- `P6.4 Additional Pair Loop`：后续 ready pair 逐个重复 P6.1/P6.2
+
+Commit：`f42b048 docs: list TP004 P6 subitems in next plan`
+
+验证已跑：109 单测、parameter checker、i18n sync、OpenSpec strict、docs HTML build、published-html 检查、`git diff --check`。当前 `HEAD == origin/main`，工作区干净。</pre>
+</article>
+</section>
+<section class="turn" id="turn-28">
+<h2>Turn 28</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 15:25:27 +0800</div>
+<pre>P6子项详细计划都列一下，我计划一次性处理掉</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 15:25:59 +0800</div>
+<pre>我会先按当前仓库状态核一下 P6.0 已完成后的真实基线，再把 P6.1-P6.4 的一次性处理计划列清楚；这里只列计划，不直接改文档或 checker。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-23 15:26:29 +0800</div>
+<pre>P6 子项现在的真实状态是：P6.0 已做完，但结论是没有 ready candidate。所以如果你计划“一次性处理掉”，建议不要理解成“一次性 promotion 多个 pair”，而是一次性把 P6.1-P6.4 做成一个收口包：选择不 promotion、记录阻塞原因、关闭本轮 P6 promotion 尝试。
+
+详细计划：
+
+- P6.1 Promotion Target Selection
+  - 输入：P6.0 的 evidence table。
+  - 动作：逐个复核 `motion -&gt; machine/channel/axis/spindle`、`hal -&gt; machine`、`magazine -&gt; machine`。
+  - 结论：不选择 promotion target，因为没有 `ready` candidate。
+  - 产出：P6.1 report/session，明确“all candidates remain deferred/blocked/rejected with reasons”。
+  - 不做：不改 checker，不改 `owner_scope_bindings`，不选假 target。
+
+- P6.2 Single Pair Formal Promotion
+  - 前置：P6.1 必须选出 exactly one ready pair。
+  - 当前状态：前置不满足。
+  - 动作：标记为 skipped / not applicable for this cycle。
+  - 产出：在 P6.1/P6.3 文档里说明 P6.2 未执行，因为没有 ready pair。
+  - 不做：不做 promotion，不刷新 usage index，不加 checker tests。
+
+- P6.3 Deferred Candidate Cleanup
+  - 输入：P6.0 状态和 P6.1 “无 target”结论。
+  - 动作：
+    - `motion -&gt; machine`：保留 deferred，缺 machine-level motion descriptor example。
+    - `motion -&gt; channel`：保留 deferred，缺 channel-level motion source evidence。
+    - `motion -&gt; axis`：标 `reject_for_now`，继续用 `motion.axis -&gt; axis`。
+    - `motion -&gt; spindle`：保留 deferred，缺 spindle-specific evidence。
+    - `hal -&gt; machine`：标 blocked，原因是 signal-scope mismatch，可能需要 signal-specific scope。
+    - `magazine -&gt; machine`：标 blocked，原因是 magazine-owned object scopes 未建模。
+  - 产出：P6.3 cleanup report/session，必要时更新 current-state 的 P6 下一步。
+  - 不做：除非你明确要求，不删除 `provisional_owner_scope_notes` 原文，只用文档记录状态，避免误删未来候选。
+
+- P6.4 Additional Pair Loop
+  - 当前状态：没有 ready pair，循环不能启动。
+  - 动作：标记为 paused。
+  - 恢复条件：
+    - 有新 source evidence；
+    - owner token ownership 决定完成；
+    - scope readiness 明确；
+    - 有 minimal descriptor example；
+    - 若需要新 object scope，先单独建模。
+  - 产出：在收口文档里写清楚 P6.4 不是执行项，只是后续循环规则。
+
+- 一次性处理包建议
+  - 新建一个 discussion pack：`2026-06-23-p6-1-p6-4-promotion-closure`
+  - 包含 `README.md` / `report.md` / `session.md`
+  - 同步 topic book、root book、en/zh i18n、SUMMARY、2026-06 index
+  - 更新 current-state：P6.1-P6.4 本轮已收口，P6 promotion 无 ready target，后续必须先补 evidence 或另开 scope modeling
+  - 验证：单测、parameter checker、i18n sync、OpenSpec strict、docs build、published-html、diff check
+  - commit+push
+
+这个做法能“一次性处理掉”P6 当前剩余子项，但不会违反之前定下的规则：没有 ready pair 时不做形式上的 promotion。</pre>
+</article>
+</section>
+<section class="turn" id="turn-29">
+<h2>Turn 29</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 15:33:55 +0800</div>
+<pre>处理一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 15:34:58 +0800</div>
+<pre>我按刚才列的方案执行：做一个 P6.1-P6.4 promotion closure 包，把“无 ready target，所以本轮不 promotion”落文档；不改 `owner_scope_bindings`、checker、schema 或 usage index。先快速复核当前仓库状态和发布形态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 15:36:22 +0800</div>
+<pre>当前状态符合预期：工作区干净、OpenSpec 没有 active change，P6.0 已经明确“无 ready candidate”。我开始新增 P6.1-P6.4 closure 包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 15:38:07 +0800</div>
+<pre>现在写入新的 closure 文档包。内容会明确 P6.1 无 target、P6.2 skipped、P6.3 记录 deferred/blocked/rejected、P6.4 paused。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 15:39:37 +0800</div>
+<pre>closure 包已经新增。下一步把它接入 SUMMARY、六月索引，并把 current-state/原 P6 文档更新到“当前周期收口”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 15:39:48 +0800</div>
+<pre>我会按现有 P6.0/P6 包的顺序，把 P6.1-P6.4 closure 放到最新一条；同时更新 current-state 中 P6 子项状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 15:40:30 +0800</div>
+<pre>导航和月索引已经接入。现在更新状态页和已有 P6 报告，避免“P6.1 还只是暂停”与 closure 结论冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 15:40:42 +0800</div>
+<pre>我会把 current-state 的 P6 子项改成：P6.1 当前周期 no target、P6.2 skipped、P6.3 completed disposition、P6.4 paused，并链接 closure 包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 15:41:27 +0800</div>
+<pre>current-state 和前序 P6 文档已经改成收口态。接下来先做静态检查，确认新包、链接和关键结论都在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 15:41:56 +0800</div>
+<pre>先检查新增文件、关键短语、以及确认没有 OpenSpec/tools 修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 15:42:06 +0800</div>
+<pre>静态检查范围符合预期：只新增/更新文档和导航，没有碰 OpenSpec/tools。现在跑完整验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 15:42:29 +0800</div>
+<pre>我会用这轮新跑的结果作为完成依据。先跑单测、checker、i18n、OpenSpec、diff check 和尾随空白搜索。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 15:42:38 +0800</div>
+<pre>基础验证通过，尾随空白搜索无匹配返回 1。现在重建 HTML 并做 published-html 检查。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

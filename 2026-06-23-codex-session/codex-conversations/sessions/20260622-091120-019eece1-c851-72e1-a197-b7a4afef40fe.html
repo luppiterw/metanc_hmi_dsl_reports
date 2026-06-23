@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生成一下本次会话的完成内容简报，用- 条目方式</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>生成一下本次会话的完成内容简报，用- 条目方式</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eece1-c851-72e1-a197-b7a4afef40fe</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-22 09:11:20 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/22/rollout-2026-06-22T09-11-20-019eece1-c851-72e1-a197-b7a4afef40fe.jsonl</code></div>
+<div><b>Messages</b>: <code>2</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 05:51:41 +0800</div>
+<pre>生成一下本次会话的完成内容简报，用- 条目方式</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 05:52:42 +0800</div>
+<pre>- 完成 HMI WorkOffset 数据修复：表格数据对齐底层可设置集合，改为 `G54-G57 + G505-G599`，共 99 行。
+- 移除了不符合底层语义的演示项：`MACHINE`、`G58/G59`、`G54.1P*` 不再出现在 HMI WorkOffset 可见表格中。
+- 修正 WorkOffset 轴标识：统一使用 `axis-x/y/z/a/c`，避免前后端使用短轴名 `x/y/z/a/c` 导致语义不一致。
+- 优化 WorkOffset 前端刷新逻辑：后台数据更新时尽量局部更新，避免编辑中的 cell 被刷新打断，也避免滚动位置被重置。
+- 增加 Web 场景测试：覆盖 WorkOffset 表格刷新时保持表格上下文和滚动/选择状态。
+- 修正 Web 命令响应 notice：HTTP 直连命令路径和 WebSocket 订阅路径现在都能显示一致的 stale refresh/retry 提示。
+- 更新 QML WorkOffset smoke：不再硬编码轴 ID，改为从 `component_axis_ids` 获取。
+- 更新 mock runtime、runtime seed、native server mock backend，保证 Web/QML/server 默认演示数据一致。
+- 更新 WorkOffset 项目文档、contract 文档、smoke report、data dictionary、CHANGELOG。
+- 重新生成 HMI Web/QML/server/distribution 目标输出和快照。
+- 重新构建 HMI docs_html，并通过文档门户、story docs、book build、docs lint 等验证。
+- MetaNC 工作分支已提交并推送：`feat/hmi-work-offset-table`，提交 `29bbd17b`。
+- MetaNC 集成分支已同步并推送：`feat/hmi`，提交 `ccafd6d1`。
+- standalone 仓库 `metanc_hmi_dsl` 已从 MetaNC `feat/hmi` 导入同步，并提交推送到 `metanc-layout`，提交 `cab59aa`。
+- 验证通过：MetaNC `generate_targets.sh`、server `ctest` 12/12、Web/QML UI smoke、docs tests、`book build`、`build_docs_html.sh`。
+- 验证通过：standalone `tests.test_pipeline` 57 tests OK、`generate_targets.sh`、server `ctest` 12/12、docs/report tests 11 tests OK。
+- 最终状态：MetaNC 当前工作分支干净，`feat/hmi` worktree 干净，`metanc_hmi_dsl` 干净，相关提交均已 push。</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

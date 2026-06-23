@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef2d6-dc8f-7e61-8794-2c2b916faf64</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-23 12:57:07 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/23/rollout-2026-06-23T12-57-07-019ef2d6-dc8f-7e61-8794-2c2b916faf64.jsonl</code></div>
+<div><b>Messages</b>: <code>23</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 12:57:08 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-23&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 12:57:08 +0800</div>
+<pre>Review the code changes against the base branch &#x27;main&#x27;. The merge base commit for this comparison is edd333d6031754b828fa2d43afcacb808af82b9a. Run `git diff edd333d6031754b828fa2d43afcacb808af82b9a` to inspect the changes relative to main. Provide prioritized, actionable findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 12:57:25 +0800</div>
+<pre>I’ll use the superpowers skill entrypoint first, then follow the repo’s AGENTS.md review workflow before inspecting the diff.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 12:57:35 +0800</div>
+<pre>Need continue architecture maybe diff enough? We read to nrt/work_offset start but maybe need full codemap relevant modules. Need inspect diff. Also must maybe use requesting-code-review skill? User asks review code changes. There is superpowers:requesting-code-review description &quot;Use when completing tasks...&quot; not relevant? We&#x27;re performing review. There is no &quot;reviewing code&quot; skill except orocos-develop maybe if RT changes, maybe document etc depending diff. Need inspect diff. Also maybe memory relevant? Repo task definitely memory relevant. We did not do memory pass before tool, but now should. Need search MEMORY.md relevant after seeing diff maybe. Need follow AGENTS: scope orientation pass to identify related modules, for each read README/AGENTS. Need run git diff.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 12:58:35 +0800</div>
+<pre>Potential issue: sorted_records now does numeric sort but only for lower-case g; snapshot validation likely lower? validate snapshot? maybe ensures wcs_id matches expected for extended through wcs_id_code direct, no lower? It enforces exact lower? Let&#x27;s examine validation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 12:59:03 +0800</div>
+<pre>Need maybe generated launchers later.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 12:59:38 +0800</div>
+<pre>CMake issue potential: default generate_targets builds server with HMI_WORK_OFFSET_BACKEND default mock and includes full mock. Real launchers build separate. However build_native_server_host cmake no work_offset, okay.
+
+Potential issue: in CMake, hmi_work_offset_real_backend target_include_directories only PRIVATE include and src. But linked to server_core private. default_work_offset_extension.cpp includes &quot;real_work_offset_backend_factory.h&quot;. Since server_core compiles default_work_offset_extension.cpp, include path of server_core? Let&#x27;s see target_include_directories.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 13:00:46 +0800</div>
+<pre>Need parse_string expectations.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-23 13:01:16 +0800</div>
+<pre>Continue relevant.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-23 13:01:28 +0800</div>
+<pre>Need note set_offset guard doesn&#x27;t enrich payload! It passes args directly. Table editing likely supplies target_ref/expected_revision? Need check changes table_edit/data_table etc.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-23 13:03:27 +0800</div>
+<pre>resolveValue handles state://.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-23 13:04:51 +0800</div>
+<pre>Continue.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-23 13:05:30 +0800</div>
+<pre>Need perhaps inspect generate_targets to see if it builds server-build-metanc-real. The diff only launchers maybe not. Search in script for server-build-metanc-real outside launchers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-23 13:06:53 +0800</div>
+<pre>The domain set_frame_component allows adding component if missing, but validation components_complete_for_profile probably requires all components in snapshot, so okay.
+
+Potential bug: RealWorkOffsetBackend::set_offset row axis mismatch check only if axis_id optional, but parse set_offset includes axis_id optional; if missing, will accept based on field. That&#x27;s okay for legacy g_code.
+
+Potential issue: Non-finite parse in runtime_extension_adapter: parse_double_arg rejects nan. The direct RealBackend test covers NaN directly. Runtime extension returns expected code offset_value_invalid if value parser? Actually parse_set_offset_request if value !has =&gt; error code field.has ? offset_value_invalid. Good.
+
+Potential bug: details map values should be raw JSON, but some places use std::to_string without json::number, same string &quot;1&quot; okay; but for strings they quote.
+
+Potential issue in work_offset_status: status.snapshot_revision = active.operation_result.snapshot_revision.value_or(active.payload.active_state.revision).value. get_active_wcs returns OperationResult::returned(revision_) where revision_ is snapshot_.snapshot_revision. For active-state revision can differ? In commit, active_state.revision = revision_.next and snapshot revision same. Fine.
+
+Potential issue: RealWorkOffsetBackend::query_work_offsets row.revision = source_row.revision.value; source_row.revision from record revision. query_work_offset_view returns snapshot_revision as Revision revision from StoreBacked snapshot; fine.
+
+Potential bug: refresh_offset_table known_revision semantics uses snapshot_revision_for(rows) max row.snapshot_revision. In RealBackend row.snapshot_revision is table_revision for all rows, so includes active changes. Good.
+
+Potential bug: MockBackend query_work_offsets sets row.snapshot_revision = row.revision; active changes don&#x27;t change snapshot_revision. Tests expect active_only_refresh changed false for mock. But real backend active selection increments snapshot revision, tests in real_backend_refresh... expect changed true. In adapter test for mock app after activate expected changed false. Could be inconsistent between mock and real? Maybe acceptable? But generated client with mock local may not reflect real. Not likely original author fix? Maybe yes? The mock should mimic real to catch stale refresh after active changes; but not severe.
+
+Need systematically inspect for compile issues. Could use grep for obvious syntax. There were duplicate line output due nl weird? Not actual duplicate maybe nl at segment overlap? Fine.
+
+Potential issue: C++ target hmi_work_offset_real_backend compile_features PRIVATE cxx_std_20 but target_link_libraries(server_core PRIVATE hmi_work_offset_real_backend). default_work_offset_extension.cpp in server_core includes real_work_offset_backend_factory.h, which is in src dir. server_core includes only include dir, not src. Does target_link_libraries PRIVATE hmi_work_offset_real_backend propagate PRIVATE include? No. But default_work_offset_extension.cpp includes &quot;real_work_offset_backend_factory.h&quot; when HMI_WORK_OFFSET_BACKEND_WORK_OFFSET. That header is in src/extensions/work_offset/. The include path for server_core does not include ${CMAKE_CURRENT_SOURCE_DIR}/src. The compiler search for quotes includes same directory as including file: default_work_offset_extension.cpp is also in src/extensions/work_offset/, so &quot;real_work_offset_backend_factory.h&quot; resolved relative to same source file directory. Yes okay. Work_offset_backend_adapter.cpp includes &quot;extensions/work_offset/work_offset_backend_adapter.h&quot; and hmi_work_offset_real_backend has include PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src so okay.
+
+Potential issue: server_core compile definitions PUBLIC HMI_WORK_OFFSET_BACKEND_WORK_OFFSET=1. When server_core compiles, definition applies. Good.
+
+Potential issue: hmi_work_offset_real_backend target has PRIVATE work_offset::work_offset. Since server_core links PRIVATE to hmi_work_offset_real_backend. If hmi_work_offset_real_backend&#x27;s public interface (WorkOffsetBackend) doesn&#x27;t expose work_offset types, PRIVATE okay. But static libraries transitive link dependencies? In CMake, private dependencies of static library are used when linking consumers? For static libs, link implementation dependencies are propagated for final link in LINK_ONLY? Let&#x27;s recall: target_link_libraries(hmi_work_offset_real_backend PRIVATE work_offset::work_offset) for static lib adds work_offset to INTERFACE_LINK_LIBRARIES with $&lt;LINK_ONLY:...&gt; because static libs need unresolved symbols. So server link gets. Good.
+
+Potential issue: server_core target_compile_features cxx_std_17 PUBLIC but links to hmi_work_offset_real_backend cxx_std_20 PRIVATE; server target won&#x27;t need C++20 because factory hidden. But server_core source default_work_offset_extension.cpp includes real_work_offset_backend_factory.h only std::memory, okay.
+
+Potential issue: `std::filesystem` in real_work_offset_backend_factory.cpp C++20 target; work_offset maybe cxx_std_20? okay.
+
+Potential issue: If HMI_WORK_OFFSET_BACKEND=work_offset and HMI_TOOLING_BACKEND=tooling_management, target_sources work_offset_runtime_extension_adapter_test adds mock files only if NOT backend mock. But test links server_core which does not include mock backend. It includes tests that include mock header and instantiate MockWorkOffsetBackend. They add source, okay. For tooling not mock they add mock_tooling_backend. Good. But when HMI_TOOLING_BACKEND=mock, server_core already has mock_tooling_backend, test shouldn&#x27;t add to avoid duplicate. Good.
+
+Potential issue: In CMake configure_work_offset_real_test: if Python3 not found, it sets ENVIRONMENT on already added test. But add_work_offset_seeded_test when HMI_WORK_OFFSET_BACKEND work_offset and Python missing just add_test command ${ARGN}. For blackbox tests inside if(Python3_Interpreter_FOUND) so configure called only Python found; not issue. runtime_rest_api_test C++ no Python: if Python missing, direct test with env. Good.
+
+Potential issue: Tests with HMI_WORK_OFFSET_BACKEND=work_offset and Python found: run_with_work_offset_seed.py sets seed-if-empty but uses same temp store. Good.
+
+Potential issue: With HMI_WORK_OFFSET_BACKEND=work_offset, CMake set BUILD_TESTING OFF then add_subdirectory work_offset, restore. But if BUILD_TESTING undefined, set(HMI_SAVED_BUILD_TESTING &quot;${BUILD_TESTING}&quot;) yields empty, set(BUILD_TESTING &quot;&quot;) after. Probably okay. But enable_testing already set.
+
+Potential issue: Work_offset CMake requires C++20? Let&#x27;s inspect?</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-23 13:08:35 +0800</div>
+<pre>Need find helper definitions earlier.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-23 13:12:46 +0800</div>
+<pre>Test_mock_runtime_server maybe covers invalid numeric? let&#x27;s inspect relevant.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-23 13:15:30 +0800</div>
+<pre>Composite routes wcs commands to extension, so simulator wcs path unused in default because extensions always not empty. If default_work_offset_extension null? compile misconfig not.
+
+Potential issue: RuntimeExtensionCollection merging maps: order tooling then work_offset; no overlapping except maybe wcs table? Tooling extension doesn&#x27;t produce wcs, base simulator does maybe? Let&#x27;s inspect simulator bootstrap_resources.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-23 13:16:11 +0800</div>
+<pre>Maybe enum string different?</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-23 13:18:25 +0800</div>
+<pre>Web strict result is actual response; QML strict invokeCommandWithResult returns ok(&quot;forwarded&quot;) immediately and invokes onResult later. Fine.
+
+Need check QML command guards use onResult. Good.
+
+Potential issue: In QML strict, invokeRuntimeCommandWithResult returns ok forwarded for wcs set_offset from inline edit, commit returns true and editor closes before actual server reject; existing pattern. Not bug maybe.
+
+Potential issue: details current/expected names mismatch. Server rejected details for revision mismatch in RealBackend row_details includes &quot;revision&quot; only, not current_revision/expected_revision. WorkOffsetRevisionMismatchNotice expects current_revision and expected_revision; falls back generic. Not major.
+
+Potential issue in generated web command handler local:
+- `workOffsetRevisionMismatch(args, currentRevision)` uses `numberOr` from runtime. Need see numberOr handles strings? likely. It fails if missing returns fail with details current_revision. Good.
+
+Potential issue: set_offset local uses `const rows = wcsOffsetRows(); const target = rows.find(...)`, then maps rows: `if (item !== target)` comparing object identity. Since rows are actual array from resources, okay. But if wcsOffsetRows clones? It returns resources object, not clone. Need not.
+
+Potential issue: after set_offset local, status table snapshot_revision not updated. syncWcsOffsetResourceAliases maybe updates alias only? In JS local, syncWcsOffsetResourceAliases maybe also status? Need inspect.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-23 13:18:37 +0800</div>
+<pre>Maybe syncRemote?</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-23 13:20:25 +0800</div>
+<pre>Potential issue: active_state_revision returns result.payload.active_state.revision.value. If no snapshot, null. okay.
+
+Potential issue: WorkOffsetSnapshot full_settable_demo is huge 13331 lines. Maybe contains invalid values? Tests. But code review maybe not.
+
+Potential bug: `std::stoi(wcs_id.substr(1))` in numeric sort can throw out_of_range, catch. Good.
+
+Potential issue: sorting comparator violates strict weak ordering if numeric codes equal but strings differ? For valid snapshot can&#x27;t have g54 and g054 because record.wcs_id expected lower and selector? Could non-settable base frames with same numeric? Maybe if base frame g054? validate? Not important.
+
+Potential issue: WorkOffset detail peers sorting still lexicographic after table sorted numeric. If details navigation has G505...G599 plus G54, lexicographic puts g505 before g54? Let&#x27;s assess: Details view navigation `peers` sort lexicographically unchanged. For settable peers, g54 and g505: string compare &quot;g505&quot; &lt; &quot;g54&quot; because after g5, &#x27;0&#x27; &lt; &#x27;4&#x27;; so detail prev/next navigation order will be G505...G509, G54, G55...G57, G510 etc? Actually lex sort: g505...g509, g54, g55,...g57,g510? Let&#x27;s sort strings: g505, g506...g509, g51? g510 before g54? &#x27;1&#x27;&lt; &#x27;4&#x27; so all g505-g599 before g54? Wait compare g599 vs g54: chars g,5, then 9 &gt;4, so g54 comes before g599 after g53? Let&#x27;s use numeric. The new sorted_records fixes table order only but Details navigation peers remains lexicographic. This could be a bug introduced? The diff specifically added full settable numeric order for table but didn&#x27;t update detail navigation. If UI detail prev/next uses navigation prev/next? HMI maybe not. But WorkOffset query_details could expose wrong navigation if human uses details. It affects domain module behavior: if details navigation includes prev/next, extended range order inconsistent. Is this in diff line? The diff line is sorted_records only; peer sort line not changed, not in diff. Can we flag location in diff? Must overlap diff. Could comment at sorted_records? Issue is only table sorted; details peers still lexicographic pre-existing code but bug introduced by adding numeric expectation? The commit introduced full_settable fixture and numeric sort but left navigation; not necessarily regression? If old code had G505 only, lex maybe okay? Actually base main didn&#x27;t have full range? It had G505 settable maybe acceptance case. If detail for G505 with peers G54-G57,G505 lex sort: g505 before g54? Previous behavior was already lex for all sorted_records too. This commit fixes table order, not details. Is leaving detail lex introduced? The bug maybe introduced because full_settable demo and HMI detail now has Detail button. But code line not diff? We can comment on sorted_records change? &quot;This only fixes table order; Details peers still use lexicographic sort&quot; but line range must overlap diff. It might be appreciated if detail navigation used same ordering. But not proven affected if UI uses detail navigation; navigation fields maybe API. But it is a discrete bug? Need avoid speculation.
+
+Potential issue: In HMI real Backend query_work_offset_detail, it calls WorkOffset domain Details request. If user selects G55 and opens detail, details rows okay. It doesn&#x27;t surface prev/next. HMI does not use navigation. So no.
+
+Potential issue: full_settable_demo.snapshot might be large but okay.
+
+Potential issue: HMI table rows sorted numeric, but `runtime_seed._mock_wcs_rows` uses raw rows with G54-G57 then G505-G599. Good.
+
+Potential issue: Web/QML table detail selection. On Detail button, actions invoke refresh_offset_detail then write local state. In action dispatch, triggerActions maps actions sequentially but doesn&#x27;t await command result; state changes immediately. If command rejected due no selection? Button enabled ensures selection. It does not set selected_wcs_row? okay.
+
+Potential issue: `enrichSelectedWorkOffsetRowPayload` for refresh detail gets selected row from local state. For Detail action args {}, selectedWorkOffsetRow() uses local state. Good.
+
+Potential issue: Table row selection state value. Data table selection stores rowValue from selection_key maybe g_code or row_key? Need inspect ui.structure table.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-23 13:21:04 +0800</div>
+<pre>selected local is row_key. enrich Activation handles row_key. But local runtime command handler&#x27;s `workOffsetRowMatchesSelector(row, selector)` supports row_key. Mock server/backend reject row_key but client guard converts before sending. Good.
+
+Potential issue: In web executeCommandWithGuards for wcs.commands.set_offset does not enrich payload. Inline edit includes target_ref etc. But if command invoked from DSL with set_offset and selector row_key? There is no action except inline. okay.
+
+Potential issue: Detail button&#x27;s first action invokes refresh detail; second writes state. In strict server, post command result async; state switches immediately. The resource may update after. okay.
+
+Potential issue: If selected row is stale after refresh and restore selection, selectedWorkOffsetRow uses previous row key. Good.
+
+Potential bug: WorkOffsetRuntimeExtensionAdapter::bootstrap_resources() mutates mutable detail_target_ref_ in const method. It is called from ServerApp initialize maybe okay. But poll_resources const also mutates? If server has multiple threads, one? setThreadNum 1.
+
+Potential issue: WorkOffsetRuntimeExtensionAdapter::bootstrap_resources() catches exceptions for table/status/detail query. It first calls backend_-&gt;query_work_offsets, then if detail_target_ref empty, then query detail and status. If query_detail throws, catches returns unavailable_resources and table becomes empty despite table succeeded. Could be okay.
+
+Potential issue: `detail_target_ref_` set to g_code in invoke refresh when request g_code provided. Then bootstrap_resources later makes detail_request.target_ref = detail_target_ref_ (g_code), but RealBackend query detail target_ref_for_detail_request prioritizes target_ref directly if present, without resolving g_code if in target_ref. If detail_target_ref_ has &quot;G55&quot; (because user refresh detail via g_code, no target_ref), subsequent polls will call query_work_offset_detail with `target_ref=&quot;G55&quot;`, RealBackend target_ref_for_detail_request returns &quot;G55&quot; (line 342) and domain Details request resolves target_ref &quot;G55&quot;: resolve_target_ref checks find_record(snapshot,&quot;G55&quot;) false, settable prefix no, frame prefix no, then record.program_selector == target_ref so returns row.wcs_id. So okay. MockBackend query_work_offset_detail target_ref has value &quot;G55&quot;, find_row_by_selector matches g_code too because selector normalized. okay.
+
+Potential issue: When query_work_offset_detail request has no args, parse rejects before backend. But bootstrap uses detail_target_ref_ not empty. Good.
+
+Potential issue: In RealBackend refresh_offset_detail, if g_code missing and target_ref missing returns {}? But parser rejects, not relevant.
+
+Potential issue: In tool run_server_tooling_management.sh, HMI_TOOLING_MANAGEMENT_DIR is set to `&quot;${HMI_DIR}/../../../MetaNC/nrt/tooling_management&quot;` in current file. That seems weird pre-existing? Diff context? It existed. Not relevant.
+
+Potential issue: New run_server_metanc_real.sh uses HMI_DIR `/nrt/hmi`, and HMI_WORK_OFFSET_DIR=&quot;${HMI_DIR}/../work_offset&quot; correct. But the CMake default path is `CMAKE_CURRENT_LIST_DIR}/../../work_offset` from nrt/hmi/server =&gt; nrt/work_offset correct. Good.
+
+Potential issue: generate_targets.sh does not build real server despite docs. But the user memory says maybe final launchers &quot;run_server_metanc_real&quot; builds on launch with env and generated distribution already contains scripts; maybe generate_targets not supposed to build real target by default. However docs line &quot;combined server binary is produced by ./tools/generate_targets.sh into generated/server-build-metanc-real&quot; is false in the script. The smoke_report claims passed through generate_targets. Maybe generated output existing in checkout but ignored. This is a change bug? It is a docs/launcher inconsistency. More importantly, generated distribution run_split_web_metanc_real after running generate_targets will fail because generated/server-build-metanc-real/server is not created, unless HMI_METANC_REAL_BUILD_ON_LAUNCH set. But the docs and launcher error suggest run generate_targets. The user likely expects direct launchers. Is this introduced? Yes new launchers. Is it actionable? yes build real target in generate_targets or update docs. But is it a code correctness bug? The launch path fails for &quot;real backend&quot; if user follows docs. The code line in diff for ensure_metanc_real_server says run generate_targets, but generate_targets doesn&#x27;t. We can flag at line 819/820. But do we need prove? Search shows no real build in script. The generated distribution is ignored; maybe generate_targets doesn&#x27;t have to build optional real target? But the new docs claim it does. Also in smoke_report &quot;Artifact existence check&quot; shows generated/server-build-metanc-real present maybe from previous manual. However code as committed doesn&#x27;t create it. This seems a definite bug for the launcher.
+
+Need maybe line code location at line 819 in generate_targets.sh, overlapping diff. Comment: &quot;When the generated real backend launcher sees a missing/stale `generated/server-build-metanc-real/server`, it tells users to run `./tools/generate_targets.sh`, but this script only builds `${SERVER_BUILD_DIR}` through build_native_server and never configures `${HMI_DIR}/generated/server-build-metanc-real` unless `HMI_METANC_REAL_BUILD_ON_LAUNCH=1` is set. Following the displayed recovery leaves the launcher failing forever. Either have generate_targets build the real target or change the message/docs to the actual command.&quot; Priority maybe P2. Need concise.
+
+But is code_location in diff? Lines 817-820 new. Good. Title imperative &lt;=80, &quot;Point recovery to a command that actually builds the real server&quot;. Imperative? &quot;Build the real server in the advertised recovery path&quot;. Good.
+
+Potential issue: Further, run_split_web_work_offset_demo sets HMI_METANC_REAL_BUILD_ON_LAUNCH=1 so one-command works. But run_split_web_metanc_real does not. Docs first &quot;Web with real tooling and real WorkOffset ./run_split_web_metanc_real.sh&quot; and &quot;The combined server binary is produced by generate_targets&quot; false. P2.
+
+Need more findings? We should inspect more for bugs.
+
+Potential issue: In fixture mock runtime server, `_check_expected_revision` uses `_number_or` which parses `&quot;nan&quot;` into float nan then int(nan) raises ValueError. It catches only in _number_or? It catches float(value), but int(numeric) outside can raise ValueError for nan/inf. Actually `_number_or(&quot;nan&quot;, -1)` with fallback int: numeric=float(&quot;nan&quot;) OK, isinstance fallback int, `return int(numeric)` raises ValueError, not caught. This is pre-existing function but new calls with expected_revision user inputs in mock_runtime_server. If a client sends `&quot;expected_revision&quot;: &quot;nan&quot;` to mock server for work_offset, the server will crash instead of rejecting. Does tests cover? C++ server tests do, Python fixture tests don&#x27;t. UI clients may send number. But API is public; invalid user JSON can crash the mock runtime server. Should flag? The new change introduced `_check_expected_revision` using _number_or on untrusted args; `_number_or` pre-existing allowed int fallback but maybe previous code also used int on bad values? Need grep _number_or with int fallback on user args. Many pre-existing maybe not catching nan. But new work_offset code intended to reject invalid expected_revision? Maybe server_core does; mock fixture should too. However crash in fixture server only when invalid &quot;nan&quot; is sent. Is this important? It impacts robustness/test. Original author likely would fix because C++ tests explicitly reject nonfinite and invalid revisions, but mock_server lacks. We can test quickly.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / final_answer</h3>
+<div class="time">2026-06-23 13:22:38 +0800</div>
+<pre>{
+  &quot;findings&quot;: [
+    {
+      &quot;title&quot;: &quot;[P2] Point real-backend recovery at a command that builds it&quot;,
+      &quot;body&quot;: &quot;With the new real-backend launchers, a fresh `./tools/generate_targets.sh` still only builds `${SERVER_BUILD_DIR}` (`generated/server-build`) via `build_native_server`; it never configures or builds `${HMI_DIR}/generated/server-build-metanc-real`. Therefore when this missing/stale-binary branch is hit, following the printed instruction to rerun `./tools/generate_targets.sh` leaves the same failure unless the user knows to set `HMI_METANC_REAL_BUILD_ON_LAUNCH=1` or run the real CMake build manually.&quot;,
+      &quot;confidence_score&quot;: 0.88,
+      &quot;priority&quot;: 2,
+      &quot;code_location&quot;: {
+        &quot;absolute_file_path&quot;: &quot;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/generate_targets.sh&quot;,
+        &quot;line_range&quot;: {
+          &quot;start&quot;: 819,
+          &quot;end&quot;: 820
+        }
+      }
+    },
+    {
+      &quot;title&quot;: &quot;[P2] Reject invalid WCS revisions in the fixture server&quot;,
+      &quot;body&quot;: &quot;When the fixture server receives a new WCS command with a non-finite revision such as `expected_revision: \&quot;nan\&quot;` or `\&quot;inf\&quot;`, this path calls `_number_or(..., -1)`, whose `int(float(...))` conversion raises instead of returning a rejected command. Because these values come from `/api/runtime/commands`, a malformed client payload can terminate the mock server/UI automation rather than reporting `work_offset.expected_revision_invalid` like the native adapter.&quot;,
+      &quot;confidence_score&quot;: 0.74,
+      &quot;priority&quot;: 2,
+      &quot;code_location&quot;: {
+        &quot;absolute_file_path&quot;: &quot;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py&quot;,
+        &quot;line_range&quot;: {
+          &quot;start&quot;: 2656,
+          &quot;end&quot;: 2656
+        }
+      }
+    }
+  ],
+  &quot;overall_correctness&quot;: &quot;patch is incorrect&quot;,
+  &quot;overall_explanation&quot;: &quot;The documented real-backend launch recovery path does not build the binary it requires, so the new generated launcher can remain unusable after following its own instructions. The fixture runtime also has a reachable crash path on malformed WCS revision payloads.&quot;,
+  &quot;overall_confidence_score&quot;: 0.84
+}</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

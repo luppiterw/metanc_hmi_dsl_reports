@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef21f-ab40-7d62-bbb5-b0e7d90061c0</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-23 09:37:02 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/23/rollout-2026-06-23T09-37-02-019ef21f-ab40-7d62-bbb5-b0e7d90061c0.jsonl</code></div>
+<div><b>Messages</b>: <code>3</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:37:02 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-23&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 09:37:02 +0800</div>
+<pre>Review the code changes against the base branch &#x27;main&#x27;. The merge base commit for this comparison is edd333d6031754b828fa2d43afcacb808af82b9a. Run `git diff edd333d6031754b828fa2d43afcacb808af82b9a` to inspect the changes relative to main. Provide prioritized, actionable findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-23 10:26:00 +0800</div>
+<pre>{
+  &quot;findings&quot;: [
+    {
+      &quot;title&quot;: &quot;[P2] Recompute WCS status after table changes&quot;,
+      &quot;body&quot;: &quot;When the mock server already has `wcs.offset.status.table` from bootstrap, this `setdefault` never refreshes it after `wcs.commands.activate` updates the table. Activating `G55` normalizes the table rows to active `G55`, but `status.selected` stays at the old `G54`; `currentWcsOffsets`/`activeWorkOffsetSelector` prefer `status.selected`, so fixture-backed clients display and compute against the previous WCS.&quot;,
+      &quot;confidence_score&quot;: 0.91,
+      &quot;priority&quot;: 2,
+      &quot;code_location&quot;: {
+        &quot;absolute_file_path&quot;: &quot;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py&quot;,
+        &quot;line_range&quot;: {
+          &quot;start&quot;: 2476,
+          &quot;end&quot;: 2479
+        }
+      }
+    },
+    {
+      &quot;title&quot;: &quot;[P2] Preserve numeric wcs.active in mock snapshots&quot;,
+      &quot;body&quot;: &quot;The interface still defines `wcs.active` as an `int` (`54` for `G54`), but successful activation now stores the selector string, e.g. `G55`, in the runtime snapshot. Any fixture-backed client or scenario that reads numeric `wcs.active` after activating a non-default WCS will see a type/value mismatch or fall back to `54` via numeric conversion, so keep this property numeric and expose the string through the status row.&quot;,
+      &quot;confidence_score&quot;: 0.88,
+      &quot;priority&quot;: 2,
+      &quot;code_location&quot;: {
+        &quot;absolute_file_path&quot;: &quot;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py&quot;,
+        &quot;line_range&quot;: {
+          &quot;start&quot;: 1050,
+          &quot;end&quot;: 1050
+        }
+      }
+    },
+    {
+      &quot;title&quot;: &quot;[P2] Treat missing detail targets as row rejections&quot;,
+      &quot;body&quot;: &quot;When a client requests detail for a stale or unknown `target_ref`/`g_code`, the WorkOffset domain returns a normal `wcs-not-found` rejection; `require_returned` turns that into an exception, so the extension reports `work_offset.backend_unavailable` and resource polling can publish an empty table/diagnostic for an otherwise healthy backend. Handle this rejection as `work_offset.row_unknown` or an empty detail result instead of treating it as backend failure.&quot;,
+      &quot;confidence_score&quot;: 0.84,
+      &quot;priority&quot;: 2,
+      &quot;code_location&quot;: {
+        &quot;absolute_file_path&quot;: &quot;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp&quot;,
+        &quot;line_range&quot;: {
+          &quot;start&quot;: 545,
+          &quot;end&quot;: 546
+        }
+      }
+    }
+  ],
+  &quot;overall_correctness&quot;: &quot;patch is incorrect&quot;,
+  &quot;overall_explanation&quot;: &quot;The WorkOffset changes contain functional issues that misreport the active WCS in the fixture runtime and can mark a healthy real backend unavailable for ordinary unknown detail requests. These would break existing clients/tests in realistic activation or stale-selection scenarios.&quot;,
+  &quot;overall_confidence_score&quot;: 0.88
+}</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

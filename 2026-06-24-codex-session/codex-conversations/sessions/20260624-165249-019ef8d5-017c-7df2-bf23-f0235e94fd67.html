@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是反方架构审查 agent D，任务是挑战“新增多个 TP/topic”的方案。背景：拟把后续 MetaNC drafts 拆成 rt_gateway、execution_policy、runti...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是反方架构审查 agent D，任务是挑战“新增多个 TP/topic”的方案。背景：拟把后续 MetaNC drafts 拆成 rt_gateway、execution_policy、runti...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef8d5-017c-7df2-bf23-f0235e94fd67</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-24 16:52:49 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/24/rollout-2026-06-24T16-52-49-019ef8d5-017c-7df2-bf23-f0235e94fd67.jsonl</code></div>
+<div><b>Messages</b>: <code>4</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 16:52:49 +0800</div>
+<pre>你是反方架构审查 agent D，任务是挑战“新增多个 TP/topic”的方案。背景：拟把后续 MetaNC drafts 拆成 rt_gateway、execution_policy、runtime access、program execution gateway integration、data diagnostics、simulation validation 等包；用户认为未来可能大规模重叠和重构。请只读分析，不改文件。请从最保守的角度提出：1) 为什么这些不应先作为并列 topic；2) 一个最小替代方案，比如先做一份 architecture roadmap + 2-3 个 vertical slice；3) 如果以后要拆 topic，必须满足哪些触发条件。可读取 /home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/TOPICS.md 和 /mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-architecture-2026-06-24/implementation-roadmap.md。中文短条目。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 16:53:37 +0800</div>
+<pre>使用 `openspec-explore` 做只读架构审查；我会先核对现有 topic 索引和这份 roadmap，再从保守反方角度给结论，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 16:54:09 +0800</div>
+<pre>我已经核对了 `TOPICS.md` 和 roadmap：现状里 topic ID 被定义成稳定的“主题包”，而 roadmap 更像执行顺序和运行时包建议。反方重点会放在“不要把执行切片误提升成并列规范 topic”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-24 16:54:47 +0800</div>
+<pre>反方结论：**现在不应新增一排并列 TP/topic**。这些名字更像实现包、阶段切片、横切约束和验证面，不是稳定主题包。
+
+**为什么不先并列拆**
+- `TOPICS.md` 明确说 `TPnnn-slug` 是稳定 topic package ID，不是术语、模块名或代码包名；把 `rt_gateway`、`execution_policy`、`data_diagnostics` 直接升成 TP，会把实现结构误固化成规范边界。
+- 现有 `TP004-parameter-system` 已覆盖 `Runtime Access`，再建 `runtime access` topic 会立刻重叠。
+- roadmap 里的 P1-P5 是推进顺序：P1 网关、P2 参数窄切片、P3 policy、P4 ProgramEngine 接入、P5 诊断/仿真；它们天然互相依赖，不是彼此独立的规范域。
+- `execution_policy` 横跨 HMI、ProgramEngine、Parameter Service、RT Gateway；单独成 TP 会把“命令允许性判断”从端到端链路里抽走，导致每个 topic 都要引用它。
+- `data diagnostics` 和 `simulation validation` 更像验收/观测层，应先作为每个 vertical slice 的 evidence 要求，而不是先拥有独立 topic。
+- `program execution gateway integration` 是集成故事，不是领域边界；它依赖 ProgramEngine、RT Gateway、policy、diagnostics，先拆 topic 会制造大量跨 TP 同步成本。
+- 当前 registry 的 placeholder promotion 要求同一 changeset 更新 registry、补 topic-local baseline、同步读者表；如果一次新增多个，还没有稳定 baseline，会制造维护债。
+
+**最小替代方案**
+- 先不改 `TOPICS.md`，新增/沉淀一份 **MetaNC Architecture Roadmap**，定位为跨 topic 路线图，不是新 TP。
+- Roadmap 只维护三类内容：端到端依赖链、vertical slice 顺序、哪些概念暂不升 topic。
+- 先做 2-3 个 vertical slice：
+- Slice 1：`RT Gateway 最小闭环`
+  只验证 Connect/Disconnect/Health/Topology/Mode/AutomaticStatus，目标是唯一 RT 通讯入口。
+- Slice 2：`TP004 Runtime Access 窄切片`
+  放在现有 TP004 内，先接 WorkOffset read、Tooling read、少量 owner-defined write，不做完整 840D catalog。
+- Slice 3：`Program Execution Gateway Integration`
+  ProgramEngine/Scheduler 通过 RT Gateway 走 MDI/AUTO 最小流；diagnostics 和 simulation 作为验收证据附着在该 slice 上。
+
+**以后拆 topic 的触发条件**
+- 至少两个 vertical slice 已经复用同一契约，且契约边界稳定。
+- 能写出独立 `README.md` + `DESIGN-BASELINE.md`，并明确“不覆盖 TP001-TP005 哪些内容”。
+- 有独立 owner、术语表、validation set，而不是只靠一个代码目录名。
+- 跨 topic 引用数量低于 topic 内部定义数量；否则说明它还是横切层或集成故事。
+- 拆出去后能减少维护成本，而不是增加同步矩阵。
+- 有读者侧收益：单独成书/成章能让人更快理解，而不是为了目录整齐。
+
+我的保守建议：**先用 architecture roadmap 管住全局，再用 3 个 vertical slice 验证边界；等边界被实现和验证“压实”后，再拆 topic。**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:493-506|note=[topic registry governance context]
+MEMORY.md:651-652|note=[prefer explicit definitions and root discussion pack for cross-module work]
+MEMORY.md:820-845|note=[planning package and core dependency chain guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019e6ddd-a5d6-7220-98b8-4961ff217139
+019ecdbc-8aad-7ae0-8654-c801abca6d54
+019ec934-192d-7813-8313-268813f47308
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

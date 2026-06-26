@@ -16,14 +16,14 @@
 ## Complete Codex Conversation Export
 
 - Scope: `2026-06-23`
-- Sessions: `37`
-- Primary sessions: `26`
-- Side sessions: `11`
-- User prompts: `245`
-- Synthetic events: `4`
-- Messages: `1012`
-- User messages: `249`
-- Codex messages: `763`
+- Sessions: `64`
+- Primary sessions: `49`
+- Side sessions: `15`
+- User prompts: `385`
+- Synthetic events: `8`
+- Messages: `1467`
+- User messages: `393`
+- Codex messages: `1074`
 - HTML index: [Open](codex-conversations/index.html)
 - Single-page HTML: [Open](codex-conversations/all.html)
 - Single-page Markdown: <a href="codex-conversations/all%2Emd">Open</a>

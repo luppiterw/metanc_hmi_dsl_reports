@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下当前TP004的进度</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下当前TP004的进度</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef6fa-1b65-7233-839a-5f4046c81032</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-24 08:14:06 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/24/rollout-2026-06-24T08-14-06-019ef6fa-1b65-7233-839a-5f4046c81032.jsonl</code></div>
+<div><b>Messages</b>: <code>109</code></div>
+<div><b>User prompts</b>: <code>20</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 08:14:37 +0800</div>
+<pre>看一下当前TP004的进度</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 08:15:09 +0800</div>
+<pre>我会先核对本地记忆里 TP004 的最近节点，再读当前仓库里的 OpenSpec/任务文件和 git 状态，最后直接给你一个“已完成/未完成/下一步”的进度判断。刚才系统要求的 `using-superpowers` 技能路径不存在，我先定位一下是否换了缓存路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 08:15:54 +0800</div>
+<pre>本地记忆显示 6 月 22 日之后又有 6 月 23 日的 P4/P5/P6/P7-P9 讨论包和 P3 正式化归档，所以我不会只按旧记忆判断。现在继续核对实际 OpenSpec 归档、TP004 状态页、讨论目录和导航，确认当前进度到哪一步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 08:16:17 +0800</div>
+<pre>`openspec list` 当前是空的，说明没有正在进行的 OpenSpec change；但 TP004 不等于整体完成，只能说明最近的切片都已归档。我接下来读最新的 6 月 23 日包和状态页，看它们把 P3-P9 落成了什么边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 08:16:37 +0800</div>
+<pre>我已经确认工作区是 `main...origin/main` 且没有本地未提交变更。再读一下最新提交和几个核心源文档，避免只引用日结报告而漏掉实际 checker-backed 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-24 08:17:12 +0800</div>
+<pre>最新报告说 6 月 23 日已经把 P3-P9 这一轮收住，但 `HEAD` 还有一个 `docs: fix TP004 review drift` 修订。我再看这个补丁实际改了哪些边界措辞，然后给你最终进度结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-24 08:17:39 +0800</div>
+<pre>当前 TP004 是**阶段性收口**，不是整体完成。
+
+我核对了当前仓库状态：`main` 与 `origin/main` 对齐，工作区干净；`openspec list --json` 返回无 active changes。最新 `HEAD` 是 `ebc48ca docs: fix TP004 review drift`。
+
+当前已稳定的范围：
+
+- Parameter Descriptor 最小合同已落定：`parameter_id / owner / scope / semantic_name`。
+- checker-backed 目前只认三组 owner/scope：`motion.axis -&gt; axis`、`tool_management -&gt; tool_edge`、`zero_offset -&gt; frame_axis_component`。
+- P3 已正式化，但只包括可选的 `parameter_descriptor.value.type` 和 `value.unit_source`。
+- P4/P5/P6/P7-P9 都已记录为边界或暂停状态，没有继续扩大 checker-backed 合同。
+- P6 当前没有可推广的新 owner/scope 候选，P6.1-P6.4 这一轮已关闭但无正式 promotion。
+- 下一步不应该继续泛泛做 “P 项”，而是选一个命名切片：R1 active-profile/runtime handoff、U1 concrete unit、C1 constraints shape、或 C2 checker-only constraints。
+
+关键依据在 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:27) 和 [2026-06-23 daily wrap-up](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/report.md:1)。结论：**TP004 当前这条 descriptor/zero-offset governance 线可以算 stage baseline 已收住；TP004 整体还没完。**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:720-723|note=[prior TP004 P3-P7 planning anchor used before checking repo]
+MEMORY.md:631-635|note=[latest remembered TP004 wrap-up context checked against current files]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 08:50:43 +0800</div>
+<pre>审查一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 08:51:00 +0800</div>
+<pre>我会按代码审查的口径来做：先找 TP004 当前最新变更面，再分成文档边界、checker/测试、i18n/导航几个窄面看问题。使用 `requesting-code-review` 做审查流程；如果需要并行审查，我会再启用对应技能。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 08:51:23 +0800</div>
+<pre>记忆里这类 TP004 审查的稳定拆法是三条：边界/措辞、checker/测试、i18n/导航。我先找一下可用的子代理工具；如果环境不给子代理，我就用同样的三条窄审查在本会话里跑完。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 08:51:39 +0800</div>
+<pre>我不会开子代理：这个工具这轮要求只有用户明确要求并行/子代理才可 spawn。接下来按同样的三条审查面在本地直接跑：当前状态与归档一致性、TP004 文档边界一致性、checker/i18n 验证面。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 08:52:06 +0800</div>
+<pre>我先完成第一轮定位：当前 `HEAD` 比 6 月 23 日日结又多了 `docs: fix TP004 review drift`，审查范围我会以 `dac200c..HEAD` 的 TP004 系列为主，同时抽查最终源文档、中文投影和验证脚本是否一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-24 08:52:24 +0800</div>
+<pre>第一轮定位完成：这批 TP004 变更主要是 6 月 23 日的 P3 formalization、P4/P5/P6/P7-P9 讨论包、归档 change、checker 测试，以及最终 `fix TP004 review drift` 的状态修正。我现在重点看有没有“文档说已收口但 checker/导航/中文页面没跟上”的问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-24 08:52:37 +0800</div>
+<pre>我会避免一次 `rg` 把生成索引拖进来，改用精准读文件和排除 generated index 的搜索。现在看最新状态页、计划页、P6/P7-P9 包之间的表述有没有相互打架。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-24 08:52:57 +0800</div>
+<pre>边界文档这一轮看起来方向一致：P3 是唯一 formalization，P4/P5/P6/P7-P9 都明确没有扩大合同。接下来我看 checker 逻辑和测试，重点是 P3 值元数据是否真的只允许 `type/unit_source`，以及是否有命名或字段别名漏网。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-24 08:53:12 +0800</div>
+<pre>我看到 checker 对 `value` 的允许字段做了白名单，但 token 检查不在同一函数里，而是走通用 `validate_document_values`。我继续追字段绑定和扫描逻辑，确认真实源文档里的 YAML 例子会被检查到。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-24 08:53:34 +0800</div>
+<pre>发现一个需要继续验证的点：P3 归档 spec 说要拒绝 `default_value`，状态页部分地方写的是 `default`。测试覆盖了 `default_value`，但我需要确认 checker 是否也拒绝短名 `default`，以及源文档里是否有这类不一致会造成误导。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-24 08:54:02 +0800</div>
+<pre>上一个小探针用 `importlib` 动态加载脚本时碰到 dataclass 的模块注册问题，不影响仓库代码。我改成正常注册模块后继续验证短字段 `default`/`default_value` 的行为，同时读通用字段扫描逻辑。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-24 08:54:17 +0800</div>
+<pre>短名 `default` 也会被白名单拒绝，所以这里不是功能漏洞；只是 spec 和状态页用了 `default_value/default` 两种称呼，风险较低但可以作为文档一致性问题提出来。我继续审查导航/i18n 投影，尤其中文页面是否是可读中文而不是薄 include。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-24 08:54:26 +0800</div>
+<pre>中文投影不是薄 include，导航也把 6 月 23 日的包列出来了。接下来我运行实际验证命令；这些是只读/生成检查为主，若 `build_docs_html.sh` 写生成目录也在工作区内。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-24 08:54:41 +0800</div>
+<pre>我现在跑验证栈来确认审查不是只停留在读文档：OpenSpec、checker、单元测试、i18n 源检查、发布 HTML 检查、以及 diff whitespace。若某个构建脚本改动生成目录，我会再看 git 状态确认没有污染。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-24 08:54:54 +0800</div>
+<pre>核心验证已通过。还需要跑一次发布 HTML 检查；如果当前 `docs_html` 是旧的，这个命令会暴露出来。我会先直接检查，必要时再构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-24 08:55:17 +0800</div>
+<pre>验证栈通过且工作区仍干净。现在我做最后一轮针对性搜索：找“已完成/正式化/checker-backed”这类关键词是否在 P4/P5/P7-P9 页面里误把讨论项写成已实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / final_answer</h3>
+<div class="time">2026-06-24 08:55:49 +0800</div>
+<pre>**Findings**
+Minor: `default` / `default_value` 命名还不完全一致。状态页和 P7-P9 包用的是 `default`，但正式 P3 spec、Descriptor 文档和测试覆盖的是 `default_value`。checker 实际会拒绝两者，所以不是功能漏洞；但后续做 C1 constraint metadata 时可能造成字段名误读。参考 [parameter-descriptor-status.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/parameter-descriptor-status.md:46)、[report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/report.md:92)、[spec.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/openspec/changes/archive/2026-06-23-formalize-parameter-descriptor-value-metadata/specs/parameter-descriptor-value-metadata/spec.md:27)、[PARAMETER-DESCRIPTORS.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/openspec/PARAMETER-DESCRIPTORS.md:189)。
+
+除此之外没有发现 blocking / important 问题。P3 只 formalize `value.type` / `value.unit_source`，P4/P5/P6/P7-P9 都保持 discussion/routing/closure 边界，没有误扩 checker-backed contract；中文页面也不是薄 include，导航和 reader projection 基本一致。
+
+验证已跑过并通过：
+
+- `openspec validate --all --strict`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，109 tests OK
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `git diff --check`
+
+工作区仍是干净的 `main...origin/main`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:645-668|note=[TP004 review-first and targeted audit pattern]
+MEMORY.md:710-723|note=[current TP004 stage boundary and next-slice context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 09:04:41 +0800</div>
+<pre>所以现在TP004目前所有计划和任务基本结束是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 09:05:03 +0800</div>
+<pre>是，但要加一个边界：
+
+- **当前 TP004 这一轮计划/任务基本结束**：P3-P9 这条 Parameter Descriptor 路线已经收口，OpenSpec 没有 active change，仓库干净，验证都通过。
+- **可以视为 stage baseline**：P3 已正式化 `value.type` / `value.unit_source`；P4/P5/P6/P7-P9 都已作为边界、暂停或路由项记录完。
+- **不是 TP004 全量终局完成**：只是当前 planned path 结束。后面如果继续，就是新切片，不是“补完当前任务”。
+
+还剩的都属于后续具名 slice，比如：
+
+- R1：runtime/configuration active-profile handoff
+- U1：concrete unit governance
+- C1：constraint metadata shape
+- C2：C1 之后的 checker-only constraint validation
+- 以及未来有证据时再做新的 owner/scope promotion
+
+所以我的判断是：**当前 TP004 已经不需要继续按 P3-P9 计划推进；这轮任务可以算结束。后续只有在决定开 R1/U1/C1/C2 这类新 slice 时再继续。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 09:06:37 +0800</div>
+<pre>你这个R U C命名是依据什么来的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 09:07:02 +0800</div>
+<pre>我会直接回到仓库里找 R1/U1/C1/C2 出现的位置，看它们是正式编号体系还是只是这轮日结里为了路由后续工作起的临时 slice 标签。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-24 09:07:19 +0800</div>
+<pre>不是正式体系，也不是 OpenSpec 的固定编号规则。
+
+我刚查了仓库里出现位置，`R1 / U1 / C1 / C2` 只出现在 2026-06-23 的 P7-P9 boundary closure、daily wrap-up、current-state 页面里。它们是**后续具名 slice 的临时路由标签**，来源是 P7-P9 收口后剩下的三类边界：
+
+- `R1` = Runtime / configuration active-profile handoff
+- `U1` = Unit governance
+- `C1` = Constraint metadata shape
+- `C2` = Constraint checker validation，依赖 C1 先接受 metadata shape
+
+也就是说，它们不是 TP004 主计划编号，不像 P3-P9 那样来自 2026-06-22 的 follow-up sequence。更准确的说法是：**P3-P9 已收口；如果以后继续做，就不要再叫宽泛 P 项，而是另开具名后续切片。R/U/C 只是当前文档里给这些后续切片的建议名。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 09:24:03 +0800</div>
+<pre>这个命名会带来新的误导和困扰吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 09:24:44 +0800</div>
+<pre>会，有一定误导风险。不是大问题，但我建议不要把 `R1/U1/C1/C2` 继续当主命名。
+
+主要风险：
+
+- `R1` 容易被读成 release、runtime phase，甚至和 Siemens `R` 参数联想混在一起。
+- `U1` 太短，别人不一定能立刻看出是 Unit governance。
+- `C1/C2` 会让人以为已经进入一套新的正式 C-series 计划。
+- TP004 已经有 `TP004`、`P3-P9`、OpenSpec change、discussion pack 多套编号，再加一套字母编号会增加认知负担。
+- 当前文档里它们只是“后续 slice 示例名”，但看起来像正式路线图编号。
+
+我建议改成描述性名称，不用短编号：
+
+- `runtime/configuration active-profile handoff`
+- `concrete unit governance`
+- `constraint metadata shape`
+- `constraint checker validation after metadata shape`
+
+如果确实需要编号，最好用明确前缀，例如：
+
+- `TP004-FU-runtime-profile-handoff`
+- `TP004-FU-unit-governance`
+- `TP004-FU-constraint-shape`
+- `TP004-FU-constraint-checker`
+
+我的判断：**R/U/C 这组命名不值得保留为正式标签；最多作为一次性口头简称，文档里最好改成描述性 slice 名称。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 09:35:39 +0800</div>
+<pre>我也觉得用描述性的合适</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 09:36:16 +0800</div>
+<pre>我会把这组短编号从当前 TP004 文档里降级掉：保留“后续具名 slice”的意思，但改成描述性名称，避免读成新路线图编号。先精确列出所有 `R1/U1/C1/C2` 出现点，再做小范围替换。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 09:36:46 +0800</div>
+<pre>我会直接把这些短编号从当前状态页、P7-P9 收口报告和 6 月 23 日汇总里移除，改成描述性 slice 名称。范围只动这些文档措辞，不改变 TP004 当前状态或 checker 合同。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 09:37:51 +0800</div>
+<pre>短编号已经从核心当前状态和日结/收口报告里移除了。接下来我检查是否还有 `R1/U1/C1/C2` 残留，并跑文档/i18n 验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 09:38:18 +0800</div>
+<pre>残留搜索已经没有命中，基础 i18n 和 whitespace 检查也通过。我还要跑发布 HTML 要求和 TP004 checker，确认没有因为文档措辞改动触发同步规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-24 09:38:41 +0800</div>
+<pre>已按你的判断改了：把 `R1/U1/C1/C2` 从当前 TP004 状态页、P7-P9 收口报告、6 月 23 日日结报告，以及对应中文页面里移除，改成描述性 slice 名称：
+
+- `runtime/configuration active-profile handoff`
+- `concrete unit governance`
+- `constraint metadata shape`
+- `constraint checker validation after an accepted metadata shape`
+
+验证已通过：
+
+- `rg &#x27;\bR1\b|\bU1\b|\bC1\b|\bC2\b&#x27; ...` 无残留
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `git diff --check`
+
+当前有 6 个文档文件修改，未提交。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 09:41:45 +0800</div>
+<pre>给一下下一步详细计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 09:42:18 +0800</div>
+<pre>我会把“下一步”拆成两个层面：先把刚才的命名清理安全落地，再决定 TP004 是否进入新的描述性 follow-up slice。先看一下写计划技能的要求，保证计划是可执行而不是泛泛列表。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 09:42:40 +0800</div>
+<pre>我会先给你一个执行计划，不直接继续改更多范围。这里“计划”会以当前仓库事实为基线：已有短编号清理的未提交改动，TP004 当前 P3-P9 已收口，后续只做描述性 slice。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-24 09:42:54 +0800</div>
+<pre>可以。下一步建议分两段走：先把“命名清理”收干净，再决定是否开启新的 TP004 follow-up slice。
+
+**阶段 1：收口当前命名清理**
+
+1. 审查当前 6 个文件改动
+   重点确认 `R1/U1/C1/C2` 已全部替换为描述性 slice 名称，且中英文语义一致。
+
+2. 跑完整验证
+   已跑过一部分，提交前再跑一次：
+   ```bash
+   rg -n &quot;\bR1\b|\bU1\b|\bC1\b|\bC2\b&quot; TP004-parameter-system book/src docs_i18n/en/src docs_i18n/zh/src --glob &#x27;!**/html/**&#x27; --glob &#x27;!**/*.svg&#x27;
+   python3 tools/check_docs_i18n_sync.py
+   python3 tools/check_docs_i18n_sync.py --require-published-html
+   python3 tools/check_parameter_value_sets.py
+   python3 -m unittest discover -s tools/tests
+   git diff --check
+   ```
+
+3. 如无问题，提交这次清理
+   建议 commit：
+   ```bash
+   git add TP004-parameter-system/book/src/parameter-descriptor-status.md \
+     TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/report.md \
+     TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/report.md \
+     docs_i18n/zh/src/TP004-parameter-system/parameter-descriptor-status.md \
+     docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/report.md \
+     docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/report.md
+   git commit -m &quot;docs: clarify TP004 follow-up slice naming&quot;
+   ```
+
+4. 是否 push 看你的节奏
+   如果今天只是内部整理，可以先不 push；如果要保持 `main` 和远端同步，就 push。
+
+**阶段 2：决定 TP004 后续是否开新 slice**
+
+当前不建议继续泛泛推进 TP004。后续只在你明确选择一个边界时开始：
+
+1. `runtime/configuration active-profile handoff`
+   解决 active machine profile 谁选择、谁加载、TP004 如何消费 context。这个偏 TP004/TP005/runtime 边界。
+
+2. `concrete unit governance formalization`
+   解决 `mm / deg / mm/min` 这类具体单位到底是全局 governed token、owner-owned，还是 profile/component-derived。
+
+3. `constraint metadata shape proposal`
+   解决 `default/min/max/step/precision` 是独立字段还是一个结构化 constraint block。
+
+4. `constraint checker validation after metadata shape`
+   只有第 3 项接受后再做，避免 checker 先行定义语义。
+
+我的建议顺序：**先提交命名清理，然后暂停 TP004 主线；除非近期要接 runtime/profile，否则不要马上开新 slice。** 下一步最自然的是把当前改动 commit 掉。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 09:51:13 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 09:52:35 +0800</div>
+<pre>我按刚才的阶段 1 处理：先跑完整验证，再提交当前 6 个文档改动；暂时不 push，除非你再明确说要推远端。提交前我会按 verification 流程确认结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 09:53:08 +0800</div>
+<pre>我会跑完整验证栈。注意第一个 `rg` 若无残留会返回 exit 1，这是预期的“没有命中”；我会单独判断它的输出和退出码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 09:55:05 +0800</div>
+<pre>残留搜索没有输出，符合“短编号已清空”的预期；i18n 和 value-set 检查通过。继续跑单元测试和 whitespace 检查，然后提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 09:55:47 +0800</div>
+<pre>验证栈已完成：109 个工具测试通过，diff whitespace 无输出。现在我把这 6 个文档文件提交成一个小 commit。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-24 09:56:29 +0800</div>
+<pre>文件已暂存。现在提交，提交信息只描述这次命名清理，不扩展 TP004 范围。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-24 09:57:12 +0800</div>
+<pre>提交已生成。最后我确认本地状态和提交记录；如果只是本地收口，到这里就结束，若要同步远端再单独 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-24 09:57:43 +0800</div>
+<pre>已处理并提交。
+
+提交：`8952b48 docs: clarify TP004 follow-up slice naming`
+
+做了什么：
+- 移除 `R1/U1/C1/C2` 这组短编号。
+- 改成描述性 follow-up slice 名称。
+- 同步更新英文 canonical/current-state 文档和中文 reader 页面。
+
+验证已通过：
+- `rg &quot;\bR1\b|\bU1\b|\bC1\b|\bC2\b&quot; ...` 无残留
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，109 tests OK
+- `git diff --check`
+
+当前状态：`main` 比 `origin/main` ahead 1，尚未 push。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 10:00:32 +0800</div>
+<pre>继续</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 10:01:28 +0800</div>
+<pre>我理解“继续”是把刚才那个本地提交同步到远端。先按完成分支流程确认一下状态，然后 push。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 10:02:15 +0800</div>
+<pre>当前是普通仓库 `main`，只领先远端 1 个提交；我按“继续同步远端”执行。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 10:03:13 +0800</div>
+<pre>push 已完成。我再确认本地和远端状态一致。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-24 10:03:58 +0800</div>
+<pre>已继续完成：提交 `8952b48 docs: clarify TP004 follow-up slice naming` 已 push 到 `origin/main`。
+
+当前状态干净，`main...origin/main` 已同步。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 10:07:09 +0800</div>
+<pre>下一步计划列一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 10:08:18 +0800</div>
+<pre>下一步建议这样排：
+
+- 先暂停 TP004 主线，不再继续追加 P 项或新编号。
+- 把当前状态作为阶段基线：P3-P9 已收口，`main` 已同步远端。
+- 后续如果继续 TP004，只从一个明确描述性 slice 进入，不做大包推进。
+
+建议优先级：
+
+1. **短期：不动作，只观察**
+   - 当前最稳。
+   - 适合先把 TP004 阶段状态用于后续 MetaNC/HMI/runtime 讨论。
+
+2. **如果要接 runtime/profile：开 `runtime/configuration active-profile handoff`**
+   - 明确 active machine profile 谁选择、谁加载。
+   - TP004 只消费上下文，不拥有 runtime loader。
+   - 这会连接 TP004 和 TP005/runtime 边界。
+
+3. **如果要补 value 语义：开 `concrete unit governance formalization`**
+   - 讨论 `mm / deg / mm/min` 这类具体单位归谁管。
+   - 不碰 runtime conversion。
+   - 不改 `value.unit_source` 当前语义，除非单独 proposal 明确接受。
+
+4. **如果要做约束：先开 `constraint metadata shape proposal`**
+   - 只决定 `default/min/max/step/precision` 是字段还是结构化 block。
+   - 不做 checker，不做 runtime enforcement。
+
+5. **最后才是 `constraint checker validation`**
+   - 只有 constraint metadata shape 已接受后再做。
+   - checker 只校验 metadata shape，不代表运行时写入校验。
+
+我的建议：**下一步先别开新 TP004 change；等你确定要接 runtime/profile 还是 unit/constraint，再开一个描述性 slice。**当前最自然的后续是把 TP004 作为阶段基线转到 MetaNC/runtime 集成讨论。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 10:14:05 +0800</div>
+<pre>是不是TP004这个阶段性可以close了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 10:14:39 +0800</div>
+<pre>是。按当前仓库状态，**TP004 这个阶段性可以 close**。
+
+准确边界是：
+
+- close 的是当前 **Parameter Descriptor / zero-offset governance stage baseline**。
+- P3-P9 这一轮计划已经收口。
+- OpenSpec 当前没有 active change。
+- 最新命名清理已 commit 并 push。
+- `main` 与 `origin/main` 已同步。
+- 后续不再沿 P3-P9 继续补任务，而是另开描述性 follow-up slice。
+
+不应表述成“TP004 全部完成”。建议表述为：
+
+&gt; TP004 当前 descriptor/zero-offset governance 阶段已完成阶段性收口；后续 runtime/profile、unit governance、constraint metadata、checker validation 等工作作为独立 follow-up slice 另行开启。
+
+如果要落文档或 day report，可以用这个口径。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 11:06:37 +0800</div>
+<pre>可以</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 11:07:23 +0800</div>
+<pre>我按“把 TP004 这个阶段性 close 口径落到仓库文档里”来处理：新增一个简短 stage-close discussion pack，同步 topic/root/i18n 导航，验证后 commit+push。先核对现有 discussion pack 结构，避免做出新的格式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 11:08:31 +0800</div>
+<pre>我已经确认现有 discussion pack 结构：canonical pack 在 `TP004-parameter-system/discussions/...`，topic book/root book/en 用 include wrapper，中文 reader 页面写真实中文。我现在按这个结构新增一个 2026-06-24 的 stage-baseline-close 包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 11:09:24 +0800</div>
+<pre>我会用 `apply_patch` 创建 pack 和 projection wrapper，同时更新 4 个 Summary/月索引。中文页面会写成真正中文文本，不用 include。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 11:12:03 +0800</div>
+<pre>close pack 的正文和投影文件已经创建。现在更新导航和月索引，把新 pack 放到 2026-06 列表顶部。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-24 11:13:26 +0800</div>
+<pre>导航已更新。接下来我检查所有新增路径、include 深度和中英文页面残缺情况，再跑验证。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-24 11:14:13 +0800</div>
+<pre>结构和导航看起来齐了。现在跑验证；如果 include 路径有问题，`build_docs_html.sh` 或 i18n 检查会抓出来。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-24 11:15:17 +0800</div>
+<pre>源码级验证通过。接下来构建发布 HTML，再跑 `--require-published-html`，确认 reader 页面和发布树也是新的。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-24 11:16:18 +0800</div>
+<pre>HTML 构建成功，没有 include 错误。现在跑发布 HTML 检查和最终状态检查；生成目录应保持 ignored，不应出现需提交的 HTML。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-24 11:17:44 +0800</div>
+<pre>发布 HTML 检查也通过，生成目录仍是 ignored。现在把新增 close pack 和导航更新暂存、提交，并同步远端。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-24 11:18:32 +0800</div>
+<pre>暂存完成。提交前再看一下 staged stat，确认只有文档和导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-24 11:19:46 +0800</div>
+<pre>staged 内容只包含 close pack 和导航。现在提交。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-24 11:20:48 +0800</div>
+<pre>提交完成。现在 push 到远端并确认同步状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-24 11:22:04 +0800</div>
+<pre>push 已完成。我做最后的状态和日志确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / final_answer</h3>
+<div class="time">2026-06-24 11:23:55 +0800</div>
+<pre>已把 TP004 阶段性 close 落到仓库并推送。
+
+新增了 `2026-06-24-stage-baseline-close` discussion pack，明确口径：
+
+- close 当前 `Parameter Descriptor / zero-offset governance stage baseline`
+- P3-P9 不再作为 active plan 继续推进
+- TP004 不是全量完成
+- 后续只用描述性 follow-up slice 开新边界
+
+提交：`e9206aa docs: close TP004 stage baseline`，已 push 到 `origin/main`。
+
+验证已跑过：
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`，109 tests OK
+- `./tools/build_docs_html.sh`
+- `git diff --check`
+
+当前状态干净，`main...origin/main` 同步。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 13:09:34 +0800</div>
+<pre>下一步计划现在没有了是吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 13:09:52 +0800</div>
+<pre>我先快速确认一下当前工作区和 OpenSpec 状态，再给你一个明确判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-24 13:10:01 +0800</div>
+<pre>是的，按当前仓库状态看，**TP004 这个阶段现在没有正在执行的下一步计划了**。
+
+准确边界是：
+
+- `main` 已和 `origin/main` 同步，工作区干净。
+- `openspec list --json` 结果是 `{&quot;changes&quot;:[]}`，没有活动中的 OpenSpec change。
+- TP004 当前已 close 的是 **Parameter Descriptor / zero-offset governance stage baseline**。
+- 历史 `P3-P9` 不再作为活动执行路径继续推进。
+- 后续只在真的要开新工作时，另起描述性 slice，比如：
+  - `runtime/configuration active-profile handoff`
+  - `concrete unit governance formalization`
+  - `constraint metadata shape proposal`
+  - `constraint checker validation after an accepted metadata shape`
+
+所以结论：**当前 TP004 阶段性工作可以视为结束；现在没有必须立刻继续的 TP004 下一步计划。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 13:22:18 +0800</div>
+<pre>~/workspace/ccmix-wp/MetaNC
+/tmp/abc
+/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-architecture-2026-06-24结合看一下，可能需要规划一下后续的drafts，7.30号之前完成</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 13:22:41 +0800</div>
+<pre>我会把这三个位置当成三个输入源来看：`MetaNC` 的实际工程状态、`metanc_drafts` 的文档治理现状、以及 LuImageDrafts 里的架构素材。先做只读盘点，再给 7 月 30 日前的 drafts 计划。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 13:23:09 +0800</div>
+<pre>这里需要两个层次一起看：先是现有事实盘点，后面才是计划拆分。我会用 `openspec-explore` 做只读探索，再用计划写法把 7 月 30 日前的 drafts 路线收束成可执行批次。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 13:23:53 +0800</div>
+<pre>目前初步事实是：`MetaNC` 在 `main` 且干净，`metanc_drafts` 没有活动 OpenSpec change；`/tmp/abc` 只有 3 张图片，LuImageDrafts 那边有一整套 2026-06-24 架构图和 v2 文档。我继续读这些文档和图，重点找“哪些应该进入 drafts，哪些只是素材”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 13:24:23 +0800</div>
+<pre>接下来我会看 `/tmp/abc` 的三张图和 `MetaNC` 里的真实模块目录，确认 LuImageDrafts 的架构图是不是和代码现状一致，避免把“图包想法”直接误写成 drafts 承诺。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-24 13:24:50 +0800</div>
+<pre>我这里还需要确认两件事：一是截图里是否包含比 markdown 图包更多的决策信息，二是 `MetaNC` 代码里有没有已经出现的 `rt_gateway/runtime_access/execution_policy` 相关目录或文档。确认完再把计划压成按周交付。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-24 13:25:05 +0800</div>
+<pre>我会直接看这三张截图内容；如果它们只是图包导出的图片，就按 LuImageDrafts 的 v2 文档作为主依据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-24 13:26:02 +0800</div>
+<pre>截图补充了一个很关键的信息：这不是单纯架构图，而是已有“上位/应用、仿真/验证、实时层”模块责任表，里面已经把负责人和 7.31 前 UI 功能验证写出来了。我再看 drafts 的 topic registry 和 TP005/TP001/TP003 当前落点，计划会按“现有 topic 承接”而不是另开一堆散文档。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-24 13:26:27 +0800</div>
+<pre>我已经有足够事实做第一版计划了。最后补一个 topic registry 的源文件，确认是否需要新增 topic 编号还是复用现有 TP001-TP005。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-06-24 13:28:04 +0800</div>
+<pre>结论：7 月 30 日前应该规划的不是“继续 TP004”，而是 **MetaNC 架构 drafts 下一阶段**。TP004 已作为参数描述符阶段 close，后续只作为其中一条窄支线：`runtime access / parameter access`。
+
+我核对到的当前输入：
+
+- `MetaNC`：`main...origin/main` 干净；现有 `nrt` 一级模块有 `hmi / program_engine / tooling_management / work_offset / gcode_parser`，还没有 `nrt/rt_gateway`、`nrt/parameter_system` 或共享 `execution_policy` 目录。
+- `metanc_drafts`：没有活动 OpenSpec change；现有 topic 是 TP001-TP005，其中 TP005 仍是 configuration placeholder。
+- LuImageDrafts 架构包已把主线收敛成：`RT Gateway -&gt; Parameter Runtime Access -&gt; Execution Policy -&gt; ProgramEngine/Scheduler -&gt; Diagnostics/Simulation`。
+- `/tmp/abc` 三张截图补充了模块责任表：上位/HMI/Parameters/RT-Gateway、仿真验证、RT-HAL/PLC/Kernel/Fieldbus/OS，并且提到 7.31 前要验证 UI 功能可用性。按你的目标，我建议把 **7.30 作为 drafts freeze 日期**。
+
+**7.30 前 Drafts 目标**
+
+- 完成一份总架构 discussion pack：把 LuImageDrafts v2、截图责任表、MetaNC 当前代码事实统一成可引用的架构基线。
+- 新增或预留 `TP006-rt-gateway`：定义 NRT 到 RT 的唯一通讯入口、ROS2 service/topic 草案、SDK 持有边界、health/topology/mode/status 最小闭环。
+- 推进 `TP005-configuration-system` 从 placeholder 到 active baseline：承接 machine profile、HAL/fieldbus/device config、active profile loading。
+- 给 TP004 只开一个描述性 follow-up：`runtime access / parameter access narrow slice`，不要恢复 P3-P9。
+- 新增或作为 cross-topic pack 先定义 `Execution Policy`：mode/state guard、activation timing、HMI/ProgramEngine/Parameter/RT Gateway 共用策略。
+- TP001 补 HMI validation matrix：回目标点、换刀、模式支持、MDI、程序执行、错误恢复、诊断界面、大文件 paging。
+- TP003/RT 侧只做边界 draft：RT-PLC、RT-HAL、RT-Kernel、RT-Fieldbus 的职责和暂缓项，不在 7.30 前承诺完整实现。
+
+**按周计划**
+
+- 6/24-6/28：整理总架构包
+  产物：`2026-06-24-metanc-architecture-roadmap` discussion pack，含来源清单、当前代码事实、模块责任表、推进顺序、暂缓项。
+
+- 6/29-7/5：Topic registry 调整
+  产物：TP005 promotion plan、TP006 RT Gateway topic skeleton、Execution Policy 是否独立成 TP007 的判断记录。
+
+- 7/6-7/12：接口与访问窄切片
+  产物：RT Gateway 最小 service/topic contract；TP004 runtime access follow-up，聚焦 WorkOffset/Tooling read path、owner dispatch、read/protect/write 边界。
+
+- 7/13-7/19：执行策略与 HMI 验证矩阵
+  产物：Execution Policy baseline；TP001 HMI 功能验证矩阵；ProgramEngine/Scheduler 通过 gateway 的 handoff draft。
+
+- 7/20-7/26：RT/仿真/诊断边界补齐
+  产物：RT-HAL/RT-PLC/RT-Kernel/RT-Fieldbus 边界草案；Diagnostics/Data minimal event/audit 草案；Device Simulation 验证主链路说明。
+
+- 7/27-7/30：冻结与发布
+  产物：所有 drafts 交叉链接、中文读者页、mdBook/i18n 检查、close report。7/30 晚上应达到“文档基线可供 7.31 UI/系统验证使用”。
+
+**我建议的下一步**
+
+先落第一份总架构 discussion pack，不急着直接开 TP006/TP007。这个 pack 会把三类输入统一起来：`MetaNC` 当前事实、LuImageDrafts 架构图、`/tmp/abc` 模块责任表。它完成后，再按 topic registry 决定哪些正式升格为 TP。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:142-146|note=[WorkOffset architecture boundary and future bucket split]
+MEMORY.md:1827-1839|note=[parameter system preferences and stable term boundaries]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eecb6-b39c-7610-910c-ff282c077bcf
+019e6d14-a2f1-7d62-82ef-4cc7879838d9
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 13:33:20 +0800</div>
+<pre>等/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-architecture-2026-06-24里的架构模块等图生成之后我们再继续讨论</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 13:33:44 +0800</div>
+<pre>可以。那我们先暂停，不继续落 drafts，也不现在开 TP006/TP007。
+
+等 `/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-architecture-2026-06-24` 里的架构模块图生成完整后，再一起做下一轮：
+
+- 先审图：确认模块边界、通信路径、责任归属有没有误导。
+- 再对照 `MetaNC` 当前代码事实。
+- 最后决定哪些进入 `metanc_drafts`：总架构 pack、TP005 promotion、RT Gateway topic、Execution Policy、TP004 runtime access follow-up。
+
+当前我这边只是做了只读盘点，没有改文件。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 15:11:12 +0800</div>
+<pre>gpt-image-2-redraw 下面生成了最新的图，你再结合看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 15:12:41 +0800</div>
+<pre>我会按 `openspec-explore` 的方式做只读复核：先看 `gpt-image-2-redraw` 的文件结构和说明，再逐张看最新图，最后和前面 v2 架构包、截图责任表、`MetaNC` 现状对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 15:13:44 +0800</div>
+<pre>这个 redraw 包结构比较完整：有 7 张图、16:9 版本、summary、generation record 和逐图 prompt。我先读文字说明，再看图像本身，重点检查是否有“好看但概念漂移”的地方。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 15:14:57 +0800</div>
+<pre>文字部分已经对上了：redraw 包明确是纯 prompt 重画，不是旧 PNG/SVG 派生；同时 `metanc_drafts` 仍是干净、无活动 change。现在我看 16:9 图，主要判断它适不适合作为 drafts 的架构图源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 15:15:54 +0800</div>
+<pre>代码现状也再次确认了：`rt_gateway/runtime_access/parameter_system` 还没有作为 NRT 目录落地，只有旧文档或 gcode parser 内部的 execution policy 词义出现。所以这组图可以作为“下一阶段规划图”，不能写成“已实现架构图”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-24 15:17:49 +0800</div>
+<pre>第一张总体架构图表达清楚，尤其把 `nrt/rt_gateway` 标成缺失关键层是对的；但它把 `Machine Config` 和 TP004 的 runtime access 放在同一层，后续 drafts 里要明确这只是访问/领域层组合，不代表参数层拥有配置系统。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-24 15:22:08 +0800</div>
+<pre>模块状态图整体可用，状态分组和当前代码一致；一个小问题是图中文字里 `nrt/parameter_system` 更像实现目录名，drafts 里应先说成 “Parameter System / Runtime Access narrow slice”，避免现在就承诺目录名。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-24 15:25:12 +0800</div>
+<pre>通信主链路图是这批里最适合作为核心图的一张：它准确表达普通 NRT 模块不直连 `rt-sdk`。小改进是 drafts 文字里要把图上的 “Parameter Service” 解释为候选名称/访问服务，不等于已经存在的 MetaNC 模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-24 15:28:39 +0800</div>
+<pre>参数访问图和 TP004 之前的基线基本一致：不是单表，保留 domain owner。这里唯一要谨慎的是 “Unified Access Registry” 已经超出 TP004 descriptor close 的范围，所以进入 drafts 时应写成后续 runtime access 总线，不要回填成 TP004 已完成能力。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-24 15:32:39 +0800</div>
+<pre>调整图适合作为“决策差异”图，但里面的“当前说法”不能当成事实指控；在正式 drafts 里要改写成“需要避免的误解/待调整方向”，尤其 Scheduler 直接调 rt-sdk 这一条目前更像架构风险，不一定是现有实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-24 15:37:19 +0800</div>
+<pre>路线图可以直接支撑 7.30 drafts 计划，顺序没问题。唯一要调整的是它的 P1/P2/P3 标签可能再次和 TP004 历史 P 编号混淆，正式文档里建议改成 Stage 1/2/3 或 descriptive milestone。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / final_answer</h3>
+<div class="time">2026-06-24 15:37:47 +0800</div>
+<pre>我结合看了，结论是：`gpt-image-2-redraw` 这版可以作为 **7.30 前 drafts 总架构包的主图输入**，但要按“目标架构 / 待补齐规划”使用，不能写成当前 MetaNC 已实现架构。
+
+关键判断：
+
+- `03-communication-mainline.png` 最有价值，可以作为核心图：表达了 `HMI / ProgramEngine / Parameter Service / Data Diagnostics -&gt; RT Gateway -&gt; rt-sdk -&gt; OPC UA -&gt; RtApi -&gt; RT Runtime`，并明确“普通 NRT 模块不直接连 rt-sdk”。
+- `01-overall-architecture.png` 适合作为总览图，`nrt/rt_gateway` 标成缺失关键层是对的。
+- `04-parameter-access.png` 和 TP004 当前方向一致：参数不是全局表，`Domain Tables / Signal / Runtime State / Runtime Symbols` 保持 owner 边界。
+- `02-module-status.png` 可用，但 `nrt/parameter_system` 现在还只是候选落地方向，drafts 里建议写成 `Parameter System / Runtime Access narrow slice`，避免过早承诺目录名。
+- `05-adjustments.png` 适合表达“需要避免的误解”，但不建议直接叫“当前说法”；比如 `Scheduler 直接调 rt-sdk` 更像风险/误区，不一定是当前已发生事实。
+- `06-roadmap.png` 顺序合理，不过图里的 `P1/P2/P3...` 容易和 TP004 历史 P 编号混淆，正式 drafts 里建议改成 `Stage 1/2/3` 或描述性 milestone。
+
+和当前 `MetaNC` 对照后，事实边界是：
+
+- 当前 `MetaNC` 在 `main...origin/main`，工作区干净。
+- 当前 `nrt` 一级目录只有 `dev / gcode_parser / gcode_parser_test / hmi / program_engine / tooling_management / work_offset`。
+- 还没有 `nrt/rt_gateway`、`nrt/parameter_system`、`runtime_access` 这类实现目录。
+- 所以这批图应归类为：**下一阶段架构规划图 + drafts 输入材料**。
+
+我建议下一步等你确认图中文字是否还要微调后，再落一个总架构 discussion pack，标题可以是：
+
+`2026-06-24 MetaNC NRT/RT Gateway Architecture Roadmap`
+
+里面把这批图分成三类：
+
+- 主图：`03-communication-mainline`、`01-overall-architecture`
+- 支撑图：`04-parameter-access`、`02-module-status`
+- 决策图：`05-adjustments`、`06-roadmap`
+
+当前我没有改文件，只做了只读审查。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:142-146|note=[WorkOffset architecture boundary and future bucket split]
+MEMORY.md:1836-1839|note=[parameter system runtime access boundary and terminology]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eecb6-b39c-7610-910c-ff282c077bcf
+019e6d14-a2f1-7d62-82ef-4cc7879838d9
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 15:40:40 +0800</div>
+<pre>你结合这些图和之前的内容给我一个总结</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 15:45:35 +0800</div>
+<pre>我用 `openspec-explore` 的口径来收束，不落文件，只把图、MetaNC 当前代码事实、TP004/WorkOffset 之前的边界合成一版判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-24 15:52:42 +0800</div>
+<pre>综合这些图和前面 TP004、WorkOffset、MetaNC 现状，我的总结是：
+
+**核心判断**
+
+MetaNC 下一阶段最关键的不是继续扩 TP004，而是补一条清晰的 **NRT -&gt; RT 主链路**。这条主链路的中心是 `nrt/rt_gateway`：普通 NRT 模块不直接使用 `rt-sdk`，而是通过 gateway 进入 RT。
+
+当前架构可以这样理解：
+
+```text
+HMI / ProgramEngine / Parameter Runtime Access / Diagnostics
+        |
+        v
+Execution Policy
+        |
+        v
+nrt/rt_gateway
+        |
+        v
+rt-sdk + rt-api-contract
+        |
+        v
+RT RtApi / RT Kernel / PLC / HAL / Fieldbus / OS
+```
+
+**已经比较确定的部分**
+
+- `rt-sdk` 和 `rt-api-contract` 已经是可依赖基础。
+- RT 侧 `RtApi` 已存在。
+- Tooling / WorkOffset 是 NRT 领域 owner，不应该被参数系统吞掉。
+- WorkOffset V1 证明了“领域模块 + HMI adapter”的方式可行，但它不能直接推广成所有 RT 通信模式。
+- TP004 当前已完成的是 descriptor / zero-offset governance 阶段基线，不是完整参数运行时访问系统。
+
+**当前缺口**
+
+- 缺 `nrt/rt_gateway`：NRT 侧统一 RT 通讯入口。
+- 缺共享 `Execution Policy`：模式、运行态、权限、互锁、activation timing 不应只散落在 HMI backend。
+- 缺 Parameter System / Runtime Access 的运行时窄切片：现在 TP004 有描述符治理，但还没有真正的 runtime access dispatch 闭环。
+- 缺 Diagnostics/Data 的最小事件面：gateway、参数变更、执行状态、RT 状态需要能进入统一诊断/审计。
+- 缺仿真主链路：仿真不应另开私有路径，而应尽量复用 gateway/rt-sdk/RtApi 主链路。
+
+**参数系统的边界**
+
+参数系统不应被设计成一个大而全的全局参数表。更合理的是：
+
+```text
+外部入口
+  HMI 参数页 / NC-PLC 符号 / Siemens-style $ 视图
+        |
+        v
+Unified Access Registry
+        |
+        v
+Binding Resolver
+        |
+        +-- Parameter Catalog
+        +-- Domain Tables: Tooling / WorkOffset / Magazine
+        +-- Signal / HAL
+        +-- Runtime State
+        +-- Runtime Symbols
+```
+
+也就是说，TP004 后续应只做 **runtime access / owner dispatch / binding resolver** 这条窄线，不要回到大规模参数目录或完整 840D catalog。
+
+**7.30 前建议收敛成 5 个 drafts 交付**
+
+- 总架构 pack：把这批图和当前代码事实合成一份架构路线说明。
+- RT Gateway baseline：定义 gateway 职责、非职责、ROS2 service/topic 或等价接口、rt-sdk 持有边界。
+- Parameter Runtime Access follow-up：从 TP004 延伸，但只做 descriptor -&gt; instance binding -&gt; owner dispatch 的窄切片。
+- Execution Policy baseline：定义 mode guard、running/paused/faulted guard、参数 activation timing、HMI/ProgramEngine/gateway 共用边界。
+- HMI/Simulation validation matrix：列出 7.31 前 UI 功能验证项，比如模式支持、MDI、程序执行、换刀、错误恢复、诊断界面、仿真路径。
+
+**需要避免的误导**
+
+- 不要说 `rt_gateway` 已实现；现在它是缺失关键层。
+- 不要把 `Parameter Service` 写成已存在模块；它目前更像候选抽象。
+- 不要把 TP004 close 理解成参数系统完成；只是 descriptor 阶段完成。
+- 不要把 Tooling / WorkOffset 纳入参数层所有权；它们仍是领域 owner。
+- 不要继续用 P1/P2/P3 这种编号，容易和 TP004 历史 P 编号混淆；后续建议用描述性 milestone。
+
+一句话：**当前图包已经把下一阶段路线收敛清楚了：先补 RT Gateway 主链路，再接参数运行时访问，再抽共享执行策略，最后让 ProgramEngine、Diagnostics、Simulation 都走同一条主链路。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 15:53:53 +0800</div>
+<pre>你给我一个通俗的描述，关于我们的TODO</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 16:01:17 +0800</div>
+<pre>通俗讲，我们现在的 TODO 是把 MetaNC 从“几个模块各自能跑”整理成“一条清楚的系统主干”。
+
+现在已经有的东西：
+
+- RT 底层有能力，`rt-sdk`、`rt-api-contract`、`RtApi` 都已经有基础。
+- HMI、Tooling、WorkOffset 也已经做出了一些真实集成。
+- TP004 参数描述符这一阶段已经收口，知道“参数应该怎么描述、怎么绑定到对象”。
+
+但现在缺的是“中间总线”和“统一规矩”。
+
+接下来 TODO 可以理解成 5 件事：
+
+- **先建 RT Gateway**
+  让所有 NRT 上层模块不要各自直接找 `rt-sdk`，而是统一通过一个 `rt_gateway` 跟 RT 说话。它负责连接、模式、状态、拓扑、执行请求这些基础通信。
+
+- **整理参数访问入口**
+  参数不是一张大表。刀具、零偏、机床配置、HAL 信号、运行状态都有自己的 owner。我们要做的是统一“怎么查、怎么写、怎么保护、怎么分发给 owner”。
+
+- **抽出执行策略**
+  什么模式下能点什么按钮，运行中能不能改参数，暂停/故障/自动模式下哪些命令要拒绝，这些规则不能散在 HMI 里，要变成共享的 Execution Policy。
+
+- **让 ProgramEngine 接进主链路**
+  程序执行、MDI、暂停、恢复、停止，后面都应该通过 `ProgramEngine -&gt; RT Gateway -&gt; RT`，而不是各模块绕路。
+
+- **把诊断和仿真接到同一路径**
+  日志、事件、状态变化、参数变更、RT 状态都要进诊断面；仿真也尽量走真实主链路，不搞一套只给 demo 用的私有通道。
+
+最短一句话：
+
+**我们下一步不是继续堆模块，而是先把“上层怎么安全、统一地访问 RT 和参数”的主干搭起来。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 16:04:24 +0800</div>
+<pre>你废话有点多，给我一个当前架构、模块、通信的完成情况对照表</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 16:12:32 +0800</div>
+<pre>下面是当前对照表，按“已完成 / 过渡完成 / 缺失 / 暂缓”看。
+
+| 范围 | 当前状态 | 完成度 | 说明 |
+|---|---:|---|---|
+| RT 底层能力 | 已有基础 | 高 | `rt-sdk`、`rt-api-contract`、RT `RtApi` 已可依赖 |
+| RT Kernel / PLC / HAL / Fieldbus / OS | 部分已有 | 中 | RT 主体有基础，PLC/HAL/Fieldbus 还不是完整产品化链路 |
+| HMI / HMI Backend | 已有过渡集成 | 中高 | HMI、Tooling、WorkOffset 已能跑一部分真实集成 |
+| Tooling | 已有领域模块 | 中高 | 是独立 owner，不归参数层所有 |
+| WorkOffset | V1 已收口 | 高 | 零偏表/HMI 集成阶段可以视为完成 |
+| TP004 参数描述符 | 阶段完成 | 高 | descriptor / instance binding / zero-offset governance 已 close |
+| Parameter Runtime Access | 未完成 | 低 | 还缺真正 runtime access、owner dispatch、读写保护闭环 |
+| Machine Config / TP005 | 仅占位 | 低 | 还没 active baseline |
+| `nrt/rt_gateway` | 缺失 | 低 | 当前最关键缺口，NRT 到 RT 的统一入口还没建 |
+| Execution Policy | 缺失共享层 | 低 | 规则还没抽成 HMI/ProgramEngine/参数/gateway 共用策略 |
+| ProgramEngine -&gt; RT | 未接主链路 | 低中 | ProgramEngine 有方向，但还没通过 gateway 进入 RT |
+| Data / Diagnostics | 未形成统一面 | 低 | 日志、事件、状态、审计还没统一接起来 |
+| Simulation 主链路 | 未收敛 | 低 | 仿真应走 gateway/rt-sdk/RtApi 主链路，目前还需规划 |
+
+通信主链路当前状态：
+
+| 通信链路 | 当前状态 |
+|---|---|
+| HMI -&gt; HMI Backend | 已有 |
+| HMI Backend -&gt; Tooling / WorkOffset | 已有过渡集成 |
+| NRT 模块 -&gt; `rt-sdk` | 不应直接做 |
+| NRT 模块 -&gt; `rt_gateway` -&gt; `rt-sdk` -&gt; RT | 目标链路，未完成 |
+| ProgramEngine -&gt; RT | 未完成主链路 |
+| Parameter Runtime Access -&gt; owner / RT | 未完成 |
+| RT 状态 -&gt; Diagnostics | 未完成统一链路 |
+
+一句话：**现在是 RT、HMI、Tooling、WorkOffset 有基础；缺的是 `rt_gateway`、共享执行策略、参数运行时访问、统一诊断这条系统主干。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 16:15:06 +0800</div>
+<pre>那适合下一步建TP还是你前面说的discussion</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-24 16:31:32 +0800</div>
+<pre>适合 **先建 discussion，不要马上建新 TP**。
+
+原因很简单：现在这件事不是单一模块，而是跨了：
+
+| 内容 | 适合归属 |
+|---|---|
+| 总架构、模块边界、通信主链路 | 先放 discussion |
+| `rt_gateway` | 后续可单独建 TP |
+| Parameter Runtime Access | TP004 follow-up，不新建 TP |
+| Machine Config | 推进 TP005 |
+| Execution Policy | 先 discussion，暂不急着 TP |
+| Diagnostics / Simulation | 先作为架构/验证章节，不急着 TP |
+
+我建议顺序：
+
+1. **先建一个总架构 discussion pack**
+   记录：当前架构图、已有模块、缺口、通信主链路、7.30 前路线。
+
+2. **discussion 收敛后，再建 TP006-rt-gateway**
+   因为 `rt_gateway` 是最清楚、最独立、最该先补的模块。
+
+3. **其他内容不要乱开 TP**
+   - 参数运行时访问：挂 TP004 follow-up。
+   - 配置系统：推进 TP005。
+   - Execution Policy：先作为跨模块策略，不急着独立 TP。
+   - Diagnostics/Simulation：先作为验证路线。
+
+一句话：**下一步先 discussion 定边界；第一个真正适合新建的 TP 是 `RT Gateway`。**</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

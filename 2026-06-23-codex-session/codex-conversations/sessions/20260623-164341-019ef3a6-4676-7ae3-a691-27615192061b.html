@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是 TP004 导航/i18n/发布树审查 agent。只读审查，不要修改文件。 工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts 目标：审查 TP...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是 TP004 导航/i18n/发布树审查 agent。只读审查，不要修改文件。 工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts 目标：审查 TP...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef3a6-4676-7ae3-a691-27615192061b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-23 16:43:41 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/23/rollout-2026-06-23T16-43-41-019ef3a6-4676-7ae3-a691-27615192061b.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-23 16:43:41 +0800</div>
+<pre>你是 TP004 导航/i18n/发布树审查 agent。只读审查，不要修改文件。
+
+工作目录：/home/iaar/workspace/ccmix-wp/metanc_drafts
+
+目标：审查 TP004 新增 2026-06-23 P7-P9 和 daily wrap-up 是否在 topic book、root book、docs_i18n en/zh、month index、SUMMARY 导航、published HTML 中完整可达；检查中文 reader-facing 页面是否是真中文而不是薄 include；检查链接相对路径是否可疑。
+
+重点文件：
+- TP004-parameter-system/book/src/SUMMARY.md
+- book/src/SUMMARY.md
+- docs_i18n/en/src/SUMMARY.md
+- docs_i18n/zh/src/SUMMARY.md
+- TP004-parameter-system/book/src/discussions/2026-06/index.md
+- docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06/index.md
+- TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/*
+- TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/*
+- docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/*
+- docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/*
+- 可运行：python3 tools/check_docs_i18n_sync.py --require-published-html
+
+输出要求：
+- 用中文。
+- Findings first，按 Critical / Important / Minor 排序。
+- 每条给文件路径和行号，或者命令输出要点。
+- 如果没有阻塞问题，请明确说没有发现发布/导航阻塞，并列出仍可改进的内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-23 16:44:54 +0800</div>
+<pre>我会先读取本轮必须用的技能说明，并做一次轻量记忆检索，然后只读检查这些导航、i18n 和发布产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-23 16:45:06 +0800</div>
+<pre>我找到了当前项目的历史规则：TP004 讨论包需要 topic/root/i18n 四层 SUMMARY、月索引、真实中文 reader 页面、以及 `docs_html/` 已发布输出同时闭合。现在开始按这些面逐项只读核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-23 16:45:35 +0800</div>
+<pre>四个 SUMMARY 里这两个新包都已经出现，行号也能定位。接下来检查月索引、源包和中文 reader 页面内容，再跑要求的 published HTML 校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-23 16:45:48 +0800</div>
+<pre>结构校验命令通过，说明 checker 没发现投影/发布树的硬性缺口。还需要人工看中文页是否只是 include，以及链接是否有相对路径深度问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-23 16:46:02 +0800</div>
+<pre>P7-P9 中文页不是薄 include，正文是中文说明；我继续看 daily 的 report/session，并用链接扫描把相对路径实际解析一遍。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-23 16:46:25 +0800</div>
+<pre>目前没有发现中文 include 痕迹，`rg` 查 include 模式为空。最后我会核对 root/topic/en/zh wrapper 文件和 `docs_html` 中对应 HTML 是否存在，并让链接解析检查给出缺失目标。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-23 16:47:20 +0800</div>
+<pre>**Critical**
+无。没有发现发布/导航阻塞问题。
+
+**Important**
+无。`python3 tools/check_docs_i18n_sync.py --require-published-html` 已通过，输出要点：`i18n projection structure check passed.`
+
+**Minor**
+- [docs_i18n/zh/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/SUMMARY.md:62)：部分旧的 2026-06-23 条目标题仍保留较多英文，例如 `P6.1-P6.4 Promotion Closure`、`Candidate Evidence Review`、`Parameter Descriptor Value Metadata`。这不是阻塞，因为 P7-P9 和 daily wrap-up 本次重点条目已是中文标题，但后续可统一中文 reader 导航观感。
+
+**核对结果**
+- Topic book 导航已覆盖：
+  - [TP004-parameter-system/book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/SUMMARY.md:31)：daily wrap-up。
+  - [TP004-parameter-system/book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/SUMMARY.md:34)：P7-P9。
+- Root book 导航已覆盖：
+  - [book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/book/src/SUMMARY.md:55)：daily wrap-up。
+  - [book/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/book/src/SUMMARY.md:58)：P7-P9。
+- i18n en/zh SUMMARY 已覆盖：
+  - [docs_i18n/en/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/en/src/SUMMARY.md:56)：daily wrap-up。
+  - [docs_i18n/en/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/en/src/SUMMARY.md:59)：P7-P9。
+  - [docs_i18n/zh/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/SUMMARY.md:56)：daily wrap-up。
+  - [docs_i18n/zh/src/SUMMARY.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/SUMMARY.md:59)：P7-P9。
+- Month index 已覆盖：
+  - [TP004-parameter-system/book/src/discussions/2026-06/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/discussions/2026-06/index.md:5)：daily wrap-up。
+  - [TP004-parameter-system/book/src/discussions/2026-06/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP004-parameter-system/book/src/discussions/2026-06/index.md:6)：P7-P9。
+  - [docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06/index.md:5)：中文 daily wrap-up。
+  - [docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06/index.md:6)：中文 P7-P9。
+- 中文 reader-facing 页面不是薄 include：
+  - [docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/index.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/index.md:3) 有中文说明正文。
+  - [docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-p7-p9-boundary-closure/report.md:5) 有完整中文报告正文。
+  - [docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/docs_i18n/zh/src/TP004-parameter-system/discussions/2026-06-23-tp004-daily-wrap-up/report.md:5) 有完整中文日报正文。
+- 发布 HTML 已存在：
+  - `docs_html/en/.../2026-06-23-p7-p9-boundary-closure/{index,session,report}.html`
+  - `docs_html/zh/.../2026-06-23-p7-p9-boundary-closure/{index,session,report}.html`
+  - `docs_html/en/.../2026-06-23-tp004-daily-wrap-up/{index,session,report}.html`
+  - `docs_html/zh/.../2026-06-23-tp004-daily-wrap-up/{index,session,report}.html`
+- 相对链接抽查：对 14 个重点 Markdown 文件做了解析检查，结果为 `selected markdown relative links resolve: 14 files checked`，未发现缺失目标。
+
+结论：没有发现 TP004 P7-P9 和 2026-06-23 daily wrap-up 的发布/导航阻塞；当前主要可改进点只是中文 SUMMARY 中部分旧邻近条目的标题还可进一步中文化。只读审查，未修改文件。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:675-679|note=[used TP004 publication and Chinese projection rules]
+MEMORY.md:686-687|note=[used relative path and real Chinese reader page checks]
+MEMORY.md:704-709|note=[used published HTML and navigation closure expectations]
+MEMORY.md:617-621|note=[used latest TP004 P3-P9 daily wrap-up context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

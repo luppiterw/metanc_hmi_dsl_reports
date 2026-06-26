@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eee2d-a29a-76b2-ab52-11ca07d57999</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-22 15:13:48 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/22/rollout-2026-06-22T15-13-48-019eee2d-a29a-76b2-ab52-11ca07d57999.jsonl</code></div>
+<div><b>Messages</b>: <code>21</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-22 15:13:48 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-22&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-22 15:13:48 +0800</div>
+<pre>你是审查 agent C，任务是只读审查当前工作区 `/home/iaar/workspace/ccmix-wp/MetaNC` 中本次 WorkOffset UI 改动的测试和验证覆盖。不要修改文件。
+
+背景：最近改动包括：
+- 新增 `view_runtime.parameter_work_offset_status_line` 和 `parameter_work_offset_source`。
+- WorkOffset 页面状态组件 `display: inline_status`，绑定 summary/source。
+- Web/QML inline status 渲染路径。
+- G500 footer 文案改为 `TODO G500`。
+- 已运行过 `./tools/generate_targets.sh`、相关 unittest、DSL validate、WorkOffset adapter CTest，并启动 demo。
+
+重点审查：
+- `nrt/hmi/tests/test_pipeline.py`
+- `nrt/hmi/contract/runtime_plan.py` 如果字段注册/计划生成相关
+- `nrt/hmi/docs/product/spec/data_dictionary.md` 是否需要生成/更新（如果当前流程会检查）
+- `nrt/hmi/tests/snapshots/web/*`, `nrt/hmi/tests/snapshots/qml/*`
+- `nrt/hmi/generated/*` 只作为核对
+
+请检查：
+- 测试是否真的能捕获：QML/Web 状态条被渲染成两行 `summary/source` 的回归；G500 文案回退；状态字段未进入 runtime plan；快照未更新。
+- 是否存在测试过度依赖字符串、但没有覆盖行为的风险。
+- 是否遗漏 docs/data_dictionary 或其它生成文档更新，导致后续检查失败。
+- 建议还应运行哪些具体命令，不要泛泛说“跑全部测试”。
+
+输出格式：按 code review 方式列 findings，先列问题，带文件/行号；没有问题就明确说未发现阻塞问题，并列剩余风险和建议命令。不要修改代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-22 15:14:12 +0800</div>
+<pre>我会先按仓库要求读根 README 和架构索引，再做只读 diff/测试覆盖审查；这轮不会改文件。技能命中：先读取 `superpowers:using-superpowers`，然后按 code review 方式输出 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-22 15:14:42 +0800</div>
+<pre>我会用一轮轻量 memory 查找来避免重复踩之前 WorkOffset/HMI 的上下文坑；审查结论仍以当前工作区文件和 diff 为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-22 15:15:10 +0800</div>
+<pre>根 README/架构里把本轮范围限定到 `nrt/hmi` 和 `nrt/work_offset` 边界。我接下来读这两个模块的本地 README/AGENTS，然后看当前 diff 和测试快照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-22 15:15:30 +0800</div>
+<pre>当前工作区有大量已修改文件，包含用户点名的测试、快照和生成产物。我会只读核对这些改动之间是否形成可失败的测试链，而不是重新生成或覆盖任何东西。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-22 15:16:03 +0800</div>
+<pre>`nrt/hmi/AGENTS.md` 还要求读 HMI 的构建/工具/状态矩阵入口；我会补齐这些只读背景，再直接落到 `test_pipeline.py`、runtime plan 和快照断言。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-22 15:16:35 +0800</div>
+<pre>为了避免漏掉生成端/服务端约束，我还会读 HMI client/server 的 README，然后用 `git diff --unified` 和定点 `nl` 查看断言所在行。不会运行会写缓存或生成物的测试命令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-22 15:17:00 +0800</div>
+<pre>我已经确认 `runtime_plan.py` 本身没有未提交 diff，但运行计划仍可能通过 DSL/interface 变更受到影响。下一步我会把断言、DSL 字段、快照和生成输出对齐，找是否存在“字符串出现但行为未锁住”的空洞。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-22 15:17:34 +0800</div>
+<pre>初步看，`test_pipeline.py` 对 IR/计划/种子有直接断言，但 Web/QML 渲染层的断言仍以字符串存在为主。我会继续看生成器函数和快照测试机制，确认快照是否能补足这个风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-22 15:17:54 +0800</div>
+<pre>快照测试会逐字比较 generated Web/QML 输出，能防止快照未更新；但它不是 DOM/Qt 行为测试。我会查看是否已有浏览器/QML smoke 场景覆盖 WorkOffset 页面，以及 docs/data_dictionary 的生成检查链。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-22 15:18:19 +0800</div>
+<pre>有一个明显候选风险：`data_dictionary.md` 没有出现在 diff 中，但 DSL/接口新增了状态字段和资源。我要核对字典是否已经包含这些新增项，以及现有文档测试是否会强制它同步。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-22 15:18:57 +0800</div>
+<pre>字典文件确实看起来停在旧字段：没有 `parameter_work_offset_status_line/source`，也没有新增 `wcs.offset.status.table/detail` 资源。我会用 CLI 生成到 `/tmp` 做一次只读对比，确认这是实际同步缺口而不是我漏看。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-22 15:19:16 +0800</div>
+<pre>临时生成确认命令成功，且只写了 `/tmp`。我会对比当前字典和临时字典的相关行，作为 docs 同步 finding 的证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-22 15:19:47 +0800</div>
+<pre>已经确认 docs 缺口：临时生成的字典会增加 3 个命令、2 个资源和 2 个本地状态字段；当前跟踪文件没更新。我还会检查 runtime plan 的依赖收集逻辑，判断字段进入 plan 的测试是否真的抗回归。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-22 15:20:31 +0800</div>
+<pre>`runtime_plan` 会把 UI 绑定/动作收进计划，测试也断言新增资源进 plan；这一块没有看到阻塞缺口。接下来我会验证 Web/QML 状态条“两个视觉行/summary+source”的覆盖深度，尤其是否有现成 UI automation 可捕获。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-22 15:20:58 +0800</div>
+<pre>现有 Web/QML smoke 只证明 WorkOffset 表和命令流，不看新增状态条 DOM/QML 文本。我要看运行器是否支持 DOM 文本/selector 断言，方便给出具体补充命令和具体场景建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-22 15:21:32 +0800</div>
+<pre>我发现一个确定问题是数据字典未同步。另一个是覆盖质量问题：当前状态条测试主要看源码字符串和快照，不会执行 DOM/QML 状态条语义；我会再核对 Web/QML smoke 的断言范围，避免把已有覆盖误判为缺口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-22 15:23:03 +0800</div>
+<pre>我把现有自动化也核了一遍：Web scenario/QML smoke 覆盖 WorkOffset 表、命令、别名同步和 stale rejection，但没有断言新增状态条的 DOM/QML 文本或 chip。我的最终会把这作为剩余测试风险，而不是和数据字典一样的确定阻塞问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-22 15:23:25 +0800</div>
+<pre>我会补一条 memory 引用所需的精确行号，然后结束审查结论。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / final_answer</h3>
+<div class="time">2026-06-22 15:24:48 +0800</div>
+<pre>**Findings**
+
+1. **Stale generated docs:** [data_dictionary.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/data_dictionary.md:7) was not regenerated after the interface/UI changes. It still reports `Interface commands | 78`, `Interface resources | 18`, and `Local state fields | 110`, while the current DSL now has 81 commands, 20 resources, and 112 local state fields. It also lacks the new `wcs.commands.refresh_offset_detail`, `wcs.commands.clear_offset`, `wcs.commands.apply_suppression`, `wcs.offset.status.table`, `wcs.offset.detail`, `view_runtime.parameter_work_offset_status_line`, and `view_runtime.parameter_work_offset_source`. I confirmed this by generating the dictionary to `/tmp` only. The source additions are present in [ui.structure.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/ui.structure.yaml:206) and [interfaces.machine.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/interfaces.machine.yaml:1799), but the tracked doc still stops at the old WorkOffset rows around [data_dictionary.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/data_dictionary.md:249) and [data_dictionary.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/docs/product/spec/data_dictionary.md:372).
+
+**Coverage Assessment**
+
+- G500 text regression is covered: [test_pipeline.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:444) asserts `TODO G500`, and generated Web/QML snapshots also include it.
+- Runtime-plan resource registration is covered for `wcs.offset.status.table` and `wcs.offset.detail`: [test_pipeline.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:1048). The two new local-state fields are covered less directly through state-model collection and snapshots.
+- Snapshot drift is covered: [test_pipeline.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:1833) compares Web/QML generated outputs byte-for-byte.
+- Inline status rendering has partial coverage. The IR and generated source are checked, and snapshots lock Web/QML output, but the Web/QML smoke scenarios do not execute an assertion that the visible status component renders `summary` plus `source` as the intended inline status UI. Existing checks around [test_pipeline.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:514) are still string/snapshot-heavy.
+
+**Suggested Commands**
+
+Run these focused checks after regenerating the dictionary:
+
+```bash
+cd nrt/hmi
+python3 -m tools.hmi_dsl generate-data-dictionary definition/product.manifest.yaml --output docs/product/spec/data_dictionary.md
+python3 -m tools.hmi_dsl validate definition/product.manifest.yaml
+python3 -m unittest -v \
+  tests.test_pipeline.PipelineTests.test_work_offset_footer_owns_table_actions \
+  tests.test_pipeline.PipelineTests.test_work_offset_generated_clients_guard_activation_refresh_and_stale_results \
+  tests.test_pipeline.PipelineTests.test_runtime_plan_collects_used_bindings_and_local_state \
+  tests.test_pipeline.PipelineTests.test_generated_outputs_match_snapshots
+node tools/ui_automation/run_web_ui_scenario.js --scenario tests/ui_scenarios/web/work_offset_table_binding.json --debug
+HMI_REQUIRE_QTWEBSOCKETS=1 python3 -m unittest -v tests.test_qml_smoke.QmlSmokeTests.test_ui_work_offset_binding
+```
+
+For the server adapter slice:
+
+```bash
+ctest --test-dir nrt/hmi/generated/server-build-metanc-real -R &#x27;^work_offset_real_backend_test$|^work_offset_runtime_extension_adapter_test$&#x27; --output-on-failure
+```
+
+I did not modify workspace files.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:39-42|note=[WorkOffset HMI review scope and current-state caution]
+MEMORY.md:84-89|note=[WorkOffset real backend launcher and seed validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

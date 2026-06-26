@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你是规划风险审查 agent C，专看 2026-07-30 前完成 drafts 的时间、治理和验证风险。背景：用户希望结合 /home/iaar/workspace/ccmix-wp/MetaN...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>你是规划风险审查 agent C，专看 2026-07-30 前完成 drafts 的时间、治理和验证风险。背景：用户希望结合 /home/iaar/workspace/ccmix-wp/MetaN...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019ef8d4-ff08-7d10-8ce5-4ca8dc51944b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-24 16:52:49 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/24/rollout-2026-06-24T16-52-49-019ef8d4-ff08-7d10-8ce5-4ca8dc51944b.jsonl</code></div>
+<div><b>Messages</b>: <code>6</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-24 16:52:49 +0800</div>
+<pre>你是规划风险审查 agent C，专看 2026-07-30 前完成 drafts 的时间、治理和验证风险。背景：用户希望结合 /home/iaar/workspace/ccmix-wp/MetaNC、/tmp/abc 三张会议图、/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-architecture-2026-06-24 的图包，规划 7/30 前后续 drafts；用户担心拆分过细会引发重叠和重构。请只读分析，不改文件。请读取并参考：/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-architecture-2026-06-24/README.md、discussion-record.md、implementation-roadmap.md、v2/docs/discussion-record-v2.md，以及 /tmp/abc 的图片目录文件名即可（无需图像 OCR，文字记录已归纳）。输出：1) 时间表/验收/治理风险；2) 7/30 前最应该冻结的决策和最不该冻结的决策；3) 一个更低风险的交付顺序。中文短条目。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-24 16:53:34 +0800</div>
+<pre>我会按只读方式做风险审查：先用 OpenSpec explore 的框架约束范围，再核对指定材料和本地记忆里和 `metanc_drafts` 相关的既有规则。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-24 16:54:04 +0800</div>
+<pre>我现在读取四份文字归纳和 `/tmp/abc` 的文件名清单；不会做 OCR，也不会碰工作区文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-24 16:54:27 +0800</div>
+<pre>从材料看，核心不是“要不要拆”，而是 7/30 前哪些边界必须收口：RT Gateway、Runtime Access/Parameter System、Execution Policy 三条线如果同时铺太满，会在验收口径和 owner 归属上互相拖累。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-24 16:54:57 +0800</div>
+<pre>我补了一次当前 OpenSpec 状态，结果是没有 active change；这会放大 7/30 前的治理风险，因为后续如果只停在图包和讨论记录里，执行时很容易重开口径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-24 16:55:39 +0800</div>
+<pre>**1. 时间表/验收/治理风险**
+- 时间风险：从 2026-06-24 到 2026-07-30 只有约 5 周，`rt_gateway + Parameter System + Execution Policy + ProgramEngine + Diagnostics` 全铺开会超载。
+- 验收风险：现在 `openspec list --json` 是空变更，若不把 7/30 目标落成 repo 内 proposal/tasks/status，验收会变成“看过图包但没有完成口径”。
+- 治理风险：拆太细会让 P1-P5 架构路线和 TP004 既有 P3-P7 路线互相重叠，尤其是 value metadata、access metadata、runtime/API handoff。
+- 边界风险：Parameter System 若吞掉 Tooling / WorkOffset / RT Gateway，会破坏 owner 模型；`rt_gateway` 若持有参数目录，也会和 Runtime Access 冲突。
+- 验证风险：7/30 前不要承诺 24h 稳定性、完整 PLC、完整 840D 参数目录、RT live 全量写入；这些材料里已明确属于暂缓项。
+- 文档治理风险：当前图包在 `.local`，/tmp/abc 只是 3 张会议图文件名；正式 drafts 必须转成 repo 内讨论包、当前状态页和验收清单，否则后续会重新规划。
+
+**2. 7/30 前该冻结 / 不该冻结**
+- 最应该冻结：`nrt/rt_gateway` 是 NRT 到 RT 的唯一通信聚合入口，普通 NRT 模块不直接持有 `rt-sdk`。
+- 最应该冻结：Parameter System / Runtime Access 只做 descriptor catalog、instance binding、owner dispatch、访问保护，不成为全局大参数表。
+- 最应该冻结：Tooling / WorkOffset / PLC runtime / HAL signal 等继续是 truth owner。
+- 最应该冻结：Execution Policy 是共享策略层，不只属于 HMI Backend。
+- 最应该冻结：7/30 验收口径是“drafts/治理/最小闭环设计完成”，不是完整产品实现完成。
+- 最不该冻结：完整 Siemens 840D catalog、完整 PLC build/runtime、完整数据中心、长期历史分析。
+- 最不该冻结：RT live 参数全量 apply 的最终 contract。
+- 最不该冻结：多通道复杂同步、完整换刀 PLC 序列、两套刀库最终结构。
+- 最不该冻结：Parameter System 的所有字段全集和 runtime value 存储模型。
+
+**3. 更低风险交付顺序**
+- 先做 7/30 总控页：明确目标、非目标、验收口径、暂缓项。
+- 再做 `rt_gateway` draft：连接、拓扑、模式、状态、health、ROS2 service/topic 只定义最小闭环。
+- 再做 Runtime Access / TP004 对齐页：把现有 P3-P7 与新图包里的 Parameter System 对齐，避免新开重复概念。
+- 再做 Execution Policy 最小页：只冻结 mode/running-state guard 和上层拒绝反馈，不碰 RT 安全最终实现。
+- 再做 ProgramEngine/Scheduler 接入页：只写“Scheduler -&gt; rt_gateway -&gt; rt-sdk”，不扩展成完整程序执行平台。
+- 最后做 Diagnostics/Simulation 验证页：只定义事件面、audit、gateway status、基础仿真主链路，不承诺 24h 和完整数据中心。
+- 每一页都配一条验收句：`owner 边界已定义 / 非目标已列出 / 与 TP004 当前状态无冲突 / 可被后续 OpenSpec change 承接`。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:734-741|note=[TP004 P3-P7 order and validation boundary]
+MEMORY.md:714-720|note=[TP004 slice-local delivery and publication shape]
+MEMORY.md:685-687|note=[repo-backed planning anchor and concise Chinese summary preference]
+MEMORY.md:493-496|note=[metanc_drafts governance scope]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

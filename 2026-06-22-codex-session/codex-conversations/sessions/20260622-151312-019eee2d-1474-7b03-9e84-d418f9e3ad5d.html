@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eee2d-1474-7b03-9e84-d418f9e3ad5d</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-22 15:13:12 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/22/rollout-2026-06-22T15-13-12-019eee2d-1474-7b03-9e84-d418f9e3ad5d.jsonl</code></div>
+<div><b>Messages</b>: <code>15</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-22 15:13:12 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-22&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-22 15:13:12 +0800</div>
+<pre>你是审查 agent B，任务是只读审查当前工作区 `/home/iaar/workspace/ccmix-wp/MetaNC` 中 WorkOffset/G500 语义表达是否准确。不要修改文件。
+
+背景：用户指出 G500 功能需要底层/program engine/kernel/manual motion 全链路支持，不应在 UI 上表现为完整可用功能。最近改动把 UI 上的 G500 改成 TODO/临时干预语义，并在 WorkOffset 状态行显示 `Suppression TODO ...`。
+
+重点审查：
+- `nrt/hmi/definition/ui.structure.yaml` 中 G500 footer 文案和动作是否仍可能误导。
+- `nrt/hmi/client/web_client/runtime_fragments/derived_state.py`
+- `nrt/hmi/client/qml_client/runtime_fragments/derived_state_blocks/dashboard.py`
+- `nrt/hmi/client/qml_client/runtime_fragments/derived_state_blocks/sync_root.py`
+- `nrt/work_offset/docs/integration/hmi-contract.md`
+- `nrt/work_offset/docs/integration/operation-reference.md`
+- `nrt/work_offset/docs/spec/INTERFACE-REGISTRY.md`
+
+请检查：
+- 当前 UI 文案是否清楚表达“TODO/临时干预/底层未全链路集成”，还是仍可能被理解成已完整生效。
+- `TODO G500` 这个按钮是否仍会实际 invoke `wcs.commands.apply_suppression`，这在语义上是否是问题；如果是，指出风险级别和建议。
+- 状态行 `Suppression TODO none` / `Suppression TODO G500` 的表达是否准确、是否过度含混。
+- 是否需要模式管控禁用/拒绝 AUTO 运行中的 HMI G500 操作，当前代码是否已做或缺失。
+
+输出格式：按 code review 方式列 findings，先列问题，带文件/行号；没有问题就明确说未发现阻塞问题，并列剩余风险。不要修改代码。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-22 15:13:59 +0800</div>
+<pre>我会按只读 code review 处理：先满足仓库 AGENTS 的根 README 和 architecture 定位要求，再读取 WorkOffset/HMI 相关模块说明和目标文件，最后只输出 findings，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-22 15:14:29 +0800</div>
+<pre>我会同时做一轮轻量记忆查询，因为这个仓库的 WorkOffset/G500 背景在前几轮里可能已有约束；记忆只作为线索，结论仍以当前工作区文件为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-22 15:15:00 +0800</div>
+<pre>架构定位显示本次实际边界落在 `/nrt/hmi` 与 `/nrt/work_offset`：HMI 只呈现/编辑 WorkOffset facts，Program Engine 才拥有运行会话与模式边界；这正是 G500 不能被 UI 暗示为完整链路可用的关键点。接下来我读模块本地说明和目标文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-22 15:15:22 +0800</div>
+<pre>Using `review-docs-comprehension` for the docs portions, while keeping the overall stance as code review because the request is explicitly a review.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-22 15:15:47 +0800</div>
+<pre>我还会看一眼命令路径而不只看文案文件，因为“按钮仍会不会 invoke”与“AUTO 中是否拒绝”不能只靠 YAML 判断。重点仍限定在 WorkOffset/G500 语义，不做实现修改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-22 15:16:12 +0800</div>
+<pre>目前已经看到一个高风险方向：UI 的 `TODO G500` softkey 仍绑定到 `if://wcs.commands.apply_suppression`，而 WorkOffset 文档本身说 HMI 对当前选择或 G500 写入在程序执行期间应由上层模式管控拒绝。下一步我会定位具体命令处理链，确认拒绝是否已经存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-22 15:16:37 +0800</div>
+<pre>我正在补充 docs 与接口注册表的阅读，重点是看它们是否把 G500 写成“已支持持久命令”而没有同时限制 HMI 暴露级别；这会影响最终风险级别判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-22 15:17:18 +0800</div>
+<pre>我会继续定位 Web/QML/fixture/native server 对 `wcs.commands.apply_suppression` 的实际处理；如果所有层都接受并更新状态，那按钮文本中的 TODO 只是不充分提示，不是功能禁用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-22 15:17:39 +0800</div>
+<pre>我还要看 native adapter 和 tests 中有没有明确证明当前设计是“accepted G500 suppression”；这能让 finding 不停留在猜测。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-22 15:18:18 +0800</div>
+<pre>从当前代码路径看，`apply_suppression` 在 Web、本地 QML mock、fixture server、native mock/real backend 都是实际写入路径；我现在只再查是否有任何统一命令网关按 `mode.current`/`execution_state` 拦截 WorkOffset 写命令。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-22 15:18:53 +0800</div>
+<pre>我已经确认目标文件以外的命令处理层没有显式把 WorkOffset 写命令接到模式策略。为了避免误报，我会再看 command router 的执行位置，确认它没有统一 policy 层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-22 15:19:34 +0800</div>
+<pre>统一 server 命令路由只是把 WorkOffset path 分发给 extension，不读取当前模式状态；这支持“缺少 AUTO/运行中模式拒绝”的结论。我再做一次精确行号摘取，准备最终 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / final_answer</h3>
+<div class="time">2026-06-22 15:20:18 +0800</div>
+<pre>**Findings**
+
+1. **High: `TODO G500` is still a real mutating HMI command.**
+   [ui.structure.yaml](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/definition/ui.structure.yaml:1326) labels the footer as `TODO G500`, but it remains enabled by selected row and invokes `if://wcs.commands.apply_suppression` with `mode: G500` at lines 1331-1338. The Web/QML command layers enrich and send the command, and the native backend accepts it as `work_offset.suppression_applied` ([command_guards.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/widget_core/command_guards.py:1451), [work_offset_backend_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/extensions/work_offset/work_offset_backend_adapter.cpp:740)). The server test explicitly expects G500 suppression to be accepted ([work_offset_runtime_extension_adapter_test.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/tests/work_offset_runtime_extension_adapter_test.cpp:538)).
+   Risk: the UI now says TODO, but the operator can still apply a persistent WorkOffset suppression state, which can be read as “G500 works enough to use.” Recommend disabling/removing the HMI softkey or changing it to a reject/notice-only path until Program Engine/kernel/manual motion semantics are integrated.
+
+2. **High: HMI WorkOffset writes lack mode/run-state rejection for AUTO running.**
+   The WorkOffset spec says program execution owns current selection during execution and HMI writes for current selection, `G500`, or offset values must be rejected by upper-layer mode control ([INTERFACE-REGISTRY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/spec/INTERFACE-REGISTRY.md:148)). Current server routing just forwards commands to the adapter ([command_router.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/application/command_router.cpp:92), [composite_machine_adapter.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/adapters/composite_machine_adapter.cpp:72), [runtime_extension_collection.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/server/src/adapters/runtime_extension_collection.cpp:69)); `apply_suppression` then accepts based only on revision/mode.
+   Risk: an HMI G500/action can race AUTO execution ownership. Recommend a server-side mode policy gate for `wcs.commands.activate`, `set_offset`, `clear_offset`, and `apply_suppression`, rejecting at least AUTO/MDI running states with a distinct mode-policy code. Client-side disabled state can be added, but should not be the only guard.
+
+3. **Medium: status line wording is ambiguous and partly misleading.**
+   Online status renders `Suppression TODO none` or `Suppression TODO G500` ([derived_state.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/runtime_fragments/derived_state.py:171), [dashboard.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/runtime_fragments/derived_state_blocks/dashboard.py:107)). Offline status says `Suppression TODO: G500 not integrated` ([derived_state.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/web_client/runtime_fragments/derived_state.py:52), [sync_root.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/client/qml_client/runtime_fragments/derived_state_blocks/sync_root.py:51)).
+   Risk: `Suppression TODO G500` could mean “TODO item exists” or “G500 suppression is active,” while not saying “state-only / full execution chain not integrated.” Recommend wording like `G500 state-only TODO` / `No suppression (G500 chain TODO)` or a clearer non-operational warning.
+
+4. **Medium: docs still present HMI `apply_suppression_command` as a required/normal HMI operation.**
+   [hmi-contract.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/integration/hmi-contract.md:15) lists “应用 G500 抑制” as a required HMI server operation and says it persists current suppression. [operation-reference.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/docs/integration/operation-reference.md:67) says `apply_suppression_command` currently accepts G500 as persistent state command. Those are domain-true, but they do not qualify that HMI exposure is provisional/state-only and not full G500 chain support.
+   Risk: documentation supports the misleading UI affordance. Recommend separating “domain operation exists” from “operator HMI may expose/use this now,” and explicitly state full Program Engine/kernel/manual motion integration is not complete.
+
+No files were modified.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:39-56|note=[WorkOffset HMI integration context and current checkout caution]
+MEMORY.md:262-263|note=[prior V1 scope reminder that G500 UI was deferred]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019eee94-9b85-7710-a3d1-1359fc2e0b9b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-22 17:06:17 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/22/rollout-2026-06-22T17-06-17-019eee94-9b85-7710-a3d1-1359fc2e0b9b.jsonl</code></div>
+<div><b>Messages</b>: <code>12</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-22 17:06:17 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-22&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-22 17:06:17 +0800</div>
+<pre>你在 /home/iaar/workspace/ccmix-wp/MetaNC 里做只读审查，不要修改文件。任务：审查 HMI Python/Web mock fixture 和 runtime seed 是否还有 WorkOffset 旧数据（MACHINE、G54.1P1/G54.1P2、G58/G59 等）或和底层 full_settable_demo.snapshot.json 不一致。重点搜：nrt/hmi/fixture/mock_runtime_server.py、nrt/hmi/contract/runtime_seed.py、nrt/hmi/client/web_client、nrt/hmi/tests。请回答：1) 旧数据来源路径；2) 需要更新的测试/快照；3) 任何生成文件需要通过工具再生而不是手写。输出具体文件和行号， findings only。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-22 17:06:59 +0800</div>
+<pre>我会按仓库要求先做只读取证：读根 README、架构 codemap，再定位 HMI 相关模块说明；之后只用搜索/查看命令核对旧 WorkOffset 数据来源和测试/生成物边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-22 17:07:30 +0800</div>
+<pre>我先完成仓库入口和模块定位，随后会把 WorkOffset 相关 token 搜索限定在你点名的 fixture/seed/Web/tests 路径，并对照底层 snapshot 的字段和值。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-22 17:08:00 +0800</div>
+<pre>模块边界已确认：这次审查主要落在 `/nrt/hmi` 的 mock/runtime seed/Web/tests，底层一致性参照 `/nrt/work_offset` 的 fixture snapshot。我继续读这两个模块的本地说明，然后做定向 grep 和逐文件核对。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-22 17:09:25 +0800</div>
+<pre>现在进入取证阶段：我会先定位 `full_settable_demo.snapshot.json` 的真实内容，再把 Python seed、mock runtime、Web client source 和测试快照中的旧 token 做交叉比对。不会修改任何文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-22 17:10:00 +0800</div>
+<pre>初步 grep 显示旧 WCS demo 值主要还在 `runtime_seed.py`，mock server 多数是派生/同步逻辑而不是硬编码旧列表。我现在打开具体行段和底层 `full_settable_demo.snapshot.json`，确认是数据源不一致还是测试期望没跟上。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-22 17:10:53 +0800</div>
+<pre>底层 snapshot 的语义已经很明确：`full_settable_demo` 是 G54-G57 加 G505-G599，轴 id 是 `axis-x` 等；HMI seed 仍是旧的 8 行 G54-G59/G54.1P1/P2 mock。接下来我会把测试和生成快照里依赖这些旧 seed 的位置收束成 findings。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-22 17:12:01 +0800</div>
+<pre>我还会快速扫 `nrt/hmi/generated` 和生成脚本，只为判断哪些现有派生产物也已经带着旧 seed，最终会标出“应由工具再生”的文件而不是建议手写改。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-22 17:13:14 +0800</div>
+<pre>我还需要确认 `MACHINE` 是否是 WorkOffset 表旧行还是普通机床坐标字段；目前在重点路径里没有看到 WCS 表里的 `MACHINE` 行，我会做一次精确 token 扫描后收口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-22 17:13:43 +0800</div>
+<pre>我已经完成只读审查，最后再做一次当前工作区状态和精确 grep 复核，避免把中途旧输出或无关“machine coordinate”命中当成 WorkOffset 旧数据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-22 17:21:50 +0800</div>
+<pre>**Findings**
+- [nrt/hmi/contract/runtime_seed.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/contract/runtime_seed.py:224) is still the live old-data source: `wcs.offset.table` / `tooling.wcs.table` route to `_mock_wcs_rows()`, which hardcodes G58, G59, G54.1P1, G54.1P2 and old values at [runtime_seed.py:385](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/contract/runtime_seed.py:385). This conflicts with [full_settable_demo.snapshot.json:50](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/test/fixtures/snapshots/valid/full_settable_demo.snapshot.json:50), which uses G505-G599, G54 values starting at [line 57](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/test/fixtures/snapshots/valid/full_settable_demo.snapshot.json:57), and G505 at [line 593](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/work_offset/test/fixtures/snapshots/valid/full_settable_demo.snapshot.json:593). Diagnostics also retain old G54.1P1/P2 rows at [runtime_seed.py:507](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/contract/runtime_seed.py:507).
+
+- [nrt/hmi/fixture/mock_runtime_server.py](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/fixture/mock_runtime_server.py:2451) is not the hardcoded old-row source; it normalizes/syncs seed resources at lines 2451-2511. The remaining inconsistency is test-side: [test_mock_runtime_server.py:279](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_mock_runtime_server.py:279) still expects compact axis id `&quot;x&quot;`, while full demo/real backend use `axis-x`.
+
+- Snapshot baselines are stale: [web/runtime.js.snap:5643](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/snapshots/web/runtime.js.snap:5643) has old diagnostics, [web/runtime.js.snap:6376](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/snapshots/web/runtime.js.snap:6376) and [web/runtime.js.snap:6683](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/snapshots/web/runtime.js.snap:6683) have old WCS rows. QML mirrors the same stale seed at [RuntimeStore.qml.snap:5666](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/snapshots/qml/RuntimeStore.qml.snap:5666), [line 6485](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/snapshots/qml/RuntimeStore.qml.snap:6485), and [line 6792](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/snapshots/qml/RuntimeStore.qml.snap:6792). These are covered by [test_pipeline.py:1849](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:1849).
+
+- Tests needing update: [test_pipeline.py:1118](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:1118) expects compact `component_axis_ids`, and [test_pipeline.py:1142](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tests/test_pipeline.py:1142) expects detail `axis_id: &quot;x&quot;`. They should align with the full-settable snapshot/domain axis IDs and verify no G58/G59/G54.1P* rows.
+
+- Generated files must be regenerated, not hand-edited. Stale generated examples: [generated/web/runtime.js:6476](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/web/runtime.js:6476), [generated/web/runtime_seed.generated.json:6494](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/web/runtime_seed.generated.json:6494), [generated/qml/RuntimeStore.qml:6485](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/qml/RuntimeStore.qml:6485), and [generated/distribution/contract/runtime_contract_bundle.json:6516](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/distribution/contract/runtime_contract_bundle.json:6516). Use [generate_targets.sh:191](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/generate_targets.sh:191).
+
+- Generated UI automation artifacts also carry old rows including MACHINE: [generated/ui-automation/tool_offset_refresh.json:209](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/ui-automation/tool_offset_refresh.json:209) and G58/G59/G54.1P* at [line 321](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/generated/ui-automation/tool_offset_refresh.json:321). Regenerate through [run_ui_automation_smoke.sh:12](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/hmi/tools/run_ui_automation_smoke.sh:12), after `generate_targets.sh`.
+
+- No direct old WorkOffset table literal found in `nrt/hmi/client/web_client`; stale Web data is generated from `runtime_seed.py`.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:80-82|note=[HMI generated distribution source and artifact boundary]
+MEMORY.md:278-282|note=[generator and snapshot baseline handling]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ecdbe-a82d-7e82-945f-115cbe6e03a3
+019ec898-99ca-7a93-9357-c18b4e56049e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$imagegen 这个skill内部会调用什么来执行图片生成</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>$imagegen 这个skill内部会调用什么来执行图片生成</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019efc8f-b9de-7863-bd3b-649bb16d1e4d</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-25 10:15:38 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/25/rollout-2026-06-25T10-15-38-019efc8f-b9de-7863-bd3b-649bb16d1e4d.jsonl</code></div>
+<div><b>Messages</b>: <code>42</code></div>
+<div><b>User prompts</b>: <code>14</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:16:23 +0800</div>
+<pre>$imagegen 这个skill内部会调用什么来执行图片生成</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:16:23 +0800</div>
+<pre>&lt;skill&gt;
+&lt;name&gt;imagegen&lt;/name&gt;
+&lt;path&gt;/home/iaar/.codex/skills/.system/imagegen/SKILL.md&lt;/path&gt;
+---
+name: &quot;imagegen&quot;
+description: &quot;Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas.&quot;
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for normal image generation, editing, and simple transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for the CLI/API/model path, or after the user explicitly confirms a true model-native transparency fallback with `gpt-image-1.5`. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- If the user explicitly asks for a transparent image/background, stay on built-in `image_gen` first: prompt for a flat removable chroma-key background, then remove it locally with the installed helper at `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`. Treat this as a model/path downgrade and ask the user before doing it, unless the user has already explicitly requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback.
+- If a transparent request appears too complex for clean chroma-key removal, asks for true/native transparency, or local removal fails validation, explain that true transparency requires CLI `gpt-image-1.5 --background transparent --output-format png` because `gpt-image-2` does not support `background=transparent`, then ask whether to proceed. Run the CLI fallback only after the user confirms.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+Local post-processing helper:
+- `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`: removes a flat chroma-key background from a generated image and writes a PNG/WebP with alpha. Prefer auto-key sampling, soft matte, and despill for antialiased edges.
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including simple transparent-output requests; fallback CLI only if explicitly requested or after the user explicitly confirms a transparent-output fallback.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user&#x27;s prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user&#x27;s prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, follow the transparent image guidance below: generate with built-in `image_gen` on a flat chroma-key background, copy the selected output into the workspace or `tmp/imagegen/`, run the installed `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py` helper, and validate the alpha result before using it. If this path looks unsuitable or fails, ask before switching to CLI `gpt-image-1.5`.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Transparent-image requests still use built-in `image_gen` first. Because the built-in tool does not expose a true transparent-background control, create a removable chroma-key source image and then convert the key color to alpha locally.
+
+Default sequence:
+1. Use built-in `image_gen` to generate the requested subject on a perfectly flat solid chroma-key background.
+2. Choose a key color that is unlikely to appear in the subject: default `#00ff00`, use `#ff00ff` for green subjects, and avoid `#0000ff` for blue subjects.
+3. After generation, move or copy the selected source image from `$CODEX_HOME/generated_images/...` into the workspace or `tmp/imagegen/`.
+4. Run the installed helper path, not a project-relative script path:
+   ```bash
+   python &quot;${CODEX_HOME:-$HOME/.codex}/skills/.system/imagegen/scripts/remove_chroma_key.py&quot; \
+     --input &lt;source&gt; \
+     --out &lt;final.png&gt; \
+     --auto-key border \
+     --soft-matte \
+     --transparent-threshold 12 \
+     --opaque-threshold 220 \
+     --despill
+   ```
+5. Validate that the output has an alpha channel, transparent corners, plausible subject coverage, and no obvious key-color fringe. If a thin fringe remains, retry once with `--edge-contract 1`; use `--edge-feather 0.25` only when the edge is visibly stair-stepped and the subject is not shiny or reflective.
+6. Save the final alpha PNG/WebP in the project if the asset is project-bound. Never leave a project-referenced transparent asset only under `$CODEX_HOME/*`.
+
+Prompt transparent requests like this:
+
+```text
+Create the requested subject on a perfectly flat solid #00ff00 chroma-key background for background removal.
+The background must be one uniform color with no shadows, gradients, texture, reflections, floor plane, or lighting variation.
+Keep the subject fully separated from the background with crisp edges and generous padding.
+Do not use #00ff00 anywhere in the subject.
+No cast shadow, no contact shadow, no reflection, no watermark, and no text unless explicitly requested.
+```
+
+Do not automatically use CLI `gpt-image-1.5 --background transparent --output-format png` instead of chroma keying. Ask the user first when the user asks for true/native transparency, when local removal fails validation, or when the requested image is complex: hair, fur, feathers, smoke, glass, liquids, translucent materials, reflective objects, soft shadows, realistic product grounding, or subject colors that conflict with all practical key colors.
+
+Use a concise confirmation like:
+
+```text
+This likely needs true native transparency. The default built-in path uses a chroma-key background plus local removal, but true transparency requires the CLI fallback with gpt-image-1.5 because gpt-image-2 does not support background=transparent. It also requires OPENAI_API_KEY. Should I proceed with that CLI fallback?
+```
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user&#x27;s goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user&#x27;s prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural — candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup — product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup — app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram — diagrams/infographics with structured layout and text.
+- scientific-educational — classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing — campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual — slide, chart, workflow, and data-heavy business visuals.
+- logo-brand — logo/mark exploration, vector-friendly.
+- illustration-story — comics, children’s book art, narrative scenes.
+- stylized-concept — style-driven concept art, 3D/stylized renders.
+- historical-scene — period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization — translate/replace in-image text, preserve layout.
+- identity-preserve — try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit — remove/replace a specific element (including interior swaps).
+- lighting-weather — time-of-day/season/atmosphere changes only.
+- background-extraction — transparent background / clean cutout. Use built-in `image_gen` with chroma-key removal first for simple opaque subjects; ask before using CLI true transparency for complex subjects.
+- style-transfer — apply reference style while changing subject/scene.
+- compositing — multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render — drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: &lt;taxonomy slug&gt;
+Asset type: &lt;where the asset will be used&gt;
+Primary request: &lt;user&#x27;s main prompt&gt;
+Input images: &lt;Image 1: role; Image 2: role&gt; (optional)
+Scene/backdrop: &lt;environment&gt;
+Subject: &lt;main subject&gt;
+Style/medium: &lt;photo/illustration/3D/etc&gt;
+Composition/framing: &lt;wide/close/top-down; placement&gt;
+Lighting/mood: &lt;lighting + mood&gt;
+Color palette: &lt;palette notes&gt;
+Materials/textures: &lt;surface details&gt;
+Text (verbatim): &quot;&lt;exact text&gt;&quot;
+Constraints: &lt;must keep/must avoid&gt;
+Avoid: &lt;negative constraints&gt;
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -&gt; subject -&gt; details -&gt; constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, use the built-in-first chroma-key workflow unless the request is complex enough to need true CLI transparency; ask before switching to CLI `gpt-image-1.5`.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the request needs true model-native transparent output.
+- If a transparent request may need CLI fallback, ask before using `gpt-image-1.5` unless the user already explicitly requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback. Explain that the built-in chroma-key path is the default, but true transparency requires `gpt-image-1.5` because `gpt-image-2` does not support `background=transparent`.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `&lt;= 3840px`, both edges multiples of `16px`, long-to-short ratio `&lt;= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Required for local chroma-key removal and optional downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Do not load or use it unless the user explicitly chooses CLI mode or explicitly confirms a transparent request&#x27;s true CLI transparency fallback.
+- `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`: local post-processing helper for built-in transparent-image requests.
+
+&lt;/skill&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 10:17:09 +0800</div>
+<pre>`imagegen` skill 本身不直接生成图，它只是规定 Codex 该走哪条执行路径。
+
+默认路径：
+
+- 调用宿主环境内置的 `image_gen` 工具
+- 用于普通图片生成、编辑、简单透明背景需求
+- 不需要 `OPENAI_API_KEY`
+- 生成结果默认落在 `$CODEX_HOME/generated_images/...` 一类位置
+- 如果项目要用，再移动/复制到 workspace
+
+透明图默认路径：
+
+- 先用内置 `image_gen` 生成纯色 chroma-key 背景图
+- 再调用本地脚本去背景：
+
+```bash
+$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py
+```
+
+CLI fallback 路径：
+
+- 只有用户明确要求 CLI/API/model 路径，或确认需要原生透明图时才走
+- 调用：
+
+```bash
+$CODEX_HOME/skills/.system/imagegen/scripts/image_gen.py
+```
+
+- 子命令有：
+  - `generate`
+  - `edit`
+  - `generate-batch`
+- 默认模型是 `gpt-image-2`
+- 原生透明背景需要降到 `gpt-image-1.5 --background transparent --output-format png`
+- 需要 `OPENAI_API_KEY`
+- 依赖 Python `openai` 包，透明/后处理还会用 `pillow`
+
+所以一句话：普通情况下它会调用内置 `image_gen` 工具；只有显式选择 fallback 时才通过 `scripts/image_gen.py` 调 OpenAI 图片 API。</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:22:22 +0800</div>
+<pre>所以要保证使用gpt-image-2，是不是最好手动说明使用image_gen</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 10:22:44 +0800</div>
+<pre>不完全是。
+
+如果你的目标是**避免降到 `gpt-image-1.5`**，最好明确说：
+
+&gt; 使用 imagegen 的默认内置 `image_gen` 路径，不要使用 CLI fallback，不要使用 `gpt-image-1.5`。
+
+如果你的目标是**明确指定模型为 `gpt-image-2`**，那更准确的说法是：
+
+&gt; 使用 imagegen 的 CLI fallback，并指定/保持 `gpt-image-2`，不要切换到 `gpt-image-1.5`。
+
+区别是：
+
+- 内置 `image_gen`：推荐默认路径，但它是宿主内置工具，skill 文档没有说它提供显式 model 参数。
+- CLI fallback：文档明确说默认是 `gpt-image-2`，但需要 `OPENAI_API_KEY`。
+- 原生透明背景才可能要求 `gpt-image-1.5`，而且 skill 要求先询问确认，不能静默切换。
+
+所以实用写法是：**“走默认内置 `image_gen`；除非我明确确认，不要用 CLI fallback 或 `gpt-image-1.5`。”**</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:24:21 +0800</div>
+<pre>&gt; 使用 imagegen 的默认内置 image_gen 路径，不要使用 CLI fallback，不要使用 gpt-image-1.5。
+
+  &gt; 使用 imagegen 的 CLI fallback，并指定/保持 gpt-image-2，不要切换到 gpt-image-1.5。
+
+你这两句不是矛盾的吗，一个说要用CLI fallback，一个说不要用</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 10:24:50 +0800</div>
+<pre>是的，这两句是**互斥选项**，不是同时使用。
+
+核心区别：
+
+- `image_gen` 内置路径：推荐默认路径，不走 CLI，不需要 `OPENAI_API_KEY`，但 skill 文档里没有说它能显式指定模型为 `gpt-image-2`。
+- CLI fallback 路径：可以明确按 skill 文档使用 `gpt-image-2`，但它就是 CLI/API 路径，需要 `OPENAI_API_KEY`。
+
+所以你要按目标选一句：
+
+如果你只是想避免被切到 `gpt-image-1.5`，用这句：
+
+&gt; 使用 imagegen 的默认内置 `image_gen` 路径，不要使用 CLI fallback，不要使用 `gpt-image-1.5`。
+
+如果你要**明确保证模型就是 `gpt-image-2`**，用这句：
+
+&gt; 使用 imagegen 的 CLI fallback，并指定/保持 `gpt-image-2`，不要切换到 `gpt-image-1.5`。
+
+最准确的结论：**不能同时要求“不用 CLI fallback”又要求“显式指定 gpt-image-2”**，因为默认内置 `image_gen` 路径不暴露这个模型选择。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:28:16 +0800</div>
+<pre>所以我如果明确说，使用gpt-image-2绘图，是不是就可以了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 10:28:36 +0800</div>
+<pre>可以，但要更精确一点。
+
+你说“使用 `gpt-image-2` 绘图”，按这个 skill 的规则，应该会触发 **CLI fallback**，因为只有 fallback 文档里明确暴露 `gpt-image-2` 模型选择。更稳的写法是：
+
+&gt; 使用 imagegen 的 CLI fallback，用 `gpt-image-2` 绘图，不要切换到 `gpt-image-1.5`。
+
+注意代价：这条路径需要本地有 `OPENAI_API_KEY`，也可能需要安装 `openai`/`pillow` 依赖。
+
+如果你不想配置 API key，就不要强调 `gpt-image-2`，而说：
+
+&gt; 使用 imagegen 默认内置 `image_gen` 路径绘图，不要使用 CLI fallback，不要使用 `gpt-image-1.5`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:29:39 +0800</div>
+<pre>是不是如果用账号登录的可以用其他说法</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:30:03 +0800</div>
+<pre>我按 `imagegen` skill 的两条执行路径来回答：这里关键不是“账号登录”这个词，而是区分宿主内置工具路径和 API/CLI 路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 10:30:09 +0800</div>
+<pre>可以，用“账号登录态/内置工具”来表达更适合这个场景，但它表达的是**不走 API key/CLI**，不是保证模型名。
+
+推荐说法：
+
+&gt; 使用 Codex 登录态可用的内置 `image_gen` 工具生成图片，不走 CLI fallback，不要求 `OPENAI_API_KEY`，不要切换到 `gpt-image-1.5`。
+
+如果你要强调不是 API 路径：
+
+&gt; 使用内置图片生成工具，不调用 `scripts/image_gen.py`，不走 OpenAI API key 路径。
+
+但如果你说：
+
+&gt; 使用账号登录的 `gpt-image-2`
+
+这就有点混：`gpt-image-2` 是 CLI/API fallback 文档里明确的模型名；内置 `image_gen` 路径不暴露这个模型选择。
+所以最稳是分开讲：
+
+- 想用登录态内置能力：说“使用内置 `image_gen`，不走 CLI/API”。
+- 想强制 `gpt-image-2`：说“使用 CLI fallback/API，并指定 `gpt-image-2`”。</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:30:45 +0800</div>
+<pre>所以理论上我都需要明确指明这些路径，否则codex其实没法知道哪个更合适，会随机选一个绘图</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 10:31:01 +0800</div>
+<pre>不是随机选。按这个 `imagegen` skill，默认决策是确定的：
+
+- 普通生成/编辑：默认用内置 `image_gen`
+- 简单透明图：还是默认用内置 `image_gen`，再做 chroma-key 去背景
+- 明确要求 CLI/API/model 路径：才用 `scripts/image_gen.py`
+- 明确要求或确认原生透明背景：才可能用 `gpt-image-1.5`
+- `batch` 这种词本身也不会触发 CLI fallback
+
+所以你**不需要每次都写完整路径**。如果只是想生成图，直接说需求即可，Codex 应该默认走内置 `image_gen`。
+
+只有两类情况建议你明确写：
+
+1. 你想用登录态内置工具，不想配置 API key：
+
+&gt; 使用内置 `image_gen`，不要走 CLI fallback/API key 路径。
+
+2. 你想强制模型是 `gpt-image-2`：
+
+&gt; 使用 CLI fallback/API 路径，指定 `gpt-image-2`，不要切到 `gpt-image-1.5`。
+
+如果你不写，按 skill 不是随机，而是默认内置 `image_gen`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:31:04 +0800</div>
+<pre>我看他经常自己用本地的rsvg之类的工具去绘图</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:31:25 +0800</div>
+<pre>这里我继续按 `imagegen` skill 的边界来判断：`rsvg` 这类工具通常说明它在走“代码/矢量生成再栅格化”，不是 AI 图片生成路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 10:31:34 +0800</div>
+<pre>你看到的 `rsvg` 通常不是在调用图片生成模型，而是：
+
+- Codex 自己写了一个 `SVG`
+- 用 `rsvg-convert` 之类工具把 SVG 渲染成 PNG
+- 或者把已有矢量/HTML/CSS/图标资源转成图片文件
+
+这和 `imagegen` 的内置 `image_gen` 不是一回事。
+
+按 skill 规则，Codex 会在这些场景倾向本地绘图：
+
+- 简单形状、图表、流程图、icon
+- wireframe / UI mockup 但更适合 HTML/CSS/SVG 表达
+- 需要匹配已有 SVG/vector/logo 系统
+- 用户要的是确定性、可编辑、代码原生资产
+
+如果你明确想要 AI 图像模型生成，而不是本地 SVG/rsvg，最好这样说：
+
+&gt; 使用 `imagegen` 的内置 `image_gen` 生成栅格图片，不要用本地 SVG、HTML/CSS、canvas 或 `rsvg-convert` 代替。
+
+如果还想避免 CLI/API key：
+
+&gt; 使用内置 `image_gen`，不要走 CLI fallback，不要用本地 SVG/rsvg 绘制替代。
+
+所以不是随机，但如果需求像“画一个图标/示意图/界面图”，Codex 可能合理选择本地 SVG/rsvg。你要的是 AI 生成图时，明确说“用 imagegen / 内置 image_gen / 不要本地矢量替代”就行。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:34:59 +0800</div>
+<pre>看一下wsl内磁盘使用情况，还有就是uv pip使用env方式安装包这个事情，看看有多少重复安装的情况</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:35:33 +0800</div>
+<pre>我先做只读盘点：先看 WSL 文件系统总体容量，再按 home/cache/workspace/包管理目录分层看大头；然后单独查 `uv`/virtualenv 里 Python 包的重复安装。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:36:07 +0800</div>
+<pre>当前根文件系统 `/` 里面用了 39G，`/home/iaar` 占 23G；大头先看到是 workspace 9.5G、`.npm` 2.8G、`.cache` 2.0G、`.vscode-server` 2.0G、`.local` 1.9G、`.codex` 1.8G。接下来我会钻到 Python/uv 相关目录和各个 `.venv`，把“重复安装”按环境列出来，而不是先下删除建议。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 10:36:33 +0800</div>
+<pre>我已经找到 5 个 Python 环境痕迹：一个项目 `.venv`、一个 `uv tool` 环境、两个 `pipx` 环境，以及一个 `uv` 缓存归档目录。现在我会按 `site-packages` 解析包名/版本和目录大小，区分“真实重复安装”和只是 uv 缓存/硬链接带来的表观重复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 10:37:05 +0800</div>
+<pre>我会先用每个环境自己的 Python/pip 读包清单，这样能看到哪些包被安装在多个独立 env 里；随后再用 inode/hardlink 抽样判断 uv 是否只是缓存复用，不把缓存误判成完整重复。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 10:37:35 +0800</div>
+<pre>`uv tool list` 在沙箱里因为要在 `~/.cache/uv` 写临时锁文件被只读限制挡住了；这不是磁盘问题。我要用提升权限重跑这个只读查询，并补一份 Docker/BuildKit 视图，因为 Docker 的空间也计入 WSL/外层 VHDX 预算。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 10:38:24 +0800</div>
+<pre>Docker 这次反而很干净：BuildKit cache 是 0，只有 4 个镜像，主要是两个 MetaNC 大镜像。Python 这边的重点不是数量多，而是 `OpenMontage .venv` 和 `prompt-diary uv tool` 两个独立环境各自带了一套依赖，我再确认它们是否和 `uv` cache 硬链接复用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 10:38:56 +0800</div>
+<pre>关键发现：`uv tool` 的安装目录和 `~/.cache/uv/archive-v0` 大量文件是硬链接，所以普通 `du` 会根据参数顺序出现 275M 或 13M 这种差异。我要补一组 `--count-links` 和“独占占用”的口径，避免把 uv 的缓存复用误报成重复浪费。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 10:39:28 +0800</div>
+<pre>我还差一层全系统目录视图和重复包清单汇总：前者看 `/home` 以外是不是还有大头，后者按包名统计出现在几个独立环境里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 10:40:28 +0800</div>
+<pre>最后补一个“哪些包本身占空间大”的列表；重复包多是基础依赖，真正影响空间的是少数大包和浏览器/工程构建产物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / final_answer</h3>
+<div class="time">2026-06-25 10:42:00 +0800</div>
+<pre>**当前磁盘**
+- WSL 根分区 `/dev/sde`: `1007G` 总量，已用 `39G`，可用 `917G`，使用率 `5%`。
+- Windows 挂载盘：`/mnt/c` 已用 `326G/501G`，剩 `175G`；`/mnt/d` 已用 `265G/452G`，剩 `187G`。
+- WSL 内主要占用：`/home` 约 `23G`，`/usr` 约 `3.3G`，`/var` 约 `1.1G`，`/tmp` 约 `1.0G`。`du /` 只看到约 `29G`，和 `df` 的 `39G` 差额主要是 Docker/权限不可读目录和文件系统开销。
+
+**大头目录**
+- `/home/iaar/workspace`: `9.5G`
+- `~/.npm`: `2.8G`
+- `~/.cache`: `2.0G`
+- `~/.vscode-server`: `2.0G`
+- `~/.local`: 约 `2.0G`
+- `~/.codex`: `1.8G`
+- `~/.rustup`: `1.4G`
+- `~/.nvm`: `1.1G`
+
+workspace 里主要是：
+- `/home/iaar/workspace/ccmix-wp`: `7.4G`
+- `/home/iaar/workspace/github`: `2.4G`
+- `ccmix-wp/MetaNC`: `4.6G`
+- `ccmix-wp/metanc_hmi_dsl`: `2.7G`
+- 当前 `metanc_drafts`: `104M`
+
+**Docker**
+- BuildKit cache: `0B`，这里没有可清的构建缓存。
+- 镜像主要占用是 tagged 镜像，不是缓存：
+  - `metanc-hmi-server-build:local`: unique `5.8G`
+  - `optimalcnc/metanc:latest`: unique `3.883G`
+  - `optimalcnc/metanc-rt:latest`: unique `789M`
+  - `metanc-hmi-server:local`: unique `63M`
+
+这些镜像清理前要确认是否接受重新 build/pull 的成本。
+
+**uv / pip env 重复情况**
+找到的 Python 环境：
+- `/home/iaar/workspace/github/OpenMontage/.venv`: `207M`，独立 env。
+- `/home/iaar/.local/share/uv/tools/prompt-diary`: 名义 `275M`，但大量文件和 `~/.cache/uv` 是 hardlink；在已计算 `~/.cache/uv` 后，额外物理占用约 `13M`。
+- `~/.cache/uv`: `296M`，`archive-v0` 里 50 个归档目录。
+- `/home/iaar/.local/share/pipx/venvs/poetry`: `92M`
+- `/home/iaar/.local/share/pipx/shared`: `13M`
+- `~/.local/lib/python3.12/site-packages`: `3.6M`
+
+结论：`uv tool prompt-diary` 看起来像重复装了 `275M`，但实际主要靠 hardlink 复用 `~/.cache/uv`，不能简单按 `275M + 296M` 计算浪费。`OpenMontage/.venv` 没有 hardlink 复用，是完整独立安装。
+
+重复包数量不夸张：
+- 出现在 3 个 env：`typing-extensions`、`idna`、`certifi`
+- 出现在 2 个 env：`urllib3`、`requests`、`pydantic`、`pydantic-core`、`jsonschema`、`httpx`、`httpcore`、`cryptography`、`cffi`、`attrs`、`anyio` 等基础依赖
+
+真正占空间的大包不是这些重复基础包：
+- OpenMontage: `onnxruntime 57M`、`numpy + numpy.libs 70M`、`piper 25M`
+- prompt-diary uv tool: `codex_cli_bin 224M`
+- poetry pipx env: `zstandard 23M`、`cryptography 14M`、`rapidfuzz 12M`、`dulwich 7.7M`
+
+**判断**
+当前 WSL 内空间不紧张。`uv pip/env` 的重复安装不是主要问题，按独立 env 管理是正常的；真正可观的大头是 Docker tagged 镜像、MetaNC/metanc_hmi_dsl 的生成/构建目录、浏览器缓存，以及 `/tmp` 里的旧临时工作目录。我没有做任何删除或安装操作。
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1496-1526|note=[used scan-first WSL and Docker accounting workflow]
+MEMORY.md:1576-1625|note=[used cleanup taxonomy and Docker/WSL separation guidance]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ed281-9afe-7762-98f3-d4cdf1e6d740
+019ed310-63c4-74b0-a3f4-ad277f65c086
+019eeceb-5156-74a1-aaf2-16f4b728f4bf
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:44:00 +0800</div>
+<pre>为什么在不同目录的时候，老是会说没有装openai pillow这些，是因为独立的env吗，那不是每个里面都会下载这些</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:44:23 +0800</div>
+<pre>这个现象基本就是 Python 环境隔离导致的。我先用刚才查到的环境结果来解释：同一台 WSL 里有多个 venv/tool env，但包不会自动跨环境共享成“可 import”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 10:44:41 +0800</div>
+<pre>对，主要原因就是**独立 env**。
+
+Python 包不是“WSL 全局装一次，到处都能用”。实际是：
+
+- 你在 `OpenMontage/.venv` 里装了 `pillow`，只对这个 `.venv/bin/python` 可见。
+- `prompt-diary` 是 `uv tool` 环境，只对那个 tool 自己可见。
+- `pipx` 的 `poetry` 又是另一个独立 env。
+- 当前 `metanc_drafts` 如果没有 `.venv`，用到的可能是系统 Python，自然会说没装 `openai` / `pillow`。
+
+还有一个容易混淆点：**uv 可能不会重复下载，但每个 env 仍然需要“安装入口”**。
+
+也就是说：
+
+- 下载包：uv 会进 `~/.cache/uv`，可以复用。
+- 安装到 env：每个 `.venv` 需要有自己的 `site-packages` 记录。
+- uv 经常用 hardlink 复用缓存，所以磁盘上不一定真的复制一整份。
+- 但 Python import 只看当前解释器的 `site-packages`，不会自动去别的 env 找。
+
+所以你看到“不同目录缺 openai/pillow”，不是因为机器没包，而是当前目录/命令用的是另一个 Python。
+
+更稳的做法有两种：
+
+```bash
+# 固定某个项目环境
+uv venv
+uv pip install openai pillow
+.venv/bin/python your_script.py
+```
+
+或者一锤子命令，不关心当前目录有没有装：
+
+```bash
+uv run --with openai --with pillow python your_script.py
+```
+
+如果是 `imagegen` 的 CLI fallback，关键不是“系统有没有装”，而是**运行 `scripts/image_gen.py` 的那个 Python 环境有没有 `openai` 和 `pillow`**。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:51:13 +0800</div>
+<pre>看一下有哪些重复安装了openai和pillow，然后大概单个会占用多大空间</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:51:55 +0800</div>
+<pre>我做只读扫描：先找所有 `site-packages` 里的 `openai*` 和 `pillow/PIL` 安装痕迹，再分别量目录大小；同时会把 `uv cache` 的 hardlink 情况和普通 venv 分开看。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:52:34 +0800</div>
+<pre>初扫结果很明确：真正的 `openai` SDK 只在 `/tmp/metanc-imagegen-venv`，`pillow` 在 OpenMontage 和这个临时 imagegen venv 各一份。接下来我量每份包本体、依赖和整个 env 的大小。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 10:53:01 +0800</div>
+<pre>这里有个重要细节：`du` 同时传两个 venv 时只显示了整目录，没显示 site-packages 子目录，可能是输出被路径合并影响；我会单独量一次，顺便看 `/tmp/metanc-imagegen-venv` 是否和 uv cache 用 hardlink 复用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-25 10:53:38 +0800</div>
+<pre>查到的结果：
+
+- `openai` SDK：只装了 1 份
+  `/tmp/metanc-imagegen-venv/lib/python3.12/site-packages/openai`
+  - `openai` 本体约 `17M`
+  - `openai-2.44.0.dist-info` 约 `196K`
+  - 加上常见依赖大概 `30M+`
+  - 这个临时 venv 整体是 `66M`
+
+- `pillow`：装了 2 份
+  - `/home/iaar/workspace/github/OpenMontage/.venv/...`
+  - `/tmp/metanc-imagegen-venv/...`
+  - 每份大小基本一样：
+    - `PIL`: `7.0M`
+    - `pillow.libs`: `14M`
+    - `pillow-12.2.0.dist-info`: `124K-128K`
+    - 合计约 `21M`
+
+另外，`prompt-diary` 里有 `openai_codex` / `openai_codex_cli_bin`，这个不是普通 `openai` Python SDK，不算你说的 `pip install openai` 那个包。
+
+所以当前不是“很多地方重复装了 openai/pillow”。实际是：
+
+- `openai`: 只有 `/tmp/metanc-imagegen-venv` 一份
+- `pillow`: 两份，总重复成本约 `21M`
+- 如果每个项目都各建 venv 并装 `openai pillow`，一套完整环境通常会新增几十 MB，粗略 `50-70M` 量级，主要看是否已有依赖/是否 hardlink 复用缓存。</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:57:27 +0800</div>
+<pre>ai安装这些的位置是会有随机性的吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 10:57:59 +0800</div>
+<pre>不是随机，但会**取决于当时运行命令的 Python 环境和工作目录**，所以看起来像“到处装”。
+
+常见规则是：
+
+- `python -m pip install openai pillow`
+  装到这个 `python` 对应的环境里。比如 `.venv/bin/python` 就装到 `.venv/lib/.../site-packages`。
+
+- `pip install openai pillow`
+  装到 `pip` 自己绑定的 Python 环境里，容易受 `PATH` 影响，所以不如 `python -m pip` 明确。
+
+- `uv pip install openai pillow`
+  通常装到当前激活的 venv；如果当前目录有 `.venv` 或设置了环境变量，也可能使用对应 env。没有明确目标时就容易让人困惑。
+
+- `uv run --with openai --with pillow ...`
+  会创建/复用 uv 管理的临时或缓存环境，不一定在当前项目目录。
+
+- `uv tool install xxx`
+  装到 `~/.local/share/uv/tools/&lt;tool-name&gt;/`，包缓存放 `~/.cache/uv`。
+
+- `pipx install xxx`
+  装到 `~/.local/share/pipx/venvs/&lt;tool-name&gt;/`。
+
+所以不是 AI 随机选位置，而是**命令上下文决定位置**。AI 如果没有被要求固定路径，可能会为了快速完成任务创建临时 venv，例如你这里的：
+
+```text
+/tmp/metanc-imagegen-venv
+```
+
+这就是临时任务环境，不是系统随机行为。
+
+想避免乱，可以明确要求：
+
+```text
+不要新建临时 venv。使用当前项目的 .venv；如果没有 .venv，先询问。
+```
+
+或者：
+
+```bash
+uv pip install --python /path/to/.venv/bin/python openai pillow
+```
+
+最稳的是每次都指定解释器路径。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 11:00:37 +0800</div>
+<pre>uv pip install --python /path/to/.venv/bin/python openai pillow 如果不指定/path/to/.venv/bin/python能安装吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 11:00:55 +0800</div>
+<pre>可以，但前提是 `uv` 能明确找到目标环境。
+
+常见可行情况：
+
+```bash
+# 当前 shell 已激活 venv
+source .venv/bin/activate
+uv pip install openai pillow
+```
+
+或当前目录/父目录有 `.venv`：
+
+```bash
+uv pip install openai pillow
+```
+
+`uv` 通常会使用当前项目环境或已激活的虚拟环境。
+
+但如果没有激活 venv、当前目录也没有明确 `.venv`，就可能报类似：
+
+```text
+No virtual environment found
+```
+
+或者要求你加：
+
+```bash
+uv venv
+```
+
+然后再：
+
+```bash
+uv pip install openai pillow
+```
+
+所以结论是：
+
+- **能安装**：当前已激活 venv，或当前项目有 `.venv`。
+- **不稳**：你在不同目录执行，目标 env 可能变，或者找不到 env。
+- **最稳**：指定 `--python /path/to/.venv/bin/python`，或者先固定进入项目根目录再用 `.venv`。</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 11:02:00 +0800</div>
+<pre>gemini 3.5flash Medium 和High区别</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 11:02:50 +0800</div>
+<pre>是 `thinking_level` 的区别，不是模型本身不同。
+
+对 `gemini-3.5-flash`：
+
+- **Medium**：默认档位。适合日常问答、普通代码、比较分析、轻中度推理。
+- **High**：更高推理力度。适合复杂代码、数学、多步骤规划、长链路分析。
+- **代价**：High 通常会用更多 thinking tokens，所以可能更慢、更贵。Google 文档说明计费会把输出 token 和 thinking token 都算进去。
+- **不是越高越好**：简单任务用 High 往往只是多花 token，不一定明显提升答案。
+
+官方当前文档里写明：`gemini-3.5-flash` 默认是 **On (medium)**，支持 `low, medium, high`。Google 也建议简单任务用 low，中等任务用默认 thinking，复杂任务用 maximum/high thinking。
+来源：Google Gemini API Thinking 文档：&lt;https://ai.google.dev/gemini-api/docs/thinking&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

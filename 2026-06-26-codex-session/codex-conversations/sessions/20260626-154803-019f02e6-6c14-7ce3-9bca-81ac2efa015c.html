@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f02e6-6c14-7ce3-9bca-81ac2efa015c</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-26 15:48:03 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/26/rollout-2026-06-26T15-48-03-019f02e6-6c14-7ce3-9bca-81ac2efa015c.jsonl</code></div>
+<div><b>Messages</b>: <code>11</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-26 15:48:03 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-26&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-26 15:48:03 +0800</div>
+<pre>You are reviewing the current working tree in /home/iaar/workspace/ccmix-wp/MetaNC. Do not edit files and do not run git add/commit/push. Task: review the rt_gateway SDD documentation split for Story 02-04 for spec-driven file layout and schema consistency. Focus files under nrt/rt_gateway/docs/spec/STORIES/STORY-02-*, STORY-03-*, STORY-04-* plus nrt/rt_gateway/docs/SUMMARY.md, spec/PREDICATES.md, spec/INTERFACE-REGISTRY.md, spec/IMPLEMENTATION-STATUS.md. Check: Story/Slice front matter, statuses, SPEC/INV front matter fields, unique IDs, valid categories per docs/paradigm/spec_driven_module_development/specifications.md, predicate definitions for all Given where/when-guard, cites references, SUMMARY navigation completeness, and status mirrors. Return findings only, ordered by severity, with file/line references. If no issues, say no findings and mention residual risk.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-26 15:48:26 +0800</div>
+<pre>I’ll do this as a read-only review: first load the required repo orientation, then inspect the SDD docs and report only concrete findings with file/line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-26 15:48:40 +0800</div>
+<pre>The cached superpowers path listed in the environment is stale, so I’m falling back to the ordinary review workflow. I found relevant memory only for repo/module scope, not for the current doc contents; I’ll verify everything against the working tree now.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-26 15:48:59 +0800</div>
+<pre>I’ve confirmed this is a dirty working tree and I’m staying read-only. Next I’m loading the module-local instructions plus the spec-driven schema doc so findings can be checked against the actual category and front matter contract.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-26 15:49:16 +0800</div>
+<pre>The module boundary matches the review scope: `nrt/rt_gateway` owns NRT RT access above `rt-sdk`, and later stories cover lifecycle, projection, and envelopes. I’m now checking the actual Story 02-04 files for schema violations, duplicate IDs, unresolved predicates, and mirror/nav drift.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-26 15:49:32 +0800</div>
+<pre>The high-level navigation already includes Story 02-04 and their SPEC/INV files. I’m drilling into front matter and formal YAML now; the main things to prove are whether references resolve and whether predicate kinds line up with `where` versus `when-guard`.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-26 15:49:59 +0800</div>
+<pre>One schema problem is already visible: several invariants use `check-site: build-and-review` / `violation-outcome: reject-change`, but the paradigm page only allows `pre-transition`, `post-transition`, or `continuous` and a small fixed outcome set. I’m checking whether that is isolated or systematic before finalizing findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-26 15:50:22 +0800</div>
+<pre>The predicate references I checked resolve to entries in `PREDICATES.md`, and the `where` entries are state facts while `when-guard` entries are guards. I’m doing one last pass on Story/Slice front matter and status mirrors to avoid reporting only the invariant issue if there’s also a front matter mismatch.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-26 15:50:40 +0800</div>
+<pre>I have enough to close the review. The only material defect I found is the invariant schema mismatch; Story/Slice front matter, SPEC front matter categories/statuses, predicate dictionary coverage, citations, SUMMARY entries, and implementation-status mirrors look consistent for the scoped files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / final_answer</h3>
+<div class="time">2026-06-26 15:50:55 +0800</div>
+<pre>Findings:
+
+- High: Invariant formal clauses use check sites and violation outcomes that are not valid under `docs/paradigm/spec_driven_module_development/specifications.md`. The allowed `check-site` values are only `pre-transition`, `post-transition`, and `continuous`; allowed violation outcomes depend on that check site and do not include `reject-change` or `reject-operation`. Offending lines:
+  - [INV-002.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/SLICE-01-daemon-lifecycle-skeleton/INV-002.md:24): `check-site: build-and-review`, `violation-outcome: reject-change`
+  - [INV-003.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/SLICE-02-single-active-session-policy/INV-003.md:23): `check-site: continuous` with invalid `violation-outcome: reject-operation` on line 24
+  - [INV-004.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/SLICE-03-reconnect-and-timeout-policy/INV-004.md:23): `continuous` with invalid `reject-change` on line 24
+  - [INV-005.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/INV-005.md:23): `continuous` with invalid `reject-change` on line 24
+  - [INV-006.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-02-runtime-snapshot-expansion/INV-006.md:24): `build-and-review`, `reject-change`
+  - [INV-007.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-03-state-event-stream/INV-007.md:23): `build-and-review`, `reject-change`
+  - [INV-008.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/SLICE-01-client-facade-contract/INV-008.md:24): `build-and-review`, `reject-change`
+  - [INV-009.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/SLICE-02-local-ipc-envelope/INV-009.md:23): `build-and-review`, `reject-change`
+  - [INV-010.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/SLICE-03-capability-and-error-envelope/INV-010.md:23): `build-and-review`, `reject-change`
+
+No other findings in the requested scope. I did not edit files or run git add/commit/push.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:818-856|note=[rt_gateway repo and module scope context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-1757-7ed1-a30e-23d07698930e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

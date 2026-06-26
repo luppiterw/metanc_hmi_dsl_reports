@@ -1,0 +1,2751 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下现在的状态，结合昨天的讨论继续看一下</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下现在的状态，结合昨天的讨论继续看一下</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019efc2b-0c5b-7523-a709-b56fcc4037c3</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-25 08:25:40 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/metanc_drafts</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/25/rollout-2026-06-25T08-25-40-019efc2b-0c5b-7523-a709-b56fcc4037c3.jsonl</code></div>
+<div><b>Messages</b>: <code>200</code></div>
+<div><b>User prompts</b>: <code>25</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 08:26:13 +0800</div>
+<pre>看一下现在的状态，结合昨天的讨论继续看一下</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 08:26:42 +0800</div>
+<pre>我会按 `openspec-explore` 先做只读状态盘点：对照昨天相关记忆、当前分支/工作区、OpenSpec 活跃变更和关键文档状态，先把“现在在哪里”说清楚。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 08:27:03 +0800</div>
+<pre>当前仓库不是干净状态：在 `main` 上有一组 6 月 24 日架构路线图讨论包的新增文件，以及 SUMMARY/讨论索引的修改；OpenSpec 根下没有活跃 change。接下来我看这些未提交内容具体是什么、昨天讨论沉淀到哪一层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 08:27:18 +0800</div>
+<pre>这批文件看起来是“工作区级”的 2026-06-24 roadmap pack，不是 TP004 topic-local pack；它已经挂进 mdBook/双语 SUMMARY，但还没有提交，也还没看到构建产物更新。现在我读正文，判断它和昨天讨论的边界、风险、下一步是否对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 08:27:29 +0800</div>
+<pre>正文目前的中心判断比较清楚：7 月 30 日是“治理/决策闭环”，不是产品完成；RT Gateway 先保留为 ADR/vertical slice，不立即提成新 TP。还需要看 evidence、promotion gate、report/session，确认有没有把聊天结论落成可追踪证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 08:27:48 +0800</div>
+<pre>我注意到一个可能不一致点：`session.md` 说已经 rebuilt generated documentation，但当前 tracked diff 里只有源/导航变更，生成目录很可能是 ignored；另外英文 i18n 的月索引没有出现在 diff 中，需要确认是不是漏挂。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 08:28:03 +0800</div>
+<pre>英文月索引用的是 include 根目录 `discussions/2026-06/index.md`，所以它没单独 diff 是正常的；中文月索引是独立翻译文件，因此有单独修改。接下来我做一次当前本地校验，避免只依赖 `daily-brief.md` 里记录的昨天结果。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 08:28:28 +0800</div>
+<pre>本地当前校验结果和昨天 brief 记录基本一致：i18n 结构、参数 value-set 检查、109 个工具测试、diff 空白检查都通过。剩下我再核一下 published HTML 视角和链接/敏感标识，确认这个包是否可以作为“昨天讨论的落地状态”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 08:28:49 +0800</div>
+<pre>`--require-published-html` 也通过，发布目录里中英文 HTML 都已经有 2026-06-24 页面。`rg` 查临时标识时命中了 mdBook 自带 JS 里的 `transient` 词和正文说明句，没有看到真实 rollout/session id 泄露；我会进一步按 brief 的下一步，到 MetaNC 仓库核 RT SDK / RT API / ProgramEngine / Scheduler 的实际证据。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 08:29:13 +0800</div>
+<pre>MetaNC 当前 `main` 也是干净的，最近提交已经包含 WorkOffset table integration；记忆里 6 月 23 日的 RT Docker/SDK 结论仍然是最新已记录证据：容器可跑，但 SDK quick-start 卡在 `open_transport/BadConnectionClosed`。我现在用当前 MetaNC checkout 读实际路径，准备把“下一步 ADR evidence pass 应该补什么”具体化。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-25 08:29:33 +0800</div>
+<pre>目前证据方向已经收敛：昨天包里的“下一步”不是继续造新 topic，而是把 RT Gateway ADR 从讨论稿推进到 repo evidence draft。为了避免泛泛说，我再抓几处最关键代码/文档点：`Machine::connect`、OPC UA backend、RT API contract、ProgramEngine 决策页，以及是否已有 scheduler 实体。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-25 08:29:55 +0800</div>
+<pre>我已经从当前代码看到 `rt-sdk` 的 `Machine` 是实际 SDK 入口，`rt-api-contract` 有独立 wire contract，ProgramEngine 目前主要是 spec/decision 文档。现在还要确认 `Machine::connect` 的错误分层和当前是否存在独立 Scheduler 模块，这会直接决定 ADR 里“gateway 是服务边界还是调度器 adapter”的表述。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-25 08:30:10 +0800</div>
+<pre>当前 checkout 没找到独立 scheduler 文件/模块名，这支持昨天包里的谨慎表述：先问“gateway 放独立 NRT 服务还是 execution/scheduler adapter”，不要现在假设已有 Scheduler 所有权。最后我看 ProgramEngine 的几条决策，确认它对 HMI/daemon/transport 的边界。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-25 08:30:27 +0800</div>
+<pre>我已经完成了只读状态复核和 MetaNC 证据抽样。为了最后给你一个可追踪的结论，我再取一下昨天相关记忆条目的精确行号；不会改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / final_answer</h3>
+<div class="time">2026-06-25 08:31:06 +0800</div>
+<pre>现在状态如下：
+
+- `metanc_drafts` 在 `main...origin/main`，没有分支落后/超前，但工作区有未提交的文档变更。
+- 当前未提交内容是 2026-06-24 的 root-level discussion pack：`discussions/2026-06-24-metanc-architecture-roadmap/`，并已投影到 `book/src/`、`docs_i18n/en/`、`docs_i18n/zh/`，导航也已挂上。
+- OpenSpec 当前没有 active change，`openspec/TOPICS.md` 没动，这和昨天结论一致：不新增 TP/topic。
+- 本轮复核通过：`check_docs_i18n_sync`、`--require-published-html`、`check_parameter_value_sets`、`python3 -m unittest discover -s tools/tests` 109 tests、`git diff --check`。
+- ignored 的发布输出里已经有中英文 HTML：`docs_html/{en,zh}/discussions/2026-06-24-metanc-architecture-roadmap/` 和 `docs_i18n/site/{en,zh}/...`。
+
+结合昨天讨论，当前判断是：这包落得方向是对的。它把 RT Gateway 放成 ADR draft，不升新 topic；把 execution policy、data diagnostics、simulation validation 先保留为跨域 concern；把 2026-07-30 定义成“治理/最小决策闭环”，不是产品完成。
+
+我也顺手看了当前 MetaNC 证据：`MetaNC` 在 `main...origin/main` 且干净；`rt-sdk` 里已有 [Machine SDK 入口](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/machine.hpp)、[IRtBackend surface](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/backend.hpp)、[OPC UA connect 分层](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/src/opcua_backend.cpp)；`rt-api-contract` 明确是 RT 与 SDK 之间的 wire contract；[ProgramEngine module model](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/program_engine/docs/spec/MODULE-MODEL.md) 仍然偏 spec/decision，且我没找到独立 scheduler 模块文件。因此下一步最好不是开新 topic，而是把 `rt-gateway-adr-draft.md` 补成“带具体 MetaNC 路径和复现实验清单”的 evidence draft。
+
+我这轮没有重跑 Docker/RT live check；沿用之前已记录的 caveat：RT 容器可启动，但 SDK quick-start 仍卡在 `open_transport / BadConnectionClosed`。如果继续推进，建议先做一小步：更新 ADR，把上述 MetaNC 路径、`ConnectStage::open_transport`、`rt-api-contract` 边界、ProgramEngine daemon/ROS2 seam、以及“当前未证实 scheduler owner”写进去，然后再决定是否 commit 这批 6 月 24 日 discussion pack。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1-42|note=[RT Docker and SDK live caveat used for current status]
+MEMORY.md:637-688|note=[metanc_drafts docs workflow and boundary preferences used]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ef1bf-ca69-7033-971d-6150f5aba4f2
+019ef1bf-dcc8-79b1-995c-cddd48e042ab
+019eece2-8364-7830-ba04-97d6b2a3e889
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 08:41:40 +0800</div>
+<pre>如果现在要做这个rt_gateway，给我一些思路</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 08:41:58 +0800</div>
+<pre>我会按探索/brainstorming 来回答，不动文件：先把 RT Gateway 当成一个待验证边界，而不是马上定义成完整平台模块。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 08:42:29 +0800</div>
+<pre>可以。我的建议是先把 `rt_gateway` 当成“RT 连接与命令边界”，不是新平台大模块。
+
+**核心定位**
+`rt_gateway` 应该站在这里：
+
+```text
+HMI / ProgramEngine / TP004 runtime access
+                |
+                v
+        NRT RT Gateway
+                |
+                v
+          rt-sdk::Machine
+                |
+                v
+     OPC UA / RT API Contract / RT runtime
+```
+
+它不替代 `rt-sdk`，也不拥有 RT 语义。它主要解决：谁来持有 SDK session、谁来重连、谁来把 transport failure 和 domain rejection 区分清楚、谁给 NRT 侧暴露稳定状态。
+
+**我会考虑三种路线**
+
+1. **轻量 ADR + Spike 先行**
+   先不建完整模块，只补一份带路径证据的 ADR，然后做一个最小 spike：启动 gateway、连接 `rt-sdk::Machine`、暴露 health/last_error/topology。
+   这是我推荐的第一步，因为当前 live RT 链还没闭环，贸然做完整 topic 容易把错误边界固化。
+
+2. **独立 NRT Daemon**
+   做成 `nrt/rt_gateway` 独立进程，类似 ProgramEngine 的 daemon 思路。它通过 ROS 2 service/topic 给 HMI、ProgramEngine、TP004 runtime access 用。
+   好处是边界最清楚；代价是需要定义 ROS 2 接口、生命周期、部署和重连策略。
+
+3. **先作为 ProgramEngine / execution adapter**
+   如果近期唯一消费者是执行控制，可以先把 gateway 能力作为 execution 侧 adapter，不独立建 topic。
+   好处是小；风险是未来 TP004 runtime access、HMI health、diagnostics 都要用时，会被执行链绑住。
+
+**我推荐的第一版范围**
+只做这些：
+
+- `connect / disconnect / reconnect`
+- `health`：connected、connecting、degraded、failed
+- `last_error`：保留 `ConnectStage`，尤其是 `open_transport`
+- `topology read`
+- `mode read / mode set handoff`
+- `command receipt` 透传或标准化
+- transport error 和 domain validation/rejection 的明确分层
+
+先不要做：
+
+- 参数全局表
+- active profile loading
+- PLC 语义
+- program execution policy
+- diagnostics/history store
+- RT safety rules
+- 完整 simulation validation
+
+**最小垂直切片**
+我会选两个 proof：
+
+- **Gateway health slice**：gateway 启动后尝试连接 RT，失败时把 `BadConnectionClosed/open_transport` 作为 transport failure 暴露给消费者，而不是伪装成参数/模式失败。
+- **Runtime access slice**：TP004 发起一个“读 topology / 读 mode”风格请求，经过 owner dispatch 到 gateway，但 TP004 不持有 `rt-sdk::Machine`。
+
+这样能验证最关键边界：TP004 负责 descriptor/access routing，gateway 负责 RT session，`rt-sdk` 负责 SDK API，RT runtime 负责真实机器语义。
+
+**当前最应该先落的东西**
+我觉得下一步不是直接写代码，而是把 `rt-gateway-adr-draft.md` 补成 evidence draft：
+
+- 列出 `rt-sdk::Machine`、`IRtBackend`、`ConnectStage`、`OpcUaBackend` 的当前路径；
+- 列出 `rt-api-contract` 的 wire contract 边界；
+- 列出 ProgramEngine 已接受的 daemon / ROS 2 seam 决策；
+- 明确当前没有已证实的独立 Scheduler owner；
+- 明确 live caveat：RT Docker 可跑，但 SDK quick-start 仍在 `open_transport / BadConnectionClosed`。
+
+这样做完以后，再决定它是先进入 `nrt/rt_gateway`，还是继续作为 execution adapter spike。</pre>
+</article>
+</section>
+<section class="turn" id="turn-3">
+<h2>Turn 3</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 09:57:04 +0800</div>
+<pre>HMI / ProgramEngine / TP004 runtime access
+                  |
+                  v
+          NRT RT Gateway
+                  |
+                  v
+            rt-sdk::Machine
+                  |
+                  v
+       OPC UA / RT API Contract / RT runtime 这个架构图里面，Nrt rt gateway主要通过什么具体形式呢，还有就是底部的OPC UA方式主要用来和什么交互的</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 09:57:25 +0800</div>
+<pre>我继续按探索方式说清楚边界，不改文件。这里关键是把“Gateway 的对上接口形式”和“OPC UA 的对下交互对象”分开看。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 09:57:49 +0800</div>
+<pre>`NRT RT Gateway` 最合理的具体形式是：
+
+```text
+一个 NRT 侧常驻服务进程 / daemon
++ 一个很薄的 ROS 2 node 接口层
++ 内部持有一个 rt-sdk::Machine session
+```
+
+也就是：
+
+```text
+HMI / ProgramEngine / TP004 runtime access
+        |
+        | ROS 2 services / topics / maybe actions
+        v
+rt_gateway_node
+        |
+        | plain C++ gateway core
+        v
+rt-sdk::Machine
+        |
+        | OPC UA client backend
+        v
+RT runtime OPC UA server
+```
+
+**Gateway 对上是什么形式**
+建议对上不要暴露 `rt-sdk::Machine`，而是暴露稳定的 NRT 接口：
+
+- ROS 2 service：`connect`、`disconnect`、`get_health`、`get_topology`、`get_mode`、`set_mode`
+- ROS 2 topic：`health_state`、`last_error`、`mode_state`、`topology_snapshot`、`command_receipt`
+- 长操作以后可以考虑 ROS 2 action，比如 automatic/MDA 执行队列，但第一版不急
+
+内部可以拆成：
+
+```text
+rt_gateway_core
+  - SdkSessionManager: 持有 rt-sdk::Machine
+  - HealthState: connected / degraded / failed / reconnecting
+  - ErrorClassifier: open_transport vs initialize_session vs domain rejection
+  - TopologyCache / ModeCache
+  - CommandForwarder
+```
+
+这样 HMI、ProgramEngine、TP004 runtime access 都只知道 gateway 的服务契约，不直接拿 SDK session。
+
+**底部 OPC UA 主要和什么交互**
+底部的 OPC UA 是 `rt-sdk` 用来和 **RT runtime 暴露出来的 OPC UA server** 交互的。
+
+更具体地说：
+
+```text
+rt-sdk::Machine
+    -&gt; OpcUaBackend
+        -&gt; OPC UA endpoint, e.g. opc.tcp://host:4840
+            -&gt; RT runtime / Orocos deployer / RtApi bridge
+```
+
+它交互的对象不是 HMI、不是 TP004、也不是 ProgramEngine，而是 RT 侧运行时暴露的通信入口。当前讨论里的 RT runtime 会暴露类似这些服务面：
+
+- `system`
+- `mode`
+- `topology`
+- `resources`
+- `manual`
+- `automatic`
+- `mda`
+
+`rt-api-contract` 则是 RT 和 SDK 之间共享的 wire contract。也就是说，OPC UA 负责把这些 contract 类型和方法调用跨进程传过去；RT runtime 负责真正执行模式切换、拓扑读取、手动/自动/MDA 命令等。
+
+一句话概括：
+
+```text
+Gateway 是 NRT 侧的会话/健康/命令边界；
+rt-sdk::Machine 是 SDK API；
+OPC UA 是 SDK 到 RT runtime 的传输方式；
+rt-api-contract 是这条传输上双方都认的 payload/enum/类型契约。
+```
+
+所以第一版最重要的边界是：`Gateway` 可以缓存 health/topology/mode，可以管理重连和错误分类，但不要拥有参数语义、程序语义、RT safety 语义，也不要绕过 `rt-sdk` 直接碰 RT 内部。</pre>
+</article>
+</section>
+<section class="turn" id="turn-4">
+<h2>Turn 4</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:00:10 +0800</div>
+<pre>目前的架构里有定ros2的角色、orocos的角色吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:00:46 +0800</div>
+<pre>我会按当前仓库里的已落文档来回答，不把还没定的部分说成已定。先快速对照 ProgramEngine、rt-api-contract 和 RT/RT-SDK 文档里的边界用词。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:01:20 +0800</div>
+<pre>已有证据足够判断：ROS 2 的角色在 ProgramEngine 范围内已经接受；Orocos 的角色在 RT/runtime 边界和 OPC UA 暴露规则里已经有定义。我再补两处 RT 文档行号，方便把“已定”和“未定”分开说。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / final_answer</h3>
+<div class="time">2026-06-25 10:01:58 +0800</div>
+<pre>有，但“已定”的范围不一样。
+
+**ROS 2**
+目前明确已定的是 **NRT 侧 IPC / public seam**，最清楚落在 `ProgramEngine`：
+
+- `ProgramEngine` 是 NRT daemon，HMI 是 client。
+- HMI 到 ProgramEngine 的边界定为 ROS 2 node。
+- 命令/查询走 ROS 2 services。
+- 生命周期状态走 ROS 2 topic。
+- 内部 core API 不能混入 `rclcpp`、QoS、DDS discovery 这些 ROS 2 概念，ROS 2 node 只是薄 adapter。
+
+所以如果做 `rt_gateway`，最顺的延续是：gateway 自己也可以是一个 NRT daemon + ROS 2 node，对上给 HMI / ProgramEngine / TP004 runtime access 提供 services/topics。
+
+**Orocos**
+Orocos 的角色主要在 **RT runtime / platform boundary**：
+
+- portable `Core/` 负责 CNC 领域逻辑、确定性控制、状态机、模式转换等。
+- `Orocos/` 负责 RTT-specific types、ports、lifecycle hooks、具体 driver、部署、framework scheduler 等平台适配。
+- RT 文档明确说 OPC UA 这种 external transport / SDK gateway 不属于 realtime core。
+- Orocos 组件和服务可以被 OPC UA binder 暴露，但不是所有内部 surface 都自动变成 public API；面向 SDK 的 public surface 应该收束到 reviewed `RtApi` services 后面。
+
+**OPC UA**
+OPC UA 在当前架构里更像 **RT runtime 对外给 rt-sdk 的 transport / binding**：
+
+```text
+rt-sdk Machine API
+  -&gt; SDK Session / Backend Adapter
+  -&gt; OPC UA client
+  -&gt; RT RtApi reviewed public surface
+  -&gt; RT internals / Orocos services / drivers
+```
+
+也就是说，ROS 2 是 NRT 模块之间的主要公共通信面；Orocos 是 RT 侧运行和组件宿主；OPC UA 是 `rt-sdk` 到 RT `RtApi` 的外部传输层。
+
+**还没完全定的**
+`rt_gateway` 自己还没有正式落为已接受架构。基于现有规则，我会倾向这样定：
+
+```text
+NRT consumers
+  HMI / ProgramEngine / TP004 runtime access
+        |
+        | ROS 2 service/topic
+        v
+NRT rt_gateway daemon
+        |
+        | rt-sdk::Machine local API
+        v
+rt-sdk OPC UA backend
+        |
+        | OPC UA
+        v
+RT RtApi on Orocos runtime
+```
+
+这样不会把 ROS 2 塞进 RT core，也不会让 NRT 模块直接绑定 Orocos/OPC UA 细节。</pre>
+</article>
+</section>
+<section class="turn" id="turn-5">
+<h2>Turn 5</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:03:19 +0800</div>
+<pre>所以总结一下整体架构和通信细节</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:03:44 +0800</div>
+<pre>我会把它压成一张“谁负责什么、怎么通信、哪里不能混”的架构总结，按已定事实和建议边界分开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 10:04:00 +0800</div>
+<pre>整体可以先按三层看：
+
+```text
+NRT 应用/业务层
+HMI / ProgramEngine / TP004 runtime access
+        |
+        | ROS 2 services / topics
+        v
+NRT RT Gateway
+        |
+        | C++ local API: rt-sdk::Machine
+        v
+RT SDK
+        |
+        | OPC UA client + rt-api-contract payload
+        v
+RT Runtime / RtApi / Orocos
+        |
+        | adapter calls
+        v
+Portable RT Core / drivers / runtime logic
+```
+
+**各层角色**
+- `HMI`：操作界面和人机交互策略；不直接持有 RT SDK session。
+- `ProgramEngine`：NRT daemon，负责程序会话、执行生命周期、parser/kernel/scheduler 绑定协调；对外 public seam 已定为 ROS 2。
+- `TP004 runtime access`：负责参数 descriptor、value metadata、binding、owner dispatch，不拥有 RT 连接和全局 runtime state。
+- `NRT RT Gateway`：建议作为 NRT daemon。它集中持有 `rt-sdk::Machine`，负责连接生命周期、重连、health、last_error、topology/mode cache、command receipt 分类。
+- `rt-sdk::Machine`：SDK API，给上层提供本地 machine view；内部通过 backend 和 RT 通信。
+- `OPC UA`：SDK 到 RT runtime 的传输方式，不是 NRT 模块之间的通信方式。
+- `rt-api-contract`：RT 和 SDK 都认识的 wire contract，包括 mode、topology、automatic/manual/MDA payload、status enum 等。
+- `Orocos`：RT 侧平台/组件宿主，负责 RTT ports、services、operations、lifecycle hooks、driver/deployer/framework 调度等。
+- `Core`：portable realtime CNC 逻辑，不能混入 Orocos/OPC UA/SDK gateway 细节。
+
+**通信细节**
+```text
+HMI -&gt; ProgramEngine
+  ROS 2 service/topic
+  例：start_session、pause_session、lifecycle topic
+
+HMI / ProgramEngine / TP004 -&gt; RT Gateway
+  ROS 2 service/topic
+  例：get_health、get_topology、get_mode、set_mode、command_receipt topic
+
+RT Gateway -&gt; rt-sdk::Machine
+  本进程 C++ API 调用
+  Gateway 持有 Machine/session，不把 Machine 泄露给消费者
+
+rt-sdk::Machine -&gt; RT Runtime
+  OPC UA client backend
+  连接 RT 侧 OPC UA endpoint，例如 opc.tcp://host:4840
+
+RT Runtime -&gt; Orocos/RtApi/Core
+  RtApi 暴露 reviewed public surface
+  Orocos 组件/服务承载 runtime surface
+  Core 执行平台无关的确定性控制逻辑
+```
+
+**最关键的边界**
+- ROS 2 主要用于 NRT 侧模块间 IPC。
+- OPC UA 主要用于 `rt-sdk` 到 RT runtime/RtApi 的传输。
+- Orocos 是 RT 侧平台边界，不应该被 HMI、TP004、ProgramEngine 直接耦合。
+- `rt-api-contract` 是 RT/SDK 之间的稳定 payload 契约，不等于 runtime 实现对象。
+- `rt_gateway` 不定义参数语义、程序语义、RT safety 语义；它只做 RT session、health、transport error、状态快照和命令转发边界。
+
+一句话：
+**NRT 用 ROS 2 组织业务模块；Gateway 统一托管 RT SDK session；SDK 用 OPC UA 和 RT RtApi 交互；Orocos 承载 RT 平台组件；Core 保持平台无关的实时逻辑。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-6">
+<h2>Turn 6</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:05:01 +0800</div>
+<pre>你的建议架构给一下，结合我们之前的讨论，nrt+rt的整体组织，各模块+通信/交互方式（具体）</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:05:26 +0800</div>
+<pre>我继续用 `brainstorming` + `openspec-explore` 的方式，只给设计建议，不落文件不实现。下面我会按“推荐架构、模块职责、通信方式、第一阶段落地边界”来组织。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 10:06:06 +0800</div>
+<pre>我的建议是：**NRT 侧统一用 ROS 2 组织业务模块；RT 侧保留 Orocos/Core 边界；中间只让 `rt_gateway` 持有 `rt-sdk::Machine`，其他 NRT 模块不要直接碰 SDK/OPC UA/Orocos。**
+
+**推荐总图**
+```text
+NRT side
+┌─────────────────────────────────────────────────────────────┐
+│ HMI                                                         │
+│ - UI state / operator policy / source ownership              │
+│                                                             │
+│ ProgramEngine                                                │
+│ - program session / lifecycle / parser-kernel-scheduler bind │
+│                                                             │
+│ TP004 Runtime Access / Parameter Resolver                    │
+│ - descriptor / value metadata / owner dispatch               │
+│                                                             │
+│ Diagnostics / History / Telemetry Consumers                  │
+└───────────────┬─────────────────────────────────────────────┘
+                │ ROS 2 services / topics
+                v
+┌─────────────────────────────────────────────────────────────┐
+│ NRT RT Gateway                                               │
+│ - owns rt-sdk::Machine session                               │
+│ - connect/reconnect/health/last_error                        │
+│ - topology/mode/status cache                                 │
+│ - command forwarding + receipt/error classification          │
+└───────────────┬─────────────────────────────────────────────┘
+                │ local C++ API
+                v
+┌─────────────────────────────────────────────────────────────┐
+│ rt-sdk                                                       │
+│ - Machine API                                                │
+│ - backend/session/cache                                      │
+│ - OPC UA client backend                                      │
+└───────────────┬─────────────────────────────────────────────┘
+                │ OPC UA + rt-api-contract wire payloads
+                v
+RT side
+┌─────────────────────────────────────────────────────────────┐
+│ RtApi on Orocos runtime                                      │
+│ - reviewed public RT surface                                 │
+│ - mode/topology/resources/manual/automatic/mda               │
+│                                                             │
+│ Orocos platform components                                   │
+│ - RTT services/ports/operations/lifecycle/deployer/drivers   │
+│                                                             │
+│ Portable Core                                                │
+│ - deterministic CNC logic / state machines / motion/runtime  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**模块组织建议**
+```text
+nrt/
+  hmi/
+  program_engine/
+  rt_gateway/              # 新增建议：NRT daemon + ROS 2 adapter + core
+  parameter_runtime_access/ # 或先作为 TP004 runtime access adapter，不急着独立
+  diagnostics/             # 后续消费者，不要第一阶段抢 ownership
+
+rt-sdk/
+  include/meta_nc/rt_sdk/
+  src/opcua_backend.cpp
+
+rt-api-contract/
+  include/meta_nc/rt_api/
+
+rt/
+  Core/
+  Orocos/
+  docs/backends/
+```
+
+**NRT 模块之间**
+用 ROS 2，具体建议：
+
+```text
+HMI -&gt; ProgramEngine
+  service:
+    /program_engine/start_session
+    /program_engine/pause_session
+    /program_engine/resume_session
+    /program_engine/stop_session
+    /program_engine/get_current_session
+  topic:
+    /program_engine/lifecycle
+    /program_engine/execution_state
+    /program_engine/progress
+
+HMI / ProgramEngine / TP004 -&gt; RT Gateway
+  service:
+    /rt_gateway/connect
+    /rt_gateway/disconnect
+    /rt_gateway/get_health
+    /rt_gateway/get_topology
+    /rt_gateway/get_mode
+    /rt_gateway/set_mode
+    /rt_gateway/submit_manual_command
+    /rt_gateway/submit_automatic_command
+    /rt_gateway/submit_mda_command
+  topic:
+    /rt_gateway/health
+    /rt_gateway/last_error
+    /rt_gateway/topology
+    /rt_gateway/mode
+    /rt_gateway/command_receipts
+    /rt_gateway/process_data
+```
+
+第一版不建议一上来做很多 command。可以先做：
+
+```text
+connect / health / last_error / topology / mode
+```
+
+把 live RT 链路和错误分类跑通，再扩 manual/automatic/MDA。
+
+**Gateway 内部**
+```text
+rt_gateway_node
+  - ROS 2 adapter，只负责 service/topic 转换
+
+rt_gateway_core
+  - transport-agnostic C++ core
+  - 不依赖 rclcpp
+
+SdkSessionManager
+  - 唯一持有 rt-sdk::Machine
+  - connect/reconnect/disconnect
+
+GatewayState
+  - disconnected / connecting / connected / degraded / failed
+
+ErrorClassifier
+  - validate_config
+  - open_transport
+  - initialize_session
+  - domain_rejection
+
+SnapshotCache
+  - topology
+  - mode
+  - process/status snapshots
+
+CommandForwarder
+  - 把请求转成 rt-sdk API call
+  - 返回 command receipt，不宣称物理完成
+```
+
+这个结构跟 ProgramEngine 已有思路一致：ROS 2 是 public seam，内部 core 保持 transport-agnostic。ProgramEngine 这点已经在 [MODULE-MODEL.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/program_engine/docs/spec/MODULE-MODEL.md:95) 和 [0013 ROS 2 decision](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/program_engine/docs/spec/MODULE-MODEL.decision/0013-ros2-seam-transport-agnostic-core.md:31) 里定过。
+
+**RT 侧通信**
+```text
+rt_gateway_core
+  -&gt; rt-sdk::Machine
+    -&gt; OpcUaBackend
+      -&gt; opc.tcp://host:4840
+        -&gt; RtApi service surface
+          -&gt; Orocos components/services
+            -&gt; Core / drivers / runtime logic
+```
+
+OPC UA 只用于 SDK 到 RT runtime 的传输。`rt-api-contract` 是双方共享 payload 契约，不是 runtime 实现对象。这个边界已经在 [rt-api-contract README](/home/iaar/workspace/ccmix-wp/MetaNC/rt-api-contract/README.md:6) 里写得比较清楚。
+
+**关键禁区**
+- HMI 不直接调用 `rt-sdk::Machine`。
+- ProgramEngine 不直接绑定 OPC UA。
+- TP004 不变成全局 runtime state table。
+- Gateway 不拥有参数语义、程序语义、PLC 语义、RT safety 语义。
+- RT Core 不引入 ROS 2、OPC UA、Orocos RTT 细节。
+- Orocos 可以承载 RtApi 和组件 surface，但 public SDK-facing surface 要收束到 reviewed `RtApi`，不要把所有内部组件裸露成 API。
+
+**我建议第一阶段目标**
+```text
+Stage 1: RT Gateway evidence slice
+  - 建 rt_gateway ADR / proposal
+  - 定 gateway 对上 ROS 2 surface
+  - 实现或设计最小 connect + health + topology + mode
+  - 保留 BadConnectionClosed/open_transport 为 transport failure
+  - 不碰 full execution policy
+
+Stage 2: Runtime access slice
+  - TP004 runtime access 通过 owner dispatch 找到 rt_gateway
+  - 证明 TP004 可以访问 RT-owned value/status
+  - 但 TP004 不持有 Machine，也不拥有 runtime truth
+
+Stage 3: Execution control slice
+  - ProgramEngine 通过 gateway/scheduler binding 发 execution handoff
+  - 明确 scheduler 如果还没有实现，就先作为接口/adapter boundary
+  - 不提前创建 execution_policy topic
+```
+
+最短结论：
+**NRT = ROS 2 daemon/service/topic 网络；RT Gateway = NRT 到 RT SDK 的唯一 session owner；rt-sdk = 本地 Machine API + OPC UA backend；OPC UA = 到 RT RtApi/Orocos 的传输；Orocos = RT 平台宿主；Core = 平台无关实时逻辑。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-7">
+<h2>Turn 7</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:08:49 +0800</div>
+<pre>$imagegen 去/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local下新建个目录来存这次的讨论+做一下架构图，细节要完善，可以做各模块分图、组织关系分图等辅助查看</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-8">
+<h2>Turn 8</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:08:49 +0800</div>
+<pre>&lt;skill&gt;
+&lt;name&gt;imagegen&lt;/name&gt;
+&lt;path&gt;/home/iaar/.codex/skills/.system/imagegen/SKILL.md&lt;/path&gt;
+---
+name: &quot;imagegen&quot;
+description: &quot;Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas.&quot;
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for normal image generation, editing, and simple transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for the CLI/API/model path, or after the user explicitly confirms a true model-native transparency fallback with `gpt-image-1.5`. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- If the user explicitly asks for a transparent image/background, stay on built-in `image_gen` first: prompt for a flat removable chroma-key background, then remove it locally with the installed helper at `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`. Treat this as a model/path downgrade and ask the user before doing it, unless the user has already explicitly requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback.
+- If a transparent request appears too complex for clean chroma-key removal, asks for true/native transparency, or local removal fails validation, explain that true transparency requires CLI `gpt-image-1.5 --background transparent --output-format png` because `gpt-image-2` does not support `background=transparent`, then ask whether to proceed. Run the CLI fallback only after the user confirms.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+Local post-processing helper:
+- `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`: removes a flat chroma-key background from a generated image and writes a PNG/WebP with alpha. Prefer auto-key sampling, soft matte, and despill for antialiased edges.
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including simple transparent-output requests; fallback CLI only if explicitly requested or after the user explicitly confirms a transparent-output fallback.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user&#x27;s prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user&#x27;s prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, follow the transparent image guidance below: generate with built-in `image_gen` on a flat chroma-key background, copy the selected output into the workspace or `tmp/imagegen/`, run the installed `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py` helper, and validate the alpha result before using it. If this path looks unsuitable or fails, ask before switching to CLI `gpt-image-1.5`.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Transparent-image requests still use built-in `image_gen` first. Because the built-in tool does not expose a true transparent-background control, create a removable chroma-key source image and then convert the key color to alpha locally.
+
+Default sequence:
+1. Use built-in `image_gen` to generate the requested subject on a perfectly flat solid chroma-key background.
+2. Choose a key color that is unlikely to appear in the subject: default `#00ff00`, use `#ff00ff` for green subjects, and avoid `#0000ff` for blue subjects.
+3. After generation, move or copy the selected source image from `$CODEX_HOME/generated_images/...` into the workspace or `tmp/imagegen/`.
+4. Run the installed helper path, not a project-relative script path:
+   ```bash
+   python &quot;${CODEX_HOME:-$HOME/.codex}/skills/.system/imagegen/scripts/remove_chroma_key.py&quot; \
+     --input &lt;source&gt; \
+     --out &lt;final.png&gt; \
+     --auto-key border \
+     --soft-matte \
+     --transparent-threshold 12 \
+     --opaque-threshold 220 \
+     --despill
+   ```
+5. Validate that the output has an alpha channel, transparent corners, plausible subject coverage, and no obvious key-color fringe. If a thin fringe remains, retry once with `--edge-contract 1`; use `--edge-feather 0.25` only when the edge is visibly stair-stepped and the subject is not shiny or reflective.
+6. Save the final alpha PNG/WebP in the project if the asset is project-bound. Never leave a project-referenced transparent asset only under `$CODEX_HOME/*`.
+
+Prompt transparent requests like this:
+
+```text
+Create the requested subject on a perfectly flat solid #00ff00 chroma-key background for background removal.
+The background must be one uniform color with no shadows, gradients, texture, reflections, floor plane, or lighting variation.
+Keep the subject fully separated from the background with crisp edges and generous padding.
+Do not use #00ff00 anywhere in the subject.
+No cast shadow, no contact shadow, no reflection, no watermark, and no text unless explicitly requested.
+```
+
+Do not automatically use CLI `gpt-image-1.5 --background transparent --output-format png` instead of chroma keying. Ask the user first when the user asks for true/native transparency, when local removal fails validation, or when the requested image is complex: hair, fur, feathers, smoke, glass, liquids, translucent materials, reflective objects, soft shadows, realistic product grounding, or subject colors that conflict with all practical key colors.
+
+Use a concise confirmation like:
+
+```text
+This likely needs true native transparency. The default built-in path uses a chroma-key background plus local removal, but true transparency requires the CLI fallback with gpt-image-1.5 because gpt-image-2 does not support background=transparent. It also requires OPENAI_API_KEY. Should I proceed with that CLI fallback?
+```
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user&#x27;s goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user&#x27;s prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural — candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup — product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup — app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram — diagrams/infographics with structured layout and text.
+- scientific-educational — classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing — campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual — slide, chart, workflow, and data-heavy business visuals.
+- logo-brand — logo/mark exploration, vector-friendly.
+- illustration-story — comics, children’s book art, narrative scenes.
+- stylized-concept — style-driven concept art, 3D/stylized renders.
+- historical-scene — period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization — translate/replace in-image text, preserve layout.
+- identity-preserve — try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit — remove/replace a specific element (including interior swaps).
+- lighting-weather — time-of-day/season/atmosphere changes only.
+- background-extraction — transparent background / clean cutout. Use built-in `image_gen` with chroma-key removal first for simple opaque subjects; ask before using CLI true transparency for complex subjects.
+- style-transfer — apply reference style while changing subject/scene.
+- compositing — multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render — drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: &lt;taxonomy slug&gt;
+Asset type: &lt;where the asset will be used&gt;
+Primary request: &lt;user&#x27;s main prompt&gt;
+Input images: &lt;Image 1: role; Image 2: role&gt; (optional)
+Scene/backdrop: &lt;environment&gt;
+Subject: &lt;main subject&gt;
+Style/medium: &lt;photo/illustration/3D/etc&gt;
+Composition/framing: &lt;wide/close/top-down; placement&gt;
+Lighting/mood: &lt;lighting + mood&gt;
+Color palette: &lt;palette notes&gt;
+Materials/textures: &lt;surface details&gt;
+Text (verbatim): &quot;&lt;exact text&gt;&quot;
+Constraints: &lt;must keep/must avoid&gt;
+Avoid: &lt;negative constraints&gt;
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -&gt; subject -&gt; details -&gt; constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, use the built-in-first chroma-key workflow unless the request is complex enough to need true CLI transparency; ask before switching to CLI `gpt-image-1.5`.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the request needs true model-native transparent output.
+- If a transparent request may need CLI fallback, ask before using `gpt-image-1.5` unless the user already explicitly requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback. Explain that the built-in chroma-key path is the default, but true transparency requires `gpt-image-1.5` because `gpt-image-2` does not support `background=transparent`.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `&lt;= 3840px`, both edges multiples of `16px`, long-to-short ratio `&lt;= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Required for local chroma-key removal and optional downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Do not load or use it unless the user explicitly chooses CLI mode or explicitly confirms a transparent request&#x27;s true CLI transparency fallback.
+- `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`: local post-processing helper for built-in transparent-image requests.
+
+&lt;/skill&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:09:35 +0800</div>
+<pre>我会用 `imagegen` 技能处理这个请求，但这类架构图更适合做成可复用的 Mermaid/SVG/Markdown，而不是 AI 随机生成的位图。我先确认技能规则和目标路径权限，然后在目标 `.local` 下建一个独立目录放讨论记录、分图和总图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:10:31 +0800</div>
+<pre>目标路径在 `/mnt/d`，当前沙箱只允许直接写当前仓库和 `/tmp`，所以我会先在 `/tmp` 生成完整包，再用一次提权复制到你指定的 `.local` 目录。图我会做成确定性的 SVG/HTML/Mermaid 源，不用随机位图生成，这样架构文字和连接关系可控。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 10:11:00 +0800</div>
+<pre>我会生成一个可直接浏览的资料包：`README`、讨论摘要、详细架构说明、6 张 SVG 分图、对应 Mermaid 源和一个总览 HTML。现在先在 `/tmp` 里机械生成这些文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 10:11:54 +0800</div>
+<pre>目录骨架已建在 `/tmp`。我会把内容做成“能直接打开看”的形式：SVG 是主交付，PNG 是预览导出，Mermaid 是可编辑源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 10:12:15 +0800</div>
+<pre>接下来写 SVG 和 Markdown。为了减少不可控渲染依赖，我会手写 SVG：层次、箭头、职责、协议和禁区都会直接落在图里。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 10:13:37 +0800</div>
+<pre>刚才相对路径解析到了 workspace 旁边，不是系统 `/tmp`；我改用绝对 `/tmp/...` 路径继续生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 10:14:44 +0800</div>
+<pre>文字说明已生成。现在我写 6 张 SVG 分图，采用统一配色：NRT 蓝、Gateway 紫、SDK 青、RT 橙、Core 绿，方便后续对照。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 10:16:57 +0800</div>
+<pre>前三张主图已写好：总架构、NRT 组织、Gateway 内部。继续补 RT 侧组织、交互时序和边界禁区图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 10:19:04 +0800</div>
+<pre>6 张 SVG 已完成。接下来补可编辑 Mermaid 源和一个 `index.html` 入口，把所有图和说明串起来。</pre>
+</article>
+</section>
+<section class="turn" id="turn-9">
+<h2>Turn 9</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:20:00 +0800</div>
+<pre>你是通过image_gen生成图的吗</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:20:40 +0800</div>
+<pre>不是。这个任务更适合确定性架构图，所以我没有调用随机图片生成；我用 SVG/Markdown/Mermaid 源手工生成，保证模块名、箭头和职责不漂移。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:20:49 +0800</div>
+<pre>我会继续把这套确定性图包完成：先把 SVG 转成 PNG 预览，再复制到你指定的 `/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local`。这样你既有可编辑源，也有可直接看的图片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 10:21:46 +0800</div>
+<pre>PNG 预览已经导出。现在我检查文件清单和 SVG 基本有效性，然后复制到目标目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 10:22:14 +0800</div>
+<pre>文件清单完整，6 张 SVG 都能被 XML 解析，包大小约 1.3M。复制到 `/mnt/d/.../.local` 需要写沙箱外路径，我会请求提权执行这一步。</pre>
+</article>
+</section>
+<section class="turn" id="turn-10">
+<h2>Turn 10</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:22:25 +0800</div>
+<pre>请使用image_gen路线重新生成</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:23:10 +0800</div>
+<pre>我明白你的意思：你要的是实际 `image_gen` 生成的视觉图，而不是我刚才手写 SVG 的确定性图。当前这个运行环境没有暴露内置 `image_gen` 工具给我调用；我先确认是否能走技能里的 CLI fallback，如果可以会生成一版新的 raster 架构信息图并放到同一个 `.local` 下的新目录。</pre>
+</article>
+</section>
+<section class="turn" id="turn-11">
+<h2>Turn 11</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:23:13 +0800</div>
+<pre>使用 imagegen 的 CLI fallback，并指定/保持 gpt-image-2，不要切换到 gpt-image-1.5</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:23:59 +0800</div>
+<pre>我会按你指定的路线重做一版：`scripts/image_gen.py` CLI fallback，明确 `--model gpt-image-2`，不使用 `gpt-image-1.5`。为了避免覆盖刚才的确定性图包，我会新建一个 `...-imagegen-gpt-image-2` 目录保存生成图、prompts 和说明。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:25:00 +0800</div>
+<pre>这个环境没有 `python` 命令，只有 `python3`；我用 `python3` 跑同一个技能脚本。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 10:25:46 +0800</div>
+<pre>我会生成 6 张对应刚才分图结构的 raster 信息图：总览、NRT 组织、Gateway 内部、RT 侧组织、通信时序、边界禁区。由于 `gpt-image-2` 生成密集文字可能会有文字变形，我会同时保留每张图的完整 prompt，方便必要时迭代。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 10:26:20 +0800</div>
+<pre>先写批量 JSONL。每个 prompt 会尽量要求工程信息图风格、清晰模块框、箭头和少量稳定标签，避免大段小字导致渲染失真。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 10:27:34 +0800</div>
+<pre>prompts 已写好。现在调用技能 CLI 的 `generate-batch`，这需要网络访问 OpenAI API，我会按要求提权运行，并固定 `gpt-image-2`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 10:28:11 +0800</div>
+<pre>审批器拒绝了这次外部 API 调用，原因是会把项目架构细节发送到 OpenAI 图像接口，按当前策略被判为高风险外传。要继续用 `imagegen` CLI + `gpt-image-2`，需要你明确批准“可以把这批架构图 prompt 中的 MetaNC 架构细节发送到 OpenAI API”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-25 10:28:15 +0800</div>
+<pre>不是我不愿意跑，是这次 `imagegen` CLI 调用被审批器拦了：它会把 MetaNC 架构模块和通信细节作为 prompt 发到 OpenAI 图像 API，当前策略判定为外部数据发送风险。
+
+如果你确认可以外发这些架构图 prompt，我就继续用：
+
+`imagegen` CLI fallback + `--model gpt-image-2`，不切 `gpt-image-1.5`
+
+并生成 6 张图到新目录：
+
+`/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-nrt-rt-architecture-2026-06-25-imagegen-gpt-image-2/`
+
+需要你明确回复一句类似：
+
+“批准，可以把这些架构图 prompt 发送到 OpenAI API 生成图片。”</pre>
+</article>
+</section>
+<section class="turn" id="turn-12">
+<h2>Turn 12</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 10:29:52 +0800</div>
+<pre>批准</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 10:30:41 +0800</div>
+<pre>收到。现在我按你的批准继续跑 `imagegen` CLI fallback，固定 `gpt-image-2`，生成 6 张 raster 架构图；完成后我会复制到你指定的 `.local` 目录并给出路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 10:31:40 +0800</div>
+<pre>CLI 脚本本身可用，API key 也在环境里；当前卡点是 active Python 环境没有 `openai` SDK。我会在 `/tmp` 建一个隔离 venv 安装依赖，不污染当前仓库，然后用这个 venv 继续跑同一条 `gpt-image-2` 生成流程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 10:32:15 +0800</div>
+<pre>`uv` 可用，系统 Python 没有 openai 包。我现在在 `/tmp/metanc-imagegen-venv` 安装 `openai`，然后复用同一个 prompt 文件生成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 10:33:53 +0800</div>
+<pre>依赖安装还在跑，我等它结束后继续生成图片。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 10:34:26 +0800</div>
+<pre>依赖装好了。现在用这个隔离 venv 运行 `image_gen.py generate-batch`，仍固定 `gpt-image-2`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 10:35:39 +0800</div>
+<pre>图片生成任务已开始，当前 6 张图并发 2 个任务在跑。我会持续等到全部完成，不会中途停。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 10:36:37 +0800</div>
+<pre>前两张已生成，正在跑第 3、4 张。继续等待。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 10:37:36 +0800</div>
+<pre>第 4 张完成，第 3 张还在跑，第 5 张已开始。继续等。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 10:38:45 +0800</div>
+<pre>第 3 张完成，最后两张还在生成。等它们收尾后我会检查输出并复制到目标目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-25 10:40:18 +0800</div>
+<pre>第 5 张完成，只剩第 6 张。继续等。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-25 10:41:10 +0800</div>
+<pre>最后一张还在 API 生成中，没有报错。继续等待。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-25 10:41:51 +0800</div>
+<pre>6 张 `gpt-image-2` PNG 已生成。现在我做一次文件尺寸和视觉抽查；如果文字细节不适合精读，最终我会明确说明这版适合视觉汇报，精确关系仍以 SVG/Mermaid 包为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-25 10:42:24 +0800</div>
+<pre>系统 Python 没有 PIL，但刚才隔离 venv 里有。我用 venv 检查图片尺寸，然后做视觉抽查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-25 10:43:12 +0800</div>
+<pre>输出尺寸正常，但不是严格按请求的 2048x1152 返回，这是模型端自动适配结果。我会抽看几张确认整体是否能用，再补一个 index/README 后复制到目标目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-25 10:44:32 +0800</div>
+<pre>我看了总览图，结构和主要文字是可读的。继续快速抽查其余几张，确认没有明显空图或完全跑偏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-25 10:46:33 +0800</div>
+<pre>第二张可读，模块关系也正确。继续看 Gateway 内部和时序图，因为这两张最容易出现文字偏差。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-25 10:52:26 +0800</div>
+<pre>Gateway 内部图内容基本准确，个别词有模型式拼写/紧缩，比如 `SdkSessionManager` 没空格，但能看。再看时序图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-25 10:55:42 +0800</div>
+<pre>时序图结构可用，但底部把 `ConnectStage` 拼成了 `ConnectStage`/`ConnectsStage` 风格的轻微文字误差。这是 image 模型常见问题；我会把 prompts 和确定性 SVG 一并保留，便于精读用确定性版、展示用 imagegen 版。接下来补 README/index 并复制。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-25 10:59:16 +0800</div>
+<pre>imagegen 版的 README 和浏览入口已补好。现在复制到 `/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-25 11:02:27 +0800</div>
+<pre>复制完成。我做最后文件清单确认。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / final_answer</h3>
+<div class="time">2026-06-25 11:04:52 +0800</div>
+<pre>已按你指定路线重新生成：`imagegen` CLI fallback，显式使用 `gpt-image-2`，没有切到 `gpt-image-1.5`。
+
+新目录在：
+
+`/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-nrt-rt-architecture-2026-06-25-imagegen-gpt-image-2/`
+
+里面包含：
+
+- `images/01-overall-architecture.png`
+- `images/02-nrt-organization.png`
+- `images/03-rt-gateway-internals.png`
+- `images/04-rt-side-organization.png`
+- `images/05-communication-sequence.png`
+- `images/06-boundary-guardrails.png`
+- `index.html`
+- `README.md`
+- `prompts/metanc-architecture-imagegen-prompts.jsonl`
+
+我也保留了上一版确定性 SVG/Mermaid 包：
+
+`/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-nrt-rt-architecture-2026-06-25/`
+
+说明：imagegen 版视觉效果更适合汇报/浏览，但个别文字可能有模型生成的小拼写偏差；精确关系和文字建议以 SVG/Mermaid 包为准。</pre>
+</article>
+</section>
+<section class="turn" id="turn-13">
+<h2>Turn 13</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 12:58:23 +0800</div>
+<pre>rt_gateway建议是什么形式的存在</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 12:59:15 +0800</div>
+<pre>我按当前讨论给一个明确建议：`rt_gateway` 最好先作为 NRT 侧的独立服务边界存在，而不是 TP004 子功能、HMI 内部对象，或 `rt-sdk` 的简单 wrapper。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 12:59:27 +0800</div>
+<pre>建议形式：
+
+```text
+nrt/rt_gateway/
+  rt_gateway_core/     # 纯 C++ core，不依赖 ROS 2
+  rt_gateway_node/     # ROS 2 node adapter
+  interfaces/          # ROS 2 srv/msg/action，若项目组织需要
+  docs/                # ADR、surface、failure model
+```
+
+运行形态：
+
+```text
+一个 NRT daemon / process
++ 一个 ROS 2 node public seam
++ 内部唯一持有 rt-sdk::Machine
+```
+
+也就是：
+
+```text
+HMI / ProgramEngine / TP004 runtime access
+        |
+        | ROS 2 services / topics
+        v
+rt_gateway_node
+        |
+        | plain C++ calls
+        v
+rt_gateway_core
+        |
+        | owns
+        v
+rt-sdk::Machine
+```
+
+**为什么不是别的形式**
+
+- 不建议放进 HMI：HMI crash、UI 重启、页面切换不应该影响 RT 连接生命周期。
+- 不建议放进 ProgramEngine：ProgramEngine 只负责程序会话和执行生命周期，不应该变成全局 RT transport owner。
+- 不建议放进 TP004：TP004 负责参数描述、绑定、owner dispatch，不该拥有 runtime truth 或 SDK session。
+- 不建议直接扩 `rt-sdk`：`rt-sdk` 是 SDK API 和 backend，Gateway 是 NRT service orchestration，两者层级不同。
+
+**它应该负责**
+
+- `connect / disconnect / reconnect`
+- 持有 `rt-sdk::Machine`
+- `health` / `last_error`
+- `topology` / `mode` snapshot
+- command forwarding
+- command receipt / rejection / transport error 分类
+- 把 `open_transport / BadConnectionClosed` 这类问题明确暴露为 transport failure
+
+**它不应该负责**
+
+- 参数语义
+- 程序执行语义
+- PLC 语义
+- RT safety policy
+- diagnostics/history retention
+- active machine profile source
+- 全局 runtime state table
+
+**第一阶段最小形态**
+
+```text
+rt_gateway_node
+  services:
+    /rt_gateway/connect
+    /rt_gateway/disconnect
+    /rt_gateway/get_health
+    /rt_gateway/get_topology
+    /rt_gateway/get_mode
+
+  topics:
+    /rt_gateway/health
+    /rt_gateway/last_error
+    /rt_gateway/topology
+    /rt_gateway/mode
+```
+
+先不要急着做完整 manual/automatic/MDA command surface。第一阶段先证明：
+
+```text
+NRT consumer -&gt; ROS 2 -&gt; rt_gateway -&gt; rt-sdk::Machine -&gt; OPC UA -&gt; RT RtApi
+```
+
+能连通、能分类错误、能读 topology/mode，边界就成立了。
+
+一句话：
+**`rt_gateway` 应该是 NRT 侧独立 daemon + ROS 2 service/topic facade，内部唯一托管 `rt-sdk::Machine`，对下通过 SDK/OPC UA 访问 RT，对上给 HMI/ProgramEngine/TP004 提供稳定 RT 访问边界。**</pre>
+</article>
+</section>
+<section class="turn" id="turn-14">
+<h2>Turn 14</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 13:04:58 +0800</div>
+<pre>按照这个设计的话，现在大概有哪些独立的进程（确定不确定的）、不同进程间如何通信/组织，然后每个进程有哪些线程/模块</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 13:05:42 +0800</div>
+<pre>我会继续按探索/设计讨论回答，不改文件。这个问题本质是把“模块边界”落到“进程、IPC、线程/内部模块”三个层次，我会把已相对确定和仍待验证的部分分开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / final_answer</h3>
+<div class="time">2026-06-25 13:06:21 +0800</div>
+<pre>按这个设计，建议先这样分：
+
+```text
+NRT processes
+  HMI runtime
+  ProgramEngine daemon
+  RT Gateway daemon
+  TP004 runtime access node/library
+  Diagnostics/history daemon
+
+RT processes
+  Orocos RT runtime / deployer process
+```
+
+**进程总览**
+
+| 进程 | 状态 | 主要职责 | 对外通信 |
+|---|---|---|---|
+| HMI runtime | 已有运行形态，但 web/QML 细节可变 | UI、操作策略、source ownership、状态展示 | 对 NRT 用 ROS 2；web 形态内部可能 HTTP/WebSocket |
+| ProgramEngine daemon | 架构上已定为 NRT daemon，落地程度另看 | 程序会话、生命周期、parser/kernel/scheduler 绑定 | ROS 2 services/topics |
+| RT Gateway daemon | 建议新增，当前是 proposed | 唯一持有 `rt-sdk::Machine`，管理 RT 连接、health、topology、mode、receipts | 对上 ROS 2；对下 in-process SDK |
+| TP004 runtime access | 建议先做 library/core，必要时加 ROS 2 node | descriptor、value metadata、binding、owner dispatch | 调 Gateway 走 ROS 2；内部可纯库 |
+| Diagnostics/history | 后续，不建议第一阶段抢 owner | 订阅状态、历史、telemetry projection | ROS 2 topic subscriber |
+| Orocos RT runtime | RT 侧已有核心形态 | RtApi、Orocos components、drivers、Core adapter | OPC UA server facing SDK；内部 Orocos/Core |
+
+**通信组织**
+
+```text
+HMI -&gt; ProgramEngine
+  ROS 2 services:
+    start_session / pause / resume / stop / get_current_session
+  ROS 2 topics:
+    lifecycle / execution_state / progress
+
+HMI / ProgramEngine / TP004 -&gt; RT Gateway
+  ROS 2 services:
+    connect / disconnect / get_health / get_topology / get_mode / set_mode
+  ROS 2 topics:
+    health / last_error / topology / mode / command_receipts / process_data
+
+RT Gateway -&gt; rt-sdk
+  in-process C++ call
+  no IPC
+  Gateway owns rt-sdk::Machine
+
+rt-sdk -&gt; RT runtime
+  OPC UA client -&gt; OPC UA server
+  payload uses rt-api-contract
+
+RT runtime internal
+  RtApi -&gt; Orocos services/components -&gt; Core/drivers
+  mostly in-process component calls, ports, adapters
+```
+
+**RT Gateway 内部线程/模块建议**
+
+```text
+rt_gateway process
+  threads:
+    ROS 2 executor thread(s)
+    gateway state/reconnect worker
+    SDK/backend monitor or subscription worker(s)
+    periodic publisher/timer callbacks
+
+  modules:
+    rt_gateway_node
+      ROS 2 srv/msg adapter
+
+    rt_gateway_core
+      transport-agnostic C++ state machine
+
+    SdkSessionManager
+      owns rt-sdk::Machine
+
+    ErrorClassifier
+      validate_config / open_transport / initialize_session / domain_rejection
+
+    SnapshotCache
+      topology / mode / process status
+
+    CommandForwarder
+      maps Gateway request -&gt; SDK API call
+```
+
+**ProgramEngine 内部建议**
+
+```text
+program_engine process
+  threads:
+    ROS 2 executor thread(s)
+    session lifecycle worker
+    parser/kernel/scheduler worker or task queue
+
+  modules:
+    ProgramEngineNode
+    ProgramEngineCore
+    ProgramSession
+    SourceReader
+    ParserAdapter
+    KernelAdapter
+    SchedulerAdapter
+    LifecyclePublisher
+```
+
+Scheduler 当前不建议先独立成进程。先作为 ProgramEngine 的 adapter/binding 边界；只有当它有独立生命周期、资源仲裁、多个消费者复用时，再考虑独立 daemon。
+
+**RT runtime 内部建议**
+
+```text
+orocos deployer / RT runtime process
+  threads:
+    Orocos component activity threads
+    driver/runtime activity threads
+    OPC UA server/binder thread
+    monitor/sampling thread(s)
+
+  modules:
+    RtApi
+    mode / topology / resources
+    manual executor
+    automatic / MDA executor
+    MotionBank
+    drivers / simulated drivers
+    Core adapters
+    Portable Core logic
+```
+
+这里要注意：OPC UA server/binder 不应该混进 portable Core，也不应该跑成 realtime Core 逻辑的一部分。它是 RT 对外 transport/binding。
+
+**最小可落地版本**
+
+第一阶段我建议只真正独立这些：
+
+```text
+HMI runtime
+ProgramEngine daemon
+RT Gateway daemon
+Orocos RT runtime process
+```
+
+TP004 runtime access 先做成库或轻量 adapter，不急着独立进程。Diagnostics 先作为 topic consumer 规划，不要进入第一阶段主链路。
+
+最清晰的第一阶段运行链路是：
+
+```text
+HMI / ProgramEngine / TP004
+  -&gt; ROS 2
+  -&gt; rt_gateway daemon
+  -&gt; rt-sdk::Machine
+  -&gt; OPC UA
+  -&gt; Orocos RtApi
+  -&gt; RT Core / drivers
+```</pre>
+</article>
+</section>
+<section class="turn" id="turn-15">
+<h2>Turn 15</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 13:14:02 +0800</div>
+<pre>现在说的这些，哪些已完成，哪些待完成，各自状态如何</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 13:14:53 +0800</div>
+<pre>我会按当前仓库状态来分“已有实现 / 只有设计文档 / 建议新增 / 后续待定”，避免把我们刚讨论的建议误说成已经完成。先快速核一下 MetaNC 里的实际目录、源码和文档状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 13:15:44 +0800</div>
+<pre>MetaNC 当前干净；实际存在的是 HMI、ProgramEngine 文档目录、G-code parser、Tooling、WorkOffset、rt-sdk、rt-api-contract、rt。没有 `nrt/rt_gateway` 目录，也没看到独立 diagnostics 目录。接下来核各模块是“代码实现”还是“文档/规格”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 13:16:31 +0800</div>
+<pre>状态分界已经很明确：ProgramEngine 目前主要是规格文档；rt-sdk/rt-api-contract/rt runtime 是有代码的；rt_gateway 还没有目录。再补一轮查找 ROS2/scheduler/diagnostics/runtime access 是否已有独立实现。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / final_answer</h3>
+<div class="time">2026-06-25 13:17:51 +0800</div>
+<pre>当前状态可以这样分：
+
+**总体结论**
+- 已有实现：`rt-sdk`、`rt-api-contract`、RT `Core/Orocos/RtApi` 相关代码、HMI server、G-code parser、Tooling、WorkOffset。
+- 已有架构决策但未实现成进程：`ProgramEngine daemon`。
+- 还没有实现：`nrt/rt_gateway`、统一 runtime access bridge、独立 scheduler、独立 diagnostics/history daemon。
+- 当前 MetaNC 工作区是干净的：`main...origin/main`。
+
+**模块状态**
+
+| 模块/进程 | 当前状态 | 说明 |
+|---|---|---|
+| HMI runtime | 已有实现 | `nrt/hmi/server` 有 server、REST/WebSocket 测试、runtime extension、WorkOffset/Tooling backend；但目前不是按我们说的 ROS 2 Gateway 架构接 RT。 |
+| ProgramEngine daemon | 设计已定，代码未落 | [nrt/program_engine](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/program_engine/README.md) 目前主要是规格和 decision docs；没有 `src/`、node、daemon 可执行实现。 |
+| RT Gateway daemon | 未开始 | 当前没有 `nrt/rt_gateway/` 目录；属于我们刚讨论的 proposed boundary。 |
+| TP004 runtime access | 文档/治理较成熟，MetaNC runtime bridge 未落 | TP004 侧有 descriptor/value metadata/owner dispatch 的规划，但 MetaNC 里还没有独立 `parameter_runtime_access` 或 Gateway bridge。 |
+| Scheduler | 只是边界名，未独立实现 | ProgramEngine 文档提到 scheduler binding，但当前没找到独立 scheduler 模块/进程。 |
+| Diagnostics/history daemon | 未独立 | 各模块有 diagnostics 概念和局部实现；没有统一 diagnostics/history 进程。 |
+| rt-sdk | 已有代码 | [rt-sdk](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/README.md) 有 `Machine`、`OpcUaBackend`、quick-start、tests、contract runner。 |
+| rt-api-contract | 已有代码 | [rt-api-contract](/home/iaar/workspace/ccmix-wp/MetaNC/rt-api-contract/README.md) 有 mode/topology/manual/automatic/MDA/process-data payload 和 OPC UA datatype binding。 |
+| RT runtime / Orocos / Core | 已有实现切片 | `rt/Core`、`rt/Orocos`、`rt/Backends`、`meta_nc_rt_api`、OPC UA service/type protocol 都存在；最近提交也在推进 manual/automatic/Orocos scheduling。 |
+| OPC UA live chain | 代码路径存在，live 闭环仍有风险 | SDK 和 RT 侧都有 OPC UA 路径；但之前的 live quick-start 仍有 `open_transport / BadConnectionClosed` caveat，本轮没有重跑 live RT。 |
+
+**按进程视角**
+
+已存在或基本存在：
+
+```text
+HMI server process
+RT Orocos/deployer runtime process
+```
+
+库/组件已存在但不是独立进程：
+
+```text
+rt-sdk
+rt-api-contract
+nrt/work_offset
+nrt/tooling_management
+nrt/gcode_parser
+```
+
+设计上应该存在、但当前还没有：
+
+```text
+ProgramEngine daemon implementation
+RT Gateway daemon
+central Diagnostics/history daemon
+independent Scheduler
+TP004 runtime access bridge/node
+```
+
+**下一步最合理的状态推进**
+
+第一优先级不是大规模做全链路，而是补最小 `rt_gateway` slice：
+
+```text
+nrt/rt_gateway/
+  rt_gateway_core
+  rt_gateway_node
+  basic services:
+    connect
+    get_health
+    get_topology
+    get_mode
+  basic topics:
+    health
+    last_error
+    topology
+    mode
+```
+
+目标只证明一件事：
+
+```text
+NRT consumer -&gt; ROS 2 -&gt; rt_gateway -&gt; rt-sdk::Machine -&gt; OPC UA -&gt; RT RtApi
+```
+
+能把连接、health、topology/mode、`open_transport` 错误分类跑通。之后再接 TP004 runtime access 和 ProgramEngine execution-control。</pre>
+</article>
+</section>
+<section class="turn" id="turn-16">
+<h2>Turn 16</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 13:25:54 +0800</div>
+<pre>刚刚几轮对话也落一下文档，到前面那个落图片的目录下，你自己重新组织一下目录结构，注意根据最新的，再出几张图，同样要gpt-image-2</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 13:26:46 +0800</div>
+<pre>我会把刚才几轮状态判断、进程/线程/模块拆分、完成/待完成状态整理成文档包，并重组到前面 `.local` 目录下。图继续走 `imagegen` CLI fallback，显式 `gpt-image-2`，不切模型。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 13:28:37 +0800</div>
+<pre>我会按最新几轮讨论重新整理成一个新的归档包，先在 `/tmp` 组装文档和 prompt，再用 `imagegen` CLI fallback 走 `gpt-image-2` 生成新增图，最后复制到前面 `.local` 图片目录下。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 13:28:53 +0800</div>
+<pre>先把要落地的内容分成两类：一类是可审阅的 Markdown 记录，另一类是 gpt-image-2 生成的视觉图。图里文字可能不如 Markdown 精确，所以我会让文档承载准确信息，图片作为辅助浏览。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 13:29:17 +0800</div>
+<pre>我这里会把新的内容落到原先 gpt-image-2 图片包下面的一个 `latest-discussion-pack/` 子目录，这样不覆盖旧文件，同时目录结构更清楚：`docs/` 放结论，`images/gpt-image-2/` 放新图，`prompts/` 保留生成输入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 13:30:05 +0800</div>
+<pre>我已经重新核了一遍当前仓库形态：`MetaNC` 是干净的 `main...origin/main`，`nrt/rt_gateway` 还不存在，`nrt/program_engine` 目前仍是文档形态，`rt-sdk`、`rt-api-contract`、`rt/Core`、`rt/Orocos` 这些链路有实现基础。接下来写入的状态表会按这个口径，不把设计建议误写成已完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 13:30:44 +0800</div>
+<pre>现在开始落文件。文档会明确标注“已验证当前状态”和“建议态/待实现”，避免后续看图时把 `rt_gateway` 或 ProgramEngine 当成已经落地的运行进程。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 13:30:57 +0800</div>
+<pre>先写 Markdown 主体和网页索引；这些文件是后续给图片 prompt 的事实来源。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 13:33:00 +0800</div>
+<pre>文档主体已经写好，包含当前状态、推荐架构、通信细节、进程/线程模型、完成度和下一步切片。现在准备 imagegen 的批量 prompt，强调图像是架构视觉稿、文字只放短标签，减少生成图文字失真。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 13:33:06 +0800</div>
+<pre>我会生成 5 张新增图：当前/目标状态矩阵、进程通信图、RT Gateway 内部形态、进程线程模块分解、实施路线图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-25 13:33:38 +0800</div>
+<pre>Prompts 已经准备好。现在会调用 imagegen 的 CLI fallback，并显式指定 `--model gpt-image-2`，输出到临时包的 `images/gpt-image-2/`。这一步需要网络/API 和读取本机环境变量。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-25 13:34:32 +0800</div>
+<pre>生成已经开始，当前并发 2 个任务。等这批完成后我会做一次文件/尺寸校验，再复制到 `.local` 目标目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-25 13:35:09 +0800</div>
+<pre>第一张图已经完成，批量任务继续跑。图片生成这种图文类资产容易有少量文字不稳，我会在结束后检查是否至少满足结构和可读性。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-25 13:35:46 +0800</div>
+<pre>第二张也完成了，现在在生成第三、第四张。完成后还有路线图一张。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-25 13:36:22 +0800</div>
+<pre>前四张完成，最后一张路线图正在跑。之后我会补一个本地 manifest，记录模型、文件名和用途。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-25 13:36:59 +0800</div>
+<pre>最后一张还在生成，继续等它结束；生成会话还没退出。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-25 13:37:18 +0800</div>
+<pre>5 张 gpt-image-2 新图已经生成完成。现在做尺寸/文件校验，并补一个 manifest，随后复制到目标 `.local` 目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-25 13:37:34 +0800</div>
+<pre>校验结果显示 5 张 PNG 都已落盘，实际返回尺寸不是完全固定的 2048x1152，而是 gpt-image-2 返回的接近横版/方版尺寸；这个我会在 manifest 里记录清楚。接下来我快速看一下图面结构。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-25 13:37:48 +0800</div>
+<pre>第一张结构清楚，但有一个模型生成文字偏差：把目标态的 ROS 2 seam 写成了 “ROS2 GW”。我会在文档里说明图片为辅助，准确术语以 Markdown 为准；如果需要完全可控文字，仍应看前一包的 SVG/Mermaid。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-25 13:38:14 +0800</div>
+<pre>第二张的结构可用，但模型把 TP004 runtime access 和 Diagnostics 标成了 “exists”，这和最新状态不一致。这个我会重跑这一张，prompt 改成更短、更硬约束：TP004/Diagnostics 必须是 proposed/not started。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-25 13:38:45 +0800</div>
+<pre>第三张的 Gateway 形态基本可用，术语有少量缩写但没有明显状态错误。继续看线程分解和路线图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-25 13:39:25 +0800</div>
+<pre>线程/模块图状态表达是对的：HMI/RT runtime 现有，ProgramEngine docs-only，RT Gateway proposed。继续看路线图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-25 13:40:26 +0800</div>
+<pre>除了第二张状态标记不够可靠，其余几张结构可以用。我会重跑第二张并覆盖为更保守版本，只保留 “existing / planned / not started / caveat” 这些短标签，减少模型自作判断。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-25 13:41:28 +0800</div>
+<pre>正在重跑第二张，继续保持 `gpt-image-2`，只覆盖这一个文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-25 13:43:24 +0800</div>
+<pre>第二张重生成还在跑。完成后我会重新看图面，确认状态标签没有再偏。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-25 13:44:17 +0800</div>
+<pre>第二张已重生成，马上检查图面和尺寸。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-25 13:45:37 +0800</div>
+<pre>重跑后的第二张状态标签已经正确：ProgramEngine 是 docs-only，TP004/Diagnostics 是 not started，Gateway 是 planned。现在补 manifest，记录生成命令、尺寸和“图片辅助、Markdown 为准”的限制。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-25 13:46:40 +0800</div>
+<pre>所有图片都校验完毕。接下来写 manifest，并准备复制到 `/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/...`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-25 13:47:44 +0800</div>
+<pre>Manifest 也写好了。现在把整个 `latest-discussion-pack` 复制到前面那个 gpt-image-2 图片目录下面，需要对 `/mnt/d/...` 写入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-25 13:49:17 +0800</div>
+<pre>目标子目录已经创建。现在复制文件并校验目标目录内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-25 13:50:43 +0800</div>
+<pre>文件已经复制到目标目录。最后做一次目标端清单和 PNG 尺寸校验。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-06-25 13:51:49 +0800</div>
+<pre>目标端文件清单和图片尺寸都校验过了。还剩最后一步：更新计划状态并给你路径和注意事项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / final_answer</h3>
+<div class="time">2026-06-25 13:52:57 +0800</div>
+<pre>已经落好了，位置在：
+
+`/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-nrt-rt-architecture-2026-06-25-imagegen-gpt-image-2/latest-discussion-pack/`
+
+里面重新整理了结构：
+
+- `docs/`：最新几轮讨论整理成文档，包括当前状态、建议架构、通信细节、进程/线程/模块、完成状态、下一步切片、未决问题
+- `inventory/current-metaNC-check.md`：这次基于当前 MetaNC 仓库状态做的盘点记录
+- `images/gpt-image-2/`：新增 5 张图
+  - `01-current-vs-target-status.png`
+  - `02-process-communication-map.png`
+  - `03-rt-gateway-shape.png`
+  - `04-thread-module-breakdown.png`
+  - `05-implementation-roadmap.png`
+- `prompts/`：保留了 gpt-image-2 的生成 prompts
+- `index.html`：浏览入口
+
+生成路线确认：这次用的是 `imagegen` CLI fallback，并显式指定/保持 `gpt-image-2`，没有切到 `gpt-image-1.5`。
+
+我也做了目标端校验，5 张 PNG 都在目标目录里。注意一点：gpt-image-2 返回的实际尺寸不是完全固定的 `2048x1152`，已在 `images/gpt-image-2/MANIFEST.md` 里记录；图片只是辅助视觉稿，准确状态和术语以 `docs/` 里的 Markdown 为准。</pre>
+</article>
+</section>
+<section class="turn" id="turn-17">
+<h2>Turn 17</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 14:00:12 +0800</div>
+<pre>根据最新的整理给我一个总结</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 14:01:40 +0800</div>
+<pre>最新整理后的结论可以压成这几块：
+
+- 整体建议架构是：`HMI / ProgramEngine / TP004 runtime access / Diagnostics` 这些 NRT 模块不要直接碰 RT SDK，而是通过 `ROS 2 services/topics` 访问一个独立的 `NRT RT Gateway`；Gateway 内部唯一持有 `rt-sdk::Machine`，再通过 `OPC UA + rt-api-contract` 去访问 RT Runtime / RtApi / Orocos / Core。
+
+- `rt_gateway` 建议是一个独立 NRT daemon/process，不是库里随便调的 helper。它的公开面是 ROS 2 node，内部是 transport-agnostic C++ core，负责 RT 连接生命周期、重连、health、topology、mode、last_error、SDK 错误分类和后续命令转发。
+
+- OPC UA 的角色是在 `rt-sdk::Machine` 和 RT Runtime 之间做 transport/binder：SDK 侧是 OPC UA client/backend，RT 侧是 Orocos/RtApi 暴露出来的 OPC UA 服务/节点。它不是 HMI API，也不是 NRT 内部统一通信方式，更不是 RT Core 内部机制。
+
+- 当前已存在的基础：`nrt/hmi`、`nrt/work_offset`、`nrt/tooling_management`、`nrt/gcode_parser`、`rt-sdk`、`rt-api-contract`、`rt/Core`、`rt/Orocos`。其中 `rt-sdk`、contract、RT Core/Orocos/RtApi 是后面 Gateway 可以接的基础。
+
+- 当前未完成或只是设计态：`nrt/rt_gateway` 还不存在；`nrt/program_engine` 目前主要是 docs/spec，没有 daemon 实现；TP004 runtime access bridge 没有确认落地；独立 Diagnostics/history daemon 没有；独立 scheduler process/module 也没确认。
+
+- 进程层面建议最终大概是：HMI server、ProgramEngine daemon、RT Gateway daemon、RT runtime/Orocos deployer，再加后续可能的 Diagnostics/history daemon、TP004 runtime access bridge。不同进程间 NRT 优先 ROS 2，Gateway 到 SDK 是本地 C++ API，SDK 到 RT 是 OPC UA。
+
+- 下一步最建议先做 `RT Gateway observability MVP`，不要一上来做完整执行控制。先完成 connect/disconnect/get_health/get_topology/get_mode、health/last_error/topic、错误分类、mock/fixture 测试，以及真实 OPC UA 失败能稳定分类。
+
+整理产物已经放在：
+
+`/mnt/d/Projects/LuppiterProjects/LuImageDrafts/.local/metanc-nrt-rt-architecture-2026-06-25-imagegen-gpt-image-2/latest-discussion-pack/`
+
+里面 `docs/` 是准确文字版，`images/gpt-image-2/` 是辅助图。</pre>
+</article>
+</section>
+<section class="turn" id="turn-18">
+<h2>Turn 18</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 14:02:02 +0800</div>
+<pre>给一个推荐实施计划</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 14:03:43 +0800</div>
+<pre>推荐按“先打通观测链路，再接执行链路”的顺序做，不要一开始就把 ProgramEngine、TP004、命令执行全塞进去。
+
+**实施主线**
+
+1. **RT Gateway Observability MVP**
+   先建 `nrt/rt_gateway`，目标是让一个独立 NRT 进程持有 `rt-sdk::Machine`，并能暴露 RT 的连接、health、topology、mode、last_error。
+
+   交付物：
+   - `rt_gateway_core/`：纯 C++，无 ROS 2 类型
+   - `rt_gateway_node/`：ROS 2 adapter
+   - `interfaces/`：`Connect`、`Disconnect`、`GetHealth`、`GetTopology`、`GetMode` 等 srv/msg
+   - mock/fixture backend 测试
+   - real OPC UA endpoint 连接失败分类测试
+
+2. **SDK Adapter + 错误分类**
+   在 Gateway core 里不要直接到处调用 `rt-sdk::Machine`，先包一层接口，方便 mock 和失败注入。
+
+   重点分类：
+   - `validate_config`
+   - `open_transport`
+   - `authenticate`
+   - `handshake`
+   - `initialize_session`
+   - RT rejection
+   - transport lost
+   - stale/not connected
+
+   退出标准：之前那类 `open_transport / BadConnectionClosed` 能被稳定报告成 NRT 可理解的状态。
+
+3. **ROS 2 Public Seam**
+   Gateway 对外只暴露 ROS 2，不暴露 SDK 对象。
+
+   第一批服务/话题建议：
+   - services: `/rt_gateway/connect`
+   - `/rt_gateway/disconnect`
+   - `/rt_gateway/get_health`
+   - `/rt_gateway/get_topology`
+   - `/rt_gateway/get_mode`
+   - topics: `/rt_gateway/health`
+   - `/rt_gateway/last_error`
+   - `/rt_gateway/topology`
+   - `/rt_gateway/mode`
+
+   暂时不做命令执行，只做状态和观测。
+
+4. **HMI 接入 Gateway 状态**
+   HMI 先只消费 Gateway 的 health/topology/mode，不要直接走 SDK。
+
+   目标：
+   - UI 能显示 RT 是否可用
+   - 能看到连接失败原因
+   - 能看到当前 topology/mode 快照
+   - HMI 侧不拥有 `rt-sdk::Machine`
+
+5. **ProgramEngine Runtime Skeleton**
+   ProgramEngine 现在还是 docs/spec 态。等 Gateway 观测 MVP 稳了，再把 ProgramEngine 做成最小 daemon。
+
+   第一版只做：
+   - start/query/stop session
+   - lifecycle topic
+   - execution-state topic
+   - core 不依赖 ROS 2
+   - ROS 2 node 只是 adapter
+
+6. **TP004 Runtime Access Bridge**
+   TP004 不应该直接塞进 Gateway。建议单独做 runtime access bridge，由它负责参数语义、校验、权限、来源治理。
+
+   Gateway 只负责：
+   - RT 当前状态读取
+   - RT-affecting 操作转发
+   - transport/error 状态
+
+7. **Command Forwarding**
+   最后再做 manual / automatic / MDA 命令路径。
+
+   这一步要先定义清楚：
+   - 谁发命令：HMI 还是 ProgramEngine
+   - 谁做语义校验：ProgramEngine / TP004 bridge / RT
+   - Gateway 是否串行化命令
+   - rejection 和 transport error 如何区分
+   - command receipt 怎么上报
+
+**推荐优先级**
+
+最高优先级是：
+
+`nrt/rt_gateway` 观测 MVP → real/mock SDK adapter → ROS 2 seam → HMI 只读接入。
+
+原因很直接：它能最小成本验证 NRT/RT 边界，也能把当前最不清楚的 live OPC UA/SDK 连接问题前置暴露出来。ProgramEngine、TP004、执行命令都可以后接，但不应该阻塞 Gateway 的第一条观测链路。</pre>
+</article>
+</section>
+<section class="turn" id="turn-19">
+<h2>Turn 19</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 14:26:58 +0800</div>
+<pre>目前programengine还没有具体的落地，可能要到月底，这种情况下我应该先做什么</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / final_answer</h3>
+<div class="time">2026-06-25 14:29:03 +0800</div>
+<pre>ProgramEngine 还没落地的话，我建议你**先做 `rt_gateway` 的观测 MVP**，但范围要收窄：只做连接、状态、拓扑、模式、错误分类，不做执行控制。
+
+最优先顺序：
+
+1. **先做 `rt_gateway_core`**
+   不依赖 ProgramEngine，也先不强依赖 ROS 2 运行环境。
+
+   先抽一个很小的 SDK 适配接口：
+
+   ```text
+   RtMachineClient
+     connect()
+     disconnect()
+     health()
+     topology()
+     mode()
+     last_error()
+   ```
+
+   真实实现包 `rt-sdk::Machine`，测试实现用 mock/fixture。这样 ProgramEngine 没到位也能推进。
+
+2. **把 SDK/OPC UA 连接问题前置解决**
+   现在最有价值的是确认：
+
+   - RT Docker / RT runtime 是否能稳定起
+   - `rt-sdk::Machine` 能不能连上
+   - `open_transport / BadConnectionClosed` 到底是 endpoint、协议、版本、启动时序还是 SDK/backend 问题
+
+   这个不依赖 ProgramEngine，但会直接决定后面 NRT 到 RT 的可信度。
+
+3. **定义 Gateway 对外状态模型**
+   先把这些状态稳定下来：
+
+   ```text
+   disconnected
+   connecting
+   connected
+   degraded
+   reconnecting
+   failed
+   ```
+
+   错误分类至少包括：
+
+   ```text
+   validate_config
+   open_transport
+   authenticate
+   handshake
+   initialize_session
+   transport_lost
+   rt_rejected
+   not_connected
+   ```
+
+4. **补 ROS 2 seam，但只做观测接口**
+   如果 ROS 2 环境可以开始接，就做：
+
+   - `/rt_gateway/connect`
+   - `/rt_gateway/disconnect`
+   - `/rt_gateway/get_health`
+   - `/rt_gateway/get_topology`
+   - `/rt_gateway/get_mode`
+   - `/rt_gateway/health`
+   - `/rt_gateway/last_error`
+
+   如果 ROS 2 还没准备好，就先做 CLI/test harness，别为了 ROS 2 卡住 core。
+
+5. **HMI 先只读接入**
+   HMI 可以先显示 RT 连接状态、topology、mode、last error。
+
+   这一步的价值是：以后 ProgramEngine 上来后，HMI 不需要再直接碰 RT SDK，边界已经提前摆正。
+
+暂时不要做这些：
+
+- 不要先做 automatic/manual/MDA command forwarding
+- 不要把 ProgramEngine 的执行语义提前写进 Gateway
+- 不要让 HMI 临时直接持有 `rt-sdk::Machine`
+- 不要把 TP004 参数语义塞进 Gateway
+
+所以一句话：**ProgramEngine 没落地前，先把 RT Gateway 做成“RT 连接与状态观测的唯一 NRT 入口”。**
+月底 ProgramEngine 到位后，它只需要接这个 Gateway，而不是再重新讨论 NRT/RT 边界。</pre>
+</article>
+</section>
+<section class="turn" id="turn-20">
+<h2>Turn 20</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 14:35:29 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+pwd
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.0102 seconds
+Output:
+/home/iaar/workspace/ccmix-wp/metanc_drafts
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-21">
+<h2>Turn 21</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 14:35:45 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+ls
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.0087 seconds
+Output:
+TP001-hmi
+TP002-tooling-management
+TP003-plc
+TP004-parameter-system
+TP005-configuration-system
+book
+discussions
+docs
+docs_html
+docs_i18n
+openspec
+tools
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-22">
+<h2>Turn 22</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 14:51:22 +0800</div>
+<pre>&lt;user_shell_command&gt;
+&lt;command&gt;
+git status
+&lt;/command&gt;
+&lt;result&gt;
+Exit code: 0
+Duration: 0.0141 seconds
+Output:
+On branch main
+Your branch is up to date with &#x27;origin/main&#x27;.
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+	modified:   book/src/SUMMARY.md
+	modified:   discussions/2026-06/index.md
+	modified:   discussions/README.md
+	modified:   docs_i18n/en/src/SUMMARY.md
+	modified:   docs_i18n/zh/src/SUMMARY.md
+	modified:   docs_i18n/zh/src/discussions/2026-06/index.md
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	book/src/discussions/2026-06-24-metanc-architecture-roadmap/
+	discussions/2026-06-24-metanc-architecture-roadmap/
+	docs_i18n/en/src/discussions/2026-06-24-metanc-architecture-roadmap/
+	docs_i18n/zh/src/discussions/2026-06-24-metanc-architecture-roadmap/
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+
+&lt;/result&gt;
+&lt;/user_shell_command&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-23">
+<h2>Turn 23</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 15:20:27 +0800</div>
+<pre>你看一下新增的TP0006</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 15:22:56 +0800</div>
+<pre>我先在当前 `metanc_drafts` 里定位 `TP006/TP0006` 相关文件，再看它和现有 TP 文档、SUMMARY/i18n 索引的接入情况。不会改动现有未提交内容。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 15:25:41 +0800</div>
+<pre>已经定位到 `TP0006-rt-gateway/`，它是新增未跟踪目录；目前还没有接入根 `book/src/SUMMARY.md`、`docs_i18n/*/SUMMARY.md` 或 `openspec/TOPICS.md` 的迹象。我继续读一下它的正文，看内容是否和昨天“先不要轻易升 TP”的结论冲突。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 15:27:28 +0800</div>
+<pre>我还会补看 `process-view/report/session` 和根索引状态，再给你一个偏“评审”的结论：哪些内容可保留，哪些建议收窄或暂缓接入。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 15:29:52 +0800</div>
+<pre>我还要确认一下记忆里关于 2026-06-24 架构包的治理结论行号，方便把这次判断和前一轮“先 root discussion、再 promotion”的口径对齐。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 15:32:38 +0800</div>
+<pre>我已经有初步结论：这个 TP0006 现在更像“候选 topic/handoff pack”，不是已经满足仓库 topic promotion 规则的正式 TP。再跑一下现有文档同步检查，确认它当前会不会被工具链识别或拦住。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-25 15:35:34 +0800</div>
+<pre>我看了新增的 `TP0006-rt-gateway/`，结论是：**内容方向基本对，但现在还不应被当成“正式 TP 已接入”**。它更像一个 RT Gateway 的候选 topic / handoff pack。
+
+当前状态：
+
+- 新增目录是未跟踪文件：`TP0006-rt-gateway/`
+- 根 `openspec/TOPICS.md` 还没有 TP0006
+- 根 `book/src/SUMMARY.md`、`docs_i18n/en/src/SUMMARY.md`、`docs_i18n/zh/src/SUMMARY.md` 也还没接入 TP0006
+- `TP0006-rt-gateway/openspec/README.md` 只是 placeholder，没有 topic baseline，例如 `DESIGN-BASELINE.md`
+- `python3 tools/check_docs_i18n_sync.py` 通过
+- `git diff --check` 通过
+
+我比较认可的部分：
+
+- [architecture.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP0006-rt-gateway/discussions/2026-06-25-rt-gateway-architecture/architecture.md:1) 把 `rt_gateway` 定位成 NRT-side boundary above `rt-sdk`，这个方向对。
+- [implementation-plan.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP0006-rt-gateway/discussions/2026-06-25-rt-gateway-architecture/implementation-plan.md:1) 里说 ProgramEngine 未就绪时先做 gateway/smoke client，这也对。
+- [session.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP0006-rt-gateway/discussions/2026-06-25-rt-gateway-architecture/session.md:1) 已经明确“不要呈现为 accepted architecture”，这个边界意识是对的。
+
+主要问题：
+
+- 命名成 `TP0006-rt-gateway` 会让读者以为已经完成 topic promotion，但当前没有更新 canonical topic registry。
+- 和 2026-06-24 的治理结论有张力：之前的口径是 RT Gateway 先留在 root discussion / ADR candidate，暂不升新 TP。
+- `architecture.md` 里的 initial surface 有点偏大，已经包含 `EnterManual`、`ServoOn`、manual/auto/MDA actions。按我们刚才讨论，第一阶段最好只做 observability MVP，不要一开始把控制路径也纳入。
+- `report.md` 里写“recommended next topic is TP0006”偏确定，建议改成“candidate topic / proposed topic pack”，除非你现在决定正式提升。
+- `session.md` 提到 2026-06-25 后续 quick-start 已成功，这个如果要入正式 ADR，需要补可复现证据路径；否则先作为待刷新证据，不要覆盖旧 caveat。
+
+我的建议是二选一：
+
+1. **保守方案，推荐**：暂时不要接入根 SUMMARY 和 `openspec/TOPICS.md`。把它当候选包保留，或者并回 `discussions/2026-06-24-metanc-architecture-roadmap/` 的后续讨论里。等 RT Gateway MVP 范围和证据确定后再升 TP0006。
+
+2. **正式升 TP0006**：那就要一次性补齐治理动作：更新 `openspec/TOPICS.md`，补 `TP0006-rt-gateway/openspec/DESIGN-BASELINE.md`，接入 root/en/zh reader，补中文读者页，并把状态明确写成 `proposed discussion` 或 `reserved placeholder`，不能让它看起来已经是 accepted baseline。
+
+如果现在只是为了沉淀讨论，我建议采用第 1 个方案：**先保留为候选 draft，不接入正式导航；同时把第一阶段 scope 收窄为 connect/health/topology/mode/error mapping/smoke client。**
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:755-758|note=[used prior governance conclusion for root discussion versus topic promotion]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+<section class="turn" id="turn-24">
+<h2>Turn 24</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 15:38:09 +0800</div>
+<pre>需要做正式提升了</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 15:40:33 +0800</div>
+<pre>我会按仓库里的 topic promotion 规则做正式提升：先补 canonical registry 和 TP0006 baseline，再接入 aggregate book 与中英文 reader。现有 2026-06-24 架构讨论包和这次 TP0006 包都保留，不回退用户已有改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 15:42:40 +0800</div>
+<pre>你已经明确选择正式提升，我按刚才的正式提升路径执行，不再停在候选讨论态。下一步我先读现有 TP005/TP004 的接入模板，按同样模式补 TP0006，避免造一套新格式。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 15:44:53 +0800</div>
+<pre>现在读取 TP005 这种 placeholder topic 的结构，以及 aggregate book 里 topic 表的写法。TP0006 会优先按“proposed discussion / reserved baseline”接入，不会写成 accepted runtime architecture。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 15:47:56 +0800</div>
+<pre>接入模板确认了：TP005 是“planned discussion + placeholder”，TP0006 这次要比 TP005 更进一步，至少要有 topic-local `DESIGN-BASELINE.md`，但状态仍写成 proposed baseline，而不是 accepted/as-built。接下来我补 registry 和 baseline。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 15:50:18 +0800</div>
+<pre>准备修改文件：`openspec/TOPICS.md`、TP0006 OpenSpec README/baseline、topic book index/SUMMARY，以及 root/en/zh 的 topic 页面和 SUMMARY。内容会把第一阶段明确收窄为观测 MVP，控制动作放到后续。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 15:53:31 +0800</div>
+<pre>先做 registry 和 baseline。这里我会把 TP0006 的状态写成“proposed RT Gateway baseline”，表示正式成为 topic，但架构仍是 proposed，不等同于实现已完成。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 15:58:02 +0800</div>
+<pre>刚才补丁因 `TP0006-rt-gateway/openspec/README.md` 的实际内容和我预期略有差异没有应用；我先读这个文件的准确内容，再做小步补丁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 16:01:01 +0800</div>
+<pre>现在按实际内容重做补丁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 16:03:23 +0800</div>
+<pre>Registry 和 OpenSpec baseline 已补。下一步把 TP0006 的 topic book 页面从“候选 pack”改成正式 topic 入口，并在独立 topic SUMMARY 里挂上 baseline 和讨论包。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-25 16:07:55 +0800</div>
+<pre>现在接入 aggregate root book 和中英文 reader。这里会新增 root/en/zh 的 TP0006 页面，并同步 SUMMARY。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-25 16:09:48 +0800</div>
+<pre>我先新增三个 reader 入口页，再把它们挂到三个 SUMMARY 的 TP005 后面。中文页会写实际中文说明，不用 include 包一层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-25 16:11:54 +0800</div>
+<pre>接下来同步中文专题注册表，并检查英文/root 因为是 include 会自动跟随 `openspec/TOPICS.md`。然后我会收窄 TP0006 讨论包里过宽的 initial surface/implementation plan。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-25 16:13:17 +0800</div>
+<pre>现在收窄 TP0006 讨论包的表述，尤其是 `architecture.md` 和 `implementation-plan.md`：第一阶段只承诺观测 MVP，manual/auto/MDA 控制动作降为后续。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-25 16:14:46 +0800</div>
+<pre>我会把过宽的 services/actions 清单改成“observability MVP”和“future command surface”，保持讨论历史可读，但不让正式提升后的第一阶段看起来要马上做执行控制。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-25 16:16:35 +0800</div>
+<pre>报告最后一句还残留了“RT command submission”字样，和收窄后的第一阶段不一致。我会再改掉，并扫一遍其它文档有没有类似“first slice manual move”的残留。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-25 16:18:00 +0800</div>
+<pre>残留点已找到：report 的风险段落还说 command submission。我会改成状态/观测范围；另外 session 里的待办“决定是否正式 TP”现在已过期，也补成“已提升，后续要做 ADR/MetaNC 实施”。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-25 16:20:23 +0800</div>
+<pre>现在跑验证。先做文档同步和基础检查；如果有路径或 include 问题，我会按错误修。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-25 16:22:21 +0800</div>
+<pre>基础验证都过了。接下来还要跑 `--require-published-html`，它会检查已发布 HTML 是否和源结构同步；如果因为新页面没构建而失败，我会补跑构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-25 16:23:59 +0800</div>
+<pre>HTML 同步检查也过了。为了确认 aggregate mdBook 的 include 路径无误，我再跑一次文档构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-25 16:26:21 +0800</div>
+<pre>构建成功，生成的 `docs_html/` 和 `docs_i18n/site/` 有可能产生大量构建产物变更；我会看一下状态，确认源码和构建产物都在预期范围内。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-25 16:27:50 +0800</div>
+<pre>状态里还包含之前 2026-06-24 架构路线包的未提交改动，这是已有内容；我没有回退。现在我会核对 SUMMARY 里是否确实出现 TP0006 以及新增文件清单。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / commentary</h3>
+<div class="time">2026-06-25 16:29:30 +0800</div>
+<pre>我发现 `git diff --stat` 没列出 untracked 新文件详情是正常的。还需要检查是否要把 TP0006 discussion 也接入 aggregate SUMMARY 下的子页；目前只挂了 TP0006 overview，不挂讨论子页也可以，但正式提升最好在 root SUMMARY 下至少挂 baseline 和讨论包子项。我会补上 root/en/zh SUMMARY 的 TP0006 子项。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 23 / commentary</h3>
+<div class="time">2026-06-25 16:31:15 +0800</div>
+<pre>SUMMARY 子项已补。由于这些链接跳到 topic-local 源文件，我会重新构建确认 mdBook 能解析。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 24 / commentary</h3>
+<div class="time">2026-06-25 16:32:51 +0800</div>
+<pre>基础检查仍然通过。现在跑完整构建，如果 SUMMARY 的跨目录链接不被 mdBook 接受，这一步会暴露。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 25 / commentary</h3>
+<div class="time">2026-06-25 16:34:35 +0800</div>
+<pre>完整构建通过。最后跑全部验证链并看最终 diff/stat。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 26 / commentary</h3>
+<div class="time">2026-06-25 16:36:49 +0800</div>
+<pre>验证链通过了，但构建时出现了一个额外的未跟踪目录 `book/TP0006-rt-gateway/`。这通常是 mdBook 处理 `SUMMARY.md` 里跨出 `book/src` 的链接时生成的副作用。我先检查它，再把 SUMMARY 改成稳定的 `book/src` wrapper 页面，避免留下构建垃圾。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 27 / commentary</h3>
+<div class="time">2026-06-25 16:39:06 +0800</div>
+<pre>我发现刚才把 TP0006 的 baseline/discussion 子页直接从 `SUMMARY.md` 链到 `../TP0006-...`，mdBook 会把这些外部源复制到 `book/TP0006-rt-gateway/`，产生不该提交的构建副作用。现在我会改成只在 SUMMARY 挂 TP0006 入口页，入口页内提供链接，并清理这次构建产生的临时目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 28 / commentary</h3>
+<div class="time">2026-06-25 16:42:05 +0800</div>
+<pre>我会把三个 SUMMARY 的 TP0006 子项撤掉，保持导航只指向本地 wrapper 入口页；具体 baseline 和讨论包由入口页承载。这样不会触发 mdBook 把 topic-local 源复制到 `book/TP0006-rt-gateway/`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 29 / commentary</h3>
+<div class="time">2026-06-25 16:51:01 +0800</div>
+<pre>现在清理刚才构建产生的 `book/TP0006-rt-gateway/` 临时副作用目录。这不是源码目录，真实源在根 `TP0006-rt-gateway/`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 30 / commentary</h3>
+<div class="time">2026-06-25 16:56:39 +0800</div>
+<pre>副作用目录已清理。重新跑构建和状态检查，确认不会再生成 `book/TP0006-rt-gateway/`。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 31 / commentary</h3>
+<div class="time">2026-06-25 17:01:33 +0800</div>
+<pre>构建再次通过。现在确认 `book/TP0006-rt-gateway/` 没有回来，并跑最终验证链。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 32 / commentary</h3>
+<div class="time">2026-06-25 17:05:39 +0800</div>
+<pre>验证已经通过，但我看到一个需要补强的点：2026-06-24 的历史架构包仍写着“RT Gateway 先不升 TP”，现在已经被你的新决定覆盖。我要加一条“后续状态”注记，并检查 TP0006 入口页里的 baseline/discussion 链接在生成 HTML 里是否可用。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 33 / commentary</h3>
+<div class="time">2026-06-25 17:08:47 +0800</div>
+<pre>历史包确实还保留旧结论，这是当时记录，不能直接重写成当时就提升；但需要加“superseded by 2026-06-25 TP0006 promotion”的后续状态，避免读者误判。链接也显示 TP0006 入口页里 baseline/discussion 链接到了未生成的外部 HTML，所以我会改入口页为说明路径而不是可点击跨包链接，或者建本地 wrapper 页面。更稳的是建 wrapper 页面，让 HTML 链接存在。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 34 / commentary</h3>
+<div class="time">2026-06-25 17:12:20 +0800</div>
+<pre>我会新增本地 wrapper 页面，把 baseline 和讨论包投影到 root/en/zh reader 内部路径，这样 HTML 链接稳定存在。中文 wrapper 继续用中文摘要页，不直接 include 英文。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 35 / commentary</h3>
+<div class="time">2026-06-25 17:15:58 +0800</div>
+<pre>现在把 TP0006 入口页的链接改成本地 wrapper 路径，并把 SUMMARY 重新挂子页到本地 wrapper，避免外部链接断开。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 36 / commentary</h3>
+<div class="time">2026-06-25 17:18:18 +0800</div>
+<pre>还要给 2026-06-24 历史包加后续状态说明，保留历史原貌但标记已被 TP0006 后续提升更新。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 37 / commentary</h3>
+<div class="time">2026-06-25 17:20:40 +0800</div>
+<pre>因为 2026-06-24 包有 root/en wrapper 会 include 源文件，英文页面会随源更新；中文 index 是独立中文，所以我补了中文后续状态。现在重新跑同步/构建，确认 TP0006 子页都生成。</pre>
+</article>
+</section>
+<section class="turn" id="turn-25">
+<h2>Turn 25</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-25 17:20:41 +0800</div>
+<pre>做完之后生成今天的report session记录，然后给个今日的精简总结-分行</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-25 17:23:09 +0800</div>
+<pre>收到。我先把刚才卡住的中文投影问题修掉，完成正式提升验证；然后补今天的 `report.md` / `session.md` 记录，最后给你分行精简总结。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-25 17:23:22 +0800</div>
+<pre>中文 i18n 检查不允许中文页面只是 `{{#include ...}}`，所以我会把 TP0006 这几页改成中文读者页；英文和 root 仍可用 wrapper。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-25 17:26:52 +0800</div>
+<pre>中文页面已改成实际中文内容。现在跑同步检查，看是否还有 i18n 结构问题。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-25 17:29:19 +0800</div>
+<pre>同步检查通过了。现在补今天的 report/session 记录，这次放在 TP0006 的 2026-06-25 讨论包里，记录“正式提升”这个动作本身。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-25 17:31:57 +0800</div>
+<pre>我看到 TP0006 源目录里有几份 `.html`，这是前面 mdBook 处理跨目录链接时产生的副作用，不应该作为源文件提交。我先清掉这些生成物，再补 report/session 的正式提升记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-25 17:34:35 +0800</div>
+<pre>这些 `.html` 是生成副作用，不属于 topic 源。我会删除它们，避免污染 TP0006 源目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-25 17:36:53 +0800</div>
+<pre>现在新增今天正式提升的 report/session，并把 TP0006 README 文件表补上这两份记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-25 17:40:28 +0800</div>
+<pre>还要把 promotion report/session 加到 root/en/zh wrappers 和 SUMMARY，确保读者导航里也能看到今天正式提升记录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-25 17:44:10 +0800</div>
+<pre>现在再次跑验证链和构建；这次重点确认中文投影、HTML 链接、无源目录生成物。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-25 17:45:53 +0800</div>
+<pre>基础验证通过。现在跑文档构建和发布 HTML 检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-25 17:47:45 +0800</div>
+<pre>构建成功。最后做发布 HTML 检查、确认没有 `.html` 落在 TP0006 源目录、看最终状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-25 17:49:38 +0800</div>
+<pre>我还发现一个细节：TP0006 独立 topic book 的链接需要和 root wrapper 一样稳定。现在我会给 `TP0006-rt-gateway/book/src/` 也补本地 wrapper，并调整它自己的 `SUMMARY.md`，避免以后单独构建 TP0006 book 时链接跑到源码目录外。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-25 17:51:19 +0800</div>
+<pre>TP0006 独立 book 还没有对应 wrapper 文件，SUMMARY 现在指向 `../../openspec` 外部路径。先补齐同样的 book/src 投影，单独构建时也会稳定。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-25 17:53:21 +0800</div>
+<pre>补齐 TP0006 独立 book 的 wrapper 和导航。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-25 17:55:32 +0800</div>
+<pre>现在跑完整构建。构建脚本目前只构建 root、TP004 和 i18n，不一定构建 TP0006 独立 book；我会额外直接用 `mdbook build` 验证 TP0006 独立书。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-25 17:57:05 +0800</div>
+<pre>TP0006 独立 book 的 `book.toml` 有无效字段 `multilingual = false`，这会影响单独构建。我会按现有 mdBook 支持字段修掉。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-25 17:58:26 +0800</div>
+<pre>我会把 TP0006 的 book.toml 对齐 TP005/TP004：去掉无效 `multilingual`，加 description/authors/html 输出配置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-25 17:59:50 +0800</div>
+<pre>再跑 TP0006 独立 book 构建和全量构建。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-25 18:01:01 +0800</div>
+<pre>TP0006 独立书也能构建了。构建生成 `TP0006-rt-gateway/book/html`，按 TP005 的模式这个目录可能会作为构建产物存在；我会看 git 状态和最终检查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-25 18:02:45 +0800</div>
+<pre>最后我清理一下单独构建 TP0006 book 产生的 `TP0006-rt-gateway/book/html`，这只是验证输出，不作为源文件提交；然后再看一次状态。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / commentary</h3>
+<div class="time">2026-06-25 18:04:14 +0800</div>
+<pre>验证输出已清理。最后确认状态中没有生成 HTML 源污染。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 22 / final_answer</h3>
+<div class="time">2026-06-25 18:06:03 +0800</div>
+<pre>已完成正式提升，并补了今天的记录。
+
+今日 report/session：
+
+- [promotion-report.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP0006-rt-gateway/discussions/2026-06-25-rt-gateway-architecture/promotion-report.md)
+- [promotion-session.md](/home/iaar/workspace/ccmix-wp/metanc_drafts/TP0006-rt-gateway/discussions/2026-06-25-rt-gateway-architecture/promotion-session.md)
+
+今日精简总结：
+
+- TP0006 RT Gateway 已从候选讨论包正式提升为草案专题。
+- 已更新 canonical registry：`openspec/TOPICS.md`。
+- 已新增 TP0006 OpenSpec baseline：`DESIGN-BASELINE.md`。
+- 已接入 root / English / Chinese reader 导航。
+- 已补中文读者页，不再用裸 include 包中文页面。
+- 已把第一阶段范围收窄为 observability MVP。
+- connect / disconnect / health / last_error / topology / mode 是第一阶段重点。
+- manual / automatic / MDA command forwarding 明确后置。
+- 2026-06-24 架构路线包已补后续状态，说明旧的“不立即提升”结论已被 TP0006 提升取代。
+- 已清理 TP0006 源目录里的生成 `.html` 副作用文件。
+- TP0006 独立 mdBook 也已修正 `book.toml` 并验证可构建。
+- 当前改动还未提交，工作区仍包含之前 2026-06-24 架构包的未提交内容。
+
+验证已通过：
+
+- `python3 tools/check_docs_i18n_sync.py`
+- `python3 tools/check_docs_i18n_sync.py --require-published-html`
+- `python3 tools/check_parameter_value_sets.py`
+- `python3 -m unittest discover -s tools/tests`
+- `./tools/build_docs_html.sh`
+- `mdbook build TP0006-rt-gateway/book`
+- `git diff --check`
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:755-758|note=[used prior governance conclusion for root discussion and promotion validation context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

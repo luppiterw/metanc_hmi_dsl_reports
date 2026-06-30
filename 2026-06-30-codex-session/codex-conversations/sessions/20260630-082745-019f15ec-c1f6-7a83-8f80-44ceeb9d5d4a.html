@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f15ec-c1f6-7a83-8f80-44ceeb9d5d4a</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-30 08:27:45 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/30/rollout-2026-06-30T08-27-45-019f15ec-c1f6-7a83-8f80-44ceeb9d5d4a.jsonl</code></div>
+<div><b>Messages</b>: <code>20</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-30 08:27:45 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-30&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-30 08:27:45 +0800</div>
+<pre>You are reviewing /home/iaar/workspace/ccmix-wp/MetaNC on branch feat/rt_gateway. Do a read-only code review focused ONLY on C++ implementation correctness and test coverage for changes in origin/main...HEAD, especially nrt/rt_gateway/include, src, and test. Do not edit files. Follow repo instructions: read root README.md, docs/dev/architecture.md relevant rt_gateway section, and nrt/rt_gateway README/AGENTS before reviewing. Report findings first, ordered by severity, with file/line references. If no issues, say no findings and list residual risks/tests you did not run. Focus on bugs/regressions, lifetime/state semantics, error handling, missing tests, or SDK mapping mistakes. Return concise Chinese summary.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-30 08:28:17 +0800</div>
+<pre>我会按代码审查路径做：先加载适用的审查流程技能，然后按仓库要求读根说明、架构索引和 rt_gateway 模块说明，再只读检查 `origin/main...HEAD` 的 C++ 与测试改动。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-30 08:28:48 +0800</div>
+<pre>记忆里最新状态提示这个分支应是一个观测优先 MVP，主要边界在 `nrt/rt_gateway/`，但我会以当前工作区和 `origin/main...HEAD` 为准，不用旧结论替代审查。接下来先读必需的仓库/模块说明，再看差异。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-30 08:29:06 +0800</div>
+<pre>还会加载 Orocos/后端绑定相关规则，因为这次审查重点里包含 `rt-sdk`/OPC UA 映射风险。这个技能要求额外看根目录的 docs policy；我会只读查看，不改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-30 08:29:32 +0800</div>
+<pre>仓库与模块说明确认了审查边界：当前 slice 只能是 in-process、观测优先、无命令转发，core 不能依赖 `rt-sdk`，SDK 所有权应只在 adapter 后面。现在我会读取分支差异和相关 C++ 文件，重点找状态/lifetime、错误映射和测试缺口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-30 08:29:50 +0800</div>
+<pre>当前差异显示整个 `nrt/rt_gateway` 是新增模块，C++ 主体约在 `types/core/owner/facade/rt_sdk_adapter/smoke` 加测试。因为 `origin/main` 没有旧实现，我会把它按新增 API 的行为一致性来审查，而不是只看局部补丁。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-30 08:30:01 +0800</div>
+<pre>我看到 public types 里有大量 runtime enum 和 projection 结构，下一步会对照 adapter 的转换函数和测试覆盖，尤其看默认值、unknown/capability_gap、错误 stage/code 是否会误导上层。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-30 08:30:13 +0800</div>
+<pre>我现在会看 `GatewayCore`/`GatewayOwner` 具体状态机实现和对应测试。若有问题，会优先确认是否已有测试能约束它，避免把设计偏好当成缺陷。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-30 08:30:37 +0800</div>
+<pre>状态机里有一个需要继续核对的点：core 直接使用时会保留 degraded 连接，但 owner 在 open/start 失败路径会断开并改为 failed。这可能是设计选择，也可能是语义不一致；我会看测试和 spec 是否明确约束。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-30 08:31:01 +0800</div>
+<pre>测试里已经覆盖了不少 core/owner 边界，包括 partial runtime projection、replacement failure、stale cache 等。现在我会集中看 `RtSdkMachineClient`，这是最容易出现 SDK 枚举/字段映射错误和 lifetime 问题的位置。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-30 08:31:14 +0800</div>
+<pre>`RtSdkMachineClient` 每次 snapshot 都启动多个 monitor 再读 cache，这个是否正确依赖 `rt-sdk` 的 monitor 幂等性。我会直接查看 `rt-sdk` 相关接口/实现，而不是猜测。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-30 08:31:34 +0800</div>
+<pre>有几处语义看起来不是简单格式问题，而是“是否符合 slice 合同”的问题。我会再对照 `rt-sdk` 的 monitor/cache 实现和 CMake 测试配置，确认是否能构成审查 finding。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-30 08:32:35 +0800</div>
+<pre>目前最强的候选问题是 owner 生命周期重启不会重置 core snapshot/revision，以及 replacement/重连时可能把上一 endpoint 的 stale runtime 字段带到新 endpoint。还要确认 `rt-sdk::Machine::connect` 成功时是否保证非空 machine，避免误报 adapter 空指针风险。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-30 08:32:47 +0800</div>
+<pre>Spec 明确说 owner lifecycle 启动时 revision 从 0 开始；实现的 `stop()` 只 disconnect，不重建 core，因此同一个 `GatewayOwner` 再次 `start()` 会继承旧 revision 和 stale facts。这已经像是一个确定的行为缺陷/测试缺口。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-30 08:33:00 +0800</div>
+<pre>`rt-sdk` 连接成功路径确实创建了非空 `Machine`，所以 adapter 空指针不是当前实现问题。接下来我会核对 CMake 测试是否实际启用 adapter test hooks，并运行只读/构建类验证看当前测试状态；不会改文件。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-30 08:33:36 +0800</div>
+<pre>我正在区分“设计上允许保留 last-known facts”和真正会污染新生命周期/新 endpoint 的问题。一个明确缺口是 restart lifecycle 没有测试；另一个候选是 runtime field 在 partial failure 时保留旧 revision/source/value，需要看现有测试期望。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-30 08:33:50 +0800</div>
+<pre>`SPEC-025` 明确允许 partial refresh 的 failed field 保留 last-known value，所以这点不作为 finding。`INV-005` 的 lifecycle restart 则没有被测试覆盖且实现不符合文字约束，我会保留为问题。现在继续查是否还有 C++ correctness 问题，尤其线程/引用 lifetime 和 build/export。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-30 08:34:06 +0800</div>
+<pre>我已经完成主要差异阅读，找到一个实现/测试不一致点。最后我会再做一次目标范围核对：只报告 C++ 实现正确性和测试覆盖，不展开文档审查。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / final_answer</h3>
+<div class="time">2026-06-30 08:35:32 +0800</div>
+<pre>**Findings**
+- **中等：`GatewayOwner` 新 lifecycle 没有重置 projection revision / 缓存事实。**
+  [gateway_owner.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/gateway_owner.cpp:15) 的 `start()` 直接把 `core_.snapshot()` 拷到 owner snapshot；[gateway_owner.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/gateway_owner.cpp:59) 的 `stop()` 只是 `core_.disconnect()`，不会重建/清空 `GatewayCore`。因此同一个 `GatewayOwner` 先连接、`stop()`、再 `start({})` 后，会带着上一生命周期的 `projection.revision`、stale topology/mode/runtime facts 进入新 lifecycle。模块自己的 INV-005 要求 owner lifecycle 启动时 revision 从 `0` 开始；当前行为会让 facade 客户端在新生命周期里看到旧 endpoint 的 last-known facts 和非零 revision。现有 `GatewayOwnerTest.StopDisconnectsActiveSessionAndRejectsLaterOpens` 只测 stop 后拒绝 open，没有覆盖 stop 后再次 start 的语义。
+
+**验证**
+- 已读：根 `README.md`、`docs/dev/architecture.md` 的 `rt_gateway` 区段、`docs/dev/docs_policy.md`、`nrt/rt_gateway/README.md`、`nrt/rt_gateway/AGENTS.md`。
+- 已检查：`origin/main...HEAD` 下 `nrt/rt_gateway/include`、`src`、`test` 的 C++ 差异。
+- 已跑：`git diff --check origin/main...HEAD -- nrt/rt_gateway/include nrt/rt_gateway/src nrt/rt_gateway/test`，无输出。
+- 未跑 `ctest`：本次按只读 review 执行，避免测试在 build 目录写入新日志/状态。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:837-910|note=[rt_gateway branch scope and prior MVP boundary context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019f10fc-da92-7ea0-89ec-cbb9d598a356
+019f00d1-f31f-7190-8f95-b4f644fcfa06
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

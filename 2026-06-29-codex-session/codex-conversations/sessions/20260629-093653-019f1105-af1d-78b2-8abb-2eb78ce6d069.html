@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f1105-af1d-78b2-8abb-2eb78ce6d069</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 09:36:53 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T09-36-53-019f1105-af1d-78b2-8abb-2eb78ce6d069.jsonl</code></div>
+<div><b>Messages</b>: <code>10</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 09:36:53 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 09:36:53 +0800</div>
+<pre>You are reviewing the MetaNC repository at /home/iaar/workspace/ccmix-wp/MetaNC. Read-only task; do not edit files.
+
+User context: We are comparing two RT Gateway architecture interpretations.
+
+Old/current design interpretation:
+- `nrt/rt_gateway` currently has GatewayCore, MachineClient, RtSdkMachineClient, smoke harness.
+- Draft STORY-02 implies a GatewayOwner that centralizes RT session lifecycle above rt-sdk.
+- The old plan primarily says: avoid NRT modules each creating their own `rt_sdk::Machine`; one active session per gateway owner.
+- It does not fully spell out deployment topology: embedded vs daemon vs IPC, multiple HMI servers/NRT callers, authoritative owner per machine, snapshot consistency, or multi-machine routing.
+
+New proposed interpretation:
+- Keep existing GatewayCore/RtSdkMachineClient.
+- Define three layers:
+  1) semantic layer: GatewayCore, GatewaySnapshot, GatewayError, capabilities;
+  2) authority layer: one authoritative GatewayOwner per machine/RT endpoint that owns active session, owner_epoch/session_id/revision/stale/last_known state;
+  3) entry/carrier layer: GatewayFacade/IPC/embedded adapter only transport calls to the owner and must not redefine gateway semantics.
+- Multiple NRT callers/servers may access the same owner through facade/IPC.
+- Embedded mode is allowed only when there is exactly one owner for that machine; multi-server should use daemon/shared owner mode.
+- Multi-machine support means multiple owners or a registry mapping machine_id -&gt; owner, not one owner with many active sessions.
+
+Scope files to inspect:
+- README.md
+- docs/dev/architecture.md
+- nrt/rt_gateway/README.md
+- nrt/rt_gateway/AGENTS.md
+- nrt/rt_gateway/docs/spec/MODULE-MODEL.md
+- nrt/rt_gateway/docs/spec/INTERFACE-REGISTRY.md
+- nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/STORY.md and slices
+- nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/STORY.md and slices
+- nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/STORY.md and slices
+
+Review goal: Compare old vs new from architecture-boundary correctness and long-term scalability. Is the new model more reasonable? What risks does it introduce? Where is the old model better/simpler? What would need to be clarified before adopting the new model?
+
+Output:
+- Findings ordered by severity with file/path refs.
+- Old model strengths/weaknesses.
+- New model strengths/weaknesses.
+- Verdict: adopt, partially adopt, or reject, with conditions.
+- Concise but specific.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 09:37:02 +0800</div>
+<pre>I’ll do this as a read-only architecture review. I’m using the required repo workflow plus the superpowers entry skill, then I’ll inspect the scoped docs before giving a findings-first verdict.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 09:37:12 +0800</div>
+<pre>Using `review-docs-comprehension` for the document-review posture, and I’ll keep the SDD-specific skills as reference only if the spec structure requires it. Memory showed prior RT Gateway planning favored a bounded first slice; I’ll verify against the current repository instead of treating that as current truth.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 09:37:23 +0800</div>
+<pre>I’m starting with the repo-mandated orientation files, then I’ll read the rt_gateway module docs and story slices. The goal is to separate what the documents actually commit from what either interpretation infers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 09:37:48 +0800</div>
+<pre>The root codemap already places RT Gateway between NRT callers and `rt-sdk`, but it only describes the repository boundary, not deployment topology. I’m now checking whether the module specs close that gap or leave it as future policy.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-29 09:38:01 +0800</div>
+<pre>The module model currently says “one active RT endpoint session,” while STORY-04 drafts both facade and IPC as later surfaces. The key question is whether “one active session” is per module instance, per machine, or per deployment; I’m reading the lifecycle and integration stories for that boundary.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-29 09:38:21 +0800</div>
+<pre>STORY-02 says the owner may be daemon or embedded and is the single authority, but it does not yet attach that authority to a machine identity or topology rule. I’m checking the slice specs now because they often hold the sharper state/identity constraints.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-29 09:38:33 +0800</div>
+<pre>The draft slices support a facade/IPC split and cache revision semantics, but they still scope invariants to “within one owner lifecycle” and “gateway-owned sessions,” not to a machine-wide authority. I’m gathering exact line references now so the final review is anchored.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / final_answer</h3>
+<div class="time">2026-06-29 09:39:18 +0800</div>
+<pre>**Findings**
+
+1. **High: the current docs do not yet define a machine-wide authoritative owner.**
+   [docs/dev/architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:281) says RT Gateway centralizes the NRT access boundary so NRT modules do not each create `rt_sdk::Machine`. [STORY-02](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/STORY.md:18) says one owner is the “single long-lived authority” for one active RT session. But the specs only constrain gateway-owned sessions, not all processes for the same machine. [INV-003](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/SLICE-02-single-active-session-policy/INV-003.md:16) says the gateway never exposes or owns two active SDK sessions; it does not say “per machine endpoint, across all NRT deployments.” The new model’s “one authoritative owner per machine/RT endpoint” is directionally better, but it is not currently specified.
+
+2. **High: embedded mode vs daemon/shared-owner mode is the main unresolved topology decision.**
+   [STORY-02](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/STORY.md:18) explicitly allows daemon or embedded packaging, and [STORY-04](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/STORY.md:18) defines facade plus out-of-process envelope. But no spec says when embedded is legal, when IPC is required, or how multiple HMI servers/NRT callers discover the same owner. The new interpretation correctly surfaces this missing boundary; adopting it needs a deployment/topology rule, not just new type names.
+
+3. **Medium: snapshot identity is too local for multi-caller or restart semantics.**
+   [INV-005](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/INV-005.md:16) makes revisions monotonic only “within one gateway owner lifecycle.” That is fine for the old simple model, but insufficient for the new model’s `owner_epoch/session_id/revision/stale/last_known` semantics. If clients can reconnect through facade/IPC, they need to distinguish owner restart, session replacement, stale last-known data, and new machine state.
+
+4. **Medium: multi-machine routing is not a current committed surface.**
+   [MODULE-MODEL](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/MODULE-MODEL.md:3) says the module centralizes “one active RT endpoint session.” [STORY-02](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/STORY.md:20) repeats “one active RT session.” The new interpretation’s “multiple owners or registry mapping `machine_id -&gt; owner`” is the right scalable shape, but it should remain a later extension unless a real multi-machine caller is in scope now.
+
+**Old Model**
+
+Strengths:
+- Simple and aligned with current implemented slice: `GatewayCore`, `MachineClient`, `RtSdkMachineClient`, smoke harness.
+- Keeps scope bounded to observability and avoids prematurely designing daemon, registry, IPC, or multi-machine infrastructure.
+- Matches current architecture text: no ProgramEngine policy, no HMI state, no command forwarding, no ROS 2 surface.
+
+Weaknesses:
+- “Do not let every NRT module create `rt_sdk::Machine`” is necessary but not sufficient once there are multiple processes.
+- It does not define authority outside a single module instance.
+- It leaves snapshot consistency, owner restart, session replacement, and multi-server deployment as implicit behavior.
+
+**New Model**
+
+Strengths:
+- Better architecture boundary: semantic layer, authority layer, and carrier layer separate concerns cleanly.
+- Correctly prevents IPC/facade from becoming a second source of gateway semantics.
+- Scales better to HMI server plus diagnostics plus scheduler callers.
+- Gives a clear path for daemon/shared-owner mode and future multi-machine registry.
+
+Weaknesses:
+- Risks over-designing before the observability MVP is validated.
+- Adds identity vocabulary that must be precise: `machine_id`, endpoint identity, `owner_epoch`, `session_id`, revision, stale, last-known.
+- Could accidentally turn RT Gateway into a deployment manager unless “owner per machine endpoint” and “carrier only transports” are kept strict.
+- Multi-machine registry should not be folded into one owner with many sessions; that would contradict the existing single-active-session invariant.
+
+**Verdict**
+
+Partially adopt the new model.
+
+Adopt the boundary split now as architecture direction: semantic core, per-machine authority owner, and facade/IPC carrier. Do not implement daemon, registry, or multi-machine support yet unless a caller requires it.
+
+Conditions before full adoption:
+- Define the authority scope explicitly: “one authoritative owner per `machine_id` / RT endpoint deployment domain.”
+- Define embedded legality: embedded is allowed only when the deployment has exactly one owner for that machine.
+- Define shared-owner mode: multiple HMI servers/NRT processes must use facade/IPC to the same owner.
+- Extend snapshot metadata with owner/session identity before relying on revisions across reconnects or clients.
+- Keep multi-machine as registry-of-owners, not one owner with multiple active sessions.
+
+Read-only review completed; no files were edited.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:837-878|note=[prior rt_gateway planning boundary used as background then verified against current repo]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-1757-7ed1-a30e-23d07698930e
+019f00d1-f31f-7190-8f95-b4f644fcfa06
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

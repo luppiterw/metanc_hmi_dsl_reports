@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看一下目前的wsl占用</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1>看一下目前的wsl占用</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f15d4-f85e-7e93-8c3d-0f1fa05f59ab</code></div>
+<div><b>Session kind</b>: <code>primary</code></div>
+<div><b>Started</b>: <code>2026-06-30 08:01:46 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/30/rollout-2026-06-30T08-01-46-019f15d4-f85e-7e93-8c3d-0f1fa05f59ab.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>1</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-30 08:01:53 +0800</div>
+<pre>看一下目前的wsl占用</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-30 08:02:42 +0800</div>
+<pre>我先做只读盘点：先看 WSL 内部文件系统实际已用，再拆 `/home/iaar` 下面的大目录；如果 Docker 可读，再单独看 Docker 的占用视图。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-30 08:03:13 +0800</div>
+<pre>第一轮结果已经出来：WSL 内部 `/` 现在用 41G，其中 `/home/iaar` 是 24G；Docker 镜像账面约 12.6G，实际唯一占用主要是 `metanc-hmi-server-build` 5.8G 和 `optimalcnc/metanc` 3.9G。我再补一层：查 Windows 侧 `ext4.vhdx` 实际文件大小，以及 workspace 里面是谁占大头。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-30 08:04:25 +0800</div>
+<pre>Windows 侧全盘查 `ext4.vhdx` 比较慢，我先停掉这个广泛扫描，改用 WSL 默认发行版常见路径做定点查找，这样不会长时间扫整个 C 盘用户目录。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-30 08:05:20 +0800</div>
+<pre>我这里能稳定确认 WSL 内部用量；Windows 侧的 VHDX 文件不在 `/mnt/c/Users/iaar/...` 这种旧路径下，当前用户目录是 `/mnt/c/Users/53012`，刚才的定点查找没扫到。我再轻量查一下 Windows 互操作能不能直接问到发行版路径。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-30 08:06:01 +0800</div>
+<pre>`powershell.exe`/`wsl.exe` 在这个 WSL 会话里不可见，所以不能直接从 Linux 侧调用 Windows 命令查发行版注册表。`/var/lib/docker` 在文件系统视角只有挂载点大小，Docker 实际占用以 `docker system df -v` 为准。</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-30 08:06:39 +0800</div>
+<pre>现在 WSL 内部实际占用：
+
+- WSL `/`：`41G / 1007G`，用量 `5%`
+- `/home/iaar`：`24G`
+- Windows 盘挂载只作参考：`C:` 已用 `338G / 501G`，`D:` 已用 `272G / 452G`
+
+主要占用：
+
+- `~/workspace`：`11G`
+  - `workspace/ccmix-wp`：`7.8G`
+  - `MetaNC`：`4.9G`，其中 `.git` `2.2G`、`nrt` `2.0G`
+  - `metanc_hmi_dsl`：`2.8G`，其中 `nrt/hmi/docs_html` `1.5G`、`generated` `645M`
+  - `workspace/github`：`2.4G`，其中 `vcpkg` `1.1G`、`OpenMontage` `937M`
+- 隐藏目录/工具缓存：
+  - `~/.npm`：`2.9G`
+  - `~/.cache`：`2.0G`
+  - `~/.vscode-server`：`2.0G`
+  - `~/.local`：`1.9G`
+  - `~/.codex`：`1.8G`，最大是 `logs_2.sqlite` `1.5G`
+  - `~/.rustup`：`1.4G`
+  - `~/.nvm`：`1.1G`
+
+Docker 当前：
+
+- 镜像账面合计约 `12.6G`，unique 约 `10.5G`
+- Build cache：`0B`
+- Containers / volumes：没有占用
+- 最大 Docker 镜像：
+  - `metanc-hmi-server-build:local`：`6.79G`，unique `5.8G`
+  - `optimalcnc/metanc:latest`：`4.87G`，unique `3.883G`
+  - `optimalcnc/metanc-rt:latest`：`789M`
+
+结论：现在 WSL 内部不紧张，真正大头是 `workspace`、npm/cache/VSCode/Codex 日志，以及 MetaNC 相关 Docker 镜像。Windows 侧 `ext4.vhdx` 实际文件大小这次没能从 WSL 内直接定位到；当前会话里 `powershell.exe`/`wsl.exe` 不可见，所以只能确认 WSL 内部文件系统占用。需要释放 Windows C 盘空间时，还要在删除后从 Windows 侧做 `wsl --shutdown` 和 VHDX compact，否则 Windows 看到的 VHDX 不一定马上变小。
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:1961-1965|note=[prior local storage audit pointers for Codex Docker and hidden cache checks]
+MEMORY.md:1950-1955|note=[prior Codex session cleanup context and inventory pattern]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019ef6fa-2d3f-7173-8b31-114c100c8e14
+019ef3ca-8ee4-7230-bf2a-289b3fcb3c7e
+019ef217-7ccc-79d3-aac4-ba62a90eb384
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

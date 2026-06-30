@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f1106-6e43-7733-807d-ce3804b0b348</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 09:37:41 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T09-37-41-019f1106-6e43-7733-807d-ce3804b0b348.jsonl</code></div>
+<div><b>Messages</b>: <code>9</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 09:37:42 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 09:37:42 +0800</div>
+<pre>You are reviewing the MetaNC repository at /home/iaar/workspace/ccmix-wp/MetaNC. Read-only task; do not edit files.
+
+Compare old/current RT Gateway plan vs new proposed layered model from spec clarity / document comprehension / SDD maintenance perspective.
+
+Old/current docs:
+- nrt/rt_gateway/docs/spec/MODULE-MODEL.md
+- INTERFACE-REGISTRY.md
+- IMPLEMENTATION-STATUS.md
+- STORY-02/03/04 docs and slices.
+They currently have GatewayCore, owner lifecycle drafts, state projection drafts, integration envelope drafts.
+
+New proposal:
+- Add explicit semantic/authority/entry layers.
+- Define authoritative GatewayOwner per machine.
+- Clarify embedded/daemon/registry modes.
+- Clarify facade/IPC are carriers, not semantic owners.
+- Add consistency metadata concepts.
+
+Review goal:
+1. Does the new model improve reader comprehension or add too much terminology?
+2. Which existing docs would need exact wording changes to avoid contradictions?
+3. Are there already terms in docs that can host this without new jargon?
+4. Identify circular definitions/order problems that new model fixes or worsens.
+
+Output:
+- Findings ordered by severity with file/path refs.
+- Documentation changes required if adopting the new model.
+- Terms to use / terms to avoid.
+- Verdict: adopt fully/partially/reject new model for docs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 09:37:55 +0800</div>
+<pre>I’ll use the docs-comprehension review skill for the reading-order/terminology pass, and I’ll do a quick memory check for prior MetaNC RT Gateway context before inspecting the current files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 09:38:11 +0800</div>
+<pre>Memory shows prior RT Gateway work was intentionally scoped as a small NRT module around `GatewayCore` and `MachineClient`, with daemon/HMI/ROS2 deferred. I’m now checking the repo’s actual docs in the required order so the review is grounded in current text, not that older summary.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 09:38:22 +0800</div>
+<pre>The architecture map defines RT Gateway as the NRT boundary that provides scheduler RT access plus HMI/program/data observability. I’m narrowing the read to the gateway module docs and story docs next, including local AGENTS guidance.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 09:38:54 +0800</div>
+<pre>The story-level docs already carry much of the proposed model under existing names: “owner lifecycle,” “state projection,” “facade,” and “IPC envelope.” I’m reading the slice docs to find the places where wording would contradict a stricter layered model.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-29 09:39:08 +0800</div>
+<pre>There’s one extra local architecture page under `nrt/rt_gateway/docs/architecture.md` that is more assertive than the spec root. I’m checking that and the first active story because they likely contain the highest-risk wording if the new model is adopted.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-29 09:39:17 +0800</div>
+<pre>The comprehension issue is not that the proposal is alien; it mostly formalizes boundaries already present. The risk is naming it as three new “layers” without making `GatewayOwner`, projection, facade, and envelope the reading order, so I’m collecting exact line references for the final findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / final_answer</h3>
+<div class="time">2026-06-29 09:40:12 +0800</div>
+<pre>**Verdict**
+
+Adopt the new model partially. The useful part is the authority clarification: `GatewayOwner` is the per-machine lifecycle/session authority; facade and IPC are access/carrier shapes; projection metadata belongs to gateway snapshots. Do not introduce “semantic layer / authority layer / entry layer” as prominent new taxonomy. The existing docs already have better host terms: `Gateway owner lifecycle`, `runtime state projection`, `NRT client facade`, `local IPC envelope`, `capability/result envelope`.
+
+**Findings**
+
+1. High: `GatewayCore` currently reads like the owner, but Story 02 makes `GatewayOwner` the later lifecycle authority.
+Location: [MODULE-MODEL.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/MODULE-MODEL.md:8) says `GatewayCore` owns session transitions and snapshots; [STORY-02](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/STORY.md:18) says the owner is the single long-lived authority.
+Reader effect: once Story 02 exists, readers can’t tell whether `GatewayCore` or `GatewayOwner` is authoritative for session identity and replacement.
+Fix: make Module Model distinguish current implemented core from future owner: `GatewayCore` owns in-memory transition logic; `GatewayOwner` owns long-lived lifecycle and active-session authority once Story 02 is adopted.
+
+2. Medium: the local architecture page overstates “RT SDK session owner” and includes TP004 runtime access in the role list.
+Location: [architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/architecture.md:5).
+Reader effect: “owner of the RT SDK session” can be read as the final authority today, while the spec root still marks lifecycle ownership as deferred. TP004 also makes the gateway sound like a parameter/runtime semantic owner.
+Fix: rewrite as “NRT-side access boundary above RT SDK; first slice centralizes one explicit session inside `GatewayCore`; Story 02 introduces the long-lived `GatewayOwner`.”
+
+3. Medium: the proposed “entry layer” would duplicate existing facade/envelope wording and risk making IPC look semantic.
+Location: [STORY-04](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/STORY.md:18), [SLICE-02 Local IPC](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/SLICE-02-local-ipc-envelope/SLICE.md:36).
+Reader effect: if “entry layer” is added beside facade and IPC, readers may ask whether facade, IPC, or entry owns the public contract.
+Fix: keep `NRT client facade` as caller-facing contract and `local IPC envelope` as carrier. If “entry” is used at all, use it once as plain explanatory prose, not a layer name.
+
+4. Low/medium: consistency metadata is already present but should be anchored to projection, not introduced as a broad cross-layer concept.
+Location: [STORY-03](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/STORY.md:17), [State Cache Baseline](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md:12), [INTERFACE-REGISTRY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/INTERFACE-REGISTRY.md:43).
+Reader effect: “consistency metadata” as a new umbrella term may blur revision/timestamp/stale/source/availability, which are already concrete and readable.
+Fix: say “projection metadata” and list the fields.
+
+**Required Doc Changes**
+
+- `MODULE-MODEL.md`: add a short “Authority Model” section before Module Shape: implemented `GatewayCore`, draft `GatewayOwner`, `MachineClient`, adapter, facade/IPC as non-owners.
+- `INTERFACE-REGISTRY.md`: keep current draft surface tables, but add one sentence that `Gateway owner lifecycle` is authority, while facade and IPC are access/carrier surfaces.
+- `docs/dev/architecture.md`: update deferred wording after lines 288-294 if adopting Story 02 language, so daemon/IPC are packaging/access choices, not semantic ownership.
+- `nrt/rt_gateway/docs/architecture.md`: revise strongest wording around “owner of RT SDK session” and remove or qualify “TP004 runtime access.”
+- Story 02/03/04 slice docs: only minor wording. They are already good hosts for the model.
+
+**Terms To Use**
+
+`GatewayOwner`, `gateway owner lifecycle`, `active session identity`, `runtime state projection`, `projection metadata`, `NRT client facade`, `local IPC envelope`, `carrier`, `gateway-owned operation`, `SDK-backed capability`.
+
+**Terms To Avoid**
+
+Avoid promoting `semantic layer`, `authority layer`, `entry layer`, `registry mode`, and `consistency metadata` as primary headings. Use “embedded component,” “daemon process,” and “registry/discovery” only as packaging/discovery modes after the owner/facade contract is defined.
+
+The new model improves comprehension if folded into the existing Story 02/03/04 terms. It worsens maintenance if added as a parallel three-layer vocabulary. Read-only review only; no files edited.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:851-877|note=[prior RT Gateway scope and deferred surfaces]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

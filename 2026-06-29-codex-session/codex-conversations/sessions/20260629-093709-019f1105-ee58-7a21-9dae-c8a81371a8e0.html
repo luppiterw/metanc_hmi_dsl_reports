@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f1105-ee58-7a21-9dae-c8a81371a8e0</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 09:37:09 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T09-37-09-019f1105-ee58-7a21-9dae-c8a81371a8e0.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 09:37:09 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 09:37:09 +0800</div>
+<pre>You are reviewing the MetaNC repository at /home/iaar/workspace/ccmix-wp/MetaNC. Read-only task; do not edit files.
+
+Compare two RT Gateway design interpretations from deployment/multi-entry/data-consistency perspective.
+
+Old/current design interpretation:
+- Current code: GatewayCore + MachineClient + RtSdkMachineClient + smoke harness.
+- Draft docs imply one active RT session per gateway owner, but do not fully define whether gateway is embedded, daemon, IPC service, or registry.
+- The old design may be sufficient for single HMI server or simple in-process deployment.
+
+New proposed interpretation:
+- Gateway has semantic layer (core/snapshot/error), authority layer (authoritative GatewayOwner per machine), entry/carrier layer (facade/IPC/embedded adapter).
+- Many NRT callers/servers can access one owner; only one authoritative owner per machine.
+- Embedded mode is valid for single owner only; multi-server should use daemon/shared owner mode.
+- Snapshot consistency uses owner_epoch/session_id/revision/observed_at/source/current/stale/unavailable/last_known.
+- Event streams are recoverable notifications, not authoritative state.
+
+Files to inspect: same as above, plus current headers under nrt/rt_gateway/include/rt_gateway and src/gateway_core.cpp if needed.
+
+Review goal:
+1. Assess whether old design can support multiple HMI servers/NRT callers without inconsistency.
+2. Assess whether new design is sufficient to preserve data accuracy and consistency across deployment forms.
+3. Identify missing edge cases: split brain, stale data, caller fan-out, owner failover, embedded multi-process misuse, IPC latency/deadlines.
+4. Recommend minimum constraints that must be in spec before implementation.
+
+Output:
+- Findings ordered by severity with file/path refs.
+- Data consistency risks under old vs new.
+- Minimum spec constraints needed.
+- Verdict and recommended next design decision.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 09:37:21 +0800</div>
+<pre>I’ll treat this as a read-only review and first load the repo instructions plus the RT Gateway context. Since this is MetaNC architecture/design work, I’m using the repo guidance and relevant SDD/doc review skills where they apply.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 09:37:31 +0800</div>
+<pre>Memory points to the recent `rt_gateway` boundary as intentionally small: core, SDK client, smoke CLI, with daemon/threads deferred. I’m now checking the actual repository files so the review is grounded in current code and docs, not prior planning notes.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 09:37:55 +0800</div>
+<pre>The current module docs explicitly frame `GatewayCore` as the NRT owner of the SDK session, but so far they do not distinguish “owner” as an in-process object versus a deployable authority. I’m reading the spec files and headers next to see whether the newer owner/entry-layer interpretation already exists or is still only implied.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 09:38:05 +0800</div>
+<pre>The shipped snapshot type is a simple cache: state, health, endpoint, last_error, topology, mode. It lacks revision/epoch/source/timestamp/staleness fields, so it cannot by itself prove cross-caller or cross-process freshness.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-29 09:38:23 +0800</div>
+<pre>At code level, `GatewayCore` owns exactly one `MachineClient` inside one process and mutates an in-memory snapshot. There is no registry, lease, inter-process lock, fan-out protocol, or event recovery contract visible in the first-slice implementation.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-29 09:39:37 +0800</div>
+<pre>Read-only review completed. I inspected root `README.md`, `docs/dev/architecture.md`, `nrt/rt_gateway/AGENTS.md`, module README/docs, current headers, `src/gateway_core.cpp`, and the draft SDD story/spec files.
+
+**Findings**
+
+1. **High: old/current design is only single-process safe, not multi-server safe.**
+   Current implemented code has one in-memory `GatewayCore` owning one `MachineClient` and one `GatewaySnapshot` per object instance: [gateway_core.hpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/include/rt_gateway/gateway_core.hpp:10), [gateway_core.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/gateway_core.cpp:21). The architecture text says NRT modules should not each create their own `rt_sdk::Machine` session, but the implemented first slice has no process-wide registry, lease, IPC authority, or singleton owner: [architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/architecture.md:5), [docs/dev/architecture.md](/home/iaar/workspace/ccmix-wp/MetaNC/docs/dev/architecture.md:281). Two HMI servers embedding this code can each create their own `GatewayCore` and independent SDK session, producing split observations and conflicting lifecycle decisions.
+
+2. **High: draft owner/facade/IPC direction addresses the right problem, but is explicitly unimplemented.**
+   The spec already introduces a long-lived owner that may be daemon or embedded and is “the single long-lived authority”: [STORY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-02-gateway-lifecycle-ownership/STORY.md:18). It also drafts facade and IPC envelopes that hide in-process vs remote deployment: [STORY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/STORY.md:18). But implementation status marks all owner, projection, facade, and IPC slices as draft/not implemented: [IMPLEMENTATION-STATUS.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/IMPLEMENTATION-STATUS.md:8). So current code must not be treated as multi-caller authoritative yet.
+
+3. **Medium: current snapshot shape cannot prove freshness or authority.**
+   `GatewaySnapshot` has state, health, endpoint, last_error, topology, and mode only: [types.hpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/include/rt_gateway/types.hpp:103). It lacks `owner_epoch`, `session_id`, `revision`, `observed_at`, `source`, `current/stale/unavailable`, and `last_known` semantics. The draft projection story adds revision/timestamp/source/stale metadata: [STORY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/STORY.md:17), but the proposed `owner_epoch/session_id` distinction is still not fully visible in the current implemented type or the cited cache baseline.
+
+4. **Medium: event streams are correctly framed as recoverable notifications, but the recovery contract is still shallow.**
+   The draft says events are short-lived, not diagnostics history, and consumers recover by reading latest snapshot: [SLICE.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-03-state-event-stream/SLICE.md:28), [SPEC-028.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-03-state-event-stream/SPEC-028.md:15). Missing: explicit ordering scope per owner/session, gap detection by revision, subscription replay boundary, and what happens if latest snapshot belongs to a newer owner epoch than the dropped event.
+
+5. **Medium: IPC deadlines are only admission deadlines, not end-to-end latency/deadline semantics.**
+   `SPEC-034` rejects already-expired requests before dispatch: [SPEC-034.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/SLICE-02-local-ipc-envelope/SPEC-034.md:15). That does not yet specify queueing limits, operation timeout after dispatch, stale response handling, cancellation, caller-visible deadline exceeded, or whether snapshot reads may return stale-but-marked data instead of blocking.
+
+**Data Consistency Risks**
+
+Old/current interpretation:
+- Safe for one HMI server or one process embedding exactly one `GatewayCore`.
+- Unsafe for multiple HMI servers/NRT processes because each process can create its own owner-like object and its own SDK session.
+- No split-brain prevention across processes.
+- No shared revision/epoch means callers cannot compare observations from different gateway instances.
+- Events are absent in implementation; polling callers may see divergent state depending on refresh timing.
+- Disconnect/reconnect in one embedded instance does not invalidate snapshots held by another.
+
+New proposed interpretation:
+- Direction is sufficient if “authoritative owner per machine” is made enforceable, not just conceptual.
+- Snapshot fields listed by the user are the right minimum vocabulary for accuracy: `owner_epoch`, `session_id`, `revision`, `observed_at`, `source`, `current/stale/unavailable`, `last_known`.
+- It still needs hard constraints for owner election/lease, embedded-mode prohibition in multi-process deployments, epoch changes on owner replacement, and IPC deadline semantics.
+- Event streams can remain non-authoritative if every event carries enough revision/epoch/session metadata for callers to recover via snapshot.
+
+**Minimum Spec Constraints Needed**
+
+- Define `GatewayOwner` identity: one authoritative owner per `{machine_id, endpoint_identity}` or chosen machine key.
+- Define deployment modes: embedded allowed only when the deployment contains exactly one gateway owner process; multi-HMI/multi-server deployments must use daemon/shared-owner mode.
+- Define owner acquisition: lock/lease/registry mechanism, lease renewal, startup rejection on existing owner, and behavior after owner crash.
+- Define split-brain rule: two owners for the same machine must be detectable; non-authoritative owners must fail closed and expose `gateway-owner-conflict`.
+- Define epoch/session semantics: `owner_epoch` changes on owner replacement; `session_id` changes on RT SDK session replacement; `revision` is monotonic only within one `{owner_epoch, session_id}` scope unless otherwise specified.
+- Define snapshot consistency: every snapshot includes freshness, source, observed time, availability, and last-known/current distinction.
+- Define event contract: events are hints only; callers must treat snapshot read as authoritative; event loss/gaps are detectable by revision and recoverable by snapshot.
+- Define fan-out: multiple callers receive same authoritative snapshot stream and cannot directly own `rt_sdk::Machine`.
+- Define failover: old owner shutdown/crash, stale owner lease expiry, new owner epoch creation, and caller-visible transition.
+- Define IPC timing: queue limit, acceptance deadline, operation deadline, cancellation, timeout response, and stale-response rejection.
+- Define command-forwarding precondition: no control command forwarding until owner authority and snapshot consistency are implemented.
+
+**Verdict**
+
+The old design is acceptable only as the first-slice observability MVP for a single in-process owner. It cannot safely support multiple HMI servers or multiple NRT processes without inconsistent state and possible split brain.
+
+The new interpretation is the correct design direction. The next design decision should be: **make `GatewayOwner` the explicit authority boundary and choose the deployment rule for multi-server setups: embedded single-owner only, daemon/shared-owner required for multi-process.** After that, settle the snapshot epoch/session/revision contract before implementing facade/IPC or event streams.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:837-880|note=[used prior rt_gateway boundary and first-slice planning context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-1757-7ed1-a30e-23d07698930e
+019f00d1-f31f-7190-8f95-b4f644fcfa06
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

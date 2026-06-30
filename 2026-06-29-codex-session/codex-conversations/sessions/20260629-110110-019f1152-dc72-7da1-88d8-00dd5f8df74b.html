@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f1152-dc72-7da1-88d8-00dd5f8df74b</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 11:01:10 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T11-01-10-019f1152-dc72-7da1-88d8-00dd5f8df74b.jsonl</code></div>
+<div><b>Messages</b>: <code>14</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 11:01:10 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 11:01:10 +0800</div>
+<pre>Read-only architecture boundary review for MetaNC rt_gateway STORY-03 / SLICE-01 after recent spec edits. Worktree: /home/iaar/workspace/ccmix-wp/MetaNC. Do not edit files.
+
+Required orientation:
+- Read root README.md.
+- Read docs/dev/architecture.md enough to locate nrt/rt_gateway.
+- Read nrt/rt_gateway/README.md and AGENTS.md if present.
+- Read nrt/rt_gateway/docs/spec/MODULE-MODEL.md, PREDICATES.md, INTERFACE-REGISTRY.md, IMPLEMENTATION-STATUS.md.
+- Read STORY-03-runtime-state-projection/STORY.md and SLICE-01-state-cache-baseline including SPEC-020/021/022 and INV-005.
+- Skim GatewayCore/GatewayOwner code and tests only where useful.
+
+Context constraint from human: current scope is single in-process GatewayOwner / one HMI server or NRT runtime process. Do not recommend multi-HMI, daemon, IPC, registry, reconnect/backoff, event streams, or new SDK-backed runtime fields now.
+
+Focus: whether the updated SLICE-01 is architecturally ready to implement within current GatewaySnapshot/GatewayCore/GatewayOwner boundaries. Check if metadata can live on gateway-owned snapshot without leaking HMI/ProgramEngine policy, RT SDK object ownership, or future transport shape. Also flag any public API choice that is still too vague for C++ implementation.
+
+Return: ready/not ready. If not ready, blocking findings only with file/line refs and smallest fix. If ready, list implementation guardrails.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 11:01:27 +0800</div>
+<pre>I’ll keep this read-only and bounded to the current in-process GatewayOwner scope. I’m using the superpowers startup guidance plus the rt_gateway memory notes, then I’ll orient through the repo files the review depends on.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 11:01:43 +0800</div>
+<pre>Using `sdd-finding-uncovered-cells` lightly because this is a STORY/SPEC boundary-readiness review: I’ll treat unclear state/event/API cells as blockers only if they prevent implementation, not as style feedback.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 11:02:03 +0800</div>
+<pre>I’m first locating the module through the codemap, then I’ll read the rt_gateway local guidance and spec set with line numbers so the final judgment can cite exact blockers or guardrails.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 11:02:15 +0800</div>
+<pre>The codemap confirms `rt_gateway` is an NRT module between HMI/ProgramEngine/Data/Scheduler callers and the RT SDK boundary. I’m pulling the module’s own README/AGENTS plus the requested spec pages next.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-29 11:02:28 +0800</div>
+<pre>The module-local rules match your constraint: one active endpoint, observability MVP, no command forwarding or policy ownership. I’m now reading the spec model and the STORY-03 slice files in detail.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-29 11:02:35 +0800</div>
+<pre>The recent edits clearly added current-scope authority language: in-process owner, one machine, future multi-process/IPC/multi-machine excluded. I’m checking whether SLICE-01’s exact public API wording is now concrete enough for C++ without smuggling in deferred surfaces.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-29 11:02:55 +0800</div>
+<pre>I found the requested SLICE-01 files and the neighboring deferred slice files. I’ll read SLICE-01 fully and only peek at neighboring slices if needed to confirm deferral boundaries.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-29 11:03:10 +0800</div>
+<pre>The refresh behavior is mostly implementable, but I’m checking `source` consistency closely because that is one of the places a vague public snapshot enum can become C++ ambiguity.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-29 11:03:17 +0800</div>
+<pre>The deferral boundaries are clean: runtime fields and events are explicitly later. I’m skimming the current headers/tests now to check whether SLICE-01 can fit existing `GatewaySnapshot`, `GatewayCore`, and `GatewayOwner` without forcing extra ownership or transport decisions.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-29 11:03:43 +0800</div>
+<pre>Current code already has the right containment shape: `MachineClient` hides SDK ownership, `GatewayCore` owns snapshot state, and `GatewayOwner` wraps lifecycle/active endpoint. I’m reading the exact headers and transition code to see whether SLICE-01 needs only snapshot metadata additions or a broader public API.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-29 11:04:07 +0800</div>
+<pre>The implementation currently clears topology/mode on disconnect, while the draft slice wants last-known facts retained diagnostically. That is an implementation change inside the existing snapshot/core boundary, not a boundary problem by itself; I’m doing one pass for spec ambiguity before giving the readiness call.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / final_answer</h3>
+<div class="time">2026-06-29 11:05:04 +0800</div>
+<pre>Not ready.
+
+The ownership boundary is basically sound: metadata belongs on gateway-owned snapshot state, not HMI/ProgramEngine policy, RT SDK object ownership, or future transport. The remaining blockers are C++ contract precision problems.
+
+1. `refresh_projection` is not anchored to a concrete C++ surface. The specs use it as the trigger in [SPEC-020](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-020.md:26), [SPEC-021](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-021.md:27), and [SPEC-022](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-022.md:27), but the registry still lists only `connect`, `disconnect`, `refresh_topology`, `refresh_mode`, and `snapshot` for `GatewayCore` at [INTERFACE-REGISTRY.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/INTERFACE-REGISTRY.md:20). Smallest fix: state whether SLICE-01 adds a public `GatewayOwner`/`GatewayCore` `refresh_projection` API, or whether `refresh_projection` is only the spec name for updating metadata during existing `connect`, `refresh_topology`, `refresh_mode`, and `disconnect` transitions.
+
+2. The failed-refresh cache state is not total enough for implementation. `state-cache-present` only means “at least one recorded revision” at [PREDICATES.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/PREDICATES.md:46), but SPEC-021’s `state-cache-present` branch forces `availability: available` and `facts: unchanged` at [SPEC-021.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-021.md:23) even though the no-cache failure branch creates a recorded revision with `facts: absent` at [SPEC-021.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-021.md:42). Smallest fix: split the predicate into “cache has retained facts” vs “cache has no facts,” or narrow the first branch to retained-facts-present and add a no-facts-present branch that stays `availability: unavailable`, `source: unavailable`, `facts: absent`.
+
+No files edited.
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:837-880|note=[rt_gateway boundary and first-slice constraints]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-1757-7ed1-a30e-23d07698930e
+019f00d1-f31f-7190-8f95-b4f644fcfa06
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

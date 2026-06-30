@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f10d9-a9d7-7af2-b310-121a4e7fd06f</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 08:48:48 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T08-48-48-019f10d9-a9d7-7af2-b310-121a4e7fd06f.jsonl</code></div>
+<div><b>Messages</b>: <code>8</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 08:48:48 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 08:48:48 +0800</div>
+<pre>You are reviewing the MetaNC repository at /home/iaar/workspace/ccmix-wp/MetaNC. This is a read-only review task. Do not edit files.
+
+Task: Review the planned RT Gateway runtime state projection work under nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection.
+
+Context constraints:
+- First read repository-root README.md, docs/dev/architecture.md, nrt/rt_gateway/README.md, and nrt/rt_gateway/AGENTS.md.
+- Treat story/slice/spec docs as planning artifacts, not PR boundaries.
+- Current implemented baseline is STORY-01 observability MVP with GatewaySnapshot topology/mode; STORY-03 is draft/unimplemented.
+- Check current rt-sdk public API enough to assess whether runtime snapshot expansion can be implemented now or must wait for SDK capability.
+
+Review goals:
+1. Identify whether SLICE-01/02/03 are coherent and correctly ordered.
+2. Identify unclear requirements, missing preconditions, contradictions, or premature decisions.
+3. Identify SDK capability gaps for runtime snapshot expansion.
+4. Recommend which state projection slices can safely be implemented next and which should be held back.
+
+Output format:
+- Findings first, ordered by severity, with file/path references.
+- Then SDK capability notes.
+- Then recommended next implementation batch.
+- Keep it concise but specific.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 08:49:01 +0800</div>
+<pre>I’ll use `superpowers:using-superpowers` for the required skill workflow, then `review-docs-comprehension` because this is a planning-doc review rather than an implementation task. I’ll also do a quick memory lookup for recent RT Gateway context before reading the repo files.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 08:49:12 +0800</div>
+<pre>I found prior memory only for the broad RT Gateway baseline: observability-only first slice, gateway around `rt-sdk`, and known SDK/OPC UA limitations. I’m now reading the required repo orientation files and the STORY-03 planning docs against the current checkout.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 08:49:22 +0800</div>
+<pre>The required orientation confirms the module boundary is narrow: `rt_gateway` owns NRT-side connection lifecycle, health, topology, mode, last error, and classification, with command forwarding explicitly later. I’m narrowing the review to whether STORY-03 stays inside that boundary and whether `rt-sdk` currently exposes enough runtime state to support it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 08:50:18 +0800</div>
+<pre>The STORY-03 slice ordering is broadly sensible, but the detailed specs expose a few review risks: Slice 01 changes current disconnect/cache semantics, Slice 02 does not name any implementable SDK-backed fields, and Slice 03 assumes an event stream lifecycle that has not been placed relative to the later IPC story. I’m checking public SDK headers now to separate real capability from planned capability.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-29 08:50:38 +0800</div>
+<pre>The SDK public surface is broader than the existing gateway adapter: `IRtBackend` has monitor/cache methods for process data and status, but `Machine` itself only publicly exposes topology/mode plus high-level APIs. I’m checking whether those monitor/cache methods are reachable through public SDK APIs or are backend-internal only.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / final_answer</h3>
+<div class="time">2026-06-29 08:52:01 +0800</div>
+<pre>**Findings**
+1. **SLICE-02 is not implementation-ready because it does not choose fields or preconditions.**
+   [SLICE-02](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-02-runtime-snapshot-expansion/SLICE.md:12&gt;) lists “axis state, alarms, execution status, or IO summaries” only as examples, while [SPEC-023](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-02-runtime-snapshot-expansion/SPEC-023.md:15&gt;) says “selected runtime field” without naming selection criteria. Current `rt-sdk` exposes some status/process-data APIs, but not all listed examples. This leaves implementers to invent the first field set, monitor setup policy, and cache-quality mapping.
+
+2. **SLICE-03 is coherent conceptually, but premature as an implementation slice.**
+   [SLICE-03](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-03-state-event-stream/SLICE.md:28&gt;) defers IPC transport to Story 04, while [SPEC-026](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-03-state-event-stream/SPEC-026.md:21&gt;) and [SPEC-028](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-03-state-event-stream/SPEC-028.md:21&gt;) already assume an active event stream, bounded buffer, consumers, and loss visibility. Story 04 later defines envelope-level event delivery at [SLICE-02](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-04-nrt-integration-envelope/SLICE-02-local-ipc-envelope/SLICE.md:29&gt;). Implementing SLICE-03 now would force premature lifecycle/subscription choices.
+
+3. **SLICE-01 is the right first slice, but SPEC-022 needs to reconcile with the current implemented baseline.**
+   Current `GatewaySnapshot` only has optional topology/mode and no metadata fields [types.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/include/rt_gateway/types.hpp:103&gt;), and the current adapter only projects topology/mode [rt_sdk_machine_client.cpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:19&gt;). [SPEC-022](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-022.md:15&gt;) changes disconnect behavior from “clear volatile snapshots” toward “last known stale data.” That is reasonable, but should explicitly define whether facts are cleared, retained as stale, or split into `current` vs `last_known`.
+
+**SDK Capability Notes**
+- Public `Machine` directly exposes topology and mode only at top level [machine.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/machine.hpp:24&gt;).
+- Runtime state does exist through public sub-APIs: axes/spindle process-data monitors and caches [resources.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/resources.hpp:19&gt;), automatic/MDA status [auto.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/auto.hpp:66&gt;), and manual status/jog status [manual.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/manual.hpp:24&gt;).
+- The SDK types include axis-group/spindle process snapshots, cache quality, revisions, automatic status, and manual command status [types.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/types.hpp:302&gt;). I did not see a comparable public alarm snapshot or general IO summary API.
+- Current `rt_gateway::MachineClient` only has `topology()` and `mode()` [machine_client.hpp](&lt;/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/include/rt_gateway/machine_client.hpp:13&gt;), so any runtime expansion needs a deliberate gateway adapter API extension.
+
+**Recommended Next Batch**
+Implement **SLICE-01 only** next: projection metadata, monotonic revisions, timestamps, source, stale/unavailable semantics, and tests around refresh failure/disconnect.
+
+Hold **SLICE-02** until the slice names the first concrete SDK-backed fields. Safe candidates are `axes_group_process_data`, `spindle_process_data`, `automatic_status`, `mda_status`, and `manual_status`; hold alarms and IO summaries until SDK capability is explicit.
+
+Hold **SLICE-03** as implementation. It can be refined as an event type/schema draft, but actual event stream behavior should wait for the owner/facade/IPC envelope decisions in Story 04.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:877-878|note=[rt gateway boundary and first slice memory]
+MEMORY.md:789-789|note=[observability-only baseline memory]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-0c5b-7523-a709-b56fcc4037c3
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

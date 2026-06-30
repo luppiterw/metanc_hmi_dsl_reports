@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f123b-c434-7e90-81b8-55d08838d580</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 15:15:34 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T15-15-34-019f123b-c434-7e90-81b8-55d08838d580.jsonl</code></div>
+<div><b>Messages</b>: <code>23</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 15:15:34 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 15:15:34 +0800</div>
+<pre>You are reviewing uncommitted changes in /home/iaar/workspace/ccmix-wp/MetaNC for RT Gateway STORY-03/SLICE-02 runtime snapshot expansion. Do not edit files. Focus only on SDK/cache semantics and correctness.
+
+Context: implementation should project only current RT SDK-backed monitor/cache fields: axes-group process data, spindle process data, automatic status, MDA status, manual status. It must not invent machine facts. Monitor/cache invalidity or missing capability must be represented as unavailable/capability gap/stale, not as good data. Runtime projection failure must not drop an otherwise connected session.
+
+Review changed code and tests under nrt/rt_gateway plus relevant rt-sdk contracts/docs as needed. Return findings ordered by severity with file/line references. If no issues, say so and mention residual risks.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 15:16:15 +0800</div>
+<pre>I’ll do this as a code review only: read the repo guidance first, orient on the RT Gateway module, then inspect the uncommitted diff and SDK/cache contracts without editing anything. I’m also doing a quick memory pass because this repo and RT Gateway have prior workflow context.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 15:16:42 +0800</div>
+<pre>From the architecture map, the relevant ownership boundaries are `nrt/rt_gateway` as the NRT RT session projection layer, plus `rt-sdk` and likely `rt-api-contract` for the SDK/cache contract surface. I’m reading those module-local instructions now, then I’ll review only the changed files and their tests.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 15:17:04 +0800</div>
+<pre>Using `sdd-finding-uncovered-cells` lightly because this review is tied to an SDD story/slice and needs coverage/correctness checks against the declared behavior; I’ll keep the output in normal code-review form.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 15:17:58 +0800</div>
+<pre>The changed surface is concentrated in `nrt/rt_gateway`: gateway types/core, the RT SDK adapter, fake client, and tests, with specs updated alongside. I’m now checking the adapter against the actual SDK public headers so the review is about real cache semantics rather than expected names.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / commentary</h3>
+<div class="time">2026-06-29 15:18:26 +0800</div>
+<pre>I’ve got the main implementation path. The next checks are the nuanced ones: whether each projected field preserves SDK cache quality, whether capability gaps are per-field rather than session-fatal, and whether any field is populated beyond what the SDK cache says is valid.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 6 / commentary</h3>
+<div class="time">2026-06-29 15:18:42 +0800</div>
+<pre>The SDK types show the same five current monitor/cache families this slice is supposed to project. I’m drilling into cache producers now, especially what `valid`, `quality`, and revision mean at the backend/API layers.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 7 / commentary</h3>
+<div class="time">2026-06-29 15:18:59 +0800</div>
+<pre>A potential review hotspot is capacity: gateway hard-codes `2` axes groups/spindles and `8` members rather than reusing SDK/API constants. I’m confirming whether that is contractually fixed today or an avoidable future-bug in this slice.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 8 / commentary</h3>
+<div class="time">2026-06-29 15:19:35 +0800</div>
+<pre>One thing I’m checking carefully is the split between field-level status and the aggregate gateway projection metadata. Some paths preserve `capability_gap`/`unavailable` per field, but then update the top-level projection as fresh, so I’m checking the slice specs before deciding whether that is a bug or just old aggregate semantics.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 9 / commentary</h3>
+<div class="time">2026-06-29 15:19:57 +0800</div>
+<pre>The slice readiness doc makes the implementation rule explicit: invalid or non-good cache samples should not become good data. I’m checking whether the code actually matches that rule for each field and whether the tests cover stale/invalid/capability-gap separately.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 10 / commentary</h3>
+<div class="time">2026-06-29 15:20:13 +0800</div>
+<pre>The existing failure-model doc still lists only topology/mode query stages, while the code has a new runtime projection stage; that’s documentation drift, but your requested focus is runtime SDK/cache correctness, so I’ll only report it if it materially affects the semantics under review.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 11 / commentary</h3>
+<div class="time">2026-06-29 15:20:26 +0800</div>
+<pre>The unit tests exercise gateway-core behavior through a fake client, but not the SDK adapter mapping itself. That means any finding in `RtSdkMachineClient` needs to be grounded in static contract comparison rather than an observed test failure.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 12 / commentary</h3>
+<div class="time">2026-06-29 15:21:23 +0800</div>
+<pre>A stronger issue is emerging around `MonitorReceipt`: the SDK distinguishes not-ready/transport-error from invalid arguments, but the gateway currently collapses every inactive monitor into `capability_gap`. I’m checking the backend implementations to make sure this is not just an unused enum.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 13 / commentary</h3>
+<div class="time">2026-06-29 15:21:37 +0800</div>
+<pre>Backend code confirms monitor start can fail for transport subscription reasons, not just missing capability. Collapsing that to `capability_gap` would hide a stale/unavailable runtime condition from callers, so I’m verifying line numbers and whether the slice tests miss this case.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 14 / commentary</h3>
+<div class="time">2026-06-29 15:21:57 +0800</div>
+<pre>I’m also checking connection/refresh return behavior: runtime projection exceptions are caught and degrade the gateway without dropping the connected session, which matches your explicit criterion. The likely findings are narrower: monitor error classification and cache-quality semantics.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 15 / commentary</h3>
+<div class="time">2026-06-29 15:22:17 +0800</div>
+<pre>The combined read command tripped the managed command wrapper, so I’m re-reading those source ranges separately. No file edits are involved.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 16 / commentary</h3>
+<div class="time">2026-06-29 15:22:39 +0800</div>
+<pre>The shell launcher is returning transient `Text file busy` errors for simple reads. I have enough backend evidence from the earlier output for the main classification issue, but I’ll try a smaller read with a different shell before finalizing line references.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 17 / commentary</h3>
+<div class="time">2026-06-29 15:23:29 +0800</div>
+<pre>The command runner is temporarily rejecting shell launches with `Text file busy`, so I’m pausing live reads for a moment and using the evidence already captured. I still need exact line numbers for a clean review report, so I’ll retry that before sending the final findings.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 18 / commentary</h3>
+<div class="time">2026-06-29 15:23:49 +0800</div>
+<pre>The retry worked. I’m pulling exact lines for the cache metadata helper and SDK monitor status enum now so the final review can cite both the changed code and the contract it violates.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 19 / commentary</h3>
+<div class="time">2026-06-29 15:24:21 +0800</div>
+<pre>I’m down to review synthesis. The adapter uses `MonitorReceipt::active()` as a boolean and discards the concrete monitor status, which is where the main correctness concern is coming from; I’m checking whether there is a second independent bug or just this one with five call sites.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 20 / commentary</h3>
+<div class="time">2026-06-29 15:24:41 +0800</div>
+<pre>I’m preparing the review now. I’m going to keep it to findings only plus residual risk, with file/line references and no edits, per your instruction.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 21 / final_answer</h3>
+<div class="time">2026-06-29 15:26:16 +0800</div>
+<pre>**Findings**
+
+- **High**: Monitor start failures are always reported as `capability_gap`, including SDK/backend transport failures. In [rt_sdk_machine_client.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:528), [549](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:549), [571](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:571), [591](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:591), and [610](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:610), any inactive `MonitorReceipt` calls `mark_capability_gap`. But SDK `MonitorStatus` distinguishes `rejected_not_ready` and `transport_error` from absent capability ([types.hpp](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/include/meta_nc/rt_sdk/types.hpp:45)), and OPC UA monitor setup returns `transport_error` for subscription/item failures ([opcua_backend.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/src/opcua_backend.cpp:1113), [1164](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/src/opcua_backend.cpp:1164), [1254](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/src/opcua_backend.cpp:1254), [1309](/home/iaar/workspace/ccmix-wp/MetaNC/rt-sdk/src/opcua_backend.cpp:1309)). That hides runtime projection failure as a permanent capability gap, can leave the gateway `ready`, and on refresh can replace a previous good field with a default gap instead of preserving it as stale.
+
+- **Medium**: Non-good cache quality can still be marked `available`. `apply_cache_metadata()` sets `RuntimeFieldStatus::available` whenever `cache.valid` is true, even when `quality` is `stale`, `disconnected`, or `decode_error` ([rt_sdk_machine_client.cpp](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/src/rt_sdk_machine_client.cpp:353)). The slice readiness rule says `available` means valid data, while no valid sample or non-good quality should be `unavailable` ([READINESS.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-02-runtime-snapshot-expansion/READINESS.md:36)). A caller that keys off `status` rather than `quality`/`stale` would consume stale or disconnected cache as available data.
+
+I did not edit files or run tests; this was a static review against the changed `nrt/rt_gateway` code and the current RT SDK monitor/cache contracts.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:837-880|note=[rt_gateway scope and boundary context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-1757-7ed1-a30e-23d07698930e
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>

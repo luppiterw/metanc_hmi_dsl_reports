@@ -35,6 +35,8 @@ mdbook build submodules/metanc_hmi_dsl_reports/2026-04-20-codex-session
 
 | Session | Primary focus |
 | --- | --- |
+| `2026-06-30` | Session bootstrap and Codex user-history export tooling |
+| `2026-06-29` | Session bootstrap and Codex user-history export tooling |
 | `2026-06-26` | Session bootstrap and Codex user-history export tooling |
 | `2026-06-25` | Session bootstrap and Codex user-history export tooling |
 | `2026-06-24` | Session bootstrap and Codex user-history export tooling |

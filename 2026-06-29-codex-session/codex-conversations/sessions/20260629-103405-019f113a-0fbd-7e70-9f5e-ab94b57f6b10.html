@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</title>
+<style>:root {
+  color-scheme: light;
+  --bg: #f7f3ea;
+  --panel: #fffaf0;
+  --ink: #1d1b16;
+  --muted: #6b6255;
+  --line: #d7c9b2;
+  --user: #153f52;
+  --assistant: #5b2f1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff6d7, transparent 35%), var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 32px 18px 72px; }
+h1 { font-size: clamp(28px, 5vw, 54px); line-height: 1.05; margin: 0 0 22px; letter-spacing: -0.04em; }
+h2 { margin: 0 0 8px; font-size: 20px; }
+a { color: #8a3a19; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.meta {
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,250,240,0.82);
+  border: 1px solid var(--line);
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #efe2ca; position: sticky; top: 0; }
+.msg {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 18px 0;
+  background: rgba(255,250,240,0.88);
+}
+.msg.user { border-left: 8px solid var(--user); }
+.msg.assistant { border-left: 8px solid var(--assistant); }
+.turn {
+  border-top: 4px double var(--line);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+.time { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1f211d;
+  color: #f5eddc;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+.session {
+  border-top: 4px double var(--line);
+  margin-top: 44px;
+  padding-top: 24px;
+}
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; }
+  main { padding: 22px 12px 48px; }
+}</style>
+</head>
+<body>
+<main>
+<p><a href="../index.html">Back to index</a></p>
+<h1># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC &lt;INSTRUCTIONS&gt; # AGENTS.md MetaNC...</h1>
+<section class="meta">
+<div><b>Session ID</b>: <code>019f113a-0fbd-7e70-9f5e-ab94b57f6b10</code></div>
+<div><b>Session kind</b>: <code>side</code></div>
+<div><b>Started</b>: <code>2026-06-29 10:34:05 +0800</code></div>
+<div><b>CWD</b>: <code>/home/iaar/workspace/ccmix-wp/MetaNC</code></div>
+<div><b>Source</b>: <code>~/.codex/sessions/2026/06/29/rollout-2026-06-29T10-34-05-019f113a-0fbd-7e70-9f5e-ab94b57f6b10.jsonl</code></div>
+<div><b>Messages</b>: <code>7</code></div>
+<div><b>User prompts</b>: <code>2</code></div>
+<div><b>Synthetic events</b>: <code>0</code></div>
+</section>
+<section class="turn" id="turn-1">
+<h2>Turn 1</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 10:34:05 +0800</div>
+<pre># AGENTS.md instructions for /home/iaar/workspace/ccmix-wp/MetaNC
+
+&lt;INSTRUCTIONS&gt;
+# AGENTS.md
+
+MetaNC is under active development. Favor clarity, small changes, and documentation that helps future contributors understand decisions quickly.
+
+## Required Workflow
+
+- First, read the repository-root [README.md](/README.md).
+- Then, complete a scope-orientation pass to identify the related modules defined in [architecture codemap](/docs/dev/architecture.md).
+- For each module in scope, read also the `README.md`, `AGENTS.md` files to understand how to work with that module.
+
+&lt;/INSTRUCTIONS&gt;
+
+&lt;environment_context&gt;
+  &lt;cwd&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/cwd&gt;
+  &lt;shell&gt;zsh&lt;/shell&gt;
+  &lt;current_date&gt;2026-06-29&lt;/current_date&gt;
+  &lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;
+  &lt;filesystem&gt;&lt;workspace_roots&gt;&lt;root&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/root&gt;&lt;/workspace_roots&gt;&lt;permission_profile type=&quot;managed&quot;&gt;&lt;file_system type=&quot;restricted&quot;&gt;&lt;entry access=&quot;read&quot;&gt;&lt;special&gt;:root&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:slash_tmp&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;write&quot;&gt;&lt;special&gt;:tmpdir&lt;/special&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.git&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.agents&lt;/path&gt;&lt;/entry&gt;&lt;entry access=&quot;read&quot;&gt;&lt;path&gt;/home/iaar/workspace/ccmix-wp/MetaNC/.codex&lt;/path&gt;&lt;/entry&gt;&lt;/file_system&gt;&lt;/permission_profile&gt;&lt;/filesystem&gt;
+&lt;/environment_context&gt;</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex</h3>
+<div class="time">No Codex response captured for this turn.</div>
+</article>
+</section>
+<section class="turn" id="turn-2">
+<h2>Turn 2</h2>
+<article class="msg user">
+<h3>User</h3>
+<div class="time">2026-06-29 10:34:05 +0800</div>
+<pre>You are reviewing documentation comprehension for MetaNC rt_gateway STORY-03 / SLICE-01. Worktree: /home/iaar/workspace/ccmix-wp/MetaNC. This is read-only review; do not edit files.
+
+Required orientation:
+- Read repository root README.md.
+- Read docs/dev/architecture.md enough to locate nrt/rt_gateway.
+- Read nrt/rt_gateway/README.md and AGENTS.md if present.
+- Then read top-to-bottom as a first-time implementer:
+  - nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/STORY.md
+  - nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md
+  - SPEC-020.md, SPEC-021.md, SPEC-022.md, INV-005.md in that slice
+  - related MODULE-MODEL.md and INTERFACE-REGISTRY.md only for referenced definitions.
+
+Use the review-docs-comprehension stance: identify only validated issues that hurt reading order, clarity, separation of concerns, or create contradictory implementation guidance. Do not evaluate implementation correctness except where the doc itself creates ambiguity.
+
+Special questions:
+- Does the slice define terms like revision/timestamp/source/stale/unavailable before relying on them?
+- Does SPEC-022 make disconnect behavior clear enough without contradicting stale behavior?
+- Does the text avoid implying future runtime field expansion or event streams are in scope?
+
+Return findings ordered by severity with exact file/line refs and concrete fixes. If no material issues, say no blocking comprehension findings and list any small cleanup.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 1 / commentary</h3>
+<div class="time">2026-06-29 10:34:37 +0800</div>
+<pre>Using `review-docs-comprehension` for the requested first-time-reader review, with the repo AGENTS orientation first. I’ll keep this read-only and report only validated comprehension issues with concrete line refs.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 2 / commentary</h3>
+<div class="time">2026-06-29 10:35:09 +0800</div>
+<pre>The orientation confirms this is the NRT-side gateway above `rt-sdk`, and the requested slice docs are all under `nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/`. I’m reading the module instructions next, then the slice chain in the order a new implementer would encounter it.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 3 / commentary</h3>
+<div class="time">2026-06-29 10:35:38 +0800</div>
+<pre>At this point the slice clearly names revision/timestamp/source/stale early, but it does not yet define them in prose before the specs rely on their values. I’m checking whether the referenced module model or registry supplies those definitions, so I don’t report a false positive.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 4 / commentary</h3>
+<div class="time">2026-06-29 10:36:00 +0800</div>
+<pre>Two candidate issues are surviving validation so far: one around undefined metadata vocabulary, and one around the slice scope saying “future runtime snapshots” while the stop boundary says “existing gateway snapshots.” I’m doing one more context pass around referenced terms and disconnect/stale wording before finalizing severity.</pre>
+</article>
+<article class="msg assistant">
+<h3>Codex Response 5 / final_answer</h3>
+<div class="time">2026-06-29 10:36:57 +0800</div>
+<pre>**Findings**
+
+1. **Metadata terms are named before they are defined.**
+Location: [SLICE.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md:12), [SPEC-020.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-020.md:29), [SPEC-022.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-022.md:30).
+Problem: the slice says it will “Define revision, timestamp, stale, and source fields,” but no definition appears before specs rely on `revision: incremented`, `timestamp: refreshed`, `source: rt-sdk`, `availability: unavailable`, `last_revision`, and `facts: not-current`. The interface registry only lists the metadata surface.
+Reader effect: a first-time implementer cannot tell the intended clock, source enum, stale semantics, availability enum, or preservation rules before implementing the spec cases.
+Principle: Reading-order sufficiency.
+Fix: add a short “Projection Metadata Terms” section before `Non-Goals` or `Stop Boundary`, defining `revision`, `timestamp`, `source`, `stale`, `availability/unavailable`, and preserved metadata fields. Keep `INV-005` as the invariant, but make the vocabulary available before `SPEC-020`.
+Confidence: 4. Impact: 3.
+
+2. **SPEC-022 leaves disconnect cache handling ambiguous relative to stale behavior.**
+Location: [SLICE.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md:35), [SPEC-021.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-021.md:30), [SPEC-022.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SPEC-022.md:15).
+Problem: the slice requires stale to be distinguishable from unavailable, but `SPEC-022` sets both `availability: unavailable` and `stale: true`, says only `last_revision` is preserved, and marks `facts: not-current`. That does not state whether disconnect preserves last known facts as diagnostic stale data, clears the facts, or preserves only metadata.
+Reader effect: one implementer could retain old topology/mode values with unavailable metadata, while another could clear them and keep only `last_revision`; both readings are text-supported.
+Principle: Comprehensibility in reading order.
+Fix: make `SPEC-022` explicit: either “disconnect preserves last known facts plus revision/timestamp/source, but marks `availability=unavailable` and `stale=true`,” or “disconnect clears projected facts and preserves only diagnostic metadata.” Also name which fields remain readable after disconnect.
+Confidence: 3. Impact: 3.
+
+3. **SLICE-01 scope implies future runtime snapshot work is included, then later excludes it.**
+Location: [SLICE.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md:12), [SLICE.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md:21), [SLICE.md](/home/iaar/workspace/ccmix-wp/MetaNC/nrt/rt_gateway/docs/spec/STORIES/STORY-03-runtime-state-projection/SLICE-01-state-cache-baseline/SLICE.md:28).
+Problem: scope says metadata is for “topology, mode, and future runtime snapshots,” but the non-goals and stop boundary say no new SDK-backed runtime fields and stop at existing gateway snapshots.
+Reader effect: a first-time implementer may think they need to design or stub future runtime snapshot structures in Slice 01.
+Principle: Separation of concerns.
+Fix: rewrite scope to “Define reusable revision, timestamp, stale, availability, and source metadata for existing topology and mode gateway snapshots; later runtime snapshots may reuse the same metadata model.”
+Confidence: 4. Impact: 2.
+
+**Special Questions**
+
+- Terms: not sufficiently defined before use; see finding 1.
+- SPEC-022 disconnect behavior: not clear enough; see finding 2.
+- Future expansion/event streams: event streams are clearly excluded in SLICE-01, but “future runtime snapshots” in the scope weakly implies Slice 02 work; see finding 3.
+
+No files were edited.
+
+&lt;oai-mem-citation&gt;
+&lt;citation_entries&gt;
+MEMORY.md:837-880|note=[rt_gateway repo scope and bounded module context]
+&lt;/citation_entries&gt;
+&lt;rollout_ids&gt;
+019efc2b-1757-7ed1-a30e-23d07698930e
+019f00d1-f31f-7190-8f95-b4f644fcfa06
+&lt;/rollout_ids&gt;
+&lt;/oai-mem-citation&gt;</pre>
+</article>
+</section>
+</main>
+</body>
+</html>
